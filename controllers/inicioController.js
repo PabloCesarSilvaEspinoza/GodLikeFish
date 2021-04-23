@@ -5,7 +5,7 @@
 //aqui se exportan las funciones 
 module.exports = {
     postPaginaPrincipal: async function(req, res, next){
-        res.render('paginaPrincipal',{
+        res.render('general/paginaPrincipal',{
             login:true
         });
     },
