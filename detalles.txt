@@ -1,0 +1,2 @@
+Hasta aqui se implementa hbs con rutas y controladores
++Todo el template pero sin estilos ni js
