@@ -36,6 +36,7 @@ app.set('view engine', 'hbs');
 
 //handlebars rutas
 app.use('/', indexRouter);
+app.use('/user', user);
 //aqui se agregan las rutas que se anteponen a otras
 
 //ultimo middleware, no poner nada debajo de esta linea

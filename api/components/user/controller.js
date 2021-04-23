@@ -1,47 +1,85 @@
-const {nanoid} = require('nanoid');
-const auth = require('../auth');
-
-const TABLA = 'user';
-
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
-        store = require('../../../store/dummy');
+        store = require('../../../store/mysql');
     }
 
     function list() {
-        return store.list(TABLA);
+        const VIEW = 'verUsuarios';
+        //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
+        return store.list(VIEW/*, CLAUSE*/);
     }
 
     function get(id) {
-        return store.get(TABLA, id);
+        const VIEW = 'verUsuarios';
+        const CLAUSE = `WHERE \`ID\` = ${id}`;
+        return store.get(VIEW, CLAUSE);
     }
 
-    async function upsert(body) {
-        const user = {
-            name: body.name,
-            username: body.username
+    function insert(body) {
+        if(!body.municipioNacimiento) {
+            body.municipioNacimiento = null
         }
-        if (body.id) {
-            user.id = body.id;
-        } else {
-            user.id = nanoid();
-        }
+        
+        const PROCEDURE = `CALL agregarUsuario( 
+            '${body.correo}',
+            '${body.password}',
+            ${body.municipio},
+            '${body.colinia}',
+            '${body.calle}',
+            ${body.numeroExt},
+            ${body.numeroInt},
+            '${body.nombres}',
+            '${body.pApellido}',
+            '${body.sApellido}',
+            '${body.matricula}',
+            '${body.tipo}',
+            '${body.fechaNacimiento}',
+            ${body.paisNacimiento},
+            ${body.municipioNacimiento},
+            '${body.area}',
+            '${body.puesto}',
+            ${body.antiguedad},
+            '${body.tarjeton}',
+            '${body.foto}'
+            )`
 
-        if(body.password || body.username){
-            await auth.upsert({
-                id: user.id,
-                username: user.username,
-                password: body.password,
-            })
-        }
+        return store.insert(PROCEDURE);
+    }
 
-        return store.upsert(TABLA, user);
+    function update(body) {
+        const PROCEDURE = `CALL editarUsuario(
+            ${body.id}, 
+            '${body.correo}',
+            '${body.password}',
+            ${body.municipio},
+            '${body.colinia}',
+            '${body.calle}',
+            ${body.numeroExt},
+            ${body.numeroInt},
+            '${body.nombres}',
+            '${body.pApellido}',
+            '${body.sApellido}',
+            '${body.matricula}',
+            '${body.tipo}',
+            '${body.fechaNacimiento}',
+            ${body.paisNacimiento},
+            ${body.municipioNacimiento},
+            '${body.area}',
+            '${body.puesto}',
+            ${body.antiguedad},
+            ${body.activo},
+            '${body.tarjeton}',
+            '${body.foto}'
+            )`
+        
+        return store.insert(PROCEDURE);
     }
 
     return {
         list,
         get,
-        upsert,
+        insert,
+        update,
     };
 }
