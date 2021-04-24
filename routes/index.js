@@ -12,6 +12,7 @@ const pruebaController = require('../controllers/pruebaController');
 router.get('/', inicioController.postPaginaPrincipal);
 
 //vistas del administrador
+router.get('/ejemplo', admiController.postEjemplo);
 
 //vistas del ponente
 

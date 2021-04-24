@@ -4,6 +4,10 @@
 
 //aqui se exportan las funciones 
 module.exports = {
-    
+    postEjemplo: async function(req, res, next){
+        res.render('administrador/ejemplo',{
+
+        });
+    },
 
 };
