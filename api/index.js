@@ -14,7 +14,7 @@ const user = require('./components/user/network');
 
 
 //app.use(bodyParser.json());
-
+app.use(bodyParser.json());
 //documentación del código, no tocar
 const swaggerDoc = require('./swagger.json');
 

@@ -12,65 +12,38 @@ module.exports = function (injectedStore) {
 
     function get(id) {
         const VIEW = 'verUsuarios';
-        const CLAUSE = `WHERE \`ID\` = ${id}`;
-        return store.get(VIEW, CLAUSE);
+        const CLAUSE = `WHERE \`ID\` = ?`;
+        return store.get(VIEW, CLAUSE, id);
     }
 
     function insert(body) {
-        if(!body.municipioNacimiento) {
-            body.municipioNacimiento = null
-        }
-        
+        const {
+            correo, password, municipioResidenciaID, colonia, calle, numeroExt, numeroInt,
+            nombres, pApellido, sApellido, matricula, tipo, fechaNacimiento, paisNacimientoID,
+            municipioNacimientoID, area, puesto, antiguedad, tarjetonURL, fotoURL
+        } = body;
+
         const PROCEDURE = `CALL agregarUsuario( 
-            '${body.correo}',
-            '${body.password}',
-            ${body.municipio},
-            '${body.colinia}',
-            '${body.calle}',
-            ${body.numeroExt},
-            ${body.numeroInt},
-            '${body.nombres}',
-            '${body.pApellido}',
-            '${body.sApellido}',
-            '${body.matricula}',
-            '${body.tipo}',
-            '${body.fechaNacimiento}',
-            ${body.paisNacimiento},
-            ${body.municipioNacimiento},
-            '${body.area}',
-            '${body.puesto}',
-            ${body.antiguedad},
-            '${body.tarjeton}',
-            '${body.foto}'
+            '${correo}', '${password}', ${municipioResidenciaID}, '${colonia}', '${calle}',
+            ${numeroExt}, ${numeroInt}, '${nombres}', '${pApellido}', '${sApellido}', '${matricula}',
+            '${tipo}', '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, '${area}',
+            '${puesto}', ${antiguedad}, '${tarjetonURL}', '${fotoURL}'
             )`
 
         return store.insert(PROCEDURE);
     }
 
     function update(body) {
+        const {
+            ID, correo, password, municipioResidenciaID, colonia, calle, numeroExt, numeroInt,
+            nombres, pApellido, sApellido, matricula, tipo, fechaNacimiento, paisNacimientoID,
+            municipioNacimientoID, area, puesto, antiguedad, activo, tarjetonURL, fotoURL
+        } = body;
         const PROCEDURE = `CALL editarUsuario(
-            ${body.id}, 
-            '${body.correo}',
-            '${body.password}',
-            ${body.municipio},
-            '${body.colinia}',
-            '${body.calle}',
-            ${body.numeroExt},
-            ${body.numeroInt},
-            '${body.nombres}',
-            '${body.pApellido}',
-            '${body.sApellido}',
-            '${body.matricula}',
-            '${body.tipo}',
-            '${body.fechaNacimiento}',
-            ${body.paisNacimiento},
-            ${body.municipioNacimiento},
-            '${body.area}',
-            '${body.puesto}',
-            ${body.antiguedad},
-            ${body.activo},
-            '${body.tarjeton}',
-            '${body.foto}'
+            ${ID}, '${correo}', '${password}', ${municipioResidenciaID}, '${colonia}', '${calle}',
+            ${numeroExt}, ${numeroInt}, '${nombres}','${pApellido}','${sApellido}', '${matricula}',
+            '${tipo}', '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, '${area}',
+            '${puesto}', ${antiguedad}, ${activo}, '${tarjetonURL}', '${fotoURL}'
             )`
         
         return store.insert(PROCEDURE);
