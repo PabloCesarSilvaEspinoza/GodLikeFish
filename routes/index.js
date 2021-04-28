@@ -12,6 +12,8 @@ const pruebaController = require('../controllers/pruebaController');
 router.get('/', inicioController.postPaginaPrincipal);
 
 //vistas del administrador
+router.get('/tarjetasponente', admiController.postTarjetasPonentes);
+router.get('/editarponente', admiController.postEditarPonente);
 
 //vistas del ponente
 
