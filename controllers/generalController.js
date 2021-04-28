@@ -9,5 +9,10 @@ module.exports = {
             login:true
         });
     },
+    postInicio: async function(req, res, next){
+        res.render('general/inicio',{
+            login: true
+        });
+    },
 
 };
