@@ -1,0 +1,98 @@
+<div class="container-fluid">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body wizard-content">
+                <h4 class="card-title">Datos del Ponente</h4>
+                <form action="#" class="validation-wizard wizard-circle mt-5">
+                    <!-- Step 1 -->
+                    <section>
+                        <div class="row">
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="form-group ">
+                                    <img src="../../assets/images/users/5.jpg" class="rounded-circle" width="100"
+                                        alt="Foto de perfil del ponente">
+                                    <p></p>
+                                    <button type="button" class="btn waves-effect waves-light btn-info">Cambiar
+                                        Imagen</button>
+
+                                    <div class="col-md-12">
+
+                                        <label class="mt-3" for="wemailAddress2"> Matrícula SNTSS <span
+                                                class="danger"></span> </label>
+                                        <input id="usuarioMatricula" name="usuarioMatricula" type="email"
+                                            class="form-control required" id="wemailAddress2" name="emailAddress"
+                                            pattern="[a-zA-z0-9]{2,10}" placeholder="Ingrese la matrícula de SNTSS"
+                                            alt="Matrícula SNTSS del Ponente">
+                                    </div>
+                                    <div class="col-md-12">
+
+                                        <label class="mt-3" for="wdate2">Facha de Nacimiento</label>
+                                        <input id="userFechaNacimiento" name="userFechaNacimiento" type="date"
+                                            class="form-control" id="wdate2" alt="Fecha de nacimiento del ponente">
+                                    </div>
+                                    <div class="col-md-12">
+
+                                        <label class="mt-3" for="wphoneNumber2"> Edad </label>
+                                        <!--input di="usuarioEdad" name="usuarioEdad" type="text" class="form-control" id="wphoneNumber2" pattern="[0-9]{2}"-->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label> Nombre(s)</label>
+                                    <input id="usuarioNombre" name="usuarioNombre"
+                                        placeholder="Ingrese el nombre(s) del ponente" alt="Nombre del Ponente"
+                                        type="text" class="form-control required" id="wfirstName2" name="firstName"
+                                        placeholder=""
+                                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}">
+
+                                    <label class="mt-3"> Primer Apellido</label>
+                                    <input id="usuarioPApellio" name="usuarioPApellio"
+                                        placeholder="Ingrese el primer apellido" alt="Primer apellido del Ponente"
+                                        type="text" class="form-control required" id="wfirstName2" name="firstName"
+                                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}">
+
+                                    <label class="mt-3"> Segundo Apellido </label>
+                                    <input id="usuarioSApellido" name="usuarioSApellido"
+                                        placeholder="Ingrese el segundo apellido" alt="Segundo apellido del Ponente"
+                                        type="text" class="form-control required" id="wemailAddress2"
+                                        name="emailAddress"
+                                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}">
+                                    <p></p>
+                                    <div class="form-group">
+                                        <label for="wlocation2" class="mt -3"> Lugar de Nacimiento <span
+                                                class="danger"></span> </label>
+                                        <select id="municipio" name="municipio" alt="Lugar de nacimiento"
+                                            class="custom-select form-control required" id="wlocation2" name="location">
+                                            <option value="">Morelia</option>
+                                            <option value="India">Monterry</option>
+                                            <option value="USA">USA</option>
+                                            <option value="Dubai">CDMX</option>
+                                        </select>
+                                    </div>
+                                    <label for="wphoneNumber2"> Matrícula de Ponente </label>
+                                    <input id="usuarioMatriculaPonente" name="usuarioMatriculaPonente"
+                                        placeholder="Ingrese la matrícula de ponente" alt="Matrícula del Ponente"
+                                        type="text" class="form-control" id="wphoneNumber2" pattern="[a-zA-z0-9]{2,10}">
+
+                                </div>
+                                <div class="form-group">
+                                    <br>
+                                    <button id="guardarCambiosPonente" name="guardarAcambiosPonente" type="button"
+                                        class="btn btn-default waves-effect">Guardar cambios</button>
+                                    <button id="descartarCambiosPonente" name="descartarCambiosPonente" type="button"
+                                        class="btn btn-danger waves-effect waves-light">Descartar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

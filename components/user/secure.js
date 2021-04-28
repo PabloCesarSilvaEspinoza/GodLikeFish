@@ -1,4 +1,4 @@
-const auth = require('../../../auth');
+const auth = require('../../auth');
 
 module.exports = function checkAuth(action){
     function middleware(req, res, next){

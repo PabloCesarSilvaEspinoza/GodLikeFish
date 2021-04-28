@@ -43,9 +43,9 @@ function list(view, clause = '') {
     })
 }
 
-function get(view, clause) {
+function get(view, clause, id) {
     return new Promise ( (resolve, reject ) => {
-        connection.query(`SELECT * FROM ${view} ${clause}`, (err, data) => {
+        connection.query(`SELECT * FROM ${view} ${clause}`, id, (err, data) => {
             if(err) {
                 return reject(err);
             } else {

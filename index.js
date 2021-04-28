@@ -2,21 +2,18 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const swaggerUi = require('swagger-ui-express');
-const indexRouter = require('../routes/index');
+const indexRouter = require('./routes/index');
 
 const auth = require('./components/auth/network');
-const config = require('../config.js');
-const errors = require('../network/errors');
+const config = require('./config.js');
+const errors = require('./network/errors');
 const user = require('./components/user/network');
 
 const course = require('./components/course/network');
 
 
 //app.use(bodyParser.json());
-
-//documentación del código, no tocar
-const swaggerDoc = require('./swagger.json');
+app.use(bodyParser.json());
 
 
 /*/ rutas (antiguas), moviendo a hbs
