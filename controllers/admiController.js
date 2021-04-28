@@ -4,6 +4,7 @@
 
 //aqui se exportan las funciones 
 module.exports = {
+
     postTarjetasPonentes: async function(req, res, next){
         res.render('administrador/TarjetasDePonentes', {
 
@@ -12,6 +13,12 @@ module.exports = {
 
     postEditarPonente: async function(req, res, next){
         res.render('administrador/EditarPonente', {
+        
+        }
+    )},
+
+    postEjemplo: async function(req, res, next){
+        res.render('administrador/ejemplo',{
 
         });
     },
