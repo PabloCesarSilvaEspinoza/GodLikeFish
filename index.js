@@ -9,11 +9,12 @@ const config = require('./config.js');
 const errors = require('./network/errors');
 const user = require('./components/user/network');
 
-
+const course = require('./components/course/network');
 
 
 //app.use(bodyParser.json());
 app.use(bodyParser.json());
+
 
 /*/ rutas (antiguas), moviendo a hbs
 app.use('/api/user', user);
@@ -34,6 +35,7 @@ app.set('view engine', 'hbs');
 //handlebars rutas
 app.use('/', indexRouter);
 app.use('/user', user);
+app.use('/course', course);
 //aqui se agregan las rutas que se anteponen a otras
 
 //ultimo middleware, no poner nada debajo de esta linea
