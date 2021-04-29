@@ -14,5 +14,16 @@ module.exports = {
             login: true
         });
     },
-
+    postConfirmarCorreo: async function(req, res, next){
+        res.render('general/confirmarCorreo',{
+            login: true
+        });
+    },
+    postRegistrar: async function(req, res, next){
+        res.render('general/registrar',{
+            login: true,
+            pickadate: true,
+            select2: true
+        });
+    },
 };
