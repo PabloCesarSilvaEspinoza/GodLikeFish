@@ -1,0 +1,203 @@
+<div class="card text-center">
+    <div class="card-body text-center">
+        <div>
+            <div class="logo">
+                <h1 class="font-medium mb-3">Registrarse</h1>
+            </div>
+            <!-- Form -->
+            <div class="row">
+                <div class="col-12">
+                    <form class="form-horizontal mt-3" action="index.html">
+                        <h3 class="font-medium mb-3">DATOS DE INICIO</h3>
+                        <div class="form-group row ">
+                            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="text" required=" "
+                                    placeholder="Nombre(s)" minlength="1" maxlength="40" pattern="[A-Za-z]"
+                                    name="usuarioNombres" id="usuarioNombres">
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="text" required=" "
+                                    placeholder="Apellido Paterno" minlength="1" maxlength="40" pattern="[A-Za-z]"
+                                    name="usuarioPApellido" id="usuarioPApellido">
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="text" required=" "
+                                    placeholder="Apellido Materno" minlength="1" maxlength="40" pattern="[A-Za-z]"
+                                    name="usuarioSApellido" id="usuarioSApellido">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <span
+                                    class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                    dir="ltr" style="width: 100%;" id="paisNombre" name="paisNombre">
+                                    <span class="selection">
+                                        <span class="select2-selection select2-selection--single" role="combobox"
+                                            aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                            aria-labelledby="select2-ncb3-container">
+                                            <span class="select2-selection__rendered" id="select2-ncb3-container"
+                                                role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
+                                            <span class="select2-selection__arrow" role="presentation">
+                                                <option disabled selected>Pais de nacimiento</option>
+                                                <b role="presentation"></b>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <input class="form-control form-control-lg" type="text" required=" "
+                                    placeholder="Municipio de nacimiento" id="municipioNombre" name="municipioNombre">
+                            </div>
+                        </div>
+                        <div class="form-group row text-left">
+                            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                                <input type="date" class="form-control" id="usuarioFechaNacimiento"
+                                    name="usuarioFechaNacimiento">
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                                <h5 class="font-medium  ml-2">Edad</h5>
+                                <h5 class="font-medium  ml-2">21</h5>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="email" required=" "
+                                    placeholder="Correo" id="usuarioCorreo" name="usuarioCorreo">
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="password" required=" "
+                                    placeholder="Contraseña" id="usuarioPassword" name="usuarioPassword">
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="password" required=" "
+                                    placeholder="Confirmar Contraseña" id="usuarioPassword" name="usuarioPassword">
+                            </div>
+                        </div>
+                        <h3 class="font-medium ml-2">DOMICILIO</h3>
+                        <div class="form-group row">
+                            <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                                <span
+                                    class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                    dir="ltr" style="width: 100%;" id="estadoNombre" name="estadoNombre">
+                                    <span class="selection">
+                                        <span class="select2-selection select2-selection--single" role="combobox"
+                                            aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                            aria-labelledby="select2-ncb3-container">
+                                            <span class="select2-selection__rendered" id="select2-ncb3-container"
+                                                role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
+                                            <span class="select2-selection__arrow" role="presentation">
+                                                <option disabled selected>Estado</option>
+                                                <b role="presentation"></b>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                                <span class="select2 select2-container select2-container--default" dir="ltr"
+                                    style="width: 100%;" id="municipioNombre" name="municipioNombre">
+                                    <span class="selection">
+                                        <span class="select2-selection select2-selection--single" role="combobox"
+                                            aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                            aria-labelledby="select2-nsg6-container">
+                                            <span class="select2-selection__rendered" id="select2-nsg6-container"
+                                                role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
+                                            <span class="select2-selection__arrow" role="presentation">
+                                                <option disabled selected>Municipio</option>
+                                                <b role="presentation"></b>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="text" required=" "
+                                    placeholder="Colonia" id="domicilioColonia" name="domicilioColonia">
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Calle"
+                                    id="domicilioCalle" name="domicilioCalle">
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="number" required=" "
+                                    placeholder="Numero Interior" id="domicilioNumeroInt" name="domicilioNumeroInt">
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <input class="form-control form-control-lg" type="number" required=" "
+                                    placeholder="Numero Exterior" id="domicilioNumeroExt" name="domicilioNumeroExt">
+                            </div>
+                        </div>
+                        <h3 class="font-medium ml-2">DATOS LABORALES</h3>
+                        <div class="form-group row">
+                            <div class="col-sm-12 col-md-6 col-lg-5 mb-3">
+                                <input class="form-control form-control-lg" type="text" required=" "
+                                    placeholder="Matricula" id="usuarioMatricula" name="usuarioMatricula">
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+                                <input class="form-control form-control-lg" type="number" required=" "
+                                    placeholder="Antigüedad en años" id="usuarioAntiguedad" name="usuarioAntiguedad">
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <span
+                                    class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                    dir="ltr" data-select2-id="2" style="width: 100%;" id="usuarioPuesto"
+                                    name="usuarioPuesto">
+                                    <span class="selection">
+                                        <span class="select2-selection select2-selection--single" role="combobox"
+                                            aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                            aria-labelledby="select2-ncb3-container">
+                                            <span class="select2-selection__rendered" id="select2-ncb3-container"
+                                                role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
+                                            <span class="select2-selection__arrow" role="presentation">
+                                                <option disabled selected>Puesto</option>
+                                                <b role="presentation"></b>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <span class="select2 select2-container select2-container--default" dir="ltr"
+                                    data-select2-id="5" style="width: 100%;" id="usuarioArea" name="usuarioArea">
+                                    <span class="selection">
+                                        <span class="select2-selection select2-selection--single" role="combobox"
+                                            aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                            aria-labelledby="select2-nsg6-container">
+                                            <span class="select2-selection__rendered" id="select2-nsg6-container"
+                                                role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
+                                            <span class="select2-selection__arrow" role="presentation">
+                                                <option disabled selected>Area</option>
+                                                <b role="presentation"></b>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <h5 class="font-medium mb-3">Subir foto de perfil</h5>
+                                <button type="button"
+                                    class="btn waves-effect waves-light btn-rounded btn-dark">SUBIR</button>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <h5 class="font-medium mb-3">Subir tarjeton</h5>
+                                <button type="button"
+                                    class="btn waves-effect waves-light btn-rounded btn-dark">SUBIR</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-md-12 col-lg-12 mb-3 mt-3 ">
+                                <button class="btn btn-block btn-lg btn-info " type="submit ">REGISTRAR</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
