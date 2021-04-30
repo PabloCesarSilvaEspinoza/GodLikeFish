@@ -3,12 +3,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const indexRouter = require('./routes/index');
-
-const auth = require('./components/auth/network');
 const config = require('./config.js');
 const errors = require('./network/errors');
-const user = require('./components/user/network');
 
+const user = require('./components/user/network');
+const auth = require('./components/auth/network');
 const course = require('./components/course/network');
 
 
@@ -34,8 +33,8 @@ app.set('view engine', 'hbs');
 
 //handlebars rutas
 app.use('/', indexRouter);
-app.use('/user', user);
-app.use('/course', course);
+app.use('/usuario', user);
+app.use('/curso', course);
 //aqui se agregan las rutas que se anteponen a otras
 
 //ultimo middleware, no poner nada debajo de esta linea
