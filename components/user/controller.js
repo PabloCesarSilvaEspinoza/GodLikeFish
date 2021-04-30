@@ -12,7 +12,7 @@ module.exports = function (injectedStore) {
 
     function get(id) {
         const VIEW = 'verUsuarios';
-        const CLAUSE = `WHERE \`ID\` = ?`;
+        const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 

@@ -13,7 +13,6 @@ router.put('/', update)
 
 // Internal functions
 function list(req, res) {
-    console.log(req.body);
     Controller.list()
         .then((lista) => {
             response.success(req, res, lista, 200);

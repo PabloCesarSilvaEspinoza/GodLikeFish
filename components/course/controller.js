@@ -12,8 +12,8 @@ module.exports = function (injectedStore) {
 
     function get(id) {
         const VIEW = 'verDatosCursos';
-        const CLAUSE = `WHERE \`ID\` = ${id}`;
-        return store.get(VIEW, CLAUSE);
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
     }
 
     
