@@ -22,5 +22,10 @@ module.exports = {
 
         });
     },
+    postAdministradorPonentes: async function(req, res, next){
+        res.render('administrador/PrincipalAdministrador-Ponentes', {
+
+        });
+    },
 
 };
