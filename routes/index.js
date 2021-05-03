@@ -20,7 +20,7 @@ router.get('/tarjetasponente', admiController.postTarjetasPonentes);
 router.get('/editarponente', admiController.postEditarPonente);
 router.get('/ejemplo', admiController.postEjemplo);
 router.get('/PrincipalAdministrador-Ponentes', admiController.postAdministradorPonentes);
-
+router.get('/PrincipalAdministrador', admiController.postAdministrador);
 //vistas del ponente
 
 

@@ -27,5 +27,9 @@ module.exports = {
 
         });
     },
+    postAdministrador: async function(req, res, next){
+        res.render('administrador/PrincipalAdministrador', {
 
+        });
+    },
 };
