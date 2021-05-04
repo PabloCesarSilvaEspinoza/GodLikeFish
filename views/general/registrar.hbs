@@ -1,33 +1,40 @@
-<div class="card text-center">
-    <div class="card-body text-center">
+<div class="card">
+    <div class="card-body">
         <div>
             <div class="logo">
-                <h1 class="font-medium mb-3">Registrarse</h1>
+                <h1 class="font-medium mb-3 text-center">Registrarse</h1>
             </div>
             <!-- Form -->
             <div class="row">
                 <div class="col-12">
                     <form class="form-horizontal mt-3" action="index.html">
-                        <h3 class="font-medium mb-3">DATOS DE INICIO</h3>
+                        <h3 class="font-medium mb-3 text-center">DATOS DE INICIO</h3>
                         <div class="form-group row ">
                             <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-                                <input class="form-control form-control-lg" type="text" required=" "
-                                    placeholder="Nombre(s)" minlength="1" maxlength="40" pattern="[A-Za-z]"
+                                <label> Nombre(s)</label>
+                                <input class="form-control form-control-lg" type="text" required=" " 
+                                    placeholder="Ingrese el nombre(s) del usuario" alt="Nombre del Ponente"
+                                    minlength="1" maxlength="40" pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
                                     name="usuarioNombres" id="usuarioNombres">
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                <label> Primer Apellido</label>
                                 <input class="form-control form-control-lg" type="text" required=" "
-                                    placeholder="Apellido Paterno" minlength="1" maxlength="40" pattern="[A-Za-z]"
+                                    placeholder="Ingrese el primer apellido" alt="Primer apellido del usuario"
+                                    minlength="1" maxlength="40" pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
                                     name="usuarioPApellido" id="usuarioPApellido">
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                <label>Segundo Apellido</label>
                                 <input class="form-control form-control-lg" type="text" required=" "
-                                    placeholder="Apellido Materno" minlength="1" maxlength="40" pattern="[A-Za-z]"
+                                    placeholder="Ingrese el segundo apellido" alt="Segundo apellido del usuario"
+                                    minlength="1" maxlength="40" pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
                                     name="usuarioSApellido" id="usuarioSApellido">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                            <div class="col-sm-12 col-md-5 col-lg-5 mb-3">
+                                <label>Pais de nacimiento</label>
                                 <span
                                     class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
                                     dir="ltr" style="width: 100%;" id="paisNombre" name="paisNombre">
@@ -38,7 +45,7 @@
                                             <span class="select2-selection__rendered" id="select2-ncb3-container"
                                                 role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
                                             <span class="select2-selection__arrow" role="presentation">
-                                                <option disabled selected>Pais de nacimiento</option>
+                                                <option disabled selected>Elige el país de nacimiento</option>
                                                 <b role="presentation"></b>
                                             </span>
                                         </span>
@@ -47,37 +54,45 @@
                                 </span>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <label>Municipio de nacimiento</label>
                                 <input class="form-control form-control-lg" type="text" required=" "
-                                    placeholder="Municipio de nacimiento" id="municipioNombre" name="municipioNombre">
+                                    placeholder="Ingrese el municipio de nacimiento" alt="Municipio de nacimiento"
+                                    minlength="1" maxlength="40" pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                    id="municipioNombre" name="municipioNombre">
                             </div>
                         </div>
-                        <div class="form-group row text-left">
+                        <div class="form-group row">
                             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                                <input type="date" class="form-control" id="usuarioFechaNacimiento"
+                                <label>Fecha de nacimiento</label>
+                                <input type="date" alt="Fecha de nacimiento del usuario" class="form-control" id="usuarioFechaNacimiento"
                                     name="usuarioFechaNacimiento">
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                                <h5 class="font-medium  ml-2">Edad</h5>
+                                <label>Edad</label>
                                 <h5 class="font-medium  ml-2">21</h5>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
+                                <label>Correo</label>
                                 <input class="form-control form-control-lg" type="email" required=" "
-                                    placeholder="Correo" id="usuarioCorreo" name="usuarioCorreo">
+                                    placeholder="Ingrese su correo" alt="Correo del usuario" id="usuarioCorreo" name="usuarioCorreo">
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <label>Contraseña</label>
                                 <input class="form-control form-control-lg" type="password" required=" "
-                                    placeholder="Contraseña" id="usuarioPassword" name="usuarioPassword">
+                                    placeholder="Elige un contraseña" alt="Elige una contraseña" id="usuarioPassword" name="usuarioPassword">
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <label>Confirmar contraseña</label>
                                 <input class="form-control form-control-lg" type="password" required=" "
-                                    placeholder="Confirmar Contraseña" id="usuarioPassword" name="usuarioPassword">
+                                    placeholder="Confirma tu contraseña" alt="Confirma tu contraseña" id="usuarioPassword" name="usuarioPassword">
                             </div>
                         </div>
-                        <h3 class="font-medium ml-2">DOMICILIO</h3>
+                        <h3 class="font-medium ml-2 text-center">DOMICILIO</h3>
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                                <label>Estado de residencia</label>
                                 <span
                                     class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
                                     dir="ltr" style="width: 100%;" id="estadoNombre" name="estadoNombre">
@@ -88,7 +103,7 @@
                                             <span class="select2-selection__rendered" id="select2-ncb3-container"
                                                 role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
                                             <span class="select2-selection__arrow" role="presentation">
-                                                <option disabled selected>Estado</option>
+                                                <option disabled selected>Elige el estado</option>
                                                 <b role="presentation"></b>
                                             </span>
                                         </span>
@@ -97,6 +112,7 @@
                                 </span>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                                <label>Municipio de residencia</label>
                                 <span class="select2 select2-container select2-container--default" dir="ltr"
                                     style="width: 100%;" id="municipioNombre" name="municipioNombre">
                                     <span class="selection">
@@ -106,7 +122,7 @@
                                             <span class="select2-selection__rendered" id="select2-nsg6-container"
                                                 role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
                                             <span class="select2-selection__arrow" role="presentation">
-                                                <option disabled selected>Municipio</option>
+                                                <option disabled selected>Elige el municipio</option>
                                                 <b role="presentation"></b>
                                             </span>
                                         </span>
@@ -115,33 +131,42 @@
                                 </span>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                                <label>Colonia de residencia</label>
                                 <input class="form-control form-control-lg" type="text" required=" "
-                                    placeholder="Colonia" id="domicilioColonia" name="domicilioColonia">
+                                    minlength="1" maxlength="40" pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                    placeholder="Ingresa la colonia de tu domicilio" id="domicilioColonia" name="domicilioColonia">
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Calle"
+                                <label>Calle</label>
+                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Ingresa la calle de tu domicilio"
+                                    minlength="1" maxlength="40" pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"                                    
                                     id="domicilioCalle" name="domicilioCalle">
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <label>Numero Interior</label>
                                 <input class="form-control form-control-lg" type="number" required=" "
-                                    placeholder="Numero Interior" id="domicilioNumeroInt" name="domicilioNumeroInt">
+                                    placeholder="Ingresa el numero interior de tu domicilio" id="domicilioNumeroInt" name="domicilioNumeroInt">
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <label>Numero Exterior</label>
                                 <input class="form-control form-control-lg" type="number" required=" "
-                                    placeholder="Numero Exterior" id="domicilioNumeroExt" name="domicilioNumeroExt">
+                                    placeholder="Ingresa el numero exterior de tu domicilio" id="domicilioNumeroExt" name="domicilioNumeroExt">
                             </div>
                         </div>
-                        <h3 class="font-medium ml-2">DATOS LABORALES</h3>
+                        <h3 class="font-medium ml-2 text-center">DATOS LABORALES</h3>
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-6 col-lg-5 mb-3">
+                                <label>Matricula</label>
                                 <input class="form-control form-control-lg" type="text" required=" "
-                                    placeholder="Matricula" id="usuarioMatricula" name="usuarioMatricula">
+                                    placeholder="Ingresa tu matricula" id="usuarioMatricula" name="usuarioMatricula">
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+                                <label>Antigüedad</label>
                                 <input class="form-control form-control-lg" type="number" required=" "
-                                    placeholder="Antigüedad en años" id="usuarioAntiguedad" name="usuarioAntiguedad">
+                                    placeholder="Ingresa tu antigüedad en años" id="usuarioAntiguedad" name="usuarioAntiguedad">
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <label>Puesto</label>
                                 <span
                                     class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
                                     dir="ltr" data-select2-id="2" style="width: 100%;" id="usuarioPuesto"
@@ -153,7 +178,7 @@
                                             <span class="select2-selection__rendered" id="select2-ncb3-container"
                                                 role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
                                             <span class="select2-selection__arrow" role="presentation">
-                                                <option disabled selected>Puesto</option>
+                                                <option disabled selected>Elige el puesto que te corresponde</option>
                                                 <b role="presentation"></b>
                                             </span>
                                         </span>
@@ -162,6 +187,7 @@
                                 </span>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <label>Area</label>
                                 <span class="select2 select2-container select2-container--default" dir="ltr"
                                     data-select2-id="5" style="width: 100%;" id="usuarioArea" name="usuarioArea">
                                     <span class="selection">
@@ -171,7 +197,7 @@
                                             <span class="select2-selection__rendered" id="select2-nsg6-container"
                                                 role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
                                             <span class="select2-selection__arrow" role="presentation">
-                                                <option disabled selected>Area</option>
+                                                <option disabled selected>Elige el area que te corresponde</option>
                                                 <b role="presentation"></b>
                                             </span>
                                         </span>
@@ -179,13 +205,15 @@
                                     <span class="dropdown-wrapper" aria-hidden="true"></span>
                                 </span>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
-                                <h5 class="font-medium mb-3">Subir foto de perfil</h5>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3 text-center ">
+                                <label>Subir foto de perfil</label>
+                                <br>
                                 <button type="button"
                                     class="btn waves-effect waves-light btn-rounded btn-dark">SUBIR</button>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3">
-                                <h5 class="font-medium mb-3">Subir tarjeton</h5>
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3 text-center">
+                                <label>Subir tarjeton</label>
+                                <br>
                                 <button type="button"
                                     class="btn waves-effect waves-light btn-rounded btn-dark">SUBIR</button>
                             </div>
