@@ -23,7 +23,7 @@
 
     <body>
         {{>preloader}}
-        {{#if login}}
+        {{#unless login}}
             <div id="main-wrapper">
                 {{!barra superior de color azul}}
                 {{>topbar}}
@@ -33,15 +33,15 @@
                     {{! Esto es lo que aparece abajo de la barra azul}}
                     {{>pageBreadcrum}}
                     {{!el body contiene el container-fluid}}
-                    {{/if}}
+                    {{/unless}}
                     {{{body}}}
-                    {{#if login}}   
+                    {{#unless login}}   
                     {{>footer}}
                 </div>
             </div>
             {{!boton rojo de configuracion para cambiar los temas}}
             {{>customizer}}
-        {{/if}}
+        {{/unless}}
         {{!todos los scripts que necesitamos}}
         {{>scripts}}
     </body>
