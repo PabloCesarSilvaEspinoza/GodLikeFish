@@ -57,4 +57,34 @@ module.exports = {
             
         });
     },
+
+    getAdministrarCursos: async function(req, res, next){
+        res.render('course/administrarCursos',{
+            select2:true,
+            prism: true,
+            breadcrumb:[{
+                rolUsuario:"Administrador",
+                paginaAnterior:[
+                    {
+                        nombrePagina:"",
+                        enlace:""
+                    },
+                    {
+                        nombrePagina:"",
+                        enlace:""
+                    },
+                    {
+                        nombrePagina:"",
+                        enlace:""
+                    },
+                ],
+                paginaActual:""
+            }],
+            etiquetasCursos:[{
+                cursosRegistrados:"154",
+                cursosActivos:"54",
+                cursosInactivos:"100"
+            }],
+        });
+    },
 };
