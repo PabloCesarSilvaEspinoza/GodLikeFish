@@ -22,4 +22,25 @@ module.exports = {
         await Controller.update(req.body);
        res.redirect('/');
     },
+//-----------------Examenes -------------------------
+    getVerExamenes:async function(req, res, next){
+        const courses= await Controller.listE();
+    },
+
+    getVerExamen: async function(req, res, next){
+        const id = req.params.id;
+        const course = await Controller.getE(id);
+        res.redirect('/');
+    },
+
+    postAgregarExamen: async function(req, res, next){
+        await Controller.insertE(req.body);
+       res.redirect('/');
+    },
+
+    putEditarExamen: async function(req, res, next){
+        await Controller.updateE(req.body);
+       res.redirect('/');
+    },
+//---------------------------------------------------
 };
