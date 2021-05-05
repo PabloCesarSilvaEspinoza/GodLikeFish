@@ -49,11 +49,6 @@ module.exports = {
     getPrincipalAdministrador: async function (req, res, next) {
         res.render('administrador/PrincipalAdministrador', {
     
-            etiquetasPonentes:[{
-                ponentesRegistrados:"2",
-                ponentesConCurso:"78",
-                ponentesSinCurso:"8"
-            }],
             
         });
     },
