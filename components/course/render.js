@@ -22,30 +22,6 @@ module.exports = {
         await Controller.update(req.body);
         res.redirect('/');
     },
-    getPrincipalAdministradorPonentes: async function (req, res, next) {
-        res.render('administrador/PrincipalAdministrador-Ponentes', {
-            datatables: true,
-            
-            ponentes: [{
-            nombre: "Amelia Rojas",
-            cargo: "Profesor 2",
-            area: "Medica",
-            edad:"39",
-            antiguedad:"4"
-            }],
-            etiquetasPonentes:[{
-                ponentesRegistrados:"2",
-                ponentesConCurso:"78",
-                ponentesSinCurso:"8"
-            }],
-            datosResumenPonentes:[{
-                resumenRegistrados:"90",
-                resumenActivos:"34",
-                resumenInactivos:"90"
-            }]
-
-        });
-    },
     getPrincipalAdministrador: async function (req, res, next) {
         res.render('administrador/PrincipalAdministrador', {
     
