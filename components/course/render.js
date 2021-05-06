@@ -22,9 +22,7 @@ module.exports = {
         await Controller.update(req.body);
         res.redirect('/');
     },
-    getPrincipalAdministradorPonentes: async function (req, res, next) {
-       
-    },
+
     getPrincipalAdministrador: async function (req, res, next) {
         res.render('administrador/PrincipalAdministrador', {
     
