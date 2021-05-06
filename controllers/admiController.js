@@ -54,4 +54,71 @@ module.exports = {
 
         });
     },
+    postDashboard: async function(req, res, next){
+        res.render('administrador/dashboard',{
+            tarjetasDashboard:[
+                {
+                    usuariosRegistrados:"",
+                    reconocimientosEntregados:"",
+                    cursosRegistrados:"",
+                    ponentesRegistrados:""
+                }
+            ],
+            usuariosNoVerificados:[
+                {
+                    cantidad:"",
+                    usuario:[
+                        {
+                            imagen:"",
+                            nombre:"",
+                            Area:"",
+                            Puesto:"",
+                            Antiguedad:"",
+                            matricula:""
+                        }
+                    ]
+                }
+            ],
+            carruselCentral:[
+                {
+                    cursos:[
+                        {
+                            registrados:"",
+                            activos:"",
+                            inactivos:""
+                        }
+                    ],
+                    alumnos:[
+                        {
+                            registrados:"",
+                            certificados:"",
+                            sinCertificado1:""
+                        }
+                    ],
+                    ponentes:[
+                        {
+                            registrados:"",
+                            activos:"",
+                            inactivos:""
+                        }
+                    ]
+                }
+            ],
+            reporteErrores:[
+                {
+                    cantidad:"",
+                    reporte:[
+                        {
+                            imagenUsuario:"",
+                            nombreUsuario:"",
+                            contenidoReporte:"",
+                            fechaReporte:"",
+                            estado:""
+                        }
+                    ]
+                }
+            ]
+
+        })
+    }
 };
