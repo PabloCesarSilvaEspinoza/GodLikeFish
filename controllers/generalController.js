@@ -11,17 +11,17 @@ module.exports = {
     },
     postInicio: async function(req, res, next){
         res.render('general/inicio',{
-            login: true
+            login: false
         });
     },
     postConfirmarCorreo: async function(req, res, next){
         res.render('general/confirmarCorreo',{
-            login: true
+            login: false
         });
     },
     postRegistrar: async function(req, res, next){
         res.render('general/registrar',{
-            login: true,
+            login: false,
             pickadate: true,
             select2: true
         });
