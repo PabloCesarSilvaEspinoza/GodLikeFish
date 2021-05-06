@@ -9,10 +9,10 @@ router.post('/', render.postAgregarCurso);
 router.put('/', render.putEditarCurso);
 
 //--------------Examenes---------------------??????????????
-router.get('/e', render.getVerExamenes);
-router.get('/:id/e', render.getVerExamen);
-router.post('/e', render.postAgregarExamen);
-router.put('/e', render.putEditarExamen);
+router.get('examen/', render.getVerExamenes);
+router.get('examen/:id', render.getVerExamen);
+router.post('examen/', render.postAgregarExamen);
+router.put('examen/', render.putEditarExamen);
 
 //--------------------------------------
 
