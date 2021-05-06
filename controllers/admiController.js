@@ -44,7 +44,7 @@ module.exports = {
             ],
             usuariosNoVerificados:[
                 {
-                    cantidad,
+                    cantidad:"",
                     usuario:[
                         {
                             imagen:"",

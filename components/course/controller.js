@@ -5,13 +5,13 @@ module.exports = function (injectedStore) {
     }
 
     function list() {
-        const VIEW = 'verDatosCursos';
+        const VIEW = 'ver_Datos_Cursos';
         //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
         return store.list(VIEW/*, CLAUSE*/);
     }
 
     function get(id) {
-        const VIEW = 'verDatosCursos';
+        const VIEW = 'ver_Datos_Cursos';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }

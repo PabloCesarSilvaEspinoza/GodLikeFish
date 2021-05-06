@@ -10,8 +10,7 @@
         </div>
     </div>
     <div class="row">
-        <!-- Tarjetas -->
-        {{#tarjetasDashboard}}
+        <!-- Column -->
         <div class="col-lg-3 col-md-6">
             <div class="card bg-info">
                 <div class="d-flex flex-row">
@@ -19,79 +18,163 @@
                         <h3 class="text-white box mb-0"><i class="fas fa-users"></i></h3>
                     </div>
                     <div class="text-white align-self-center p-10">
-                        <h3 class="mb-0">{{usuariosRegistrados}}/h3>
+                        <h3 class="mb-0">2,865</h3>
                         <span class="text-white">Usuarios Registrados</span>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Column -->
+        <!-- Column -->
         <div class="col-lg-3 col-md-6">
             <div class="card bg-success">
                 <div class="d-flex flex-row">
                     <div class="p-10">
                         <h3 class="text-white box mb-0"><i class="fas fa-graduation-cap"></i></h3></div>
                     <div class="text-white align-self-center p-10">
-                        <h3 class="mb-0">{{reconocimientosEntregados}}</h3>
+                        <h3 class="mb-0">2,254</h3>
                         <span class="text-white">Reconocimientos Entregados</span>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Column -->
+        <!-- Column -->
         <div class="col-lg-3 col-md-6">
             <div class="card bg-inverse">
                 <div class="d-flex flex-row">
                     <div class="p-10">
                         <h3 class="text-white box mb-0"><i class="fab fa-leanpub"></i></h3></div>
                     <div class="text-white align-self-center p-10">
-                        <h3 class="mb-0">{{cursosRegistrados}}</h3>
+                        <h3 class="mb-0">148</h3>
                         <span class="text-white">Cursos Registrados</span>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Column -->
+        <!-- Column -->
         <div class="col-lg-3 col-md-6">
             <div class="card bg-cyan">
                 <div class="d-flex flex-row">
                     <div class="p-10">
                         <h3 class="text-white box mb-0"><i class="fas fa-male"></i></h3></div>
                     <div class="text-white align-self-center p-10">
-                        <h3 class="mb-0">{{ponentesRegistrados}}</h3>
+                        <h3 class="mb-0">64</h3>
                         <span class="text-white">Ponentes Registrados</span>
                     </div>
                 </div>
             </div>
         </div>
-        {{/tarjetasDashboard}}
+        <!-- Column -->
     </div>
     <div class="row">
-        <!-- Usuarios No verificados -->
         <div class="col-lg-4">
             <div class="card">
-                {{#usuariosNoVerificados}}
                 <div class="card-body">
-                    <h3 class="card-title">Usuarios No Verificados <span class="small"> ({{cantidad}})</span></h3><hr>
+                    <h3 class="card-title">Usuarios No Verificados <span class="small"> (8)</span></h3><hr>
                 </div>
                 <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-                    {{#each usuario}}
                     <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="{{imagen}}" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="p-2"><img src="../../assets/images/users/8.jpg" alt="user" width="50" class="rounded-circle"></div>
                         <div class="comment-text w-100">
-                            <h6 class="font-medium">{{nombre}}</h6>
-                            <span class="mb-3 label label-rounded label-success">{{area}}</span>
-                            <span class="mb-3 label label-rounded label-warning">{{puesto}}</span>
-                            <span class="mb-3 label label-rounded label-info">{{antiguedad}}</span>
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
                             <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: {{matricula}}</span>
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
                             </div>
                         </div>
                     </div>
-                    {{/each}}
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/7.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/6.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/5.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 label label-rounded label-success">Area</span>
+                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
+                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                            </div>
+                        </div>
+                    </div>
                 <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
             </div>
         </div> 
-        <!-- Resumen central en carrusel-->
         <div class="col-lg-4">
-            {{#carruselCentral}}
             <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
@@ -102,17 +185,16 @@
                     <div class="carousel-item active">
                         <div class="card">
                             <div class="card-body">
-                                {{#cursos}}
                                 <h1>Cursos <span class="small">Resumen</span></h1> <hr>
                                 <div class="row mt-5">
                                     <div class="col b-r text-center">
-                                        <h2 class="font-light">{{registrados}}</h2>
+                                        <h2 class="font-light">148</h2>
                                         <h6>Registrados</h6></div>
                                     <div class="col b-r text-center">
-                                        <h2 class="font-light">{{activos}}</h2>
+                                        <h2 class="font-light">54</h2>
                                         <h6>Activos</h6></div>
                                     <div class="col text-center">
-                                        <h2 class="font-light">{{inactivos}}</h2>
+                                        <h2 class="font-light">94</h2>
                                         <h6>Inactivos</h6></div>
                                 </div>
                                 <div class="col text-center mt-4">
@@ -137,24 +219,22 @@
                                         </li>
                                     </ul>
                                 </div>
-                                {{/cursos}}
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="card">
                             <div class="card-body">
-                                {{#alumnos}}
                                 <h1>Alumnos <span class="small">Resumen</span></h1> <hr>
                                 <div class="row mt-5">
                                     <div class="col b-r text-center">
-                                        <h2 class="font-light">{{registrados}}</h2>
+                                        <h2 class="font-light">2,801</h2>
                                         <h6>Registrados</h6></div>
                                     <div class="col b-r text-center">
-                                        <h2 class="font-light">{{certificados}}</h2>
+                                        <h2 class="font-light">2,000</h2>
                                         <h6>Certificados</h6></div>
                                     <div class="col text-center">
-                                        <h2 class="font-light">{{sinCertificado1}}</h2>
+                                        <h2 class="font-light">801</h2>
                                         <h6>Sin certificación</h6></div>
                                 </div>
                                 <div class="col text-center mt-4">
@@ -179,24 +259,22 @@
                                         </li>
                                     </ul>
                                 </div>
-                                {{/alumnos}}
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="card">
                             <div class="card-body">
-                                {{#ponentes}}
                                 <h1>Ponentes <span class="small">Resumen</span></h1> <hr>
                                 <div class="row mt-5">
                                     <div class="col b-r text-center">
-                                        <h2 class="font-light">{{registrados}}</h2>
+                                        <h2 class="font-light">64</h2>
                                         <h6>Registrados</h6></div>
                                     <div class="col b-r text-center">
-                                        <h2 class="font-light">{{activos}}</h2>
+                                        <h2 class="font-light">58</h2>
                                         <h6>Activos</h6></div>
                                     <div class="col text-center">
-                                        <h2 class="font-light">{{inactivos}}</h2>
+                                        <h2 class="font-light">6</h2>
                                         <h6>Inactivos</h6></div>
                                 </div>
                                 <div class="col text-center mt-4">
@@ -221,7 +299,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                {{/ponentes}}
                             </div>
                         </div>
                     </div>
@@ -236,7 +313,6 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            {{/carruselCentral}}
         </div>
         <div class="col-lg-4">
             <!-- modal marcar resuelto -->
@@ -257,21 +333,18 @@
                     </div>
                 </div>
             </div>
-            <!-- Reporte de errores-->
             <div class="card">
-                {{#reporteErrores}}
                 <div class="card-body">
-                    <h3 class="card-title">Reporte de Errores <span class="small"> ({{cantidad}})</span></h3><hr>
+                    <h3 class="card-title">Reporte de Errores <span class="small"> (5)</span></h3><hr>
                 </div>
                 <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-                    {{#each reporte}}
                     <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="{{imagenUsuario}}" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="p-2"><img src="../../assets/images/users/2.jpg" alt="user" width="50" class="rounded-circle"></div>
                         <div class="comment-text w-100">
-                            <h6 class="font-medium">{{nombreUsuario}}</h6>
-                            <span class="mb-3 d-block">{{contenidoReporte}}</span>
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                             <div class="comment-footer">
-                                <span class="text-muted float-right">{{fechaReporte}}</span> <span class="label label-rounded label-danger">{{estado}}</span> 
+                                <span class="text-muted float-right">April 14, 2016</span> <span class="label label-rounded label-danger">Pendiente</span> 
                                 <span class="action-icons">
                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i class="ti-check"></i></a>  
                                     <a href="javascript:void(0)" ><i class="fas fa-arrow-right"></i></a>
@@ -279,10 +352,64 @@
                             </div>
                         </div>
                     </div>
-                    {{/each}}
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-right">April 14, 2016</span> <span class="label label-rounded label-danger">Pendiente</span> 
+                                <span class="action-icons">
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i class="ti-check"></i></a>  
+                                    <a href="javascript:void(0)" ><i class="fas fa-arrow-right"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-right">April 14, 2016</span> <span class="label label-rounded label-danger">Pendiente</span> 
+                                <span class="action-icons">
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i class="ti-check"></i></a>  
+                                    <a href="javascript:void(0)" ><i class="fas fa-arrow-right"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/5.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-right">April 14, 2016</span> <span class="label label-rounded label-danger">Pendiente</span> 
+                                <span class="action-icons">
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i class="ti-check"></i></a>  
+                                    <a href="javascript:void(0)" ><i class="fas fa-arrow-right"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row comment-row mt-0">
+                        <div class="p-2"><img src="../../assets/images/users/6.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">James Anderson</h6>
+                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                            <div class="comment-footer">
+                                <span class="text-muted float-right">April 14, 2016</span> <span class="label label-rounded label-danger">Pendiente</span> 
+                                <span class="action-icons">
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i class="ti-check"></i></a>  
+                                    <a href="javascript:void(0)" ><i class="fas fa-arrow-right"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 560px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 514px;"></div></div></div>
-                {{/reporteErrores}}
             </div>
         </div>      
     </div>
-</div> 
+</div>

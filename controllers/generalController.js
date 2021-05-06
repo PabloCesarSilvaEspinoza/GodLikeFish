@@ -21,7 +21,7 @@ module.exports = {
     },
     postRegistrar: async function(req, res, next){
         res.render('general/registrar',{
-            login: false,
+            login: true,
             pickadate: true,
             select2: true
         });
