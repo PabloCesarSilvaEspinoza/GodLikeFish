@@ -1,4 +1,3 @@
-const course = require('./index');
 const Controller = require('./index');
 
 module.exports = {
