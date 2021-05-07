@@ -1,3 +1,4 @@
+const controller = require('../auth/controller');
 const course = require('./index');
 const Controller = require('./index');
 
@@ -23,33 +24,11 @@ module.exports = {
        res.redirect('/');
     },
 
-    getAdministrarCursos: async function(req, res, next){
+    postAdministrarCursos: async function(req, res, next){
+        const courses = await Controller.list();
         res.render('course/administrarCursos',{
-            select2:true,
-            prism: true,
-            breadcrumb:[{
-                rolUsuario:"Administrador",
-                paginaAnterior:[
-                    {
-                        nombrePagina:"",
-                        enlace:""
-                    },
-                    {
-                        nombrePagina:"",
-                        enlace:""
-                    },
-                    {
-                        nombrePagina:"",
-                        enlace:""
-                    },
-                ],
-                paginaActual:""
-            }],
-            etiquetasCursos:[{
-                cursosRegistrados:"154",
-                cursosActivos:"54",
-                cursosInactivos:"100"
-            }],
+            datatables:true,
+            courses
         });
     },
 };
