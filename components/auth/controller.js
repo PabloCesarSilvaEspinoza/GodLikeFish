@@ -8,8 +8,8 @@ module.exports = function (injectedStore) {
         store = require('../../store/dummy');
     }
 
-    async function login(username, password){
-        const data = await store.query(TABLA, {username: username});
+    async function login(correo, password){
+        const data = await store.query(TABLA, {correo: correo});
         return bcrypt.compare(password, data.password)
             .then(sonIguales =>{
                 if(sonIguales){
@@ -26,8 +26,8 @@ module.exports = function (injectedStore) {
             id: data.id,
         }
 
-        if(data.username){
-            authData.username = data.username;
+        if(data.correo){
+            authData.correo = data.correo;
         }
         if(data.password){
             authData.password = await bcrypt.hash(data.password, 5);

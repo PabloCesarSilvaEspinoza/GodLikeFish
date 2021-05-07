@@ -5,13 +5,13 @@ module.exports = function (injectedStore) {
     }
 
     function list() {
-        const VIEW = 'verUsuarios';
+        const VIEW = 'ver_Usuarios';
         //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
         return store.list(VIEW/*, CLAUSE*/);
     }
 
     function get(id) {
-        const VIEW = 'verUsuarios';
+        const VIEW = 'ver_Usuarios';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
@@ -23,7 +23,7 @@ module.exports = function (injectedStore) {
             municipioNacimientoID, area, puesto, antiguedad, tarjetonURL, fotoURL
         } = body;
 
-        const PROCEDURE = `CALL agregarUsuario( 
+        const PROCEDURE = `CALL agregar_Usuario( 
             '${correo}', '${password}', ${municipioResidenciaID}, '${colonia}', '${calle}',
             ${numeroExt}, ${numeroInt}, '${nombres}', '${pApellido}', '${sApellido}', '${matricula}',
             '${tipo}', '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, '${area}',
@@ -39,7 +39,7 @@ module.exports = function (injectedStore) {
             nombres, pApellido, sApellido, matricula, tipo, fechaNacimiento, paisNacimientoID,
             municipioNacimientoID, area, puesto, antiguedad, activo, tarjetonURL, fotoURL
         } = body;
-        const PROCEDURE = `CALL editarUsuario(
+        const PROCEDURE = `CALL editar_Usuario(
             ${ID}, '${correo}', '${password}', ${municipioResidenciaID}, '${colonia}', '${calle}',
             ${numeroExt}, ${numeroInt}, '${nombres}','${pApellido}','${sApellido}', '${matricula}',
             '${tipo}', '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, '${area}',

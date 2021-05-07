@@ -11,18 +11,15 @@ const pruebaController = require('../controllers/pruebaController');
 
 //vistas del usuario no logeado
 router.get('/', inicioController.postPaginaPrincipal);
-router.get('/inicio', inicioController.postInicio);
 router.get('/confirmarCorreo', inicioController.postConfirmarCorreo);
 router.get('/registrar', inicioController.postRegistrar);
 
 //vistas del administrador
-router.get('/tarjetasponente', admiController.postTarjetasPonentes);
-router.get('/editarponente', admiController.postEditarPonente);
 router.get('/ejemplo', admiController.postEjemplo);
 router.get('/PrincipalAdministrador-Ponentes', admiController.postAdministradorPonentes);
-router.get('/PrincipalAdministrador', admiController.postAdministrador);
-//vistas del ponente
+router.get('/dashboard', admiController.postDashboard);
 
+//vistas del ponente
 
 
 //vistas de prueba
