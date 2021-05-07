@@ -9,6 +9,7 @@ const errors = require('./network/errors');
 const user = require('./components/user/network');
 const auth = require('./components/auth/network');
 const course = require('./components/course/network');
+const student = require('./components/student/network');
 
 
 //app.use(bodyParser.json());
@@ -35,6 +36,8 @@ app.set('view engine', 'hbs');
 app.use('/', indexRouter);
 app.use('/usuario', user);
 app.use('/curso', course);
+app.use('/estudiante', student);
+
 //aqui se agregan las rutas que se anteponen a otras
 
 //ultimo middleware, no poner nada debajo de esta linea
