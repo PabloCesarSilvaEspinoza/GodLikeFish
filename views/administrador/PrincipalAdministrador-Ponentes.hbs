@@ -572,7 +572,7 @@
                                                             <td>{{edad}}</td>
                                                             <td>{{antiguedad}}</td>
                                                             <td>
-                                                                <a href="#" action="#responsive-modal" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" > <i class="far fa-user mr-1"> </i> Ver Perfil</a>
+                                                                <a href="#" data-toggle="modal" data-target="#responsive-modal" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" > <i class="far fa-user mr-1"> </i> Ver Perfil</a>
                                                             </td>
                                                         </tr>
                                                         {{/each}}
@@ -878,12 +878,13 @@
         </div>
         {{/miPerfilDatoEntrada}}
     </div>
-    <div id="ModalVerPerfilPonente" name="ModalVerPerfilPonente" class="card">
+  
         <!-- sample modal content -->
          {{#miPerfilDatoEstatico}}
+         
         <div id="responsive-modal" name="ModalVerPonente" class="modal fade responsive-modal" tabindex="-1"
             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="text-center" class="modal-body">
 
@@ -894,55 +895,80 @@
                         <br>
                         <section>
                             <div class="row">
-                                <div class="col-md-6" style="text-align:center">
+                                <div class="col-md-4" style="text-align:center">
                                     <div class="form-group ">
                                         <img id="usuarioFoto" name="usuarioFoto" src="../../assets/images/users/5.jpg"
                                             class="rounded-circle" width="120">
                                         <p></p>
+                                        <br>
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-
+                                        <div class="row"  style="text-align:center">
+                                            <div class="col-11">
+                                                
                                                 <label id="usuarioMatricula" name="usuarioMatricula"
                                                     for="wemailAddress2" class="card-subtitle"> Matricula SNTSS <span
                                                         class="danger"></span> </label>
-                                                <h4 class="form-control" class="card-title mt-2">{{usuario_matricula}}</h4>
+                                                <h4 class="form-control" class="card-title mt-2">{{matricula}}</h4>
+                                               
                                             </div>
-                                            <div class="col-md-12">
+                                
+                                            <div class="col-11">
 
-                                                <label id="userFechaNacimiento" name="userFechaNacimiento" for="wdate2"
-                                                    class="card-subtitle">Facha de Nacimiento</label>
-                                                <h4 class="form-control" class="card-title mt-2">{{userFechaNacimiento}}</h4>
-                                            </div>
-                                            <div class="col-md-12">
-
-                                                <labeldi="UsuarioEdad" name="UsuarioEdad" class="card-subtitle"> Edad
+                                                  <labeldi="UsuarioEdad" name="UsuarioEdad" class="card-subtitle"> Area
                                                     </label>
-                                                    <h4 class="form-control" class="card-title mt-2">{{edad}}</h4>
+                                                    <h4 class="form-control" class="card-title mt-2">{{area}}</h4>
 
+                                            </div>
+                                            <div class="col-11">
+                                                <label id="userFechaNacimiento" name="userFechaNacimiento" for="wdate2"
+                                                    class="card-subtitle">Puesto</label>
+                                                <h4 class="form-control" class="card-title mt-2">{{puesto}}</h4>
+                                              
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p></p>
-                               
-                                <div class="col-md-6">
+                                
+                                <div class="col-md-4">
                                     <div class="form-group">
+                                       <strong>Datos personales</strong> <br><br>
                                         <label class="card-subtitle" class="mt-3"> Nombre(s)</label>
-                                        <h4 class="form-control" class="card-title mt-2">{{usuario_nombres}}</h4>
+                                        <h4 class="form-control" class="card-title mt-2">{{nombres}}</h4>
 
                                         <label class="card-subtitle" class="mt-3"> Primer Apellido</label>
-                                        <h4 class="form-control" class="card-title mt-2">{{usuario_p_apellido}}</h4>
+                                        <h4 class="form-control" class="card-title mt-2">{{pApellido}}</h4>
 
                                         <label class="card-subtitle" class="mt-3"> Segundo Apellido </label>
-                                        <h4 class="form-control" class="card-title mt-2">{{usuario_m_apellido}}</h4>
+                                        <h4 class="form-control" class="card-title mt-2">{{sApellido}}</h4>
 
                                         <label for="wdate2" class="card-subtitle" class="mt -3"> Lugar de
                                             Nacimiento</label>
-                                        <h4 class="form-control" class="card-title mt-2">{{usuario_fecha_nacimiento}}</h4>
+                                        <h4 class="form-control" class="card-title mt-2">{{tipo}}</h4>
 
                                         <label class="card-subtitle" class="mt -3"> Matricula de Ponente </label>
-                                        <h4 class="form-control" class="card-title mt-2">{{usuario_matricula}}</h4>
+                                        <h4 class="form-control" class="card-title mt-2">{{matricula}}</h4>
+
+                                    </div>
+                                   
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                       <strong>Dirección</strong> <br><br>
+                                        <label class="card-subtitle" class="mt-3">Municipio</label>
+                                        <h4 class="form-control" class="card-title mt-2">{{municipioResidenciaID}}</h4>
+
+                                        <label class="card-subtitle" class="mt-3">Colonia</label>
+                                        <h4 class="form-control" class="card-title mt-2">{{colonia}}</h4>
+
+                                        <label class="card-subtitle" class="mt-3"> Calle </label>
+                                        <h4 class="form-control" class="card-title mt-2">{{calle}}</h4>
+
+                                        <label for="wdate2" class="card-subtitle" class="mt -3">Número Exterior</label>
+                                        <h4 class="form-control" class="card-title mt-2">{{numeroExt}}</h4>
+
+                                        <label class="card-subtitle" class="mt -3">Número Interior</label>
+                                        <h4 class="form-control" class="card-title mt-2">{{numeroInt}}</h4>
 
                                     </div>
                                     <div class="modal-footer">
@@ -966,6 +992,7 @@
                 </div>
             </div>
         </div>
+       
         {{/miPerfilDatoEstatico}}
-    </div>
+    
 </div>
