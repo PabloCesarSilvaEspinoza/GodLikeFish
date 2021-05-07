@@ -8,10 +8,10 @@ module.exports = {
         res.render('administrador/ejemplo', users);
     },
     postAdministradorPonentes: async function(req, res, next){
+        const users = await Controller.list();
         res.render('administrador/PrincipalAdministrador-Ponentes', {
-
-            datatables: true,
-            
+            users,
+            dataTablesExport: true,
             ponentes: [{
             nombre: "Amelia Rojas",
             cargo: "Profesor 2",
@@ -28,6 +28,12 @@ module.exports = {
                 resumenRegistrados:"90",
                 resumenActivos:"34",
                 resumenInactivos:"90"
+            }],
+            graficas: [{
+                numeroUsuarios: "34",
+                fechaActual: "07/02/2021",
+                numeroCategorias: "250"
+
             }]
 
         });
