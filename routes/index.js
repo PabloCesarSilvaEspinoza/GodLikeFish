@@ -22,8 +22,8 @@ router.get('/ejemplo', admiController.postEjemplo);
 router.get('/PrincipalAdministrador-Ponentes', admiController.postAdministradorPonentes);
 router.get('/PrincipalAdministrador', admiController.postAdministrador);
 router.get('/dashboard', admiController.postDashboard);
-//vistas del ponente
 
+//vistas del ponente
 
 
 //vistas de prueba
