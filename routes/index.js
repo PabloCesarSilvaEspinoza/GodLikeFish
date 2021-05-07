@@ -15,11 +15,8 @@ router.get('/confirmarCorreo', inicioController.postConfirmarCorreo);
 router.get('/registrar', inicioController.postRegistrar);
 
 //vistas del administrador
-router.get('/tarjetasponente', admiController.postTarjetasPonentes);
-router.get('/editarponente', admiController.postEditarPonente);
 router.get('/ejemplo', admiController.postEjemplo);
 router.get('/PrincipalAdministrador-Ponentes', admiController.postAdministradorPonentes);
-router.get('/PrincipalAdministrador', admiController.postAdministrador);
 router.get('/dashboard', admiController.postDashboard);
 
 //vistas del ponente
