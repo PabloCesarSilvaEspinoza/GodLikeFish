@@ -5,11 +5,6 @@ module.exports = {
             select2:true
         });
     },
-    postInicio: async function(req, res, next){
-        res.render('general/inicio',{
-            general: true
-        });
-    },
     postConfirmarCorreo: async function(req, res, next){
         res.render('general/confirmarCorreo',{
             general: true

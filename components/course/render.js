@@ -32,7 +32,7 @@ module.exports = {
     postAdministrarCursos: async function(req, res, next){
         const courses = await Controller.list();
         res.render('course/administrarCursos',{
-            datatables:true,
+            dataTablesExport:true,
             courses
         });
     },
