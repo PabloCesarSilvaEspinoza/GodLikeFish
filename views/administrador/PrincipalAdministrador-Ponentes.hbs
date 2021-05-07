@@ -627,7 +627,7 @@
                                                 </div>
                                             </div>
                                             <div class="el-card-content">
-                                                <h4 class="mb-0">{{nombres}} {{pApellido}} {{sApellido}}</h4> <span id="UsuarioArea" name="UsuarioArea" class="text-muted">{{area}}/{{puesto}}</span>
+                                                <h4 data-toggle="modal" data-target="#responsive-modal" class="mb-0">{{nombres}} {{pApellido}} {{sApellido}}</h4> <span id="UsuarioArea" name="UsuarioArea" class="text-muted">{{area}}/{{puesto}}</span>
                                                 <br>
                                             </div>
                                         </div>
@@ -893,39 +893,39 @@
 
                         </center>
                         <br>
-                        <section>
+                            <div class="col">
+                            <div class="card">
+                             <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4" style="text-align:center">
+                                <div class="col-md-4" >
                                     <div class="form-group ">
+                                         <strong> Foto Perfil </strong>
+                                         <br><br>
                                         <img id="usuarioFoto" name="usuarioFoto" src="../../assets/images/users/5.jpg"
-                                            class="rounded-circle" width="120">
-                                        <p></p>
-                                        <br>
-
-                                        <div class="row"  style="text-align:center">
+                                            class="rounded-circle" width="120"><br><br>
+                                       
                                             <div class="col-11">
                                                 
-                                                <label id="usuarioMatricula" name="usuarioMatricula"
-                                                    for="wemailAddress2" class="card-subtitle"> Matricula SNTSS <span
+                                                <label 
+                                                    for="wemailAddress2" class="card-subtitle">Matricula SNTSS <span
                                                         class="danger"></span> </label>
-                                                <h4 class="form-control" class="card-title mt-2">{{matricula}}</h4>
+                                                <h4 id="matricula" name="matricula"class="form-control" class="card-title mt-2">{{matricula}}</h4>
                                                
                                             </div>
                                 
                                             <div class="col-11">
 
-                                                  <labeldi="UsuarioEdad" name="UsuarioEdad" class="card-subtitle"> Area
+                                                  <label  class="card-subtitle">Area
                                                     </label>
-                                                    <h4 class="form-control" class="card-title mt-2">{{area}}</h4>
+                                                    <h4 id="area" name="area" class="form-control" class="card-title mt-2">{{area}}</h4>
 
                                             </div>
                                             <div class="col-11">
-                                                <label id="userFechaNacimiento" name="userFechaNacimiento" for="wdate2"
+                                                <label  for="wdate2"
                                                     class="card-subtitle">Puesto</label>
-                                                <h4 class="form-control" class="card-title mt-2">{{puesto}}</h4>
+                                                <h4 id="puesto" name="puesto" class="form-control" class="card-title mt-2">{{puesto}}</h4>
                                               
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                                 
@@ -933,13 +933,13 @@
                                     <div class="form-group">
                                        <strong>Datos personales</strong> <br><br>
                                         <label class="card-subtitle" class="mt-3"> Nombre(s)</label>
-                                        <h4 class="form-control" class="card-title mt-2">{{nombres}}</h4>
+                                        <h4 id="nombres" name="nombres" class="form-control" class="card-title mt-2">{{nombres}}</h4>
 
                                         <label class="card-subtitle" class="mt-3"> Primer Apellido</label>
-                                        <h4 class="form-control" class="card-title mt-2">{{pApellido}}</h4>
+                                        <h4 id="pApellido" name="pApellido"class="form-control" class="card-title mt-2">{{pApellido}}</h4>
 
                                         <label class="card-subtitle" class="mt-3"> Segundo Apellido </label>
-                                        <h4 class="form-control" class="card-title mt-2">{{sApellido}}</h4>
+                                        <h4 id="sApellido" name="sApellido"class="form-control" class="card-title mt-2">{{sApellido}}</h4>
 
                                         <label for="wdate2" class="card-subtitle" class="mt -3"> Lugar de
                                             Nacimiento</label>
@@ -949,8 +949,6 @@
                                         <h4 class="form-control" class="card-title mt-2">{{matricula}}</h4>
 
                                     </div>
-                                   
-
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -977,18 +975,13 @@
                                             class="container-fluid">Editar</a>
 
                                     </div>
-
-                                </div>
+                                 </div>
                                 
                             </div>
-                    </div>
-                    <div class="row">
-                    </div>
-                    </section>
-                </div>
-                <div>
-                    <!-- <div class="card" >-->
-
+                             </div>
+                            </div>
+                            </div>  
+                    </div>  
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@ module.exports = {
             dataTablesExport: true,
             
             etiquetasPonentes:[{
-                ponentesRegistrados:"2",
+                ponentesRegistrados:"86",
                 ponentesConCurso:"78",
                 ponentesSinCurso:"8"
             }],
