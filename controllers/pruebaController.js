@@ -1,11 +1,14 @@
-//todo lo que requieras va aqui
-// ejemplo: la base de datos (pool), bcrypt, helpers, etc.
-const procedimiento = require('../database/procedimientosInicio');
-
-//aqui se exportan las funciones 
 module.exports = {
     postPrimeraPrueba: async function(req, res, next){
         res.render('prueba/primeraPrueba',{
+            breadcrumb:[
+                {
+                    rolUsuario:"Administrador",
+                    paginaAnterior:[
+                    ],
+                    paginaActual:"primeraPrueba"
+                }
+            ],
             nombrePagina:"Primera Prueba",
             descripcion:"Esta pagina te debe servir de guia, aqui podras ver como enviar y recibir elementos implementando las variables.",
             img1:"../../assets/images/big/img4.jpg",
@@ -20,6 +23,18 @@ module.exports = {
     },
     postSegundaPrueba: async function(req, res, next){
         res.render('prueba/segundaPrueba',{
+            breadcrumb:[
+                {
+                    rolUsuario:"Administrador",
+                    paginaAnterior:[
+                        {
+                            nombrePagina:"primeraPrueba",
+                            enlace:"/primeraPrueba"
+                        },
+                    ],
+                    paginaActual:"segundaPrueba"
+                }
+            ],
             datatables:true,
             nombrePagina:"Segunda Prueba",
             descripcion:"Esta pagina muestra como controlar el contenido que queremos mostrar u ocultar.",
@@ -29,6 +44,22 @@ module.exports = {
     },
     postTerceraPrueba: async function(req, res, next){
         res.render('prueba/terceraPrueba',{
+            breadcrumb:[
+                {
+                    rolUsuario:"Administrador",
+                    paginaAnterior:[
+                        {
+                            nombrePagina:"primeraPrueba",
+                            enlace:"/primeraPrueba"
+                        },
+                        {
+                            nombrePagina:"segundaPrueba",
+                            enlace:"/segundaPrueba"
+                        }
+                    ],
+                    paginaActual:"terceraPrueba"
+                }
+            ],
             datatables:true,
             nombrePagina:"Tercera Prueba",
             descripcion:"Esta pagina muestra como llenar una datatable con un each.",
@@ -41,7 +72,7 @@ module.exports = {
                     office:"Edinburgh",
                     age:"22",
                     startDate:"2011/04/25",
-                    salary:"$320,800"
+                    salary:"$320,800",
                 },
                 {
                     nombre:"Tiger Nixon",
@@ -49,7 +80,7 @@ module.exports = {
                     office:"Edinburgh",
                     age:"22",
                     startDate:"2011/04/25",
-                    salary:"$320,800"
+                    salary:"$320,800",
                 },
                 {
                     nombre:"Tiger Nixon",
@@ -57,7 +88,7 @@ module.exports = {
                     office:"Edinburgh",
                     age:"22",
                     startDate:"2011/04/25",
-                    salary:"$320,800"
+                    salary:"$320,800",
                 },
                 {
                     nombre:"Tiger Nixon",
@@ -65,7 +96,7 @@ module.exports = {
                     office:"Edinburgh",
                     age:"22",
                     startDate:"2011/04/25",
-                    salary:"$320,800"
+                    salary:"$320,800",
                 },
                 {
                     nombre:"Tiger Nixon",
@@ -73,24 +104,8 @@ module.exports = {
                     office:"Edinburgh",
                     age:"22",
                     startDate:"2011/04/25",
-                    salary:"$320,800"
+                    salary:"$320,800",
                 },
-                {
-                    nombre:"Tiger Nixon",
-                    position:"System Architect",
-                    office:"Edinburgh",
-                    age:"22",
-                    startDate:"2011/04/25",
-                    salary:"$320,800"
-                },
-                {
-                    nombre:"Tiger Nixon",
-                    position:"System Architect",
-                    office:"Edinburgh",
-                    age:"22",
-                    startDate:"2011/04/25",
-                    salary:"$320,800"
-                }
             ]
         });
     },

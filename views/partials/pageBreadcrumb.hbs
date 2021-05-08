@@ -1,0 +1,20 @@
+<div class="page-breadcrumb">
+    <div class="row">
+        {{#breadcrumb}}
+        <div class="col align-self-center">
+            <h4 class="page-title">{{rolUsuario}}</h4>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {{#each paginaAnterior}}
+                            <li class="breadcrumb-item"><a href="{{enlace}}">{{nombrePagina}}</a></li>
+                        {{/each}}
+                        <li class="breadcrumb-item active" aria-current="page">{{paginaActual}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        {{/breadcrumb}}
+    </div>
+    
+</div>
