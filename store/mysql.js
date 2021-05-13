@@ -2,17 +2,12 @@ const mysql = require('mysql');
 
 const config = require('../config');
 
-const dbConfig = {
-    host: config.mysql.host,
-    user: config.mysql.user,
-    password: config.mysql.password,
-    database: config.mysql.database,
-}
+
 
 let connection;
 
 function handleConn() {
-    connection = mysql.createConnection(dbConfig);
+    connection = mysql.createConnection(config.mysqlp);
     connection.connect((err) => {
         if(err){
             console.log('DB ERROR', err);
