@@ -1,8 +1,10 @@
 const Controller = require('./index');
+
 path = require('path')
 
 module.exports = {
     getAgregarTarea: async function(req, res, next){
+        global.direccion = './archivosPrueba';
         res.render('speaker/AgregarTarea')
     },
     postAgregarTarea: async function (req, res, next) {
@@ -20,7 +22,7 @@ module.exports = {
             await Controller.insertHomeworkMultimedia(datos);
         }
 
-        res.render('speaker/AgregarTarea')
+        res.redirect('http://localhost:3000/ponente/AgregarTareaPrueba')
     },
     getDescargarArchivos: async function (req, res, next) {
         const raiz = path.join(__dirname, '../../');
