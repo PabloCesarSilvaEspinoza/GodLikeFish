@@ -29,11 +29,33 @@ module.exports = {
         });
     },
 
-    postAdministrarCursos: async function(req, res, next){
-        const courses = await Controller.list();
+    getAdministrarCursos: async function(req, res, next){
         res.render('course/administrarCursos',{
-            dataTablesExport:true,
-            courses
+            select2:true,
+            prism: true,
+            breadcrumb:[{
+                rolUsuario:"Administrador",
+                paginaAnterior:[
+                    {
+                        nombrePagina:"",
+                        enlace:""
+                    },
+                    {
+                        nombrePagina:"",
+                        enlace:""
+                    },
+                    {
+                        nombrePagina:"",
+                        enlace:""
+                    },
+                ],
+                paginaActual:""
+            }],
+            etiquetasCursos:[{
+                cursosRegistrados:"154",
+                cursosActivos:"54",
+                cursosInactivos:"100"
+            }],
         });
     },
 //-----------------Examenes -------------------------
