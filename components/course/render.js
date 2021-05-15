@@ -28,7 +28,8 @@ module.exports = {
             
         });
     },
-    getAdministrarCursos: async function(req, res, next){
+
+    postAdministrarCursos: async function(req, res, next){
         const courses = await Controller.list();
         res.render('course/administrarCursos',{
             dataTablesExport:true,
@@ -55,4 +56,5 @@ module.exports = {
         await Controller.updateE(req.body);
        res.redirect('/');
     },
+//---------------------------------------------------
 };
