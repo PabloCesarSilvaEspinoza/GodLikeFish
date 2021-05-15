@@ -54,45 +54,41 @@ module.exports = function (injectedStore) {
 //------------------------------Examenes--------------------------------
 
 
-function listE() {
-    const VIEW = 'ver_Examenes';
-    return store.list(VIEW);
-}
+    function listE() {
+        const VIEW = 'ver_Examenes';
+        return store.list(VIEW);
+    }
 
-function getE(id) {
-    const VIEW = 'ver_Examenes';
-    const CLAUSE = `WHERE idExamen = ?`;
-    return store.get(VIEW, CLAUSE, id);
-}
+    function getE(id) {
+        const VIEW = 'ver_Examenes';
+        const CLAUSE = `WHERE idExamen = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
 
-function insertE(body) {
-    const {
-        cursoId, nombre, link
-    } = body;
+    function insertE(body) {
+        const {
+            cursoId, nombre, link
+        } = body;
 
-    const PROCEDURE = `CALL agregar_Examen( 
-        ${cursoId}, '${nombre}', '${link}'
-        )`
+        const PROCEDURE = `CALL agregar_Examen( 
+            ${cursoId}, '${nombre}', '${link}'
+            )`
 
-    return store.insert(PROCEDURE);
-}
+        return store.insert(PROCEDURE);
+    }
 
-function updateE(body) {
-    const {
-        Id,cursoId, nombre, link
-    } = body;
+    function updateE(body) {
+        const {
+            Id,cursoId, nombre, link
+        } = body;
 
-    const PROCEDURE = `CALL editar_Examen( 
-        ${Id}, ${cursoId}, '${nombre}', '${link}'
-        )`
+        const PROCEDURE = `CALL editar_Examen( 
+            ${Id}, ${cursoId}, '${nombre}', '${link}'
+            )`
 
-    return store.insert(PROCEDURE);
-}
+        return store.insert(PROCEDURE);
+    }
 
-
-
-//---------------------------------------------------------------------
-    
     return {
         list,
         listE,

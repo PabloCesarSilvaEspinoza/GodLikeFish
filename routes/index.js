@@ -4,7 +4,6 @@ const router = express.Router();
 // -------modulos de los controller-------
 const inicioController = require('../controllers/generalController');
 const admiController = require('../controllers/admiController');
-
 const pruebaController = require('../controllers/pruebaController');
 
 // -------LIBRO DE RUTAS-------

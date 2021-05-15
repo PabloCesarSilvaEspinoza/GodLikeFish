@@ -39,13 +39,10 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
     
-     
     return {
         list,
         get,
         insert,
         update,
-
-        
     };
 }

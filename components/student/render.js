@@ -21,6 +21,4 @@ module.exports = {
         await Controller.update(req.body);
        res.redirect('/');
     },
-
-
 };

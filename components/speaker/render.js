@@ -28,7 +28,7 @@ module.exports = {
         const raiz = path.join(__dirname, '../../');
         const archivo = 'Actividad 2 S4.1.png';
         const direccion = `${raiz}archivosPrueba/${archivo}`
-        console.log('C:\\GitHub\\API\\GodLikeFish\\archivosPrueba/Actividad 1 S2.1.docx');
-        res.download('C:\\GitHub\\API\\GodLikeFish\\archivosPrueba/Actividad 1 S2.1.docx')
+
+        res.download(`${direccion}${archivo}`)
     },
 };
