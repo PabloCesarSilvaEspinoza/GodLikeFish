@@ -16,13 +16,14 @@
         <link href="../../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="../../dist/css/style.min.css" rel="stylesheet">
+
         {{! Otros elementos que se pueden cargar}}
         {{> header}}
     </head>
 
     <body>
         {{>preloader}}
-        {{#unless general}}
+        {{#unless login}}
             <div id="main-wrapper">
                 {{!barra superior de color azul}}
                 {{>topbar}}
@@ -34,7 +35,7 @@
                     {{!el body contiene el container-fluid}}
                     {{/unless}}
                     {{{body}}}
-                    {{#unless general}}   
+                    {{#unless login}}   
                     {{>footer}}
                 </div>
             </div>
