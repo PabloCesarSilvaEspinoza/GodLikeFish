@@ -25,13 +25,19 @@ module.exports = {
         res.render('administrador/ejemplo', users);
     },
     postAdministradorPonentes: async function(req, res, next){
-        const users = await Controller.list();
         res.render('administrador/PrincipalAdministrador-Ponentes', {
-            users,
-            dataTablesExport: true,
+
+            datatables: true,
             
+            ponentes: [{
+            nombre: "Amelia Rojas",
+            cargo: "Profesor 2",
+            area: "Medica",
+            edad:"39",
+            antiguedad:"4"
+            }],
             etiquetasPonentes:[{
-                ponentesRegistrados:"86",
+                ponentesRegistrados:"2",
                 ponentesConCurso:"78",
                 ponentesSinCurso:"8"
             }],
@@ -39,29 +45,7 @@ module.exports = {
                 resumenRegistrados:"90",
                 resumenActivos:"34",
                 resumenInactivos:"90"
-            }],
-            graficas: [{
-                numeroUsuarios: "34",
-                fechaActual: "07/02/2021",
-                numeroCategorias: "250"
-
-            }],
-            miPerfilDatoEstatico:[{
-                matricula: "33333333",
-                puesto: "Doctor",
-                area:"Cirujano",
-                edad: "34",
-                nombres: "Rocio Rosales",
-                pApellido:"Rosales",
-                sApellido:"Arroyo",
-                tipo:"Ponente",
-                matricula:"125458653",
-                municipioResidenciaID:"Morelia",
-                colonia:"Hidalgo",
-                calle:"Sin describir",
-                numeroExt:"255",
-                numeroInt:"33"
-            }]            
+            }]
 
         });
     },

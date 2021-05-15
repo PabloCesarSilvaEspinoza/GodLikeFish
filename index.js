@@ -36,7 +36,7 @@ app.set('view engine', 'hbs');
 app.use('/', indexRouter);
 app.use('/usuario', user);
 app.use('/curso', course);
-//app.use('/estudiante', student);
+app.use('/estudiante', student);
 
 //aqui se agregan las rutas que se anteponen a otras
 
