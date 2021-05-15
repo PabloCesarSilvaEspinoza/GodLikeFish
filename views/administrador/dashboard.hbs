@@ -412,4 +412,123 @@
             </div>
         </div>      
     </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Usuarios en el Sistema<span class="small"></span></h3>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home"
+                            role="tab"><span class="hidden-sm-up"><i class="ti-menu-alt"></i></span> <span
+                                class="hidden-xs-down">Vista tabla</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile"
+                            role="tab"><span class="hidden-sm-up"><i class="ti-layers"></i></span> <span
+                                class="hidden-xs-down">Vista Tarjeta</span></a> </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tabcontent-border">
+                    <div class="tab-pane active" id="home" role="tabpanel">
+                        <div class="p-20">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title"></h4>
+                                            <h6 class="card-subtitle"> <a href="https://datatables.net/"></a></h6>
+                                            <div class="table-responsive">
+                                                <table id="file_export" class="table table-striped table-bordered display">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Matrícula</th>
+                                                            <th>Nombre</th>
+                                                            <th>Tipo Usuario</th>
+                                                            <th>Área</th>
+                                                            <th>Puesto</th>
+                                                            <th>Edad</th>
+                                                            <th>Antigüedad</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each users}}
+                                                        <tr>
+                                                            <td>{{matricula}}</td>
+                                                            <td>{{nombres}} {{pApellido}} {{sApellido}}</td>
+                                                            <td>{{tipo}}</td>
+                                                            <td>{{area}}</td>
+                                                            <td>{{puesto}}</td>
+                                                            <td>{{edad}}</td>
+                                                            <td>{{antiguedad}}</td>
+                                                            <td>
+                                                                <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"> <i class="far fa-user mr-1"> </i> Ver Perfil</a>
+                                                            </td>
+                                                        </tr>
+                                                        {{/each}}
+
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Matrícula</th>
+                                                            <th>Nombre</th>
+                                                            <th>Tipo Usuario</th>
+                                                            <th>Área</th>
+                                                            <th>Puesto</th>
+                                                            <th>Edad</th>
+                                                            <th>Antigüedad</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-20" id="profile" role="tabpanel">
+                        <div class="page-breadcrumb">
+                            <div class="row">
+                                <div class="col-md-7"></div>
+                                <div class="col-md-5">
+                                    <br>
+                                    <div class="input-group mb-3">
+                                        <input id="BuscarPonente" name="BuscarPonente" type="text" class="form-control" placeholder="Buscar" aria-label="" aria-describedby="basic-addon1">
+                                        <div class="input-group-append">
+                                            <button id="buscarPonente" name="buscarPonente" class="btn btn-success" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="TarjetaPonente" name="TarjetaPonente" class="container-fluid">
+                            <div class="row el-element-overlay">
+                                {{#each users}}
+                                <div class="col-sm-3 col-lg-2 col-md-3">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal" data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img src="../../assets/images/users/usuarioGenerico.png" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link" href="#"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">{{nombres}} {{pApellido}} {{sApellido}}</h4> <span id="UsuarioArea" name="UsuarioArea" class="text-muted">{{area}}/{{puesto}}</span>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
