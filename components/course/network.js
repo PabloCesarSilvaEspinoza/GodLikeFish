@@ -4,6 +4,8 @@ const router = express.Router();
 const render = require('./render');
 
 router.get('/', render.getVerCursos);
+router.get('/cursosPrueba', render.getAdministrarCursos);
+router.get('/:id', render.getVerCurso);
 router.post('/', render.postAgregarCurso);
 router.put('/', render.putEditarCurso);
 
