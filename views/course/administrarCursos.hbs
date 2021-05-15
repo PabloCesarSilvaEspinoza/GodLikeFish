@@ -282,23 +282,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{#each curso}}
+                                {{#each courses}}
                                 <tr>
-                                    <td>{{id}}</td>
-                                    <td>{{nombre}}</td>
-                                    <td>{{clave}}</td>
-                                    <td>{{area}}</td>
-                                    <td>{{tipo}}</td>
-                                    <td>{{modalidad}}</td>
-                                    <td>{{capacidad}}</td>
-                                    {{#if activo}}
+                                    <td>{{idCurso}}</td>
+                                    <td>{{nombreCurso}}</td>
+                                    <td>{{claveCurso}}</td>
+                                    <td>{{areaCurso}}</td>
+                                    <td>{{tipoCurso}}</td>
+                                    <td>{{modalidadCurso}}</td>
+                                    <td>{{capacidadCurso}}</td>
+                                    {{#if activoCurso}}
                                         <td><span class="label label-info">Activo</span></td>
                                     {{else}}
                                         <td><span class="label label-danger">Inactivo</span></td>
                                     {{/if}}
-                                    <td>{{ponente}}</td>
+                                    <td>{{nombrePonente}}</td>
                                     <td>
-                                        <button type="button" class="btn waves-effect waves-light btn-success btn-rounded" action="/detallesCurso/id:{{id}}"><i class="fas fa-eye mr-2"></i> Consultar</button>
+                                        <a type="button" class="btn waves-effect waves-light btn-success btn-rounded" href="/curso/{{idCurso}}"><i class="fas fa-eye mr-2"></i> Consultar</a>
                                     </td>
                                 </tr>
                                 {{/each}}
