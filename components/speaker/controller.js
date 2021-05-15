@@ -20,10 +20,7 @@ module.exports = function (injectedStore) {
         const {
             tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia
         } = body;
-        console.log(tareaID);
-        console.log(nombreMultimedia)
-        console.log(linkMultimedia);
-        console.log(tipoMultimedia);
+        
         const PROCEDURE = `CALL agregar_Multimedia_Tarea( 
             ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}', '${tipoMultimedia}'
             )`

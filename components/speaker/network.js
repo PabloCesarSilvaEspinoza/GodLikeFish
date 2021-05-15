@@ -12,7 +12,7 @@ const express = require('express');
 const render = require('./render');
 const router = express.Router();
 
-router.get('/AgregarTarea', render.getAgregarTarea);
+router.get('/AdministrarCursosPrueba', render.getAgregarTarea);
 router.post('/AgregarTarea', upload.array('multimediaTarea'), render.postAgregarTarea);
 router.get('/DescargarTarea', render.getDescargarArchivos);
 
