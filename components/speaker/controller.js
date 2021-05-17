@@ -3,6 +3,10 @@ module.exports = function (injectedStore) {
     if (!store) {
         store = require('../../store/mysql');
     }
+    
+    /*-----------------------------------------------------*/ 
+    /*                       TAREAS                        */
+    /*-----------------------------------------------------*/
 
     function insertHomework(body, cursoID) {
         const {

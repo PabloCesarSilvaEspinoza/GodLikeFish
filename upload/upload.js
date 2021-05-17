@@ -1,8 +1,8 @@
 const multer = require('multer');
-
+//global.direccion
 const storage = multer.diskStorage({
-    destination: cb => cb(null, global.direccion),
-    filename: (file, cb) => cb(null, file.originalname)
+    destination: (req, file, cb) => cb(null, './multimedia/courses'),
+    filename: (req, file, cb) => cb(null, file.originalname)
 });
 
 const upload = multer({storage});

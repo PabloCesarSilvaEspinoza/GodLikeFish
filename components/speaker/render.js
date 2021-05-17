@@ -8,9 +8,9 @@ module.exports = {
         res.render('speaker/AgregarTarea')
     },
     postAgregarTarea: async function (req, res, next) {
-        console.log(req.files);
-        const homeworkID = await Controller.insertHomework(req.body, 8);
-        const tareaID = homeworkID[0][0].ID;
+        console.log(req.body);
+        const responseDB = await Controller.insertHomework(req.body, 8);
+        const homeworkID = responseDB[0][0].ID;
         const raiz = path.join(__dirname, '../../') + 'archivosPrueba/'
         let linkMultimedia = raiz.replace(/[\\]/g, '\\\\');
 
@@ -18,7 +18,7 @@ module.exports = {
             const nombreMultimedia = file.originalname;
             const tipoMultimedia = file.mimetype;
             linkMultimedia += nombreMultimedia;
-            datos = {tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia};
+            datos = {homeworkID, nombreMultimedia, linkMultimedia, tipoMultimedia};
             await Controller.insertHomeworkMultimedia(datos);
         }
 

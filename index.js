@@ -11,6 +11,7 @@ const auth = require('./components/auth/network');
 const course = require('./components/course/network');
 const student = require('./components/student/network');
 const speaker = require('./components/speaker/network');
+const administrator = require('./components/administrator/network');
 
 
 //app.use(bodyParser.json());
@@ -37,7 +38,8 @@ app.set('view engine', 'hbs');
 app.use('/', indexRouter);
 app.use('/usuario', user);
 app.use('/curso', course);
-//app.use('/estudiante', student);
+app.use('/estudiante', student);
+app.use('/admin', administrator)
 
 app.use('/ponente', speaker)
 //aqui se agregan las rutas que se anteponen a otras
