@@ -9,7 +9,7 @@ module.exports = function (injectedStore) {
         //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
         return store.list(VIEW/*, CLAUSE*/);
     }
-
+ 
     function get(id) {
         const VIEW = 'ver_Usuarios';
         const CLAUSE = `WHERE idCurso = ?`;

@@ -35,6 +35,7 @@ app.set('view engine', 'hbs');
 
 //handlebars rutas
 app.use('/', indexRouter);
+app.use('/', auth)
 app.use('/usuario', user);
 app.use('/curso', course);
 //app.use('/estudiante', student);

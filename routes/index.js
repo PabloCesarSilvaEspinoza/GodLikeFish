@@ -9,9 +9,7 @@ const pruebaController = require('../controllers/pruebaController');
 // -------LIBRO DE RUTAS-------
 
 //vistas del usuario no logeado
-router.get('/', inicioController.postPaginaPrincipal);
-router.get('/confirmarCorreo', inicioController.postConfirmarCorreo);
-router.get('/registrar', inicioController.postRegistrar);
+//movidas al auth
 
 //vistas del administrador
 router.get('/ejemplo', admiController.postEjemplo);

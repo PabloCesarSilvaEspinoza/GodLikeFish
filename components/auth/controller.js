@@ -1,16 +1,25 @@
 const bcrypt = require('bcrypt');
 const auth = require('../../auth');
-const TABLA = 'auth';
 
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
-        store = require('../../store/dummy');
+        store = require('../../store/mysql');
+    }
+
+    function list() {
+        const VIEW = 'ver_Credenciales_Usuario';
+        //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
+        return store.list(VIEW/*, CLAUSE*/);
     }
 
     async function login(correo, password){
-        const data = await store.query(TABLA, {correo: correo});
-        return bcrypt.compare(password, data.password)
+        //const data = await store.query(TABLA, {correo: correo});
+        const data = {
+            correo:"pablo@gmail.com",
+            password: "123"
+        }
+        return compare(password, data.password)
             .then(sonIguales =>{
                 if(sonIguales){
                     //generar token
@@ -21,22 +30,7 @@ module.exports = function (injectedStore) {
         })
     }
 
-    async function upsert(data){
-        const authData = {
-            id: data.id,
-        }
-
-        if(data.correo){
-            authData.correo = data.correo;
-        }
-        if(data.password){
-            authData.password = await bcrypt.hash(data.password, 5);
-        }
-
-        return store.upsert(TABLA, authData);
-    }
     return{
         login,
-        upsert,
     }
 }
