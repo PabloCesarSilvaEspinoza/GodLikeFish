@@ -19,16 +19,15 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, correo);
     }
 
-    async function login(correo, password){
+    async function login(correo, password){ //devolver promesa
+        console.log("llegaron: "+correo + " "+ password);
         const data = await get(correo);
-        //console.log(data[0]);
         if(data[0].passwordUsuario === password){
             //Generar token
-            return 'TOKEN';
+            return auth.sign(data[0].idUsuario);
         }else{
             throw error = new Error('Información Invalida');
         }
-        return data;
     }
 
     return{

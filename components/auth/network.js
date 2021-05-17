@@ -9,6 +9,7 @@ router.get('/', render.postPaginaPrincipal);
 router.get('/confirmarCorreo', render.postConfirmarCorreo);
 
 router.post('/login', function(req,res){
+    //console.log(req.body.correoUsuario);
     Controller.login(req.body.correoUsuario, req.body.passwordUsuario)
         .then(token => {
             response.success(req, res, token, 200);
@@ -16,7 +17,7 @@ router.post('/login', function(req,res){
         .catch(error => {
             response.error(req, res, 'Informacion invalida', 400);
         })
-})
+});
 
 
 module.exports = router;

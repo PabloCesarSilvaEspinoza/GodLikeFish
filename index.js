@@ -12,9 +12,9 @@ const course = require('./components/course/network');
 const student = require('./components/student/network');
 const speaker = require('./components/speaker/network');
 
-
-//app.use(bodyParser.json());
+//¿En que estas trabajando?    1)Postman 2)handlebars
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 /*/ rutas (antiguas), moviendo a hbs
