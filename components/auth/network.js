@@ -9,7 +9,7 @@ router.get('/', render.postPaginaPrincipal);
 router.get('/confirmarCorreo', render.postConfirmarCorreo);
 
 router.post('/login', function(req,res){
-    Controller.login(req.body.usuarioCorreo, req.body.usuarioPassword)
+    Controller.login(req.body.correoUsuario, req.body.passwordUsuario)
         .then(token => {
             response.success(req, res, token, 200);
         })
