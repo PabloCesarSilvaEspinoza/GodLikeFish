@@ -8,6 +8,11 @@ module.exports = function (injectedStore) {
     /*                       CURSOS                        */
     /*-----------------------------------------------------*/
 
+    function getLastCourse() {
+        const VIEW = 'ver_Ultimo_Curso';
+        return store.list(VIEW);
+    }
+
     function listCourses() {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
@@ -29,8 +34,16 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    function insertMultimediaCourse(cursoID, temarioCurso, fotoCurso) {
+        const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
+
+        return store.insert(PROCEDURE);
+    }
+
     return {
+        getLastCourse,
         listCourses,
         insertCourse,
+        insertMultimediaCourse,
     };
 }

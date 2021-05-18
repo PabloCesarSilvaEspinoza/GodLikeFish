@@ -8,7 +8,6 @@ module.exports = {
         res.render('speaker/AgregarTarea')
     },
     postAgregarTarea: async function (req, res, next) {
-        console.log(req.body);
         const responseDB = await Controller.insertHomework(req.body, 8);
         const homeworkID = responseDB[0][0].ID;
         const raiz = path.join(__dirname, '../../') + 'archivosPrueba/'
