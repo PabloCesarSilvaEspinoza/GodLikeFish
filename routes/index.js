@@ -11,7 +11,7 @@ const pruebaController = require('../controllers/pruebaController');
 //vistas del usuario no logeado
 router.get('/', inicioController.postPaginaPrincipal);
 router.get('/confirmarCorreo', inicioController.postConfirmarCorreo);
-router.get('/registrar', inicioController.postRegistrar);
+
 
 //vistas del administrador
 router.get('/ejemplo', admiController.postEjemplo);

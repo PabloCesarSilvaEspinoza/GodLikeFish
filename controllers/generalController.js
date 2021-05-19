@@ -10,11 +10,5 @@ module.exports = {
             general: true
         });
     },
-    postRegistrar: async function(req, res, next){
-        res.render('general/registrar',{
-            general: true,
-            pickadate: true,
-            select2: true
-        });
-    },
+   
 };

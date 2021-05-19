@@ -49,10 +49,26 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    function listPaises() {
+        const VIEW = 'ver_Paises';
+        return store.list(VIEW);
+    }
+    function listEstados() {
+        const VIEW = 'ver_Estados';
+        return store.list(VIEW);
+    }
+    function listMunicipios() {
+        const VIEW = 'ver_Municipios';
+        return store.list(VIEW);
+    }
+
     return {
         list,
         get,
         insert,
         update,
+        listPaises,
+        listEstados,
+        listMunicipios,
     };
 }
