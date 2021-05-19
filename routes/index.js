@@ -20,7 +20,7 @@ router.get('/dashboard', admiController.postDashboard);
 
 
 //vistas de prueba
-router.get('/primeraPrueba', pruebaController.postPrimeraPrueba);
+router.get('/123', pruebaController.postPrimeraPrueba);
 router.get('/segundaPrueba', pruebaController.postSegundaPrueba);
 router.get('/terceraPrueba', pruebaController.postTerceraPrueba);
 

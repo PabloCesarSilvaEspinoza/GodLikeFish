@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
@@ -16,14 +17,20 @@ const speaker = require('./components/speaker/network');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-
-/*/ rutas (antiguas), moviendo a hbs
-app.use('/api/user', user);
-app.use('/api/auth', auth);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-*/
-
 app.use(express.static('public'));
+
+//sesiones con cookies
+app.use(session({
+    resave: false, //no guardar la cookie cada que sucede un cambio
+    saveUninitialized: false, //si la cookie no se ha inicializado no guardar por defecto
+    secret: "liA2c65rYsnWp0SVgk3duZPKtILwqDUO"
+    })
+);
+
+/* app.get('/cookie', function(req,res){
+    req.session.count = req.session.count ? req.session.count +1 : 1;
+    res.status(200).json({hello: "world", counter: req.session.count});
+}); */
 
 //handlebars
 app.engine('hbs', exphbs({
