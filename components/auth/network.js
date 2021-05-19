@@ -13,6 +13,7 @@ router.post('/login', function(req,res){
     Controller.login(req.body.correoUsuario, req.body.passwordUsuario)
         .then(token => {
             response.success(req, res, token, 200);
+            //console.log(res.correoUsuario, res.passwordUsuario, token);
         })
         .catch(error => {
             response.error(req, res, 'Informacion invalida', 400);

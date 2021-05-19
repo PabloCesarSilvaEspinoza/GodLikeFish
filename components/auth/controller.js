@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const auth = require('../../auth');
+const jwt = require('jsonwebtoken');
 
 module.exports = function (injectedStore) {
     let store = injectedStore;
@@ -20,7 +21,7 @@ module.exports = function (injectedStore) {
     }
 
     async function login(correo, password){ //devolver promesa
-        //console.log("llegaron: "+correo + " "+ password);
+        console.log("llegaron: "+correo + " "+ password);
         const data = await get(correo);
         /* Cuando se implemente el hash de password en el registro vamos a validar así:
         return bcrypt.compare(password, data[0].passwordUsuario)
@@ -33,8 +34,17 @@ module.exports = function (injectedStore) {
         });
         */
         if(data[0].passwordUsuario === password){
-            //Generar token
-            return auth.sign(data[0].idUsuario);
+            //borramos el password del programa no de la BD
+            delete data[0].passwordUsuario;
+            //crear payload del token
+            const payload = {
+                sub: data[0].idUsuario,
+                correo,
+                rol: "administrador"
+            }
+            //console.log(payload);
+            //generar token
+            return auth.sign(payload);
         }else{
             throw error = new Error('Información Invalida');
         }
