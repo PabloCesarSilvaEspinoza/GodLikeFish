@@ -3,6 +3,7 @@ const passport = require('passport');
 const render = require('./render');
 const response = require('../../network/response');
 const Controller = require('./index');
+const chalk = require('chalk');
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.post('/login', function(req,res){
         Controller.login(req.body.correoUsuario, req.body.passwordUsuario)
         .then(token => {
             response.success(req, res, token, 200);
-            console.log(res.user);
+            console.log(chalk.cyan(token));
             //console.log(res.correoUsuario, res.passwordUsuario, token);
         })
         .catch(error => {

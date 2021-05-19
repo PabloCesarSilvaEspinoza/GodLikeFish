@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const auth = require('../../auth');
 const jwt = require('jsonwebtoken');
+const chalk = require('chalk');
 
 module.exports = function (injectedStore) {
     let store = injectedStore;
@@ -21,7 +22,7 @@ module.exports = function (injectedStore) {
     }
 
     async function login(correo, password){ //devolver promesa
-        console.log("llegaron: "+correo + " "+ password);
+        console.log(chalk.white.bgMagenta.bold("recibi:")+" "+ correo + " "+ password);
         const data = await get(correo);
         /* Cuando se implemente el hash de password en el registro vamos a validar así:
         return bcrypt.compare(password, data[0].passwordUsuario)
@@ -40,7 +41,7 @@ module.exports = function (injectedStore) {
             const payload = {
                 sub: data[0].idUsuario,
                 correo,
-                rol: "administrador"
+                rol: data[0].tipoUsuario
             }
             //console.log(payload);
             //generar token

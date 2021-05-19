@@ -5,7 +5,8 @@ const router = express.Router();
 const inicioController = require('../controllers/generalController');
 const admiController = require('../controllers/admiController');
 const pruebaController = require('../controllers/pruebaController');
-
+const passport = require('passport');
+const {verificar} = require('../components/auth/verificar');
 // -------LIBRO DE RUTAS-------
 
 //vistas del usuario no logeado
@@ -20,7 +21,7 @@ router.get('/dashboard', admiController.postDashboard);
 
 
 //vistas de prueba
-router.get('/123', pruebaController.postPrimeraPrueba);
+router.get('/primeraPrueba', pruebaController.postPrimeraPrueba);
 router.get('/segundaPrueba', pruebaController.postSegundaPrueba);
 router.get('/terceraPrueba', pruebaController.postTerceraPrueba);
 
