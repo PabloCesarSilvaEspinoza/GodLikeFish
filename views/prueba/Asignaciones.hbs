@@ -1,0 +1,228 @@
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <h1>Asignaciones</h1>
+                        <p>Aqui encontraras todas las asignaciones de tu curso actual.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <!-- Accordian-part -->
+                            <div id="accordian-part">
+                                <div id="accordian-4">
+                                    <div class="card mb-0">
+                                        <div class="card-header">
+                                            <h3 class="mb-0">
+                                                <a href="#" class="link collapsed" id="heading1" data-toggle="collapse" data-target="#collapse11" aria-expanded="false" aria-controls="collapse11" style="color: #3e5569;">
+                                                    Asignado (#)
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div id="collapse11" class="collapse show" aria-labelledby="heading1" data-parent="#accordian-4">
+                                            <div class="card-body">
+                                                {{#each tareas}}
+                                                <div class="card border-warning">
+                                                    <div class="card-header bg-warning">
+                                                        <h4 class="mb-0 text-white">{{nombreTarea}}</h4></div>
+                                                    <div class="card-body">
+                                                        <h3 class="card-title"><small>Fecha límite: </small> 21/12/2021, 23:50</h3>
+                                                        <p class="card-text">Descripción de la tarea: Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                        <button type="button" class="btn waves-effect waves-light btn-success btn-rounded" data-toggle="modal" data-target="#tareaPendiente"><i class="fas fa-bolt mr-2"></i>Entregar</button>
+                                                    </div>
+                                                </div>
+                                                {{/each}}
+                                                {{#each tareasPendientes}}
+                                                <div class="card border-danger">
+                                                    <div class="card-header bg-danger">
+                                                        <h4 class="mb-0 text-white">{{nombreTarea}}</h4></div>
+                                                    <div class="card-body">
+                                                        <h3 class="card-title"><small>Fecha límite: </small> 21/12/2021, 23:50</h3>
+                                                        <p class="card-text">Descripción de la tarea: Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                        <button type="button" class="btn waves-effect waves-light btn-success btn-rounded" data-toggle="modal" data-target="#tareaAtrasada"><i class="fas fa-bolt mr-2"></i>Entregar</button>
+                                                    </div>
+                                                </div>
+                                                {{/each}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-0">
+                                        <div class="card-header">
+                                            <h3 class="mb-0">
+                                                <a href="#" class="collapsed link" id="heading2" data-toggle="collapse" data-target="#collapse22" aria-expanded="false" aria-controls="collapse22">
+                                                    Completado (#)
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div id="collapse22" class="collapse" aria-labelledby="heading2" data-parent="#accordian-4">
+                                            <div class="card-body">
+                                                <div class="card border-dark">
+                                                    <div class="card-header bg-dark">
+                                                        <h4 class="mb-0 text-white">Tarea1 (No entregada) - Curso #1 con un nombre muy largo para la tarjeta</h4></div>
+                                                    <div class="card-body">
+                                                        <h3 class="card-title"><small>Fecha límite: </small> 21/12/2021, 23:50</h3>
+                                                        <p class="card-text">Descripción de la tarea: Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                        <button type="button" class="btn waves-effect waves-light btn-success btn-rounded" data-toggle="modal" data-target="#tareaNoEntregada"><i class="fas fa-eye mr-2"></i>Consultar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="card border-info">
+                                                    <div class="card-header bg-info">
+                                                        <h4 class="mb-0 text-white">Tarea1 (Entregada) - Curso #1 con un nombre muy largo para la tarjeta</h4></div>
+                                                    <div class="card-body">
+                                                        <h3 class="card-title"><small>Fecha límite: </small> 21/12/2021, 23:50</h3>
+                                                        <p class="card-text">Descripción de la tarea: Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                        <button type="button" class="btn waves-effect waves-light btn-success btn-rounded" data-toggle="modal" data-target="#tareaEntregada"><i class="fas fa-eye mr-2"></i>Consultar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End accordian-part -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tareaEntregada" class="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!--Salir-->
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                </div>
+                <!--Titulo-->
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Tarea de ejemplo número 1</h1>
+                        <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-2"><span class="text-primary display-5"><i class="mdi mdi-link-variant"></i></span></div>
+                                <div>
+                                    <span>Archivo</span>
+                                    <h4 class="font-medium mb-0"><a href="#">Nombre del archivo entregado.pdf</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tareaPendiente" class="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!--Salir-->
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                </div>
+                <!--Titulo-->
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Tarea de ejemplo número 1</h1>
+                        <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <h4 class="card-title">Archivos</h4>
+                        <form action="#" class="dropzone dz-clickable">
+                            <div class="dz-default dz-message">
+                                <span>Arrastra tus archivos o haz clic aquí.</span>
+                            </div>
+                        </form>
+                        <div class="form-group mt-1 text-right">
+                            <button type="button" class="btn waves-effect waves-light btn-success mt-2"><i class="fas fa-save mr-2"></i>Entregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tareaAtrasada" class="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!--Salir-->
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                </div>
+                <!--Titulo-->
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Tarea de ejemplo número 1</h1>
+                        <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <h4 class="card-title">Archivos</h4>
+                        <form action="#" class="dropzone dz-clickable">
+                            <div class="dz-default dz-message">
+                                <span>Arrastra tus archivos o haz clic aquí.</span>
+                            </div>
+                        </form>
+                        <p class="text-danger text-center">Esta tarea esta marcada como atrasada, por lo cual se podrá entregar, pero estara marcada que fue despues de la hora y fecha límite.</p>
+                        <div class="form-group text-right">
+                            <button type="button" class="btn waves-effect waves-light btn-success"><i class="fas fa-save mr-2"></i>Entregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tareaNoEntregada" class="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!--Salir-->
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                </div>
+                <!--Titulo-->
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Tarea de ejemplo número 1</h1>
+                        <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+    </div>

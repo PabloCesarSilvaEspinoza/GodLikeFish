@@ -1,4 +1,4 @@
-const Controller = require('../components/user/index');
+const Controller = require('../componentes/usuario/index');
 module.exports = {
 
     postEjemplo: async function(req, res, next){

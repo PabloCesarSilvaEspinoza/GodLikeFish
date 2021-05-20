@@ -61,6 +61,12 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Municipios';
         return store.list(VIEW);
     }
+    
+    function listTemariosCursos(cursoID) {
+        const VIEW = 'ver_Temario_Curso';
+        const CLAUSE = `WHERE cursoID = ${cursoID}`;
+        return store.list(VIEW, CLAUSE);
+    }
 
     return {
         list,
@@ -70,5 +76,6 @@ module.exports = function (injectedStore) {
         listPaises,
         listEstados,
         listMunicipios,
+        listTemariosCursos,
     };
 }

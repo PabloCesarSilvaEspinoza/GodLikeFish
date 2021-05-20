@@ -4,19 +4,19 @@ module.exports = function (injectedStore) {
         store = require('../../store/mysql');
     }
 
-    function list() {
+    function listCursos() {
         const VIEW = 'ver_Datos_Cursos';
         //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
         return store.list(VIEW/*, CLAUSE*/);
     }
 
-    function get(id) {
+    function getCurso(id) {
         const VIEW = 'ver_Datos_Cursos';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
-    function insert(body) {
+    function insertCurso(body) {
         const {
             nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
             horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
@@ -34,7 +34,7 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
-    function update(body) {
+    function updateCurso(body) {
         const {
             Id,nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
             horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
@@ -90,13 +90,13 @@ module.exports = function (injectedStore) {
     }
 
     return {
-        list,
+        listCursos,
         listE,
-        get,
+        getCurso,
         getE,
-        insert,
+        insertCurso,
         insertE,
-        update,
+        updateCurso,
         updateE,
     };
 }

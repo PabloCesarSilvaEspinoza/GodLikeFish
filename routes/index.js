@@ -12,7 +12,6 @@ const pruebaController = require('../controllers/pruebaController');
 router.get('/', inicioController.postPaginaPrincipal);
 router.get('/confirmarCorreo', inicioController.postConfirmarCorreo);
 
-
 //vistas del administrador
 router.get('/ejemplo', admiController.postEjemplo);
 router.get('/PrincipalAdministrador-Ponentes', admiController.postAdministradorPonentes);

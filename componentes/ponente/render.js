@@ -4,13 +4,12 @@ path = require('path')
 
 module.exports = {
     getAgregarTarea: async function(req, res, next){
-        global.direccion = './archivosPrueba';
         res.render('speaker/AgregarTarea')
     },
     postAgregarTarea: async function (req, res, next) {
-        console.log(req.files);
-        const homeworkID = await Controller.insertHomework(req.body, 8);
-        const tareaID = homeworkID[0][0].ID;
+        global.direccion = './archivosPrueba';
+        const respuestaBD = await Controller.inserTarea(req.body, 8);
+        const tareaID = respuestaBD[0][0].ID;
         const raiz = path.join(__dirname, '../../') + 'archivosPrueba/'
         let linkMultimedia = raiz.replace(/[\\]/g, '\\\\');
 
@@ -19,7 +18,7 @@ module.exports = {
             const tipoMultimedia = file.mimetype;
             linkMultimedia += nombreMultimedia;
             datos = {tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia};
-            await Controller.insertHomeworkMultimedia(datos);
+            await Controller.inserTareaMultimedia(datos);
         }
 
         res.redirect('http://localhost:3000/ponente/AgregarTareaPrueba')
@@ -29,6 +28,6 @@ module.exports = {
         const archivo = 'Actividad 2 S4.1.png';
         const direccion = `${raiz}archivosPrueba/${archivo}`
 
-        res.download(`${direccion}${archivo}`)
+        res.download(`${direccion}`)
     },
 };
