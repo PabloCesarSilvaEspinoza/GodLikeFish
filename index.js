@@ -10,11 +10,13 @@ const errors = require('./network/errors');
 const app = express();
 
 const indexRouter = require('./routes/index');
-const user = require('./components/user/network');
-const auth = require('./components/auth/network');
-const course = require('./components/course/network');
-const student = require('./components/student/network');
-const speaker = require('./components/speaker/network');
+
+const usuario = require('./componentes/usuario/network');
+const auth = require('./componentes/auth/network');
+const curso = require('./componentes/curso/network');
+const estudiante = require('./componentes/estudiante/network');
+const ponente = require('./componentes/ponente/network');
+const administrador = require('./componentes/administrador/network');
 
 //const secretSession = config.session.secret;
 //const cookieSession = config.cookie.secret;
@@ -64,8 +66,6 @@ app.set('view engine', 'hbs');
 //handlebars rutas
 app.use('/', indexRouter);
 app.use('/', auth)
-app.use('/usuario', user);
-app.use('/curso', course);
 //app.use('/estudiante', student);
 
 //para cargarse la cookie si continua viva despues de iniciar sesion
@@ -76,7 +76,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/ponente', speaker)
+app.use('/usuario', usuario);
+app.use('/curso', curso);
+app.use('/estudiante', estudiante);
+app.use('/admin', administrador)
+app.use('/ponente', ponente);
+
 //aqui se agregan las rutas que se anteponen a otras
 
 //ultimo middleware, no poner nada debajo de esta linea

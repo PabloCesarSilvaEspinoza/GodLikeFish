@@ -1,0 +1,337 @@
+<div class="container-fluid">
+    <!--CONTENEDOR-->
+
+    <div class="col-12 sm-12">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1>Consultar <span class="small"> Alumnos</span></h1>
+                <p>Estos son todos los alumnos que se encuentran inscritos en el curso que impartes.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body">
+                <h3 class="card-title">Alumnos del Curso<span class="small"> Nombre del Curso</span></h3>
+                <hr>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" style="color: cadetblue;"
+                            href="#home" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span>
+                            <span class="hidden-xs-down">Vista tabla</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" style="color: cadetblue;"
+                            href="#profile" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span>
+                            <span class="hidden-xs-down">Vista Tarjeta</span></a> </li>
+
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tabcontent-border">
+                    <div class="tab-pane active" id="home" role="tabpanel">
+                        <div class="p-20">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title"></h4>
+                                            <h6 class="card-subtitle"> <a href="https://datatables.net/"></a>
+                                            </h6>
+                                            <div class="table-responsive">
+                                                <table id="file_export"
+                                                    class="table table-striped table-bordered display">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombre</th>
+                                                            <th>Cargo</th>
+                                                            <th>Area/Categoriía</th>
+                                                            <th>Edad</th>
+                                                            <th>Antigüedad</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>Jonas Alexander</td>
+                                                            <td>Developer</td>
+                                                            <td>San Francisco</td>
+                                                            <td>30</td>
+                                                            <td>2010/07/14</td>
+                                                            <td>
+                                                                <a href="#"
+                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                        class="far fa-user mr-1"></i> Ver
+                                                                    Perfil</a></h5>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Shad Decker</td>
+                                                            <td>Regional Director</td>
+                                                            <td>Edinburgh</td>
+                                                            <td>51</td>
+                                                            <td>2008/11/13</td>
+                                                            <td> <a href="#"
+                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                        class="far fa-user mr-1"></i> Ver
+                                                                    Perfil</a></h5>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Michael Bruce</td>
+                                                            <td>Javascript Developer</td>
+                                                            <td>Singapore</td>
+                                                            <td>29</td>
+                                                            <td>2011/06/27</td>
+                                                            <td> <a href="#"
+                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                        class="far fa-user mr-1"></i> Ver
+                                                                    Perfil</a></h5>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Donna Snider</td>
+                                                            <td>Customer Support</td>
+                                                            <td>New York</td>
+                                                            <td>27</td>
+                                                            <td>2011/01/25</td>
+                                                            <td> <a href="#"
+                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                        class="far fa-user mr-1"></i> Ver
+                                                                    Perfil</a></h5>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Nombre</th>
+                                                            <th>Cargo</th>
+                                                            <th>Area/Categoriía</th>
+                                                            <th>Edad</th>
+                                                            <th>Antigüedad</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  p-20" id="profile" role="tabpanel">
+                        <div class="container-fluid">
+                            <div class="page-breadcrumb">
+                                <div class="row">
+                                    <div class="col-10 align-self-center">
+                                        <h4 class="page-title">Alumnos del Curso</h4>
+                                        <br>
+
+                                        <div class="input-group mb-3">
+                                            <input id="BuscarPonente" name="BuscarPonente" type="text"
+                                                class="form-control" placeholder="Buscar" aria-label=""
+                                                aria-describedby="basic-addon1">
+                                            <div class="input-group-append">
+                                                <button id="buscarPonente" name="buscarPonente" class="btn btn-success"
+                                                    type="button"><i class="ti-search"></i></button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="TarjetaPonente" name="TarjetaPonente" class="container-fluid">
+                                <div class="row el-element-overlay">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/1-old.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Oliver Abram</h4> <span id="UsuarioArea"
+                                                        name="UsuarioArea" class="text-muted">Graphics
+                                                        Designer</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/2.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/2.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">George Acton</h4> <span
+                                                        class="text-muted">Wordpress Developer</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/3.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/3.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Harry Addington</h4> <span
+                                                        class="text-muted">Mobile App Developer</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/4.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/4.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Emily Adley</h4> <span class="text-muted">Wordpress
+                                                        Developer</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/8.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/8.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Sophia Ainsley</h4> <span class="text-muted">Mobile
+                                                        App Developer</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/7.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/7.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Lily Ainsworth</h4> <span
+                                                        class="text-muted">Graphics Designer</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/6.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/6.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Olivia Alby</h4> <span class="text-muted">Mobile
+                                                        App Developer</span>
+                                                    <br>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                                data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../../assets/images/users/d4.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/d4.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Amelia Allerton</h4> <span
+                                                        class="text-muted">Wordpress Developer</span>
+                                                    <br>
+                                                    <td><a href="javascript:void(0)" class="text-inverse pr-2"
+                                                            data-toggle="tooltip" title="Ver"></a> <a
+                                                            href="javascript:void(0)" class="text-inverse"
+                                                            title="Borrar" data-toggle="tooltip"></a></td>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane p-20" id="messages" role="tabpanel">3</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

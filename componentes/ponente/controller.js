@@ -3,8 +3,12 @@ module.exports = function (injectedStore) {
     if (!store) {
         store = require('../../store/mysql');
     }
+    
+    /*-----------------------------------------------------*/ 
+    /*                       TAREAS                        */
+    /*-----------------------------------------------------*/
 
-    function insertHomework(body, cursoID) {
+    function insertTarea(body, cursoID) {
         const {
             nombreTarea, fechaLimiteTarea, horaLimiteTarea, descripcionTarea
         } = body;
@@ -16,7 +20,7 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
-    function insertHomeworkMultimedia(body) {
+    function insertTareaMultimedia(body) {
         const {
             tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia
         } = body;
@@ -29,7 +33,7 @@ module.exports = function (injectedStore) {
     }
 
     return {
-        insertHomework,
-        insertHomeworkMultimedia
+        insertTarea,
+        insertTareaMultimedia
     };
 }

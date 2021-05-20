@@ -1,0 +1,1398 @@
+<div class="container-fluid">
+    <!--Escenario 2 - Alumno inscrito -->
+    <div class="row">
+        <!--Modales-->
+        <!--Perfil Ponente visto por Alumno/Usuario-->
+        <div id="verPerfilPonente" class="modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <!--Contenido-->
+                    <div class="modal-body">
+                        <div class="text-center" class="modal-header">
+                            <div class="row">
+                                <div class="col text-right">
+                                    <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
+                                </div>
+                            </div>
+                            <!--Titulo-->
+                            <div class="row">
+                                <div class="modal-title col text-center">
+                                    <h3>Perfil Ponente<span class="small"></span></h3>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-3">
+                                <center> <img src="../../assets/images/users/1.jpg" class="rounded-circle"
+                                        width="150" />
+                                    <h6 class="text-muted">Foto Perfil</h6>
+                                </center>
+                            </div>
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
+                                        <hr>
+                                    </div>
+                                    <div class="col-lg-4 text-center">
+                                        <h6 class="text-muted">Nombres</h6>
+                                        <h4>Jose Luis Dominguez</h4>
+                                    </div>
+                                    <div class="col-lg-4 text-center">
+                                        <h6 class="text-muted">Puesto</h6>
+                                        <h4>Doc. Ciencias Humanas</h4>
+                                    </div>
+                                    <div class="col-lg-4 text-center">
+                                        <h6 class="text-muted">Categoría</h6>
+                                        <h4>Humanidades</h4>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 mb-4">
+                                    <div class="col-lg-4 text-center">
+                                        <h6 class="text-muted">Matrícula</h6>
+                                        <h4>E2545441</h4>
+                                    </div>
+                                    <div class="col-lg-8 text-center">
+                                        <h6 class="text-muted">Correo</h6>
+                                        <h4>correonoexiste@gmail.com</h4>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tareaEntregada" class="modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Tarea de ejemplo número 1</h1>
+                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
+                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
+                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-2"><span class="text-primary display-5"><i
+                                                class="mdi mdi-link-variant"></i></span></div>
+                                    <div>
+                                        <span>Archivo</span>
+                                        <h4 class="font-medium mb-0"><a href="#">Nombre del archivo entregado.pdf</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tareaNoEntregada" class="modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Tarea de ejemplo número 1</h1>
+                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
+                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
+                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Reportar un Problema -->
+        <div id="myModal" class="modal fade" tabindex="" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content ">
+                    <div class="modal-header ">
+                        <h3 class="modal-title text-center " id="myModalLabel">Reportar problema</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                            <h4>Asunto del problema </h4>
+                            <input class="form-control form-control-lg font-14" type="text" required=" "
+                                placeholder="Escribe el asunto del problema" alt="Asunto del problema"
+                                id="asuntoProblema" name="asuntoProblema">
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                            <h4>Descripcion</h4>
+                            <textarea class="col-sm-12 col-md-12 col-lg-12 mb-3 font-14" id="usuarioPasswordNueva"
+                                placeholder="Describe la situacion del problema" name="usuarioPasswordNueva" cols="60"
+                                rows="5"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="GuardarPasswordNueva" class="btn btn-info waves-effect text-left"
+                                data-dismiss="modal">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal editar Curso -->
+        <div id="editarCurso" class="modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h1>Editar <span class="small">Curso</span></h1>
+                            <p>Aqui puedes editar la información del curso seleccionado.>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
+                                data-dismiss="modal"><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="form-valide" id="agregarCurso" method="POST" action="#">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center justify-content-center no-block">
+                                                    <img src="../../assets/images/users/1.jpg" width="150"
+                                                        class="rounded-circle" alt="user">
+                                                    <h5 class="mt-3">Imagen del curso</h5>
+                                                    <fieldset class="form-group mt-3">
+                                                        <input type="file" class="form-control-file"
+                                                            id="exampleInputFile">
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-12 col-lg-9">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h4><i class="fas fa-clipboard-list mr-2"></i>Datos
+                                                                Generales</h4>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Nombre del Curso <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="text" id="nombreCurso" class="form-control"
+                                                                    placeholder="Ejemplo del nombre de un curso"
+                                                                    required>
+                                                                <small class="form-control-feedback ml-1"> Maximo 255
+                                                                    caracteres </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Área <span class="text-danger">*</span>
+                                                                </h5>
+                                                                <select class=" form-control custom-select"
+                                                                    style="width: 100%; height:36px;" required>
+                                                                    <option>Select</option>
+                                                                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                                        <option value="AK">Alaska</option>
+                                                                        <option value="HI">Hawaii</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Tipo <span class="text-danger">*</span>
+                                                                </h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;" required>
+                                                                    <option value="AK">Tipo 1</option>
+                                                                    <option value="HI">Tipo 2</option>
+                                                                    <option value="HI">Tipo 3</option>
+                                                                    <option value="HI">Tipo 4</option>
+                                                                    <option value="HI">Tipo 5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Modalidad <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;">
+                                                                    <option value="HI">En vivo</option>
+                                                                    <option value="HI">Video</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-lg-2">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Capacidad </h5>
+                                                                <input type="number" id="capacidad" class="form-control"
+                                                                    placeholder="0">
+                                                                <small class="form-control-feedback ml-1"> Utilice 0
+                                                                    para capacidad indefinida </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Ponente <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;">
+                                                                    <option value="HI">Nombre Completo Ponente</option>
+                                                                    <option value="HI">Nombre Completo Segundo Ponente
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Plataforma <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;">
+                                                                    <option value="HI">Classroom</option>
+                                                                    <option value="HI">TEAMS</option>
+                                                                    <option value="HI">Zoom</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-lg-5">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Descripción <span class="text-danger">*</span>
+                                                        </h5>
+                                                        <textarea class="form-control" rows="3"
+                                                            placeholder="Describe de que trata el curso aqui..."></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-lg-2">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Enlace <span class="text-danger">*</span></h5>
+                                                        <input type="url" class="form-control" id="exampleInputFile">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-lg-3">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1 md-3">Temario <span class="text-danger">*</span>
+                                                        </h5>
+                                                        <fieldset class="form-group mt-4">
+                                                            <input type="file" class="form-control-file"
+                                                                id="exampleInputFile">
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-2 ">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Clave <span class="text-danger">*</span></h5>
+                                                        <input type="text" id="clave" class="form-control"
+                                                            placeholder="000000000">
+                                                        <small class="form-control-feedback ml-1"> Unicamente numeros
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <h4><i class="fas fa-calendar-alt mr-2"></i>Calendario del
+                                                                curso</h4>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Inicio <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-04-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Hora Inicio </h5>
+                                                                <input type="time" class="form-control"
+                                                                    value="22:33:00">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Fin <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-06-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Hora Fin </h5>
+                                                                <input type="time" class="form-control"
+                                                                    value="22:33:00">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <h4><i class="far fa-calendar-alt mr-2"></i>Calendario de
+                                                                inscripción</h4>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-6">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Inicio <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-04-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-6">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Fin <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-06-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mt-4">
+                                                <div class="col text-right">
+                                                    <hr>
+                                                    <button type="button"
+                                                        class="btn waves-effect waves-light btn-success"><i
+                                                            class="fas fa-save mr-2"></i>Guardar</button>
+                                                    <button type="button" class="btn waves-effect waves-light btn-info"
+                                                        data-dismiss="modal"><i
+                                                            class="fas fa-times mr-2"></i>Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Contenido-->
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <img src="../../assets/images/users/1.jpg" width="150" class="rounded-circle" alt="user">
+                        </div>
+                        <div class="col-md-6">
+                            <h1>Nombre Completo del Curso Lorem Ipsum</h1>
+                            <div class="d-flex no-block align-items-center">
+                                <h5 class="mr-4">Ponente:</h5>
+                                <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user"
+                                        class="rounded-circle" width="45"></div>
+                                <div class="">
+                                    <h5 class="mb-0 font-16 font-medium">Nombre Completo Ponente</h5><span>Ing. Fisico
+                                        Nuclear</span>
+                                    <span>
+                                        <button
+                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                            data-toggle="modal" data-target="#verPerfilPonente"><i
+                                                class="far fa-user mr-1"></i> Ver Perfil</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <h5 class="mt-3">Clave: <span class="small">001885421 </span>
+                                <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                        class="far fa-copy mr-1"></i> Copiar</a>
+                                <i class="fas fa-users ml-4 mr-2"></i> Alumnos inscritos: <span
+                                    class="small ">28/40</span>
+                            </h5>
+                            <div class="row">
+                                <h5 class="ml-2 mr-2"><i class="fas fa-briefcase mr-1"></i> Area: <span
+                                        class="small ">Nombre Area</span></h5>
+                                <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span
+                                        class="small ">Nombre Tipo</span></h5>
+                                <h5 class="ml-2 mr-2"><i class="fas fa-video mr-1"></i> Modalidad: <span
+                                        class="small ">Nombre Modalidad</span></h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Horario <span class="text-muted small">(Curso Cerrado)</span></h3>
+                            <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span
+                                    class="small ">28/06/2021</span></h5>
+                            <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
+                                    class="small ">31/12/2021</span></h5>
+                            <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">10:00
+                                    am. - 12:00 am.</span></h5>
+                            <div class="row mt-2">
+                                <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Ver Temario</a>
+                                <a href="#"
+                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small ml-2">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Ir a Clase</a>
+                            </div>
+                            <div class="row text-center">
+                                <a href="" type="button"
+                                    class="btn waves-effect waves-light btn-block btn-warning mt-3 " data-toggle="modal"
+                                    data-target="#editarCurso"><i class="fas fa-pencil-alt mr-2"></i>Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12"></div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><span
+                                    class="hidden-sm-up"><i class="fas fa-align-justify"></i></span> <span
+                                    class="hidden-xs-down">Historial</span></a> </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#anuncios" role="tab"><span
+                                    class="hidden-sm-up"><i class="fas fa-envelope-open-text"></i></span> <span
+                                    class="hidden-xs-down">Anuncios</span></a> </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#asignaciones"
+                                role="tab"><span class="hidden-sm-up"><i class="fas fa-briefcase"></i></span> <span
+                                    class="hidden-xs-down">Asignaciones</span></a> </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recursos" role="tab"><span
+                                    class="hidden-sm-up"><i class="fas fa-folder-open"></i></span> <span
+                                    class="hidden-xs-down">Recursos</span></a> </li>
+                    </ul>
+                    <div class="tab-content tabcontent-border">
+                        <!--Panel de todos-->
+                        <div class="tab-pane active p-20" id="home" role="tabpanel">
+                            <!-- Busqueda-->
+                            <nav class="navbar navbar-light bg-light justify-content-between">
+                                <a class="navbar-brand">Historial de avisos y asignaciones</a>
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                                        aria-label="Search">
+                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
+                                            class="fas fa-search mr-2"></i> Buscar</button>
+                                </form>
+                            </nav>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaNoEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
+                                                asignación posee <span class="font-weight-bold">(1)</span> archivo(s)
+                                                adjunto(s). <span class="small"><a href="#"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaNoEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaNoEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Panel de anuncios-->
+                        <div class="tab-pane  p-20" id="anuncios" role="tabpanel">
+                            <!-- Busqueda-->
+                            <nav class="navbar navbar-light bg-light justify-content-between">
+                                <a class="navbar-brand">Historial de anuncios</a>
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                                        aria-label="Search">
+                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
+                                            class="fas fa-search mr-2"></i> Buscar</button>
+                                </form>
+                            </nav>
+                            <!--Anuncios-->
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="ml-3 mr-2">
+                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                        class="rounded-circle" width="45">
+                                                </div>
+                                                <div class="">
+                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                            class="small">publicó para</span></h5>
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
+                                                no importa por que podemos mostrar casi cualquier cantidad de
+                                                caracteres.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Panel de asignaciones-->
+                        <div class="tab-pane p-20" id="asignaciones" role="tabpanel">
+                            <!-- Busqueda-->
+                            <nav class="navbar navbar-light bg-light justify-content-between">
+                                <a class="navbar-brand">Historial de asignaciones</a>
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                                        aria-label="Search">
+                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
+                                            class="fas fa-search mr-2"></i> Buscar</button>
+                                </form>
+                            </nav>
+                            <!--Asignaciones-->
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
+                                                asignación posee <span class="font-weight-bold">(1)</span> archivo(s)
+                                                adjunto(s). <span class="small"><a href="#"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaNoEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaNoEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
+                                                asignación posee <span class="font-weight-bold">(1)</span> archivo(s)
+                                                adjunto(s). <span class="small"><a href="#"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaNoEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
+                                                asignación posee <span class="font-weight-bold">(1)</span> archivo(s)
+                                                adjunto(s). <span class="small"><a href="#"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
+                                                ipsum</h4>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
+                                                    ipsum</span></h4>
+                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
+                                                con text truncation o algun otro método...</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="font-light float-left">Fecha Cierre: <i
+                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
+                                                    class="fas fa-clock"></i> 24:59</h5>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Panel de Recursos-->
+                        <div class="tab-pane p-20" id="recursos" role="tabpanel">
+                            <!-- Busqueda-->
+                            <nav class="navbar navbar-light bg-light justify-content-between">
+                                <a class="navbar-brand">Recursos del Curso</a>
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                                        aria-label="Search">
+                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
+                                            class="fas fa-search mr-2"></i> Buscar</button>
+                                </form>
+                            </nav>
+                            <!--contenido-->
+                            <div class="row mt-3">
+                                <!-- RECURSOS DOCUMENTOS  -->
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header bg-info">
+                                            <h4 class="mb-0 text-white"><i class="fas fa-folder-open"></i> Docuementos
+                                                <span class="small">(3)</span></h4>
+                                        </div>
+                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
+                                            style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <div class="comment-text w-100">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
+                                                                    class="font-weight-normal">Biologia Molecular</span>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-md-4 text-right">
+                                                            <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
+                                                                <i class="fas fa-download"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <div class="comment-text w-100">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
+                                                                    class="font-weight-normal">Biologia Molecular</span>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-md-4 text-right">
+                                                            <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
+                                                                <i class="fas fa-download"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <div class="comment-text w-100">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
+                                                                    class="font-weight-normal">Biologia Molecular</span>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-md-4 text-right">
+                                                            <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
+                                                                <i class="fas fa-download"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <div class="comment-text w-100">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
+                                                                    class="font-weight-normal">Biologia Molecular</span>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-md-4 text-right">
+                                                            <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
+                                                                <i class="fas fa-download"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
+                                                </div>
+                                            </div>
+                                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
+                                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- RECURSOS LINKS  -->
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header bg-primary" class="card-body">
+                                            <h4 class="mb-0 text-white" class="card-title"><i class="fas fa-link"></i>
+                                                Links <span class="small"> (4)</span></h4>
+
+                                        </div>
+                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
+                                            style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <h3><i class=" fas fa-link"></i></h3>
+                                                <div class="comment-text w-100">
+                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
+                                                        celulas</a>
+
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <h3><i class=" fas fa-link"></i></h3>
+                                                <div class="comment-text w-100">
+                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
+                                                        celulas</a>
+
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <h3><i class=" fas fa-link"></i></h3>
+                                                <div class="comment-text w-100">
+                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
+                                                        celulas</a>
+
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row comment-row mt-0">
+                                                <h3><i class=" fas fa-link"></i></h3>
+                                                <div class="comment-text w-100">
+                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
+                                                        celulas</a>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
+                                                </div>
+                                            </div>
+                                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
+                                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

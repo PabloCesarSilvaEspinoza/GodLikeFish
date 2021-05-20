@@ -1,0 +1,1104 @@
+<div class="container-fluid">
+    <!--modales-->
+    <div id="agregarUsuario" class="modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!--Salir-->
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                </div>
+                <!--Titulo-->
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Agregar <span class="small">Usuario</span></h1>
+                        <p>Aqui puedes agregar un usuario nuevo, llena todos los datos y guardalo.</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="modal-content">
+                    <div class="card">
+                        <div class="card-body text-left">
+                            <form class="form-horizontal mt-2" action="index.html">
+                                <h3 class="font-medium mb-2">Datos Generales</h3>
+                                <hr>
+                                <div class="form-group row ">
+                                    <div class="col-sm-12 col-md-3 col-lg-4 mb-2">
+                                        <label> Nombre(s)</label>
+                                        <input class="form-control form-control-lg" type="text" required=" "
+                                            placeholder="Ingrese el nombre(s) del usuario" alt="Nombre del Ponente"
+                                            minlength="1" maxlength="40"
+                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                            name="usuarioNombres" id="usuarioNombres">
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
+                                        <label> Primer Apellido</label>
+                                        <input class="form-control form-control-lg" type="text" required=" "
+                                            placeholder="Ingrese el primer apellido" alt="Primer apellido del usuario"
+                                            minlength="1" maxlength="40"
+                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                            name="usuarioPApellido" id="usuarioPApellido">
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
+                                        <label>Segundo Apellido</label>
+                                        <input class="form-control form-control-lg" type="text" required=" "
+                                            placeholder="Ingrese el segundo apellido" alt="Segundo apellido del usuario"
+                                            minlength="1" maxlength="40"
+                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                            name="usuarioSApellido" id="usuarioSApellido">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+                                        <label>Pais de nacimiento</label>
+                                        <span
+                                            class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                            dir="ltr" style="width: 100%;" id="paisNombre" name="paisNombre">
+                                            <span class="selection">
+                                                <span class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-labelledby="select2-ncb3-container">
+                                                    <span class="select2-selection__rendered"
+                                                        id="select2-ncb3-container" role="textbox" aria-readonly="true"
+                                                        title="Alaska">Alaska</span>
+                                                    <span class="select2-selection__arrow" role="presentation">
+                                                        <option disabled selected>Elige el país de nacimiento
+                                                        </option>
+                                                        <b role="presentation"></b>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+                                        <label>Municipio de nacimiento</label>
+                                        <input class="form-control form-control-lg" type="text" required=" "
+                                            placeholder="Ingrese el municipio de nacimiento"
+                                            alt="Municipio de nacimiento" minlength="1" maxlength="40"
+                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                            id="municipioNombre" name="municipioNombre">
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
+                                        <label>Fecha de nacimiento</label>
+                                        <input type="date" alt="Fecha de nacimiento del usuario" class="form-control"
+                                            id="usuarioFechaNacimiento" name="usuarioFechaNacimiento">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-12 col-lg-4 mb-2">
+                                        <label>Correo</label>
+                                        <input class="form-control form-control-lg" type="email" required=" "
+                                            placeholder="Ingrese su correo" alt="Correo del usuario" id="usuarioCorreo"
+                                            name="usuarioCorreo">
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                        <label>Contraseña</label>
+                                        <input class="form-control form-control-lg" type="password" required=" "
+                                            placeholder="Elige un contraseña" alt="Elige una contraseña"
+                                            id="usuarioPassword" name="usuarioPassword">
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                        <label>Confirmar contraseña</label>
+                                        <input class="form-control form-control-lg" type="password" required=" "
+                                            placeholder="Confirma tu contraseña" alt="Confirma tu contraseña"
+                                            id="usuarioPassword" name="usuarioPassword">
+                                    </div>
+                                </div>
+                                <h3 class="font-medium mb-2">Domicilio</h3>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                        <label>Estado de residencia</label>
+                                        <span
+                                            class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                            dir="ltr" style="width: 100%;" id="estadoNombre" name="estadoNombre">
+                                            <span class="selection">
+                                                <span class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-labelledby="select2-ncb3-container">
+                                                    <span class="select2-selection__rendered"
+                                                        id="select2-ncb3-container" role="textbox" aria-readonly="true"
+                                                        title="Alaska">Alaska</span>
+                                                    <span class="select2-selection__arrow" role="presentation">
+                                                        <option disabled selected>Elige el estado</option>
+                                                        <b role="presentation"></b>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                        <label>Municipio de residencia</label>
+                                        <span class="select2 select2-container select2-container--default" dir="ltr"
+                                            style="width: 100%;" id="municipioNombre" name="municipioNombre">
+                                            <span class="selection">
+                                                <span class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-labelledby="select2-nsg6-container">
+                                                    <span class="select2-selection__rendered"
+                                                        id="select2-nsg6-container" role="textbox" aria-readonly="true"
+                                                        title="Alaska">Alaska</span>
+                                                    <span class="select2-selection__arrow" role="presentation">
+                                                        <option disabled selected>Elige el municipio</option>
+                                                        <b role="presentation"></b>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                        <label>Colonia de residencia</label>
+                                        <input class="form-control form-control-lg" type="text" required=" "
+                                            minlength="1" maxlength="40"
+                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                            placeholder="Ingresa la colonia de tu domicilio" id="domicilioColonia"
+                                            name="domicilioColonia">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                        <label>Calle</label>
+                                        <input class="form-control form-control-lg" type="text" required=" "
+                                            placeholder="Ingresa la calle de tu domicilio" minlength="1" maxlength="40"
+                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
+                                            id="domicilioCalle" name="domicilioCalle">
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                        <label>Numero Interior</label>
+                                        <input class="form-control form-control-lg" type="number" required=" "
+                                            placeholder="Ingresa el numero interior de tu domicilio"
+                                            id="domicilioNumeroInt" name="domicilioNumeroInt">
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                        <label>Numero Exterior</label>
+                                        <input class="form-control form-control-lg" type="number" required=" "
+                                            placeholder="Ingresa el numero exterior de tu domicilio"
+                                            id="domicilioNumeroExt" name="domicilioNumeroExt">
+                                    </div>
+                                </div>
+                                <h3 class="font-medium mb-2">Datos Laborales</h3>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-6 col-lg-5 mb-2">
+                                        <label>Matricula</label>
+                                        <input class="form-control form-control-lg" type="text" required=" "
+                                            placeholder="Ingresa tu matricula" id="usuarioMatricula"
+                                            name="usuarioMatricula">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-3 mb-2">
+                                        <label>Antigüedad</label>
+                                        <input class="form-control form-control-lg" type="number" required=" "
+                                            placeholder="Ingresa tu antigüedad en años" id="usuarioAntiguedad"
+                                            name="usuarioAntiguedad">
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                        <label>Puesto</label>
+                                        <span
+                                            class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
+                                            dir="ltr" data-select2-id="2" style="width: 100%;" id="usuarioPuesto"
+                                            name="usuarioPuesto">
+                                            <span class="selection">
+                                                <span class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-labelledby="select2-ncb3-container">
+                                                    <span class="select2-selection__rendered"
+                                                        id="select2-ncb3-container" role="textbox" aria-readonly="true"
+                                                        title="Alaska">Alaska</span>
+                                                    <span class="select2-selection__arrow" role="presentation">
+                                                        <option disabled selected>Elige el puesto que te
+                                                            corresponde</option>
+                                                        <b role="presentation"></b>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                        <label>Area</label>
+                                        <span class="select2 select2-container select2-container--default" dir="ltr"
+                                            data-select2-id="5" style="width: 100%;" id="usuarioArea"
+                                            name="usuarioArea">
+                                            <span class="selection">
+                                                <span class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-labelledby="select2-nsg6-container">
+                                                    <span class="select2-selection__rendered"
+                                                        id="select2-nsg6-container" role="textbox" aria-readonly="true"
+                                                        title="Alaska">Alaska</span>
+                                                    <span class="select2-selection__arrow" role="presentation">
+                                                        <option disabled selected>Elige el area que te
+                                                            corresponde</option>
+                                                        <b role="presentation"></b>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2 text-center ">
+                                        <label>Subir foto de perfil</label>
+                                        <br>
+                                        <button type="file"
+                                            class="btn waves-effect waves-light btn-rounded btn-dark">SUBIR</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 mb-2 mt-3 text-center">
+                                        <button class="btn btn-lg btn-info " type="submit ">Registrarse</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Titulo-->
+    <div class="row">
+        <div class="col sm-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1>Administrar <span class="small"> Usuarios</span></h1>
+                    <p>Aqui encontraras todos los usuarios que se encuentran registrados en el sistema
+                        independientemente de su rol.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2><span class="small"><i class="fas fa-chart-pie mr-2"></i>Usuarios Resumen</span></h2>
+                    <hr>
+                    <div class="row mt-5">
+                        <div class="col b-r text-center">
+                            <h2 class="font-light">64</h2>
+                            <h6>Registrados</h6>
+                        </div>
+                        <div class="col b-r text-center">
+                            <h2 class="font-light">58</h2>
+                            <h6>Activos</h6>
+                        </div>
+                        <div class="col text-center">
+                            <h2 class="font-light">6</h2>
+                            <h6>Inactivos</h6>
+                        </div>
+                    </div>
+                    <div class="col text-center mt-4">
+
+                    </div>
+                    <!--Grafica-->
+                    <h4 class="card-title mt-4">Areas de espacialidad de los ponentes o algo</h4>
+                    <div class="text-center">
+                        <div id="visitor" style="height: 290px; width: 100%; max-height: 290px; position: relative;"
+                            class="mt-3 c3"><svg width="362.5" height="290" style="overflow: hidden;">
+                                <defs>
+                                    <clipPath id="c3-1619555466618-clip">
+                                        <rect width="362.5" height="266"></rect>
+                                    </clipPath>
+                                    <clipPath id="c3-1619555466618-clip-xaxis">
+                                        <rect x="-31" y="-20" width="424.5" height="40"></rect>
+                                    </clipPath>
+                                    <clipPath id="c3-1619555466618-clip-yaxis">
+                                        <rect x="-29" y="-4" width="20" height="290"></rect>
+                                    </clipPath>
+                                    <clipPath id="c3-1619555466618-clip-grid">
+                                        <rect width="362.5" height="266"></rect>
+                                    </clipPath>
+                                    <clipPath id="c3-1619555466618-clip-subchart">
+                                        <rect width="362.5"></rect>
+                                    </clipPath>
+                                </defs>
+                                <g transform="translate(0.5,4.5)">
+                                    <text class="c3-text c3-empty" text-anchor="middle" dominant-baseline="middle"
+                                        x="181.25" y="133" style="opacity: 0;"></text>
+                                    <rect class="c3-zoom-rect" width="362.5" height="266" style="opacity: 0;"></rect>
+                                    <g clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip)"
+                                        class="c3-regions" style="visibility: hidden;"></g>
+                                    <g clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip-grid)"
+                                        class="c3-grid" style="visibility: hidden;">
+                                        <g class="c3-xgrid-focus">
+                                            <line class="c3-xgrid-focus" x1="-10" x2="-10" y1="0" y2="266"
+                                                style="visibility: hidden;"></line>
+                                        </g>
+                                    </g>
+                                    <g clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip)"
+                                        class="c3-chart">
+                                        <g class="c3-event-rects c3-event-rects-single" style="fill-opacity: 0;">
+                                            <rect class=" c3-event-rect c3-event-rect-0" x="0.75" y="0" width="362.5"
+                                                height="266"></rect>
+                                        </g>
+                                        <g class="c3-chart-bars">
+                                            <g class="c3-chart-bar c3-target c3-target-Open"
+                                                style="pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Open c3-bars c3-bars-Open"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                            <g class="c3-chart-bar c3-target c3-target-Clicked"
+                                                style="pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Clicked c3-bars c3-bars-Clicked"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                            <g class="c3-chart-bar c3-target c3-target-Un-opened"
+                                                style="pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Un-opened c3-bars c3-bars-Un-opened"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                            <g class="c3-chart-bar c3-target c3-target-Bounced"
+                                                style="pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Bounced c3-bars c3-bars-Bounced"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                        </g>
+                                        <g class="c3-chart-lines">
+                                            <g class="c3-chart-line c3-target c3-target-Open"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Open c3-lines c3-lines-Open">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Open c3-areas c3-areas-Open">
+                                                </g>
+                                                <g class=" c3-selected-circles c3-selected-circles-Open">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Open c3-circles c3-circles-Open"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                            <g class="c3-chart-line c3-target c3-target-Clicked"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Clicked c3-lines c3-lines-Clicked">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Clicked c3-areas c3-areas-Clicked">
+                                                </g>
+                                                <g class=" c3-selected-circles c3-selected-circles-Clicked">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Clicked c3-circles c3-circles-Clicked"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                            <g class="c3-chart-line c3-target c3-target-Un-opened"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Un-opened c3-lines c3-lines-Un-opened">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Un-opened c3-areas c3-areas-Un-opened">
+                                                </g>
+                                                <g class=" c3-selected-circles c3-selected-circles-Un-opened">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Un-opened c3-circles c3-circles-Un-opened"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                            <g class="c3-chart-line c3-target c3-target-Bounced"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-shapes c3-shapes-Bounced c3-lines c3-lines-Bounced">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Bounced c3-areas c3-areas-Bounced">
+                                                </g>
+                                                <g class=" c3-selected-circles c3-selected-circles-Bounced">
+                                                </g>
+                                                <g class=" c3-shapes c3-shapes-Bounced c3-circles c3-circles-Bounced"
+                                                    style="cursor: pointer;"></g>
+                                            </g>
+                                        </g>
+                                        <g class="c3-chart-arcs" transform="translate(181.25,128)"><text
+                                                class="c3-chart-arcs-title"
+                                                style="text-anchor: middle; opacity: 1;">Ratio</text>
+                                            <g class="c3-chart-arc c3-target c3-target-Open">
+                                                <g class=" c3-shapes c3-shapes-Open c3-arcs c3-arcs-Open">
+                                                    <path class=" c3-shape c3-shape c3-arc c3-arc-Open" transform=""
+                                                        style="fill: rgb(64, 196, 255); cursor: pointer;"
+                                                        d="M7.445852538815907e-15,-121.6A121.6,121.6 0 0,1 52.76026267669507,109.55781433693416L37.574331807580535,78.02390396034949A86.6,86.6 0 0,0 5.302720640308039e-15,-86.6Z">
+                                                    </path>
+                                                </g><text dy=".35em" class=""
+                                                    transform="translate(94.8409872970478,-21.646836455270265)"
+                                                    style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
+                                            </g>
+                                            <g class="c3-chart-arc c3-target c3-target-Clicked">
+                                                <g class=" c3-shapes c3-shapes-Clicked c3-arcs c3-arcs-Clicked">
+                                                    <path class=" c3-shape c3-shape c3-arc c3-arc-Clicked" transform=""
+                                                        style="fill: rgb(41, 97, 255); cursor: pointer;"
+                                                        d="M-95.07070826811243,-75.81635990602197A121.6,121.6 0 0,1 -2.233755761644772e-14,-121.6L-1.5908161920924117e-14,-86.6A86.6,86.6 0 0,0 -67.70660638173139,-53.99421684096631Z">
+                                                    </path>
+                                                </g><text dy=".35em" class=""
+                                                    transform="translate(-42.20821014135607,-87.64625146954732)"
+                                                    style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
+                                            </g>
+                                            <g class="c3-chart-arc c3-target c3-target-Un-opened">
+                                                <g class=" c3-shapes c3-shapes-Un-opened c3-arcs c3-arcs-Un-opened">
+                                                    <path class=" c3-shape c3-shape c3-arc c3-arc-Un-opened"
+                                                        transform="" style="fill: rgb(255, 130, 28); cursor: pointer;"
+                                                        d="M52.76026267669507,109.55781433693416A121.6,121.6 0 0,1 -111.81457714225638,47.79184384911712L-79.63110510295562,34.03596774122979A86.6,86.6 0 0,0 37.574331807580535,78.02390396034949Z">
+                                                    </path>
+                                                </g><text dy=".35em" class=""
+                                                    transform="translate(-34.18174288663301,91.07692821583363)"
+                                                    style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
+                                            </g>
+                                            <g class="c3-chart-arc c3-target c3-target-Bounced">
+                                                <g class=" c3-shapes c3-shapes-Bounced c3-arcs c3-arcs-Bounced">
+                                                    <path class=" c3-shape c3-shape c3-arc c3-arc-Bounced" transform=""
+                                                        style="fill: rgb(126, 116, 251); cursor: pointer;"
+                                                        d="M-111.81457714225638,47.79184384911712A121.6,121.6 0 0,1 -95.07070826811243,-75.81635990602197L-67.70660638173139,-53.99421684096631A86.6,86.6 0 0,0 -79.63110510295562,34.03596774122979Z">
+                                                    </path>
+                                                </g><text dy=".35em" class=""
+                                                    transform="translate(-96.3995928247847,-13.058212098741512)"
+                                                    style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
+                                            </g>
+                                        </g>
+                                        <g class="c3-chart-texts">
+                                            <g class="c3-chart-text c3-target c3-target-Open"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-texts c3-texts-Open"></g>
+                                            </g>
+                                            <g class="c3-chart-text c3-target c3-target-Clicked"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-texts c3-texts-Clicked"></g>
+                                            </g>
+                                            <g class="c3-chart-text c3-target c3-target-Un-opened"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-texts c3-texts-Un-opened"></g>
+                                            </g>
+                                            <g class="c3-chart-text c3-target c3-target-Bounced"
+                                                style="opacity: 1; pointer-events: none;">
+                                                <g class=" c3-texts c3-texts-Bounced"></g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                    <g clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip-grid)"
+                                        class="c3-grid c3-grid-lines">
+                                        <g class="c3-xgrid-lines"></g>
+                                        <g class="c3-ygrid-lines"></g>
+                                    </g>
+                                    <g class="c3-axis c3-axis-x"
+                                        clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip-xaxis)"
+                                        transform="translate(0,266)" style="visibility: visible; opacity: 0;"><text
+                                            class="c3-axis-x-label" transform="" style="text-anchor: end;" x="362.5"
+                                            dx="-0.5em" dy="-0.5em"></text>
+                                        <g class="tick" transform="translate(182, 0)" style="opacity: 1;">
+                                            <line x1="0" x2="0" y2="6"></line><text x="0" y="9" transform=""
+                                                style="text-anchor: middle; display: block;">
+                                                <tspan x="0" dy=".71em" dx="0">0</tspan>
+                                            </text>
+                                        </g>
+                                        <path class="domain" d="M0,6V0H362.5V6"></path>
+                                    </g>
+                                    <g class="c3-axis c3-axis-y"
+                                        clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip-yaxis)"
+                                        transform="translate(0,0)" style="visibility: visible; opacity: 0;">
+                                        <text class="c3-axis-y-label" transform="rotate(-90)" style="text-anchor: end;"
+                                            x="0" dx="-0.5em" dy="1.2em"></text>
+                                        <g class="tick" transform="translate(0,244)" style="opacity: 1;">
+                                            <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
+                                                <tspan x="-9" dy="3">15</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,208)" style="opacity: 1;">
+                                            <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
+                                                <tspan x="-9" dy="3">20</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,171)" style="opacity: 1;">
+                                            <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
+                                                <tspan x="-9" dy="3">25</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,134)" style="opacity: 1;">
+                                            <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
+                                                <tspan x="-9" dy="3">30</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,97)" style="opacity: 1;">
+                                            <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
+                                                <tspan x="-9" dy="3">35</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,60)" style="opacity: 1;">
+                                            <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
+                                                <tspan x="-9" dy="3">40</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,24)" style="opacity: 1;">
+                                            <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
+                                                <tspan x="-9" dy="3">45</tspan>
+                                            </text>
+                                        </g>
+                                        <path class="domain" d="M-6,1H0V266H-6"></path>
+                                    </g>
+                                    <g class="c3-axis c3-axis-y2" transform="translate(362.5,0)"
+                                        style="visibility: hidden; opacity: 0;"><text class="c3-axis-y2-label"
+                                            transform="rotate(-90)" style="text-anchor: end;" x="0" dx="-0.5em"
+                                            dy="-0.5em"></text>
+                                        <g class="tick" transform="translate(0,266)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,240)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.1</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,213)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.2</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,187)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.3</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,160)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.4</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,134)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.5</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,107)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.6</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,81)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.7</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,54)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.8</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,28)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">0.9</tspan>
+                                            </text>
+                                        </g>
+                                        <g class="tick" transform="translate(0,1)" style="opacity: 1;">
+                                            <line x2="6" y2="0"></line><text x="9" y="0" style="text-anchor: start;">
+                                                <tspan x="9" dy="3">1</tspan>
+                                            </text>
+                                        </g>
+                                        <path class="domain" d="M6,1H0V266H6"></path>
+                                    </g>
+                                </g>
+                                <g transform="translate(0.5,290.5)" style="visibility: hidden;">
+                                    <g clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip-subchart)"
+                                        class="c3-chart">
+                                        <g class="c3-chart-bars"></g>
+                                        <g class="c3-chart-lines"></g>
+                                    </g>
+                                    <g clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip)"
+                                        class="c3-brush"
+                                        style="pointer-events: all; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                                        <rect class="background" x="0" width="620.40625"
+                                            style="visibility: hidden; cursor: crosshair;"></rect>
+                                        <rect class="extent" x="0" width="0" style="cursor: move;"></rect>
+                                        <g class="resize e" transform="translate(0,0)"
+                                            style="cursor: ew-resize; display: none;">
+                                            <rect x="-3" width="6" height="6" style="visibility: hidden;">
+                                            </rect>
+                                        </g>
+                                        <g class="resize w" transform="translate(0,0)"
+                                            style="cursor: ew-resize; display: none;">
+                                            <rect x="-3" width="6" height="6" style="visibility: hidden;">
+                                            </rect>
+                                        </g>
+                                    </g>
+                                    <g class="c3-axis-x" transform="translate(0,0)"
+                                        clip-path="url(file:///E:/Templates/xtremeadmin/xtreme-admin/html/ltr/widgets-charts.html#c3-1619555466618-clip-xaxis)"
+                                        style="visibility: hidden; opacity: 0;">
+                                        <g class="tick" transform="translate(182, 0)" style="opacity: 1;">
+                                            <line x1="0" x2="0" y2="6"></line><text x="0" y="9" transform=""
+                                                style="text-anchor: middle; display: block;">
+                                                <tspan x="0" dy=".71em" dx="0">0</tspan>
+                                            </text>
+                                        </g>
+                                        <path class="domain" d="M0,6V0H362.5V6"></path>
+                                    </g>
+                                </g>
+                                <g transform="translate(0,270)">
+                                    <g class="c3-legend-item c3-legend-item-Open"
+                                        style="visibility: hidden; cursor: pointer; opacity: 1;"><text x="14" y="9"
+                                            style="pointer-events: none;">Open</text>
+                                        <rect class="c3-legend-item-event" x="0" y="-5" width="0" height="0"
+                                            style="fill-opacity: 0;"></rect>
+                                        <line class="c3-legend-item-tile" x1="-2" y1="4" x2="8" y2="4" stroke-width="10"
+                                            style="stroke: rgb(64, 196, 255); pointer-events: none;"></line>
+                                    </g>
+                                    <g class="c3-legend-item c3-legend-item-Clicked"
+                                        style="visibility: hidden; cursor: pointer; opacity: 1;"><text x="14" y="9"
+                                            style="pointer-events: none;">Clicked</text>
+                                        <rect class="c3-legend-item-event" x="0" y="-5" width="0" height="0"
+                                            style="fill-opacity: 0;"></rect>
+                                        <line class="c3-legend-item-tile" x1="-2" y1="4" x2="8" y2="4" stroke-width="10"
+                                            style="stroke: rgb(41, 97, 255); pointer-events: none;"></line>
+                                    </g>
+                                    <g class="c3-legend-item c3-legend-item-Un-opened"
+                                        style="visibility: hidden; cursor: pointer; opacity: 1;"><text x="14" y="9"
+                                            style="pointer-events: none;">Un-opened</text>
+                                        <rect class="c3-legend-item-event" x="0" y="-5" width="0" height="0"
+                                            style="fill-opacity: 0;"></rect>
+                                        <line class="c3-legend-item-tile" x1="-2" y1="4" x2="8" y2="4" stroke-width="10"
+                                            style="stroke: rgb(255, 130, 28); pointer-events: none;"></line>
+                                    </g>
+                                    <g class="c3-legend-item c3-legend-item-Bounced"
+                                        style="visibility: hidden; cursor: pointer; opacity: 1;"><text x="14" y="9"
+                                            style="pointer-events: none;">Bounced</text>
+                                        <rect class="c3-legend-item-event" x="0" y="-5" width="0" height="0"
+                                            style="fill-opacity: 0;"></rect>
+                                        <line class="c3-legend-item-tile" x1="-2" y1="4" x2="8" y2="4" stroke-width="10"
+                                            style="stroke: rgb(126, 116, 251); pointer-events: none;">
+                                        </line>
+                                    </g>
+                                </g><text class="c3-title" x="181.25" y="0"></text>
+                            </svg>
+                            <div class="c3-tooltip-container"
+                                style="position: absolute; pointer-events: none; display: none; top: 97.75px; left: 293.016px;">
+                                <table class="c3-tooltip">
+                                    <tbody>
+                                        <tr class="c3-tooltip-name--Open">
+                                            <td class="name"><span style="background-color:#40c4ff"></span>Open</td>
+                                            <td class="value">42.9%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <ul class="list-inline mt-3">
+                            <li class="list-inline-item">
+                                <h6 class="text-muted"><i class="fa fa-circle mr-1 text-success"></i>Mobile
+                                </h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <h6 class="text-muted"><i class="fa fa-circle mr-1 text-primary"></i>Desktop
+                                </h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <h6 class="text-muted"><i class="fa fa-circle mr-1 text-danger"></i>Tablet
+                                </h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <h6 class="text-muted"><i class="fa fa-circle mr-1 text-muted"></i>Other
+                                </h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-chart-bar mr-2"></i>Usuarios (División Areas)<span
+                            class="small"></span></h3>
+                    <hr>
+                </div>
+
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+
+                        <div class="col-12">
+                            <div class="card bg-info text-white  card-hover">
+                                <div class="card-body">
+                                    <h4 class="card-title">Estadísticas</h4>
+                                    <div class="d-flex align-items-center mt-4">
+                                        <div class="" id="ravenue"></div>
+                                        <div class="ml-auto">
+                                            <h3 class="font-medium white-text mb-0">51 Usuarios</h3><span
+                                                class="white-text op-5">Jan 10 - Jan 20</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="col-12">
+                            <div class="card bg-cyan text-white  card-hover">
+                                <div class="card-body">
+                                    <h4 class="card-title">División Categorias</h4>
+                                    <h3 class="white-text mb-0"><i class="ti-arrow-up"></i> %</h3>
+                                </div>
+                                <div class="mt-3" id="views"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="col-12 " style="align-content: center;">
+                            <ul class="list-inline mt-3">
+                                <span class="label label-rounded label-success"><i class="fas fa-eye"></i>Categoria
+                                    1</span>
+                                <span class="label label-rounded label-warning"><i class="fas fa-eye"></i>
+                                    Categoria 2</span>
+                                </span> <span class="label label-rounded label-info"><i class="fas fa-eye"></i>
+                                    Categoria 3</span>
+                            </ul>
+                        </div>
+                    </div>
+                    <br><br> <br><br> <br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="card-title"><i class="fas fa-users mr-2"></i>Usuarios en el Sistema<span
+                            class="small"></span></h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button type="button" class="btn waves-effect waves-light btn-info mb-3" data-toggle="modal"
+                        data-target="#agregarUsuario"><i class="fas fa-plus mr-2"></i>Agregar Usuario</button>
+                </div>
+            </div>
+            <hr>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" style="color: cadetblue;"
+                        href="#home" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span>
+                        <span class="hidden-xs-down">Vista tabla</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" style="color: cadetblue;" href="#profile"
+                        role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span>
+                        <span class="hidden-xs-down">Vista Tarjeta</span></a> </li>
+
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabcontent-border">
+                <div class="tab-pane active" id="home" role="tabpanel">
+                    <div class="p-20">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        </h5>
+                                        <h4 class="card-title"></h4>
+                                        <div class="table-responsive">
+                                            <table id="file_export" class="table table-striped table-bordered display">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Cargo</th>
+                                                        <th>Area/Categoriía</th>
+                                                        <th>Edad</th>
+                                                        <th>Antigüedad</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td>Jonas Alexander</td>
+                                                        <td>Developer</td>
+                                                        <td>San Francisco</td>
+                                                        <td>30</td>
+                                                        <td>2010/07/14</td>
+                                                        <td>
+                                                            <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                    class="far fa-user mr-1"></i> Ver
+                                                                Perfil</a></h5>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Shad Decker</td>
+                                                        <td>Regional Director</td>
+                                                        <td>Edinburgh</td>
+                                                        <td>51</td>
+                                                        <td>2008/11/13</td>
+                                                        <td> <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                    class="far fa-user mr-1"></i> Ver
+                                                                Perfil</a></h5>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Michael Bruce</td>
+                                                        <td>Javascript Developer</td>
+                                                        <td>Singapore</td>
+                                                        <td>29</td>
+                                                        <td>2011/06/27</td>
+                                                        <td> <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                    class="far fa-user mr-1"></i> Ver
+                                                                Perfil</a></h5>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Donna Snider</td>
+                                                        <td>Customer Support</td>
+                                                        <td>New York</td>
+                                                        <td>27</td>
+                                                        <td>2011/01/25</td>
+                                                        <td> <a href="#"
+                                                                class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
+                                                                    class="far fa-user mr-1"></i> Ver
+                                                                Perfil</a></h5>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Cargo</th>
+                                                        <th>Area/Categoriía</th>
+                                                        <th>Edad</th>
+                                                        <th>Antigüedad</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane  p-20" id="profile" role="tabpanel">
+                    <div class="container-fluid">
+                        <div class="page-breadcrumb">
+                            <div class="row">
+                                <div class="col-10 align-self-center">
+                                    <h4 class="page-title">Usuarios en el Sistema</h4>
+                                    <br>
+
+                                    <div class="input-group mb-3">
+                                        <input id="BuscarPonente" name="BuscarPonente" type="text" class="form-control"
+                                            placeholder="Buscar" aria-label="" aria-describedby="basic-addon1">
+                                        <div class="input-group-append">
+                                            <button id="buscarPonente" name="buscarPonente" class="btn btn-success"
+                                                type="button"><i class="ti-search"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="TarjetaPonente" name="TarjetaPonente" class="container-fluid">
+                            <div class="row el-element-overlay">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/1-old.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/1-old.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">Oliver Abram</h4> <span id="UsuarioArea"
+                                                    name="UsuarioArea" class="text-muted">Graphics
+                                                    Designer</span>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/2.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/2.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">George Acton</h4> <span class="text-muted">Wordpress
+                                                    Developer</span>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/3.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/3.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">Harry Addington</h4> <span class="text-muted">Mobile
+                                                    App Developer</span>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/4.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/4.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">Emily Adley</h4> <span class="text-muted">Wordpress
+                                                    Developer</span>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/8.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/8.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">Sophia Ainsley</h4> <span class="text-muted">Mobile App
+                                                    Developer</span>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/7.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/7.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">Lily Ainsworth</h4> <span class="text-muted">Graphics
+                                                    Designer</span>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/6.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/6.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">Olivia Alby</h4> <span class="text-muted">Mobile App
+                                                    Developer</span>
+                                                <br>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
+                                            data-target="#responsive-modal">
+                                            <div class="el-card-avatar el-overlay-1"> <img
+                                                    src="../../assets/images/users/d4.jpg" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                            href="../../assets/images/users/d4.jpg"></a>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="el-card-content">
+                                                <h4 class="mb-0">Amelia Allerton</h4> <span class="text-muted">Wordpress
+                                                    Developer</span>
+                                                <br>
+                                                <td><a href="javascript:void(0)" class="text-inverse pr-2"
+                                                        data-toggle="tooltip" title="Ver"></a> <a
+                                                        href="javascript:void(0)" class="text-inverse" title="Borrar"
+                                                        data-toggle="tooltip"></a></td>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane p-20" id="messages" role="tabpanel">3</div>
+            </div>
+
+        </div>
+
+    </div>
+    <!--LISTADO-->
+
+    <!-- sample modal content -->
+    <!--NOTAS: name="usuarioAdminitradorTipoL" --L-- SIGNIFICA CAMPO TAL LLENO (ETIQUETA) O YA ESCRITO SIN POSIBILIDAD A EDITAR-->
+    <!--NOTAS:name="usuarioAdminitradorTipoV" --V-- SIGNIFICA CAMPO DE LLENADO (INPUT) -->
+
+    <!-- sample modal content -->
+
+    <div id="ModalVerPerfilPonente" name="ModalVerPerfilPonente" class="card">
+        <!-- sample modal content -->
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+        Pie de página</a>.
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>

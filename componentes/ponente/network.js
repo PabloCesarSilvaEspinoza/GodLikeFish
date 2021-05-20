@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../../upload/upload')
+const upload = require('../../middlewares/upload')
 const render = require('./render');
 
 router.get('/AgregarTareaPrueba', render.getAgregarTarea);
