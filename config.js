@@ -5,6 +5,12 @@ module.exports = {
     jwt:{
         secret: process.env.JWT_SECRET || 'sbLDR1gm8TxSEe3H7YFzqn9Wjh0oMVfK',
     },
+    session:{
+        secret: process.env.SECRET_SESION || 'b5fe93bdc369efdc4fd41b5e79bede4e5880a0f1',
+    },
+    cookie:{
+        secret: process.env.SECRET_COOKIE || 'DQcbdR94myYkuVHCT2SGJLj6aZvNsopl',
+    },
     mysql: {
         host: process.env.MYSQL_HOST || 'sql485.main-hosting.eu',
         user: process.env.MYSQL_USER || 'u871842413_Fish',

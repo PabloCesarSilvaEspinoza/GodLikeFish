@@ -5,8 +5,6 @@ const router = express.Router();
 const inicioController = require('../controllers/generalController');
 const admiController = require('../controllers/admiController');
 const pruebaController = require('../controllers/pruebaController');
-const passport = require('passport');
-const {verificar} = require('../components/auth/verificar');
 // -------LIBRO DE RUTAS-------
 
 //vistas del usuario no logeado

@@ -1,8 +1,8 @@
 module.exports = {
     verificar (req, res, next) {
-        console.log(req.body);
+        //console.log(req.body);
         if (req.isAuthenticated()) {
-            console.log("authenticado");
+            console.log("Usuario authenticado");
             return next();
         }
         return res.redirect('/');

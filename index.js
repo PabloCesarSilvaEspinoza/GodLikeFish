@@ -1,17 +1,31 @@
 const express = require('express');
 const session = require('express-session');
-const app = express();
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const indexRouter = require('./routes/index');
 const config = require('./config.js');
 const errors = require('./network/errors');
 
+const app = express();
+
+const indexRouter = require('./routes/index');
 const user = require('./components/user/network');
 const auth = require('./components/auth/network');
 const course = require('./components/course/network');
 const student = require('./components/student/network');
 const speaker = require('./components/speaker/network');
+
+//const secretSession = config.session.secret;
+//const cookieSession = config.cookie.secret;
+const store = {
+    host: config.mysql.host,
+    user: config.mysql.user,
+    password: config.mysql.password,
+    database: config.mysql.database
+}
+
+//const {verificar} = require('./components/auth/sessionChecker');
 
 //¿En que estas trabajando?    1)Postman 2)handlebars
 app.use(bodyParser.json());
@@ -19,25 +33,32 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static('public'));
 
-//sesiones con cookies
-app.use(session({
-    resave: false, //no guardar la cookie cada que sucede un cambio
-    saveUninitialized: false, //si la cookie no se ha inicializado no guardar por defecto
-    secret: "liA2c65rYsnWp0SVgk3duZPKtILwqDUO"
+//Cookies
+/*app.use(cookieParser({
+    secret: 'DQcbdR94myYkuVHCT2SGJLj6aZvNsopl'
     })
-);
+);*/
 
-/* app.get('/cookie', function(req,res){
-    req.session.count = req.session.count ? req.session.count +1 : 1;
-    res.status(200).json({hello: "world", counter: req.session.count});
-}); */
+//express session
+app.use(session({
+    secret: 'DQcbdR94myYkuVHCT2SGJLj6aZvNsopl',
+    resave: false,
+    saveUninitialized: false,
+    /*store: store,
+    cookie: {
+        expires: 600000
+    }*/
+}));
+//app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //handlebars
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs'
 }));
-
 app.set('view engine', 'hbs');
 
 //handlebars rutas
@@ -46,6 +67,14 @@ app.use('/', auth)
 app.use('/usuario', user);
 app.use('/curso', course);
 //app.use('/estudiante', student);
+
+//para cargarse la cookie si continua viva despues de iniciar sesion
+app.use((req, res, next) => {
+    if (req.cookies.user_sid && !req.session.user) {
+        res.clearCookie('user_sid');        
+    }
+    next();
+});
 
 app.use('/ponente', speaker)
 //aqui se agregan las rutas que se anteponen a otras
