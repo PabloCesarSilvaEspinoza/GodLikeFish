@@ -1,3 +1,4 @@
+const controller = require('./controller');
 const Controller = require('./index');
 
 module.exports = {
@@ -20,4 +21,19 @@ module.exports = {
         await Controller.update(req.body);
        res.redirect('/');
     },
-};
+
+    getRegistrar: async function(req, res, next){
+        const paises = await Controller.listPaises();
+        const estados = await Controller.listEstados();
+        const municipios = await Controller.listMunicipios();
+        res.render('general/registrar',{
+            general: true,
+            pickadate: true,
+            select2: true,
+            paises,
+            municipios,
+            estados
+
+        });
+    },
+}; 

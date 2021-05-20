@@ -8,10 +8,9 @@ const errors = require('./network/errors');
 
 const user = require('./components/user/network');
 const auth = require('./components/auth/network');
-const course = require('./components/course/network');
-const student = require('./components/student/network');
+const estudiante = require('./components/estudiante/network');//-------
 const speaker = require('./components/speaker/network');
-
+const curso = require('./components/curso/network');//-------
 
 //app.use(bodyParser.json());
 app.use(bodyParser.json());
@@ -36,7 +35,8 @@ app.set('view engine', 'hbs');
 //handlebars rutas
 app.use('/', indexRouter);
 app.use('/usuario', user);
-app.use('/curso', course);
+app.use('/curso', curso); //----------
+app.use('/estudiante', estudiante); //---------
 //app.use('/estudiante', student);
 
 app.use('/ponente', speaker)

@@ -3,12 +3,12 @@ const Controller = require('./index');
 module.exports = {
 
     getVerCursos: async function (req, res, next) {
-        const courses = await Controller.list();
+        const courses = await Controller.list(); //-------
     },
 
     getVerCurso: async function (req, res, next) {
         const id = req.params.id;
-        const course = await Controller.get(id);
+        const course = await Controller.get(id); //-----
         res.render('course/detallesCurso', course[0]);
     },
 
@@ -37,12 +37,12 @@ module.exports = {
     },
 //-----------------Examenes -------------------------
     getVerExamenes:async function(req, res, next){
-        const courses= await Controller.listE();
+        const courses= await Controller.listE(); //---
     },
 
     getVerExamen: async function(req, res, next){
         const id = req.params.id;
-        const course = await Controller.getE(id);
+        const course = await Controller.getE(id); //---
         res.redirect('/');
     },
 
