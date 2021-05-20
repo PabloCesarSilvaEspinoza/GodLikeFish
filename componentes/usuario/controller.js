@@ -49,10 +49,17 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    function listTemariosCursos(cursoID) {
+        const VIEW = 'ver_Temario_Curso';
+        const CLAUSE = `WHERE cursoID = ${cursoID}`;
+        return store.list(VIEW, CLAUSE);
+    }
+
     return {
         list,
         get,
         insert,
         update,
+        listTemariosCursos,
     };
 }

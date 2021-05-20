@@ -6,12 +6,12 @@ const indexRouter = require('./routes/index');
 const config = require('./config.js');
 const errors = require('./network/errors');
 
-const user = require('./components/user/network');
-const auth = require('./components/auth/network');
-const course = require('./components/course/network');
-const student = require('./components/student/network');
-const speaker = require('./components/speaker/network');
-const administrator = require('./components/administrator/network');
+const usuario = require('./componentes/usuario/network');
+const auth = require('./componentes/auth/network');
+const curso = require('./componentes/curso/network');
+const estudiante = require('./componentes/estudiante/network');
+const ponente = require('./componentes/ponente/network');
+const administrador = require('./componentes/administrador/network');
 
 
 //app.use(bodyParser.json());
@@ -36,12 +36,12 @@ app.set('view engine', 'hbs');
 
 //handlebars rutas
 app.use('/', indexRouter);
-app.use('/usuario', user);
-app.use('/curso', course);
-app.use('/estudiante', student);
-app.use('/admin', administrator)
+app.use('/usuario', usuario);
+app.use('/curso', curso);
+app.use('/estudiante', estudiante);
+app.use('/admin', administrador)
+app.use('/ponente', ponente);
 
-app.use('/ponente', speaker)
 //aqui se agregan las rutas que se anteponen a otras
 
 //ultimo middleware, no poner nada debajo de esta linea

@@ -32,23 +32,12 @@
                     <div class="form-group row">
                         <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
                             <label>Pais de nacimiento</label>
-                            <span
-                                class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
-                                dir="ltr" style="width: 100%;" id="paisNombre" name="paisNombre">
-                                <span class="selection">
-                                    <span class="select2-selection select2-selection--single" role="combobox"
-                                        aria-haspopup="true" aria-expanded="false" tabindex="0"
-                                        aria-labelledby="select2-ncb3-container">
-                                        <span class="select2-selection__rendered" id="select2-ncb3-container"
-                                            role="textbox" aria-readonly="true" title="Alaska">Alaska</span>
-                                        <span class="select2-selection__arrow" role="presentation">
-                                            <option disabled selected>Elige el país de nacimiento</option>
-                                            <b role="presentation"></b>
-                                        </span>
-                                    </span>
-                                </span>
-                                <span class="dropdown-wrapper" aria-hidden="true"></span>
-                            </span>
+                            <select class="select2 form-control custom-select" id="paisNombre" name="paisNombre" style="width: 100%; height:36px;">
+                                    <option disabled selected>Selecione su país de nacimiento</option>
+                                    {{#each paises}}
+                                        <option value="{{pais_id}}">{{pais_nombre}}</option>
+                                    {{/each}}
+                            </select>
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
                             <label>Municipio de nacimiento</label>

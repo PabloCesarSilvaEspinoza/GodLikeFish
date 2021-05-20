@@ -1,9 +1,9 @@
 const fs = require('fs');
-const Controller = require('../components/administrator/index')
+const Controller = require('../componentes/administrador/index')
 
 module.exports = {
     crearCarpetaCurso: async function(req, res, next)  {
-        const responseDB = await Controller.getLastCourse();
+        const responseDB = await Controller.getUltimoCurso();
         const cursoID = responseDB[0].cursoID;
         global.ultimoCursoID = cursoID;
         const raiz = path.join(__dirname, '../');

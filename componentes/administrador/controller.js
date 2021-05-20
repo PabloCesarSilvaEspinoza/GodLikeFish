@@ -8,17 +8,17 @@ module.exports = function (injectedStore) {
     /*                       CURSOS                        */
     /*-----------------------------------------------------*/
 
-    function getLastCourse() {
+    function getUltimoCurso() {
         const VIEW = 'ver_Ultimo_Curso';
         return store.list(VIEW);
     }
 
-    function listCourses() {
+    function listCursos() {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
     }
 
-    function insertCourse(body) {
+    function insertCurso(body) {
         const {
             nombreCurso, claveCurso, descripcionCurso, fechaInicioCurso, fechaFinCurso, horarioInicioCurso,
             horarioFinCurso, fechaInscripcionInicioCurso, fechaInscripcionFinCurso, plataformaCurso, areaCurso,
@@ -34,16 +34,16 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
-    function insertMultimediaCourse(cursoID, temarioCurso, fotoCurso) {
+    function insertMultimediaCurso(cursoID, temarioCurso, fotoCurso) {
         const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
 
         return store.insert(PROCEDURE);
     }
 
     return {
-        getLastCourse,
-        listCourses,
-        insertCourse,
-        insertMultimediaCourse,
+        getUltimoCurso,
+        listCursos,
+        insertCurso,
+        insertMultimediaCurso,
     };
 }
