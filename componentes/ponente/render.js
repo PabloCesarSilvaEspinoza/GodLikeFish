@@ -3,7 +3,38 @@ const Controller = require('./index');
 path = require('path')
 
 module.exports = {
-    getAgregarTarea: async function(req, res, next){
+
+    getDashboardPonente: async function (req, res, next) {
+        res.render('ponente/p1_dashboard', {
+            ponente:true
+        });
+    },
+    getConsultarCursoPE1: async function (req, res, next) {
+        res.render('ponente/p2_consultarCursoE1_v2', {
+            ponente:true
+        });
+    },
+    getConsultarCursoPE2: async function (req, res, next) {
+        res.render('ponente/p2_consultarCursoE2_v2', {
+            ponente:true
+        });
+    },
+    getConsultarAlumnos: async function (req, res, next) {
+        res.render('ponente/p3_consultarAlumnos', {
+            ponente:true
+        });
+    },
+    getCalificarTarea: async function (req, res, next) {
+        res.render('ponente/p4_calificarTarea', {
+            ponente:true
+        });
+    },
+    getSoporte: async function (req, res, next) {
+        res.render('usuario/u4_soporte', {
+            ponente:true
+        });
+    },
+    /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
     },
     postAgregarTarea: async function (req, res, next) {
@@ -29,5 +60,5 @@ module.exports = {
         const direccion = `${raiz}archivosPrueba/${archivo}`
 
         res.download(`${direccion}`)
-    },
+    }, */
 };

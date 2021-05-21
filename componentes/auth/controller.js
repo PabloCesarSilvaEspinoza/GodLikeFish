@@ -42,11 +42,10 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Puestos';
         return store.list(VIEW);
     }
-
-    async function validarUsuario(correo, password){
-        console.log(chalk.white.bgMagenta.bold("recibi:")+" "+ correo + " "+ password);
+    async function validarUsuario(correo, password) {
+        console.log(chalk.white.bgMagenta.bold("recibi:") + " " + correo + " " + password);
         const data = await get(correo);
-        if(data[0].passwordUsuario === password){
+        if (data[0].passwordUsuario === password) {
             //borramos el password de las variables del programa no de la BD
             delete data[0].passwordUsuario;
             //crear usuario
@@ -55,10 +54,11 @@ module.exports = function (injectedStore) {
                 rol: data[0].tipoUsuario
             }
             return usuario;
-        }else{
+        } else {
             throw error = new Error('Información Invalida');
         }
     }
+    function cargarRutas(rol) {
 
     function insertUsuario(body) {
         const {
@@ -101,36 +101,5 @@ module.exports = function (injectedStore) {
         insertUsuario,
         insertMultimediaUsuario,
     }
-}
 
-/* 
-    async function login(correo, password){ //devolver promesa
-        console.log(chalk.white.bgMagenta.bold("recibi:")+" "+ correo + " "+ password);
-        const data = await get(correo);
-        // Cuando se implemente el hash de password en el registro vamos a validar así:
-        //return bcrypt.compare(password, data[0].passwordUsuario)
-        //.then(sonIguales =>{
-        //    if(sonIguales === true){
-        //        return auth.sign(data[0].idUsuario);
-        //    }else{
-        //        throw error = new Error('Información Invalida');
-        //    }
-        //});
-        
-        if(data[0].passwordUsuario === password){
-            //borramos el password del programa no de la BD
-            delete data[0].passwordUsuario;
-            //crear payload del token
-            const payload = {
-                sub: data[0].idUsuario,
-                correo,
-                rol: data[0].tipoUsuario
-            }
-            //console.log(payload);
-            //generar token
-            return auth.sign(payload);
-        }else{
-            throw error = new Error('Información Invalida');
-        }
-    }
- */
+}
