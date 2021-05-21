@@ -14,6 +14,7 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: "/"
 }));
 
+router.get('/logOut', render.getLogOut);
 router.get('/validarPermisos', render.getValidarPermisos);
 
 passport.use(new passportLocal(function (username, password, done) {

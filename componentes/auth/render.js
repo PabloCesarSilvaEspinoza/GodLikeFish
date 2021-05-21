@@ -7,6 +7,10 @@ module.exports = {
             select2: true
         });
     },
+    getLogOut: async function (req, res, next) {
+        req.session.destroy();
+        res.redirect('/');
+    },
     getConfirmarCorreo: async function (req, res, next) {
         res.render('usuario/u2_confirmarCorreo', {
             general: true

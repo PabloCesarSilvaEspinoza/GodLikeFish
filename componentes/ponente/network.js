@@ -3,12 +3,12 @@ const router = express.Router();
 const upload = require('../../middlewares/upload')
 const render = require('./render');
 
-router.get('/dashboardPonente', render.postDashboardPonente);
-router.get('/ConsultarCursoPEI', render.postConsultarCursoPE1);
-router.get('/ConsultarCursoPEII', render.postConsultarCursoPE2);
-router.get('/Consultarlumnos', render.postConsultarAlumnos);
-router.get('/CalificarTarea', render.postCalificarTarea);
-
+router.get('/dashboardPonente', render.getDashboardPonente);
+router.get('/consultarCursoPEI', render.getConsultarCursoPE1);
+router.get('/consultarCursoPEII', render.getConsultarCursoPE2);
+router.get('/consultarlumnos', render.getConsultarAlumnos);
+router.get('/calificarTarea', render.getCalificarTarea);
+router.get('/soporte', render.getSoporte);
 /* router.get('/AgregarTareaPrueba', render.getAgregarTarea);
 router.post('/AgregarTarea', upload.array('multimediaTarea'), render.postAgregarTarea);
 router.get('/DescargarTarea', render.getDescargarArchivos); */

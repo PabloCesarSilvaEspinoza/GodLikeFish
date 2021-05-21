@@ -4,25 +4,34 @@ path = require('path')
 
 module.exports = {
 
-    postDashboardPonente: async function (req, res, next) {
+    getDashboardPonente: async function (req, res, next) {
         res.render('ponente/p1_dashboard', {
-            
+            ponente:true
         });
     },
-    postConsultarCursoPE1: async function (req, res, next) {
+    getConsultarCursoPE1: async function (req, res, next) {
         res.render('ponente/p2_consultarCursoE1_v2', {
+            ponente:true
         });
     },
-    postConsultarCursoPE2: async function (req, res, next) {
+    getConsultarCursoPE2: async function (req, res, next) {
         res.render('ponente/p2_consultarCursoE2_v2', {
+            ponente:true
         });
     },
-    postConsultarAlumnos: async function (req, res, next) {
+    getConsultarAlumnos: async function (req, res, next) {
         res.render('ponente/p3_consultarAlumnos', {
+            ponente:true
         });
     },
-    postCalificarTarea: async function (req, res, next) {
+    getCalificarTarea: async function (req, res, next) {
         res.render('ponente/p4_calificarTarea', {
+            ponente:true
+        });
+    },
+    getSoporte: async function (req, res, next) {
+        res.render('usuario/u4_soporte', {
+            ponente:true
         });
     },
     /* getAgregarTarea: async function(req, res, next){
