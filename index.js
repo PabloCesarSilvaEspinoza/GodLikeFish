@@ -18,6 +18,8 @@ const estudiante = require('./componentes/estudiante/network');
 const ponente = require('./componentes/ponente/network');
 const administrador = require('./componentes/administrador/network');
 
+let {verificar} = require('./componentes/auth/sessionChecker');
+let {verificacionEspecial} = require('./componentes/auth/sessionChecker');
 //const secretSession = config.session.secret;
 //const cookieSession = config.cookie.secret;
 const store = {
@@ -27,19 +29,14 @@ const store = {
     database: config.mysql.database
 }
 
-//const {verificar} = require('./components/auth/sessionChecker');
 
 //¿En que estas trabajando?    1)Postman 2)handlebars
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(cookieParser());
 app.use(express.static('public'));
 
 //Cookies
-/*app.use(cookieParser({
-    secret: 'DQcbdR94myYkuVHCT2SGJLj6aZvNsopl'
-    })
-);*/
 
 //express session
 app.use(session({
@@ -64,7 +61,6 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 
 //handlebars rutas
-app.use('/', indexRouter);
 app.use('/', auth)
 //app.use('/estudiante', student);
 
@@ -76,12 +72,13 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/usuario', usuario);
-app.use('/curso', curso);
-app.use('/estudiante', estudiante);
-app.use('/admin', administrador)
-app.use('/ponente', ponente);
+app.use('/usuario', verificar, usuario);
+app.use('/curso', verificar,curso);
+app.use('/estudiante', verificar, estudiante);
+app.use('/admin', verificar, administrador)
+app.use('/ponente', verificar, ponente);
 
+app.use('/',verificar, indexRouter);
 //aqui se agregan las rutas que se anteponen a otras
 
 //ultimo middleware, no poner nada debajo de esta linea

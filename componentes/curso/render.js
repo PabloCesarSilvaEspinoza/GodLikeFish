@@ -29,6 +29,7 @@ module.exports = {
         });
     },
     getAdministrarCursos: async function(req, res, next){
+        console.log("he we, mira, tengo esto: "+req.user.rol);
         const cursos = await Controller.listCursos();
         res.render('course/administrarCursos',{
             dataTablesExport:true,

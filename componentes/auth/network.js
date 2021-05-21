@@ -8,10 +8,12 @@ const chalk = require('chalk');
 const router = express.Router();
 
 
+
 router.get('/', render.postPaginaPrincipal);
 router.get('/confirmarCorreo', render.postConfirmarCorreo);
 
 router.post('/login',passport.authenticate('local', {
+    //esto cambia segun el rol del usuario
     successRedirect: "/primeraPrueba",
     failureRedirect: "/"
 }));
@@ -31,10 +33,14 @@ passport.use(new passportLocal(function (username,password, done){
 
 //serealización
 passport.serializeUser(function(user,done){
-    done(null, user.id)
+    done(null, user)
 });
 
 //deserialización
+passport.deserializeUser(function(user,done){
+    done(null, user)
+});
+/*
 passport.deserializeUser(function (id, done) {
     done(null,
         Controller.getUsuario(id)
@@ -45,7 +51,7 @@ passport.deserializeUser(function (id, done) {
                 response.error(req, res, 'Informacion invalida', 400);
             })
     )
-});
+});*/
 
 module.exports = router;
 
