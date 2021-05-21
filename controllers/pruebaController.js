@@ -1,5 +1,9 @@
+const Controller =  require('../componentes/auth/index');
 module.exports = {
+
     postPrimeraPrueba: async function(req, res, next){
+        //const usuario = await Controller.getUsuario(req.user);
+        console.log("he we, mira, tengo esto: "+req.user.rol);
         res.render('prueba/primeraPrueba',{
             breadcrumb:[
                 {
