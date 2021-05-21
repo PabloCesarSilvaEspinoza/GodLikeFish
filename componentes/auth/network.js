@@ -7,10 +7,16 @@ const Controller = require('./index');
 const chalk = require('chalk');
 const router = express.Router();
 
+//Para poder subir archivos de un usuario
+const upload = require('../../middlewares/subirArchivosUsuario')
+const {crearCarpetaUsuario} = require('../../middlewares/crearDirectorios')
+const dobleInput = upload.fields([{name: 'fotoUsuario'}, {name: 'tarjetonUsuario'}])
 
 
-router.get('/', render.postPaginaPrincipal);
-router.get('/confirmarCorreo', render.postConfirmarCorreo);
+router.post('/agregarUsuario', crearCarpetaUsuario, dobleInput, render.postAgregarUsuario);
+
+router.get('/', render.getPaginaPrincipal);
+router.get('/confirmarCorreo', render.getConfirmarCorreo);
 
 router.post('/login',passport.authenticate('local', {
     //esto cambia segun el rol del usuario

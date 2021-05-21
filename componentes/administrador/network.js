@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../../middlewares/upload')
+const upload = require('../../middlewares/subirArchivosCurso')
 const {crearCarpetaCurso} = require('../../middlewares/crearDirectorios')
 const render = require('./render');
 

@@ -13,6 +13,11 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    function getUltimoUsuario() {
+        const VIEW = 'ver_Ultimo_Usuario';
+        return store.list(VIEW);
+    }
+
     function listCursos() {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
@@ -42,6 +47,7 @@ module.exports = function (injectedStore) {
 
     return {
         getUltimoCurso,
+        getUltimoUsuario,
         listCursos,
         insertCurso,
         insertMultimediaCurso,

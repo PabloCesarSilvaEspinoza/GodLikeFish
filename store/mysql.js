@@ -4,7 +4,7 @@ const config = require('../config');
 let connection;
 
 function handleConn() {
-    connection = mysql.createConnection(config.mysql);
+    connection = mysql.createConnection(config.mysqlp);
     connection.connect((err) => {
         if(err){
             console.log('DB ERROR', err);
