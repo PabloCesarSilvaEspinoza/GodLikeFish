@@ -78,7 +78,7 @@ module.exports = function (injectedStore) {
             '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, '${area}',
             '${puesto}', '${antiguedad}'
             )`
-            console.log(PROCEDURE);
+            
         return store.insert(PROCEDURE);
     }
 
@@ -87,8 +87,6 @@ module.exports = function (injectedStore) {
         const PROCEDURE = `CALL agregar_Multimedia_Usuario( 
             ${usuarioID}, '${fotoUsuario}', '${tarjetonUsuario}'
             )`
-
-        console.log(PROCEDURE);
 
         return store.insert(PROCEDURE);
     }
