@@ -5,27 +5,36 @@ path = require('path')
 
 module.exports = {
 
-    postDashboardAdministrador: async function (req, res, next) {
+    getDashboardAdministrador: async function (req, res, next) {
         res.render('administrador/d1_dashboard_v2', {
+            administrador: true
         });
     },
-    postAdministrarCursos: async function (req, res, next) {
+    getAdministrarCursos: async function (req, res, next) {
         res.render('administrador/d2_administrarCursos', {
+            administrador: true,
+            datatables:true,
+            dataTablesExport:true
         });
     },
     
-    postAdministrarUsuarios: async function (req, res, next) {
+    getAdministrarUsuarios: async function (req, res, next) {
         res.render('administrador/d3_administrarUsuarios', {
+            administrador: true,
+            datatables:true,
+            dataTablesExport:true
         });
     },
 
-    postConsultarCursoE1: async function (req, res, next) {
+    getConsultarCursoE1: async function (req, res, next) {
         res.render('administrador/d4_consultarCursoE1', {
+            administrador: true
         });
     },
 
-    postConsultarCursoE2: async function (req, res, next) {
+    getConsultarCursoE2: async function (req, res, next) {
         res.render('administrador/d4_consultarCursoE2', {
+            administrador: true
         });
     },
     /*getAdministrarCursos: async function(req, res, next){
