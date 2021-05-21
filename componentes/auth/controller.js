@@ -29,10 +29,12 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Paises';
         return store.list(VIEW);
     }
+
     function listEstados() {
         const VIEW = 'ver_Estados';
         return store.list(VIEW);
     }
+
     function listMunicipios() {
         const VIEW = 'ver_Municipios';
         return store.list(VIEW);
@@ -42,6 +44,7 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Puestos';
         return store.list(VIEW);
     }
+
     async function validarUsuario(correo, password) {
         console.log(chalk.white.bgMagenta.bold("recibi:") + " " + correo + " " + password);
         const data = await get(correo);
@@ -58,7 +61,6 @@ module.exports = function (injectedStore) {
             throw error = new Error('Información Invalida');
         }
     }
-    function cargarRutas(rol) {
 
     function insertUsuario(body) {
         const {

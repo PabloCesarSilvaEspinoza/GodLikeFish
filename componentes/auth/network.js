@@ -37,12 +37,10 @@ passport.use(new passportLocal(function (username, password, done) {
         })
 }));
 
-//serealización
 passport.serializeUser(function (user, done) {
     done(null, user)
 });
 
-//deserialización
 passport.deserializeUser(function (user, done) {
     done(null, user)
 });

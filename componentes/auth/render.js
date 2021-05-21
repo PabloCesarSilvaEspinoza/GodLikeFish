@@ -1,22 +1,6 @@
 const Controller = require('./index');
 
 module.exports = {
-    getPaginaPrincipal: async function(req, res, next){
-        
-        const paises = await Controller.listPaises();
-        const estados = await Controller.listEstados();
-        const municipios = await Controller.listMunicipios();
-        const puestos = await Controller.listPuestos();
-        res.render('general/paginaPrincipal',{
-            general: true,
-            pickadate: true,
-            select2: true,
-            paises,
-            municipios,
-            estados,
-            puestos,
-        });
-    },
     postAgregarUsuario: async function (req, res, next){
         const respuestaBD = await Controller.insertUsuario(req.body);
         const usuarioID = respuestaBD[0][0].ID;
@@ -32,9 +16,18 @@ module.exports = {
         res.redirect('/')
     },
     getLogin: async function (req, res, next) {
-        res.render('usuario/u1_login', {
+        const paises = await Controller.listPaises();
+        const estados = await Controller.listEstados();
+        const municipios = await Controller.listMunicipios();
+        const puestos = await Controller.listPuestos();
+        res.render('usuario/u1_login',{
             general: true,
-            select2: true
+            pickadate: true,
+            select2: true,
+            paises,
+            municipios,
+            estados,
+            puestos,
         });
     },
     getLogOut: async function (req, res, next) {
