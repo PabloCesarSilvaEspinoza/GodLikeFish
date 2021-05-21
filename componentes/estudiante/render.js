@@ -2,7 +2,29 @@ const student = require('./index');
 const Controller = require('./index');
 
 module.exports = {
-    getVerTareas:async function(req, res, next){
+
+    postDashboardAlumno: async function (req, res, next) {
+        res.render('alumno/a1_dashboard', {
+        });
+    },
+    postMisAsignaciones: async function (req, res, next) {
+        res.render('alumno/a2_misAsignaciones', {
+        });
+    },
+    postConsultarCursoE1: async function (req, res, next) {
+        res.render('alumno/a3_consultarCursoE1', {
+        });
+    },
+    postConsultarCursoE2: async function (req, res, next) {
+        res.render('alumno/a3_consultarCursoE2', {
+        });
+    },
+    postConsultarCursoE3: async function (req, res, next) {
+        res.render('alumno/a3_consultarCursoE3', {
+        });
+    },
+
+    /* getVerTareas:async function(req, res, next){
         const cursos= await Controller.list();
      },
 
@@ -20,5 +42,6 @@ module.exports = {
     putEditarTarea: async function(req, res, next){
         await Controller.update(req.body);
        res.redirect('/');
-    },
+    }, */
+
 };

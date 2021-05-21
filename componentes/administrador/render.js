@@ -4,7 +4,31 @@ const fs = require('fs');
 path = require('path')
 
 module.exports = {
-    getAdministrarCursos: async function(req, res, next){
+
+    postDashboardAdministrador: async function (req, res, next) {
+        res.render('administrador/d1_dashboard_v2', {
+        });
+    },
+    postAdministrarCursos: async function (req, res, next) {
+        res.render('administrador/d2_administrarCursos', {
+        });
+    },
+    
+    postAdministrarUsuarios: async function (req, res, next) {
+        res.render('administrador/d3_administrarUsuarios', {
+        });
+    },
+
+    postConsultarCursoE1: async function (req, res, next) {
+        res.render('administrador/d4_consultarCursoE1', {
+        });
+    },
+
+    postConsultarCursoE2: async function (req, res, next) {
+        res.render('administrador/d4_consultarCursoE2', {
+        });
+    },
+    /*getAdministrarCursos: async function(req, res, next){
         const cursos = await Controller.listCursos();
         res.render('course/administrarCursos',{
             dataTablesExport:true,
@@ -18,5 +42,5 @@ module.exports = {
         const temarioCurso = `${cursoID}/${req.files.temarioCurso[0].originalname}`;
         await Controller.insertMultimediaCurso(cursoID, temarioCurso, fotoCurso)
         res.redirect('/admin/administrarCursos')
-    },
+    }, */
 };

@@ -1,14 +1,14 @@
 module.exports = {
-    api:{
+    api: {
         port: process.env.API_PORT || 3000,
     },
-    jwt:{
+    jwt: {
         secret: process.env.JWT_SECRET || 'sbLDR1gm8TxSEe3H7YFzqn9Wjh0oMVfK',
     },
-    session:{
+    session: {
         secret: process.env.SECRET_SESION || 'b5fe93bdc369efdc4fd41b5e79bede4e5880a0f1',
     },
-    cookie:{
+    cookie: {
         secret: process.env.SECRET_COOKIE || 'DQcbdR94myYkuVHCT2SGJLj6aZvNsopl',
     },
     mysql: {
