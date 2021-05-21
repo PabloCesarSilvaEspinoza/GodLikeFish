@@ -3,27 +3,39 @@ const Controller = require('./index');
 
 module.exports = {
 
-    postDashboardAlumno: async function (req, res, next) {
+    getDashboardAlumno: async function (req, res, next) {
         res.render('alumno/a1_dashboard', {
+            estudiante:true
         });
     },
-    postMisAsignaciones: async function (req, res, next) {
+    getMisAsignaciones: async function (req, res, next) {
         res.render('alumno/a2_misAsignaciones', {
+            estudiante:true
         });
     },
-    postConsultarCursoE1: async function (req, res, next) {
+    getConsultarCursoE1: async function (req, res, next) {
         res.render('alumno/a3_consultarCursoE1', {
+            estudiante:true
         });
     },
-    postConsultarCursoE2: async function (req, res, next) {
+    getConsultarCursoE2: async function (req, res, next) {
         res.render('alumno/a3_consultarCursoE2', {
+            estudiante:true,
+            chartist:true,
+            c3:true,
+            dropzone:true
         });
     },
-    postConsultarCursoE3: async function (req, res, next) {
+    getConsultarCursoE3: async function (req, res, next) {
         res.render('alumno/a3_consultarCursoE3', {
+            estudiante:true
         });
     },
-
+    getSoporte: async function (req, res, next) {
+        res.render('usuario/u4_soporte', {
+            estudiante:true
+        });
+    },
     /* getVerTareas:async function(req, res, next){
         const cursos= await Controller.list();
      },

@@ -6,6 +6,7 @@ module.exports = {
 
     postDashboardPonente: async function (req, res, next) {
         res.render('ponente/p1_dashboard', {
+            
         });
     },
     postConsultarCursoPE1: async function (req, res, next) {

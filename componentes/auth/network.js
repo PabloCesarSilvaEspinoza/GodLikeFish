@@ -5,8 +5,9 @@ const render = require('./render');
 const Controller = require('./index');
 const router = express.Router();
 
-router.get('/', render.getPaginaPrincipal);
+router.get('/', render.getLogin);
 router.get('/confirmarCorreo', render.getConfirmarCorreo);
+router.get('/reestablecerContraseña', render.getReestablecerContraseña);
 
 router.post('/login', passport.authenticate('local', {
     successRedirect: "/validarPermisos",

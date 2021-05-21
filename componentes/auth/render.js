@@ -1,14 +1,19 @@
 const Controller = require('./index');
 
 module.exports = {
-    getPaginaPrincipal: async function (req, res, next) {
-        res.render('general/paginaPrincipal', {
+    getLogin: async function (req, res, next) {
+        res.render('usuario/u1_login', {
             general: true,
             select2: true
         });
     },
     getConfirmarCorreo: async function (req, res, next) {
-        res.render('general/confirmarCorreo', {
+        res.render('usuario/u2_confirmarCorreo', {
+            general: true
+        });
+    },
+    getReestablecerContraseña: async function (req, res, next) {
+        res.render('usuario/u3_reestablecerContraseña', {
             general: true
         });
     },
@@ -16,7 +21,7 @@ module.exports = {
         console.log("estoy validando los permisos de: " + req.user.rol);
         switch (req.user.rol) {
             case "Estudiante":
-                res.redirect('/estudiante/dashboardAlumno');
+                res.redirect('/estudiante/dashboardEstudiante');
                 break;
             case "Ponente":
                 res.redirect('/ponente/dashboardPonente');
