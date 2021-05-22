@@ -7,21 +7,21 @@ module.exports = {
         const cursoID = respuestaDB[0].cursoID;
         global.ultimoCursoID = cursoID;
         const raiz = path.join(__dirname, '../');
-        const direccion = `${raiz}public/assets/multimedia/courses/${cursoID}`
+        const direccion = `${raiz}public/assets/multimedia/cursos/${cursoID}`
         if(!fs.existsSync(direccion)){
             fs.mkdir(direccion, error => {
                 if (error) {
-                    console.log(`Carpeta courses ${error.message}`);
+                    console.log(`Carpeta cursos ${error.message}`);
                 }
             });
-            fs.mkdir(direccion + '/resources', error => {
+            fs.mkdir(direccion + '/recursos', error => {
                 if(error){
-                    console.log(`Carpeta resources ${error.message}`);
+                    console.log(`Carpeta recursos ${error.message}`);
                 }
             });
-            fs.mkdir(direccion + '/homewroks', error => {
+            fs.mkdir(direccion + '/tareas', error => {
                 if(error){
-                    console.log(`Carpeta homewroks ${error.message}`);
+                    console.log(`Carpeta tareas ${error.message}`);
                 }
             });
         }

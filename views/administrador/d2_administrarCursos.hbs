@@ -23,102 +23,87 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="form-valide" id="agregarCurso" method="POST" action="#">
+                                    <form action="agregarCurso" method="POST" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-md-3 text-center justify-content-center no-block">
-                                                <img src="../../assets/images/users/1.jpg" width="150"
-                                                    class="rounded-circle" alt="user">
+                                                <img src="../../assets/images/users/1.jpg" width="150" alt="user">
                                                 <h5 class="mt-3">Imagen del curso</h5>
-                                                <fieldset class="form-group mt-3">
-                                                    <input type="file" class="form-control-file" id="exampleInputFile">
-                                                </fieldset>
+                                                <input type="file" name="fotoCurso" id="fotoCurso" class="form-control-file" required/>
                                             </div>
                                             <div class="col-md-12 col-lg-9">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales
-                                                        </h4>
+                                                        <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
                                                         <hr>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Nombre del Curso <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="text" id="nombreCurso" class="form-control"
-                                                                placeholder="Ejemplo del nombre de un curso" required>
-                                                            <small class="form-control-feedback ml-1"> Maximo 255
-                                                                caracteres </small>
+                                                            <h5 class="ml-1">Nombre del Curso <span class="text-danger">*</span></h5>
+                                                            <input type="text" id="nombreCurso" name="nombreCurso" class="form-control" value="Curso de Prueba" placeholder="Ejemplo del nombre de un curso" autocomplete="off" required>
+                                                            <small class="form-control-feedback ml-1"> Maximo 255 caracteres </small> 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Área <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class=" form-control custom-select"
-                                                                style="width: 100%; height:36px;" required>
-                                                                <option>Select</option>
-                                                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                </optgroup>
+                                                            <h5 class="ml-1">Área<span class="text-danger">*</span></h5>
+                                                            <select class="form-control custom-select" name="areaCurso" id="areaCurso" style="width: 100%; height:36px;" required>
+                                                                <option value="Accounting">Accounting</option>
+                                                                <option value="Business Development">Business Development</option>
+                                                                <option value="Legal">Legal</option>
+                                                                <option value="Human Resources">Human Resources</option>
+                                                                <option value="Engineering">Engineering</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Tipo <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;" required>
-                                                                <option value="AK">Tipo 1</option>
-                                                                <option value="HI">Tipo 2</option>
-                                                                <option value="HI">Tipo 3</option>
-                                                                <option value="HI">Tipo 4</option>
-                                                                <option value="HI">Tipo 5</option>
+                                                            <h5 class="ml-1">Tipo<span class="text-danger">*</span></h5>
+                                                            <select class="form-control custom-select" name="tipoCurso" id="tipoCurso" style="width: 100%; height:36px;" required>
+                                                                <option value="Normativo">Normativo</option>
+                                                                <option value="Publico">Público</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3 col-lg-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Modalidad <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">En vivo</option>
-                                                                <option value="HI">Video</option>
+                                                            <h5 class="ml-1">Modalidad <span class="text-danger">*</span></h5>
+                                                            <select class="form-control custom-select" name="modalidadCurso" id="modalidadCurso" style="width: 100%; height:36px;">
+                                                                <option value="enVivo">En vivo</option>
+                                                                <option value="Diferido">Diferido</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 col-lg-2">
                                                         <div class="form-group">
                                                             <h5 class="ml-1">Capacidad </h5>
-                                                            <input type="number" id="capacidad" class="form-control"
-                                                                placeholder="0">
-                                                            <small class="form-control-feedback ml-1"> Utilice 0 para
-                                                                capacidad indefinida </small>
+                                                            <select class="form-control custom-select" name="capacidadCurso" id="capacidadCurso" style="width: 100%; height:36px;" required>
+                                                                <option value="null">Ilimitado</option>
+                                                                <option value="10">10</option>
+                                                                <option value="25">25</option>
+                                                                <option value="50">50</option>
+                                                                <option value="75">75</option>
+                                                                <option value="100">100</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Ponente <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">Nombre Completo Ponente</option>
-                                                                <option value="HI">Nombre Completo Segundo Ponente
-                                                                </option>
+                                                            <h5 class="ml-1">Ponente <span class="text-danger">*</span></h5>
+                                                            <select class="form-control custom-select" name="ponenteID" id="ponenteID" style="width: 100%; height:36px;">
+                                                                <option value="1">Pablo</option>
+                                                                <option value="2">César</option>
+                                                                <option value="3">Aarón</option>
+                                                                <option value="5">Ricardo</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Plataforma <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">Classroom</option>
-                                                                <option value="HI">TEAMS</option>
-                                                                <option value="HI">Zoom</option>
+                                                            <h5 class="ml-1">Plataforma <span class="text-danger">*</span></h5>
+                                                            <select class="form-control custom-select" name="plataformaCurso" id="plataformaCurso" style="width: 100%; height:36px;">
+                                                                <option value="Google Classroom">Google Classroom</option>
+                                                                <option value="Microsoft Teams">Microsift Teams</option>
+                                                                <option value="Zoom">Zoom</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -127,27 +112,20 @@
                                             <div class="col-md-7 col-lg-7">
                                                 <div class="form-group">
                                                     <h5 class="ml-1">Descripción <span class="text-danger">*</span></h5>
-                                                    <textarea class="form-control" rows="3"
-                                                        placeholder="Describe de que trata el curso aqui..."></textarea>
+                                                    <textarea class="form-control" name="descripcionCurso" id="descripcionCurso" rows="3" value="Descripción para el Curso de Prueba" placeholder="Describe de que trata el curso aqui..." autocomplete="off"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-5 col-lg-3">
                                                 <div class="form-group">
-                                                    <h5 class="ml-1 md-3">Temario <span class="text-danger">*</span>
-                                                    </h5>
-                                                    <fieldset class="form-group mt-4">
-                                                        <input type="file" class="form-control-file"
-                                                            id="exampleInputFile">
-                                                    </fieldset>
+                                                    <h5 class="ml-1 md-3">Temario</h5>
+                                                    <input type="file" name="temarioCurso" id="temarioCurso" class="form-control-file" required/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-lg-2 ">
                                                 <div class="form-group">
                                                     <h5 class="ml-1">Clave <span class="text-danger">*</span></h5>
-                                                    <input type="text" id="clave" class="form-control"
-                                                        placeholder="000000000">
-                                                    <small class="form-control-feedback ml-1"> Unicamente numeros
-                                                    </small>
+                                                    <input type="text" name="claveCurso" id="claveCurso" class="form-control" placeholder="000000000" autocomplete="off" required>
+                                                    <small class="form-control-feedback ml-1"> Unicamente numeros </small> 
                                                 </div>
                                             </div>
                                         </div>
@@ -155,36 +133,31 @@
                                             <div class="col-md-8">
                                                 <div class="row">
                                                     <div class="col-md-12 mt-3">
-                                                        <h4><i class="fas fa-calendar-alt mr-2"></i>Calendario del curso
-                                                        </h4>
+                                                        <h4><i class="fas fa-calendar-alt mr-2"></i>Calendario del curso</h4>
                                                         <hr>
                                                     </div>
                                                     <div class="col-md-6 col-lg-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-04-13"
-                                                                style="width: 100%; ">
+                                                            <h5 class="ml-1">Fecha de Inicio <span class="text-danger">*</span></h5>
+                                                            <input type="date" class="form-control" name="fechaInicioCurso"  id="fechaInicioCurso" value="2021-04-13" style="width: 100%; ">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <div class="form-group">
+                                                            <h5 class="ml-1">Fecha de Fin <span class="text-danger">*</span></h5>
+                                                            <input type="date" class="form-control" name="fechaFinCurso"  id="fechaFinCurso" value="2021-06-13" style="width: 100%; ">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-lg-3">
                                                         <div class="form-group">
                                                             <h5 class="ml-1">Hora Inicio </h5>
-                                                            <input type="time" class="form-control" value="22:33:00">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-06-13"
-                                                                style="width: 100%; ">
+                                                            <input type="time" class="form-control" name="horarioInicioCurso"  id="horaInicioCurso" value="22:33:00">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-lg-3">
                                                         <div class="form-group">
                                                             <h5 class="ml-1">Hora Fin </h5>
-                                                            <input type="time" class="form-control" value="22:33:00">
+                                                            <input type="time" class="form-control" name="horarioFinCurso"  id="horaFinCurso" value="22:33:00">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,24 +165,19 @@
                                             <div class="col-md-4">
                                                 <div class="row">
                                                     <div class="col-md-12 mt-3">
-                                                        <h4><i class="far fa-calendar-alt mr-2"></i>Calendario de
-                                                            inscripción</h4>
+                                                        <h4><i class="far fa-calendar-alt mr-2"></i>Calendario de inscripción</h4>
                                                         <hr>
                                                     </div>
                                                     <div class="col-md-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-04-13"
-                                                                style="width: 100%; ">
+                                                            <h5 class="ml-1">Fecha de Inicio <span class="text-danger">*</span></h5>
+                                                            <input type="date" class="form-control" name="fechaInscripcionInicioCurso" id="fechaInscripcionInicioCurso" value="2020-06-13" style="width: 100%; ">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-06-13"
-                                                                style="width: 100%; ">
+                                                            <h5 class="ml-1">Fecha de Fin <span class="text-danger">*</span></h5>
+                                                            <input type="date" class="form-control" name="fechaInscripcionFinCurso" id="fechaInscripcionFinCurso" value="2020-06-13" style="width: 100%; ">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -218,12 +186,8 @@
                                         <div class="form-group mt-4">
                                             <div class="col text-right">
                                                 <hr>
-                                                <button type="button"
-                                                    class="btn waves-effect waves-light btn-success"><i
-                                                        class="fas fa-save mr-2"></i>Guardar</button>
-                                                <button type="button" class="btn waves-effect waves-light btn-info"
-                                                    data-dismiss="modal"><i
-                                                        class="fas fa-times mr-2"></i>Cancelar</button>
+                                                <button type="submit"class="btn waves-effect waves-light btn-success"><i class="fas fa-save mr-2"></i>Guardar</button>
+                                                <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -578,214 +542,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each cursos}}
                                 <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-info">Activo</span></td>
-                                    <td>Nombre Completo Ponente</td>
+                                    <td>{{idCurso}}</td>
+                                    <td>{{nombreCurso}}</td>
+                                    <td>{{claveCurso}}</td>
+                                    <td>{{areaCurso}}</td>
+                                    <td>{{tipoCurso}}</td>
+                                    <td>{{modalidadCurso}}</td>
+                                    <td>{{capacidadCurso}}</td>
+                                    {{#if activoCurso}}
+                                        <td><span class="label label-info">Activo</span></td>
+                                    {{else}}
+                                        <td><span class="label label-danger">Inactivo</span></td>
+                                    {{/if}}
+                                    <td>{{nombrePonente}}</td>
                                     <td>
-                                        <a href="/administrador/consultarCursosEI"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
+                                        <a type="button" class="btn waves-effect waves-light btn-success btn-rounded" href="/curso/{{idCurso}}"><i class="fas fa-eye mr-2"></i> Consultar</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-info">Activo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEI"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-info">Activo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEI"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-info">Activo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEI"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-info">Activo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEI"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-info">Activo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEI"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEII"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEII"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEII"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEII"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEII"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEII"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Nombre Completo Curso Lorem Ipsum</td>
-                                    <td>002548841</td>
-                                    <td>Nombre Completo Area</td>
-                                    <td>Tipo Curso</td>
-                                    <td>Modalidad</td>
-                                    <td>50</td>
-                                    <td><span class="label label-danger">Inactivo</span></td>
-                                    <td>Nombre Completo Ponente</td>
-                                    <td>
-                                        <a href="/administrador/consultarCursosEII"
-                                            class="btn waves-effect waves-light btn-success btn-rounded"><i
-                                                class="fas fa-eye mr-2"></i> Consultar</a>
-                                    </td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>

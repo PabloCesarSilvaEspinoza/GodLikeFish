@@ -39,7 +39,7 @@ module.exports = {
     getDescargarTemario: async function(req, res, next){
         const consultaBD = await Controller.listTemariosCursos(req.params.id);
         const temario = consultaBD[0].cursoTemario;
-        const raiz = path.join(__dirname, '../../public/assets/multimedia/courses/');
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos/');
         const direccion = `${raiz}${temario}`
         res.download(`${direccion}`)
     }
