@@ -1,0 +1,213 @@
+<div class="auth-wrapper d-flex justify-content-center align-items-center" style="background-color: #F0F2F5">
+    <!-- <div class="auth-box"> -->
+
+    <!-- </div> -->
+    <div class="card text-center" style="border-radius: 10px; box-shadow: 2px 2px 5px rgba(197, 187, 197, 0.808) ">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <h1 class="card-title">Bienvenido <br><span class="small">Escuela Sindical SNTSS</span></h1>
+                    <span class="">
+                        <img style="height: 150px; width: 70%;" src="../../assets/images/big/bienvenidos.gif"
+                            alt="logo" />
+                    </span>
+                    <form class="form-horizontal mt-3" action="/login" method="post" >
+                        <div class="input-group mt-1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="ti-email"></i></span>
+                            </div>
+                            <input type="email" class="form-control form-control-lg" name="username" id="username"
+                                alt="Ingrese su correo" placeholder="Ingrese su correo" aria-describedby="basic-addon1"
+                                required>
+                        </div>
+                        <div class="input-group mt-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
+                            </div>
+                            <input type="password" class="form-control form-control-lg" name="password" id="password"
+                                placeholder="Ingrese su contraseña" aria-describedby="basic-addon1" required>
+                        </div>
+                        <div class="form-group text-center">
+                            <div class="col-xs-12 mt-3">
+                                <button class="btn btn-block btn-lg btn-info" type="submit">Entrar</button>
+                            </div>
+                        </div>
+                        <div class="form-group mb-0 mt-2">
+                            <div class="col-sm-12 text-center">
+                                ¿No tienes cuenta? <a href="" class="text-info ml-1" data-toggle="modal"
+                                    data-target="#registrarse"><b>Registrarse</b></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- modal registrarse -->
+                <div id="registrarse" class="modal">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10 text-center">
+                                        <h1 class="font-medium mt-2 text-center">Registro</h1>
+                                    </div>
+                                    <div class="col-sm-1 text-right">
+                                        <button type="button" class="close mt-2 mr-3" data-dismiss="modal"
+                                            aria-hidden="true">×</button>
+                                    </div>
+                                </div>
+                                <div class="card-body text-left">
+                                    <form action="agregarUsuario" method="POST" enctype="multipart/form-data">
+                                        <h3 class="font-medium mb-2">Gatos Generales</h3>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 col-md-12 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Correo<span class="text-danger">*</span></h5>
+                                                <input type="email" class="form-control" placeholder="Ingrese su correo" id="correo" name="correo" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Contraseña<span class="text-danger">*</span></h5>
+                                                <input type="password" class="form-control" placeholder="Elige un contraseña" id="password" name="password" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Confirmar contraseña<span class="text-danger">*</span></h5>
+                                                <input type="password" class="form-control" placeholder="Confirma tu contraseña" autocomplete="off" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <div class="col-sm-12 col-md-3 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Nombre(s)<span class="text-danger">*</span></h5>
+                                                <input type="text" class="form-control" placeholder="Ingrese el nombre(s) del usuario" name="nombres" id="nombres" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Primer Apellido<span class="text-danger">*</span></h5>
+                                                <input type="text" class="form-control" placeholder="Ingrese su primer apellido" name="pApellido" id="pApellido" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Segundo Apellido<span class="text-danger">*</span></h5>
+                                                <input type="text" class="form-control" placeholder="Ingrese el segundo apellido" name="sApellido" id="sApellido" autocomplete="off" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                                                <h5 class="ml-1">País de nacimiento<span class="text-danger">*</span></h5>
+                                                <select class="select2 form-control custom-select" id="paisNacimientoID" name="paisNacimientoID" style="width: 100%; height:36px;" required>
+                                                    <option disabled selected>Selecione su país de nacimiento</option>
+                                                    {{#each paises}}
+                                                    <option value="{{idPais}}">{{nombrePais}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                                                <h5 class="ml-1">Municipio de nacimiento</h5>
+                                                <select class="select2 form-control custom-select"  id="municipioNacimientoID" name="municipioNacimientoID" style="width: 100%; height:36px;" required>
+                                                    <option value="null" selected>Selecione su municipio de nacimiento</option>
+                                                    {{#each municipios}}
+                                                    <option value="{{idMunicipio}}">{{nombreMunicipio}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Fecha de nacimiento<span class="text-danger">*</span></h5>
+                                                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+                                            </div>
+                                        </div>
+                                        <h3 class="font-medium mb-2">Domicilio</h3>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <!--<div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                                                <h5 class="ml-1">Estado<span class="text-danger">*</span></h5>
+                                                <select class="select2 form-control custom-select" id="estadoNombre"
+                                                    name="estadoNombre" style="width: 100%; height:36px;">
+                                                    <option selected>Selecione su estado de recidencia</option>
+                                                    {{#each estados}}
+                                                    <option value="{{idEstado}}">{{nombreEstado}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div> -->
+                                            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                                                <h5 class="ml-1">Municipio<span class="text-danger">*</span></h5>
+                                                <select class="select2 form-control custom-select" id="municipioResidenciaID" name="municipioResidenciaID" style="width: 100%; height:36px;" required>
+                                                    <option disabled selected>Selecione su municipio de recidencia</option>
+                                                    {{#each municipios}}
+                                                    <option value="{{idMunicipio}}">{{nombreMunicipio}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Colonia<span class="text-danger">*</span></h5>
+                                                <input type="text" class="form-control" id="colonia" name="colonia" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Calle<span class="text-danger">*</span></h5>
+                                                <input type="text" class="form-control" placeholder="Ingresa la calle de tu domicilio" id="calle" name="calle" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Número Exterior<span class="text-danger">*</span></h5>
+                                                <input type="number" class="form-control" placeholder="Ingresa el numero exterior de tu domicilio" id="numeroExt" name="numeroExt" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Número Interior</h5>
+                                                <input type="number" class="form-control" placeholder="Ingresa el numero interior de tu domicilio" id="numeroInt" name="numeroInt" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <h3 class="font-medium mb-2">Datos Laborales</h3>
+                                        <hr>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Matrícula<span class="text-danger">*</span></h5>
+                                                <input type="text" class="form-control" placeholder="Ingresa tu matricula" id="matricula" name="matricula" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Fecha de inicio de labores<span class="text-danger">*</span></h5>
+                                                <input type="date" class="form-control" id="antiguedad" name="antiguedad" autocomplete="off" required>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Puesto<span class="text-danger">*</span></h5>
+                                                <select class="select2 form-control custom-select" id="puesto" name="puesto" style="width: 100%; height:36px;" required>
+                                                    <option disabled selected>Selecione su puesto</option>
+                                                    {{#each puestos}}
+                                                    <option value="{{nombrePuesto}}">{{nombrePuesto}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <h5 class="ml-1">Área<span class="text-danger">*</span></h5>
+                                                <select class="select2 form-control custom-select" id="area" name="area" style="width: 100%; height: 30px;">
+                                                    <option disabled selected>Selecione su área</option>
+                                                    <option value="Medica">Medica</option>
+                                                    <option value="Administrativa">Administrativa</option>
+                                                    <option value="Desarrollo personal">Desarrollo personal</option>
+                                                    <option value="Escuela Sindical">Escuela Sindical</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <div class="form-group">
+                                                    <h5 class="ml-1">Foto de perfil</h5>
+                                                    <input type="file" class="form-control-file" name="fotoUsuario" id="fotoUsuario"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                                                <div class="form-group">
+                                                    <h5 class="ml-1">Tarjetón PDF<span class="text-danger">*</span></h5>
+                                                    <input type="file" class="form-control-file" name="tarjetonUsuario" id="tarjetonUsuario" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 mb-2 mt-3 text-center">
+                                                <button type="submit"class="btn waves-effect waves-light btn-success"><i class="fas fa-graduation-cap mr-2"></i>Registrarse</button>
+                                                <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

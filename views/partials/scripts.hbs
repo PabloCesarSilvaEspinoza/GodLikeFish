@@ -1,0 +1,158 @@
+<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- apps -->
+<script src="../../dist/js/app.min.js"></script>
+<script src="../../dist/js/app.init.js"></script>
+<script src="../../dist/js/app-style-switcher.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="../../dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="../../dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="../../dist/js/custom.min.js"></script>
+<!--This page JavaScript -->
+<!--chartis chart-->
+<script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
+<script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+<!--c3 charts -->
+<script src="../../assets/extra-libs/c3/d3.min.js"></script>
+<script src="../../assets/extra-libs/c3/c3.min.js"></script>
+<!--chartjs -->
+<script src="../../assets/libs/chart.js/dist/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.js"
+    integrity="sha512-opXrgVcTHsEVdBUZqTPlW9S8+99hNbaHmXtAdXXc61OUU6gOII5ku/PzZFqexHXc3hnK8IrJKHo+T7O4GRIJcw=="
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
+
+{{#if graficasAdministrador}}
+<script>
+        var ctx = document.getElementById('GraficaMuestra');
+        {{#valores}}
+        var GraficaMuestra = new Chart(ctx, {
+            responsive: true,
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Registrados',
+                    'Activos',
+                    'Inactivos'
+                ],
+                datasets: [{
+                    data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
+        backgroundColor: [
+            'rgba(75, 192, 192)',
+            'rgb(255, 205, 86)',
+            'rgba(255, 99, 132)'
+        ],
+            hoverOffset: 1
+    }]
+        },
+    options: {
+        }
+    });
+    {{/valores}}
+</script>
+<script>
+     var ctx = document.getElementById('GraficaMuestra1');
+        {{#valores}}
+        var GraficaMuestra1 = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Registrados',
+                    'Activos',
+                    'Inactivos'
+                ],
+                datasets: [{
+                    data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgba(153, 102, 255, 1)'
+        ],
+            hoverOffset: 1
+    }]
+        },
+    options: {
+        }
+    });
+    {{/valores}}
+</script>
+<script>
+     var ctx = document.getElementById('GraficaMuestra2');
+        {{#valores}}
+        var GraficaMuestra2 = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Registrados',
+                    'Activos',
+                    'Inactivos'
+                ],
+                datasets: [{
+                    data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgba(153, 102, 255)'
+        ],
+            hoverOffset: 1
+    }]
+        },
+    options: {
+        }
+    });
+    {{/valores}}
+</script>
+{{/if}}
+
+{{#if dataTablesExport}}
+    <script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+    <script src="../../dist/js/pages/datatable/datatable-advanced.init.js"></script>
+{{/if}}
+{{#if pickadate}}
+<script src="../../assets/libs/pickadate/lib/compressed/legacy.js"></script>
+<script src="../../assets/libs/pickadate/lib/compressed/picker.time.js"></script>
+<script src="../../assets/libs/pickadate/lib/compressed/picker.date.js"></script>
+<script src="../../assets/libs/pickadate/lib/compressed/picker.js"></script>
+<script src="../../assets/libs/moment/moment.js"></script>
+<script src="../../assets/libs/daterangepicker/daterangepicker.js"></script>
+<script src="../../dist/js/pages/forms/datetimepicker/datetimepicker.init.js"></script>
+{{/if}}
+{{#if select2}}
+<script src="../../assets/libs/select2/dist/js/select2.full.min.js"></script>
+<script src="../../assets/libs/select2/dist/js/select2.min.js"></script>
+<script src="../../dist/js/pages/forms/select2/select2.init.js"></script>
+{{/if}}
+{{#if prism}}
+<script src="../../assets/extra-libs/prism/prism.js"></script>
+{{/if}}
+
+{{#if chartist}}
+<script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+{{/if}}
+
+{{#if c3}}
+<script src="../../assets/extra-libs/c3/d3.min.js"></script>
+    <script src="../../assets/extra-libs/c3/c3.min.js"></script>
+    <script src="../../assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="../../dist/js/pages/dashboards/dashboard7.js"></script>
+{{/if}}
+
+{{#if dropzone}}
+<script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+{{/if}}

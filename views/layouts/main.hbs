@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+        <!-- fontaweson by Pablo kit-->
+        <script src="https://kit.fontawesome.com/ab3362b7fa.js" crossorigin="anonymous"></script>
+        <title>Godlike Fish</title>
+        <!-- Custom CSS -->
+        <link href="../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+        <link href="../../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="../../dist/css/style.min.css" rel="stylesheet">
+        {{! Otros elementos que se pueden cargar}}
+        {{> header}}
+    </head>
+
+    <body>
+        {{>preloader}}
+        {{#unless general}}
+            <div id="main-wrapper">
+                {{!barra superior de color azul}}
+                {{>topbar}}
+                {{!menu de navegación lateral}}
+                {{>leftSidebar}}
+                <div class="page-wrapper">
+                    {{! Esto es lo que aparece abajo de la barra azul}}
+                    {{>pageBreadcrumb}}
+                    {{!el body contiene el container-fluid}}
+                    {{/unless}}
+                    {{{body}}}
+                    {{#unless general}}   
+                    {{>footer}}
+                </div>
+            </div>
+            {{!boton rojo de configuracion para cambiar los temas}}
+            {{>customizer}}
+        {{/unless}}
+        {{!todos los scripts que necesitamos}}
+        {{>scripts}}
+    </body>
+</html>
