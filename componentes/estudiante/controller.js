@@ -38,11 +38,47 @@ module.exports = function (injectedStore) {
     
         return store.insert(PROCEDURE);
     }
+
+    //----------------------- falta agregar el and al WHERE para el id de el uzuario
+    function listDatosCursoUsuario(id) {
+        const VIEW = 'Ver_Datos_Curso_Usuario';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listAnunciosUsuario(id) {
+        const VIEW = 'Ver_Anuncios_Usuario';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listRecursosUsuarioDocumentos(id) {
+        const VIEW = 'Ver_Recursos_Usuario_Documentos';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
     
+    function listRecursosUsuarioLinks(id) {
+        const VIEW = 'Ver_Recursos_Usuario_Links';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+    function listAsignacionesUsuario(id) {
+        const VIEW = 'Ver_Recurso';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+
     return {
         list,
         get,
         insert,
         update,
+        listDatosCursoUsuario,
+        listAnunciosUsuario,
+        listRecursosUsuarioDocumentos,
+        listRecursosUsuarioLinks,
+
     };
 }
