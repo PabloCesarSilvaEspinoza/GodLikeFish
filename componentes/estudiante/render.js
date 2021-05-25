@@ -19,11 +19,31 @@ module.exports = {
         });
     },
     getConsultarCursoE2: async function (req, res, next) {
+        //const usuarioID = (req.user.id);
+        const usuarioID = (29);
+        const datosCursoUsuario= await Controller.listDatosCursoUsuario(usuarioID); 
+        const AnunciosUsuario = await Controller.listAnunciosUsuario(usuarioID); 
+        const RecursosUsuarioDocumentos= await Controller.listRecursosUsuarioDocumentos(usuarioID); 
+        const RecursosUsuarioLinks= await Controller.listRecursosUsuarioLinks(usuarioID); 
+
+        console.log(datosCursoUsuario);
+        console.log(AnunciosUsuario);
+        console.log(RecursosUsuarioDocumentos);
+        console.log(RecursosUsuarioLinks);
+
         res.render('alumno/a3_consultarCursoE2', {
             estudiante:true,
             chartist:true,
             c3:true,
-            dropzone:true
+            dropzone:true,
+            dataTables: true,
+            alerta: true,
+            select2: true,
+            datosCursoUsuario,
+            AnunciosUsuario,
+            RecursosUsuarioDocumentos,
+            RecursosUsuarioLinks,
+
         });
     },
     getConsultarCursoE3: async function (req, res, next) {
@@ -36,6 +56,9 @@ module.exports = {
             estudiante:true
         });
     },
+
+   
+
     /* getVerTareas:async function(req, res, next){
         const cursos= await Controller.list();
      },
