@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="col-12 mt-4">
+        <div class="card">
+            <div class="card-body collapse show">
+                <h1 class="card-title">Estas en la pagina <span class="small">{{nombrePagina}}</span></h1>
+                <p class="card-text">{{descripcion}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Columna 1 -->
+        <div class="col-lg-4">
+            <div class="card">
+                <img class="card-img-top img-responsive" src="{{img1}}" alt="Card image cap">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center mb-3">
+                        <span><i class="ti-calendar"></i> 20 May 2018</span>
+                        <div class="ml-auto">
+                            <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 3 Comments</a>
+                        </div>
+                    </div>
+                    <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                    <p class="mb-0 mt-2">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                    <button class="btn btn-success btn-rounded waves-effect waves-light mt-3">Read more</button>
+                </div>
+            </div>
+        </div>
+        <!-- Columna 2 -->
+        <div class="col-lg-4">
+            <div class="card">
+                <img class="card-img-top img-responsive" src="{{img2}}" alt="Card image cap">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center mb-3">
+                        <span><i class="ti-calendar"></i> 19 May 2018</span>
+                        <div class="ml-auto">
+                            <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 5 Comments</a>
+                        </div>
+                    </div>
+                    {{#with card}}
+                    <h3 class="font-normal">{{titulo}} &amp; {{tituloParteDos}}</h3>
+                    <p class="mb-0 mt-2">{{descripcionCard}}</p>
+                    {{/with}}
+                    <button class="btn btn-success btn-rounded waves-effect waves-light mt-3">Read more</button>
+                </div>
+            </div>
+        </div>
+        <!-- Columna 3 -->
+        <div class="col-lg-4">
+            <div class="card">
+                <img class="card-img-top img-responsive" src="{{img3}}" alt="Card image cap">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center mb-3">
+                        <span><i class="ti-calendar"></i> 29 May 2018</span>
+                        <div class="ml-auto">
+                            <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 6 Comments</a>
+                        </div>
+                    </div>
+                    <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                    <p class="mb-0 mt-2">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                    <button class="btn btn-success btn-rounded waves-effect waves-light mt-3">Read more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="/primeraPrueba">
+                <h4 class="text-center text-dark">Primera Pagina</h4>
+                <h2 class="text-muted font-light">Variables</h2>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="/segundaPrueba">
+                <h4 class="text-center text-warning">Segunda Pagina</h4>
+                <h2 class="text-muted font-light">Condicionales</h2>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="/terceraPrueba">
+                <h4 class="text-center text-cyan">Tercera Pagina</h4>
+                <h2 class="text-muted font-light">Each</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

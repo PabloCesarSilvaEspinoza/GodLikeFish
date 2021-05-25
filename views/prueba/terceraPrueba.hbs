@@ -1,0 +1,84 @@
+<div class="container-fluid"> 
+    <div class="row">
+        <div class="col-12 mt-4">
+            <div class="card">
+                <div class="card-body collapse show">
+                    <h1 class="card-title">Estas en la pagina <span class="small">{{nombrePagina}}</span></h1>
+                    <p class="card-text">{{descripcion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#if administrador}}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="zero_config" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each usuarios}}
+                                    <tr>
+                                        <td>{{nombre}}</td>
+                                        <td>{{position}}</td>
+                                        <td>{{office}}</td>
+                                        <td>{{age}}</td>
+                                        <td>{{startDate}}</td>
+                                        <td>{{salary}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="/primeraPrueba">
+                <h4 class="text-center text-dark">Primera Pagina</h4>
+                <h2 class="text-muted font-light">Variables</h2>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="/segundaPrueba">
+                <h4 class="text-center text-warning">Segunda Pagina</h4>
+                <h2 class="text-muted font-light">Condicionales</h2>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="/terceraPrueba">
+                <h4 class="text-center text-cyan">Tercera Pagina</h4>
+                <h2 class="text-muted font-light">Each</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
