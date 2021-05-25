@@ -7,7 +7,13 @@ module.exports = {
 
     getDashboardAdministrador: async function (req, res, next) {
         res.render('administrador/d1_dashboard_v2', {
-            administrador: true
+            administrador: true,
+            graficasAdministrador : true,
+             valores:[{
+             valor1: 18,
+             valor2: 36,
+             valor3: 10
+            }]
         });
     },
     getAdministrarCursos: async function (req, res, next) {
@@ -17,6 +23,12 @@ module.exports = {
             datatables:true,
             dataTablesExport:true,
             cursos,
+            graficasAdministrador : true,
+             valores:[{
+             valor1: 18,
+             valor2: 36,
+             valor3: 10
+            }]
         });
     },
     
@@ -24,7 +36,13 @@ module.exports = {
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
-            dataTablesExport:true
+            dataTablesExport:true,
+            graficasAdministrador : true,
+             valores:[{
+             valor1: 18,
+             valor2: 36,
+             valor3: 10
+            }]
         });
     },
 
