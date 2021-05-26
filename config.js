@@ -19,8 +19,8 @@ module.exports = {
     },
     mysqlp: {
         host: process.env.MYSQL_HOST || 'localhost',
-        user: process.env.MYSQL_USER || 'root',
-        password: process.env.MYSQL_PASSWORD || 'password',
-        database: process.env.MYSQL_DB || 'base24052021',
+        user: process.env.MYSQL_USER || 'Fish',
+        password: process.env.MYSQL_PASSWORD || 'uOjds8_Hjans3',
+        database: process.env.MYSQL_DB || 'lmsp',
     }
 }

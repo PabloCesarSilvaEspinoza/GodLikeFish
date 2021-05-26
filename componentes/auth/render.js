@@ -59,4 +59,17 @@ module.exports = {
                 break;
         }
     },
+    //Para las rutas de Pruebas
+    getPruebas: async function (req, res, next) {
+        await Controller.enviarCorreo(
+            "Remitente",
+            "browntth@icloud.com",
+            "Prueba Nodemailer",
+            "Ejemplo ..."
+        );
+        res.render('prueba/pruebasPablo',{
+            que: "Envío de Correos",
+            debeDe: "enviar el correo y mostrar un mensaje en la consola de que se ha envíado"
+        });
+    },
 };

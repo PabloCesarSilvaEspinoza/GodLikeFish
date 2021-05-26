@@ -17,7 +17,7 @@ const administrador = require('./componentes/administrador/network');
 let { verificar } = require('./componentes/auth/sessionChecker');
 let { verificarPonente } = require('./componentes/auth/sessionChecker');
 let { verificarEstudiante } = require('./componentes/auth/sessionChecker');
-let { verificacionEspecial } = require('./componentes/auth/sessionChecker');
+let { verificarAdministrador } = require('./componentes/auth/sessionChecker');
 
 //¿En que estas trabajando?    1)Postman 2)handlebars
 app.use(bodyParser.json());
@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 //Rutas
 app.use('/', auth) //esta siempre va por defecto
 app.use('/estudiante', verificar, verificarEstudiante, estudiante);
-app.use('/administrador', verificar, administrador)
+app.use('/administrador', verificar, verificarAdministrador, administrador)
 app.use('/ponente', verificar, verificarPonente, ponente);
 
 //ultimo middleware, no poner nada debajo de esta linea

@@ -1,16 +1,12 @@
+const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
-const auth = require('../../auth');
 const chalk = require('chalk');
+const { response } = require('express');
 
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
         store = require('../../store/mysql');
-    }
-
-    function list() {
-        const VIEW = 'ver_Credenciales_Usuario';
-        return store.list(VIEW/*, CLAUSE*/);
     }
 
     async function get(correo) {
@@ -93,6 +89,24 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    async function enviarCorreo(from,to,subject,text) {
+        //mailtrap
+        let transport = nodemailer.createTransport({
+            host: "smtp.mailtrap.io",
+            port: 2525,
+            auth: {
+                user: "3b7622158f3027",
+                pass: "a2472f9c8c885c"
+            }
+        });
+        //nodemail
+        from="0a250cecf0-de742e@inbox.mailtrap.io";
+        let mailOptions = {from,to,subject,text};
+        transport.sendMail(mailOptions, (error, info)=>{
+            (error ? error = new Error('Correo no enviado') : console.log(chalk.blue.bgGray.bold("Correo Enviado")))
+        });
+    }
+
     return{
         listPaises,
         listEstados,
@@ -102,6 +116,7 @@ module.exports = function (injectedStore) {
         getUsuario,
         insertUsuario,
         insertMultimediaUsuario,
+        enviarCorreo
     }
 
 }

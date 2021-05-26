@@ -16,6 +16,15 @@ module.exports = {
         }
         return next();
     },
+    verificarAdministrador(req, res, next) {
+        console.log("valido permisos de: " + req.user.rol);
+        if (req.user.rol == "Administrador") {
+            return next();
+        } else {
+            console.log('No tienes permisos de administrador');
+            return res.end();
+        }
+    },
     verificarPonente(req, res, next) {
         console.log("valido permisos de: " + req.user.rol);
         if (req.user.rol == "Ponente") {

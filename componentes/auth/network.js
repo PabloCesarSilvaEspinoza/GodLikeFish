@@ -16,7 +16,10 @@ router.post('/agregarUsuario', crearCarpetaUsuario, dobleInput, render.postAgreg
 router.get('/', render.getLogin);
 router.get('/confirmarCorreo', render.getConfirmarCorreo);
 router.get('/reestablecerContraseña', render.getReestablecerContraseña);
+//router.get('/sesionesPrueba', render.getSesionesPrueba);
 
+//correos
+router.get('/pruebasPablo', render.getPruebas);
 router.post('/login', passport.authenticate('local', {
     successRedirect: "/validarPermisos",
     failureRedirect: "/"
@@ -24,6 +27,7 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/logOut', render.getLogOut);
 router.get('/validarPermisos', render.getValidarPermisos);
+
 
 passport.use(new passportLocal(function (username, password, done) {
     console.log(username, password);
