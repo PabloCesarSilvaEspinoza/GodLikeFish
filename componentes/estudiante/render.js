@@ -1,11 +1,14 @@
 const student = require('./index');
 const Controller = require('./index');
 
+
 module.exports = {
 
     getDashboardAlumno: async function (req, res, next) {
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('alumno/a1_dashboard', {
-            estudiante:true
+            estudiante:true,
+            miPerfil,
         });
     },
     getMisAsignaciones: async function (req, res, next) {
@@ -56,6 +59,7 @@ module.exports = {
             estudiante:true
         });
     },
+   
 
    
 

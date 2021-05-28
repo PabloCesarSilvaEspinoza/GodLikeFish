@@ -67,6 +67,7 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE cursoID = ${cursoID}`;
         return store.list(VIEW, CLAUSE);
     }
+   
 
     return {
         list,

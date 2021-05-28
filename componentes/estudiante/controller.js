@@ -68,6 +68,12 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
+    async function getMiPerfil(id) {
+        const VIEW = 'ver_Usuarios';
+        const CLAUSE = `WHERE id = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
 
 
     return {
@@ -79,6 +85,7 @@ module.exports = function (injectedStore) {
         listAnunciosUsuario,
         listRecursosUsuarioDocumentos,
         listRecursosUsuarioLinks,
+        getMiPerfil,
 
     };
 }
