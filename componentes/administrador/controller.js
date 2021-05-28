@@ -36,13 +36,13 @@ module.exports = function (injectedStore) {
             '${tipoCurso}', '${temarioCurso}','${modalidadCurso}', ${capacidadCurso},'${fotoCurso}', ${ponenteID}
         )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     function insertMultimediaCurso(cursoID, temarioCurso, fotoCurso) {
         const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     return {

@@ -17,7 +17,7 @@ module.exports = function (injectedStore) {
             ${cursoID}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}'
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     function insertTareaMultimedia(body) {
@@ -29,7 +29,7 @@ module.exports = function (injectedStore) {
             ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}', '${tipoMultimedia}'
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     return {

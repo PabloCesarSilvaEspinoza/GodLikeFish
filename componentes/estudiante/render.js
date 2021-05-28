@@ -4,8 +4,15 @@ const Controller = require('./index');
 module.exports = {
 
     getDashboardAlumno: async function (req, res, next) {
+        const datosUsuario = await Controller.getUsuarioArea(req.user.id);
+        const areaUsuario = datosUsuario[0].areaUsuario;
+        const respuestaBD = await Controller.listCursosDisponibles(req.user.id, areaUsuario);
+        const cursosDisponibles = respuestaBD[0];
+        const totalCursos = cursosDisponibles.length;
         res.render('alumno/a1_dashboard', {
-            estudiante:true
+            estudiante:true,
+            cursosDisponibles,
+            totalCursos,
         });
     },
     getMisAsignaciones: async function (req, res, next) {
@@ -13,9 +20,13 @@ module.exports = {
             estudiante:true
         });
     },
-    getConsultarCursoE1: async function (req, res, next) {
+    getConsultarCurso: async function (req, res, next) {
+        //Si no esta inscrito
+        const datosCurso = await Controller.getCursoInscripcion(req.params.idCurso);
+        const curso = datosCurso[0];
         res.render('alumno/a3_consultarCursoE1', {
-            estudiante:true
+            estudiante:true,
+            curso,
         });
     },
     getConsultarCursoE2: async function (req, res, next) {
@@ -55,6 +66,14 @@ module.exports = {
         res.render('usuario/u4_soporte', {
             estudiante:true
         });
+    },
+
+    getDescargarTemario: async function (req, res, next) {
+        const curso = await Controller.getTemario(req.params.idCurso);
+        const temario = curso[0].cursoTemario;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos');
+        const archivo = `${raiz}/${req.params.idCurso}/${temario}`;
+        res.download(archivo)
     },
 
    

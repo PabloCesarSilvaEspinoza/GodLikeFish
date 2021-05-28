@@ -4,12 +4,15 @@ const render = require('./render');
 
 router.get('/dashboardEstudiante', render.getDashboardAlumno);
 router.get('/misAsignaciones', render.getMisAsignaciones);
-router.get('/consultarCursoEI', render.getConsultarCursoE1);
+//getConsultarCursoE1
+router.get('/curso/:idCurso', render.getConsultarCurso);
 
 router.get('/consultarCursoEII/', render.getConsultarCursoE2);
 
 router.get('/consultarCursoEIII', render.getConsultarCursoE3);
 router.get('/soporte', render.getSoporte);
+
+router.get('/DescargarTemario/:idCurso', render.getDescargarTemario);
 
 
 
