@@ -37,10 +37,20 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
         return store.get(VIEW, CLAUSE, id);
     }
-
+        
+    function listCursos() {
+        const VIEW = 'ver_Datos_Cursos';
+        return store.list(VIEW);
+    }
+    function listAlumnos() {
+        const VIEW = 'ver_Alumnos';
+        return store.list(VIEW);
+    }
     return {
         insertTarea,
         insertTareaMultimedia,
+        listAlumnos,
+        listCursos,
         listCursosActivos
     };
 }
