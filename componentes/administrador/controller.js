@@ -45,11 +45,53 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+
+    /*-----------------------------------------------------*/ 
+    /*                       USUARIOS                      */
+    /*-----------------------------------------------------*/
+
+    function listUsuariosEnSistema() {
+        const VIEW = 'Ver_Usuarios_En_Sistema';
+        return store.list(VIEW);
+    }
+
+
+    function listRegistrados() {
+        const VIEW = 'Ver_Usuarios_Resumen_R';
+        return store.list(VIEW);
+    }
+
+    function listActivos() {
+        const VIEW = 'Ver_Usuarios_Resumen_A';
+        return store.list(VIEW);
+    }
+    function listInactivos() {
+        const VIEW = 'Ver_Usuarios_Resumen_I';
+        return store.list(VIEW);
+    }
+
+    function listUsuariosEnSistemaTarjeta() {
+        const VIEW = 'Ver_Usuarios_En_Sistema_Tarjeta';
+        return store.list(VIEW);
+    }
+
+    function listPerfilUsuario() {
+        const VIEW = 'Ver_Perfil_Usuario';
+        return store.list(VIEW);
+    }
+
+
     return {
         getUltimoCurso,
         getUltimoUsuario,
         listCursos,
         insertCurso,
         insertMultimediaCurso,
+        listUsuariosEnSistema,
+        listRegistrados,
+        listActivos,
+        listInactivos,
+        listUsuariosEnSistemaTarjeta,
+        listPerfilUsuario,
     };
 }

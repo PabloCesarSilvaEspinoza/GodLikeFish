@@ -46,8 +46,8 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
-    function listAnunciosUsuario(id) {
-        const VIEW = 'Ver_Anuncios_Usuario';
+    function listAvisosUsuario(id) {
+        const VIEW = 'Ver_Avisos_Usuario';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
@@ -76,7 +76,7 @@ module.exports = function (injectedStore) {
         insert,
         update,
         listDatosCursoUsuario,
-        listAnunciosUsuario,
+        listAvisosUsuario,
         listRecursosUsuarioDocumentos,
         listRecursosUsuarioLinks,
 

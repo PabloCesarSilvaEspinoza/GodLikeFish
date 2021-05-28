@@ -21,6 +21,6 @@ module.exports = {
         host: process.env.MYSQL_HOST || 'localhost',
         user: process.env.MYSQL_USER || 'root',
         password: process.env.MYSQL_PASSWORD || 'password',
-        database: process.env.MYSQL_DB || 'base24052021',
+        database: process.env.MYSQL_DB || 'base26052021',
     }
 }
