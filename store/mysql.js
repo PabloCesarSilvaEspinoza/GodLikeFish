@@ -48,7 +48,7 @@ function get(view, clause = '', value) {
     })
 }
 
-function upsert(procedure) {
+function update(procedure) {
     return new Promise ( (resolve, reject ) => {
         connection.query(procedure, (err, data) => {
             if(err) {
@@ -60,7 +60,7 @@ function upsert(procedure) {
     })
 }
 
-function upsert(procedure) {
+function insert(procedure) {
     return new Promise ( (resolve, reject ) => {
         connection.query(procedure, (err, data) => {
             if(err) {
@@ -88,6 +88,7 @@ module.exports = handleConn();
 module.exports = {
     list,
     get,
-    upsert,
+    update,
+    insert,
     catalog,
 }
