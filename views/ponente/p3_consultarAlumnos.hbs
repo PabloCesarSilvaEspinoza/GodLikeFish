@@ -1,7 +1,9 @@
 <div class="container-fluid">
-    <!--MODAL-->
+    <!--MODAL--> 
+   
     <div id="ModalVerPerfilAlumno/Ponente" name="ModalVerPerfilPonente/Alumno" class="card">
         <!-- sample modal content -->
+        {{#each alumnos}}
         <div id="ModalVerPonentealumno" name="ModalVerPonentealumno" class="modal fade verAlmPon" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -23,7 +25,6 @@
                             </div>
                         </div>
                         <br>
-                        {{#each alumnos}}
                         <div class="row">
                             <div class="col-12  ">
                                 <div class="row">
@@ -42,25 +43,25 @@
                                             </div>
                                             <div class="col-lg-4 text-center">
                                                 <h6 class="text-muted">Nombres</h6>
-                                                <h4>{{Nombres}}{{ApellidoPaterno}}{{ApellidoMaterno}}</h4>
+                                                <h4>{{nombres}}{{pApellido}}</h4>
                                             </div>
                                             <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">{Matrícula}</h6>
-                                                <h4>{{Matricula}}</h4>
+                                                <h6 class="text-muted">Matrícula</h6>
+                                                <h4>{{matricula}}</h4>
                                             </div>
                                             <div class="col-lg-4 text-center">
                                                 <h6 class="text-muted">Categoría</h6>
-                                                <h4>{{UsuarioArea}}</h4>
+                                                <h4>{{area}}</h4>
                                             </div>
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-lg-4 text-center">
                                                 <h6 class="text-muted">Antigüedad</h6>
-                                                <h4>{{Antiguedad}}</h4>
+                                                <h4>{{antiguedad}}</h4>
                                             </div>
                                             <div class="col-lg-8 text-center">
                                                 <h6 class="text-muted">Correo</h6>
-                                                <h4>{{correoAlumno}}</h4>
+                                                <h4>{{correoUsuario}}</h4>
                                             </div>
 
                                         </div>
@@ -69,18 +70,16 @@
                                 </div>
                             </div>
                         </div>
-                        {{/each}}
-                        {{#each curso}}
                         <div class="modal-footer text-success">
                             <h6 class="text-muted">Curso: </h6>
-                            <h4 >{{cursoNombre}}</h4>
+                            <h4 >{{nombreCurso}}</h4>
                         </div>
-                        {{/each}}
                     </div>
                     <!--Fin modalbody-->
                 </div>
             </div>
         </div>
+         {{/each}}
     </div>
     <!--CONTENEDOR-->
 
@@ -129,7 +128,7 @@
                                                         <tr>
                                                             <th>Nombres</th>
                                                             <th>Apellido Paterno</th>
-                                                            <th>Apellido Materno</th>
+                                                            <th>Tipo</th>
                                                             <th>Matricula</th>
                                                             <th>Antigüedad</th>
                                                             <th>Acciones</th>
@@ -138,15 +137,15 @@
                                                     <tbody>
                                                         {{#each alumnos}}
                                                         <tr>
-                                                            <td>{{Nombres}}</td>
-                                                            <td>{{ApellidoPaterno}}</td>
-                                                            <td>{{ApellidoMaterno}}</td>
-                                                            <td>{{Matricula}}</td>
-                                                            <td>{{Antiguedad}}</td>
+                                                            <td>{{nombres}}</td>
+                                                            <td>{{pApellido}}</td>
+                                                            <td>{{tipo}}</td>
+                                                            <td>{{matricula}}</td>
+                                                            <td>{{antiguedad}}</td>
                                                             <td>
                                                                 <a type="button"  data-toggle="modal" data-target=".verAlmPon"
                                                                     class="btn waves-effect waves-light btn-success btn-rounded"
-                                                                    href="/curso/{{idAlumno}}"><i
+                                                                    href="/ponente/{{id}}"><i
                                                                         class="fas fa-eye mr-2"></i> Ver alumno</a>
                                                             </td>
                                                         </tr>
@@ -156,7 +155,7 @@
                                                         <tr>
                                                             <th>Nombres</th>
                                                             <th>Apellido Paterno</th>
-                                                            <th>Apellido Materno</th>
+                                                            <th>Tipo</th>
                                                             <th>Matricula</th>
                                                             <th>Antigüedad</th>
                                                             <th>Acciones</th>
@@ -197,8 +196,8 @@
                                     <div class="col-lg-3 col-md-6">
                                         <div class="card">
                                             <div class="el-card-item" class="modal-footer" >
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/1-old.jpg" alt="user"  data-toggle="modal" data-target=".verAlmPon" />
+                                                <div class="el-card-avatar el-overlay-1" data-toggle="modal" data-target=".verAlmPon"> <img
+                                                        src="../../assets/images/users/2.jpg" alt="user" />
                                                     <div class="el-overlay">
                                                         <ul class="list-style-none el-info">
                                                             <a class="btn default btn-outline image-popup-vertical-fit el-link"
@@ -207,9 +206,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="el-card-content">
-                                                    <h4 class="mb-0">{{Nombres}}{{ApellidoPaterno}}</h4> <span id="UsuarioArea"
-                                                        name="UsuarioArea" class="text-muted">{{Matricula}}
-                                                       {{Antiguedad}}</span>
+                                                    <h4 class="mb-0">{{nombres}}{{pApellido}}</h4> <span id="UsuarioArea"
+                                                        name="UsuarioArea" class="text-muted">{{matricula}}
+                                                       {{antiguedad}}</span>
                                                     <br>
                                                 </div>
                                             </div>

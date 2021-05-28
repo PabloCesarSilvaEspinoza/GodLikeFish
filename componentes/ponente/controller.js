@@ -31,12 +31,12 @@ module.exports = function (injectedStore) {
 
         return store.insert(PROCEDURE);
     }
-    function listAlumnos() {
-        const VIEW = 'ver_Datos_Alumno';
-        return store.list(VIEW);
-    }
     function listCursos() {
         const VIEW = 'ver_Datos_Cursos';
+        return store.list(VIEW);
+    }
+    function listAlumnos() {
+        const VIEW = 'ver_Alumnos';
         return store.list(VIEW);
     }
     return {
