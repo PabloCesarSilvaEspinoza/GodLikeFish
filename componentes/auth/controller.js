@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const {nanoid} = require('nanoid');
 const bcrypt = require('bcrypt');
 const chalk = require('chalk');
 const { response } = require('express');
@@ -50,7 +51,9 @@ module.exports = function (injectedStore) {
             //crear usuario
             const usuario = {
                 id: data[0].idUsuario,
-                rol: data[0].tipoUsuario
+                rol: data[0].tipoUsuario,
+                correoVerificado: data[0].correoVerificado,
+                tarjetonVerificado: data[0].tarjetonVerificado
             }
             return usuario;
         } else {
@@ -100,12 +103,40 @@ module.exports = function (injectedStore) {
             }
         });
         //nodemail
-        from="0a250cecf0-de742e@inbox.mailtrap.io";
         let mailOptions = {from,to,subject,text};
         transport.sendMail(mailOptions, (error, info)=>{
             (error ? error = new Error('Correo no enviado') : console.log(chalk.blue.bgGray.bold("Correo Enviado")))
         });
     }
+    async function enviarCorreoGmail(to,subject,text) {
+        console.log("Entre");
+        //mailtrap
+        let transport = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            auth: {
+                user: "raymerlinDaenny@gmail.com",
+                pass: "vguhkclbzcvajqqe"
+            }
+        });
+        //nodemail
+        let mailOptions = {to,subject,text};
+        console.log(mailOptions);
+        transport.sendMail(mailOptions);
+    }
+
+    function verificarCorreo(id) {
+        const PROCEDURE = `CALL verificar_Correo('${id}')`
+        return store.insert(PROCEDURE);
+    }
+
+    async function generarCodigoVerificacion(id){
+        const codigo = await nanoid();
+        const PROCEDURE = `CALL actualizar_Codigo_Verificacion('${id}', '${codigo}')`
+        return store.insert(PROCEDURE);
+    }
+
 
     return{
         listPaises,
@@ -116,7 +147,10 @@ module.exports = function (injectedStore) {
         getUsuario,
         insertUsuario,
         insertMultimediaUsuario,
-        enviarCorreo
+        enviarCorreo,
+        enviarCorreoGmail,
+        verificarCorreo,
+        generarCodigoVerificacion
     }
 
 }
