@@ -33,6 +33,13 @@ module.exports = {
     },
     
     getAdministrarUsuarios: async function (req, res, next) {
+        const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
+        const regitrados= await Controller.listRegistrados();
+        const activos= await Controller.listActivos();
+        const inactivos= await Controller.listInactivos();
+        const tarjetas= await Controller.listUsuariosEnSistemaTarjeta();
+        const calis= await Controller.listPerfilUsuario();
+        
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
@@ -42,7 +49,18 @@ module.exports = {
             valor1: 18,
             valor2: 36,
             valor3: 10
-            }]
+            }],
+            caladon:true,
+            datosUsuarioEnSistema,
+            regitrados,
+            activos,
+            inactivos,
+            tarjetas,
+            calis,
+
+
+
+
         });
     },
 

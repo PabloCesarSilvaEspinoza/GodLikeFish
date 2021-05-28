@@ -34,15 +34,15 @@ module.exports = {
         });
     },
     getConsultarCursoE2: async function (req, res, next) {
-        //const usuarioID = (req.user.id);
+       // const usuarioID = (req.user.id);
         const usuarioID = (29);
         const datosCursoUsuario= await Controller.listDatosCursoUsuario(usuarioID); 
-        const AnunciosUsuario = await Controller.listAnunciosUsuario(usuarioID); 
+        const AvisosUsuario = await Controller.listAvisosUsuario(usuarioID); 
         const RecursosUsuarioDocumentos= await Controller.listRecursosUsuarioDocumentos(usuarioID); 
         const RecursosUsuarioLinks= await Controller.listRecursosUsuarioLinks(usuarioID); 
 
         console.log(datosCursoUsuario);
-        console.log(AnunciosUsuario);
+        console.log(AvisosUsuario);
         console.log(RecursosUsuarioDocumentos);
         console.log(RecursosUsuarioLinks);
 
@@ -55,7 +55,7 @@ module.exports = {
             alerta: true,
             select2: true,
             datosCursoUsuario,
-            AnunciosUsuario,
+            AvisosUsuario,
             RecursosUsuarioDocumentos,
             RecursosUsuarioLinks,
 

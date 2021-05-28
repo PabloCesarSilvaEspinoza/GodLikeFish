@@ -314,9 +314,9 @@
                         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><span
                                     class="hidden-sm-up"><i class="fas fa-align-justify"></i></span> <span
                                     class="hidden-xs-down">Historial</span></a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#anuncios" role="tab"><span
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#avisos" role="tab"><span
                                     class="hidden-sm-up"><i class="fas fa-envelope-open-text"></i></span> <span
-                                    class="hidden-xs-down">Anuncios</span></a> </li>
+                                    class="hidden-xs-down">Avisos</span></a> </li>
                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#asignaciones"
                                 role="tab"><span class="hidden-sm-up"><i class="fas fa-briefcase"></i></span> <span
                                     class="hidden-xs-down">Asignaciones</span></a> </li>
@@ -601,12 +601,12 @@
                                 </div>
                             </div>
                         </div>
- <!--Panel de anuncios-->
+ <!--Panel de avisos-->
  
-                        <div class="tab-pane  p-20" id="anuncios" role="tabpanel">
+                        <div class="tab-pane  p-20" id="avisos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
-                                <a class="navbar-brand">Historial de anuncios</a>
+                                <a class="navbar-brand">Historial de avisos</a>
                                 <form class="form-inline">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
                                         aria-label="Search">
@@ -614,9 +614,9 @@
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                 </form>
                             </nav>
-                            <!--Anuncios-->
+                            <!--Avisos-->
 
-                            {{#each AnunciosUsuario}}
+                            {{#each AvisosUsuario}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
@@ -636,41 +636,16 @@
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                            {{fechaAnuncio}} <i class="fas fa-clock"></i> {{horaAnuncio}}</h5>
+                                            {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
                                         </div>
                                         <div class="col-md-12 mt-2">
-                                            <p class="ml-3"> {{textoAnuncio}}.</p>
+                                            <p class="ml-3"> {{textoAviso}}.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                           {{/each}} 
-
-                             <div class="card mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="row">
-                                                            <div class="ml-3 mr-2">
-                                                                <img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="mb-0 font-16">Nombre Completo Ponente <span class="small">publicó para</span></h5>
-                                                                <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 text-right">
-                                                        <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
-                                                    </div>
-                                                    <div class="col-md-12 mt-2">
-                                                        <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero no importa por que podemos mostrar casi cualquier cantidad de caracteres.</p>
-                                                    </div>
-                                                    
-                                                </div>  
-                                            </div>
-                              </div>
                             
 
                             
