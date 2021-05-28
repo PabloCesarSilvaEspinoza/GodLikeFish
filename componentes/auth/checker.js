@@ -8,13 +8,14 @@ module.exports = {
         console.log(chalk.white.bgRed.bold("No tienes una sessión"));
         return res.redirect('/');
     },
-    verificacionEspecial(req, res, next) {
-        if (req.isAuthenticated()) {
-            console.log(chalk.white.bgCyan.bold("Cerraste sesion"));
-            req.session.destroy();
-            return res.redirect('/');
+    verificarAdministrador(req, res, next) {
+        console.log("valido permisos de: " + req.user.rol);
+        if (req.user.rol == "Administrador") {
+            return next();
+        } else {
+            console.log('No tienes permisos de administrador');
+            return res.end();
         }
-        return next();
     },
     verificarPonente(req, res, next) {
         console.log("valido permisos de: " + req.user.rol);
@@ -26,11 +27,14 @@ module.exports = {
         }
     },
     verificarEstudiante(req, res, next) {
-        if (req.user.rol == "Estudiante") {
+        console.log("valido permisos de: " + req.user.rol + "Correo y tarjeton verificados "+ req.user.correoVerificado +" "+ req.user.tarjetonVerificado);
+        if(req.user.correoVerificado && req.user.rol == "Estudiante"){
             return next();
-        } else {
+        }else if(!req.user.correoVerificado){
+            return res.redirect('/confirmarCorreo');
+        }else{
             console.log('No tienes permisos de estudiante');
             return res.end();
         }
-    },
+    }
 };

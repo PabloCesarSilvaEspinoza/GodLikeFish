@@ -1,16 +1,15 @@
+const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
+const {nanoid} = require('nanoid');
 const bcrypt = require('bcrypt');
-const auth = require('../../auth');
 const chalk = require('chalk');
+const { response } = require('express');
 
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
         store = require('../../store/mysql');
-    }
-
-    function list() {
-        const VIEW = 'ver_Credenciales_Usuario';
-        return store.list(VIEW/*, CLAUSE*/);
     }
 
     async function get(correo) {
@@ -54,7 +53,9 @@ module.exports = function (injectedStore) {
             //crear usuario
             const usuario = {
                 id: data[0].idUsuario,
-                rol: data[0].tipoUsuario
+                rol: data[0].tipoUsuario,
+                correoVerificado: data[0].correoVerificado,
+                tarjetonVerificado: data[0].tarjetonVerificado
             }
             return usuario;
         } else {
@@ -93,6 +94,65 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
+    async function enviarCorreo(from,to,subject,text) {
+        //mailtrap
+        let transport = nodemailer.createTransport({
+            host: "smtp.mailtrap.io",
+            port: 2525,
+            auth: {
+                user: "3b7622158f3027",
+                pass: "a2472f9c8c885c"
+            }
+        });
+        //nodemail
+        let mailOptions = {from,to,subject,text};
+        transport.sendMail(mailOptions, (error, info)=>{
+            (error ? error = new Error('Correo no enviado') : console.log(chalk.blue.bgGray.bold("Correo Enviado")))
+        });
+    }
+    async function enviarCorreoGmail(to,subject,text) {
+        console.log("Entre");
+        //mailtrap
+        let transport = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            auth: {
+                user: "raymerlinDaenny@gmail.com",
+                pass: "vguhkclbzcvajqqe"
+            }
+        });
+        transport.use('compile', hbs({
+            viewEngine:'express-handlebars',
+            viewPath:"./views/",
+            extname:'.hbs'
+        }));
+        transport.set('view engine', '.hbs');
+        //nodemail
+        let mailOptions = {
+            to,
+            subject,
+            text,
+            template:'correos/codigoVerificacion'
+        };
+        console.log("enviando "+ mailOptions);
+        transport.sendMail(mailOptions, (err,info)=>{
+            (err ? console.log('Error', err): console.log('Enviado'));
+        });
+    }
+
+    function verificarCorreo(id) {
+        const PROCEDURE = `CALL verificar_Correo('${id}')`
+        return store.insert(PROCEDURE);
+    }
+
+    async function generarCodigoVerificacion(id){
+        const codigo = await nanoid();
+        const PROCEDURE = `CALL actualizar_Codigo_Verificacion('${id}', '${codigo}')`
+        return store.insert(PROCEDURE);
+    }
+
+
     return{
         listPaises,
         listEstados,
@@ -102,6 +162,10 @@ module.exports = function (injectedStore) {
         getUsuario,
         insertUsuario,
         insertMultimediaUsuario,
+        enviarCorreo,
+        enviarCorreoGmail,
+        verificarCorreo,
+        generarCodigoVerificacion
     }
 
 }
