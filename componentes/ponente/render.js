@@ -21,7 +21,11 @@ module.exports = {
     },
     getConsultarAlumnos: async function (req, res, next) {
         res.render('ponente/p3_consultarAlumnos', {
-            ponente:true
+            ponente:true,
+            datatables:true,
+            dataTablesExport:true,
+            cursos,
+            alumnos,
         });
     },
     getCalificarTarea: async function (req, res, next) {

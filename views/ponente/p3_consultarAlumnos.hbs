@@ -1,4 +1,87 @@
 <div class="container-fluid">
+    <!--MODAL-->
+    <div id="ModalVerPerfilAlumno/Ponente" name="ModalVerPerfilPonente/Alumno" class="card">
+        <!-- sample modal content -->
+        <div id="ModalVerPonentealumno" name="ModalVerPonentealumno" class="modal fade verAlmPon" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center" class="modal-header">
+                            <div class="row">
+                                <div class="col text-right">
+                                    <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
+                                </div>
+                            </div>
+                            <!--Titulo-->
+                            <div class="row">
+                                <div class="modal-title col text-center text-success">
+                                    <h3>Perfil Alumno<span class="small"></span></h3>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <br>
+                        {{#each alumnos}}
+                        <div class="row">
+                            <div class="col-12  ">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <center> <img src="../../assets/images/users/1.jpg" class="rounded-circle"
+                                                width="100" />
+                                            <br><br>
+                                            <h6 class="text-muted">Foto Perfil</h6>
+                                        </center>
+                                    </div>
+                                    <div class="col-9" class="form-control">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
+                                                <hr>
+                                            </div>
+                                            <div class="col-lg-4 text-center">
+                                                <h6 class="text-muted">Nombres</h6>
+                                                <h4>{{Nombres}}{{ApellidoPaterno}}{{ApellidoMaterno}}</h4>
+                                            </div>
+                                            <div class="col-lg-4 text-center">
+                                                <h6 class="text-muted">{Matrícula}</h6>
+                                                <h4>{{Matricula}}</h4>
+                                            </div>
+                                            <div class="col-lg-4 text-center">
+                                                <h6 class="text-muted">Categoría</h6>
+                                                <h4>{{UsuarioArea}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-lg-4 text-center">
+                                                <h6 class="text-muted">Antigüedad</h6>
+                                                <h4>{{Antiguedad}}</h4>
+                                            </div>
+                                            <div class="col-lg-8 text-center">
+                                                <h6 class="text-muted">Correo</h6>
+                                                <h4>{{correoAlumno}}</h4>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{#each curso}}
+                        <div class="modal-footer text-success">
+                            <h6 class="text-muted">Curso: </h6>
+                            <h4 >{{cursoNombre}}</h4>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <!--Fin modalbody-->
+                </div>
+            </div>
+        </div>
+    </div>
     <!--CONTENEDOR-->
 
     <div class="col-12 sm-12">
@@ -44,73 +127,37 @@
                                                     class="table table-striped table-bordered display">
                                                     <thead>
                                                         <tr>
-                                                            <th>Nombre</th>
-                                                            <th>Cargo</th>
-                                                            <th>Area/Categoriía</th>
-                                                            <th>Edad</th>
+                                                            <th>Nombres</th>
+                                                            <th>Apellido Paterno</th>
+                                                            <th>Apellido Materno</th>
+                                                            <th>Matricula</th>
                                                             <th>Antigüedad</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        {{#each alumnos}}
                                                         <tr>
-                                                            <td>Jonas Alexander</td>
-                                                            <td>Developer</td>
-                                                            <td>San Francisco</td>
-                                                            <td>30</td>
-                                                            <td>2010/07/14</td>
+                                                            <td>{{Nombres}}</td>
+                                                            <td>{{ApellidoPaterno}}</td>
+                                                            <td>{{ApellidoMaterno}}</td>
+                                                            <td>{{Matricula}}</td>
+                                                            <td>{{Antiguedad}}</td>
                                                             <td>
-                                                                <a href="#"
-                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                                                        class="far fa-user mr-1"></i> Ver
-                                                                    Perfil</a></h5>
-
+                                                                <a type="button"  data-toggle="modal" data-target=".verAlmPon"
+                                                                    class="btn waves-effect waves-light btn-success btn-rounded"
+                                                                    href="/curso/{{idAlumno}}"><i
+                                                                        class="fas fa-eye mr-2"></i> Ver alumno</a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Shad Decker</td>
-                                                            <td>Regional Director</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>51</td>
-                                                            <td>2008/11/13</td>
-                                                            <td> <a href="#"
-                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                                                        class="far fa-user mr-1"></i> Ver
-                                                                    Perfil</a></h5>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Michael Bruce</td>
-                                                            <td>Javascript Developer</td>
-                                                            <td>Singapore</td>
-                                                            <td>29</td>
-                                                            <td>2011/06/27</td>
-                                                            <td> <a href="#"
-                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                                                        class="far fa-user mr-1"></i> Ver
-                                                                    Perfil</a></h5>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Donna Snider</td>
-                                                            <td>Customer Support</td>
-                                                            <td>New York</td>
-                                                            <td>27</td>
-                                                            <td>2011/01/25</td>
-                                                            <td> <a href="#"
-                                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                                                        class="far fa-user mr-1"></i> Ver
-                                                                    Perfil</a></h5>
-                                                            </td>
-                                                        </tr>
+                                                        {{/each}}
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th>Nombre</th>
-                                                            <th>Cargo</th>
-                                                            <th>Area/Categoriía</th>
-                                                            <th>Edad</th>
+                                                            <th>Nombres</th>
+                                                            <th>Apellido Paterno</th>
+                                                            <th>Apellido Materno</th>
+                                                            <th>Matricula</th>
                                                             <th>Antigüedad</th>
                                                             <th>Acciones</th>
                                                         </tr>
@@ -132,11 +179,11 @@
                                         <br>
 
                                         <div class="input-group mb-3">
-                                            <input id="BuscarPonente" name="BuscarPonente" type="text"
+                                            <input id="BuscarAlumno" name="BuscarAlumno" type="text"
                                                 class="form-control" placeholder="Buscar" aria-label=""
                                                 aria-describedby="basic-addon1">
                                             <div class="input-group-append">
-                                                <button id="buscarPonente" name="buscarPonente" class="btn btn-success"
+                                                <button  class="btn btn-success"
                                                     type="button"><i class="ti-search"></i></button>
 
                                             </div>
@@ -144,14 +191,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="TarjetaPonente" name="TarjetaPonente" class="container-fluid">
+                            <div id="TarjetaAlumno" name="TarjetaAlumno" class="container-fluid">
                                 <div class="row el-element-overlay">
+                                     {{#each alumnos}}
                                     <div class="col-lg-3 col-md-6">
                                         <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
+                                            <div class="el-card-item" class="modal-footer" >
                                                 <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/1-old.jpg" alt="user" />
+                                                        src="../../assets/images/users/1-old.jpg" alt="user"  data-toggle="modal" data-target=".verAlmPon" />
                                                     <div class="el-overlay">
                                                         <ul class="list-style-none el-info">
                                                             <a class="btn default btn-outline image-popup-vertical-fit el-link"
@@ -160,166 +207,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="el-card-content">
-                                                    <h4 class="mb-0">Oliver Abram</h4> <span id="UsuarioArea"
-                                                        name="UsuarioArea" class="text-muted">Graphics
-                                                        Designer</span>
+                                                    <h4 class="mb-0">{{Nombres}}{{ApellidoPaterno}}</h4> <span id="UsuarioArea"
+                                                        name="UsuarioArea" class="text-muted">{{Matricula}}
+                                                       {{Antiguedad}}</span>
                                                     <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/2.jpg" alt="user" />
-                                                    <div class="el-overlay">
-                                                        <ul class="list-style-none el-info">
-                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                href="../../assets/images/users/2.jpg"></a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="el-card-content">
-                                                    <h4 class="mb-0">George Acton</h4> <span
-                                                        class="text-muted">Wordpress Developer</span>
-                                                    <br>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/3.jpg" alt="user" />
-                                                    <div class="el-overlay">
-                                                        <ul class="list-style-none el-info">
-                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                href="../../assets/images/users/3.jpg"></a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="el-card-content">
-                                                    <h4 class="mb-0">Harry Addington</h4> <span
-                                                        class="text-muted">Mobile App Developer</span>
-                                                    <br>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/4.jpg" alt="user" />
-                                                    <div class="el-overlay">
-                                                        <ul class="list-style-none el-info">
-                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                href="../../assets/images/users/4.jpg"></a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="el-card-content">
-                                                    <h4 class="mb-0">Emily Adley</h4> <span class="text-muted">Wordpress
-                                                        Developer</span>
-                                                    <br>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/8.jpg" alt="user" />
-                                                    <div class="el-overlay">
-                                                        <ul class="list-style-none el-info">
-                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                href="../../assets/images/users/8.jpg"></a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="el-card-content">
-                                                    <h4 class="mb-0">Sophia Ainsley</h4> <span class="text-muted">Mobile
-                                                        App Developer</span>
-                                                    <br>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/7.jpg" alt="user" />
-                                                    <div class="el-overlay">
-                                                        <ul class="list-style-none el-info">
-                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                href="../../assets/images/users/7.jpg"></a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="el-card-content">
-                                                    <h4 class="mb-0">Lily Ainsworth</h4> <span
-                                                        class="text-muted">Graphics Designer</span>
-                                                    <br>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/6.jpg" alt="user" />
-                                                    <div class="el-overlay">
-                                                        <ul class="list-style-none el-info">
-                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                href="../../assets/images/users/6.jpg"></a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="el-card-content">
-                                                    <h4 class="mb-0">Olivia Alby</h4> <span class="text-muted">Mobile
-                                                        App Developer</span>
-                                                    <br>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                                data-target="#responsive-modal">
-                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                        src="../../assets/images/users/d4.jpg" alt="user" />
-                                                    <div class="el-overlay">
-                                                        <ul class="list-style-none el-info">
-                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                href="../../assets/images/users/d4.jpg"></a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="el-card-content">
-                                                    <h4 class="mb-0">Amelia Allerton</h4> <span
-                                                        class="text-muted">Wordpress Developer</span>
-                                                    <br>
-                                                    <td><a href="javascript:void(0)" class="text-inverse pr-2"
-                                                            data-toggle="tooltip" title="Ver"></a> <a
-                                                            href="javascript:void(0)" class="text-inverse"
-                                                            title="Borrar" data-toggle="tooltip"></a></td>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {{/each}}                                   
                                 </div>
                             </div>
                         </div>
