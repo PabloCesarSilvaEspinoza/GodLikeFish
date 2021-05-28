@@ -81,7 +81,7 @@ module.exports = function (injectedStore) {
             '${puesto}', '${antiguedad}'
             )`
             
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     function insertMultimediaUsuario(usuarioID, fotoUsuario, tarjetonUsuario) {
@@ -90,7 +90,7 @@ module.exports = function (injectedStore) {
             ${usuarioID}, '${fotoUsuario}', '${tarjetonUsuario}'
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     return{

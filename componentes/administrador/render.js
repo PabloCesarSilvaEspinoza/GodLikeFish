@@ -9,10 +9,10 @@ module.exports = {
         res.render('administrador/d1_dashboard_v2', {
             administrador: true,
             graficasAdministrador : true,
-             valores:[{
-             valor1: 18,
-             valor2: 36,
-             valor3: 10
+            valores:[{
+            valor1: 18,
+            valor2: 36,
+            valor3: 10
             }]
         });
     },
@@ -24,10 +24,10 @@ module.exports = {
             dataTablesExport:true,
             cursos,
             graficasAdministrador : true,
-             valores:[{
-             valor1: 18,
-             valor2: 36,
-             valor3: 10
+            valores:[{
+            valor1: 18,
+            valor2: 36,
+            valor3: 10
             }]
         });
     },
@@ -38,10 +38,10 @@ module.exports = {
             datatables:true,
             dataTablesExport:true,
             graficasAdministrador : true,
-             valores:[{
-             valor1: 18,
-             valor2: 36,
-             valor3: 10
+            valores:[{
+            valor1: 18,
+            valor2: 36,
+            valor3: 10
             }]
         });
     },

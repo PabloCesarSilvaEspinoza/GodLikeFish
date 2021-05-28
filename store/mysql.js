@@ -24,9 +24,9 @@ function handleConn() {
     });
 }
 
-function list(view, clause = '') {
+function list(view, clause = '', value) {
     return new Promise ( (resolve, reject ) => {
-        connection.query(`SELECT * FROM ${view} ${clause}`, (err, data) => {
+        connection.query(`SELECT * FROM ${view} ${clause}`, value, (err, data) => {
             if(err) {
                 return reject(err);
             } else {
@@ -36,9 +36,9 @@ function list(view, clause = '') {
     })
 }
 
-function get(view, clause, id) {
+function get(view, clause = '', value) {
     return new Promise ( (resolve, reject ) => {
-        connection.query(`SELECT * FROM ${view} ${clause}`, id, (err, data) => {
+        connection.query(`SELECT * FROM ${view} ${clause}`, value, (err, data) => {
             if(err) {
                 return reject(err);
             } else {
@@ -48,7 +48,7 @@ function get(view, clause, id) {
     })
 }
 
-function insert(procedure) {
+function upsert(procedure) {
     return new Promise ( (resolve, reject ) => {
         connection.query(procedure, (err, data) => {
             if(err) {
@@ -60,9 +60,21 @@ function insert(procedure) {
     })
 }
 
-function update (procedure) {
+function upsert(procedure) {
     return new Promise ( (resolve, reject ) => {
         connection.query(procedure, (err, data) => {
+            if(err) {
+                return reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    })
+}
+
+function catalog(view) {
+    return new Promise ( (resolve, reject ) => {
+        connection.query(view, (err, data) => {
             if(err) {
                 return reject(err);
             } else {
@@ -76,6 +88,6 @@ module.exports = handleConn();
 module.exports = {
     list,
     get,
-    insert,
-    update
+    upsert,
+    catalog,
 }

@@ -20,36 +20,36 @@ module.exports = function (injectedStore) {
         const {
             nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
             horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
-             area, tipo, temario, modalidad, capacidad,
-             linkCurso, linkPlataforma,foto, ponenteId
+            area, tipo, temario, modalidad, capacidad,
+            linkCurso, linkPlataforma,foto, ponenteId
         } = body;
 
         const PROCEDURE = `CALL agregar_Curso( 
             '${nombre}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFinal}',
             '${horaInicio}', '${horaFin}', '${fechaInscripcionInicio}', '${fechaInscripcionFinal}', '${plataforma}',
-             '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
-             '${linkCurso}',  '${linkPlataforma}', '${foto}', ${ponenteId}
+            '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
+            '${linkCurso}',  '${linkPlataforma}', '${foto}', ${ponenteId}
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     function updateCurso(body) {
         const {
             Id,nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
             horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
-             area, tipo, temario , modalidad, capacidad,
-               linkCurso, linkPlataforma,foto, activo, ponenteId
+            area, tipo, temario , modalidad, capacidad,
+            linkCurso, linkPlataforma,foto, activo, ponenteId
         } = body;
 
         const PROCEDURE = `CALL editar_Curso( 
             ${Id}, '${nombre}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFinal}',
             '${horaInicio}', '${horaFin}', '${fechaInscripcionInicio}', '${fechaInscripcionFinal}', '${plataforma}',
-             '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
+            '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
             '${linkCurso}',  '${linkPlataforma}', '${foto}', ${activo}, ${ponenteId}
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 //------------------------------Examenes--------------------------------
 
@@ -74,7 +74,7 @@ module.exports = function (injectedStore) {
             ${cursoId}, '${nombre}', '${link}'
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     function updateE(body) {
@@ -86,7 +86,7 @@ module.exports = function (injectedStore) {
             ${Id}, ${cursoId}, '${nombre}', '${link}'
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     return {

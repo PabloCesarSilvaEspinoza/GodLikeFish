@@ -13,24 +13,15 @@
     <div class="row">
         <div class="col-md-3 text-center">
             <div class="card">
-                <div class="card-body">
-                    <h4 class="">¿No estas Inscrito en un Curso?</h4>
-                    <p>Consulta el catálogo de Cursos disponibles <br> ó</p>
-                    <input type="text" id="clave" class="form-control" placeholder="Ingresa una Cláve">
-                    <button type="button" class="btn waves-effect waves-light btn-info mt-3"> <i
-                            class="fas fa-check mr-2"></i>Validar Clave</button>
-                </div>
-            </div>
-            <div class="card">
                 <div class="card-title">
-                    <h4 class="mt-3">Ultimo Curso activo</h4>
+                    <h4 class="mt-3">Mi curso actual</h4>
                 </div>
                 <div class="card ml-2 mr-2">
                     <img src="../../assets/images/cursoImg1.JPG" class="rounded" alt="imagen curso 1">
-                    <h5 class="mt-3 ml-2 mr-2">Nombre Completo Curso Lorem Ipsum <span class="small">( 7:30 - 9:30
-                            )</span></h5>
+                    <h5 class="mt-3 mb-2">Nombre Completo Curso Lorem Ipsum</h5>
+                    <small class="text-center mb-1">( 7:30 - 9:30 )</small>
                     <div class="text-center">
-                        <h6 class="text-muted"><i class="fas fa-users mr-2"></i>38/40</h6>
+                        <h6 class="text-muted"><i class="fas fa-users mr-2 mb-2"></i>38/40</h6>
                     </div>
                     <div class="div no-block text-center">
                         <span class="mb-3 label label-rounded bg-info">Area</span>
@@ -43,74 +34,46 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="">¿No estas Inscrito en un Curso?</h4>
+                    <p>Consulta el catálogo de Cursos disponibles <br> ó</p>
+                    <input type="text" id="clave" class="form-control" placeholder="Ingresa una Cláve">
+                    <button type="button" class="btn waves-effect waves-light btn-info mt-3"> <i
+                            class="fas fa-check mr-2"></i>Validar Clave</button>
+                </div>
+            </div>
         </div>
         <div class="col-md-7">
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title"><i class="fab fa-leanpub mr-2"></i>Catálogo de Cursos Disponibles<span
-                            class="small"> (3)</span></h3>
+                            class="small"> ({{totalCursos}})</span></h3>
                     <hr>
                     <div class="row">
+                        {{#each cursosDisponibles}}
                         <div class="col-md-3">
                             <div class="card ">
+                                <!-- <img src="../../assets/cursos/{{fotoCurso}}" class="rounded" alt="Imagen del curso {{nombreCurso}}"> -->
                                 <img src="../../assets/images/cursoImg2.JPG" class="rounded" alt="imagen curso 1">
-                                <h5 class="mt-3 ml-2 mr-2">Nombre Completo Curso Lorem Ipsum <span class="small">( 7:30
-                                        - 9:30 )</span></h5>
+                                <h5 class="mt-3 mr-2 text-center">{{nombreCurso}}</h5>
+                                <small class="text-center">( {{horaInicioCUrso}} - {{horaFinCurso}} )</small>
                                 <div class="text-center">
-                                    <h6 class="text-muted"><i class="fas fa-users mr-2"></i>38/40</h6>
+                                    <h6 class="text-muted"><i class="fas fa-users mr-2"></i>{{totalEstudiantesCurso}}</h6>
                                 </div>
                                 <div class="div no-block text-center">
-                                    <span class="mb-3 label label-rounded bg-info">Area</span>
-                                    <span class="mb-3 label label-rounded label-warning">Tipo</span>
-                                    <span class="mb-3 label label-rounded bg-danger">Modalidad</span>
+                                    <span class="mb-3 label label-rounded bg-info">{{nombreArea}}</span><br>
+                                    <span class="mb-3 label label-rounded label-warning">{{tipoCurso}}</span><br>
+                                    <span class="mb-3 label label-rounded bg-danger">{{modalidadCurso}}</span><br>
                                 </div>
                                 <div class="card-body text-center">
-                                    <a href="/estudiante/consultarCursoEI"
+                                    <a href="/estudiante/curso/{{idCurso}}"
                                         class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
                                             class="fas fa-external-link-square-alt mr-2"></i>Ver detalles</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <img src="../../assets/images/cursoImg4.JPG" class="rounded" alt="imagen curso 1">
-                                <h5 class="mt-3 ml-2 mr-2">Nombre Completo Curso Lorem Ipsum <span class="small">( 9:30
-                                        - 11:30 )</span></h5>
-                                <div class="text-center">
-                                    <h6 class="text-muted"><i class="fas fa-users mr-2"></i>38/40</h6>
-                                </div>
-                                <div class="div no-block text-center">
-                                    <span class="mb-3 label label-rounded bg-info">Area</span>
-                                    <span class="mb-3 label label-rounded label-warning">Tipo</span>
-                                    <span class="mb-3 label label-rounded bg-danger">Modalidad</span>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="/estudiante/consultarCursoEI"
-                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                            class="fas fa-external-link-square-alt mr-2"></i>Ver detalles</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <img src="../../assets/images/cursoImg1.JPG" class="rounded" alt="imagen curso 1">
-                                <h5 class="mt-3 ml-2 mr-2">Nombre Completo Curso Lorem Ipsum <span class="small">( 12:30
-                                        - 14:30 )</span></h5>
-                                <div class="text-center">
-                                    <h6 class="text-muted"><i class="fas fa-users mr-2"></i>38/40</h6>
-                                </div>
-                                <div class="div no-block text-center">
-                                    <span class="mb-3 label label-rounded bg-info">Area</span>
-                                    <span class="mb-3 label label-rounded label-warning">Tipo</span>
-                                    <span class="mb-3 label label-rounded bg-danger">Modalidad</span>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="/estudiante/consultarCursoEI"
-                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                            class="fas fa-external-link-square-alt mr-2"></i>Ver detalles</a>
-                                </div>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
