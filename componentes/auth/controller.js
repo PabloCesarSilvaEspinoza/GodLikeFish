@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
 const {nanoid} = require('nanoid');
 const bcrypt = require('bcrypt');
 const chalk = require('chalk');
@@ -120,10 +122,23 @@ module.exports = function (injectedStore) {
                 pass: "vguhkclbzcvajqqe"
             }
         });
+        transport.use('compile', hbs({
+            viewEngine:'express-handlebars',
+            viewPath:"./views/",
+            extname:'.hbs'
+        }));
+        transport.set('view engine', '.hbs');
         //nodemail
-        let mailOptions = {to,subject,text};
-        console.log(mailOptions);
-        transport.sendMail(mailOptions);
+        let mailOptions = {
+            to,
+            subject,
+            text,
+            template:'correos/codigoVerificacion'
+        };
+        console.log("enviando "+ mailOptions);
+        transport.sendMail(mailOptions, (err,info)=>{
+            (err ? console.log('Error', err): console.log('Enviado'));
+        });
     }
 
     function verificarCorreo(id) {

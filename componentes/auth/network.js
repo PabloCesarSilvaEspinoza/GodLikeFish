@@ -13,7 +13,7 @@ const dobleInput = upload.fields([{name: 'fotoUsuario'}, {name: 'tarjetonUsuario
 router.get('/', render.getLogin);
 router.get('/confirmarCorreo', render.getConfirmarCorreo);
 router.get('/reestablecerContraseña', render.getReestablecerContraseña);
-router.get('/gmail', render.getEnviarCorreo);
+router.get('/gmail', render.getEnviarCorreoGmail);
 
 router.post('/login', passport.authenticate('local', {
     successRedirect: "/validarCorreo",

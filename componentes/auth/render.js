@@ -94,13 +94,14 @@ module.exports = {
     },
 
     //Para las rutas de Pruebas
-     getEnviarCorreo: async function (req, res, next) {
+     getEnviarCorreoGmail: async function (req, res, next) {
          console.log("por enviar");
         await Controller.enviarCorreoGmail(
             "browntth@icloud.com",
-            "raymerlinDaenny@gmail.com",
+            "GDL by Raymerlin prueba",
             "Prueba Nodemailer",
             "funciona! 7u7"
         );
+        res.redirect('/');
     }, 
 };
