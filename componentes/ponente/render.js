@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const Controller = require('./index');
 
 path = require('path')
@@ -5,8 +6,15 @@ path = require('path')
 module.exports = {
 
     getDashboardPonente: async function (req, res, next) {
+        const usuarioID = (req.user.id);
+        // const usuarioID = 1;
+        const cursosActivos= await Controller.listCursosActivos(usuarioID); 
+
+        console.log(cursosActivos);
+
         res.render('ponente/p1_dashboard', {
-            ponente:true
+            ponente:true,
+            cursosActivos
         });
     },
     getConsultarCursoPE1: async function (req, res, next) {

@@ -32,8 +32,15 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    function listCursosActivos(id) {
+        const VIEW = 'ver_Cursos_Activos';
+        const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
     return {
         insertTarea,
-        insertTareaMultimedia
+        insertTareaMultimedia,
+        listCursosActivos
     };
 }
