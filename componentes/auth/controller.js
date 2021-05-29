@@ -152,7 +152,6 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
-
     return{
         listPaises,
         listEstados,
@@ -165,7 +164,6 @@ module.exports = function (injectedStore) {
         enviarCorreo,
         enviarCorreoGmail,
         verificarCorreo,
-        generarCodigoVerificacion
+        generarCodigoVerificacion,
     }
-
 }

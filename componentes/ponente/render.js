@@ -8,9 +8,7 @@ module.exports = {
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
         // const usuarioID = 1;
-        const cursosActivos= await Controller.listCursosActivos(usuarioID); 
-
-        console.log(cursosActivos);
+        const cursosActivos= await Controller.listCursosActivos(usuarioID);
 
         res.render('ponente/p1_dashboard', {
             ponente:true,
@@ -48,15 +46,24 @@ module.exports = {
             ponente:true
         });
     },
+
+    postAgregarTarea: async function (req, res, next) {
+        const respuestaBD = await Controller.insertTarea(req.body);
+        const tareaID = respuestaBD[0][0].ID;
+        for (const file of req.files) {
+            const nombreMultimedia = file.originalname;
+            const linkMultimedia = `${tareaID}\\\\${nombreMultimedia}`;
+            datos = {tareaID, nombreMultimedia, linkMultimedia};
+            await Controller.insertMultimediaTarea(datos);
+        }
+        res.redirect('/ponente/consultarCursoPEI')
+    },
+
+
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
     },
-    postAgregarTarea: async function (req, res, next) {
-        global.direccion = './archivosPrueba';
-        const respuestaBD = await Controller.inserTarea(req.body, 8);
-        const tareaID = respuestaBD[0][0].ID;
-        const raiz = path.join(__dirname, '../../') + 'archivosPrueba/'
-        let linkMultimedia = raiz.replace(/[\\]/g, '\\\\');
+    
 
         for (const file of req.files) {
             const nombreMultimedia = file.originalname;

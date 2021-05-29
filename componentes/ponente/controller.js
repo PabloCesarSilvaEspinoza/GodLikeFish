@@ -8,28 +8,33 @@ module.exports = function (injectedStore) {
     /*                       TAREAS                        */
     /*-----------------------------------------------------*/
 
-    function insertTarea(body, cursoID) {
+    function insertTarea(body) {
         const {
-            nombreTarea, fechaLimiteTarea, horaLimiteTarea, descripcionTarea
+            idCurso, nombreTarea, fechaLimiteTarea, horaLimiteTarea, descripcionTarea, atemporalCurso
         } = body;
 
         const PROCEDURE = `CALL agregar_Tarea( 
-            ${cursoID}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}'
-            )`
+            ${idCurso}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}', ${atemporalCurso}
+            )`;
 
         return store.upsert(PROCEDURE);
     }
 
-    function insertTareaMultimedia(body) {
+    function insertMultimediaTarea(body) {
         const {
-            tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia
+            tareaID, nombreMultimedia, linkMultimedia
         } = body;
         
         const PROCEDURE = `CALL agregar_Multimedia_Tarea( 
-            ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}', '${tipoMultimedia}'
-            )`
-
+            ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}'
+            )`;
+        
         return store.upsert(PROCEDURE);
+    }
+
+    function getUltimaTarea() {
+        const VIEW = 'ver_Ultima_Tarea';
+        return store.list(VIEW);
     }
 
     function listCursosActivos(id) {
@@ -48,9 +53,10 @@ module.exports = function (injectedStore) {
     }
     return {
         insertTarea,
-        insertTareaMultimedia,
+        insertMultimediaTarea,
         listAlumnos,
         listCursos,
-        listCursosActivos
+        listCursosActivos,
+        getUltimaTarea
     };
 }

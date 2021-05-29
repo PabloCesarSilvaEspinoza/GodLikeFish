@@ -71,7 +71,6 @@ module.exports = {
             estudiante:true
         });
     },
-   
 
     getDescargarTemario: async function (req, res, next) {
         const curso = await Controller.getTemario(req.params.idCurso);
@@ -81,11 +80,17 @@ module.exports = {
         res.download(archivo)
     },
 
-   
+    postInscribirse: async function (req, res, next){
+        console.log(req.user.id);
+        console.log(req.body.idCurso);
+        const respuestaBD = await Controller.insertEstudianteCurso(req.user.id, req.body.idCurso);
+        console.log(respuestaBD);
+        res.redirect('/estudiante/dashboardEstudiante');
+    }
 
     /* getVerTareas:async function(req, res, next){
         const cursos= await Controller.list();
-     },
+    },
 
     getVerTarea: async function(req, res, next){
         const id = req.params.id;
@@ -95,12 +100,12 @@ module.exports = {
 
     postAgregarTarea: async function(req, res, next){
         await Controller.insert(req.body);
-       res.redirect('/');
+        res.redirect('/');
     },
 
     putEditarTarea: async function(req, res, next){
         await Controller.update(req.body);
-       res.redirect('/');
+        res.redirect('/');
     }, */
 
 };

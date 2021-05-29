@@ -8,8 +8,10 @@ router.get('/misAsignaciones', render.getMisAsignaciones);
 router.get('/curso/:idCurso', render.getConsultarCurso);
 
 router.get('/consultarCursoEII/', render.getConsultarCursoE2);
-
 router.get('/consultarCursoEIII', render.getConsultarCursoE3);
+
+router.post('/Inscribirse', render.postInscribirse)
+
 router.get('/soporte', render.getSoporte);
 
 router.get('/DescargarTemario/:idCurso', render.getDescargarTemario);

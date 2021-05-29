@@ -81,8 +81,12 @@
                             cuaquier otro.</p>
                     </div>
                     <div class="div text-center mb-4">
-                        <button type="button" class="btn waves-effect waves-light btn-success"><i
-                                class="fas fa-check mr-2"></i>Si, inscribirme ahora</button>
+                        <form action="../Inscribirse" method="POST">
+                            <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
+                            <button type="submit" class="btn waves-effect waves-light btn-success">
+                                <iclass="fas fa-check mr-2"></i>Si, inscribirme ahora
+                            </button>
+                        </form>
                         <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal" aria-hidden="true"><i
                                 class="fas fa-times mr-2" ></i>No, debo pensarlo bien</button>
                     </div>
