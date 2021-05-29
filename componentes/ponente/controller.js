@@ -37,16 +37,29 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    /*-----------------------------------------------------*/ 
+    /*                       CURSOS                        */
+    /*-----------------------------------------------------*/
+
     function listCursosActivos(id) {
         const VIEW = 'ver_Cursos_Activos';
         const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
+        
         return store.get(VIEW, CLAUSE, id);
+    }
+
+    function getProximoCurso(idPonente) {
+        const VIEW = 'ver_Proximo_Curso';
+        const CLAUSE = 'WHERE ponente_id = ? LIMIT 1'
+
+        return store.get(VIEW, CLAUSE, idPonente);
     }
         
     function listCursos() {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
     }
+
     function listAlumnos() {
         const VIEW = 'ver_Alumnos';
         return store.list(VIEW);
@@ -57,6 +70,7 @@ module.exports = function (injectedStore) {
         listAlumnos,
         listCursos,
         listCursosActivos,
-        getUltimaTarea
+        getUltimaTarea,
+        getProximoCurso
     };
 }
