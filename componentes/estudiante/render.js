@@ -22,7 +22,7 @@ module.exports = {
     getMisAsignaciones: async function (req, res, next) {
         res.render('alumno/a2_misAsignaciones', {
             estudiante:true
-        });
+        }); 
     },
     getConsultarCurso: async function (req, res, next) {
         //Si no esta inscrito
@@ -41,10 +41,10 @@ module.exports = {
         const RecursosUsuarioDocumentos= await Controller.listRecursosUsuarioDocumentos(usuarioID); 
         const RecursosUsuarioLinks= await Controller.listRecursosUsuarioLinks(usuarioID); 
 
-        console.log(datosCursoUsuario);
-        console.log(AvisosUsuario);
-        console.log(RecursosUsuarioDocumentos);
-        console.log(RecursosUsuarioLinks);
+        // console.log(datosCursoUsuario);
+        // console.log(AvisosUsuario);
+        // console.log(RecursosUsuarioDocumentos);
+        // console.log(RecursosUsuarioLinks);
 
         res.render('alumno/a3_consultarCursoE2', {
             estudiante:true,

@@ -431,19 +431,16 @@
                                                         <td>{{edad}}</td>
                                                         <td>{{antiguedad}}</td>
                                                         <td>
+                                                            
                                                             <!-- aqui va el modal -->
 
-                                                            <a id='b' href="#id"
-                                                                class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                                data-toggle="modal" data-target=".verAlum"><i
-                                                                    class="far fa-user mr-1"></i> Ver
-                                                                Perfil</a></h5>
+                                                            
 
+                                              <button
+                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                            data-toggle="modal" data-target="#ModalVerPerfilAlumno{{idUsuario}}"><i
+                                                class="far fa-user mr-1"></i> Ver Perfil</button>
 
-                                                            {{!-- <a class="dropdown-item" data-toggle="modal"
-                                                                data-target=".verAlum"><i
-                                                                    class=" fas fa-address-card"></i> Perfil propio
-                                                                alumno</a> --}}
 
                                                         </td>
                                                     </tr>
@@ -458,17 +455,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <script>
-
-
-
-                    $('#b').click(function () {
-                        consol.log("fffffff")
-                    });
-
-                </script>
 
 
 
@@ -559,139 +545,155 @@
     </div>
 
 
-
-
-    <div id="ModalVerPerfilAlumno" name="ModalVerPerfilAlumno" class="card">
-        <div class="modal fade verAlum" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-            aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="text-center" class="modal-header">
-                        <div class="row">
-                            <div class="col text-right">
-                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                    aria-hidden="true">×</button>
-                            </div>
-                        </div>
-                        <!--Titulo-->
-                        <div class="row">
-                            <div class="col text-center">
-                                <h3>Mi Perfil<span class="small"></span></h3>
-                            </div>
-                            <hr>
+ <!-- ===================== CAMBIAR EL MODAL ====================================== -->
+{{#each calis }}
+    
+<div id="ModalVerPerfilAlumno{{idUsuario}}" name="ModalVerPerfilAlumno" class="modal">
+    {{!-- <div class="modal fade verAlum" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+        > --}}
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                
+                <div class="text-center" class="modal-header">
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
                         </div>
                     </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Perfil <span class="small">Usuario </span></h1>
+                            
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mt-4 ">
+                            <div class="col-md-12">
+                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group text-center ">
 
-                    <div class="modal-body">
-                        <div class="row">
-                            {{#each calis }}
-                            <div class="col-12  ">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <center> <img src="../../assets/images/users/1.jpg" class="rounded-circle"
-                                                width="120" />
-                                            <br><br>
-                                            <h6 class="text-muted">Foto Perfil</h6>
-                                        </center>
+                                        <img src="{{fotoUsuario}}" class="rounded-circle" width="120" />
+                                        <br>
+                                        <h6 class="text-muted">Foto de Perfil</h6>
+
                                     </div>
-                                    <div class="col-9" class="form-control">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
-                                                <hr>
-                                            </div>
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Nombres</h6>
-                                                <h4>{{nombreUsuario}}</h4>
-                                            </div>
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Tipo</h6>
-                                                <h4>Estudiante</h4>
-                                            </div>
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Categoría</h6>
-                                                <h4>Area 1</h4>
-                                            </div>
+                                </div>
+                                <div class="col-md-9 text-center">
+                                    <div class="row">
+                                        <div class="col-lg-6 text-center">
+                                            <h6 class="text-muted">Nombres</h6>
+                                            <h4>{{nombreUsuario}}</h4>
                                         </div>
-
-                                        <div class="row mt-4">
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Matrícula</h6>
-                                                <h4>E2545441</h4>
-                                            </div>
-                                            <div class="col-lg-8 text-center">
-                                                <h6 class="text-muted">Correo</h6>
-                                                <h4>correonoexiste@gmail.com</h4>
-                                            </div>
-
+                                        <div class="col-lg-4 text-center">
+                                            <h6 class="text-muted">Categoría</h6>
+                                            <h4>{{areaUsuario}}</h4>
                                         </div>
 
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 text-center">
+                                            <h6 class="text-muted">Matrícula</h6>
+                                            <h4>{{matriculaUsuario}}</h4>
+                                        </div>
+                                        <div class="col-lg-4 text-center">
+                                            <h6 class="text-muted">Tipo</h6>
+                                            <h4>{{tipoUsuario}}</h4>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 text-center">
+                                            <h6 class="text-muted">Correo</h6>
+                                            <h4>{{correoUsuario}}</h4>
+                                        </div>
+                                        <hr>
+                                        <div class="col-lg-6 text-center">
+
+                                            
+
+                                        </div>
+
+                                    </div>
 
                                 </div>
+                                <!--div class="col-md-4 text-center" >
+                
+                                                    <div class="form-group">
+                                                        <button type="button"
+                                                            class="btn waves-effect waves-light btn-rounded btn-success"
+                                                            data-toggle="..." data-target="..."><i
+                                                                class="mr-2 mdi mdi-lock-open-outline"></i>Cambiar
+                                                            Contraseña</button>
+                                                    </div-->
 
                             </div>
-
-                            <div class="col-12 mt-4 ">
-                                <div class="col-md-12">
-                                    <h4><i class="fas fa-book text-left mr-2"></i>Datos referenciales</h4>
-                                    <hr>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Municipio de Nacimiento</h6>
-                                        <h4>Morelia</h4>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">País de Nacimiento</h6>
-                                        <h4>México</h4>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Fecha de Nacimiento</h6>
-                                        <h4>18/09/2021</h4>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-4">
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Municipio(Residencia)</h6>
-                                        <h4>Morelia</h4>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Colonia</h6>
-                                        <h4>Fonseca</h4>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Calle</h6>
-                                        <h4>Conocido</h4>
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-lg-6 text-center">
-                                        <h6 class="text-muted">Número Exterior</h6>
-                                        <h4>441</h4>
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn waves-effect waves-light btn-warning btn-sm"
-                                        data-toggle="..." data-target="..."><i
-                                            class=" fas fa-exclamation-triangle"></i>Cambiar Contraseña</button>
-                                </div>
-                            </div>
-
-                            {{/each}}
-
                         </div>
                     </div>
-                    <!--Fin modalbody-->
                 </div>
 
+                <div class="col-12 mt-4 ">
+                    <div class="col-md-12">
+                        <h4><i class="fas fa-book text-left mr-2"></i>Datos referenciales</h4>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 text-center">
+                            <h6 class="text-muted">Municipio de Nacimiento</h6>
+                            <h4>{{municipioNacimiento}}</h4>
+                        </div>
+                        <div class="col-lg-4 text-center">
+                            <h6 class="text-muted">País de Nacimiento</h6>
+                            <h4>{{paisNacimiento}}</h4>
+                        </div>
+                        <div class="col-lg-4 text-center">
+                            <h6 class="text-muted">Fecha de Nacimiento</h6>
+                            <h4>{{fechaNacimiento}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-lg-4 text-center">
+                            <h6 class="text-muted">Municipio(Residencia)</h6>
+                            <h4>{{municipioResidencia}}</h4>
+                        </div>
+                        <div class="col-lg-4 text-center">
+                            <h6 class="text-muted">Colonia</h6>
+                            <h4>{{colonia}}</h4>
+                        </div>
+                        <div class="col-lg-4 text-center">
+                            <h6 class="text-muted">Calle</h6>
+                            <h4>{{calle}}</h4>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-lg-6 text-center">
+                            <h6 class="text-muted">Número Exterior</h6>
+                            <h4>{{numeroExterior}}</h4>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                         <a type="button" class="btn waves-effect waves-light btn-info" href=""><i class="fas fa-edit mr-2"></i>Editar Usuario</a>
+                                                </div>
+                    </div>
+ 
+                </div>
+                <hr>
+               
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
+        <!--Fin modalbody-->
     </div>
+
+</div>
+       {{/each}}
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
