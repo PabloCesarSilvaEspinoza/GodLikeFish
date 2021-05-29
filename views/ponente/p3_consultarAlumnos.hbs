@@ -1,86 +1,77 @@
 <div class="container-fluid">
-    <!--MODAL--> 
-   
-    <div id="ModalVerPerfilAlumno/Ponente" name="ModalVerPerfilPonente/Alumno" class="card">
-        <!-- sample modal content -->
-        {{#each alumnos}}
-        <div id="ModalVerPonentealumno" name="ModalVerPonentealumno" class="modal fade verAlmPon" tabindex="-1" role="dialog"
-            aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="text-center" class="modal-header">
-                            <div class="row">
-                                <div class="col text-right">
-                                    <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                        aria-hidden="true">×</button>
-                                </div>
-                            </div>
-                            <!--Titulo-->
-                            <div class="row">
-                                <div class="modal-title col text-center text-success">
-                                    <h3>Perfil Alumno<span class="small"></span></h3>
-                                </div>
-                                <hr>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-12  ">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <center> <img src="../../assets/images/users/1.jpg" class="rounded-circle"
-                                                width="100" />
-                                            <br><br>
-                                            <h6 class="text-muted">Foto Perfil</h6>
-                                        </center>
-                                    </div>
-                                    <div class="col-9" class="form-control">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
-                                                <hr>
-                                            </div>
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Nombres</h6>
-                                                <h4>{{nombres}}{{pApellido}}</h4>
-                                            </div>
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Matrícula</h6>
-                                                <h4>{{matricula}}</h4>
-                                            </div>
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Categoría</h6>
-                                                <h4>{{area}}</h4>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col-lg-4 text-center">
-                                                <h6 class="text-muted">Antigüedad</h6>
-                                                <h4>{{antiguedad}}</h4>
-                                            </div>
-                                            <div class="col-lg-8 text-center">
-                                                <h6 class="text-muted">Correo</h6>
-                                                <h4>{{correoUsuario}}</h4>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer text-success">
-                            <h6 class="text-muted">Curso: </h6>
-                            <h4 >{{nombreCurso}}</h4>
-                        </div>
+    <!--MODAL-->
+    {{#each modalAlumno}}
+    <div id="verAlumno{{id}}" class="modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!--Salir-->
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
-                    <!--Fin modalbody-->
+                </div>
+                <!--Titulo-->
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Perfil <span class="small">Alumno</span></h1>
+                    </div>
+                    <hr>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <form enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
+                                    <hr>
+                                </div>
+                                <div class="col-3">
+                                    <center> <img src="{{imagen}}"
+                                            class="rounded-circle" width="100" />
+                                        <br><br>
+                                        <h6 class="text-muted">Foto Perfil</h6>
+                                    </center>
+                                </div>
+                                <div class="col-9" class="form-control">
+                                    <div class="row">
+                                        <div class="col-lg-4 text-center">
+                                            <h6 class="text-muted">Nombres</h6>
+                                            <h4>{{nombres}}  {{pApellido}}</h4>
+                                        </div>
+                                        <div class="col-lg-4 text-center">
+                                            <h6 class="text-muted">Matrícula</h6>
+                                            <h4>{{matricula}}</h4>
+                                        </div>
+                                        <div class="col-lg-4 text-center">
+                                            <h6 class="text-muted">Categoría</h6>
+                                            <h4>{{area}}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-lg-4 text-center">
+                                            <h6 class="text-muted">Antigüedad</h6>
+                                            <h4>{{antiguedad}}</h4>
+                                        </div>
+                                        <div class="col-lg-8 text-center">
+                                            <h6 class="text-muted">Correo</h6>
+                                            <h4>{{correoUsuario}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="col-12 form-group mt-4">
+                                        <div class="col text-right">
+                                        <a href="" type="button" class="btn waves-effect waves-light btn-success"> Esta bien <i
+                                        class="far fa-grin-alt mr-2"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-         {{/each}}
     </div>
+    {{/each}}
     <!--CONTENEDOR-->
 
     <div class="col-12 sm-12">
@@ -143,10 +134,10 @@
                                                             <td>{{matricula}}</td>
                                                             <td>{{antiguedad}}</td>
                                                             <td>
-                                                                <a type="button"  data-toggle="modal" data-target=".verAlmPon"
-                                                                    class="btn waves-effect waves-light btn-success btn-rounded"
-                                                                    href="/ponente/{{id}}"><i
-                                                                        class="fas fa-eye mr-2"></i> Ver alumno</a>
+                                                                <a type="button" data-toggle="modal"
+                                                                    data-target="#verAlumno{{id}}"
+                                                                    class="btn waves-effect waves-light btn-success text-white btn-rounded"><i
+                                                                    href="..." class="fas fa-eye mr-2"></i> Ver alumno</a>
                                                             </td>
                                                         </tr>
                                                         {{/each}}
@@ -182,8 +173,8 @@
                                                 class="form-control" placeholder="Buscar" aria-label=""
                                                 aria-describedby="basic-addon1">
                                             <div class="input-group-append">
-                                                <button  class="btn btn-success"
-                                                    type="button"><i class="ti-search"></i></button>
+                                                <button class="btn btn-success" type="button"><i
+                                                        class="ti-search"></i></button>
 
                                             </div>
                                         </div>
@@ -192,12 +183,13 @@
                             </div>
                             <div id="TarjetaAlumno" name="TarjetaAlumno" class="container-fluid">
                                 <div class="row el-element-overlay">
-                                     {{#each alumnos}}
+                                    {{#each alumnos}}
                                     <div class="col-lg-3 col-md-6">
                                         <div class="card">
-                                            <div class="el-card-item" class="modal-footer" >
-                                                <div class="el-card-avatar el-overlay-1" data-toggle="modal" data-target=".verAlmPon"> <img
-                                                        src="../../assets/images/users/2.jpg" alt="user" />
+                                            <div class="el-card-item" class="modal-footer">
+                                                <div class="el-card-avatar el-overlay-1" data-toggle="modal"
+                                                     data-target="#verAlumno{{id}}"> <img src="../../assets/images/users/2.jpg"
+                                                        alt="user" />
                                                     <div class="el-overlay">
                                                         <ul class="list-style-none el-info">
                                                             <a class="btn default btn-outline image-popup-vertical-fit el-link"
@@ -206,15 +198,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="el-card-content">
-                                                    <h4 class="mb-0">{{nombres}}{{pApellido}}</h4> <span id="UsuarioArea"
-                                                        name="UsuarioArea" class="text-muted">{{matricula}}
-                                                       {{antiguedad}}</span>
+                                                    <h4 class="mb-0">{{nombres}}  {{pApellido}}</h4> <span
+                                                        id="UsuarioArea" name="UsuarioArea"
+                                                        class="text-muted">{{matricula}}   <br>
+                                                        {{antiguedad}}</span>
                                                     <br>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    {{/each}}                                   
+                                    {{/each}}
                                 </div>
                             </div>
                         </div>

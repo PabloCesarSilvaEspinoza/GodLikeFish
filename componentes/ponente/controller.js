@@ -31,10 +31,6 @@ module.exports = function (injectedStore) {
 
         return store.insert(PROCEDURE);
     }
-    function listCursos() {
-        const VIEW = 'ver_Datos_Cursos';
-        return store.list(VIEW);
-    }
     function listAlumnos() {
         const VIEW = 'ver_Alumnos';
         return store.list(VIEW);
@@ -43,6 +39,5 @@ module.exports = function (injectedStore) {
         insertTarea,
         insertTareaMultimedia,
         listAlumnos,
-        listCursos,
     };
 }

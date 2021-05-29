@@ -21,12 +21,12 @@ module.exports = {
     },
     getConsultarAlumnos: async function (req, res, next) {
         const alumnos = await Controller.listAlumnos();
-        const cursos = await Controller.listCursos();
+        const modalAlumno = await Controller.listAlumnos();
         res.render('ponente/p3_consultarAlumnos', {
             ponente:true,
             datatables:true,
             dataTablesExport:true,
-            cursos,
+            modalAlumno,
             alumnos,
         });
     },
