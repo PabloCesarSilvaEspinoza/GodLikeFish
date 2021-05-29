@@ -42,15 +42,21 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
     }
-    function listAlumnos() {
-        const VIEW = 'ver_Alumnos';
+    function listEstudiantes() {
+        const VIEW = 'ver_Estudiantes';
         return store.list(VIEW);
+    }
+    async function getHistorialCursosPonente(id) {
+        const VIEW = 'ver_Historial_Cursos_Ponente';
+        const CLAUSE = `WHERE idPonente = ?`;
+        return store.get(VIEW, CLAUSE, id);
     }
     return {
         insertTarea,
         insertTareaMultimedia,
-        listAlumnos,
+        listEstudiantes,
         listCursos,
-        listCursosActivos
+        listCursosActivos,
+        getHistorialCursosPonente
     };
 }
