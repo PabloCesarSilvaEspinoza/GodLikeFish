@@ -48,6 +48,10 @@ module.exports = {
             ponente:true
         });
     },
+    postAgregarExamen: async function (req, res, next){
+        await Controller.insertExamen(req.body);
+        res.redirect('/ponente/consultarCursoPEI')
+    },
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
     },

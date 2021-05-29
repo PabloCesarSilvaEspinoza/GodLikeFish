@@ -31,6 +31,17 @@ module.exports = function (injectedStore) {
 
         return store.upsert(PROCEDURE);
     }
+    function insertExamen(body) {
+        const {
+            idCurso, nombreExamen, linkExamen
+        } = body;
+        
+        const PROCEDURE = `CALL agregar_Examen( 
+            '${idCurso}', '${nombreExamen}','${linkExamen}'
+            )`
+
+        return store.insert(PROCEDURE);
+    }
 
     function listCursosActivos(id) {
         const VIEW = 'ver_Cursos_Activos';
@@ -46,9 +57,11 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Alumnos';
         return store.list(VIEW);
     }
+    
     return {
         insertTarea,
         insertTareaMultimedia,
+        insertExamen,
         listAlumnos,
         listCursos,
         listCursosActivos

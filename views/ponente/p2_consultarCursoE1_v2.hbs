@@ -810,6 +810,75 @@
                 </div>
             </div>
         </div>
+        <!--modal Agregar Examen-->
+        <div id="agregarExamen" class="modal">
+            <div class="modal-dialog modal-s">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Nuevo <span class="small">Examen</span></h1>
+                            <p>Aqui puedes agregar un examen nuevo.</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <form method="POST" action="/ponente/agregarExamen">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Titulo del Examen <span class="text-danger">*</span>
+                                                        </h5>
+                                                        <input type="text" id="nombreExamen" name="nombreExamen"
+                                                            class="form-control" placeholder="Escribe el título del examen"
+                                                            autocomplete="off" required>
+                                                        <small class="form-control-feedback ml-1">
+                                                            Maximo 255 caracteres
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Enlace del examen<span class="text-danger">*</span>
+                                                        </h5>
+                                                        <input type="url" id="linkExamen" name="linkExamen" class="form-control"
+                                                            placeholder="Agrega el enlace del examen" autocomplete="off" required>
+                                                        <input type="hidden" name="idCurso" id="idCurso" value="1">
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                                <div class="form-group mt-4">
+                                    <div class="col text-right">
+                                        <hr>
+                                        <button type="submit" class="btn waves-effect waves-light btn-success">
+                                            <i class="fas fa-save mr-2"></i>Guardar y Publicar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info"
+                                            data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+        
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Terminan los modales-->
 
         <div class="col-lg-12">
@@ -896,6 +965,9 @@
                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recursos" role="tab"><span
                                     class="hidden-sm-up"><i class="fas fa-folder-open"></i></span> <span
                                     class="hidden-xs-down">Recursos</span></a> </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#examenes" role="tab"><span
+                                    class="hidden-sm-up"><i class="mr-2 mdi mdi-file-document"></i></span> <span
+                                    class="hidden-xs-down">Examenes</span></a> </li>
                     </ul>
                     <div class="tab-content tabcontent-border">
                         <!--Panel de todos-->
@@ -1253,7 +1325,8 @@
                                     <div class="card">
                                         <div class="card-header bg-info">
                                             <h4 class="mb-0 text-white"><i class="fas fa-folder-open"></i> Docuementos
-                                                <span class="small">(3)</span></h4>
+                                                <span class="small">(3)</span>
+                                            </h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
@@ -1417,6 +1490,50 @@
                                 </div>
                             </div>
                         </div>
+                        <!--Panel de Examenes-->
+                        <div class="tab-pane  p-20" id="examenes" role="tabpanel">
+                            <!-- Busqueda-->
+                            <nav class="navbar navbar-light bg-light justify-content-between">
+                                <a class="navbar-brand">Examenes</a>
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                                        aria-label="Search">
+                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
+                                            class="fas fa-search mr-2"></i> Buscar</button>
+                                    <button type="button" class="btn waves-effect waves-light btn-info"
+                                        data-toggle="modal" data-target="#agregarExamen"><i
+                                            class="fas fa-plus mr-2"></i>Agregar Examen</button>
+                                </form>
+                            </nav>
+                            <!--cartasExamenes-->
+                            <div class="card mt-3"
+                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+
+                                                <div class="">
+                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+
+                                                    <h4>Titulo del Examen</h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <h5>Enlace del examen: <br>
+                                                <span
+                                                    class="small">file:///C:/Users/Documents/8vo/Escuenla%20Sindical/xtremeadmin/
+                                                    xtreme-admin/html/GodlikeFish/p2_consultarCursoE1_v2.html</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
