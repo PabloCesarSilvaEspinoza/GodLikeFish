@@ -4,6 +4,37 @@ module.exports = function (injectedStore) {
         store = require('../../store/mysql');
     }
 
+    /*-----------------------------------------------------*/ 
+    /*                      DASHBOARD                      */
+    /*-----------------------------------------------------*/
+
+    function getUsuarioArea(usuarioID){
+        const VIEW = 'ver_Usuario_Area';
+        const CLAUSE = `WHERE idUsuario = ?`
+        return store.get(VIEW, CLAUSE, usuarioID);
+    }
+    
+    function listCursosDisponibles(idUsuario, areaUsuario) {
+        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario}, '${areaUsuario}')`
+        return store.catalog(PROCEDURE)
+    }
+
+    /*-----------------------------------------------------*/ 
+    /*                        CURSOS                       */
+    /*-----------------------------------------------------*/
+
+    function getCursoInscripcion(cursoID) {
+        const VIEW = 'ver_Datos_Cursos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, cursoID);
+    }
+
+    function getTemario(cursoID) {
+        const VIEW = 'ver_Temario_Curso';
+        const CLAUSE = `WHERE cursoID = ?`;
+        return store.get(VIEW, CLAUSE, cursoID);
+    }
+
     function list() {
         const VIEW = 'ver_Tarea';
         //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
@@ -24,7 +55,7 @@ module.exports = function (injectedStore) {
             ${cursoId}, '${nombre}', '${fechaSubida}','${fechaLImite}','${horaLimite}','${descripcion}'
             )`
     
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
     
     function update(body) {
@@ -36,13 +67,59 @@ module.exports = function (injectedStore) {
             ${Id},  ${cursoId}, '${nombre}', '${fechaSubida}','${fechaLImite}','${horaLimite}','${descripcion}'
             )`
     
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
+    }
+
+    //----------------------- falta agregar el and al WHERE para el id de el usuario
+    function listDatosCursoUsuario(id) {
+        const VIEW = 'Ver_Datos_Curso_Usuario';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listAvisosUsuario(id) {
+        const VIEW = 'Ver_Avisos_Usuario';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listRecursosUsuarioDocumentos(id) {
+        const VIEW = 'Ver_Recursos_Usuario_Documentos';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
     }
     
+    function listRecursosUsuarioLinks(id) {
+        const VIEW = 'Ver_Recursos_Usuario_Links';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+    function listAsignacionesUsuario(id) {
+        const VIEW = 'Ver_Recurso';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+    async function getMiPerfil(id) {
+        const VIEW = 'ver_Usuarios';
+        const CLAUSE = `WHERE id = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+
+
     return {
         list,
         get,
         insert,
         update,
+        listDatosCursoUsuario,
+        listAvisosUsuario,
+        listRecursosUsuarioDocumentos,
+        listRecursosUsuarioLinks,
+        getMiPerfil,
+        getUsuarioArea,
+        listCursosDisponibles,
+        getCursoInscripcion,
+        getTemario,
     };
 }

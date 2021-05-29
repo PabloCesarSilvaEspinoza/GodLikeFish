@@ -36,14 +36,50 @@ module.exports = function (injectedStore) {
             '${tipoCurso}', '${temarioCurso}','${modalidadCurso}', ${capacidadCurso},'${fotoCurso}', ${ponenteID}
         )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     function insertMultimediaCurso(cursoID, temarioCurso, fotoCurso) {
         const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
+
+
+    /*-----------------------------------------------------*/ 
+    /*                       USUARIOS                      */
+    /*-----------------------------------------------------*/
+
+    function listUsuariosEnSistema() {
+        const VIEW = 'Ver_Usuarios_En_Sistema';
+        return store.list(VIEW);
+    }
+
+
+    function listRegistrados() {
+        const VIEW = 'Ver_Usuarios_Resumen_R';
+        return store.list(VIEW);
+    }
+
+    function listActivos() {
+        const VIEW = 'Ver_Usuarios_Resumen_A';
+        return store.list(VIEW);
+    }
+    function listInactivos() {
+        const VIEW = 'Ver_Usuarios_Resumen_I';
+        return store.list(VIEW);
+    }
+
+    function listUsuariosEnSistemaTarjeta() {
+        const VIEW = 'Ver_Usuarios_En_Sistema_Tarjeta';
+        return store.list(VIEW);
+    }
+
+    function listPerfilUsuario() {
+        const VIEW = 'Ver_Perfil_Usuario';
+        return store.list(VIEW);
+    }
+
 
     return {
         getUltimoCurso,
@@ -51,5 +87,11 @@ module.exports = function (injectedStore) {
         listCursos,
         insertCurso,
         insertMultimediaCurso,
+        listUsuariosEnSistema,
+        listRegistrados,
+        listActivos,
+        listInactivos,
+        listUsuariosEnSistemaTarjeta,
+        listPerfilUsuario,
     };
 }

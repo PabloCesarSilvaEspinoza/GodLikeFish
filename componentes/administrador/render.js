@@ -9,10 +9,10 @@ module.exports = {
         res.render('administrador/d1_dashboard_v2', {
             administrador: true,
             graficasAdministrador : true,
-             valores:[{
-             valor1: 18,
-             valor2: 36,
-             valor3: 10
+            valores:[{
+            valor1: 18,
+            valor2: 36,
+            valor3: 10
             }]
         });
     },
@@ -24,25 +24,43 @@ module.exports = {
             dataTablesExport:true,
             cursos,
             graficasAdministrador : true,
-             valores:[{
-             valor1: 18,
-             valor2: 36,
-             valor3: 10
+            valores:[{
+            valor1: 18,
+            valor2: 36,
+            valor3: 10
             }]
         });
     },
     
     getAdministrarUsuarios: async function (req, res, next) {
+        const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
+        const regitrados= await Controller.listRegistrados();
+        const activos= await Controller.listActivos();
+        const inactivos= await Controller.listInactivos();
+        const tarjetas= await Controller.listUsuariosEnSistemaTarjeta();
+        const calis= await Controller.listPerfilUsuario();
+        
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
             dataTablesExport:true,
             graficasAdministrador : true,
-             valores:[{
-             valor1: 18,
-             valor2: 36,
-             valor3: 10
-            }]
+            valores:[{
+            valor1: 18,
+            valor2: 36,
+            valor3: 10
+            }],
+            caladon:true,
+            datosUsuarioEnSistema,
+            regitrados,
+            activos,
+            inactivos,
+            tarjetas,
+            calis,
+
+
+
+
         });
     },
 

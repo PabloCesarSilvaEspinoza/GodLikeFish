@@ -120,6 +120,7 @@
             </div>
         </div>
         <!--Contenido-->
+        {{#curso}}
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
@@ -128,15 +129,16 @@
                             <img src="../../assets/images/users/1.jpg" width="150" class="rounded-circle" alt="user">
                         </div>
                         <div class="col-md-7">
-                            <h1>Nombre del Curso Lorem Ipsum</h1>
+                            <h1>{{nombreCurso}}</h1>
                             <div class="d-flex no-block align-items-center">
                                 <h5 class="mr-4">Ponente:</h5>
                                 <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user"
                                         class="rounded-circle" width="45"></div>
                                 <div class="">
-                                    <h5 class="mb-0 font-16 font-medium">Nombre Completo Ponente</h5><span>Ing. Fisico
-                                        Nuclear</span>
+                                    <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
+                                    <span>{{puestoPonente}}</span>
                                     <span>
+ <!--      aqui c llama el modal   -->                            
                                         <button
                                             class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                             data-toggle="modal" data-target="#verPerfilPonente"><i
@@ -145,26 +147,27 @@
                                     </h5>
                                 </div>
                             </div>
-                            <h5 class="mt-3">Clave: <span class="small">001885421 </span>
+                            <h5 class="mt-3">Clave: <span class="small">{{claveCurso}}</span>
                                 <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
                                         class="far fa-copy mr-1"></i> Copiar</a>
                             </h5>
                         </div>
                         <div class="col-md-2 text-right">
-                            <span class="small"><button type="button" class="btn waves-effect waves-light btn-danger"
-                                    data-toggle="modal" data-target="#myModal"><i
-                                        class="fas fa-exclamation-triangle mr-2"></i>Reportar un
-                                    Problema</button></span>
+                            <span class="small">
+                                <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="modal" data-target="#myModal">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema
+                                </button>
+                            </span>
                         </div>
                         <div class="col sm-12">
                             <hr>
                             <div class="d-flex justify-content-center">
                                 <h5 class="ml-2 mr-2"><i class="fas fa-briefcase mr-1"></i> Area: <span
-                                        class="small ">Nombre Area</span></h5>
+                                        class="small ">{{areaCurso}}</span></h5>
                                 <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span
-                                        class="small ">Nombre Tipo</span></h5>
+                                        class="small ">{{tipoCurso}}</span></h5>
                                 <h5 class="ml-2 mr-2"><i class="fas fa-video mr-1"></i> Modalidad: <span
-                                        class="small ">Nombre Modalidad</span></h5>
+                                        class="small ">{{modalidadCurso}}</span></h5>
                             </div>
                         </div>
                     </div>
@@ -177,23 +180,25 @@
                             <h3>Detalles del Curso</h3>
                             <hr>
                             <h5>Descripción</h5>
-                            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
-                                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500,
-                                cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una
-                                galería de textos y los mezcló de tal manera que logró hacer un libro de textos
-                                especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno
-                                en documentos electrónicos, quedando esencialmente igual al original.</p>
+                            <p>{{descripcionCurso}}</p>
                             <h5 class="mt-4">Temario</h5>
-                            <p>Puedes consultar el temario del curso en el siguiente enlace: <a href="#"
+                            <p>Aqui puedes descargar el temario del curso: <a href="../DescargarTemario/{{idCurso}}"
                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                        class="fas fa-external-link-alt mr-1"></i> Ver Temario</a></p>
+                                        class="far fa-arrow-alt-circle-down mr-2"></i>Temario</a></p>
                             <div class="row mt-4">
                                 <div class="col-md-6">
                                     <h5>Plataforma</h5>
                                     <div class="d-flex align-items-center">
-                                        <img src="../../assets/images/teams.png" width="100"
-                                            class="rounded-circle ml-4 mr-4" alt="user">
-                                        <h4>Microsfot TEAMS</h4>
+                                        {{#ifEquals plataformaCurso "Microsoft Teams"}}
+                                        <img src="../../assets/images/teams.png" width="100" class="ml-4 mr-4" alt="user">
+                                        {{/ifEquals}}
+                                        {{#ifEquals plataformaCurso "Youtube"}}
+                                        <img src="../../assets/images/Youtube.png" width="100" class="ml-4 mr-4" alt="user">
+                                        {{/ifEquals}}
+                                        {{#ifEquals plataformaCurso "Google Meet"}}
+                                        <img src="../../assets/images/Google_Meet.png" width="100" class="ml-4 mr-4" alt="user">
+                                        {{/ifEquals}}
+                                        <h4>{{plataformaCurso}}</h4>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -213,23 +218,23 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h2>Calendario de Inscripción <span class="small text-muted">(abierto)</span></h2>
+                    <h2>Calendario de Inscripciones <span class="small text-muted">({{estadoInscripciones}})</span></h2>
                     <h5 class="ml-2 mr-2"><i class="fas fa-users"></i> Alumnos inscritos: <span
-                            class="small ">28/40</span></h5>
+                            class="small ">{{totalEstudiantesCurso}}</span></h5>
                     <h5 class="ml-2 mr-2"><i class="fas fa-calendar mr-1"></i> Fecha Inicio: <span
-                            class="small ">28/06/2021</span></h5>
+                            class="small ">{{fechaInscripcionInicioCurso}}</span></h5>
                     <h5 class="ml-2 mr-2"><i class="fas fa-calendar mr-1"></i> Fecha Fin: <span
-                            class="small ">31/12/2021</span></h5>
+                            class="small ">{{fechaInscripcionFinalCurso}}</span></h5>
                     <hr class="mt-4 md-4">
                     <h2>Horario de Clase</h2>
                     <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span
-                            class="small ">28/06/2021</span></h5>
+                            class="small ">{{fechaInicioCurso}}</span></h5>
                     <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
-                            class="small ">31/12/2021</span></h5>
-                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">10:00 am. -
-                            12:00 am.</span></h5>
+                            class="small ">{{fechaFinalCurso}}</span></h5>
+                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
                 </div>
             </div>
         </div>
+        {{/curso}}
     </div>
 </div>

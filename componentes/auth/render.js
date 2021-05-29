@@ -30,22 +30,45 @@ module.exports = {
             puestos,
         });
     },
+
     getLogOut: async function (req, res, next) {
         req.session.destroy();
         res.redirect('/');
     },
+
     getConfirmarCorreo: async function (req, res, next) {
-        res.render('usuario/u2_confirmarCorreo', {
-            general: true
-        });
+        (req.isAuthenticated() ?
+            res.render('usuario/u2_confirmarCorreo', {
+                general: true
+            })
+            : res.redirect('/')
+        )
     },
+
     getReestablecerContraseña: async function (req, res, next) {
         res.render('usuario/u3_reestablecerContraseña', {
             general: true
         });
     },
+
+    getValidarCorreo: async function (req, res, next) {
+        const usuario = await Controller.getUsuario(req.user.id);
+        (usuario[0].correoVerificado ? res.redirect('/validarPermisos') : res.redirect('/confirmarCorreo'));
+    },
+
+    postVerificarCorreo: async function (req, res, next) {
+        const usuario = await Controller.getUsuario(req.user.id);
+        //ver si el codigo coincide y cambiar el estado
+        if (usuario[0].codigoVerificacion == req.body.codigoVerificacion){
+            Controller.verificarCorreo(req.user.id);
+            console.log("Verificado");
+            res.redirect('/logOut');
+        }else{
+            console.log("no coinciden");
+        } 
+    },
+
     getValidarPermisos: async function (req, res) {
-        console.log("estoy validando los permisos de: " + req.user.rol);
         switch (req.user.rol) {
             case "Estudiante":
                 res.redirect('/estudiante/dashboardEstudiante');
@@ -59,4 +82,26 @@ module.exports = {
                 break;
         }
     },
+
+    postReenviarCodigoVerificacion: async function (req, res, next) {
+        await Controller.generarCodigoVerificacion(req.user.id);
+        const usuario = await Controller.getUsuario(req.user.id);
+        const correoUsuario = usuario[0].correoUsuario;
+        const codigoVerificacion = usuario[0].codigoVerificacion;
+        console.log(codigoVerificacion);
+        await Controller.enviarCorreo("gdl@gmail.com", correoUsuario, "Código de Verificación: Godlike Fish.", codigoVerificacion);
+        res.redirect('/confirmarCorreo')
+    },
+
+    //Para las rutas de Pruebas
+     getEnviarCorreoGmail: async function (req, res, next) {
+         console.log("por enviar");
+        await Controller.enviarCorreoGmail(
+            "browntth@icloud.com",
+            "GDL by Raymerlin prueba",
+            "Prueba Nodemailer",
+            "funciona! 7u7"
+        );
+        res.redirect('/');
+    }, 
 };

@@ -17,7 +17,7 @@ module.exports = function (injectedStore) {
             ${cursoID}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}'
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
     }
 
     function insertTareaMultimedia(body) {
@@ -29,7 +29,18 @@ module.exports = function (injectedStore) {
             ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}', '${tipoMultimedia}'
             )`
 
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
+    }
+
+    function listCursosActivos(id) {
+        const VIEW = 'ver_Cursos_Activos';
+        const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+        
+    function listCursos() {
+        const VIEW = 'ver_Datos_Cursos';
+        return store.list(VIEW);
     }
     function listAlumnos() {
         const VIEW = 'ver_Alumnos';
@@ -39,5 +50,7 @@ module.exports = function (injectedStore) {
         insertTarea,
         insertTareaMultimedia,
         listAlumnos,
+        listCursos,
+        listCursosActivos
     };
 }

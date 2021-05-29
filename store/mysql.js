@@ -24,9 +24,9 @@ function handleConn() {
     });
 }
 
-function list(view, clause = '') {
+function list(view, clause = '', value) {
     return new Promise ( (resolve, reject ) => {
-        connection.query(`SELECT * FROM ${view} ${clause}`, (err, data) => {
+        connection.query(`SELECT * FROM ${view} ${clause}`, value, (err, data) => {
             if(err) {
                 return reject(err);
             } else {
@@ -36,9 +36,21 @@ function list(view, clause = '') {
     })
 }
 
-function get(view, clause, id) {
+function get(view, clause = '', value) {
     return new Promise ( (resolve, reject ) => {
-        connection.query(`SELECT * FROM ${view} ${clause}`, id, (err, data) => {
+        connection.query(`SELECT * FROM ${view} ${clause}`, value, (err, data) => {
+            if(err) {
+                return reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    })
+}
+
+function update(procedure) {
+    return new Promise ( (resolve, reject ) => {
+        connection.query(procedure, (err, data) => {
             if(err) {
                 return reject(err);
             } else {
@@ -60,9 +72,9 @@ function insert(procedure) {
     })
 }
 
-function update (procedure) {
+function catalog(view) {
     return new Promise ( (resolve, reject ) => {
-        connection.query(procedure, (err, data) => {
+        connection.query(view, (err, data) => {
             if(err) {
                 return reject(err);
             } else {
@@ -76,6 +88,7 @@ module.exports = handleConn();
 module.exports = {
     list,
     get,
+    update,
     insert,
-    update
+    catalog,
 }

@@ -238,24 +238,24 @@
                 </div>
             </div>
         </div>
-        <!--Terminan los modales-->
-
+<!--Terminan los modales-->
+{{#each datosCursoUsuario}}
+                                                             
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <img src="../../assets/images/users/1.jpg" width="150" class="rounded-circle" alt="user">
+                            <img src= {{fotoCurso}} width="150" class="rounded-circle" alt="Foto Curso">
                         </div>
                         <div class="col-md-6">
-                            <h1>Nombre Completo del Curso Lorem Ipsum</h1>
+                            <h1>{{nombreCurso}}</h1>
                             <div class="d-flex no-block align-items-center">
                                 <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user"
+                                <div class="mr-2"><img src= {{fotoPonente}} alt="Foto Ponente"
                                         class="rounded-circle" width="45"></div>
                                 <div class="">
-                                    <h5 class="mb-0 font-16 font-medium">Nombre Completo Ponente</h5><span>Ing. Fisico
-                                        Nuclear</span>
+                                    <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5><span>{{puestoPonente}}</span>
                                     <span>
                                         <button
                                             class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
@@ -264,29 +264,28 @@
                                     </span>
                                 </div>
                             </div>
-                            <h5 class="mt-3">Clave: <span class="small">001885421 </span>
+                            <h5 class="mt-3">Clave: <span class="small">{{claveCurso}} </span>
                                 <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
                                         class="far fa-copy mr-1"></i> Copiar</a>
                                 <i class="fas fa-users ml-4 mr-2"></i> Alumnos inscritos: <span
-                                    class="small ">28/40</span>
+                                    class="small ">{{totalEstudiantesCurso}}</span>
                             </h5>
                             <div class="row">
                                 <h5 class="ml-2 mr-2"><i class="fas fa-briefcase mr-1"></i> Area: <span
-                                        class="small ">Nombre Area</span></h5>
+                                        class="small ">{{areaCurso}}</span></h5>
                                 <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span
-                                        class="small ">Nombre Tipo</span></h5>
+                                        class="small "> {{tipoCurso}}</span></h5>
                                 <h5 class="ml-2 mr-2"><i class="fas fa-video mr-1"></i> Modalidad: <span
-                                        class="small ">Nombre Modalidad</span></h5>
+                                        class="small ">{{modalidadCurso}}</span></h5>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <h3>Horario </h3>
                             <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span
-                                    class="small ">28/06/2021</span></h5>
+                                    class="small ">{{fechaInicioCurso}}</span></h5>
                             <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
-                                    class="small ">31/12/2021</span></h5>
-                            <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">10:00
-                                    am. - 12:00 am.</span></h5>
+                                    class="small ">{{fechaFinalCurso}}</span></h5>
+                            <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
                             <div class="row mt-2">
                                 <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
                                     <i class="fas fa-external-link-alt mr-1"></i> Ver Temario</a>
@@ -304,6 +303,9 @@
                 </div>
             </div>
         </div>
+{{/each}} 
+
+
         <div class="col-md-12"></div>
         <div class="col-lg-12">
             <div class="card">
@@ -312,9 +314,9 @@
                         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><span
                                     class="hidden-sm-up"><i class="fas fa-align-justify"></i></span> <span
                                     class="hidden-xs-down">Historial</span></a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#anuncios" role="tab"><span
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#avisos" role="tab"><span
                                     class="hidden-sm-up"><i class="fas fa-envelope-open-text"></i></span> <span
-                                    class="hidden-xs-down">Anuncios</span></a> </li>
+                                    class="hidden-xs-down">Avisos</span></a> </li>
                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#asignaciones"
                                 role="tab"><span class="hidden-sm-up"><i class="fas fa-briefcase"></i></span> <span
                                     class="hidden-xs-down">Asignaciones</span></a> </li>
@@ -599,11 +601,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Panel de anuncios-->
-                        <div class="tab-pane  p-20" id="anuncios" role="tabpanel">
+ <!--Panel de avisos-->
+ 
+                        <div class="tab-pane  p-20" id="avisos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
-                                <a class="navbar-brand">Historial de anuncios</a>
+                                <a class="navbar-brand">Historial de avisos</a>
                                 <form class="form-inline">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
                                         aria-label="Search">
@@ -611,66 +614,9 @@
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                 </form>
                             </nav>
-                            <!--Anuncios-->
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="ml-3 mr-2">
-                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
-                                                        class="rounded-circle" width="45">
-                                                </div>
-                                                <div class="">
-                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
-                                                            class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
-                                                no importa por que podemos mostrar casi cualquier cantidad de
-                                                caracteres.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="ml-3 mr-2">
-                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
-                                                        class="rounded-circle" width="45">
-                                                </div>
-                                                <div class="">
-                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
-                                                            class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
-                                                no importa por que podemos mostrar casi cualquier cantidad de
-                                                caracteres.</p>
-                                        </div>
+                            <!--Avisos-->
 
-                                    </div>
-                                </div>
-                            </div>
+                            {{#each AvisosUsuario}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
@@ -678,61 +624,34 @@
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="ml-3 mr-2">
-                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                    <img src= {{fotoPonente}} alt="Foto Ponente"
                                                         class="rounded-circle" width="45">
                                                 </div>
                                                 <div class="">
-                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                    <h5 class="mb-0 font-16">{{nombrePonente}} <span
                                                             class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                    <h5 class="font-medium">{{nombreCurso}}</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                            {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
                                         </div>
                                         <div class="col-md-12 mt-2">
-                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
-                                                no importa por que podemos mostrar casi cualquier cantidad de
-                                                caracteres.</p>
+                                            <p class="ml-3"> {{textoAviso}}.</p>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="ml-3 mr-2">
-                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
-                                                        class="rounded-circle" width="45">
-                                                </div>
-                                                <div class="">
-                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
-                                                            class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
-                                                no importa por que podemos mostrar casi cualquier cantidad de
-                                                caracteres.</p>
-                                        </div>
 
-                                    </div>
-                                </div>
-                            </div>
+                          {{/each}} 
+                            
+
+                            
                         </div>
-                        <!--Panel de asignaciones-->
+                        
+ <!--Panel de asignaciones-->
                         <div class="tab-pane p-20" id="asignaciones" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -889,7 +808,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Panel de Recursos-->
+ <!--Panel de Recursos-->
                         <div class="tab-pane p-20" id="recursos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -908,16 +827,19 @@
                                     <div class="card">
                                         <div class="card-header bg-info">
                                             <h4 class="mb-0 text-white"><i class="fas fa-folder-open"></i> Docuementos
-                                                <span class="small">(3)</span></h4>
+                                               <span class="small"></span></h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+                                            
+{{#each RecursosUsuarioDocumentos}}
+
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <div class="comment-text w-100">
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">Biologia Molecular</span>
+                                                                    class="font-weight-normal">{{nombreMultimedia}}</span>
                                                             </h4>
                                                         </div>
                                                         <div class="col-md-4 text-right">
@@ -928,54 +850,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <div class="comment-text w-100">
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">Biologia Molecular</span>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
-                                                                <i class="fas fa-download"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <div class="comment-text w-100">
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">Biologia Molecular</span>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
-                                                                <i class="fas fa-download"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <div class="comment-text w-100">
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">Biologia Molecular</span>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
-                                                                <i class="fas fa-download"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+  {{/each}}     
+                                        
                                             <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                                                 <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
                                                 </div>
@@ -987,49 +864,28 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- RECURSOS LINKS  -->
+
+ <!-- RECURSOS LINKS  -->
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header bg-primary" class="card-body">
                                             <h4 class="mb-0 text-white" class="card-title"><i class="fas fa-link"></i>
-                                                Links <span class="small"> (4)</span></h4>
+                                                Links <span class="small"> </span></h4>
 
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-
+{{#each RecursosUsuarioDocumentos}}
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <h3><i class=" fas fa-link"></i></h3>
                                                 <div class="comment-text w-100">
-                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
-                                                        celulas</a>
+                                                    <a href="javascript:void(0)" class="card-link">{{nombreMultimedia}}</a>
 
                                                 </div>
                                             </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="comment-text w-100">
-                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
-                                                        celulas</a>
-
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="comment-text w-100">
-                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
-                                                        celulas</a>
-
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="comment-text w-100">
-                                                    <a href="javascript:void(0)" class="card-link">Ciclo de vida de las
-                                                        celulas</a>
-
-                                                </div>
-                                            </div>
+{{/each}}                                       
+                                           
+                                            
 
 
                                             <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
@@ -1043,6 +899,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

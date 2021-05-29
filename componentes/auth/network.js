@@ -10,23 +10,27 @@ const upload = require('../../middlewares/subirArchivosUsuario')
 const {crearCarpetaUsuario} = require('../../middlewares/crearDirectorios')
 const dobleInput = upload.fields([{name: 'fotoUsuario'}, {name: 'tarjetonUsuario'}])
 
-
-router.post('/agregarUsuario', crearCarpetaUsuario, dobleInput, render.postAgregarUsuario);
-
 router.get('/', render.getLogin);
 router.get('/confirmarCorreo', render.getConfirmarCorreo);
 router.get('/reestablecerContraseña', render.getReestablecerContraseña);
+router.get('/gmail', render.getEnviarCorreoGmail);
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: "/validarPermisos",
+    successRedirect: "/validarCorreo",
     failureRedirect: "/"
 }));
-
 router.get('/logOut', render.getLogOut);
+
+router.post('/agregarUsuario', crearCarpetaUsuario, dobleInput, render.postAgregarUsuario);
+router.get('/validarCorreo', render.getValidarCorreo);
+router.post('/verificarCorreo', render.postVerificarCorreo);
 router.get('/validarPermisos', render.getValidarPermisos);
 
+
+router.post('/reenviarCodigoVerificacion', render.postReenviarCodigoVerificacion);
+
+
 passport.use(new passportLocal(function (username, password, done) {
-    console.log(username, password);
     Controller.validarUsuario(username, password)
         .then(user => {
             console.log(user);
