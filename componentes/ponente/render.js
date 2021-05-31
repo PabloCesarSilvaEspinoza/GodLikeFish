@@ -7,10 +7,7 @@ module.exports = {
 
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
-        // const usuarioID = 1;
-        const cursosActivos= await Controller.listCursosActivos(usuarioID); 
-
-        console.log(cursosActivos);
+        const cursosActivos= await Controller.listCursosActuales(usuarioID); 
 
         res.render('ponente/p1_dashboard', {
             ponente:true,
