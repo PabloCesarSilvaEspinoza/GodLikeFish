@@ -8,6 +8,7 @@ module.exports = {
         console.log(chalk.white.bgRed.bold("No tienes una sessión"));
         return res.redirect('/');
     },
+
     verificarAdministrador(req, res, next) {
         console.log("valido permisos de: " + req.user.rol);
         if (req.user.rol == "Administrador") {
@@ -17,6 +18,7 @@ module.exports = {
             return res.end();
         }
     },
+
     verificarPonente(req, res, next) {
         console.log("valido permisos de: " + req.user.rol);
         if (req.user.rol == "Ponente") {
@@ -26,6 +28,7 @@ module.exports = {
             return res.end();
         }
     },
+    
     verificarEstudiante(req, res, next) {
         console.log("valido permisos de: " + req.user.rol + "Correo y tarjeton verificados "+ req.user.correoVerificado +" "+ req.user.tarjetonVerificado);
         if(req.user.correoVerificado && req.user.rol == "Estudiante"){

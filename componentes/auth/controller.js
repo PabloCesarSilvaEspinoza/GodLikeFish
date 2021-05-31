@@ -94,7 +94,7 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
-    async function enviarCorreo(from,to,subject,text) {
+    async function enviarCorreo(from,to,subject,text,html) {
         //mailtrap
         let transport = nodemailer.createTransport({
             host: "smtp.mailtrap.io",
@@ -105,13 +105,19 @@ module.exports = function (injectedStore) {
             }
         });
         //nodemail
-        let mailOptions = {from,to,subject,text};
+        let mailOptions = {
+            from,
+            to,
+            subject,
+            text,
+            html 
+        };
         transport.sendMail(mailOptions, (error, info)=>{
             (error ? error = new Error('Correo no enviado') : console.log(chalk.blue.bgGray.bold("Correo Enviado")))
         });
     }
-    async function enviarCorreoGmail(to,subject,text) {
-        console.log("Entre");
+    
+    async function enviarCorreoGmail(to,subject,codigoVerificacion) {
         //mailtrap
         let transport = nodemailer.createTransport({
             host: "smtp.gmail.com",
@@ -122,20 +128,33 @@ module.exports = function (injectedStore) {
                 pass: "vguhkclbzcvajqqe"
             }
         });
-        transport.use('compile', hbs({
-            viewEngine:'express-handlebars',
-            viewPath:"./views/",
-            extname:'.hbs'
-        }));
+
+        const handlebarOptions = {
+            viewEngine: {
+                extName: '.hbs',
+                partialsDir: 'views',
+                layoutsDir: 'views',
+                defaultLayout: ''//en proceso de configuracion
+            },
+            viewPath: 'views',
+            extName: '.hbs',
+        };
+
+        transport.use('compile', hbs(handlebarOptions));
         transport.set('view engine', '.hbs');
+
         //nodemail
         let mailOptions = {
             to,
             subject,
-            text,
-            template:'correos/codigoVerificacion'
+            template:'correo/codigoVerificacion',
+            context: {
+                codigoVerificacion
+            } 
         };
-        console.log("enviando "+ mailOptions);
+
+        //console.log("enviando "+ mailOptions);
+        
         transport.sendMail(mailOptions, (err,info)=>{
             (err ? console.log('Error', err): console.log('Enviado'));
         });
@@ -148,6 +167,12 @@ module.exports = function (injectedStore) {
 
     async function generarCodigoVerificacion(id){
         const codigo = await nanoid();
+        const PROCEDURE = `CALL actualizar_Codigo_Verificacion('${id}', '${codigo}')`
+        return store.insert(PROCEDURE);
+    }
+
+    async function desactivarCodigoVerificacion(id){
+        const codigo = "NoSolicitado";
         const PROCEDURE = `CALL actualizar_Codigo_Verificacion('${id}', '${codigo}')`
         return store.insert(PROCEDURE);
     }
@@ -165,7 +190,8 @@ module.exports = function (injectedStore) {
         enviarCorreo,
         enviarCorreoGmail,
         verificarCorreo,
-        generarCodigoVerificacion
+        generarCodigoVerificacion,
+        desactivarCodigoVerificacion
     }
 
 }
