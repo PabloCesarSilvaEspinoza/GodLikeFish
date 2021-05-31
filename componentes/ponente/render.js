@@ -8,44 +8,51 @@ module.exports = {
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
         // const usuarioID = 1;
-        const cursosActivos= await Controller.listCursosActivos(usuarioID); 
-
-        console.log(cursosActivos);
-
+        const cursosActivos = await Controller.listCursosActivos(usuarioID);
+        //console.log(cursosActivos);
         res.render('ponente/p1_dashboard', {
-            ponente:true,
+            ponente: true,
             cursosActivos
         });
     },
-    getConsultarCursoPE1: async function (req, res, next) {
+
+    getConsultarCurso: async function (req, res, next) {
+        console.log(req.user.id);
+        console.log(req.params.idCurso);
+        const datosCurso = await Controller.getCurso(req.params.idCurso);
+        console.log(datosCurso);
+        const curso = datosCurso[0];
         res.render('ponente/p2_consultarCursoE1_v2', {
-            ponente:true
+            ponente: true,
+            curso,
+            datosCurso,
         });
     },
+   
     getConsultarCursoPE2: async function (req, res, next) {
         res.render('ponente/p2_consultarCursoE2_v2', {
-            ponente:true
+            ponente: true
         });
     },
     getConsultarAlumnos: async function (req, res, next) {
         const alumnos = await Controller.listAlumnos();
         const cursos = await Controller.listCursos();
         res.render('ponente/p3_consultarAlumnos', {
-            ponente:true,
-            datatables:true,
-            dataTablesExport:true,
+            ponente: true,
+            datatables: true,
+            dataTablesExport: true,
             cursos,
             alumnos,
         });
     },
     getCalificarTarea: async function (req, res, next) {
         res.render('ponente/p4_calificarTarea', {
-            ponente:true
+            ponente: true
         });
     },
     getSoporte: async function (req, res, next) {
         res.render('usuario/u4_soporte', {
-            ponente:true
+            ponente: true
         });
     },
     /* getAgregarTarea: async function(req, res, next){

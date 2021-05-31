@@ -23,7 +23,7 @@ module.exports = function (injectedStore) {
     function insertTareaMultimedia(body) {
         const {
             tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia
-        } = body;
+        } = body; 
         
         const PROCEDURE = `CALL agregar_Multimedia_Tarea( 
             ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}', '${tipoMultimedia}'
@@ -42,15 +42,28 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
     }
+    function getCurso(id) {
+        const VIEW = 'ver_Datos_Cursos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
     function listAlumnos() {
         const VIEW = 'ver_Alumnos';
         return store.list(VIEW);
+    }
+    function getCurso(cursoID) {
+        const VIEW = 'ver_Datos_Cursos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, cursoID);
     }
     return {
         insertTarea,
         insertTareaMultimedia,
         listAlumnos,
         listCursos,
-        listCursosActivos
+        listCursosActivos,
+        getCurso,
+        
+
     };
 }

@@ -269,14 +269,12 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
                     <h2><span class="small"><i class="fas fa-chart-pie mr-2"></i>Usuarios Resumen</span></h2>
                     <hr>
-
                     <div class="row mt-5">
                         {{#each regitrados}}
                         <div class="col b-r text-center">
@@ -297,7 +295,6 @@
                         </div>
                     </div>
                     {{/each}}
-
                     <div class="col text-center mt-4">
 
                     </div>
@@ -370,9 +367,7 @@
             </div>
         </div>
     </div>
-
     <div class="card">
-
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
@@ -420,7 +415,6 @@
                                                         <th>Acciones</th>
                                                     </tr>
                                                 </thead>
-
                                                 <tbody>
                                                     {{#each datosUsuarioEnSistema}}
                                                     <tr>
@@ -431,22 +425,17 @@
                                                         <td>{{edad}}</td>
                                                         <td>{{antiguedad}}</td>
                                                         <td>
-                                                            
+
                                                             <!-- aqui va el modal -->
-
-                                                            
-
-                                              <button
-                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                            data-toggle="modal" data-target="#ModalVerPerfilAlumno{{idUsuario}}"><i
-                                                class="far fa-user mr-1"></i> Ver Perfil</button>
-
-
+                                                            <button
+                                                                class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                                data-toggle="modal"
+                                                                data-target="#ModalVerPerfilAlumno{{idUsuario}}"><i
+                                                                    class="far fa-user mr-1"></i> Ver Perfil</button>
                                                         </td>
                                                     </tr>
                                                     {{/each}}
                                                 </tbody>
-
                                             </table>
                                         </div>
                                     </div>
@@ -455,9 +444,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
                 <div class="tab-pane  p-20" id="profile" role="tabpanel">
                     <div class="container-fluid">
                         <div class="page-breadcrumb">
@@ -472,13 +458,11 @@
                                         <div class="input-group-append">
                                             <button id="buscarPonente" name="buscarPonente" class="btn btn-success"
                                                 type="button"><i class="ti-search"></i></button>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div id="TarjetaPonente" name="TarjetaPonente" class="container-fluid">
                             <div class="row el-element-overlay">
                                 {{#each tarjetas}}
@@ -508,27 +492,17 @@
                                                         href="javascript:void(0)" class="text-inverse" title="Borrar"
                                                         data-toggle="tooltip"></a></td>
                                             </div>
-
-
                                         </div>
-
                                     </div>
-
                                 </div>
                                 {{/each}}
-
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="tab-pane p-20" id="messages" role="tabpanel">3</div>
-
             </div>
-
         </div>
-
     </div>
     <!--LISTADO-->
 
@@ -538,22 +512,12 @@
 
     <!-- sample modal content -->
 
-    <div id="ModalVerPerfilPonente" name="ModalVerPerfilPonente" class="card">
-        <!-- sample modal content -->
 
-
-    </div>
-
-
- <!-- ===================== CAMBIAR EL MODAL ====================================== -->
-{{#each calis }}
-    
-<div id="ModalVerPerfilAlumno{{idUsuario}}" name="ModalVerPerfilAlumno" class="modal">
-    {{!-- <div class="modal fade verAlum" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
-        > --}}
+    <!-- ===================== CAMBIAR EL MODAL ====================================== -->
+    {{#each verPerfil }}
+    <div id="ModalVerPerfilAlumno{{idUsuario}}" name="ModalVerPerfilAlumno" class="modal">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                
                 <div class="text-center" class="modal-header">
                     <div class="row">
                         <div class="col text-right">
@@ -565,7 +529,6 @@
                     <div class="row">
                         <div class="col text-center">
                             <h1>Perfil <span class="small">Usuario </span></h1>
-                            
                         </div>
                         <hr>
                     </div>
@@ -584,7 +547,6 @@
                                         <img src="{{fotoUsuario}}" class="rounded-circle" width="120" />
                                         <br>
                                         <h6 class="text-muted">Foto de Perfil</h6>
-
                                     </div>
                                 </div>
                                 <div class="col-md-9 text-center">
@@ -597,7 +559,6 @@
                                             <h6 class="text-muted">Categoría</h6>
                                             <h4>{{areaUsuario}}</h4>
                                         </div>
-
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 text-center">
@@ -608,7 +569,6 @@
                                             <h6 class="text-muted">Tipo</h6>
                                             <h4>{{tipoUsuario}}</h4>
                                         </div>
-
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 text-center">
@@ -617,29 +577,13 @@
                                         </div>
                                         <hr>
                                         <div class="col-lg-6 text-center">
-
-                                            
-
                                         </div>
-
                                     </div>
-
                                 </div>
-                                <!--div class="col-md-4 text-center" >
-                
-                                                    <div class="form-group">
-                                                        <button type="button"
-                                                            class="btn waves-effect waves-light btn-rounded btn-success"
-                                                            data-toggle="..." data-target="..."><i
-                                                                class="mr-2 mdi mdi-lock-open-outline"></i>Cambiar
-                                                            Contraseña</button>
-                                                    </div-->
-
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-12 mt-4 ">
                     <div class="col-md-12">
                         <h4><i class="fas fa-book text-left mr-2"></i>Datos referenciales</h4>
@@ -659,7 +603,6 @@
                             <h4>{{fechaNacimiento}}</h4>
                         </div>
                     </div>
-
                     <div class="row mt-4">
                         <div class="col-lg-4 text-center">
                             <h6 class="text-muted">Municipio(Residencia)</h6>
@@ -680,30 +623,28 @@
                             <h4>{{numeroExterior}}</h4>
                         </div>
                         <div class="col-lg-6 text-right">
-                         <a type="button" class="btn waves-effect waves-light btn-info" href=""><i class="fas fa-edit mr-2"></i>Editar Usuario</a>
-                                                </div>
+                            <a type="button" class="btn waves-effect waves-light btn-info" href=""><i
+                                    class="fas fa-edit mr-2"></i>Editar Usuario</a>
+                        </div>
                     </div>
- 
                 </div>
                 <hr>
-               
             </div>
         </div>
         <!--Fin modalbody-->
     </div>
-
 </div>
-       {{/each}}
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- footer -->
-    <!-- ============================================================== -->
-    <footer class="footer text-center">
-        Pie de página</a>.
-    </footer>
-    <!-- ============================================================== -->
-    <!-- End footer -->
-    <!-- ============================================================== -->
+{{/each}}
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- footer -->
+<!-- ============================================================== -->
+<footer class="footer text-center">
+    Pie de página</a>.
+</footer>
+<!-- ============================================================== -->
+<!-- End footer -->
+<!-- ============================================================== -->
 </div>
