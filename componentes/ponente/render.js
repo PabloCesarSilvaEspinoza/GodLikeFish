@@ -11,23 +11,33 @@ module.exports = {
         const cursosActivos= await Controller.listCursosActivos(usuarioID); 
         const HistorialCursosPonente = await Controller.getHistorialCursosPonente(req.user.id);
         const cursosHistorial = HistorialCursosPonente.length
-        console.log(cursosActivos);
-        console.log(cursosHistorial);
         res.render('ponente/p1_dashboard', {
             ponente:true,
             cursosActivos,
             HistorialCursosPonente,
-            cursosHistorial
+            cursosHistorial,
         });
     },
-    getConsultarCursoPE1: async function (req, res, next) {
+
+    getConsultarCurso: async function (req, res, next) {
+        const datosCurso = await Controller.getCurso(req.params.idCurso);
+        const avisosCurso = await Controller.listAvisosUsuario(req.params.idCurso);
+        const linksCurso = await Controller.listLinks(req.params.idCurso);
+        const documentosCurso = await Controller.listDocumentos(req.params.idCurso);
+        const curso = datosCurso[0];
         res.render('ponente/p2_consultarCursoE1_v2', {
-            ponente:true
+            ponente: true,
+            curso,
+            datosCurso,
+            avisosCurso,
+            linksCurso,
+            documentosCurso,
         });
     },
+    
     getConsultarCursoPE2: async function (req, res, next) {
         res.render('ponente/p2_consultarCursoE2_v2', {
-            ponente:true
+            ponente: true
         });
     },
     getConsultarAlumnos: async function (req, res, next) {
@@ -39,16 +49,18 @@ module.exports = {
             dataTablesExport:true,
             modalEstudiante,
             estudiantes,
+            cursos,
+            alumnos,
         });
     },
     getCalificarTarea: async function (req, res, next) {
         res.render('ponente/p4_calificarTarea', {
-            ponente:true
+            ponente: true
         });
     },
     getSoporte: async function (req, res, next) {
         res.render('usuario/u4_soporte', {
-            ponente:true
+            ponente: true
         });
     },
     postAgregarExamen: async function (req, res, next){

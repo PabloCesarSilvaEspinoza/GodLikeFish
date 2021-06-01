@@ -38,7 +38,7 @@ module.exports = {
         const activos= await Controller.listActivos();
         const inactivos= await Controller.listInactivos();
         const tarjetas= await Controller.listUsuariosEnSistemaTarjeta();
-        const calis= await Controller.listPerfilUsuario();
+        const verPerfil= await Controller.listPerfilUsuario();
         
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
@@ -56,10 +56,7 @@ module.exports = {
             activos,
             inactivos,
             tarjetas,
-            calis,
-
-
-
+            verPerfil,
 
         });
     },

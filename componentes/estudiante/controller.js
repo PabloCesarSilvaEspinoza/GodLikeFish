@@ -83,6 +83,18 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
+    function listLinks(id) {
+        const VIEW = 'ver_recursos_curso_links';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listDocumentos(id) {
+        const VIEW = 'ver_recursos_curso_documentos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
     function listRecursosUsuarioDocumentos(id) {
         const VIEW = 'Ver_Recursos_Usuario_Documentos';
         const CLAUSE = `WHERE idEstudiante = ?`;
@@ -121,5 +133,7 @@ module.exports = function (injectedStore) {
         listCursosDisponibles,
         getCursoInscripcion,
         getTemario,
+        listLinks,
+        listDocumentos,
     };
 }

@@ -23,7 +23,7 @@ module.exports = function (injectedStore) {
     function insertTareaMultimedia(body) {
         const {
             tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia
-        } = body;
+        } = body; 
         
         const PROCEDURE = `CALL agregar_Multimedia_Tarea( 
             ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}', '${tipoMultimedia}'
@@ -48,6 +48,24 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
         return store.get(VIEW, CLAUSE, id);
     }
+
+    function listAvisosUsuario(id) {
+        const VIEW = 'Ver_Avisos_Usuario';
+        const CLAUSE = `WHERE cursoEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listLinks(id) {
+        const VIEW = 'ver_recursos_curso_links';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listDocumentos(id) {
+        const VIEW = 'ver_recursos_curso_documentos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
         
     function listCursos() {
         const VIEW = 'ver_Datos_Cursos';
@@ -62,6 +80,24 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idPonente = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
+
+    function getCurso(id) {
+        const VIEW = 'ver_Datos_Cursos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listAlumnos() {
+        const VIEW = 'ver_Alumnos';
+        return store.list(VIEW);
+    }
+
+    function getCurso(cursoID) {
+        const VIEW = 'ver_Datos_Cursos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, cursoID);
+    }
+
     return {
         insertTarea,
         insertTareaMultimedia,
@@ -70,6 +106,11 @@ module.exports = function (injectedStore) {
         listAlumnos,
         listCursos,
         listCursosActivos,
-        getHistorialCursosPonente
+        getHistorialCursosPonente,
+        getCurso,
+        listAvisosUsuario,
+        listLinks,
+        listDocumentos,
+        
     };
 }
