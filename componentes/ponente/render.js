@@ -9,12 +9,15 @@ module.exports = {
         const usuarioID = (req.user.id);
         // const usuarioID = 1;
         const cursosActivos= await Controller.listCursosActivos(usuarioID); 
-
+        const HistorialCursosPonente = await Controller.getHistorialCursosPonente(req.user.id);
+        const cursosHistorial = HistorialCursosPonente.length
         console.log(cursosActivos);
-
+        console.log(cursosHistorial);
         res.render('ponente/p1_dashboard', {
             ponente:true,
-            cursosActivos
+            cursosActivos,
+            HistorialCursosPonente,
+            cursosHistorial
         });
     },
     getConsultarCursoPE1: async function (req, res, next) {
@@ -28,14 +31,14 @@ module.exports = {
         });
     },
     getConsultarAlumnos: async function (req, res, next) {
-        const alumnos = await Controller.listAlumnos();
-        const cursos = await Controller.listCursos();
+        const estudiantes = await Controller.listEstudiantes();
+        const modalEstudiante = await Controller.listEstudiantes();
         res.render('ponente/p3_consultarAlumnos', {
             ponente:true,
             datatables:true,
             dataTablesExport:true,
-            cursos,
-            alumnos,
+            modalEstudiante,
+            estudiantes,
         });
     },
     getCalificarTarea: async function (req, res, next) {
@@ -48,6 +51,7 @@ module.exports = {
             ponente:true
         });
     },
+    
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
     },
