@@ -34,7 +34,19 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, cursoID);
     }
+    
+    /*-----------------------------------------------------*/ 
+    /*                      INSCRIPCIÓN                    */
+    /*-----------------------------------------------------*/
 
+    function insertEstudianteCurso(idUsuario, idCurso) {
+        const PROCEDURE = `CALL inscribir_Estudiante(${idUsuario}, ${idCurso})`
+        return store.insert(PROCEDURE);
+    }
+
+    /*-----------------------------------------------------*/ 
+    /*                        TAREAS                       */
+    /*-----------------------------------------------------*/
     function list() {
         const VIEW = 'ver_Tarea';
         //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
@@ -117,8 +129,6 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
-
-
     return {
         list,
         get,
@@ -135,5 +145,6 @@ module.exports = function (injectedStore) {
         getTemario,
         listLinks,
         listDocumentos,
+        insertEstudianteCurso,
     };
 }

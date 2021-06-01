@@ -193,5 +193,4 @@ module.exports = function (injectedStore) {
         generarCodigoVerificacion,
         desactivarCodigoVerificacion
     }
-
 }

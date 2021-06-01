@@ -8,29 +8,30 @@ module.exports = function (injectedStore) {
     /*                       TAREAS                        */
     /*-----------------------------------------------------*/
 
-    function insertTarea(body, cursoID) {
+    function insertTarea(body) {
         const {
-            nombreTarea, fechaLimiteTarea, horaLimiteTarea, descripcionTarea
+            idCurso, nombreTarea, fechaLimiteTarea, horaLimiteTarea, descripcionTarea, atemporalCurso
         } = body;
 
         const PROCEDURE = `CALL agregar_Tarea( 
-            ${cursoID}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}'
-            )`
+            ${idCurso}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}', ${atemporalCurso}
+            )`;
 
         return store.upsert(PROCEDURE);
     }
 
-    function insertTareaMultimedia(body) {
+    function insertMultimediaTarea(body) {
         const {
-            tareaID, nombreMultimedia, linkMultimedia, tipoMultimedia
-        } = body; 
+            tareaID, nombreMultimedia, linkMultimedia
+        } = body;
         
         const PROCEDURE = `CALL agregar_Multimedia_Tarea( 
-            ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}', '${tipoMultimedia}'
-            )`
-
+            ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}'
+            )`;
+        
         return store.upsert(PROCEDURE);
     }
+
     function insertExamen(body) {
         const {
             idCurso, nombreExamen, linkExamen
@@ -46,6 +47,22 @@ module.exports = function (injectedStore) {
     function listCursosActuales(id) {
         const VIEW = 'ver_Cursos_Actuales_Ponente';
         const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
+        
+        return store.get(VIEW, CLAUSE, id);
+    }
+    function getUltimaTarea() {
+        const VIEW = 'ver_Ultima_Tarea';
+        return store.list(VIEW);
+    }
+
+    /*-----------------------------------------------------*/ 
+    /*                       CURSOS                        */
+    /*-----------------------------------------------------*/
+
+    function listCursosActivos(id) {
+        const VIEW = 'ver_Cursos_Activos';
+        const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
+        
         return store.get(VIEW, CLAUSE, id);
     }
 
@@ -65,6 +82,13 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_recursos_curso_documentos';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
+    }
+
+    function getProximoCurso(idPonente) {
+        const VIEW = 'ver_Proximo_Curso';
+        const CLAUSE = 'WHERE ponente_id = ? LIMIT 1'
+
+        return store.get(VIEW, CLAUSE, idPonente);
     }
         
     function listCursos() {
@@ -100,7 +124,6 @@ module.exports = function (injectedStore) {
 
     return {
         insertTarea,
-        insertTareaMultimedia,
         listEstudiantes,
         insertExamen,
         listAlumnos,
@@ -112,5 +135,11 @@ module.exports = function (injectedStore) {
         listLinks,
         listDocumentos,
         listCursosActuales,
+        insertMultimediaTarea,
+        listAlumnos,
+        listCursos,
+        listCursosActivos,
+        getUltimaTarea,
+        getProximoCurso
     };
 }

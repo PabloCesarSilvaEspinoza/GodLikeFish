@@ -13,12 +13,12 @@ module.exports = {
 
     postAgregarUsuario: async function(req, res, next){
         await Controller.insert(req.body);
-       res.redirect('/');
+        res.redirect('/');
     },
 
     putEditarUsuario: async function(req, res, next){
         await Controller.update(req.body);
-       res.redirect('/');
+        res.redirect('/');
     },
 
     getRegistrar: async function(req, res, next){

@@ -258,7 +258,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="card-body">
-                            <form class="form-valide" id="agregarTarea" method="POST" action="#">
+                            <form action="AgregarTarea" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="col">
@@ -267,23 +267,16 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <h5 class="ml-1">Nombre de la Tarea<span class="text-danger">*</span>
-                                                </h5>
-                                                <input type="text" id="nombreTarea" class="form-control"
-                                                    placeholder="Ejemplo del nombre de una tarea" autocomplete="off"
-                                                    required>
-                                                <small class="form-control-feedback ml-1"> Máximo 70 caracteres </small>
+                                                <h5 class="ml-1">Nombre de la Tarea<span class="text-danger">*</span></h5>
+                                                <input type="text" name="nombreTarea" id="nombreTarea" class="form-control" placeholder="Ejemplo del nombre de una tarea" autocomplete="off" required>
+                                                <small class="form-control-feedback ml-1"> Máximo 70 caracteres </small> 
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <h5 class="ml-1">Descripción de la Tarea<span
-                                                        class="text-danger">*</span></h5>
-                                                <textarea class="form-control" id="descripcionTarea" rows="3"
-                                                    placeholder="Ejemplo de descripción de una tarea" autocomplete="off"
-                                                    required></textarea>
-                                                <small class="form-control-feedback ml-1"> Máximo 300 caracteres
-                                                </small>
+                                                <h5 class="ml-1">Descripción de la Tarea<span class="text-danger">*</span></h5>
+                                                <textarea class="form-control" name="descripcionTarea" id="descripcionTarea" rows="5" placeholder="Ejemplo de descripción de una tarea" autocomplete="off" required></textarea>
+                                                <small class="form-control-feedback ml-1"> Máximo 300 caracteres </small> 
                                             </div>
                                         </div>
                                     </div>
@@ -295,15 +288,27 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <h5 class="ml-1">Fecha de límite<span class="text-danger">*</span></h5>
-                                                <input type="date" id="fechaLimiteTarea" class="form-control"
-                                                    value="2021-04-13" required>
+                                                <input type="date" name="fechaLimiteTarea" id="fechaLimiteTarea" class="form-control" value="2021-04-13" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <h5 class="ml-1">Hora límite<span class="text-danger">*</span></h5>
-                                                <input type="time" id="horaLimiteTarea" class="form-control"
-                                                    value="22:33:00" required>
+                                                <input type="time" name="horaLimiteTarea" id="horaLimiteTarea" class="form-control" value="22:33:00" required>
+                                                <input type="hidden" name="idCurso" id="idCurso" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <h6 class="card-title">¿La tarea puede ser entragada despues de la fecha y hora límite?</h6>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="customRadio1" name="atemporalCurso" class="custom-control-input" value="1" checked>
+                                                    <label class="custom-control-label" for="customRadio1">Si.</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="customRadio2" name="atemporalCurso" class="custom-control-input" value="0">
+                                                    <label class="custom-control-label" for="customRadio2">No.</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -313,15 +318,14 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <h5 class="ml-1">Archivos</h5>
-                                                <input class="form-group" type="file" id="formFileMultiple" multiple />
+                                                <input type="file" name="multimediaTarea" id="multimediaTarea" multiple/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group mt-4">
                                     <div class="col text-right">
-                                        <button type="button" class="btn waves-effect waves-light btn-success"><i
-                                                class="fas fa-save mr-2"></i>Guardar</button>
+                                        <button type="submit" class="btn waves-effect waves-light btn-success"><i class="fas fa-save mr-2"></i>Guardar</button>
                                     </div>
                                 </div>
                             </form>
