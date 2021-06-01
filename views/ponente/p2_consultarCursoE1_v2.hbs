@@ -890,9 +890,9 @@
                         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><span
                                     class="hidden-sm-up"><i class="fas fa-align-justify"></i></span> <span
                                     class="hidden-xs-down">Historial</span></a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#anuncios" role="tab"><span
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#avisos" role="tab"><span
                                     class="hidden-sm-up"><i class="fas fa-envelope-open-text"></i></span> <span
-                                    class="hidden-xs-down">Anuncios</span></a> </li>
+                                    class="hidden-xs-down">Avisos</span></a> </li>
                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#asignaciones"
                                 role="tab"><span class="hidden-sm-up"><i class="fas fa-briefcase"></i></span> <span
                                     class="hidden-xs-down">Asignaciones</span></a> </li>
@@ -913,6 +913,7 @@
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                 </form>
                             </nav>
+
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
@@ -946,6 +947,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
@@ -1057,11 +1059,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Panel de anuncios-->
-                        <div class="tab-pane  p-20" id="anuncios" role="tabpanel">
+ <!--Panel de anuncios-->
+                        <div class="tab-pane  p-20" id="avisos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
-                                <a class="navbar-brand">Historial de anuncios</a>
+                                <a class="navbar-brand">Historial de aviso</a>
                                 <form class="form-inline">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
                                         aria-label="Search">
@@ -1069,10 +1071,11 @@
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                     <button type="button" class="btn waves-effect waves-light btn-info"
                                         data-toggle="modal" data-target="#agregarAnuncio"><i
-                                            class="fas fa-plus mr-2"></i>Agregar Anuncio</button>
+                                            class="fas fa-plus mr-2"></i>Agregar aviso</button>
                                 </form>
                             </nav>
-                            <!--Anuncios-->
+                         <!--Anuncios-->
+                             {{#each avisosCurso}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
@@ -1080,67 +1083,33 @@
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="ml-3 mr-2">
-                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                    <img src={{fotoPonente}} alt="foto Ponente"
                                                         class="rounded-circle" width="45">
                                                 </div>
                                                 <div class="">
-                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
+                                                    <h5 class="mb-0 font-16">{{nombrePonente}} <span
                                                             class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
+                                                    <h5 class="font-medium">{{nombreCurso}}</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
+                                                {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
                                             <span class="small"><a href="#"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                                     data-toggle="modal" data-target="#editarAnuncio">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                         </div>
                                         <div class="col-md-12 mt-2">
-                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
-                                                no importa por que podemos mostrar casi cualquier cantidad de
-                                                caracteres.</p>
+                                            <p class="ml-3">{{textoAviso}}.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="ml-3 mr-2">
-                                                    <img src="../../assets/images/users/d1.jpg" alt="user"
-                                                        class="rounded-circle" width="45">
-                                                </div>
-                                                <div class="">
-                                                    <h5 class="mb-0 font-16">Nombre Completo Ponente <span
-                                                            class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                08/05/2021 <i class="fas fa-clock"></i> 24:59</h5>
-                                            <span class="small"><a href="#"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#editarAnuncio">
-                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <p class="ml-3">Contenido del aviso, el texto puede ser un poco largo pero
-                                                no importa por que podemos mostrar casi cualquier cantidad de
-                                                caracteres.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          {{/each}} 
                         </div>
-                        <!--Panel de asignaciones-->
+<!--Panel de asignaciones-->
                         <div class="tab-pane p-20" id="asignaciones" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -1234,7 +1203,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Panel de Recursos-->
+ <!--Panel de Recursos-->
                         <div class="tab-pane p-20" id="recursos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -1261,16 +1230,18 @@
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+
+{{#each documentosCurso}}
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <div class="comment-text w-100">
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">Biologia Molecular</span>
+                                                                    class="font-weight-normal">{{nombreDocumento}}</span>
                                                             </h4>
                                                         </div>
                                                         <div class="col-md-4 text-right">
-                                                            <a href="#"
+                                                            <a href={{linkDocumento}}
                                                                 class="btn waves-effect waves-light btn-rounded btn-xs btn-info"><i
                                                                     class="fas fa-download"></i> Descargar </a>
 
@@ -1281,85 +1252,28 @@
                                                                 class="btn waves-effect waves-light btn-rounded btn-xs btn-success"><i
                                                                     class="fas fa-pencil-alt mr-2"></i>Editar </a>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <div class="comment-text w-100">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">Biologia Molecular</span>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info"><i
-                                                                    class="fas fa-download"></i> Descargar </a>
 
-                                                        </div>
-                                                        <div class="col-md-0 text-right" data-toggle="modal"
-                                                            data-target="#editarDocumento">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-success"><i
-                                                                    class="fas fa-pencil-alt mr-2"></i>Editar </a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <div class="comment-text w-100">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">Biologia Molecular</span>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info"><i
-                                                                    class="fas fa-download"></i> Descargar </a>
-
-                                                        </div>
-                                                        <div class="col-md-0 text-right" data-toggle="modal"
-                                                            data-target="#editarDocumento">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-success"><i
-                                                                    class="fas fa-pencil-alt mr-2"></i>Editar </a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
-                                                </div>
-                                            </div>
-                                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
-                                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
-                                                </div>
-                                            </div>
+ {{/each}} 
                                         </div>
                                     </div>
                                 </div>
-                                <!-- RECURSOS LINKS  -->
+  <!-- RECURSOS LINKS  -->
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header bg-primary" class="card-body">
                                             <h4 class="mb-0 text-white" class="card-title"><i class="fas fa-link"></i>
-                                                Links <span class="small"> (4)</span></h4>
-
+                                                Links </h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-
+                                                {{#each linksCurso}}
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <h3><i class=" fas fa-link"></i></h3>
                                                 <div class="col-md-6">
-                                                    <a href="#" class="font-weight-normal">Ciclo de vida de las
-                                                        celulas</a>
+                                                    <a href={{link}} class="font-weight-normal">{{nombreCurso}}</a>
                                                 </div>
                                                 <div class="col-md-6 text-right">
                                                     <span class="small"><a href="#"
@@ -1367,48 +1281,9 @@
                                                             data-toggle="modal" data-target="#editarEnlace">
                                                             <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                 </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="col-md-6">
-                                                    <a href="#" class="font-weight-normal">Ciclo de vida de las
-                                                        celulas</a>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                    <span class="small"><a href="#"
-                                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small mr-3"
-                                                            data-toggle="modal" data-target="#editarEnlace">
-                                                            <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="col-md-6">
-                                                    <a href="#" class="font-weight-normal">Ciclo de vida de las
-                                                        celulas</a>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                    <span class="small"><a href="#"
-                                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small mr-3"
-                                                            data-toggle="modal" data-target="#editarEnlace">
-                                                            <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-row comment-row mt-0">
-                                                <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="col-md-6">
-                                                    <a href="#" class="font-weight-normal">Ciclo de vida de las
-                                                        celulas</a>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                    <span class="small"><a href="#"
-                                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small mr-3"
-                                                            data-toggle="modal" data-target="#editarEnlace">
-                                                            <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                </div>
-                                            </div>
-
-                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                            </div>  
+                                                {{/each}} 
+                                             <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                                                 <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
                                                 </div>
                                             </div>

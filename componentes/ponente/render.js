@@ -20,12 +20,18 @@ module.exports = {
         console.log(req.user.id);
         console.log(req.params.idCurso);
         const datosCurso = await Controller.getCurso(req.params.idCurso);
-        console.log(datosCurso);
+        const avisosCurso = await Controller.listAvisosUsuario(req.params.idCurso);
+        const linksCurso = await Controller.listLinks(req.params.idCurso);
+        const documentosCurso = await Controller.listDocumentos(req.params.idCurso);
+        console.log(linksCurso );
         const curso = datosCurso[0];
         res.render('ponente/p2_consultarCursoE1_v2', {
             ponente: true,
             curso,
             datosCurso,
+            avisosCurso,
+            linksCurso,
+            documentosCurso,
         });
     },
    

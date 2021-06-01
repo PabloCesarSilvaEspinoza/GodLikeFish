@@ -38,8 +38,8 @@ module.exports = {
         const usuarioID = (29);
         const datosCursoUsuario= await Controller.listDatosCursoUsuario(usuarioID); 
         const AvisosUsuario = await Controller.listAvisosUsuario(usuarioID); 
-        const RecursosUsuarioDocumentos= await Controller.listRecursosUsuarioDocumentos(usuarioID); 
-        const RecursosUsuarioLinks= await Controller.listRecursosUsuarioLinks(usuarioID); 
+        const documentosCurso = await Controller.listDocumentos(req.params.idCurso);
+        const linksCurso = await Controller.listLinks(req.params.idCurso); 
 
         // console.log(datosCursoUsuario);
         // console.log(AvisosUsuario);
@@ -56,8 +56,8 @@ module.exports = {
             select2: true,
             datosCursoUsuario,
             AvisosUsuario,
-            RecursosUsuarioDocumentos,
-            RecursosUsuarioLinks,
+            documentosCurso,
+            linksCurso,
 
         });
     },
