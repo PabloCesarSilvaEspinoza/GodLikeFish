@@ -1,4 +1,3 @@
-const student = require('./index');
 const Controller = require('./index');
 
 
@@ -39,13 +38,7 @@ module.exports = {
         const datosCursoUsuario= await Controller.listDatosCursoUsuario(usuarioID); 
         const AvisosUsuario = await Controller.listAvisosUsuario(usuarioID); 
         const RecursosUsuarioDocumentos= await Controller.listRecursosUsuarioDocumentos(usuarioID); 
-        const RecursosUsuarioLinks= await Controller.listRecursosUsuarioLinks(usuarioID); 
-
-        console.log(datosCursoUsuario);
-        console.log(AvisosUsuario);
-        console.log(RecursosUsuarioDocumentos);
-        console.log(RecursosUsuarioLinks);
-
+        const RecursosUsuarioLinks= await Controller.listRecursosUsuarioLinks(usuarioID);
         res.render('alumno/a3_consultarCursoE2', {
             estudiante:true,
             chartist:true,

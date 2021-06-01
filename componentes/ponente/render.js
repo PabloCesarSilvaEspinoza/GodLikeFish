@@ -7,9 +7,7 @@ module.exports = {
 
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
-        // const usuarioID = 1;
         const cursosActivos = await Controller.listCursosActivos(usuarioID);
-        console.log(cursosActivos);
         const respuestaProximoCurso = await Controller.getProximoCurso(req.user.id);
         const proximoCurso = respuestaProximoCurso[0];
         res.render('ponente/p1_dashboard', {
@@ -61,7 +59,6 @@ module.exports = {
         }
         res.redirect('/ponente/consultarCursoPEI')
     },
-
 
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
