@@ -94,8 +94,8 @@ module.exports = {
     },
 
     //Para las rutas de Pruebas
-     getEnviarCorreoGmail: async function (req, res, next) {
-         console.log("por enviar");
+    getEnviarCorreoGmail: async function (req, res, next) {
+        console.log("por enviar");
         await Controller.enviarCorreoGmail(
             "browntth@icloud.com",
             "GDL by Raymerlin prueba",
