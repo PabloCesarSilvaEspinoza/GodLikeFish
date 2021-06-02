@@ -105,30 +105,30 @@ module.exports = function (injectedStore) {
     }
 
     function listLinks(id) {
-        const VIEW = 'ver_recursos_curso_links';
+        const VIEW = 'ver_Recursos_Curso_Links';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
     function listDocumentos(id) {
-        const VIEW = 'ver_recursos_curso_documentos';
+        const VIEW = 'ver_Recursos_Curso_Documentos';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
     function listRecursosUsuarioDocumentos(id) {
-        const VIEW = 'Ver_Recursos_Usuario_Documentos';
+        const VIEW = 'ver_Recursos_Usuario_Documentos';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
     
     function listRecursosUsuarioLinks(id) {
-        const VIEW = 'Ver_Recursos_Usuario_Links';
+        const VIEW = 'ver_Recursos_Usuario_Links';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
     function listAsignacionesUsuario(id) {
-        const VIEW = 'Ver_Recurso';
+        const VIEW = 'ver_Recurso';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
@@ -136,6 +136,11 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Usuarios';
         const CLAUSE = `WHERE id = ?`;
         return store.get(VIEW, CLAUSE, id);
+    }
+    function listExamenes(idCurso) {
+        const VIEW = 'ver_Examenes';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
     }
 
     return {
@@ -156,5 +161,7 @@ module.exports = function (injectedStore) {
         listDocumentos,
         insertEstudianteCurso,
         getHistorialCursosEstudiante,
+        listExamenes,
+        
     };
 }
