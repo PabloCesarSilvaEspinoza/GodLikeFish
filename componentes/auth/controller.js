@@ -121,30 +121,24 @@ module.exports = function (injectedStore) {
 
         return store.upsert(PROCEDURE);
     }
-
-    async function enviarCorreo(from,to,subject,text,html) {
-        //mailtrap
-        let transport = nodemailer.createTransport({
-            host: "smtp.mailtrap.io",
-            port: 2525,
-            auth: {
-                user: "3b7622158f3027",
-                pass: "a2472f9c8c885c"
-            }
-        });
-        //nodemail
+    
+    async function enviarCorreoBienvenida(to,subject,nombreUsuario, codigoVerificacion) {
+        
         let mailOptions = {
-            from,
             to,
             subject,
-            text,
-            html 
+            template:'correo/correoBienvenida',
+            context: {
+                nombreUsuario,
+                codigoVerificacion
+            } 
         };
-        transport.sendMail(mailOptions, (error, info)=>{
-            (error ? error = new Error('Correo no enviado') : console.log(chalk.blue.bgCyan.bold("Correo Enviado")))
+        
+        transport.sendMail(mailOptions, (err,info)=>{
+            (err ? console.log('Error', err): console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :'+ mailOptions.to)));
         });
     }
-    
+
     async function enviarCodigoVerificacion(to,subject,nombreUsuario, codigoVerificacion) {
         
         let mailOptions = {
@@ -190,7 +184,7 @@ module.exports = function (injectedStore) {
         getDatosUsuario,
         insertUsuario,
         insertMultimediaUsuario,
-        enviarCorreo,
+        enviarCorreoBienvenida,
         enviarCodigoVerificacion,
         verificarCorreo,
         generarCodigoVerificacion,

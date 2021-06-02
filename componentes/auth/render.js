@@ -12,7 +12,20 @@ module.exports = {
 
         const tarjetonUsuario = `${usuarioID}/${req.files.tarjetonUsuario[0].originalname}`;
         console.log(usuarioID + fotoUsuario + tarjetonUsuario);
-        await Controller.insertMultimediaUsuario(usuarioID, fotoUsuario, tarjetonUsuario)
+        await Controller.insertMultimediaUsuario(usuarioID, fotoUsuario, tarjetonUsuario);
+        //enviamos el correo de bienvenida
+        await Controller.generarCodigoVerificacion(usuarioID);
+        const usuario = await Controller.getUsuario(usuarioID);
+        const codigoVerificacion = usuario[0].codigoVerificacion;
+        const correoUsuario = usuario[0].correoUsuario;
+        const datosUsuario = await Controller.getDatosUsuario(usuarioID);
+        const nombreUsuario = datosUsuario[0].nombreUsuario;
+        await Controller.enviarCorreoBienvenida(
+            correoUsuario,
+            "Bienvenido al Sistema de Cursos Onlin GDL-Fish",
+            nombreUsuario,
+            codigoVerificacion
+        );
         res.redirect('/')
     },
 
@@ -102,7 +115,8 @@ module.exports = {
             correoUsuario, 
             "Código de Verificación: Godlike Fish.", 
             nombreUsuario,
-            codigoVerificacion);
+            codigoVerificacion
+        );
         res.redirect('/confirmarCorreo')
     },
     
