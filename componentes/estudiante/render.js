@@ -37,19 +37,14 @@ module.exports = {
     },
     getConsultarCursoE2: async function (req, res, next) {
         const usuarioID = (req.user.id);
-        const datosCursoUsuario= await Controller.listDatosCursoUsuario(usuarioID); 
-        const AvisosUsuario = await Controller.listAvisosUsuario(usuarioID); 
-        const documentosCurso = await Controller.listDocumentos(1);
-        const linksCurso = await Controller.listLinks(1); 
+        // const usuarioID = (4);
+        const datosCursoUsuario= await Controller.listDatosCursoUsuario(25); 
+        const AvisosUsuario = await Controller.listAvisosUsuario(39); 
+        const documentosCurso = await Controller.listDocumentos(40);
+        const linksCurso = await Controller.listLinks(40); 
+        const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
         const examenesCurso = await Controller.listExamenes(35);
-        
 
-        // console.log(datosCursoUsuario);
-        // console.log(AvisosUsuario);
-        // console.log(RecursosUsuarioDocumentos);
-        // console.log(RecursosUsuarioLinks);
-
-        
         res.render('alumno/a3_consultarCursoE2', {
             estudiante:true,
             chartist:true,
@@ -63,6 +58,7 @@ module.exports = {
             documentosCurso,
             linksCurso,
             examenesCurso,
+            asignacionesEstudiante,
 
         });
     },

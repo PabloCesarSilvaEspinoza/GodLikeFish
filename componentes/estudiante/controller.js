@@ -116,20 +116,9 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
-    function listRecursosUsuarioDocumentos(id) {
-        const VIEW = 'ver_Recursos_Usuario_Documentos';
-        const CLAUSE = `WHERE idEstudiante = ?`;
-        return store.get(VIEW, CLAUSE, id);
-    }
-    
-    function listRecursosUsuarioLinks(id) {
-        const VIEW = 'ver_Recursos_Usuario_Links';
-        const CLAUSE = `WHERE idEstudiante = ?`;
-        return store.get(VIEW, CLAUSE, id);
-    }
-    function listAsignacionesUsuario(id) {
-        const VIEW = 'ver_Recurso';
-        const CLAUSE = `WHERE idEstudiante = ?`;
+    function listAsignacionesEstudiante(id) {
+        const VIEW = 'ver_Asignaciones_Curso_Estudiante';
+        const CLAUSE = `WHERE idUsuario= 29 and idCurso = ? `;
         return store.get(VIEW, CLAUSE, id);
     }
     async function getMiPerfil(id) {
@@ -150,8 +139,6 @@ module.exports = function (injectedStore) {
         update,
         listDatosCursoUsuario,
         listAvisosUsuario,
-        listRecursosUsuarioDocumentos,
-        listRecursosUsuarioLinks,
         getMiPerfil,
         getUsuarioArea,
         listCursosDisponibles,
@@ -160,8 +147,7 @@ module.exports = function (injectedStore) {
         listLinks,
         listDocumentos,
         insertEstudianteCurso,
-        getHistorialCursosEstudiante,
-        listExamenes,
-        
+        listAsignacionesEstudiante,
+        listExamenes
     };
 }
