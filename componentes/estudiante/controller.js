@@ -15,7 +15,7 @@ module.exports = function (injectedStore) {
     }
     
     function listCursosDisponibles(idUsuario, areaUsuario) {
-        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario}, '${areaUsuario}')`
+        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario})`
         return store.catalog(PROCEDURE)
     }
 
@@ -84,43 +84,32 @@ module.exports = function (injectedStore) {
 
     //----------------------- falta agregar el and al WHERE para el id de el usuario
     function listDatosCursoUsuario(id) {
-        const VIEW = 'Ver_Datos_Curso_Usuario';
+        const VIEW = 'ver_Datos_Curso_Usuario';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
     function listAvisosUsuario(id) {
-        const VIEW = 'Ver_Avisos_Usuario';
+        const VIEW = 'ver_Avisos_Usuario';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
     function listLinks(id) {
-        const VIEW = 'ver_recursos_curso_links';
+        const VIEW = 'ver_Recursos_Curso_Links';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
     function listDocumentos(id) {
-        const VIEW = 'ver_recursos_curso_documentos';
+        const VIEW = 'ver_Recursos_Curso_Documentos';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
-    function listRecursosUsuarioDocumentos(id) {
-        const VIEW = 'Ver_Recursos_Usuario_Documentos';
-        const CLAUSE = `WHERE idEstudiante = ?`;
-        return store.get(VIEW, CLAUSE, id);
-    }
-    
-    function listRecursosUsuarioLinks(id) {
-        const VIEW = 'Ver_Recursos_Usuario_Links';
-        const CLAUSE = `WHERE idEstudiante = ?`;
-        return store.get(VIEW, CLAUSE, id);
-    }
-    function listAsignacionesUsuario(id) {
-        const VIEW = 'Ver_Recurso';
-        const CLAUSE = `WHERE idEstudiante = ?`;
+    function listAsignacionesEstudiante(id) {
+        const VIEW = 'ver_Asignaciones_Curso_Estudiante';
+        const CLAUSE = `WHERE idUsuario= 29 and idCurso = ? `;
         return store.get(VIEW, CLAUSE, id);
     }
     async function getMiPerfil(id) {
@@ -136,8 +125,6 @@ module.exports = function (injectedStore) {
         update,
         listDatosCursoUsuario,
         listAvisosUsuario,
-        listRecursosUsuarioDocumentos,
-        listRecursosUsuarioLinks,
         getMiPerfil,
         getUsuarioArea,
         listCursosDisponibles,
@@ -146,5 +133,6 @@ module.exports = function (injectedStore) {
         listLinks,
         listDocumentos,
         insertEstudianteCurso,
+        listAsignacionesEstudiante,
     };
 }

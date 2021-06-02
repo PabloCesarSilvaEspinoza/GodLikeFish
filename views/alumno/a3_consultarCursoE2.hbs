@@ -238,24 +238,25 @@
                 </div>
             </div>
         </div>
-<!--Terminan los modales-->
-{{#each datosCursoUsuario}}
-                                                             
+        <!--Terminan los modales-->
+        {{#each datosCursoUsuario}}
+
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <img src= {{fotoCurso}} width="150" class="rounded-circle" alt="Foto Curso">
+                            <img src={{fotoCurso}} width="150" class="rounded-circle" alt="Foto Curso">
                         </div>
                         <div class="col-md-6">
                             <h1>{{nombreCurso}}</h1>
                             <div class="d-flex no-block align-items-center">
                                 <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src= {{fotoPonente}} alt="Foto Ponente"
-                                        class="rounded-circle" width="45"></div>
+                                <div class="mr-2"><img src={{fotoPonente}} alt="Foto Ponente" class="rounded-circle"
+                                        width="45"></div>
                                 <div class="">
-                                    <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5><span>{{puestoPonente}}</span>
+                                    <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
+                                    <span>{{puestoPonente}}</span>
                                     <span>
                                         <button
                                             class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
@@ -273,8 +274,8 @@
                             <div class="row">
                                 <h5 class="ml-2 mr-2"><i class="fas fa-briefcase mr-1"></i> Area: <span
                                         class="small ">{{areaCurso}}</span></h5>
-                                <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span
-                                        class="small "> {{tipoCurso}}</span></h5>
+                                <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span class="small ">
+                                        {{tipoCurso}}</span></h5>
                                 <h5 class="ml-2 mr-2"><i class="fas fa-video mr-1"></i> Modalidad: <span
                                         class="small ">{{modalidadCurso}}</span></h5>
                             </div>
@@ -285,7 +286,8 @@
                                     class="small ">{{fechaInicioCurso}}</span></h5>
                             <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
                                     class="small ">{{fechaFinalCurso}}</span></h5>
-                            <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
+                            <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span
+                                    class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
                             <div class="row mt-2">
                                 <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
                                     <i class="fas fa-external-link-alt mr-1"></i> Ver Temario</a>
@@ -303,7 +305,7 @@
                 </div>
             </div>
         </div>
-{{/each}} 
+        {{/each}}
 
 
         <div class="col-md-12"></div>
@@ -537,7 +539,6 @@
                                                 no importa por que podemos mostrar casi cualquier cantidad de
                                                 caracteres.</p>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -567,7 +568,6 @@
                                                 no importa por que podemos mostrar casi cualquier cantidad de
                                                 caracteres.</p>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -604,8 +604,8 @@
                                 </div>
                             </div>
                         </div>
- <!--Panel de avisos-->
- 
+                        <!--Panel de avisos-->
+
                         <div class="tab-pane  p-20" id="avisos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -618,7 +618,6 @@
                                 </form>
                             </nav>
                             <!--Avisos-->
-
                             {{#each AvisosUsuario}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
@@ -627,8 +626,8 @@
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="ml-3 mr-2">
-                                                    <img src= {{fotoPonente}} alt="Foto Ponente"
-                                                        class="rounded-circle" width="45">
+                                                    <img src={{fotoPonente}} alt="Foto Ponente" class="rounded-circle"
+                                                        width="45">
                                                 </div>
                                                 <div class="">
                                                     <h5 class="mb-0 font-16">{{nombrePonente}} <span
@@ -639,22 +638,17 @@
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                            {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
+                                                {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
                                         </div>
                                         <div class="col-md-12 mt-2">
-                                            <p class="ml-3"> {{textoAviso}}.</p> 
+                                            <p class="ml-3"> {{textoAviso}}.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                          {{/each}} 
-                            
-
-                            
+                            {{/each}}
                         </div>
-                        
- <!--Panel de asignaciones-->
+                        <!--Panel de asignaciones-->
                         <div class="tab-pane p-20" id="asignaciones" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -667,36 +661,35 @@
                                 </form>
                             </nav>
                             <!--Asignaciones-->
+                            {{#each asignacionesEstudiante}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-9">
-                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
-                                                ipsum</h4>
+                                            <h4><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h4>
                                         </div>
                                         <div class="col-3 text-right">
-                                            <span class="mb-3 label  label-info mr-2">Entregada</span>
+                                            <span class="mb-3 label  label-info mr-2">{{estadoTarea}}</span>
                                             <span class="small"><a href="#"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                                     data-toggle="modal" data-target="#tareaEntregada">
                                                     <i class="far fa-eye mr-2"></i>Consultar</a></span>
                                         </div>
                                         <div class="col-12">
-                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
-                                                    ipsum</span></h4>
-                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
-                                                con text truncation o algun otro método...</p>
+                                            <h4 class="ml-2"><span class="small"> {{nombreCurso}}</span></h4>
+                                            <p class="ml-3">{{descripcionTarea}}.</p>
                                             <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
-                                                asignación posee <span class="font-weight-bold">(3)</span> archivo(s)
+                                                asignación posee <span
+                                                    class="font-weight-bold">({{totalArchivos}})</span> archivo(s)
                                                 adjunto(s). <span class="small"><a href="#"
                                                         class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
                                                         <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
                                         </div>
                                         <div class="col-8">
                                             <h5 class="font-light float-left">Fecha Cierre: <i
-                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
-                                                    class="fas fa-clock"></i> 24:59</h5>
+                                                    class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} <i
+                                                    class="fas fa-clock"></i> {{horaLimiteTarea}}</h5>
                                         </div>
                                         <div class="col-4 text-right">
                                             <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
@@ -704,114 +697,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
-                                                ipsum</h4>
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            <span class="mb-3 label  label-warning mr-2">Pendiente</span>
-                                            <span class="small"><a href="#"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#tareaPendiente">
-                                                    <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
-                                                    ipsum</span></h4>
-                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
-                                                con text truncation o algun otro método...</p>
-                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
-                                                asignación posee <span class="font-weight-bold">(1)</span> archivo(s)
-                                                adjunto(s). <span class="small"><a href="#"
-                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
-                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
-                                        </div>
-                                        <div class="col-8">
-                                            <h5 class="font-light float-left">Fecha Cierre: <i
-                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
-                                                    class="fas fa-clock"></i> 24:59</h5>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
-                                                ipsum</h4>
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            <span class="mb-3 label  label-danger mr-2">Atrasada</span>
-                                            <span class="small"><a href="#"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#tareaAtrasada">
-                                                    <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
-                                                    ipsum</span></h4>
-                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
-                                                con text truncation o algun otro método...</p>
-                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
-                                                asignación posee <span class="font-weight-bold">(2)</span> archivo(s)
-                                                adjunto(s). <span class="small"><a href="#"
-                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
-                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
-                                        </div>
-                                        <div class="col-8">
-                                            <h5 class="font-light float-left">Fecha Cierre: <i
-                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
-                                                    class="fas fa-clock"></i> 24:59</h5>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
-                                                ipsum</h4>
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            <span class="mb-3 label  label-inverse mr-2">No Entregada</span>
-                                            <span class="small"><a href="#"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#tareaNoEntregada">
-                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <h4 class="ml-2"><span class="small"> Nombre Completo Curso Lorem
-                                                    ipsum</span></h4>
-                                            <p class="ml-3">Pequeño fragmento de la descripción de la asignación, cortar
-                                                con text truncation o algun otro método...</p>
-                                        </div>
-                                        <div class="col-8">
-                                            <h5 class="font-light float-left">Fecha Cierre: <i
-                                                    class="fas fa-calendar-alt ml-2"></i> 08/05/2021 <i
-                                                    class="fas fa-clock"></i> 24:59</h5>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{/each}}
                         </div>
- <!--Panel de Recursos-->
+                        <!--Panel de Recursos-->
                         <div class="tab-pane p-20" id="recursos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
@@ -830,12 +718,13 @@
                                     <div class="card">
                                         <div class="card-header bg-info">
                                             <h4 class="mb-0 text-white"><i class="fas fa-folder-open"></i> Docuementos
-                                               <span class="small"></span></h4>
+                                                <span class="small"></span>
+                                            </h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-                                            
-{{#each documentosCurso}}
+
+                                            {{#each documentosCurso}}
 
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <div class="comment-text w-100">
@@ -853,9 +742,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-  {{/each}}     
-                                        
+                                            {{/each}}
                                             <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                                                 <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
                                                 </div>
@@ -867,8 +754,7 @@
                                         </div>
                                     </div>
                                 </div>
-
- <!-- RECURSOS LINKS  -->
+                                <!-- RECURSOS LINKS  -->
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header bg-primary" class="card-body">
@@ -877,7 +763,7 @@
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-{{#each linksCurso}}
+                                            {{#each linksCurso}}
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <h3><i class=" fas fa-link"></i></h3>
                                                 <div class="comment-text w-100">
@@ -885,8 +771,8 @@
 
                                                 </div>
                                             </div>
-{{/each}}                                       
-                                           
+                                            {{/each}}
+
                                             <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                                                 <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
                                                 </div>
@@ -900,7 +786,7 @@
                                 </div>
                             </div>
                         </div>
-<!--Panel de Examenes-->
+                        <!--Panel de Examenes-->
                         <div class="tab-pane  p-20" id="examenes" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">

@@ -7,7 +7,7 @@ module.exports = {
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         const datosUsuario = await Controller.getUsuarioArea(req.user.id);
         const areaUsuario = datosUsuario[0].areaUsuario;
-        const respuestaBD = await Controller.listCursosDisponibles(req.user.id, areaUsuario);
+        const respuestaBD = await Controller.listCursosDisponibles(req.user.id);
         const cursosDisponibles = respuestaBD[0];
         const totalCursos = cursosDisponibles.length;
 
@@ -33,20 +33,14 @@ module.exports = {
         });
     },
     getConsultarCursoE2: async function (req, res, next) {
-       // const usuarioID = (req.user.id);
-        const usuarioID = (29);
-        const datosCursoUsuario= await Controller.listDatosCursoUsuario(usuarioID); 
-        const AvisosUsuario = await Controller.listAvisosUsuario(usuarioID); 
-        const documentosCurso = await Controller.listDocumentos(req.params.idCurso);
-        const linksCurso = await Controller.listLinks(req.params.idCurso); 
+        const usuarioID = (req.user.id);
+        // const usuarioID = (4);
+        const datosCursoUsuario= await Controller.listDatosCursoUsuario(25); 
+        const AvisosUsuario = await Controller.listAvisosUsuario(39); 
+        const documentosCurso = await Controller.listDocumentos(40);
+        const linksCurso = await Controller.listLinks(40); 
+        const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
 
-        // console.log(datosCursoUsuario);
-        // console.log(AvisosUsuario);
-        // console.log(RecursosUsuarioDocumentos);
-        // console.log(RecursosUsuarioLinks);
-
-        const RecursosUsuarioDocumentos= await Controller.listRecursosUsuarioDocumentos(usuarioID); 
-        const RecursosUsuarioLinks= await Controller.listRecursosUsuarioLinks(usuarioID);
         res.render('alumno/a3_consultarCursoE2', {
             estudiante:true,
             chartist:true,
@@ -59,6 +53,7 @@ module.exports = {
             AvisosUsuario,
             documentosCurso,
             linksCurso,
+            asignacionesEstudiante,
 
         });
     },

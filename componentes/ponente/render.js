@@ -8,12 +8,12 @@ module.exports = {
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
         // const usuarioID = 1;
-        const cursosActivos= await Controller.listCursosActivos(usuarioID); 
+        // const cursosActivos= await Controller.listCursosActivos(usuarioID); 
         const HistorialCursosPonente = await Controller.getHistorialCursosPonente(req.user.id);
         const cursosHistorial = HistorialCursosPonente.length
         res.render('ponente/p1_dashboard', {
             ponente:true,
-            cursosActivos,
+            // cursosActivos,
             HistorialCursosPonente,
             cursosHistorial,
         });
@@ -25,6 +25,8 @@ module.exports = {
         const linksCurso = await Controller.listLinks(req.params.idCurso);
         const documentosCurso = await Controller.listDocumentos(req.params.idCurso);
         const curso = datosCurso[0];
+        const asignacionesPonente = await Controller.listAsignacionesPonente(req.params.idCurso);
+    
         res.render('ponente/p2_consultarCursoE1_v2', {
             ponente: true,
             curso,
@@ -32,6 +34,7 @@ module.exports = {
             avisosCurso,
             linksCurso,
             documentosCurso,
+            asignacionesPonente,
         });
     },
     
