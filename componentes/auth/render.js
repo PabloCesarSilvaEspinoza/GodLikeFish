@@ -51,10 +51,13 @@ module.exports = {
     },
 
     getConfirmarCorreo: async function (req, res, next) {
-        (req.isAuthenticated() ?
-            res.render('usuario/u2_confirmarCorreo', {
-                general: true
-            })
+        (req.isAuthenticated() 
+            ? ((req.user.correoVerificado
+                    ? res.redirect('/')
+                    : res.render('usuario/u2_confirmarCorreo', {
+                        general: true
+                        })
+            ))
             : res.redirect('/')
         )
     },
@@ -108,9 +111,6 @@ module.exports = {
         const codigoVerificacion = usuario[0].codigoVerificacion;
         const datosUsuario = await Controller.getDatosUsuario(req.user.id);
         const nombreUsuario = datosUsuario[0].nombreUsuario;
-        if(codigoVerificacion == "NoSolicitado"){
-            res.redirect('/');
-        }
         await Controller.enviarCodigoVerificacion(
             correoUsuario, 
             "Código de Verificación: Godlike Fish.", 
