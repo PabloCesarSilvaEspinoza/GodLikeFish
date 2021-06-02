@@ -13,10 +13,7 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idUsuario = ?`
         return store.get(VIEW, CLAUSE, usuarioID);
     }
-    function listCursoActual() {
-        const VIEW = 'ver_Curso_Actual';
-        return store.list(VIEW);
-    }
+   
     function listCursosDisponibles(idUsuario, areaUsuario) {
         const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario})`
         return store.catalog(PROCEDURE)
@@ -31,7 +28,11 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, cursoID);
     }
-
+    function getCursoActual(estudianteID) {
+        const VIEW = 'ver_Curso_Actual_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, estudianteID);
+    }
     function getTemario(cursoID) {
         const VIEW = 'ver_Temario_Curso';
         const CLAUSE = `WHERE cursoID = ?`;
@@ -87,13 +88,13 @@ module.exports = function (injectedStore) {
 
     //----------------------- falta agregar el and al WHERE para el id de el usuario
     function listDatosCursoUsuario(id) {
-        const VIEW = 'Ver_Datos_Curso_Usuario';
+        const VIEW = 'ver_Datos_Curso_Usuario';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
     function listAvisosUsuario(id) {
-        const VIEW = 'Ver_Avisos_Usuario';
+        const VIEW = 'ver_Avisos_Usuario';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
@@ -149,6 +150,6 @@ module.exports = function (injectedStore) {
         listLinks,
         listDocumentos,
         insertEstudianteCurso,
-        listCursoActual,
+        getCursoActual,
     };
 }

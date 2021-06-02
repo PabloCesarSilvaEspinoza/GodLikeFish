@@ -10,7 +10,7 @@ module.exports = {
         const respuestaBD = await Controller.listCursosDisponibles(req.user.id);
         const cursosDisponibles = respuestaBD[0];
         const totalCursos = cursosDisponibles.length;
-        const cursoActual = await Controller.listCursoActual();
+        const cursoActual = await Controller.getCursoActual(req.user.id);
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
