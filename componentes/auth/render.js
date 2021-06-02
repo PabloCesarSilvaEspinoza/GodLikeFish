@@ -93,11 +93,16 @@ module.exports = {
         const usuario = await Controller.getUsuario(req.user.id);
         const correoUsuario = usuario[0].correoUsuario;
         const codigoVerificacion = usuario[0].codigoVerificacion;
+        const datosUsuario = await Controller.getDatosUsuario(req.user.id);
+        const nombreUsuario = datosUsuario[0].nombreUsuario;
         if(codigoVerificacion == "NoSolicitado"){
             res.redirect('/');
         }
-        //console.log(codigoVerificacion);
-        await Controller.enviarCodigoVerificacion(correoUsuario, "Código de Verificación: Godlike Fish.", codigoVerificacion);
+        await Controller.enviarCodigoVerificacion(
+            correoUsuario, 
+            "Código de Verificación: Godlike Fish.", 
+            nombreUsuario,
+            codigoVerificacion);
         res.redirect('/confirmarCorreo')
     },
     

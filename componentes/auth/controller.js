@@ -33,11 +33,18 @@ module.exports = function (injectedStore) {
         store = require('../../store/mysql');
     }
 
-    async function get(correo) {
+     async function get(correo) {
         const VIEW = 'ver_Credenciales_Usuario';
         const CLAUSE = `WHERE correoUsuario = ?`;
         return store.get(VIEW, CLAUSE, correo);
+    } 
+    
+    async function getDatosUsuario(id) {
+        const VIEW = 'ver_Perfil_Usuario';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, id);
     }
+
 
     async function getUsuario(id) {
         const VIEW = 'ver_Credenciales_Usuario';
@@ -138,13 +145,14 @@ module.exports = function (injectedStore) {
         });
     }
     
-    async function enviarCodigoVerificacion(to,subject,codigoVerificacion) {
+    async function enviarCodigoVerificacion(to,subject,nombreUsuario, codigoVerificacion) {
         
         let mailOptions = {
             to,
             subject,
             template:'correo/codigoVerificacion',
             context: {
+                nombreUsuario,
                 codigoVerificacion
             } 
         };
@@ -179,6 +187,7 @@ module.exports = function (injectedStore) {
         listPuestos,
         validarUsuario,
         getUsuario,
+        getDatosUsuario,
         insertUsuario,
         insertMultimediaUsuario,
         enviarCorreo,
