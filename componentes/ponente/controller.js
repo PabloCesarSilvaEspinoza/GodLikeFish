@@ -131,6 +131,7 @@ module.exports = function (injectedStore) {
         insertMultimediaTarea,
         listAlumnos,
         listCursos,
+        //listCursosActivos,
         getUltimaTarea,
         getProximoCurso
     };

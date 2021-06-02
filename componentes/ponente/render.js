@@ -8,12 +8,14 @@ module.exports = {
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
         const cursosActivos= await Controller.listCursosActuales(usuarioID); 
+        // const usuarioID = 1;
+        //const cursosActivos= await Controller.listCursosActivos(usuarioID); 
         const HistorialCursosPonente = await Controller.getHistorialCursosPonente(req.user.id);
         const cursosHistorial = HistorialCursosPonente.length
         const cursosActuales = cursosActivos.length
         res.render('ponente/p1_dashboard', {
             ponente:true,
-            cursosActivos,
+           // cursosActivos,
             HistorialCursosPonente,
             cursosHistorial,
             cursosActuales,
@@ -50,8 +52,6 @@ module.exports = {
             dataTablesExport:true,
             modalEstudiante,
             estudiantes,
-            cursos,
-            alumnos,
         });
     },
     getCalificarTarea: async function (req, res, next) {
