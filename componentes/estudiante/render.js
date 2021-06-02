@@ -5,8 +5,6 @@ module.exports = {
 
     getDashboardAlumno: async function (req, res, next) {
         const miPerfil = await Controller.getMiPerfil(req.user.id);
-        const datosUsuario = await Controller.getUsuarioArea(req.user.id);
-        const areaUsuario = datosUsuario[0].areaUsuario;
         const respuestaBD = await Controller.listCursosDisponibles(req.user.id);
         const cursosDisponibles = respuestaBD[0];
         const totalCursos = cursosDisponibles.length;
@@ -28,6 +26,7 @@ module.exports = {
         }); 
     },
     getConsultarCurso: async function (req, res, next) {
+        // const respuestaEstadoCursoEstudiante = Controller.getEstadoCursoEstudiante(idEstudiante, idCurso);
         //Si no esta inscrito
         const datosCurso = await Controller.getCursoInscripcion(req.params.idCurso);
         const curso = datosCurso[0];
