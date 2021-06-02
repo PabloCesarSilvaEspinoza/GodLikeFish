@@ -14,8 +14,8 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, usuarioID);
     }
     
-    function listCursosDisponibles(idUsuario, areaUsuario) {
-        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario}, '${areaUsuario}')`
+    function listCursosDisponibles(idUsuario) {
+        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario})`
         return store.catalog(PROCEDURE)
     }
 
