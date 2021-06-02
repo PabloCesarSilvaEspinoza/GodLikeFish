@@ -88,17 +88,7 @@ module.exports = {
         }
     },
 
-    /* postReenviarCodigoVerificacion: async function (req, res, next) {
-        await Controller.generarCodigoVerificacion(req.user.id);
-        const usuario = await Controller.getUsuario(req.user.id);
-        const correoUsuario = usuario[0].correoUsuario;
-        const codigoVerificacion = usuario[0].codigoVerificacion;
-        console.log(codigoVerificacion);
-        await Controller.enviarCorreo("gdl@gmail.com", correoUsuario, "Código de Verificación: Godlike Fish.", codigoVerificacion);
-        res.redirect('/confirmarCorreo')
-    }, */
-
-    postReenviarCodigoVerificacion: async function (req, res, next) {
+    postEnviarCodigoVerificacion: async function (req, res, next) {
         await Controller.generarCodigoVerificacion(req.user.id);
         const usuario = await Controller.getUsuario(req.user.id);
         const correoUsuario = usuario[0].correoUsuario;
@@ -107,18 +97,8 @@ module.exports = {
             res.redirect('/');
         }
         //console.log(codigoVerificacion);
-        await Controller.enviarCorreoGmail(correoUsuario, "Código de Verificación: Godlike Fish.", codigoVerificacion);
+        await Controller.enviarCodigoVerificacion(correoUsuario, "Código de Verificación: Godlike Fish.", codigoVerificacion);
         res.redirect('/confirmarCorreo')
     },
-
-    //Para las rutas de Pruebas
-    /*  getEnviarCorreoGmail: async function (req, res, next) {
-        console.log("por enviar");
-        await Controller.enviarCorreoGmail(
-            "browntth@icloud.com",
-            "GDL by Raymerlin hbs",
-            "codigoVerificación estatico"//hacer dinamico
-        );
-        res.redirect('/');
-    },  */
+    
 };

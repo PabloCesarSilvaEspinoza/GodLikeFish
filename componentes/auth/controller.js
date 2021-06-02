@@ -1,10 +1,31 @@
 const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
-const path = require('path');
 const {nanoid} = require('nanoid');
-const bcrypt = require('bcrypt');
 const chalk = require('chalk');
-const { response } = require('express');
+
+const transport = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+        user: "raymerlinDaenny@gmail.com",
+        pass: "vguhkclbzcvajqqe"
+    }
+});
+
+const handlebarOptions = {
+    viewEngine: {
+        extName: '.hbs',
+        partialsDir: 'views',
+        layoutsDir: 'views/correo',
+        defaultLayout: 'main'
+    },
+    viewPath: 'views',
+    extName: '.hbs',
+};
+
+transport.use('compile', hbs(handlebarOptions));
+transport.set('view engine', '.hbs');
 
 module.exports = function (injectedStore) {
     let store = injectedStore;
@@ -113,37 +134,12 @@ module.exports = function (injectedStore) {
             html 
         };
         transport.sendMail(mailOptions, (error, info)=>{
-            (error ? error = new Error('Correo no enviado') : console.log(chalk.blue.bgGray.bold("Correo Enviado")))
+            (error ? error = new Error('Correo no enviado') : console.log(chalk.blue.bgCyan.bold("Correo Enviado")))
         });
     }
     
-    async function enviarCorreoGmail(to,subject,codigoVerificacion) {
-        //mailtrap
-        let transport = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
-            auth: {
-                user: "raymerlinDaenny@gmail.com",
-                pass: "vguhkclbzcvajqqe"
-            }
-        });
-
-        const handlebarOptions = {
-            viewEngine: {
-                extName: '.hbs',
-                partialsDir: 'views',
-                layoutsDir: 'views',
-                defaultLayout: ''//en proceso de configuracion
-            },
-            viewPath: 'views',
-            extName: '.hbs',
-        };
-
-        transport.use('compile', hbs(handlebarOptions));
-        transport.set('view engine', '.hbs');
-
-        //nodemail
+    async function enviarCodigoVerificacion(to,subject,codigoVerificacion) {
+        
         let mailOptions = {
             to,
             subject,
@@ -152,11 +148,9 @@ module.exports = function (injectedStore) {
                 codigoVerificacion
             } 
         };
-
-        //console.log("enviando "+ mailOptions);
         
         transport.sendMail(mailOptions, (err,info)=>{
-            (err ? console.log('Error', err): console.log('Enviado'));
+            (err ? console.log('Error', err): console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :'+ mailOptions.to)));
         });
     }
 
@@ -188,7 +182,7 @@ module.exports = function (injectedStore) {
         insertUsuario,
         insertMultimediaUsuario,
         enviarCorreo,
-        enviarCorreoGmail,
+        enviarCodigoVerificacion,
         verificarCorreo,
         generarCodigoVerificacion,
         desactivarCodigoVerificacion
