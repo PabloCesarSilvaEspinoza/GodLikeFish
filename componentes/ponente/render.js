@@ -7,15 +7,16 @@ module.exports = {
 
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
-        // const usuarioID = 1;
-        const cursosActivos= await Controller.listCursosActivos(usuarioID); 
+        const cursosActivos= await Controller.listCursosActuales(usuarioID); 
         const HistorialCursosPonente = await Controller.getHistorialCursosPonente(req.user.id);
         const cursosHistorial = HistorialCursosPonente.length
+        const cursosActuales = cursosActivos.length
         res.render('ponente/p1_dashboard', {
             ponente:true,
             cursosActivos,
             HistorialCursosPonente,
             cursosHistorial,
+            cursosActuales,
         });
     },
 

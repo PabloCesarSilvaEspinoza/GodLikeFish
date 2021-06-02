@@ -46,10 +46,11 @@ module.exports = function (injectedStore) {
 
     function listCursosActuales(id) {
         const VIEW = 'ver_Cursos_Actuales_Ponente';
-        const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
+        const CLAUSE = `WHERE CURDATE() <= curso_fecha_fin AND idPonente = ? AND estado = 1`;
         
         return store.get(VIEW, CLAUSE, id);
     }
+
     function getUltimaTarea() {
         const VIEW = 'ver_Ultima_Tarea';
         return store.list(VIEW);
@@ -58,13 +59,6 @@ module.exports = function (injectedStore) {
     /*-----------------------------------------------------*/ 
     /*                       CURSOS                        */
     /*-----------------------------------------------------*/
-
-    function listCursosActivos(id) {
-        const VIEW = 'ver_Cursos_Activos';
-        const CLAUSE = `WHERE ponente_id = ? AND curso_activo = 1`;
-        
-        return store.get(VIEW, CLAUSE, id);
-    }
 
     function listAvisosUsuario(id) {
         const VIEW = 'Ver_Avisos_Usuario';
@@ -128,7 +122,6 @@ module.exports = function (injectedStore) {
         insertExamen,
         listAlumnos,
         listCursos,
-        listCursosActivos,
         getHistorialCursosPonente,
         getCurso,
         listAvisosUsuario,
@@ -138,7 +131,6 @@ module.exports = function (injectedStore) {
         insertMultimediaTarea,
         listAlumnos,
         listCursos,
-        listCursosActivos,
         getUltimaTarea,
         getProximoCurso
     };

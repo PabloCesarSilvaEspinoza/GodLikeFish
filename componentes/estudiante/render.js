@@ -7,15 +7,19 @@ module.exports = {
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         const datosUsuario = await Controller.getUsuarioArea(req.user.id);
         const areaUsuario = datosUsuario[0].areaUsuario;
-        const respuestaBD = await Controller.listCursosDisponibles(req.user.id, areaUsuario);
+        const respuestaBD = await Controller.listCursosDisponibles(req.user.id);
         const cursosDisponibles = respuestaBD[0];
         const totalCursos = cursosDisponibles.length;
+        const historialCursos = await Controller.getHistorialCursosEstudiante(req.user.id);
+        const totalHistorialCursos = historialCursos.length;
 
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
             cursosDisponibles,
             totalCursos,
+            historialCursos,
+            totalHistorialCursos,
         });
     },
     getMisAsignaciones: async function (req, res, next) {
