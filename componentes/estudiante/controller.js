@@ -13,9 +13,12 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idUsuario = ?`
         return store.get(VIEW, CLAUSE, usuarioID);
     }
-    
+    function listCursoActual() {
+        const VIEW = 'ver_Curso_Actual';
+        return store.list(VIEW);
+    }
     function listCursosDisponibles(idUsuario, areaUsuario) {
-        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario}, '${areaUsuario}')`
+        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario})`
         return store.catalog(PROCEDURE)
     }
 
@@ -146,5 +149,6 @@ module.exports = function (injectedStore) {
         listLinks,
         listDocumentos,
         insertEstudianteCurso,
+        listCursoActual,
     };
 }
