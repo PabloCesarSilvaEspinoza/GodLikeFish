@@ -49,8 +49,6 @@ module.exports = {
             dataTablesExport:true,
             modalEstudiante,
             estudiantes,
-            cursos,
-            alumnos,
         });
     },
     getCalificarTarea: async function (req, res, next) {
