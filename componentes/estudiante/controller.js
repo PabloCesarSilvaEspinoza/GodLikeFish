@@ -14,14 +14,19 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, usuarioID);
     }
     
-    function listCursosDisponibles(idUsuario, areaUsuario) {
-        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario}, '${areaUsuario}')`
+    function listCursosDisponibles(idUsuario) {
+        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idUsuario})`
         return store.catalog(PROCEDURE)
     }
 
     /*-----------------------------------------------------*/ 
     /*                        CURSOS                       */
     /*-----------------------------------------------------*/
+    function getHistorialCursosEstudiante(id) {
+        const VIEW = 'ver_Historial_Cursos_Estudiante';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
 
     function getCursoInscripcion(cursoID) {
         const VIEW = 'ver_Datos_Cursos';
@@ -146,5 +151,6 @@ module.exports = function (injectedStore) {
         listLinks,
         listDocumentos,
         insertEstudianteCurso,
+        getHistorialCursosEstudiante,
     };
 }

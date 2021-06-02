@@ -51,32 +51,32 @@ module.exports = function (injectedStore) {
     /*-----------------------------------------------------*/
 
     function listUsuariosEnSistema() {
-        const VIEW = 'Ver_Usuarios_En_Sistema';
+        const VIEW = 'ver_Usuarios_En_Sistema';
         return store.list(VIEW);
     }
 
 
     function listRegistrados() {
-        const VIEW = 'Ver_Usuarios_Resumen_R';
+        const VIEW = 'ver_Usuarios_Resumen_R';
         return store.list(VIEW);
     }
 
     function listActivos() {
-        const VIEW = 'Ver_Usuarios_Resumen_A';
+        const VIEW = 'ver_Usuarios_Resumen_A';
         return store.list(VIEW);
     }
     function listInactivos() {
-        const VIEW = 'Ver_Usuarios_Resumen_I';
+        const VIEW = 'ver_Usuarios_Resumen_I';
         return store.list(VIEW);
     }
 
     function listUsuariosEnSistemaTarjeta() {
-        const VIEW = 'Ver_Usuarios_En_Sistema_Tarjeta';
+        const VIEW = 'ver_Usuarios_En_Sistema_Tarjeta';
         return store.list(VIEW);
     }
 
     function listPerfilUsuario() {
-        const VIEW = 'Ver_Perfil_Usuario';
+        const VIEW = 'ver_Perfil_Usuario';
         return store.list(VIEW);
     }
 
