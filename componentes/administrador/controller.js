@@ -80,6 +80,11 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    function listHitorialCursos() {
+        const VIEW = 'ver_Historial_Cursos';
+        return store.list(VIEW);
+    }
+
 
     return {
         getUltimoCurso,
@@ -93,5 +98,6 @@ module.exports = function (injectedStore) {
         listInactivos,
         listUsuariosEnSistemaTarjeta,
         listPerfilUsuario,
+        listHitorialCursos,
     };
 }

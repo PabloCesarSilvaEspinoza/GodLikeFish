@@ -18,11 +18,13 @@ module.exports = {
     },
     getAdministrarCursos: async function (req, res, next) {
         const cursos = await Controller.listCursos();
+        const hitorialCursos = await Controller.listHitorialCursos();
         res.render('administrador/d2_administrarCursos', {
             administrador: true,
             datatables:true,
             dataTablesExport:true,
             cursos,
+            hitorialCursos,
             graficasAdministrador : true,
             valores:[{
             valor1: 18,

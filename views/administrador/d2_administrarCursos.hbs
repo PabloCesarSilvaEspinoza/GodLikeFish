@@ -569,13 +569,13 @@
             </div>
         </div>
     </div>
-    <!--Estadisticas de cursos-->
+ <!--Estadisticas de cursos-->
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <!--Tabla resumen cursos-->
+  <!--Tabla resumen cursos-->
                         <div class="col-md-8 col-lg-8">
                             <h3><i class="fas fa-sitemap mr-2"></i>Historial de cursos <span
                                     class="small">Resumen</span></h3>
@@ -591,30 +591,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {{#each hitorialCursos}}
                                         <tr>
-                                            <td>Ejemplo area 1</td>
-                                            <td>32</td>
-                                            <td>4</td>
-                                            <td>2011/04/25</td>
+                                            <td>{{areaCurso}}</td>
+                                            <td>{{totalCursos}}</td>
+                                            <td>{{activosCurso}}</td>
+                                            <td>{{ultimaFechaCurso}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Ejemplo area 2</td>
-                                            <td>2</td>
-                                            <td>2</td>
-                                            <td>2021/09/20</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ejemplo area 3</td>
-                                            <td>21</td>
-                                            <td>0</td>
-                                            <td>2019/08/15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ejemplo area 4</td>
-                                            <td>32</td>
-                                            <td>1</td>
-                                            <td>2011/04/25</td>
-                                        </tr>
+                                         {{/each}}
                                     </tbody>
                                     <tfoot>
                                         <tr>
