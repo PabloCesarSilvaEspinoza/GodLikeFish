@@ -208,7 +208,12 @@ module.exports = function (injectedStore) {
 
     async function actualizarContrasenia(id, password){
         const PROCEDURE = `CALL editar_Password('${id}', '${password}')`
-        return store.insert(PROCEDURE);
+        return store.upsert(PROCEDURE);
+    }
+
+    async function actualizarCorreo(id, correo){
+        const PROCEDURE = `CALL editar_Correo_Usuario('${id}', '${correo}')`
+        return store.upsert(PROCEDURE);
     }
 
     async function recuperarContrasenia(idUsuario, correo) {
@@ -247,6 +252,7 @@ module.exports = function (injectedStore) {
         actualizarContrasenia,
         establecerContraseniaTemporal,
         generarContraseniaTemporal,
-        enviarContraseniaTemporal
+        enviarContraseniaTemporal,
+        actualizarCorreo
     }
 }

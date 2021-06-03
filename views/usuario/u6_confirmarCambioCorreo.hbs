@@ -1,0 +1,23 @@
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center"
+    style="background-color: rgb(230, 230, 230);">
+    <div class="card mt-3 text-center" style="border-radius: 10px; box-shadow: 2px 2px 5px rgba(197, 187, 197, 0.808) ">
+        <div class="card-body">
+            <form class="form-horizontal mt-3" action="/confirmarCambioCorreo" method="post">
+                <h2 class="card-title mb-4">Confirmación de cambio de correo electrónico.</h2>
+                <ol class="text-left">
+                    <dd>Enviamos un código de confirmación a tu dirección de correo electrónico "antigua".</dd>
+                    <li>Ingresa a tu correoelectronico.</li>
+                    <li>Busca en tu bandeja de entrada nuestro mensaje.</li>
+                    <dd>Si no encuentras nuestro mensaje, revisa la sección "correo no deseado".</dd>
+                    <li>Copia el código de verificación y pegalo aqui debajo.</li>
+                    <li>Da clic en "Validar"</li>
+                </ol>
+                <h3> Código de verificación</h3>
+                <input class="form-control form-control-lg mb-3" type="text"
+                    placeholder="Ingresa el codigo de validación" id="codigoVerificacion" name="codigoVerificacion"
+                    required>
+                <button type="submit" class="btn btn-lg btn-info"><i class="fas fa-check-double mr-2"></i>Validar</button>
+            </form>
+        </div>
+    </div>
+</div>

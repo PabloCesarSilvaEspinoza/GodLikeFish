@@ -32,6 +32,12 @@ router.post('/validarCodigo', render.postValidarCodigo);
 router.post('/enviarCodigoVerificacion', render.postEnviarCodigoVerificacion);
 router.post('/recuperarContrasenia', render.postRecuperarContrasenia);
 
+router.get('/cambiarCorreoElectronico', render.getCambiarCorreoElectronico);
+router.get('/confirmarCambioCorreo', render.getConfirmarCambioCorreo);
+router.post('/confirmarCambioCorreo', render.postConfirmarCambioCorreo);
+router.get('/establecerNuevoCorreo', render.getEstablecerNuevoCorreo);
+router.post('/establecerNuevoCorreo', render.postEstablecerNuevoCorreo);
+
 passport.use(new passportLocal(function (username, password, done) {
     Controller.validarUsuario(username, password)
         .then(user => {

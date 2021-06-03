@@ -67,7 +67,7 @@ module.exports = {
         (req.isAuthenticated()
             ? res.render('usuario/u3_reestablecerContraseña', {
                 general: true
-                })
+            })
             : res.redirect('/')
         )
     },
@@ -75,7 +75,7 @@ module.exports = {
     getValidarCorreo: async function (req, res, next) {
         const usuario = await Controller.getUsuario(req.user.id);
         (usuario[0].correoVerificado
-            ?( usuario[0].codigoVerificacion == "contraseniaTemporal"
+            ? (usuario[0].codigoVerificacion == "contraseniaTemporal"
                 ? res.redirect('/reestablecerContrasenia')
                 : res.redirect('/validarPermisos')
             )
@@ -158,13 +158,13 @@ module.exports = {
                 credencialUsuario[0].correoUsuario,
                 "Contraseña temporal - GDL Fish Cursos",
                 credencialUsuario[0].passwordUsuario
-                );
+            );
             res.redirect('/');
         }
     },
 
-    postReestablecerContrasenia: async function (req, res, next){
-        if(req.body.usuarioPasswordNueva === req.body.usuarioPasswordConfirmar){
+    postReestablecerContrasenia: async function (req, res, next) {
+        if (req.body.usuarioPasswordNueva === req.body.usuarioPasswordConfirmar) {
             const password = req.body.usuarioPasswordNueva;
             const data = await Controller.getUsuario(req.user.id); //filtro, para no usar el de la cookie
             await Controller.actualizarContrasenia(data[0].idUsuario, password);
@@ -174,10 +174,63 @@ module.exports = {
             )
             console.log("Contrasenia actualizada");
             res.redirect('/logOut');
-        }else{
+        } else {
             console.log("las contrasenias no coinciden");
             res.redirect('/reestablecerContrasenia')
         }
-    }
+    },
 
+    getCambiarCorreoElectronico: async function (req, res, next) {
+        if (req.isAuthenticated()) {
+            await Controller.generarCodigoVerificacion(req.user.id);
+            const credencialUsuario = await Controller.getUsuario(req.user.id);
+            await Controller.enviarCodigoVerificacion(
+                credencialUsuario[0].correoUsuario,
+                "Cambio de correo electronico",
+                credencialUsuario[0].tipoUsuario,
+                credencialUsuario[0].codigoVerificacion
+            )
+            res.redirect('/confirmarCambioCorreo')
+        } else {
+            console.log("no puedes acceder a esta vista sin una sesión");
+            res.redirect('/');
+        }
+    },
+
+    getConfirmarCambioCorreo: async function (req, res, next) {
+        (req.isAuthenticated()
+            ? res.render('usuario/u6_confirmarCambioCorreo',{
+                general:true
+            })
+            : res.redirect('/')
+        )
+    },
+
+    postConfirmarCambioCorreo: async function(req, res, next){
+        const credencialUsuario = await Controller.getUsuario(req.user.id);
+        (req.body.codigoVerificacion == credencialUsuario[0].codigoVerificacion
+            ? res.redirect('/establecerNuevoCorreo')
+            : res.redirect('/confirmarCambioCorreo')
+        )
+    },
+
+    getEstablecerNuevoCorreo: async function(req,res,next){
+        (req.isAuthenticated()
+            ? res.render('usuario/u7_establecerNuevoCorreo',{
+                general:true
+            })
+            : res.redirect('/')
+        )
+    },
+
+    postEstablecerNuevoCorreo: async function(req,res,next){
+        if(req.body.correoElectronico === req.body.confirmarCorreoElectronico){
+            await Controller.actualizarCorreo(req.user.id, req.body.correoElectronico);
+            await Controller.desactivarCodigoVerificacion(req.user.id);
+            console.log("Correo Actualizado");
+            res.redirect('/logOut');
+        }else{
+            res.redirect('/establecerNuevoCorreoElectronico')
+        }
+    }
 };
