@@ -281,6 +281,9 @@
                             </div>
                         </div>
                         <div class="col-md-3">
+                                <h3>Califica tu experiencia</h3>
+                                <div id="score-rating"></div>
+                            <br>
                             <h3>Horario </h3>
                             <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span
                                     class="small ">{{fechaInicioCurso}}</span></h5>
@@ -799,7 +802,7 @@
                                 </form>
                             </nav>
                             <!--cartasExamenes-->
-{{#each examenesCurso}}
+                            {{#each examenesCurso}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
@@ -808,7 +811,7 @@
                                             <div class="row">
 
                                                 <div class="col-md-6">
-                                                 
+
 
                                                     <h4>{{nombreExamen}}</h4>
 
@@ -816,13 +819,15 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <a href="{{linkExamen}}"><h5><i class="fas fa-link"></i>{{linkExamen}} </h5></a>
-                                                
+                                            <a href="{{linkExamen}}">
+                                                <h5><i class="fas fa-link"></i>{{linkExamen}} </h5>
+                                            </a>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-{{/each}}    
+                            {{/each}}
                         </div>
                     </div>
                 </div>

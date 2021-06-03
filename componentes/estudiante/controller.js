@@ -43,6 +43,11 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, cursoID);
     }
+    function insertCalificacionExperiencia(idUsuario, idCurso) {
+        const PROCEDURE = `CALL editar_Calificacion_Experiencia_Curso(${idUsuario}, ${idCurso})`
+        return store.insert(PROCEDURE);
+    }
+
     
     /*-----------------------------------------------------*/ 
     /*                      INSCRIPCIÓN                    */
@@ -148,6 +153,9 @@ module.exports = function (injectedStore) {
         listDocumentos,
         insertEstudianteCurso,
         listAsignacionesEstudiante,
-        listExamenes
+        listExamenes,
+        insertCalificacionExperiencia,
+        getHistorialCursosEstudiante,
+        getCursoActual,
     };
 }

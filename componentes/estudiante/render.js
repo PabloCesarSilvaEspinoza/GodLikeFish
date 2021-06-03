@@ -10,7 +10,7 @@ module.exports = {
         const totalCursos = cursosDisponibles.length;
         const historialCursos = await Controller.getHistorialCursosEstudiante(req.user.id);
         const totalHistorialCursos = historialCursos.length;
-
+        const cursoActualEstudiante = await Controller.getCursoActual(req.user.id);
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
@@ -18,6 +18,7 @@ module.exports = {
             totalCursos,
             historialCursos,
             totalHistorialCursos,
+            cursoActualEstudiante
         });
     },
     getMisAsignaciones: async function (req, res, next) {
@@ -89,7 +90,13 @@ module.exports = {
         res.redirect('/estudiante/dashboardEstudiante');
     },
     
-    
+    postInscribirse: async function (req, res, next){
+        console.log(req.user.id);
+        console.log(req.body.idCurso);
+        const respuestaBD = await Controller.insertCalificacionExperiencia(req.user.id, req.body.idCurso);
+        console.log(respuestaBD);
+        res.redirect('/estudiante/dashboardEstudiante');
+    },
     
 
     /* getVerTareas:async function(req, res, next){
