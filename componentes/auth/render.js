@@ -68,7 +68,7 @@ module.exports = {
             ? res.render('usuario/u3_reestablecerContraseña', {
                 general: true
                 })
-            : res.redirect('/login')
+            : res.redirect('/')
         )
     },
 
@@ -146,7 +146,7 @@ module.exports = {
     },
 
     postValidarCodigo: async function (req, res, next) {
-        const data = Controller.encontrarUsuarioCodigo(req.body.codigoVerificacion);//condigoVerificacion no puede llegar null > required
+        const data = await Controller.encontrarUsuarioCodigo(req.body.codigoVerificacion);//condigoVerificacion no puede llegar null > required
         if (data.length === 0) {
             console.log("El codigo es incorrecto");
             req.redirect('/verificarCodigo')
@@ -159,16 +159,19 @@ module.exports = {
                 "Contraseña temporal - GDL Fish Cursos",
                 credencialUsuario[0].passwordUsuario
                 );
-            res.redirect('/login');
+            res.redirect('/');
         }
     },
 
     postReestablecerContrasenia: async function (req, res, next){
         if(req.body.usuarioPasswordNueva === req.body.usuarioPasswordConfirmar){
             const password = req.body.usuarioPasswordNueva;
-            const data = await Controller.getUsuario(req.user.id); //filtro
+            const data = await Controller.getUsuario(req.user.id); //filtro, para no usar el de la cookie
             await Controller.actualizarContrasenia(data[0].idUsuario, password);
-            await Controller.desactivarCodigoVerificacion(data[0].idUsuario);
+            (data[0].codigoVerificacion == "contraseniaTemporal"
+                ? await Controller.desactivarCodigoVerificacion(data[0].idUsuario)
+                : console.log("sin contraseña temporal")
+            )
             console.log("Contrasenia actualizada");
             res.redirect('/logOut');
         }else{
