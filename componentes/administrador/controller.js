@@ -35,14 +35,20 @@ module.exports = function (injectedStore) {
             '${horarioFinCurso}','${fechaInscripcionInicioCurso}','${fechaInscripcionFinCurso}','${plataformaCurso}', ${areaCurso},
             '${tipoCurso}','${modalidadCurso}', ${capacidadCurso}, ${ponenteID}
         )`
-        console.log(PROCEDURE);
-        //return store.upsert(PROCEDURE);
+        
+        return store.upsert(PROCEDURE);
     }
 
     function insertMultimediaCurso(cursoID, temarioCurso, fotoCurso) {
         const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
 
         return store.upsert(PROCEDURE);
+    }
+
+    function getTiempoActual() {
+        const VIEW = 'ver_Tiempo_Actual'
+
+        return store.get(VIEW)
     }
 
     /*-----------------------------------------------------*/ 
@@ -107,5 +113,6 @@ module.exports = function (injectedStore) {
         listPerfilUsuario,
         listPonentes,
         listAreas,
+        getTiempoActual,
     };
 }

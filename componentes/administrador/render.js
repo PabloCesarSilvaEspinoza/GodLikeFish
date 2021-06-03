@@ -20,6 +20,7 @@ module.exports = {
         const cursos = await Controller.listCursos();
         const ponentes = await Controller.listPonentes();
         const areas = await Controller.listAreas();
+        const fechaActual = await Controller.getTiempoActual();
 
         res.render('administrador/d2_administrarCursos', {
             administrador: true,
@@ -28,6 +29,7 @@ module.exports = {
             cursos,
             ponentes,
             areas,
+            fechaActual,
             graficasAdministrador : true,
             valores:[{
             valor1: 18,
@@ -80,8 +82,8 @@ module.exports = {
     postAgregarCurso: async function (req, res, next){
         const respuestaBD = await Controller.insertCurso(req.body);
         const cursoID = respuestaBD[0][0].ID;
-        const fotoCurso = `${cursoID}/${req.files.fotoCurso[0].originalname}`;
-        const temarioCurso = `${cursoID}/${req.files.temarioCurso[0].originalname}`;
+        const fotoCurso = `${req.files.fotoCurso[0].originalname}`;
+        const temarioCurso = `${req.files.temarioCurso[0].originalname}`;
         await Controller.insertMultimediaCurso(cursoID, temarioCurso, fotoCurso)
         res.redirect('/administrador/administrarCursos')
     },
