@@ -90,7 +90,7 @@ module.exports = {
         res.redirect('/estudiante/dashboardEstudiante');
     },
     
-    postInscribirse: async function (req, res, next){
+    postCalificarExperiencia: async function (req, res, next){
         console.log(req.user.id);
         console.log(req.body.idCurso);
         const respuestaBD = await Controller.insertCalificacionExperiencia(req.user.id, req.body.idCurso);
