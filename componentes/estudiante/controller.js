@@ -44,6 +44,11 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, cursoID);
     }
     
+    function getConsultarEstadoCursoEstudiante(usuarioID, cursoID) {
+        const PROCEDURE = `CALL ver_Estado_Curso_Estudiante(${usuarioID}, ${cursoID})`;
+        return store.catalog(PROCEDURE);
+    }
+    
     /*-----------------------------------------------------*/ 
     /*                      INSCRIPCIÓN                    */
     /*-----------------------------------------------------*/
@@ -148,6 +153,9 @@ module.exports = function (injectedStore) {
         listDocumentos,
         insertEstudianteCurso,
         listAsignacionesEstudiante,
-        listExamenes
+        listExamenes,
+        getHistorialCursosEstudiante,
+        getCursoActual,
+        getConsultarEstadoCursoEstudiante
     };
 }
