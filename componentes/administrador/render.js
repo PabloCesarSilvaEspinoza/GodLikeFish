@@ -19,6 +19,10 @@ module.exports = {
     getAdministrarCursos: async function (req, res, next) {
         const cursos = await Controller.listCursos();
         const hitorialCursos = await Controller.listHitorialCursos();
+        const registrados= await Controller.listRegistrados();
+        const activos= await Controller.listActivos();
+        const inactivos= await Controller.listInactivos();
+        const tarjetas= await Controller.listUsuariosEnSistemaTarjeta();
         res.render('administrador/d2_administrarCursos', {
             administrador: true,
             datatables:true,
@@ -30,18 +34,22 @@ module.exports = {
             valor1: 18,
             valor2: 36,
             valor3: 10
-            }]
+            }],
+            activos,
+            inactivos,
+            tarjetas,
+            registrados,
+
         });
     },
     
     getAdministrarUsuarios: async function (req, res, next) {
         const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
-        const regitrados= await Controller.listRegistrados();
-        const activos= await Controller.listActivos();
-        const inactivos= await Controller.listInactivos();
         const tarjetas= await Controller.listUsuariosEnSistemaTarjeta();
         const verPerfil= await Controller.listPerfilUsuario();
-        
+        const registrados= await Controller.listRegistrados();
+        const activos= await Controller.listActivos();
+        const inactivos= await Controller.listInactivos();
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
@@ -54,11 +62,11 @@ module.exports = {
             }],
             caladon:true,
             datosUsuarioEnSistema,
-            regitrados,
-            activos,
-            inactivos,
             tarjetas,
             verPerfil,
+            activos,
+            inactivos,
+            registrados,
 
         });
     },

@@ -62,7 +62,7 @@ module.exports = function (injectedStore) {
 
     function listAvisosUsuario(id) {
         const VIEW = 'ver_Avisos_Usuario';
-        const CLAUSE = `WHERE cursoEstudiante = ?`;
+        const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 

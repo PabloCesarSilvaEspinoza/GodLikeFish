@@ -276,7 +276,7 @@
                     <h2><span class="small"><i class="fas fa-chart-pie mr-2"></i>Usuarios Resumen</span></h2>
                     <hr>
                     <div class="row mt-5">
-                        {{#each regitrados}}
+                        {{#each registrados}}
                         <div class="col b-r text-center">
                             <h2 class="font-light">{{registrados}}</h2>
                             <h6>Registrados</h6>
@@ -515,126 +515,144 @@
 
     <!-- ===================== CAMBIAR EL MODAL ====================================== -->
     {{#each verPerfil }}
-    <div id="ModalVerPerfilAlumno{{idUsuario}}" name="ModalVerPerfilAlumno" class="modal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="text-center" class="modal-header">
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Perfil <span class="small">Usuario </span></h1>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 mt-4 ">
-                            <div class="col-md-12">
-                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
-                                <hr>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group text-center ">
 
-                                        <img src="{{fotoUsuario}}" class="rounded-circle" width="120" />
-                                        <br>
-                                        <h6 class="text-muted">Foto de Perfil</h6>
-                                    </div>
+
+    <div id="ModalVerPerfilAlumno{{idUsuario}}" name="ModalVerPerfilAlumno" class="modal">
+        {{!-- <div class="modal fade verAlum" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true" style="display: none;"> --}}
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+
+                    <div class="text-center" class="modal-header">
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
+                        </div>
+                        <!--Titulo-->
+                        <div class="row mt-4">
+                            <div class="col text-center">
+                                <h1>Mi <span class="small">Perfil</span></h1>
+                                <p>Aqui puedes ver tu informacion personal.</p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mt-2 ">
+                                <div class="col-md-12">
+                                    <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
+                                    <hr>
                                 </div>
-                                <div class="col-md-9 text-center">
-                                    <div class="row">
-                                        <div class="col-lg-6 text-center">
-                                            <h6 class="text-muted">Nombres</h6>
-                                            <h4>{{nombreUsuario}}</h4>
-                                        </div>
-                                        <div class="col-lg-4 text-center">
-                                            <h6 class="text-muted">Categoría</h6>
-                                            <h4>{{areaUsuario}}</h4>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group text-center ">
+                                            <img src="{{fotoUsuario}}" class="rounded-circle" width="120" />
+                                            <br>
+                                            <h6 class="text-muted">Foto de Perfil</h6>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 text-center">
-                                            <h6 class="text-muted">Matrícula</h6>
-                                            <h4>{{matriculaUsuario}}</h4>
+                                    <div class="col-md-9 text-center">
+                                        <div class="row mt-3">
+                                            <div class="col-lg-6 text-center">
+                                                <h6 class="text-muted">Nombres</h6>
+                                                <h4>{{nombreUsuario}}</h4>
+                                            </div>
+                                            <div class="col-lg-6 text-center">
+                                                <h6 class="text-muted">Categoría</h6>
+                                                <h4>{{areaUsuario}}</h4>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4 text-center">
-                                            <h6 class="text-muted">Tipo</h6>
-                                            <h4>{{tipoUsuario}}</h4>
+                                        <div class="row mt-3">
+                                            <div class="col-lg-6 text-center">
+                                                <h6 class="text-muted">Matrícula</h6>
+                                                <h4>{{matriculaUsuario}}</h4>
+                                            </div>
+                                            <div class="col-lg-6 text-center">
+                                                <h6 class="text-muted">Tipo</h6>
+                                                <h4>{{tipoUsuario}}</h4>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 text-center">
-                                            <h6 class="text-muted">Correo</h6>
-                                            <h4>{{correoUsuario}}</h4>
-                                        </div>
-                                        <hr>
-                                        <div class="col-lg-6 text-center">
+                                        <div class="row mt-3">
+                                            <div class="col-lg-6 text-center">
+                                                <h6 class="text-muted">Correo</h6>
+                                                <h4>{{correoUsuario}}</h4>
+                                            </div>
+                                            <hr>
+                                            <div class="col-lg-6 text-center">
+                                                <h6 class="text-muted">País de Nacimiento</h6>
+                                                <h4>{{paisNacimiento}}</h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12 mt-4 ">
+                        <div class="col-md-12">
+                            <h4><i class="fas fa-book text-left mr-2"></i>Datos referenciales</h4>
+                            <hr>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4 text-center">
+                                <h6 class="text-muted">Municipio de Nacimiento</h6>
+                                <h4>{{municipioNacimiento}}</h4>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <h6 class="text-muted">Fecha de Nacimiento</h6>
+                                <h4>{{fechaNacimiento}}</h4>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <h6 class="text-muted">Municipio(Residencia)</h6>
+                                <h4>{{municipioResidencia}}</h4>
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-lg-4 text-center">
+                                <h6 class="text-muted">Colonia</h6>
+                                <h4>{{colonia}}</h4>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <h6 class="text-muted">Calle</h6>
+                                <h4>{{calle}}</h4>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <h6 class="text-muted">Número Exterior</h6>
+                                <h4>{{numeroExterior}}</h4>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-lg-4 text-center">
+
+                            </div>
+                            <div class="col-lg-4 text-center"></div>
+
+                            <div class="col-lg-64text-center">
+                                <br>
+                                <a type="button" class="btn waves-effect waves-light btn-info" href=""><i
+                                        class="fas fa-edit mr-2"></i>Editar Usuario</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <hr>
+
                 </div>
-                <div class="col-12 mt-4 ">
-                    <div class="col-md-12">
-                        <h4><i class="fas fa-book text-left mr-2"></i>Datos referenciales</h4>
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 text-center">
-                            <h6 class="text-muted">Municipio de Nacimiento</h6>
-                            <h4>{{municipioNacimiento}}</h4>
-                        </div>
-                        <div class="col-lg-4 text-center">
-                            <h6 class="text-muted">País de Nacimiento</h6>
-                            <h4>{{paisNacimiento}}</h4>
-                        </div>
-                        <div class="col-lg-4 text-center">
-                            <h6 class="text-muted">Fecha de Nacimiento</h6>
-                            <h4>{{fechaNacimiento}}</h4>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-lg-4 text-center">
-                            <h6 class="text-muted">Municipio(Residencia)</h6>
-                            <h4>{{municipioResidencia}}</h4>
-                        </div>
-                        <div class="col-lg-4 text-center">
-                            <h6 class="text-muted">Colonia</h6>
-                            <h4>{{colonia}}</h4>
-                        </div>
-                        <div class="col-lg-4 text-center">
-                            <h6 class="text-muted">Calle</h6>
-                            <h4>{{calle}}</h4>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-lg-6 text-center">
-                            <h6 class="text-muted">Número Exterior</h6>
-                            <h4>{{numeroExterior}}</h4>
-                        </div>
-                        <div class="col-lg-6 text-right">
-                            <a type="button" class="btn waves-effect waves-light btn-info" href=""><i
-                                    class="fas fa-edit mr-2"></i>Editar Usuario</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
             </div>
+            <!--Fin modalbody-->
         </div>
-        <!--Fin modalbody-->
+
     </div>
+    {{/each}}
 </div>
-{{/each}}
+
 <!-- ============================================================== -->
 <!-- End Container fluid  -->
 <!-- ============================================================== -->

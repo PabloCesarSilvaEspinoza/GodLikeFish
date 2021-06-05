@@ -39,10 +39,10 @@ module.exports = {
         const usuarioID = (req.user.id);
         // const usuarioID = (4);
         const datosCursoUsuario= await Controller.listDatosCursoUsuario(25); 
-        const AvisosUsuario = await Controller.listAvisosUsuario(39); 
+        const AvisosUsuario = await Controller.listAvisosUsuario(45); 
         const documentosCurso = await Controller.listDocumentos(40);
         const linksCurso = await Controller.listLinks(40); 
-        const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
+         const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
         const examenesCurso = await Controller.listExamenes(35);
 
         res.render('alumno/a3_consultarCursoE2', {
