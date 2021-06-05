@@ -61,6 +61,12 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    function getUsuarioEditar(id) {
+        const VIEW = 'ver_Datos_Usuario_Editar';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
     function listActivos() {
         const VIEW = 'ver_Usuarios_Resumen_A';
         return store.list(VIEW);
@@ -80,6 +86,58 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    async function getUsuario(id) {
+        const VIEW = 'ver_Credenciales_Usuario';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listPaises() {
+        const VIEW = 'ver_Paises';
+        return store.list(VIEW);
+    }
+
+    function listEstados() {
+        const VIEW = 'ver_Estados';
+        return store.list(VIEW);
+    }
+
+    function listMunicipios() {
+        const VIEW = 'ver_Municipios';
+        return store.list(VIEW);
+    }
+
+    function listPuestos() {
+        const VIEW = 'ver_Puestos';
+        return store.list(VIEW);
+    }
+
+    function upsertDatosUsuario(body) {
+        const {
+            nombres, pApellido, sApellido, matricula, fechaNacimiento, 
+            paisNacimientoID, municipioNacimientoID, area, puesto, antiguedad, tarjetonUsuario, exampleInputFile 
+        } = body;
+
+        const PROCEDURE = `CALL editar_Datos_Usuario(
+            39,'${nombres}','${pApellido}', '${sApellido}','${matricula}','${fechaNacimiento}',
+            ${paisNacimientoID},${municipioNacimientoID},${area},${puesto},'${antiguedad}',
+            '${tarjetonUsuario}', '${exampleInputFile}'
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function upsertDomicilioUsuario(body) {
+        const {
+            municipioResidenciaID, colonia, calle, numeroExt, numeroInt, 
+        } = body;
+
+        const PROCEDURE = `CALL editar_Domicilio_Usuario(
+            39,${municipioResidenciaID},'${colonia}', '${calle}',${numeroExt},${numeroInt}
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
 
     return {
         getUltimoCurso,
@@ -93,5 +151,12 @@ module.exports = function (injectedStore) {
         listInactivos,
         listUsuariosEnSistemaTarjeta,
         listPerfilUsuario,
+        getUsuarioEditar,
+        listPaises,
+        listMunicipios,
+        listEstados,
+        listPuestos,
+        upsertDatosUsuario,
+        upsertDomicilioUsuario,
     };
 }
