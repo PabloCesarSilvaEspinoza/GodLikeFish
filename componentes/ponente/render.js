@@ -69,7 +69,8 @@ module.exports = {
     },
     postAgregarExamen: async function (req, res, next){
         await Controller.insertExamen(req.body);
-        res.redirect('/ponente/consultarCursoPEI')
+        const cursoID = req.body.idCurso;
+        res.redirect('/ponente/curso/'+cursoID);
     },
 
     postAgregarTarea: async function (req, res, next) {

@@ -1,4 +1,66 @@
 <div class="container-fluid">
+    <!--modal Enviar Reporte-->
+        <div id="enviarReporte" class="modal">
+            <div class="modal-dialog modal-s">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Reportar <span class="small">un Problema</span></h1>
+                            <p>Aqui puedes enviar un reporte de un problema para que los administradores puedan solucionarlo
+                                .</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <form method="POST" action="/usuario/soporte'" class="col-lg-12">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Asunto del problema</h5>
+                                                        <input type="text" id="asunto" name="asunto"
+                                                            class="form-control"
+                                                            placeholder="Escribe el título del examen"
+                                                            autocomplete="off" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                                                    <div class="form-group" >
+                                                       <h4>Descripción</h4>
+                                                        <textarea class="form-control" rows="3" placeholder="Describe el problema aquí...">
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <div class="col text-right">
+                                        <hr>
+                                        <button type="submit" class="btn waves-effect waves-light btn-success">
+                                            <i class="fas fa-save mr-2"></i>Guardar y Publicar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info"
+                                            data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -152,6 +214,8 @@
                                                     farm-to-table, raw denim aesthetic synth nesciunt you probably
                                                     haven't heard of them accusamus labore sustainable VHS.
                                                 </div>
+                                                <button type="button" class="btn waves-effect waves-light btn-info"
+                                                 data-toggle="modal" data-target="#enviarReporte">Enviar un reporte</button>
                                             </div>
                                         </div>
                                     </div>

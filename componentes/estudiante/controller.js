@@ -66,6 +66,9 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idTarea = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
+    /*-----------------------------------------------------*/ 
+    /*                        Reportes                       */
+    /*-----------------------------------------------------*/
     
     function insert(body) {
         const {
@@ -90,12 +93,26 @@ module.exports = function (injectedStore) {
     
         return store.upsert(PROCEDURE);
     }
+    function insertReporte(body
+        ) {
+        const {
+            usuarioID, asunto, descripcion 
+        } = body;
+
+        const PROCEDURE = `agregar_Problemas_Usuario( 
+            ${usuarioID}, '${asunto}','${descripcion}'
+            )`
+    
+        return store.insert(PROCEDURE);
+    }
+    
 
     //----------------------- falta agregar el and al WHERE para el id de el usuario
     function listDatosCursoUsuario(id) {
         const VIEW = 'ver_Datos_Curso_Usuario';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, id);
+
     }
 
     function listAvisosUsuario(id) {
@@ -148,6 +165,9 @@ module.exports = function (injectedStore) {
         listDocumentos,
         insertEstudianteCurso,
         listAsignacionesEstudiante,
-        listExamenes
+        listExamenes,
+        getHistorialCursosEstudiante,
+        getCursoActual,
+        insertReporte,
     };
 }

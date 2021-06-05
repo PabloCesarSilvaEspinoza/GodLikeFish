@@ -1,3 +1,4 @@
+const { insertReporte } = require('./index');
 const Controller = require('./index');
 
 
@@ -89,7 +90,12 @@ module.exports = {
         res.redirect('/estudiante/dashboardEstudiante');
     },
     
-    
+    postEnviarReporte: async function (req, res, next){
+        const reporte = await Controller.insertReporte(req.body,req.user.id);
+        const usuarioID = reporte[0][0].ID;
+        console.log(reporte);
+        res.redirect('/usuario/soporte')
+    },
     
 
     /* getVerTareas:async function(req, res, next){
