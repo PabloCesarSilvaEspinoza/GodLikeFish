@@ -2,20 +2,20 @@
     style="background-color: rgb(230, 230, 230);">
     <div class="card mt-3 text-center" style="border-radius: 10px; box-shadow: 2px 2px 5px rgba(197, 187, 197, 0.808) ">
         <div class="card-body">
-            <h2 class="card-title mb-4">Reestablecer Contraseña</h2>
-            <p>Establece una nueva contraseña para tu cuenta llenando los campos:</p>
-            <form action="reestablecerContrasenia" method="post">
+            <h2 class="card-title mb-4">Cambiar Correo Electrónico</h2>
+            <p>Escribe la nueva dirección de correo electrónico:</p>
+            <form action="/establecerNuevoCorreo" method="post">
                 <div class="form-group mb-3">
-                    <h4>Nueva contraseña</h4>
-                    <input class="form-control form-control-lg" type="password" 
+                    <h4>Nueva direccion de correo electrónico</h4>
+                    <input class="form-control form-control-lg" type="email" 
                         placeholder="Escribe la nueva contraseña " alt="Escribe la contraseña nueva"
-                        id="usuarioPasswordNueva" name="usuarioPasswordNueva" required>
+                        id="correoElectronico" name="correoElectronico" required>
                 </div>
                 <div class="form-group mb-3">
-                    <h4>Confirmar nueva contraseña</h4>
-                    <input class="form-control form-control-lg" type="password"
+                    <h4>Confirmar dirección de correoelectronico</h4>
+                    <input class="form-control form-control-lg" type="email"
                         placeholder="Vuelve a escribir la contraseña" alt="Confirma tu contraseña nueva"
-                        id="usuarioPasswordConfirmar" name="usuarioPasswordConfirmar" required>
+                        id="confirmarCorreoElectronico" name="confirmarCorreoElectronico" required>
                 </div>
                 <div class="form-group text-right">
                     <button type="submit" id="GuardarPasswordNueva" class="btn btn-info waves-effect text-left">

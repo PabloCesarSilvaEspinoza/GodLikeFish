@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group text-center mt-1">
                             <p>¿Olvidaste tu Contraseña? <a href="#" class="text-info ml-1"
-                                    data-toggle="modal" data-target="#recuperarContraseña"><b>Recuperar
+                                    data-toggle="modal" data-target="#recuperarContrasenia"><b>Recuperar
                                         Contraseña</b></a></p>
                             <div class="col-xs-12 mt-3">
                                 <button class="btn btn-block btn-lg btn-info" type="submit">Entrar</button>
@@ -43,7 +43,7 @@
                     </form>
                 </div>
                 <!-- modal recuperarContraseña -->
-                <div id="recuperarContraseña" class="modal">
+                <div id="recuperarContrasenia" class="modal">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="card">
@@ -59,18 +59,18 @@
                                                 aria-hidden="true">×</button>
                                         </div>
                                     </div>
-                                    <form action="#" method="POST">
+                                    <form action="/recuperarContrasenia" method="post">
                                         <p>Ingresa tu correo electrónico y te enviaremos un formulario para que puedas
                                             reestablecer tu contraseña.</p>
                                         <div class="form-group text-left">
                                             <h5>Correo Electrónico<span class="text-danger">*</span></h5>
-                                            <input type="email" name="email" class="form-control" required=""
+                                            <input type="email" name="email" class="form-control"
                                                 data-validation-required-message="Debes llenar este campo"
-                                                aria-invalid="false">
+                                                aria-invalid="false" required>
                                         </div>
                                         <div class="form-group text-center">
-                                            <button type="button" class="btn waves-effect waves-light btn-info"><i
-                                                    class="fas fa-paper-plane mr-2"></i>Enviar</button>
+                                            <button type="submit" class="btn waves-effect waves-light btn-info">
+                                                <i class="fas fa-paper-plane mr-2"></i>Enviar</button>
                                         </div>
                                     </form>
                                 </div>

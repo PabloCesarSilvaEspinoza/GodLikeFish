@@ -1,7 +1,8 @@
+const { response } = require('express');
 const Controller = require('./index');
 
 module.exports = {
-    postAgregarUsuario: async function (req, res, next){
+    postAgregarUsuario: async function (req, res, next) {
         const respuestaBD = await Controller.insertUsuario(req.body);
         const usuarioID = respuestaBD[0][0].ID;
 
@@ -34,7 +35,7 @@ module.exports = {
         const estados = await Controller.listEstados();
         const municipios = await Controller.listMunicipios();
         const puestos = await Controller.listPuestos();
-        res.render('usuario/u1_login',{
+        res.render('usuario/u1_login', {
             general: true,
             pickadate: true,
             select2: true,
@@ -51,43 +52,49 @@ module.exports = {
     },
 
     getConfirmarCorreo: async function (req, res, next) {
-        (req.isAuthenticated() 
+        (req.isAuthenticated()
             ? ((req.user.correoVerificado
-                    ? res.redirect('/')
-                    : res.render('usuario/u2_confirmarCorreo', {
-                        general: true
-                        })
+                ? res.redirect('/')
+                : res.render('usuario/u2_confirmarCorreo', {
+                    general: true
+                })
             ))
             : res.redirect('/')
         )
     },
 
-    getReestablecerContraseña: async function (req, res, next) {
-        res.render('usuario/u3_reestablecerContraseña', {
-            general: true
-        });
+    getReestablecerContrasenia: async function (req, res, next) {
+        (req.isAuthenticated()
+            ? res.render('usuario/u3_reestablecerContraseña', {
+                general: true
+            })
+            : res.redirect('/')
+        )
     },
 
     getValidarCorreo: async function (req, res, next) {
         const usuario = await Controller.getUsuario(req.user.id);
-        (usuario[0].correoVerificado 
-            ? res.redirect('/validarPermisos') 
+        (usuario[0].correoVerificado
+            ? (usuario[0].codigoVerificacion == "contraseniaTemporal"
+                ? res.redirect('/reestablecerContrasenia')
+                : res.redirect('/validarPermisos')
+            )
             : res.redirect('/confirmarCorreo')
         );
     },
 
     postVerificarCorreo: async function (req, res, next) {
         const usuario = await Controller.getUsuario(req.user.id);
-        if (usuario[0].codigoVerificacion == req.body.codigoVerificacion){
-            await Controller.verificarCorreo(req.user.id);//esperar aqui
+        if (usuario[0].codigoVerificacion == req.body.codigoVerificacion) {
+            await Controller.verificarCorreo(req.user.id);
             console.log("Verificado");
-            await Controller.desactivarCodigoVerificacion(req.user.id)//desactivar
+            await Controller.desactivarCodigoVerificacion(req.user.id);
             res.redirect('/logOut');
-        }else{
+        } else {
             console.log("no coinciden");
-        } 
+        }
     },
-    
+
 
     getValidarPermisos: async function (req, res) {
         switch (req.user.rol) {
@@ -95,6 +102,7 @@ module.exports = {
                 res.redirect('/estudiante/dashboardEstudiante');
                 break;
             case "Ponente":
+                console.log("Es " +req.user.id);
                 res.redirect('/ponente/dashboardPonente');
                 break;
             case "Administrador":
@@ -112,12 +120,117 @@ module.exports = {
         const datosUsuario = await Controller.getDatosUsuario(req.user.id);
         const nombreUsuario = datosUsuario[0].nombreUsuario;
         await Controller.enviarCodigoVerificacion(
-            correoUsuario, 
-            "Código de Verificación: Godlike Fish.", 
+            correoUsuario,
+            "Código de Verificación: Godlike Fish.",
             nombreUsuario,
             codigoVerificacion
         );
         res.redirect('/confirmarCorreo')
     },
-    
+    getVerificarCodigo: async function (req, res, next) {
+        res.render('usuario/u5_verificacionConCorreo', {
+            general: true
+        });
+    },
+
+    postRecuperarContrasenia: async function (req, res, next) {
+        const data = await Controller.encontrarUsuario(req.body.email);
+        console.log(data);
+        if (data.length === 0) {
+            console.log("no existe usuario con ese correo");
+            res.redirect('/');
+        } else {
+            await Controller.recuperarContrasenia(data[0].idUsuario, req.body.email);
+            res.redirect('/verificarCodigo');
+        }
+    },
+
+    postValidarCodigo: async function (req, res, next) {
+        const data = await Controller.encontrarUsuarioCodigo(req.body.codigoVerificacion);//condigoVerificacion no puede llegar null > required
+        if (data.length === 0) {
+            console.log("El codigo es incorrecto");
+            req.redirect('/verificarCodigo')
+        } else {
+            await Controller.establecerContraseniaTemporal(data[0].idUsuario);
+            await Controller.generarContraseniaTemporal(data[0].idUsuario);
+            const credencialUsuario = await Controller.getUsuario(data[0].idUsuario);
+            await Controller.enviarContraseniaTemporal(
+                credencialUsuario[0].correoUsuario,
+                "Contraseña temporal - GDL Fish Cursos",
+                credencialUsuario[0].passwordUsuario
+            );
+            res.redirect('/');
+        }
+    },
+
+    postReestablecerContrasenia: async function (req, res, next) {
+        if (req.body.usuarioPasswordNueva === req.body.usuarioPasswordConfirmar) {
+            const password = req.body.usuarioPasswordNueva;
+            const data = await Controller.getUsuario(req.user.id); //filtro, para no usar el de la cookie
+            await Controller.actualizarContrasenia(data[0].idUsuario, password);
+            (data[0].codigoVerificacion == "contraseniaTemporal"
+                ? await Controller.desactivarCodigoVerificacion(data[0].idUsuario)
+                : console.log("sin contraseña temporal")
+            )
+            console.log("Contrasenia actualizada");
+            res.redirect('/logOut');
+        } else {
+            console.log("las contrasenias no coinciden");
+            res.redirect('/reestablecerContrasenia');
+        }
+    },
+
+    getCambiarCorreoElectronico: async function (req, res, next) {
+        if (req.isAuthenticated()) {
+            await Controller.generarCodigoVerificacion(req.user.id);
+            const credencialUsuario = await Controller.getUsuario(req.user.id);
+            await Controller.enviarCodigoVerificacion(
+                credencialUsuario[0].correoUsuario,
+                "Cambio de correo electronico",
+                credencialUsuario[0].tipoUsuario,
+                credencialUsuario[0].codigoVerificacion
+            )
+            res.redirect('/confirmarCambioCorreo')
+        } else {
+            console.log("no puedes acceder a esta vista sin una sesión");
+            res.redirect('/');
+        }
+    },
+
+    getConfirmarCambioCorreo: async function (req, res, next) {
+        (req.isAuthenticated()
+            ? res.render('usuario/u6_confirmarCambioCorreo',{
+                general:true
+            })
+            : res.redirect('/')
+        )
+    },
+
+    postConfirmarCambioCorreo: async function(req, res, next){
+        const credencialUsuario = await Controller.getUsuario(req.user.id);
+        (req.body.codigoVerificacion == credencialUsuario[0].codigoVerificacion
+            ? res.redirect('/establecerNuevoCorreo')
+            : res.redirect('/confirmarCambioCorreo')
+        )
+    },
+
+    getEstablecerNuevoCorreo: async function(req,res,next){
+        (req.isAuthenticated()
+            ? res.render('usuario/u7_establecerNuevoCorreo',{
+                general:true
+            })
+            : res.redirect('/')
+        )
+    },
+
+    postEstablecerNuevoCorreo: async function(req,res,next){
+        if(req.body.correoElectronico === req.body.confirmarCorreoElectronico){
+            await Controller.actualizarCorreo(req.user.id, req.body.correoElectronico);
+            await Controller.desactivarCodigoVerificacion(req.user.id);
+            console.log("Correo Actualizado");
+            res.redirect('/logOut');
+        }else{
+            res.redirect('/establecerNuevoCorreoElectronico')
+        }
+    }
 };
