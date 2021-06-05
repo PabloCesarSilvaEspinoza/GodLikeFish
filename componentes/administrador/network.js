@@ -12,4 +12,7 @@ router.get('/consultarCursosEI', render.getConsultarCursoE1);
 router.get('/consultarCursosEII', render.getConsultarCursoE2);
 router.post('/agregarCurso', crearCarpetaCurso, dobleInput, render.postAgregarCurso);
 
+router.get('/editarUsuarios/:id', render.getEditarUsuario);
+router.post('/editarUsuarios', render.postEditarUsuario);
+
 module.exports = router;

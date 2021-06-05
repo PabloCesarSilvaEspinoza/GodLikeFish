@@ -1,5 +1,7 @@
 const Controller = require('./index');
 const fs = require('fs');
+const administrador = require('./index');
+const { Console } = require('console');
 
 path = require('path')
 
@@ -90,4 +92,75 @@ module.exports = {
         await Controller.insertMultimediaCurso(cursoID, temarioCurso, fotoCurso)
         res.redirect('/administrador/administrarCursos')
     },
+
+    postEditarUsuario: async function (req, res, next){
+        await Controller.upsertDatosUsuario(req.body);
+        await Controller.upsertDomicilioUsuario(req.body);
+        console.log('Si entra aqui ')
+
+        res.redirect('/administrador/administrarUsuarios')
+    },
+
+    getEditarUsuario: async function(req, res, next){
+        const paises = await Controller.listPaises();
+        const puestos = await Controller.listPuestos();
+        const municipios =await Controller.listMunicipios();
+        const datosUsuario = await Controller.getUsuarioEditar(req.params.id);
+        const nombre = datosUsuario[0].nombre;
+        const apellidoPaterno = datosUsuario[0].apellidoPaterno;
+        const apellidoMaterno = datosUsuario[0].apellidoMaterno;
+        const idPais = datosUsuario[0].idPais;
+        const paisNacimiento = datosUsuario[0].paisNacimiento;
+        const idMunicipio = datosUsuario[0].idMunicipio;
+        const municipioNacimiento = datosUsuario[0].municipioNacimiento;
+        const fechaNacimiento = datosUsuario[0].fechaNacimiento;
+        const idMunicipioResidencia = datosUsuario[0].idMunicipioResidencia;
+        const municipioResidencia = datosUsuario[0].municipioResidencia;
+        const colonia = datosUsuario[0].colonia;
+        const calle = datosUsuario[0].calle;
+        const numeroExterior = datosUsuario[0].numeroExterior;
+        const numeroInterior = datosUsuario[0].numeroInterior;
+        const matriculaUsuario = datosUsuario[0].matriculaUsuario;
+        const fechaInicioLabores = datosUsuario[0].fechaInicioLabores;
+        const idPuesto = datosUsuario[0].idPuesto;
+        const puesto = datosUsuario[0].puesto;
+        const idArea = datosUsuario[0].idArea;
+        const area = datosUsuario[0].area;
+        const tarjeton = datosUsuario[0].tarjeton;
+        const estadoUsuario = datosUsuario[0].estado;
+        const idUsuario = datosUsuario[0].idUsuario;
+        const idDomicilio = datosUsuario[0].idDomicilio;
+
+        res.render('administrador/d5_editarUsuario',{
+            administrador: true,
+            switch: true,
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
+            idPais,
+            paisNacimiento,
+            paises,
+            idMunicipio,
+            municipioNacimiento,
+            municipios,
+            fechaNacimiento,
+            idMunicipioResidencia,
+            municipioResidencia,
+            colonia,
+            calle,
+            numeroExterior,
+            numeroInterior,
+            matriculaUsuario,
+            fechaInicioLabores,
+            idPuesto,
+            puesto,
+            puestos,
+            idArea,
+            area,
+            tarjeton,
+            estadoUsuario,
+            idUsuario,
+            idDomicilio,
+        });
+    }
 };
