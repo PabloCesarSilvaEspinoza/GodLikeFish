@@ -82,10 +82,10 @@ module.exports = {
     },
     
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
-        const respuestaEstadoCursoEstudiante = await Controller.getConsultarEstadoCursoEstudiante(req.user.id, req.params.idCurso);
-        const estadoCursoEstudiante = respuestaEstadoCursoEstudiante[0][0].Respuesta;
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
+        const respuestaEstadoCursoEstudiante = await Controller.getConsultarEstadoCursoEstudiante(usuarioID, cursoID);
+        const estadoCursoEstudiante = respuestaEstadoCursoEstudiante[0][0].Respuesta;
         const datosCurso = await Controller.getCursoInscripcion(cursoID);
         const curso = datosCurso[0];
 
@@ -111,7 +111,6 @@ module.exports = {
 
             case 'Curso Actual':
             case 'Curso Futuro':
-                const AvisosUsuario = await Controller.listAvisosUsuario(usuarioID); 
                 const documentosCurso = await Controller.listDocumentos(cursoID);
                 const linksCurso = await Controller.listLinks(cursoID); 
                 const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(cursoID);
@@ -125,7 +124,6 @@ module.exports = {
                     alerta: true,
                     select2: true,
                     curso,
-                    AvisosUsuario,
                     documentosCurso,
                     linksCurso,
                     examenesCurso,
