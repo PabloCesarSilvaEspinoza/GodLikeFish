@@ -97,12 +97,12 @@ module.exports = {
 
 
     getValidarPermisos: async function (req, res) {
-
         switch (req.user.rol) {
             case "Estudiante":
                 res.redirect('/estudiante/dashboardEstudiante');
                 break;
             case "Ponente":
+                console.log("Es " +req.user.id);
                 res.redirect('/ponente/dashboardPonente');
                 break;
             case "Administrador":
@@ -176,7 +176,7 @@ module.exports = {
             res.redirect('/logOut');
         } else {
             console.log("las contrasenias no coinciden");
-            res.redirect('/reestablecerContrasenia')
+            res.redirect('/reestablecerContrasenia');
         }
     },
 
