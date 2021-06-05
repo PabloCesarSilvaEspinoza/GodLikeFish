@@ -49,6 +49,11 @@ module.exports = function (injectedStore) {
     }
 
     
+    function getConsultarEstadoCursoEstudiante(usuarioID, cursoID) {
+        const PROCEDURE = `CALL ver_Estado_Curso_Estudiante(${usuarioID}, ${cursoID})`;
+        return store.catalog(PROCEDURE);
+    }
+    
     /*-----------------------------------------------------*/ 
     /*                      INSCRIPCIÓN                    */
     /*-----------------------------------------------------*/
@@ -164,5 +169,6 @@ module.exports = function (injectedStore) {
         insertCalificacionExperiencia,
         getHistorialCursosEstudiante,
         getCursoActual,
+        getConsultarEstadoCursoEstudiante
     };
 }

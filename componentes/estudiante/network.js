@@ -5,7 +5,7 @@ const render = require('./render');
 router.get('/dashboardEstudiante', render.getDashboardAlumno);
 router.get('/misAsignaciones', render.getMisAsignaciones);
 //getConsultarCursoE1
-router.get('/curso/:idCurso', render.getConsultarCurso);
+router.get('/curso/:idCurso', render.getConsultarEstadoCursoEstudiante);
 router.get('/consultarCursoEII/', render.getConsultarCursoE2);
 router.get('/consultarCursoEIII', render.getConsultarCursoE3);
 router.post('/Inscribirse', render.postInscribirse)

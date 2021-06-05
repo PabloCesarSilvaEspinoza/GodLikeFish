@@ -27,15 +27,15 @@ module.exports = function (injectedStore) {
         const {
             nombreCurso, claveCurso, descripcionCurso, fechaInicioCurso, fechaFinCurso, horarioInicioCurso,
             horarioFinCurso, fechaInscripcionInicioCurso, fechaInscripcionFinCurso, plataformaCurso, areaCurso,
-            tipoCurso, temarioCurso, modalidadCurso, capacidadCurso, fotoCurso, ponenteID  
+            tipoCurso, modalidadCurso, capacidadCurso, ponenteID  
         } = body;
 
         const PROCEDURE = `CALL agregar_Curso(
             '${nombreCurso}','${claveCurso}','${descripcionCurso}', '${fechaInicioCurso}','${fechaFinCurso}','${horarioInicioCurso}',
-            '${horarioFinCurso}','${fechaInscripcionInicioCurso}','${fechaInscripcionFinCurso}','${plataformaCurso}','${areaCurso}',
-            '${tipoCurso}', '${temarioCurso}','${modalidadCurso}', ${capacidadCurso},'${fotoCurso}', ${ponenteID}
+            '${horarioFinCurso}','${fechaInscripcionInicioCurso}','${fechaInscripcionFinCurso}','${plataformaCurso}', ${areaCurso},
+            '${tipoCurso}','${modalidadCurso}', ${capacidadCurso}, ${ponenteID}
         )`
-
+        
         return store.upsert(PROCEDURE);
     }
 
@@ -45,6 +45,20 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
+    function getTiempoActual() {
+        const VIEW = 'ver_Tiempo_Actual'
+
+        return store.get(VIEW)
+    }
+
+    /*-----------------------------------------------------*/ 
+    /*                         AREAS                       */
+    /*-----------------------------------------------------*/
+
+    function listAreas(){
+        const VIEW = 'ver_Areas';
+        return store.list(VIEW)
+    }
 
     /*-----------------------------------------------------*/ 
     /*                       USUARIOS                      */
@@ -54,7 +68,6 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Usuarios_En_Sistema';
         return store.list(VIEW);
     }
-
 
     function listRegistrados() {
         const VIEW = 'ver_Usuarios_Resumen_R';
@@ -143,6 +156,11 @@ module.exports = function (injectedStore) {
 
         return store.upsert(PROCEDURE);
     }
+    function listPonentes() {
+        const VIEW = 'ver_Ponentes';
+        return store.list(VIEW);
+    }
+
 
     return {
         getUltimoCurso,
@@ -164,6 +182,9 @@ module.exports = function (injectedStore) {
         listPuestos,
         upsertDatosUsuario,
         upsertDomicilioUsuario,
-        getUsuario
+        getUsuario,
+        listPonentes,
+        listAreas,
+        getTiempoActual,
     };
 }

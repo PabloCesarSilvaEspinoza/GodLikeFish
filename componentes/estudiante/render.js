@@ -26,16 +26,7 @@ module.exports = {
             estudiante:true
         }); 
     },
-    getConsultarCurso: async function (req, res, next) {
-        // const respuestaEstadoCursoEstudiante = Controller.getEstadoCursoEstudiante(idEstudiante, idCurso);
-        //Si no esta inscrito
-        const datosCurso = await Controller.getCursoInscripcion(req.params.idCurso);
-        const curso = datosCurso[0];
-        res.render('alumno/a3_consultarCursoE1', {
-            estudiante:true,
-            curso,
-        });
-    },
+
     getConsultarCursoE2: async function (req, res, next) {
         const usuarioID = (req.user.id);
         // const usuarioID = (4);
@@ -85,8 +76,9 @@ module.exports = {
     postInscribirse: async function (req, res, next){
         console.log(req.user.id);
         console.log(req.body.idCurso);
-        const respuestaBD = await Controller.insertEstudianteCurso(req.user.id, req.body.idCurso);
-        console.log(respuestaBD);
+        const respuestainsertEstudianteCurso = await Controller.insertEstudianteCurso(req.user.id, req.body.idCurso);
+        const estadoInscripcion = respuestainsertEstudianteCurso[0][0].Respuesta;
+        console.log(estadoInscripcion);
         res.redirect('/estudiante/dashboardEstudiante');
     },
     
@@ -96,6 +88,62 @@ module.exports = {
         const respuestaBD = await Controller.insertCalificacionExperiencia(req.user.id, req.body.idCurso);
         console.log(respuestaBD);
         res.redirect('/estudiante/dashboardEstudiante');
+    },
+    
+    getConsultarEstadoCursoEstudiante: async function (req, res, next){
+        const usuarioID = req.user.id;
+        const cursoID = req.params.idCurso;
+        const respuestaEstadoCursoEstudiante = await Controller.getConsultarEstadoCursoEstudiante(usuarioID, cursoID);
+        const estadoCursoEstudiante = respuestaEstadoCursoEstudiante[0][0].Respuesta;
+        const datosCurso = await Controller.getCursoInscripcion(cursoID);
+        const curso = datosCurso[0];
+
+        switch (estadoCursoEstudiante) {
+            case 'Diferentes areas':
+            case 'Curso Inactivo':
+                res.redirect('/estudiante/dashboardEstudiante');
+                break;
+
+            case 'Inscripcion':
+            case 'Inscripcion Cerrada':
+                res.render('alumno/a3_consultarCursoE1', {
+                    estudiante:true,
+                    curso,
+                });
+                break;
+
+            case 'Curso Pasado':
+                res.render('alumno/a3_consultarCursoE3', {
+                    estudiante:true
+                });
+                break;
+
+            case 'Curso Actual':
+            case 'Curso Futuro':
+                const documentosCurso = await Controller.listDocumentos(cursoID);
+                const linksCurso = await Controller.listLinks(cursoID); 
+                const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(cursoID);
+                const examenesCurso = await Controller.listExamenes(cursoID);
+                res.render('alumno/a3_consultarCursoE2', {
+                    estudiante:true,
+                    chartist:true,
+                    c3:true,
+                    dropzone:true,
+                    dataTables: true,
+                    alerta: true,
+                    select2: true,
+                    curso,
+                    documentosCurso,
+                    linksCurso,
+                    examenesCurso,
+                    asignacionesEstudiante,
+                });
+                break;
+        
+            default: 
+                res.redirect('/estudiante/dashboardEstudiante');
+                break;
+        }
     },
     
 
