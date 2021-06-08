@@ -8,6 +8,8 @@ path = require('path')
 module.exports = {
 
     getDashboardAdministrador: async function (req, res, next) {
+        const errores = await Controller.listErrores();
+        const numeroErrores = errores.length;
         res.render('administrador/d1_dashboard_v2', {
             administrador: true,
             graficasAdministrador : true,
@@ -15,7 +17,9 @@ module.exports = {
             valor1: 18,
             valor2: 36,
             valor3: 10
-            }]
+            }],
+            errores,
+            numeroErrores,
         });
     },
     getAdministrarCursos: async function (req, res, next) {
@@ -169,5 +173,10 @@ module.exports = {
             idUsuario,
             idDomicilio,
         });
-    }
+    },
+
+    postResolverProblema: async function(req, res, next){
+        await Controller.upsertResolverProblema(req.body.idProblema, req.params.tipoProblema)
+        res.redirect('back');
+    },
 };

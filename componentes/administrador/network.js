@@ -15,4 +15,6 @@ router.post('/agregarCurso', crearCarpetaCurso, dobleInput, render.postAgregarCu
 router.get('/editarUsuarios/:id', render.getEditarUsuario);
 router.post('/editarUsuarios', render.postEditarUsuario);
 
+router.post('/ResolverProblema/:tipoProblema', render.postResolverProblema);
+
 module.exports = router;

@@ -3,7 +3,20 @@ module.exports = function (injectedStore) {
     if (!store) {
         store = require('../../store/mysql');
     }
+    /*-----------------------------------------------------*/ 
+    /*                      DASHBOARD                      */
+    /*-----------------------------------------------------*/
+
+    function listErrores(){
+        const VIEW = 'ver_Reporte_Errores';
+        return store.list(VIEW)
+    }
     
+
+    function upsertResolverProblema(idProblema, tipoProblema){
+        const PROCEDURE = `CALL resolver_Problema(${idProblema}, ${tipoProblema})`
+        return store.upsert(PROCEDURE);
+    }
     /*-----------------------------------------------------*/ 
     /*                       CURSOS                        */
     /*-----------------------------------------------------*/
@@ -186,5 +199,7 @@ module.exports = function (injectedStore) {
         listPonentes,
         listAreas,
         getTiempoActual,
+        listErrores,
+        upsertResolverProblema
     };
 }
