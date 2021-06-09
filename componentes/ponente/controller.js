@@ -62,7 +62,7 @@ module.exports = function (injectedStore) {
 
     function listAvisosUsuario(id) {
         const VIEW = 'ver_Avisos_Usuario';
-        const CLAUSE = `WHERE cursoEstudiante = ?`;
+        const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
@@ -115,7 +115,16 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
+
+    function reportarProblemaCurso(idUsuario, idCurso, asunto, descripcion){
+        const PROCEDURE = `CALL agregar_Problemas_Curso(${idUsuario}, ${idCurso}, '${asunto}', '${descripcion}')`;
+        return store.insert(PROCEDURE);
+    }
     
+    function reportarProblemaUsuario(idUsuario, asunto, descripcion){
+        const PROCEDURE = `CALL agregar_Problemas_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
+        return store.insert(PROCEDURE);
+    }
 
     return {
         insertTarea,
@@ -136,5 +145,7 @@ module.exports = function (injectedStore) {
         getUltimaTarea,
         getProximoCurso,
         listAsignacionesPonente,
+        reportarProblemaCurso,
+        reportarProblemaUsuario
     };
 }

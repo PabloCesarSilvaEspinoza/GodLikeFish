@@ -1,28 +1,8 @@
 <div class="auth-wrapper d-flex no-block justify-content-center align-items-center"
     style="background-color: rgb(230, 230, 230);">
-    <!--Modal reenviar codigo-->
-    <div id="reenviarCodigo" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="card">
-                    <div class="card-body">
-                        <form class="form-horizontal mt-3 text-center" action="/enviarCodigoVerificacion" method="post">
-                            <h3>¿Deseas Continuar?</h3>
-                            <p>Te enviaremos un nuevo código de verificación a tu correo electrónico.</p>
-                            <button type="submit" class="btn waves-effect waves-light btn-success">
-                                <i class="fas fa-paper-plane mr-2"></i>Enviar</button>
-                            <button class="btn waves-effect waves-light btn-info mr-2" 
-                                data-dismiss="modal" aria-hidden="true">
-                                <i class="fas fa-times mr-2"></i>Cancelar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="card mt-3 text-center" style="border-radius: 10px; box-shadow: 2px 2px 5px rgba(197, 187, 197, 0.808) ">
         <div class="card-body">
-            <form class="form-horizontal mt-3" action="#" method="post">
+            <form class="form-horizontal mt-3" action="validarCodigo" method="post">
                 <h2 class="card-title mb-4">Confirmación con correo electrónico.</h2>
                 <ol class="text-left">
                     <li>Ingresa a tu correoelectronico.</li>
@@ -36,7 +16,6 @@
                     placeholder="Ingresa el codigo de validación" id="codigoVerificacion" name="codigoVerificacion"
                     required>
                 <button type="submit" class="btn btn-lg btn-info"><i class="fas fa-check-double mr-2"></i>Validar</button>
-                <p class="mt-3">¿No encuentras el código? <a href="" class="font-weight-bold" data-toggle="modal" data-target="#reenviarCodigo">Reenviar Código</a>.</p>
             </form>
         </div>
     </div>

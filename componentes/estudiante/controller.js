@@ -43,6 +43,16 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, cursoID);
     }
+    function insertCalificacionExperiencia(idUsuario, idCurso) {
+        const PROCEDURE = `CALL editar_Calificacion_Experiencia_Curso(${idUsuario}, ${idCurso})`
+        return store.insert(PROCEDURE);
+    }
+
+    
+    function getConsultarEstadoCursoEstudiante(usuarioID, cursoID) {
+        const PROCEDURE = `CALL ver_Estado_Curso_Estudiante(${usuarioID}, ${cursoID})`;
+        return store.catalog(PROCEDURE);
+    }
     
     /*-----------------------------------------------------*/ 
     /*                      INSCRIPCIÓN                    */
@@ -117,7 +127,7 @@ module.exports = function (injectedStore) {
 
     function listAvisosUsuario(id) {
         const VIEW = 'ver_Avisos_Usuario';
-        const CLAUSE = `WHERE idEstudiante = ?`;
+        const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
@@ -130,6 +140,12 @@ module.exports = function (injectedStore) {
     function listDocumentos(id) {
         const VIEW = 'ver_Recursos_Curso_Documentos';
         const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function getHistorialCursosEstudiante(id) {
+        const VIEW = 'ver_Historial_Cursos_Estudiante';
+        const CLAUSE = `WHERE idUsuario = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
@@ -161,13 +177,21 @@ module.exports = function (injectedStore) {
         listCursosDisponibles,
         getCursoInscripcion,
         getTemario,
+        getHistorialCursosEstudiante,
         listLinks,
         listDocumentos,
         insertEstudianteCurso,
         listAsignacionesEstudiante,
         listExamenes,
+<<<<<<< HEAD
         getHistorialCursosEstudiante,
         getCursoActual,
         insertReporte,
+=======
+        insertCalificacionExperiencia,
+        getHistorialCursosEstudiante,
+        getCursoActual,
+        getConsultarEstadoCursoEstudiante
+>>>>>>> NEO_Trial
     };
 }

@@ -69,6 +69,59 @@
                 </div>
             </div>
         </div>
+        <div id="calificarExperiencia" class="modal">
+            <div class="modal-dialog modal-lx">
+                <div class="modal-content">
+                    <!--Contenido-->
+                    <div class="modal-body">
+                        <div class="text-center" class="modal-header">
+                            <div class="row">
+                                <div class="col text-right">
+                                    <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
+                                </div>
+                            </div>
+                            <!--Titulo-->
+                            <div class="row">
+                                <div class="modal-title col text-center">
+                                    <h3>Completaste este curso<span class="small"></span></h3>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4><i class="fas fa-stars mr-2"></i>Califica tu experiencia en este curso:</h4>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12">
+                                <h4>Contenido :</h4>
+                                    <div name="calificacionContenido" id="score-rating"></div>
+                            </div>
+                            <div class="col-12 col-sm-12">
+                                <h4> Ponente :</h4>
+                                    <div name="calificacionPonente" id="max-number-stars"></div>
+                            </div>
+                            <br>
+                            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                                <h4>Comentario :</h4>
+                                <textarea class="col-sm-12 col-md-12 col-lg-12 mb-3 font-14" id="comentarioExperiencia"
+                                    placeholder="Ayudanos a mejorar, comenta." name="comentarioExperiencia" cols="60"
+                                    rows="5"></textarea>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 mb-3 text-right">
+                                <a type="button" type="submit" href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" class="save" ><i
+                                        class="fa fa-floppy-o mr-1"></i>
+                                    Calificar Experiencia</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="tareaEntregada" class="modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -201,6 +254,12 @@
                                         class="small ">Nombre Tipo</span></h5>
                                 <h5 class="ml-2 mr-2"><i class="fas fa-video mr-1"></i> Modalidad: <span
                                         class="small ">Nombre Modalidad</span></h5>
+                                <span>
+                                        <button
+                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                            data-toggle="modal" data-target="#calificarExperiencia"><i
+                                                class="fa fa-book mr-1"></i> Calificar Experiencia</button>
+                                    </span>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -1013,7 +1072,8 @@
                                     <div class="card">
                                         <div class="card-header bg-info">
                                             <h4 class="mb-0 text-white"><i class="fas fa-folder-open"></i> Docuementos
-                                                <span class="small">(3)</span></h4>
+                                                <span class="small">(3)</span>
+                                            </h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
                                             style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">

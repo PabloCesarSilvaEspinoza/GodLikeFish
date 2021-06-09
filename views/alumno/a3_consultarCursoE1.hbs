@@ -202,15 +202,25 @@
                                         {{#ifEquals plataformaCurso "Google Meet"}}
                                         <img src="../../assets/images/Google_Meet.png" width="100" class="ml-4 mr-4" alt="user">
                                         {{/ifEquals}}
+                                        {{#ifEquals plataformaCurso "Zoom"}}
+                                        <img src="../../assets/images/zoom.png" width="100" class="ml-4 mr-4" alt="user">
+                                        {{/ifEquals}}
                                         <h4>{{plataformaCurso}}</h4>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-center">
-                                        <button type="button"
+                                        {{#ifEquals estadoInscripcionesCurso "Abiertas"}}
+                                            <button type="button"
                                             class="btn waves-effect waves-light btn-block btn-rounded btn-primary mt-5 font-24"
                                             data-toggle="modal" data-target="#inscribirseAhora"><i
                                                 class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora </button>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoInscripcionesCurso "Cerradas"}}
+                                            <a href="" type="button"
+                                            class="btn waves-effect waves-light btn-block btn-rounded btn-primary mt-5 font-24 disabled">
+                                            <i class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora </a>
+                                        {{/ifEquals}}
                                     </div>
                                 </div>
                             </div>

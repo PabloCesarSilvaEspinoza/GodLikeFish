@@ -1,7 +1,8 @@
 const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
-const {nanoid} = require('nanoid');
+const { nanoid } = require('nanoid');
 const chalk = require('chalk');
+const { response } = require('express');
 
 const transport = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -33,12 +34,17 @@ module.exports = function (injectedStore) {
         store = require('../../store/mysql');
     }
 
-     async function get(correo) {
+    async function encontrarUsuario(correo) {
         const VIEW = 'ver_Credenciales_Usuario';
         const CLAUSE = `WHERE correoUsuario = ?`;
         return store.get(VIEW, CLAUSE, correo);
-    } 
-    
+    }
+    async function encontrarUsuarioCodigo(codigo) {
+        const VIEW = 'ver_Credenciales_Usuario';
+        const CLAUSE = `WHERE codigoVerificacion = ?`;
+        return store.get(VIEW, CLAUSE, codigo);
+    }
+
     async function getDatosUsuario(id) {
         const VIEW = 'ver_Perfil_Usuario';
         const CLAUSE = `WHERE idUsuario = ?`;
@@ -74,7 +80,7 @@ module.exports = function (injectedStore) {
 
     async function validarUsuario(correo, password) {
         console.log(chalk.white.bgMagenta.bold("recibi:") + " " + correo + " " + password);
-        const data = await get(correo);
+        const data = await encontrarUsuario(correo);
         if (data[0].passwordUsuario === password) {
             //borramos el password de las variables del programa no de la BD
             delete data[0].passwordUsuario;
@@ -109,7 +115,7 @@ module.exports = function (injectedStore) {
             '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, '${area}',
             '${puesto}', '${antiguedad}'
             )`
-            
+
         return store.upsert(PROCEDURE);
     }
 
@@ -121,38 +127,54 @@ module.exports = function (injectedStore) {
 
         return store.upsert(PROCEDURE);
     }
-    
-    async function enviarCorreoBienvenida(to,subject,nombreUsuario, codigoVerificacion) {
-        
+
+    async function enviarCorreoBienvenida(to, subject, nombreUsuario, codigoVerificacion) {
+
         let mailOptions = {
             to,
             subject,
-            template:'correo/correoBienvenida',
+            template: 'correo/correoBienvenida',
             context: {
                 nombreUsuario,
                 codigoVerificacion
-            } 
+            }
         };
-        
-        transport.sendMail(mailOptions, (err,info)=>{
-            (err ? console.log('Error', err): console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :'+ mailOptions.to)));
+
+        transport.sendMail(mailOptions, (err, info) => {
+            (err ? console.log('Error', err) : console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :' + mailOptions.to)));
         });
     }
 
-    async function enviarCodigoVerificacion(to,subject,nombreUsuario, codigoVerificacion) {
-        
+    async function enviarCodigoVerificacion(to, subject, nombreUsuario, codigoVerificacion) {
+
         let mailOptions = {
             to,
             subject,
-            template:'correo/codigoVerificacion',
+            template: 'correo/codigoVerificacion',
             context: {
                 nombreUsuario,
                 codigoVerificacion
-            } 
+            }
         };
-        
-        transport.sendMail(mailOptions, (err,info)=>{
-            (err ? console.log('Error', err): console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :'+ mailOptions.to)));
+
+        transport.sendMail(mailOptions, (err, info) => {
+            (err ? console.log('Error', err) : console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :' + mailOptions.to)));
+        });
+    }
+
+    async function enviarContraseniaTemporal(to, subject, contraseniaTemporal) {
+
+        let mailOptions = {
+            to,
+            subject,
+            template: 'correo/contraseniaTemporal',
+            context: {
+                contraseniaTemporal
+            }
+        };
+
+        transport.sendMail(mailOptions, (err, info) => {
+            (err ? console.log('Error', err) : console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :' + mailOptions.to)));
         });
     }
 
@@ -161,20 +183,56 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
-    async function generarCodigoVerificacion(id){
+    async function generarCodigoVerificacion(id) {
         const codigo = await nanoid();
         const PROCEDURE = `CALL actualizar_Codigo_Verificacion('${id}', '${codigo}')`
         return store.insert(PROCEDURE);
     }
 
-    async function desactivarCodigoVerificacion(id){
-        const codigo = "NoSolicitado";
+    async function desactivarCodigoVerificacion(id) {
+        const codigo = null;
         const PROCEDURE = `CALL actualizar_Codigo_Verificacion('${id}', '${codigo}')`
         return store.insert(PROCEDURE);
     }
 
+    async function establecerContraseniaTemporal(id) {
+        const codigo = "contraseniaTemporal";
+        const PROCEDURE = `CALL actualizar_Codigo_Verificacion('${id}', '${codigo}')`
+        return store.insert(PROCEDURE);
+    }
 
-    return{
+    async function generarContraseniaTemporal(id) {
+        const contraseniaTemporal = await nanoid();
+        actualizarContrasenia(id, contraseniaTemporal);
+    }
+
+    async function actualizarContrasenia(id, password){
+        const PROCEDURE = `CALL editar_Password('${id}', '${password}')`
+        return store.upsert(PROCEDURE);
+    }
+
+    async function actualizarCorreo(id, correo){
+        const PROCEDURE = `CALL editar_Correo_Usuario('${id}', '${correo}')`
+        return store.upsert(PROCEDURE);
+    }
+
+    async function recuperarContrasenia(idUsuario, correo) {
+        console.log("recibi: " + idUsuario + correo);
+        await generarCodigoVerificacion(idUsuario);//
+        const credencialUsuario = await encontrarUsuario(correo);
+        const correoUsuario = credencialUsuario[0].correoUsuario;
+        const tipoUsuario = credencialUsuario[0].tipoUsuario;
+        const codigoVerificacion = credencialUsuario[0].codigoVerificacion;
+        await enviarCodigoVerificacion(
+            correoUsuario,
+            "Recuperación de contraseña",
+            tipoUsuario,
+            codigoVerificacion
+        );
+    }
+
+    return {
+        encontrarUsuario,
         listPaises,
         listEstados,
         listMunicipios,
@@ -188,6 +246,13 @@ module.exports = function (injectedStore) {
         enviarCodigoVerificacion,
         verificarCorreo,
         generarCodigoVerificacion,
-        desactivarCodigoVerificacion
+        desactivarCodigoVerificacion,
+        recuperarContrasenia,
+        encontrarUsuarioCodigo,
+        actualizarContrasenia,
+        establecerContraseniaTemporal,
+        generarContraseniaTemporal,
+        enviarContraseniaTemporal,
+        actualizarCorreo
     }
 }
