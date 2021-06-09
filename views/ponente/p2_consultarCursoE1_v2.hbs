@@ -911,14 +911,14 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <img src="{{fotoCurso}}" width="150" class="rounded-circle" alt="user">
+                        <!--<img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" class="rounded" width="300" height="200" alt="Curso">-->
+                        <img src="../../assets/images/cursoImg2.JPG" class="rounded" width="300" height="200" alt="Curso">
                         </div>
                         <div class="col-md-6">
                             <h1>{{nombreCurso}}</h1>
                             <div class="d-flex no-block align-items-center">
-                                <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src="{{fotoPonente}}" alt="user" class="rounded-circle"
-                                        width="45"></div>
+                                <h5 class="mr-2">Ponente:</h5>
+                                <img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" alt="Ponente" class="rounded-circle mr-2" width="50" height="50">
                                 <div class="">
                                     <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
                                     <span>{{areaPonente}}</span>
@@ -1178,16 +1178,11 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="ml-3 mr-2">
-                                                    <img src={{fotoPonente}} alt="foto Ponente" class="rounded-circle"
-                                                        width="45">
-                                                </div>
-                                                <div class="">
-                                                    <h5 class="mb-0 font-16">{{nombrePonente}} <span
-                                                            class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">{{nombreCurso}}</h5>
-                                                </div>
+                                            <div class="col-md-12 mt-1">
+                                                <h3 class="ml-3">{{tituloAviso}}</h3>
+                                            </div>
+                                            <div class="col-md-12 mt-1">
+                                                <p class="ml-3">{{textoAviso}}.</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -1197,9 +1192,6 @@
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                                     data-toggle="modal" data-target="#editarAnuncio">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <p class="ml-3">{{textoAviso}}.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1275,10 +1267,9 @@
                             <nav class="navbar navbar-light bg-light justify-content-between">
                                 <a class="navbar-brand">Recursos del Curso</a>
                                 <form class="form-inline">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
-                                        aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
-                                            class="fas fa-search mr-2"></i> Buscar</button>
+                                    <button type="button" class="btn waves-effect waves-light btn-info mr-2"
+                                        data-toggle="modal" data-target="#agregarDocumento"><i
+                                            class="fas fa-plus mr-2"></i>Agregar Documento</button>
                                     <button type="button" class="btn waves-effect waves-light btn-info"
                                         data-toggle="modal" data-target="#agregarEnlace"><i
                                             class="fas fa-plus mr-2"></i>Agregar Enlace</button>
@@ -1290,33 +1281,29 @@
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header bg-info">
-                                            <h4 class="mb-0 text-white"><i class="fas fa-folder-open"></i> Docuementos
-                                                <span class="small">(3)</span>
+                                            <h4 class="mb-0 text-white">
+                                                <i class="fas fa-folder-open"></i> Documentos <span class="small">(3)</span>
                                             </h4>
                                         </div>
-                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
-                                            style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-
+                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y">
                                             {{#each documentosCurso}}
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <div class="comment-text w-100">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">{{nombreDocumento}}</span>
+                                                            <h4>
+                                                                <i class="fas fa-file-alt mr-2"></i><span class="font-weight-normal">{{nombreDocumento}}</span>
                                                             </h4>
                                                         </div>
                                                         <div class="col-md-4 text-right">
-                                                            <a href={{linkDocumento}}
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info"><i
-                                                                    class="fas fa-download"></i> Descargar </a>
-
+                                                            <a href="{{linkDocumento}}" class="btn waves-effect waves-light btn-rounded btn-xs btn-info">
+                                                                <i class="fas fa-download"></i> Descargar
+                                                            </a>
                                                         </div>
-                                                        <div class="col-md-0 text-right" data-toggle="modal"
-                                                            data-target="#editarDocumento">
-                                                            <a href="#"
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-success"><i
-                                                                    class="fas fa-pencil-alt mr-2"></i>Editar </a>
+                                                        <div class="col-md-0 text-right">
+                                                            <button class="btn waves-effect waves-light btn-rounded btn-sm btn-danger small" data-toggle="modal" data-target="#editarRecursoDocumento">
+                                                                <i class="fas fa-times mr-2"></i> Eliminar
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1328,17 +1315,17 @@
                                 <!-- RECURSOS LINKS  -->
                                 <div class="col-lg-6">
                                     <div class="card">
-                                        <div class="card-header bg-primary" class="card-body">
-                                            <h4 class="mb-0 text-white" class="card-title"><i class="fas fa-link"></i>
-                                                Links </h4>
+                                        <div class="card-header bg-primary">
+                                            <h4 class="mb-0 text-white"><i class="fas fa-link"></i> Links
+                                                <span class="small">(3)</span>
+                                            </h4>
                                         </div>
-                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
-                                            style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y">
                                             {{#each linksCurso}}
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <h3><i class=" fas fa-link"></i></h3>
                                                 <div class="col-md-6">
-                                                    <a href={{link}} class="font-weight-normal">{{nombreCurso}}</a>
+                                                    <a href="{{linkLink}}" class="font-weight-normal">{{nombreLink}}</a>
                                                 </div>
                                                 <div class="col-md-6 text-right">
                                                     <span class="small"><a href="#"
@@ -1348,14 +1335,6 @@
                                                 </div>
                                             </div>
                                             {{/each}}
-                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
-                                                </div>
-                                            </div>
-                                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
-                                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

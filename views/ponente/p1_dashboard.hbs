@@ -123,16 +123,16 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title"><i class="fab fa-leanpub mr-2"></i>Mis Cursos <span class="small">
-                                    ({{cursosActuales}})</span></h3>
+                                    ({{totalCursosActuales}})</span></h3>
                             <hr>
                             <div class="row">
-                                {{#each cursosActivos}}
+                                {{#each cursosActuales}}
                                 <div class="col-md-3">
                                     <div class="card ">
-                                        <img src="{{fotoCurso}}" class="rounded"
-                                            alt="imagen curso 1">
-                                        <h5 class="mt-3 ml-2 mr-2">{{nombreCurso}} <br><span
-                                                class="small">( {{horaInicio}} - {{horarioFin}} )</span></h5>
+                                        <img src="../../assets/images/cursoImg2.JPG" class="rounded" alt="Curso Actual">
+                                        <!--<img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" class="rounded" alt="imagen curso {{idCurso}}">-->
+                                        <h5 class="mt-3 ml-2 mr-2 text-center">{{nombreCurso}} <br><span
+                                                class="small">( {{horaInicio}} - {{horaFin}} )</span></h5>
                                         <div class="text-center">
                                             <h6 class="text-muted"><i class="fas fa-users mr-2"></i>{{numeroDeEstudiantes}}/{{capacidadCurso}}</h6>
                                         </div>
@@ -142,7 +142,7 @@
                                             <span class="mb-3 label label-rounded bg-danger">{{modalidad}}</span>
                                         </div>
                                         <div class="card-body text-center">
-                                            <a href="/ponente/curso/{{cursoId}}"
+                                            <a href="/ponente/curso/{{idCurso}}"
                                                 class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
                                                     class="fas fa-external-link-square-alt mr-2"></i>Ver detalles</a>
                                         </div>
@@ -157,14 +157,13 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title"><i class="fab fa-leanpub mr-2"></i>Cursos Inactivos <span class="small">
-                                    ({{cursosHistorial}})</span></h3>
+                                    ({{totalCursosHistorial}})</span></h3>
                             <hr>
                             <div class="row">
-                                {{#each HistorialCursosPonente}}
+                                {{#each historialCursosPonente}}
                                 <div class="col-md-3">
                                     <div class="card ">
-                                        <img src="../../assets/images/cursoImg1.JPG" class="rounded"
-                                            alt="imagen curso 1">
+                                        <img src="../../assets/images/cursoImg1.JPG" class="rounded" alt="Curso Pasado">
                                         <h5 class="mt-3 ml-2 mr-2">{{nombreCurso}} <br><span
                                                 class="small">( {{HoraInicio}} - {{HorarioFin}} )</span></h5>
                                         <div class="text-center">

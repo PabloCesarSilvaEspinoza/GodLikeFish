@@ -44,11 +44,11 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
-    function listCursosActuales(id) {
+    function listCursosActuales(idPonente) {
         const VIEW = 'ver_Cursos_Actuales_Ponente';
-        const CLAUSE = `WHERE CURDATE() <= curso_fecha_fin AND idPonente = ? AND estado = 1`;
+        const CLAUSE = `WHERE idPonente = ?`;
         
-        return store.get(VIEW, CLAUSE, id);
+        return store.get(VIEW, CLAUSE, idPonente);
     }
 
     function getUltimaTarea() {
@@ -60,22 +60,22 @@ module.exports = function (injectedStore) {
     /*                       CURSOS                        */
     /*-----------------------------------------------------*/
 
-    function listAvisosUsuario(id) {
-        const VIEW = 'ver_Avisos_Usuario';
-        const CLAUSE = `WHERE cursoID = ?`;
-        return store.get(VIEW, CLAUSE, id);
+    function listAvisosCurso(idCurso) {
+        const VIEW = 'ver_Avisos_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
     }
 
-    function listLinks(id) {
+    function listLinksCurso(idCurso) {
         const VIEW = 'ver_Recursos_Curso_Links';
         const CLAUSE = `WHERE idCurso = ?`;
-        return store.get(VIEW, CLAUSE, id);
+        return store.get(VIEW, CLAUSE, idCurso);
     }
 
-    function listDocumentos(id) {
+    function listDocumentosCurso(idCurso) {
         const VIEW = 'ver_Recursos_Curso_Documentos';
         const CLAUSE = `WHERE idCurso = ?`;
-        return store.get(VIEW, CLAUSE, id);
+        return store.get(VIEW, CLAUSE, idCurso);
     }
 
     function getProximoCurso(idPonente) {
@@ -126,6 +126,11 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    function getConsultarEstadoCursoPonente(usuarioID, cursoID) {
+        const PROCEDURE = `CALL ver_Estado_Curso_Ponente(${usuarioID}, ${cursoID})`;
+        return store.catalog(PROCEDURE);
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -134,9 +139,9 @@ module.exports = function (injectedStore) {
         listCursos,
         getHistorialCursosPonente,
         getCurso,
-        listAvisosUsuario,
-        listLinks,
-        listDocumentos,
+        listAvisosCurso,
+        listLinksCurso,
+        listDocumentosCurso,
         listCursosActuales,
         insertMultimediaTarea,
         listAlumnos,
@@ -146,6 +151,7 @@ module.exports = function (injectedStore) {
         getProximoCurso,
         listAsignacionesPonente,
         reportarProblemaCurso,
-        reportarProblemaUsuario
+        reportarProblemaUsuario,
+        getConsultarEstadoCursoPonente,
     };
 }

@@ -7,18 +7,16 @@ module.exports = {
 
     getDashboardPonente: async function (req, res, next) {
         const usuarioID = (req.user.id);
-        // const cursosActivos = await Controller.listCursosActuales(usuarioID);
-        // const usuarioID = 1;
-        // const cursosActivos= await Controller.listCursosActivos(usuarioID); 
-        const HistorialCursosPonente = await Controller.getHistorialCursosPonente(req.user.id);
-        const cursosHistorial = HistorialCursosPonente.length
-        // const cursosActuales = cursosActivos.length
+        const cursosActuales = await Controller.listCursosActuales(usuarioID);
+        const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
+        const totalCursosActuales = cursosActuales.length;
+        const totalCursosHistorial = historialCursosPonente.length;
         res.render('ponente/p1_dashboard', {
             ponente: true,
-            // cursosActivos,
-            HistorialCursosPonente,
-            cursosHistorial,
-            // cursosActuales,
+            cursosActuales,
+            historialCursosPonente,
+            totalCursosActuales,
+            totalCursosHistorial,
         });
     },
 
@@ -102,7 +100,51 @@ module.exports = {
             req.body.descripcionProblema
         );
         //de donde se manda llamar?, para dirigirlo allí
-    }
+    },
+
+    getConsultarEstadoCursoPonente: async function (req, res, next){
+        const usuarioID = req.user.id;
+        const cursoID = req.params.idCurso;
+        const respuestaEstadoCursoPonente = await Controller.getConsultarEstadoCursoPonente(usuarioID, cursoID);
+        const estadoCursoPonente = respuestaEstadoCursoPonente[0][0].Respuesta;
+        const datosCurso = await Controller.getCurso(cursoID);
+        const curso = datosCurso[0];
+
+        switch (estadoCursoPonente) {
+            case 'No es su curso':
+            case 'Curso Inactivo':
+                res.redirect('/ponente/dashboardPonente');
+                break;
+
+            case 'Curso Pasado':
+                res.render('ponente/p2_consultarCursoE2_v2', {
+                    ponente:true
+                });
+                break;
+
+            case 'Curso Actual':
+            case 'Curso Futuro':
+                const avisosCurso = await Controller.listAvisosCurso(cursoID);
+                const linksCurso = await Controller.listLinksCurso(cursoID);
+                const documentosCurso = await Controller.listDocumentosCurso(cursoID);
+                const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
+                res.render('ponente/p2_consultarCursoE1_v2', {
+                    ponente: true,
+                    curso,
+                    datosCurso,
+                    avisosCurso,
+                    linksCurso,
+                    documentosCurso,
+                    asignacionesPonente,
+                });
+                break;
+
+            default: 
+                console.log(estadoCursoPonente);
+                res.redirect('/ponente/dashboardPonente');
+                break;
+        }
+    },
 
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
