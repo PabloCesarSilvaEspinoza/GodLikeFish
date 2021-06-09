@@ -173,6 +173,10 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Ponentes';
         return store.list(VIEW);
     }
+    function listAcreedoresDiplomas() {
+        const VIEW = 'ver_acreedores_diplomas';
+        return store.list(VIEW);
+    }
 
 
     return {
