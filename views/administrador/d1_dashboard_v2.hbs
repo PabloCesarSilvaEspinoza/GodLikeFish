@@ -1,57 +1,4 @@
 <div class="container-fluid">
-    <!--Modales-->
-    <!-- modal marcar resuelto -->
-    <div id="marcarResuelto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="marcarResueltoLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="marcarResueltoLabel">¿Estas seguro?</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <p>Se cambiara el estado del reporte de error a "Resuelto".</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><i
-                            class="fas fa-check mr-2"></i>Confirmar</button>
-                    <button type="button" class="btn btn-info waves-effect" data-dismiss="modal"><i
-                            class="fas fa-times mr-2"></i>Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- modal verificar Usuario -->
-    <div id="verificarUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="marcarResueltoLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="marcarResueltoLabel">¿Desea verificar al usuario?</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body text-center">
-                    <div>
-                        <h4 class="card-title mt-2" class="center">Maria Yaneth Sanches Vega</h4></label>
-
-                    </div>
-                    <div class="card-body text-center">
-                        <a href="#" class="btn waves-effect waves-light btn-rounded btn-xs btn-info">
-                            <i class="fas fa-download"></i> Descargar Tarjetón</a>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info waves-effect" data-dismiss="modal"><i
-                            class="fas fa-check mr-2"></i>Verificar</button>
-                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><i
-                            class="fas fa-times mr-2"></i>Denegar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col sm-12">
             <div class="card">
@@ -367,107 +314,131 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Reporte de Errores <span class="small"> (5)</span></h3>
+                    <h3 class="card-title">Reporte de Errores <span class="small"> ({{numeroErrores}})</span></h3>
                     <hr>
                 </div>
                 <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:598px;"
                     data-ps-id="96370757-1752-5407-955d-d2618da54798">
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/2.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting
-                                industry. </span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-right">April 14, 2016</span> <span
-                                    class="label label-rounded label-danger">Pendiente</span>
-                                <span class="action-icons">
-                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i
-                                            class="ti-check"></i></a>
-                                    <a href="javascript:void(0)"><i class="fas fa-arrow-right"></i></a>
-                                </span>
+                    {{#each errores}}
+                        {{#if tipoProblema}}
+                        <div class="d-flex flex-row comment-row mt-0">
+                            <div class="p-2"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoUsuario}}" alt="user" width="50" height="50" class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">{{nombreUsuario}}n</h6>
+                                <span class="mb-3 d-block">{{asuntoProblema}}</span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">{{fechaProblema}}, {{horaProblema}}</span>
+                                    <h4><span class="badge badge-pill badge-primary">Curso</span></h4>
+                                    <span class="action-icons">
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#Problema{{idProblema}}"><i class="ti-check"></i></a>
+                                        <a href="curso/{{idCurso}}"><i class="fas fa-arrow-right"></i></a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting
-                                industry. </span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-right">April 14, 2016</span> <span
-                                    class="label label-rounded label-danger">Pendiente</span>
-                                <span class="action-icons">
-                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i
-                                            class="ti-check"></i></a>
-                                    <a href="javascript:void(0)"><i class="fas fa-arrow-right"></i></a>
-                                </span>
+                        {{else}}
+                        <div class="d-flex flex-row comment-row mt-0">
+                            <div class="p-2"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoUsuario}}" alt="user" width="50" height="50" class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">{{nombreUsuario}}n</h6>
+                                <span class="mb-3 d-block">{{asuntoProblema}}</span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">{{fechaProblema}}, {{horaProblema}}</span> 
+                                    <h4><span class="badge badge-pill badge-secondary">Usuario</span></h4>
+                                    <span class="action-icons">
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#Problema{{idProblema}}"><i class="ti-check"></i></a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/4.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting
-                                industry. </span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-right">April 14, 2016</span> <span
-                                    class="label label-rounded label-danger">Pendiente</span>
-                                <span class="action-icons">
-                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i
-                                            class="ti-check"></i></a>
-                                    <a href="javascript:void(0)"><i class="fas fa-arrow-right"></i></a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/5.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting
-                                industry. </span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-right">April 14, 2016</span> <span
-                                    class="label label-rounded label-danger">Pendiente</span>
-                                <span class="action-icons">
-                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i
-                                            class="ti-check"></i></a>
-                                    <a href="javascript:void(0)"><i class="fas fa-arrow-right"></i></a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/6.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting
-                                industry. </span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-right">April 14, 2016</span> <span
-                                    class="label label-rounded label-danger">Pendiente</span>
-                                <span class="action-icons">
-                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#marcarResuelto"><i
-                                            class="ti-check"></i></a>
-                                    <a href="javascript:void(0)"><i class="fas fa-arrow-right"></i></a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                        {{/if}}
+                    {{/each}}
                     <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                         <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                     </div>
                     <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 560px;">
                         <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 514px;"></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modales-->
+    <!-- Detalles Problemas -->
+    {{#each errores}}
+        {{#if tipoProblema}}
+        <div id="Problema{{idProblema}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ProblemaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Problema {{idProblema}}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{descripcionProblema}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="ResolverProblema/1" method="POST">
+                            <input type="hidden" name="idProblema" value="{{idProblemaCurso}}">
+                            <button type="submit" class="btn btn-success waves-effect"><i
+                                class="fas fa-check mr-2"></i>Resuelto</button>
+                            <button type="button" class="btn btn-info waves-effect" data-dismiss="modal"><i
+                                    class="fas fa-times mr-2"></i>Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div id="Problema{{idProblema}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ProblemaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Problema {{idProblema}}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{descripcionProblema}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="ResolverProblema/0" method="POST">
+                            <input type="hidden" name="idProblema"value="{{idProblemaUsuario}}">
+                            <button type="submit" class="btn btn-success waves-effect"><i
+                                class="fas fa-check mr-2"></i>Resuelto</button>
+                            <button type="button" class="btn btn-info waves-effect" data-dismiss="modal"><i
+                                    class="fas fa-times mr-2"></i>Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    {{/each}}
+    <!-- modal verificar Usuario -->
+    <div id="verificarUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="marcarResueltoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="marcarResueltoLabel">¿Desea verificar al usuario?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body text-center">
+                    <div>
+                        <h4 class="card-title mt-2" class="center">Maria Yaneth Sanches Vega</h4></label>
+
+                    </div>
+                    <div class="card-body text-center">
+                        <a href="#" class="btn waves-effect waves-light btn-rounded btn-xs btn-info">
+                            <i class="fas fa-download"></i> Descargar Tarjetón</a>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info waves-effect" data-dismiss="modal"><i
+                            class="fas fa-check mr-2"></i>Verificar</button>
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><i
+                            class="fas fa-times mr-2"></i>Denegar</button>
                 </div>
             </div>
         </div>

@@ -35,7 +35,7 @@ module.exports = {
         const AvisosUsuario = await Controller.listAvisosUsuario(45); 
         const documentosCurso = await Controller.listDocumentos(40);
         const linksCurso = await Controller.listLinks(40); 
-         const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
+        const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
         const examenesCurso = await Controller.listExamenes(35);
 
         res.render('alumno/a3_consultarCursoE2', {
