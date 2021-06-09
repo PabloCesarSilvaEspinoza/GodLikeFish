@@ -83,13 +83,6 @@ module.exports = {
         res.redirect('/estudiante/dashboardEstudiante');
     },
     
-<<<<<<< HEAD
-    postEnviarReporte: async function (req, res, next){
-        const reporte = await Controller.insertReporte(req.body,req.user.id);
-        const usuarioID = reporte[0][0].ID;
-        console.log(reporte);
-        res.redirect('/usuario/soporte')
-=======
     postCalificarExperiencia: async function (req, res, next){
         console.log(req.user.id);
         console.log(req.body.idCurso);
@@ -152,7 +145,6 @@ module.exports = {
                 res.redirect('/estudiante/dashboardEstudiante');
                 break;
         }
->>>>>>> NEO_Trial
     },
     
 

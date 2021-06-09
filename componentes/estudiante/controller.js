@@ -166,10 +166,6 @@ module.exports = function (injectedStore) {
     }
 
     return {
-        list,
-        get,
-        insert,
-        update,
         listDatosCursoUsuario,
         listAvisosUsuario,
         getMiPerfil,
@@ -183,15 +179,9 @@ module.exports = function (injectedStore) {
         insertEstudianteCurso,
         listAsignacionesEstudiante,
         listExamenes,
-<<<<<<< HEAD
-        getHistorialCursosEstudiante,
         getCursoActual,
         insertReporte,
-=======
         insertCalificacionExperiencia,
-        getHistorialCursosEstudiante,
-        getCursoActual,
         getConsultarEstadoCursoEstudiante
->>>>>>> NEO_Trial
     };
 }
