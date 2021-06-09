@@ -10,7 +10,7 @@ router.get('/consultarlumnos', render.getConsultarAlumnos);
 router.get('/calificarTarea', render.getCalificarTarea);
 router.get('/soporte', render.getSoporte);
 router.post('/agregarExamen', render.postAgregarExamen);
-router.get('/curso/:idCurso', render.getConsultarCurso);
+router.get('/curso/:idCurso', render.getConsultarEstadoCursoPonente);
 router.post('/AgregarTarea', crearCarpetaTarea, upload.array('multimediaTarea'), render.postAgregarTarea);
 
 router.post('/reportarProblemaCurso', render.postReportarProblemaCurso);
