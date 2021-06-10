@@ -66,8 +66,7 @@ module.exports = {
     },
     postAgregarExamen: async function (req, res, next) {
         await Controller.insertExamen(req.body);
-        const cursoID = req.body.idCurso;
-        res.redirect('/ponente/curso/'+cursoID);
+        res.redirect('back');
     },
 
     postAgregarTarea: async function (req, res, next) {
@@ -79,7 +78,7 @@ module.exports = {
             datos = { tareaID, nombreMultimedia, linkMultimedia };
             await Controller.insertMultimediaTarea(datos);
         }
-        res.redirect('/ponente/consultarCursoPEI')
+        res.redirect('back')
     },
 
     postReportarProblemaCurso: async function (req, res, next) {
