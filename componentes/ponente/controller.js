@@ -33,8 +33,14 @@ module.exports = function (injectedStore) {
     }
 
     function insertExamen(body) {
-        const { idCurso, nombreExamen, linkExamen } = body; 
-        const PROCEDURE = `CALL agregar_Examen(${idCurso}, '${nombreExamen}','${linkExamen}')`
+        const {
+            idCurso, nombreExamen, linkExamen
+        } = body;
+        
+        const PROCEDURE = `CALL agregar_Examen( 
+            '${idCurso}', '${nombreExamen}','${linkExamen}'
+            )`
+
         return store.insert(PROCEDURE);
     }
 
