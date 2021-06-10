@@ -43,17 +43,23 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, cursoID);
     }
-    function insertCalificacionExperiencia(idUsuario, idCurso) {
-        const PROCEDURE = `CALL editar_Calificacion_Experiencia_Curso(${idUsuario}, ${idCurso})`
-        return store.insert(PROCEDURE);
-    }
-
-    
+   
     function getConsultarEstadoCursoEstudiante(usuarioID, cursoID) {
         const PROCEDURE = `CALL ver_Estado_Curso_Estudiante(${usuarioID}, ${cursoID})`;
         return store.catalog(PROCEDURE);
     }
+
+    function insertCalificaciónExperiencia(body) {
+        const {
+              valoracionCurso, valoracionPonente, comentario
+        } = body;
     
+        const PROCEDURE = `CALL editar_Calificacion_Experiencia_Curso(
+             ${valoracionCurso},${valoracionPonente},'${comentario}'
+            )`
+    
+        return store.upsert(PROCEDURE);
+    }
     /*-----------------------------------------------------*/ 
     /*                      INSCRIPCIÓN                    */
     /*-----------------------------------------------------*/
@@ -88,7 +94,7 @@ module.exports = function (injectedStore) {
     
         return store.upsert(PROCEDURE);
     }
-    
+
     function update(body) {
         const {
             Id, cursoId, nombre, fechaSubida ,fechaLImite, horaLimite, descripcion
@@ -166,9 +172,9 @@ module.exports = function (injectedStore) {
         insertEstudianteCurso,
         listAsignacionesEstudiante,
         listExamenes,
-        insertCalificacionExperiencia,
         getHistorialCursosEstudiante,
         getCursoActual,
-        getConsultarEstadoCursoEstudiante
+        getConsultarEstadoCursoEstudiante,
+        insertCalificaciónExperiencia
     };
 }
