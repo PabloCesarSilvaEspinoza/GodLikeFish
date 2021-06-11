@@ -25,6 +25,7 @@ router.post('/agregarUsuario', crearCarpetaUsuario, dobleInput, render.postAgreg
 router.get('/validarCorreo', render.getValidarCorreo);
 router.post('/verificarCorreo', render.postVerificarCorreo);
 router.get('/validarPermisos', render.getValidarPermisos);
+router.get('/validarTarjeton', render.getValidarTarjeton);
 
 router.get('/verificarCodigo', render.getVerificarCodigo);
 router.post('/validarCodigo', render.postValidarCodigo);

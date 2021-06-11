@@ -79,10 +79,19 @@ module.exports = {
         (usuario[0].correoVerificado
             ? (usuario[0].codigoVerificacion == "contraseniaTemporal"
                 ? res.redirect('/reestablecerContrasenia')
-                : res.redirect('/validarPermisos')
+                : res.redirect('/validarTarjeton')
             )
             : res.redirect('/confirmarCorreo')
         );
+    },
+
+    getValidarTarjeton: async function (req, res, next){
+        const usuario = await Controller.getUsuario(req.user.id);
+        (usuario[0].tarjetonVerificado
+            ? res.redirect('/validarPermisos')
+            : res.redirect('/')
+        )
+        console.log("__No tienes el tarjeton verificado___");
     },
 
     postVerificarCorreo: async function (req, res, next) {
