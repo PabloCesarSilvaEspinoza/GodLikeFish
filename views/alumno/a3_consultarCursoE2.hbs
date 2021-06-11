@@ -247,13 +247,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <img src="{{fotoCurso}}" width="150" class="rounded-circle" alt="Foto Curso">
+                            <img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" width="150" class="rounded-circle" alt="Foto Curso">
                         </div>
                         <div class="col-md-6">
                             <h1>{{nombreCurso}}</h1>
                             <div class="d-flex no-block align-items-center">
                                 <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src="{{fotoPonente}}" alt="Foto Ponente" class="rounded-circle"
+                                <div class="mr-2"><img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" alt="Foto Ponente" class="rounded-circle"
                                         width="45"></div>
                                 <div class="">
                                     <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
@@ -605,44 +605,39 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Panel de avisos-->
-
+                        <!--Panel de anuncios-->
                         <div class="tab-pane  p-20" id="avisos" role="tabpanel">
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
-                                <a class="navbar-brand">Historial de avisos</a>
+                                <a class="navbar-brand">Historial de aviso</a>
                                 <form class="form-inline">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
                                         aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
+                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                 </form>
                             </nav>
-                            <!--Avisos-->
-                            {{#each AvisosUsuario}}
+                            <!--Anuncios-->
+                            {{#each avisosCurso}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="ml-3 mr-2">
-                                                    <img src = "{{fotoPonente}}" alt="Foto Ponente" class="rounded-circle"
-                                                        width="45">
-                                                </div>
-                                                <div class="">
-                                                    <h5 class="mb-0 font-16">{{nombrePonente}} <span
-                                                            class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">{{nombreCurso}}</h5>
-                                                </div>
+                                            <div class="col-md-12 mt-1">
+                                                <h3 class="ml-3">{{tituloAviso}}</h3>
+                                            </div>
+                                            <div class="col-md-12 mt-1">
+                                                <p class="ml-3">{{textoAviso}}.</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
                                                 {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <p class="ml-3"> {{textoAviso}}.</p>
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#editarAnuncio">
+                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                         </div>
                                     </div>
                                 </div>
@@ -657,7 +652,7 @@
                                 <form class="form-inline">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
                                         aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
+                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                 </form>
                             </nav>
@@ -666,6 +661,7 @@
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
+
                                     <div class="row">
                                         <div class="col-9">
                                             <h4><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h4>
@@ -691,11 +687,10 @@
                                             <span class="small"><a href="#"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                                     data-toggle="modal" data-target="#tareaNoEntregada{{tareaID}}">
-                                                   
                                                     <i class="far fa-eye mr-2"></i>Consultar</a></span>
                                             {{/ifEquals}}
                                             {{#ifEquals estadoTarea "Pendiente"}}
-                                           <span class="mb-3 label  label-warning mr-2">Pendiente</span>
+                                            <span class="mb-3 label  label-warning mr-2">Pendiente</span>
                                             <span class="small"><a href="#"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                                     data-toggle="modal" data-target="#tareaPendiente{{tareaID}}">
@@ -712,12 +707,12 @@
 
                                         </div>
                                         <div class="col-12">
-                                            <h4 class="ml-2"><span class="small"> {{nombreCurso}}</span></h4>
+                                            <h4 class="ml-2"><span class="small">{{nombreCurso}}</span></h4>
                                             <p class="ml-3">{{descripcionTarea}}.</p>
                                             <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
                                                 asignación posee <span
-                                                    class="font-weight-bold">({{totalArchivos}})</span> archivo(s)
-                                                adjunto(s). <span class="small"><a href="#"
+                                                    class="font-weight-bold">({{totalArchivos}})</span> archivos
+                                                adjuntos. <span class="small"><a href="#"
                                                         class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
                                                         <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
                                         </div>
@@ -739,12 +734,6 @@
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
                                 <a class="navbar-brand">Recursos del Curso</a>
-                                <form class="form-inline">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
-                                        aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
-                                            class="fas fa-search mr-2"></i> Buscar</button>
-                                </form>
                             </nav>
                             <!--contenido-->
                             <div class="row mt-3">
@@ -752,70 +741,60 @@
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header bg-info">
-                                            <h4 class="mb-0 text-white"><i class="fas fa-folder-open"></i> Docuementos
-                                                <span class="small"></span>
+                                            <h4 class="mb-0 text-white">
+                                                <i class="fas fa-folder-open"></i> Documentos <span class="small">(3)</span>
                                             </h4>
                                         </div>
-                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
-                                            style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-
+                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y">
                                             {{#each documentosCurso}}
-
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <div class="comment-text w-100">
                                                     <div class="row">
-                                                        <div class="col-md-8">
-                                                            <h4><i class="fas fa-file-alt mr-2"></i> <span
-                                                                    class="font-weight-normal">{{nombreDocumento}}</span>
+                                                        <div class="col-md-6">
+                                                            <h4>
+                                                                <i class="fas fa-file-alt mr-2"></i><span class="font-weight-normal">{{nombreDocumento}}</span>
                                                             </h4>
                                                         </div>
                                                         <div class="col-md-4 text-right">
-                                                            <a href={{linkDocumento}}
-                                                                class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
-                                                                <i class="fas fa-download"></i></a>
+                                                            <a href="{{linkDocumento}}" class="btn waves-effect waves-light btn-rounded btn-xs btn-info">
+                                                                <i class="fas fa-download"></i> Descargar
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-md-0 text-right">
+                                                            <button class="btn waves-effect waves-light btn-rounded btn-sm btn-danger small" data-toggle="modal" data-target="#editarRecursoDocumento">
+                                                                <i class="fas fa-times mr-2"></i> Eliminar
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             {{/each}}
-                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
-                                                </div>
-                                            </div>
-                                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
-                                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- RECURSOS LINKS  -->
                                 <div class="col-lg-6">
                                     <div class="card">
-                                        <div class="card-header bg-primary" class="card-body">
-                                            <h4 class="mb-0 text-white" class="card-title"><i class="fas fa-link"></i>
-                                                Links <span class="small"> </span></h4>
+                                        <div class="card-header bg-primary">
+                                            <h4 class="mb-0 text-white"><i class="fas fa-link"></i> Links
+                                                <span class="small">(3)</span>
+                                            </h4>
                                         </div>
-                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
-                                            style="height:598px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+                                        <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y">
                                             {{#each linksCurso}}
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="comment-text w-100">
-                                                    <a href={{link}} class="card-link">{{nombreCurso}}</a>
-
+                                                <div class="col-md-6">
+                                                    <a href="{{linkLink}}" class="font-weight-normal">{{nombreLink}}</a>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <span class="small"><a href="#"
+                                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small mr-3"
+                                                            data-toggle="modal" data-target="#editarEnlace">
+                                                            <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                 </div>
                                             </div>
                                             {{/each}}
-
-                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
-                                                </div>
-                                            </div>
-                                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
-                                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
