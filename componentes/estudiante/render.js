@@ -122,6 +122,7 @@ module.exports = {
 
             case 'Curso Actual':
             case 'Curso Futuro':
+                const avisosCurso = await Controller.listAvisosUsuario(cursoID);
                 const documentosCurso = await Controller.listDocumentos(cursoID);
                 const linksCurso = await Controller.listLinks(cursoID); 
                 const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(cursoID);
@@ -135,6 +136,7 @@ module.exports = {
                     alerta: true,
                     select2: true,
                     curso,
+                    avisosCurso,
                     documentosCurso,
                     linksCurso,
                     asignacionesEstudiante,
