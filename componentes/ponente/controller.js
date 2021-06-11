@@ -144,6 +144,18 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
+    function getArchivosTarea(idTarea) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idTarea = ?`;
+        return store.list(VIEW, CLAUSE, idTarea);
+    }
+
+    function getArchivosTareaCurso(idCurso) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -169,5 +181,7 @@ module.exports = function (injectedStore) {
         insertAviso,
         insertEnlace,
         listExamenes,
+        getArchivosTarea,
+        getArchivosTareaCurso,
     };
 }

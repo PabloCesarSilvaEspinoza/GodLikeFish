@@ -2,6 +2,42 @@
     <!--Escenario 2 - Alumno inscrito -->
     <div class="row">
         <!--Modales-->
+        <!--Agregar Recursos -->
+        <div id="agregarArchivos" class="modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Nuevos <span class="small">Archivos</span></h1>
+                            <p>Aqui puedes agregar un anuncio nuevo.</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <h4 class="card-title">Archivos</h4>
+                            <form action="/ponente/AgregarTarea" method="POST" class="dropzone dz-clickable" enctype="multipart/form-data">
+                                <div class="dz-default dz-message">
+                                    <span>Arrastra tus archivos o haz clic aquí.</span>
+                                </div>
+                            </form>
+                            <div class="form-group mt-1 text-right">
+                                <button type="button" class="btn waves-effect waves-light btn-success mt-2"><i
+                                        class="fas fa-save mr-2"></i>Entregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Perfil Ponente visto por Alumno/Usuario-->
         <div id="verPerfilPonente" class="modal">
             <div class="modal-dialog modal-xl">
@@ -69,145 +105,6 @@
                 </div>
             </div>
         </div>
-        <div id="tareaEntregada" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="d-flex align-items-center">
-                                    <div class="mr-2"><span class="text-primary display-5"><i
-                                                class="mdi mdi-link-variant"></i></span></div>
-                                    <div>
-                                        <span>Archivo</span>
-                                        <h4 class="font-medium mb-0"><a href="#">Nombre del archivo entregado.pdf</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="tareaPendiente" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <h4 class="card-title">Archivos</h4>
-                            <form action="#" class="dropzone dz-clickable">
-                                <div class="dz-default dz-message">
-                                    <span>Arrastra tus archivos o haz clic aquí.</span>
-                                </div>
-                            </form>
-                            <div class="form-group mt-1 text-right">
-                                <button type="button" class="btn waves-effect waves-light btn-success mt-2"><i
-                                        class="fas fa-save mr-2"></i>Entregar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="tareaAtrasada" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <h4 class="card-title">Archivos</h4>
-                            <form action="#" class="dropzone dz-clickable">
-                                <div class="dz-default dz-message">
-                                    <span>Arrastra tus archivos o haz clic aquí.</span>
-                                </div>
-                            </form>
-                            <p class="text-danger text-center">Esta tarea esta marcada como atrasada, por lo cual se
-                                podrá entregar, pero estara marcada que fue despues de la hora y fecha límite.</p>
-                            <div class="form-group text-right">
-                                <button type="button" class="btn waves-effect waves-light btn-success"><i
-                                        class="fas fa-save mr-2"></i>Entregar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="tareaNoEntregada" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Reportar un Problema -->
         <div id="reportarProblema" class="modal">
             <div class="modal-dialog">
@@ -253,7 +150,7 @@
                     <!--Titulo-->
                     <div class="row">
                         <div class="col text-center">
-                            <h1>Agregar <span class="small">Tarea</span></h1>
+                            <h1>Nueva <span class="small">Tarea</span></h1>
                             <p>Aqui puedes agregar una tarea nueva, llena todos los datos y guardalo.</p>
                         </div>
                         <hr>
@@ -591,7 +488,7 @@
             </div>
         </div>
         <div id="agregarEnlace" class="modal">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-s">
                 <div class="modal-content">
                     <!--Salir-->
                     <div class="row">
@@ -602,12 +499,10 @@
                     </div>
                     <!--Titulo-->
                     <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6 text-center">
-                            <h1>Agregar <span class="small">Enlace</span></h1>
+                        <div class="col text-center">
+                            <h1>Nuevo <span class="small">Enlace</span></h1>
                             <p>Aqui puedes agregar un nuevo recurso de tipo enlace.</p>
                         </div>
-                        <div class="col-md-3 text-right"></div>
                         <hr>
                     </div>
                     <form class="form-valide" method="POST" action="/ponente/AgregarEnlace/">
@@ -669,8 +564,8 @@
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6 text-center">
-                            <h1>Editar <span class="small">Documento</span></h1>
-                            <p>Aqui puedes editar el documento seleccionado.</p>
+                            <h1>Editar <span class="small">Archivo</span></h1>
+                            <p>Aqui puedes editar el archivo seleccionado.</p>
                         </div>
                         <div class="col-md-3 text-right">
                             <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
@@ -685,7 +580,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <h5 class="ml-1">Nombre del documento <span class="text-danger">*</span>
+                                                <h5 class="ml-1">Nombre del archivo <span class="text-danger">*</span>
                                                 </h5>
                                                 <input type="text" id="nombreAnuncio" name="nombreAnuncio"
                                                     class="form-control" placeholder="Escribe el asunto del aviso"
@@ -696,7 +591,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <h5 class="ml-1">Documento<span class="text-danger">*</span></h5>
+                                                <h5 class="ml-1">Archivo<span class="text-danger">*</span></h5>
                                                 <input type="url" class="form-control" rows="3"
                                                     placeholder="Pega el enlace aqui..."></input>
                                             </div>
@@ -1211,15 +1106,15 @@
 
                                     <div class="row">
                                         <div class="col-9">
-                                            <h4><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h4>
+                                            <h3><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h3>
                                         </div>
                                         <div class="col-3 text-right">
-                                            {{#ifEquals estadoTarea "abierta"}}
+                                            {{#ifEquals estadoTarea "Abierta"}}
                                             <span class="mb-3 label  label-info mr-2">Abierta</span>
                                             {{/ifEquals}}
-                                            {{#ifEquals estadoTarea "cerrada"}}
+                                            {{#ifEquals estadoTarea "Cerrada"}}
                                             <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
-                                            <span class="small"><a href="/ponente/calificarTarea"
+                                            <span class="small"><a href="/ponente/calificarTarea/"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-warning small">
                                                     <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
                                             {{/ifEquals}}
@@ -1228,23 +1123,32 @@
                                                     data-toggle="modal" data-target="#editarTarea">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                         </div>
-                                        <div class="col-12">
-                                            <h4 class="ml-2"><span class="small">{{nombreCurso}}</span></h4>
-                                            <p class="ml-3">{{descripcionTarea}}.</p>
-                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
-                                                asignación posee <span
-                                                    class="font-weight-bold">({{totalArchivos}})</span> archivos
-                                                adjuntos. <span class="small"><a href="#"
-                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
-                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
+                                        {{#if totalArchivos}}
+                                            <div class="col-12">
+                                                <h5 class="mt-3">{{descripcionTarea}}.</h5>
+                                                <h6 class="font-weight-normal mb-3">
+                                                    <i class="fas fa-paperclip mr-2"></i>Esta asignación posee 
+                                                    <span class="font-weight-bold">({{totalArchivos}})</span> archivos adjuntos:
+                                                </h6>
+                                                {{#each ../archivosAsignacionesPonente}}
+                                                    {{#ifEquals idTarea ../this.idTarea}}
+                                                    <h6>
+                                                        <a href="/ponente/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/" >
+                                                            <i class="fas fa-download mr-2"></i>{{archivoNombre}}
+                                                        </a>
+                                                    </h6>
+                                                    {{/ifEquals}}
+                                                {{/each}}
+                                            </div>
+                                        {{/if}}
+                                        <div class="col-8 mt-3">
+                                            <h5 class="font-light float-left">Fecha límite: 
+                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} 
+                                                <i class="fas fa-clock"></i> {{horaLimiteTarea}}
+                                            </h5>
                                         </div>
-                                        <div class="col-8">
-                                            <h5 class="font-light float-left">Fecha Cierre: <i
-                                                    class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} <i
-                                                    class="fas fa-clock"></i> {{horaLimiteTarea}}</h5>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        <div class="col-4 text-right mt-3">
+                                            <h4 class="font-light"> Entregas: <i class="fas fa-users"></i> {{entregas}}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -1258,8 +1162,8 @@
                                 <a class="navbar-brand">Recursos del Curso</a>
                                 <form class="form-inline">
                                     <button type="button" class="btn waves-effect waves-light btn-info mr-2"
-                                        data-toggle="modal" data-target="#agregarDocumento"><i
-                                            class="fas fa-plus mr-2"></i>Agregar Documento</button>
+                                        data-toggle="modal" data-target="#agregarArchivos"><i
+                                            class="fas fa-plus mr-2"></i>Agregar Archivos</button>
                                     <button type="button" class="btn waves-effect waves-light btn-info"
                                         data-toggle="modal" data-target="#agregarEnlace"><i
                                             class="fas fa-plus mr-2"></i>Agregar Enlace</button>
@@ -1272,7 +1176,7 @@
                                     <div class="card">
                                         <div class="card-header bg-info">
                                             <h4 class="mb-0 text-white">
-                                                <i class="fas fa-folder-open"></i> Documentos <span class="small">({{totalDocumentos}})</span>
+                                                <i class="fas fa-folder-open"></i> Archivos <span class="small">({{totalDocumentos}})</span>
                                             </h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y">

@@ -17,6 +17,7 @@ router.post('/AgregarEnlace/', render.postAgregarEnlace);
 
 router.post('/reportarProblemaCurso', render.postReportarProblemaCurso);
 router.post('/reportarProblemaUsuario', render.postReportarProblemaUsuario);
+router.get('/DescargarTareaCurso/:idTarea/:nombreArchivo', render.getDescargarArchivoTarea);
 /* router.get('/AgregarTareaPrueba', render.getAgregarTarea);
 router.post('/AgregarTarea', upload.array('multimediaTarea'), render.postAgregarTarea);
 router.get('/DescargarTarea', render.getDescargarArchivos); */

@@ -74,7 +74,7 @@ module.exports = {
         const tareaID = respuestaBD[0][0].ID;
         for (const file of req.files) {
             const nombreMultimedia = file.originalname;
-            const linkMultimedia = `${tareaID}\\\\${nombreMultimedia}`;
+            const linkMultimedia = `${nombreMultimedia}`;
             datos = { tareaID, nombreMultimedia, linkMultimedia };
             await Controller.insertMultimediaTarea(datos);
         }
@@ -111,6 +111,14 @@ module.exports = {
         res.redirect('back');
     },
 
+    getDescargarArchivoTarea: async function (req, res, next) {
+        const tareaID = req.params.idTarea;
+        const archivoNombre = req.params.nombreArchivo;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/tareas');
+        const archivoRuta = `${raiz}/${tareaID}/${archivoNombre}`;
+        res.download(archivoRuta)
+    },
+
     getConsultarEstadoCursoPonente: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -137,10 +145,12 @@ module.exports = {
                 const linksCurso = await Controller.listLinksCurso(cursoID);
                 const documentosCurso = await Controller.listDocumentosCurso(cursoID);
                 const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
+                const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
                 res.render('ponente/p2_consultarCursoE1_v2', {
+                    dropzone:true,
                     ponente: true,
                     curso,
                     datosCurso,
@@ -150,7 +160,8 @@ module.exports = {
                     asignacionesPonente,
                     totalDocumentos,
                     totalLinks,
-                    examenesCurso
+                    examenesCurso,
+                    archivosAsignacionesPonente,
                 });
                 break;
 
