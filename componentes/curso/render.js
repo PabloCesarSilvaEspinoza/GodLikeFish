@@ -9,7 +9,7 @@ module.exports = {
     getVerCurso: async function (req, res, next) {
         const cursoID = req.params.id;
         const curso = await Controller.getCurso(cursoID);
-        res.render('course/detallesCurso', curso[0]);
+        res.render('course/detallesCurso', curso[11]);
     },
 
     postAgregarCurso: async function (req, res, next) {

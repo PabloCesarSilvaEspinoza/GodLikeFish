@@ -104,6 +104,11 @@ module.exports = {
         res.redirect('/administrador/administrarCursos')
     },
 
+    putEditarCurso: async function (req, res, next) {
+        await Controller.updateCurso(req.body);
+        res.redirect('administrador/consultarCursosEI/:id');
+    },
+
     postEditarUsuario: async function (req, res, next){
         await Controller.upsertDatosUsuario(req.body);
         await Controller.upsertDomicilioUsuario(req.body);

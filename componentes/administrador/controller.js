@@ -52,6 +52,24 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
+    function updateCurso(body) {
+        const {
+            Id,nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
+            horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
+            area, tipo, temario , modalidad, capacidad,
+            linkCurso, linkPlataforma,foto, activo, ponenteId
+        } = body;
+
+        const PROCEDURE = `CALL editar_Curso( 
+            ${Id}, '${nombre}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFinal}',
+            '${horaInicio}', '${horaFin}', '${fechaInscripcionInicio}', '${fechaInscripcionFinal}', '${plataforma}',
+            '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
+            '${linkCurso}',  '${linkPlataforma}', '${foto}', ${activo}, ${ponenteId}
+            )`
+
+        return store.upsert(PROCEDURE);
+    }
+
     function insertMultimediaCurso(cursoID, temarioCurso, fotoCurso) {
         const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
 
@@ -204,6 +222,7 @@ module.exports = function (injectedStore) {
         listAreas,
         getTiempoActual,
         listErrores,
-        upsertResolverProblema
+        upsertResolverProblema,
+        updateCurso,
     };
 }
