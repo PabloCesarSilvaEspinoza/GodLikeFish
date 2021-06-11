@@ -112,9 +112,11 @@ module.exports = function (injectedStore) {
         const PROCEDURE = `CALL agregar_Usuario( 
             '${correo}', '${password}', ${municipioResidenciaID}, '${colonia}', '${calle}',
             ${numeroExt}, ${numeroInt}, '${nombres}', '${pApellido}', '${sApellido}', '${matricula}',
-            '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, '${area}',
-            '${puesto}', '${antiguedad}'
+            '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, ${area},
+            ${puesto}, '${antiguedad}'
             )`
+        
+        console.log(PROCEDURE);
 
         return store.upsert(PROCEDURE);
     }
@@ -231,6 +233,11 @@ module.exports = function (injectedStore) {
         );
     }
 
+    function listAreas(){
+        const VIEW = 'ver_Areas';
+        return store.list(VIEW)
+    }
+
     return {
         encontrarUsuario,
         listPaises,
@@ -253,6 +260,7 @@ module.exports = function (injectedStore) {
         establecerContraseniaTemporal,
         generarContraseniaTemporal,
         enviarContraseniaTemporal,
-        actualizarCorreo
+        actualizarCorreo,
+        listAreas,
     }
 }

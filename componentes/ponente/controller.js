@@ -33,14 +33,9 @@ module.exports = function (injectedStore) {
     }
 
     function insertExamen(body) {
-        const {
-            idCurso, nombreExamen, linkExamen
-        } = body;
-        
-        const PROCEDURE = `CALL agregar_Examen( 
-            '${idCurso}', '${nombreExamen}','${linkExamen}'
-            )`
-
+        const { idCurso, nombreExamen, linkExamen, fechaAplicacionExamen, horaAplicacionExamen } = body; 
+        const PROCEDURE = `CALL agregar_Examen(${idCurso}, '${nombreExamen}','${linkExamen}', '${fechaAplicacionExamen} ${horaAplicacionExamen}')`
+        console.log(PROCEDURE);
         return store.insert(PROCEDURE);
     }
 
@@ -131,6 +126,41 @@ module.exports = function (injectedStore) {
         return store.catalog(PROCEDURE);
     }
 
+    function insertAviso(body) {
+        const { idCurso, asuntoAviso, descripcionAviso } = body; 
+        const PROCEDURE = `CALL agregar_Aviso(${idCurso}, '${asuntoAviso}','${descripcionAviso}')`
+        return store.insert(PROCEDURE);
+    }
+
+    function insertEnlace(body) {
+        const { idCurso, nombreLink, link } = body; 
+        const PROCEDURE = `CALL agregar_Link(${idCurso}, '${nombreLink}','${link}')`
+        return store.insert(PROCEDURE);
+    }
+
+    function listExamenes(idCurso) {
+        const VIEW = 'ver_Examenes';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function getArchivosTarea(idTarea) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idTarea = ?`;
+        return store.list(VIEW, CLAUSE, idTarea);
+    }
+
+    function getArchivosTareaCurso(idCurso) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function insertArchivosMultimediaCurso(idCurso, nombreArchivo){
+        const PROCEDURE = `CALL agregar_Archivos_Multimedia_Curso(${idCurso}, '${nombreArchivo}')`
+        return store.insert(PROCEDURE);
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -153,5 +183,11 @@ module.exports = function (injectedStore) {
         reportarProblemaCurso,
         reportarProblemaUsuario,
         getConsultarEstadoCursoPonente,
+        insertAviso,
+        insertEnlace,
+        listExamenes,
+        getArchivosTarea,
+        getArchivosTareaCurso,
+        insertArchivosMultimediaCurso,
     };
 }

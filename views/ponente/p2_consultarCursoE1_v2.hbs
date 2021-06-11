@@ -2,6 +2,63 @@
     <!--Escenario 2 - Alumno inscrito -->
     <div class="row">
         <!--Modales-->
+        {{#each documentosCurso}}
+            <div id="EliminarArchivo{{idDocumento}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ProblemaLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <h4>¿Seguro que desea eliminar el archivo {{nombreDocumento}}?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <form action="ResolverProblema/1" method="POST">
+                                <input type="hidden" name="idProblema" value="{{idProblemaCurso}}">
+                                <button type="submit" class="btn btn-danger waves-effect"><i
+                                    class="fas fa-check mr-2"></i>Si</button>
+                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal"><i
+                                        class="fas fa-times mr-2"></i>No</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        <!--Agregar Recursos -->
+        <div id="agregarArchivos" class="modal">
+            <div class="modal-dialog modal-s">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Nuevos <span class="small">Archivos</span></h1>
+                            <p>Aqui puede agregar todos los archivos que deseé para su curso.</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-body">
+                            <h4 class="card-title">Archivos</h4>
+                            <form action="/ponente/AgregarArchivos" method="POST" enctype="multipart/form-data">
+                                <input type="file" name="multimediaCurso" id="multimediaTarea" multiple />
+                                <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
+                                <div class="form-group mt-1 text-right">
+                                <button type="submit" class="btn waves-effect waves-light btn-success mt-2">
+                                    <i class="fas fa-save mr-2"></i>Subir
+                                </button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
         <!--Perfil Ponente visto por Alumno/Usuario-->
         <div id="verPerfilPonente" class="modal">
             <div class="modal-dialog modal-xl">
@@ -69,145 +126,6 @@
                 </div>
             </div>
         </div>
-        <div id="tareaEntregada" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="d-flex align-items-center">
-                                    <div class="mr-2"><span class="text-primary display-5"><i
-                                                class="mdi mdi-link-variant"></i></span></div>
-                                    <div>
-                                        <span>Archivo</span>
-                                        <h4 class="font-medium mb-0"><a href="#">Nombre del archivo entregado.pdf</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="tareaPendiente" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <h4 class="card-title">Archivos</h4>
-                            <form action="#" class="dropzone dz-clickable">
-                                <div class="dz-default dz-message">
-                                    <span>Arrastra tus archivos o haz clic aquí.</span>
-                                </div>
-                            </form>
-                            <div class="form-group mt-1 text-right">
-                                <button type="button" class="btn waves-effect waves-light btn-success mt-2"><i
-                                        class="fas fa-save mr-2"></i>Entregar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="tareaAtrasada" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <h4 class="card-title">Archivos</h4>
-                            <form action="#" class="dropzone dz-clickable">
-                                <div class="dz-default dz-message">
-                                    <span>Arrastra tus archivos o haz clic aquí.</span>
-                                </div>
-                            </form>
-                            <p class="text-danger text-center">Esta tarea esta marcada como atrasada, por lo cual se
-                                podrá entregar, pero estara marcada que fue despues de la hora y fecha límite.</p>
-                            <div class="form-group text-right">
-                                <button type="button" class="btn waves-effect waves-light btn-success"><i
-                                        class="fas fa-save mr-2"></i>Entregar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="tareaNoEntregada" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Reportar un Problema -->
         <div id="reportarProblema" class="modal">
             <div class="modal-dialog">
@@ -253,14 +171,14 @@
                     <!--Titulo-->
                     <div class="row">
                         <div class="col text-center">
-                            <h1>Agregar <span class="small">Tarea</span></h1>
+                            <h1>Nueva <span class="small">Tarea</span></h1>
                             <p>Aqui puedes agregar una tarea nueva, llena todos los datos y guardalo.</p>
                         </div>
                         <hr>
                     </div>
                     <div class="modal-body">
                         <div class="card-body">
-                            <form action="AgregarTarea" method="POST" enctype="multipart/form-data">
+                            <form action="/ponente/AgregarTarea" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="col">
@@ -368,7 +286,7 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-6 text-center">
                                 <h1>Editar <span class="small">Tarea</span></h1>
-                                <p>Aqui puedes agregar una tarea nueva, llena todos los datos y guardalo.</p>
+                                <p>Aqui puedes editar la tarea seleccionada.</p>
                             </div>
                             <div class="col-md-3 text-right">
                                 <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
@@ -469,64 +387,55 @@
                         </div>
                         <hr>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <h5 class="ml-1">Asunto del anuncio <span class="text-danger">*</span>
-                                                </h5>
-                                                <input type="text" id="asuntoAviso" name="asuntoAviso"
-                                                    class="form-control" placeholder="Escribe el asunto del aviso"
-                                                    required>
-                                                <small class="form-control-feedback ml-1"> Maximo 255 caracteres
-                                                </small>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <h5 class="ml-1">Descripción <span class="text-danger">*</span></h5>
-                                                <textarea class="form-control" rows="3"
-                                                    placeholder="Describe de que trata el aviso aqui..."></textarea>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div>
+                    <form class="form-valide" method="POST" action="/ponente/AgregarAviso">
                         <div class="row">
-                            <div class="col">
-                                <div>
-                                    <div>
-                                        <form class="form-valide" id="agregarCurso" method="POST" action="#">
-                                            <div class="form-group mt-4">
-                                                <div class="col text-right">
-                                                    <hr>
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-success">
-                                                        <i class="fas fa-save mr-2"></i>Guardar y Publicar</button>
-                                                    <button type="button" class="btn waves-effect waves-light btn-info"
-                                                        data-dismiss="modal"><i
-                                                            class="fas fa-times mr-2"></i>Cancelar</button>
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <h5 class="ml-1">Asunto del anuncio <span class="text-danger">*</span>
+                                                    </h5>
+                                                    <input type="text" name="asuntoAviso" class="form-control" placeholder="Escribe el asunto del aviso" autocomplete="off" required>
+                                                    <small class="form-control-feedback ml-1"> Maximo 255 caracteres
+                                                    </small>
                                                 </div>
                                             </div>
-                                        </form>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <h5 class="ml-1">Descripción <span class="text-danger">*</span></h5>
+                                                    <textarea class="form-control" rows="3" name="descripcionAviso"
+                                                        placeholder="¿Que quieres comunicar a tus estudiantes?" autocomplete="off" required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mt-2">
+                                    <div class="col text-right">
+                                        <hr>
+                                        <input type="hidden" name="idCurso" value="{{curso.idCurso}}">
+                                        <button type="submit"
+                                            class="btn waves-effect waves-light btn-success">
+                                            <i class="fas fa-save mr-2"></i>Guardar y Publicar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info"
+                                            data-dismiss="modal"><i
+                                                class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
         <div id="editarAnuncio" class="modal">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-s">
                 <div class="modal-content">
                     <!--Salir-->
                     <div class="row">
@@ -540,7 +449,7 @@
                         <div class="col-md-3"></div>
                         <div class="col-md-6 text-center">
                             <h1>Editar <span class="small">Anuncio</span></h1>
-                            <p>Aqui puedes agregar un anuncio nuevo.</p>
+                            <p>Aqui puedes editar el anuncio seleccionado.</p>
                         </div>
                         <div class="col-md-3 text-right">
                             <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
@@ -581,23 +490,18 @@
                     <div>
                         <div class="row">
                             <div class="col">
-                                <div>
-                                    <div>
-                                        <form class="form-valide" id="agregarCurso" method="POST" action="#">
-                                            <div class="form-group mt-4">
-                                                <div class="col text-right">
-                                                    <hr>
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-success">
-                                                        <i class="fas fa-save mr-2"></i>Guardar</button>
-                                                    <button type="button" class="btn waves-effect waves-light btn-info"
-                                                        data-dismiss="modal"><i
-                                                            class="fas fa-times mr-2"></i>Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                <form class="form-valide" id="agregarCurso" method="POST" action="#">
+                                    <div class="form-group mt-4">
+                                        <div class="col text-right">
+                                            <button type="button"
+                                                class="btn waves-effect waves-light btn-success">
+                                                <i class="fas fa-save mr-2"></i>Guardar</button>
+                                            <button type="button" class="btn waves-effect waves-light btn-info"
+                                                data-dismiss="modal"><i
+                                                    class="fas fa-times mr-2"></i>Cancelar</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -605,7 +509,7 @@
             </div>
         </div>
         <div id="agregarEnlace" class="modal">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-s">
                 <div class="modal-content">
                     <!--Salir-->
                     <div class="row">
@@ -616,70 +520,59 @@
                     </div>
                     <!--Titulo-->
                     <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6 text-center">
-                            <h1>Agregar <span class="small">Enlace</span></h1>
+                        <div class="col text-center">
+                            <h1>Nuevo <span class="small">Enlace</span></h1>
                             <p>Aqui puedes agregar un nuevo recurso de tipo enlace.</p>
                         </div>
-                        <div class="col-md-3 text-right"></div>
                         <hr>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <h5 class="ml-1">Nombre del recurso <span class="text-danger">*</span>
-                                                </h5>
-                                                <input type="text" id="nombreAnuncio" name="nombreAnuncio"
-                                                    class="form-control" placeholder="Escribe el asunto del aviso"
-                                                    required>
-                                                <small class="form-control-feedback ml-1"> Maximo 150 caracteres
-                                                </small>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <h5 class="ml-1">Enlace <span class="text-danger">*</span></h5>
-                                                <input type="url" class="form-control" rows="3"
-                                                    placeholder="Pega el enlace aqui..."></input>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
+                    <form class="form-valide" method="POST" action="/ponente/AgregarEnlace/">
                         <div class="row">
-                            <div class="col">
-                                <div>
-                                    <div>
-                                        <form class="form-valide" id="agregarCurso" method="POST" action="#">
-                                            <div class="form-group mt-4">
-                                                <div class="col text-right">
-                                                    <hr>
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-success">
-                                                        <i class="fas fa-save mr-2"></i>Guardar</button>
-                                                    <button type="button" class="btn waves-effect waves-light btn-info"
-                                                        data-dismiss="modal"><i
-                                                            class="fas fa-times mr-2"></i>Cancelar</button>
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <h5 class="ml-1">Nombre del enlace <span class="text-danger">*</span>
+                                                    </h5>
+                                                    <input type="text" name="nombreLink" class="form-control" placeholder="¿Que nombre desea asignale al enlace?" autocomplete="off" required>
+                                                    <small class="form-control-feedback ml-1"> Maximo 150 caracteres
+                                                    </small>
                                                 </div>
                                             </div>
-                                        </form>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <h5 class="ml-1">Enlace <span class="text-danger">*</span></h5>
+                                                    <input type="url" name="link" class="form-control"placeholder="Por favor, agregue aquí el enlace." autocomplete="off" required></input>
+                                                    <input type="hidden" name="idCurso" value="{{curso.idCurso}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group mt-4">
+                                                    <div class="col text-right">
+                                                        <button type="submit"
+                                                            class="btn waves-effect waves-light btn-success">
+                                                            <i class="fas fa-save mr-2"></i>Guardar</button>
+                                                        <button type="button" class="btn waves-effect waves-light btn-info"
+                                                            data-dismiss="modal"><i
+                                                                class="fas fa-times mr-2"></i>Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
         <div id="editarDocumento" class="modal">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-s">
                 <div class="modal-content">
                     <!--Salir-->
                     <div class="row">
@@ -692,8 +585,8 @@
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6 text-center">
-                            <h1>Editar <span class="small">Documento</span></h1>
-                            <p>Aqui puedes editar el documento seleccionado.</p>
+                            <h1>Editar <span class="small">Archivo</span></h1>
+                            <p>Aqui puedes editar el archivo seleccionado.</p>
                         </div>
                         <div class="col-md-3 text-right">
                             <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
@@ -708,7 +601,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <h5 class="ml-1">Nombre del documento <span class="text-danger">*</span>
+                                                <h5 class="ml-1">Nombre del archivo <span class="text-danger">*</span>
                                                 </h5>
                                                 <input type="text" id="nombreAnuncio" name="nombreAnuncio"
                                                     class="form-control" placeholder="Escribe el asunto del aviso"
@@ -719,7 +612,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <h5 class="ml-1">Documento<span class="text-danger">*</span></h5>
+                                                <h5 class="ml-1">Archivo<span class="text-danger">*</span></h5>
                                                 <input type="url" class="form-control" rows="3"
                                                     placeholder="Pega el enlace aqui..."></input>
                                             </div>
@@ -756,7 +649,7 @@
             </div>
         </div>
         <div id="editarEnlace" class="modal">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-s">
                 <div class="modal-content">
                     <!--Salir-->
                     <div class="row">
@@ -832,6 +725,83 @@
                 </div>
             </div>
         </div>
+        <!--modal Editar Examen-->
+        <div id="editarExamen" class="modal">
+            <div class="modal-dialog modal-s">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h1>Editar <span class="small">Examen</span></h1>
+                            <p>Aqui puedes editar el enlace examen.</p>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
+                                data-dismiss="modal"><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h5 class="ml-1">Nombre del examen <span class="text-danger">*</span>
+                                                </h5>
+                                                <input type="text" name="nombreExamen"
+                                                    class="form-control" placeholder="Escribe el título del examen"
+                                                    required>
+                                                <small class="form-control-feedback ml-1"> Maximo 150 caracteres
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h5 class="ml-1">Enlace <span class="text-danger">*</span></h5>
+                                                <input type="url" class="form-control" name="linkExamen" placeholder="Agrega el enlace del examen"></input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <div>
+                                    <div>
+                                        <form class="form-valide" id="agregarCurso" method="POST" action="#">
+                                            <div class="form-group mt-4">
+                                                <div class="col text-right">
+                                                    <hr>
+                                                    <button type="button"
+                                                        class="btn waves-effect waves-light btn-success">
+                                                        <i class="fas fa-save mr-2"></i>Guardar</button>
+                                                    <button type="button" class="btn waves-effect waves-light btn-info"
+                                                        data-dismiss="modal"><i
+                                                            class="fas fa-times mr-2"></i>Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--modal Agregar Examen-->
         <div id="agregarExamen" class="modal">
             <div class="modal-dialog modal-s">
@@ -853,7 +823,7 @@
                     </div>
                     <div>
                         <div class="row">
-                            <form method="POST" action="/ponente/agregarExamen" class="col-lg-12">
+                            <form method="POST" action="/ponente/AgregarExamen" class="col-lg-12">
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
@@ -863,7 +833,7 @@
                                                         <h5 class="ml-1">Titulo del Examen <span
                                                                 class="text-danger">*</span>
                                                         </h5>
-                                                        <input type="text" id="nombreExamen" name="nombreExamen"
+                                                        <input type="text" name="nombreExamen"
                                                             class="form-control"
                                                             placeholder="Escribe el título del examen"
                                                             autocomplete="off" required>
@@ -877,18 +847,31 @@
                                                         <h5 class="ml-1">Enlace del examen<span
                                                                 class="text-danger">*</span>
                                                         </h5>
-                                                        <input type="url" id="linkExamen" name="linkExamen"
+                                                        <input type="url"  name="linkExamen"
                                                             class="form-control"
                                                             placeholder="Agrega el enlace del examen" autocomplete="off"
                                                             required>
-                                                        <input type="hidden" name="idCurso" id="idCurso" value="1">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Fecha de aplicación<span class="text-danger">*</span></h5>
+                                                        <input type="date" name="fechaAplicacionExamen" id="fechaLimiteTarea"
+                                                            class="form-control" value="2021-06-10" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Hora de aplicación<span class="text-danger">*</span></h5>
+                                                        <input type="time" name="horaAplicacionExamen" id="horaLimiteTarea"
+                                                            class="form-control" value="12:00" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
+                                <input type="hidden" name="idCurso" value="{{curso.idCurso}}">
                                 <div class="form-group mt-4">
                                     <div class="col text-right">
                                         <hr>
@@ -1179,10 +1162,10 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="col-md-12 mt-1">
-                                                <h3 class="ml-3">{{tituloAviso}}</h3>
+                                                <h3>{{tituloAviso}}</h3>
                                             </div>
-                                            <div class="col-md-12 mt-1">
-                                                <p class="ml-3">{{textoAviso}}.</p>
+                                            <div class="col-md-12 mt-3">
+                                                <h5>{{textoAviso}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -1221,15 +1204,15 @@
 
                                     <div class="row">
                                         <div class="col-9">
-                                            <h4><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h4>
+                                            <h3><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h3>
                                         </div>
                                         <div class="col-3 text-right">
-                                            {{#ifEquals estadoTarea "abierta"}}
+                                            {{#ifEquals estadoTarea "Abierta"}}
                                             <span class="mb-3 label  label-info mr-2">Abierta</span>
                                             {{/ifEquals}}
-                                            {{#ifEquals estadoTarea "cerrada"}}
+                                            {{#ifEquals estadoTarea "Cerrada"}}
                                             <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
-                                            <span class="small"><a href="/ponente/calificarTarea"
+                                            <span class="small"><a href="/ponente/calificarTarea/"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-warning small">
                                                     <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
                                             {{/ifEquals}}
@@ -1238,23 +1221,32 @@
                                                     data-toggle="modal" data-target="#editarTarea">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                         </div>
-                                        <div class="col-12">
-                                            <h4 class="ml-2"><span class="small">{{nombreCurso}}</span></h4>
-                                            <p class="ml-3">{{descripcionTarea}}.</p>
-                                            <h6 class="font-weight-normal"><i class="fas fa-paperclip mr-2"></i>Esta
-                                                asignación posee <span
-                                                    class="font-weight-bold">({{totalArchivos}})</span> archivos
-                                                adjuntos. <span class="small"><a href="#"
-                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
-                                                        <i class="fas fa-download mr-2"></i>Descargar</a></span></h6>
+                                        {{#if totalArchivos}}
+                                            <div class="col-12">
+                                                <h5 class="mt-3">{{descripcionTarea}}.</h5>
+                                                <h6 class="font-weight-normal mb-3">
+                                                    <i class="fas fa-paperclip mr-2"></i>Esta asignación posee 
+                                                    <span class="font-weight-bold">({{totalArchivos}})</span> archivos adjuntos:
+                                                </h6>
+                                                {{#each ../archivosAsignacionesPonente}}
+                                                    {{#ifEquals idTarea ../this.idTarea}}
+                                                    <h6>
+                                                        <a href="/ponente/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/" >
+                                                            <i class="fas fa-download mr-2"></i>{{archivoNombre}}
+                                                        </a>
+                                                    </h6>
+                                                    {{/ifEquals}}
+                                                {{/each}}
+                                            </div>
+                                        {{/if}}
+                                        <div class="col-8 mt-3">
+                                            <h5 class="font-light float-left">Fecha límite: 
+                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} 
+                                                <i class="fas fa-clock"></i> {{horaLimiteTarea}}
+                                            </h5>
                                         </div>
-                                        <div class="col-8">
-                                            <h5 class="font-light float-left">Fecha Cierre: <i
-                                                    class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} <i
-                                                    class="fas fa-clock"></i> {{horaLimiteTarea}}</h5>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> 15/20</h5>
+                                        <div class="col-4 text-right mt-3">
+                                            <h4 class="font-light"> Entregas: <i class="fas fa-users"></i> {{entregas}}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -1268,8 +1260,8 @@
                                 <a class="navbar-brand">Recursos del Curso</a>
                                 <form class="form-inline">
                                     <button type="button" class="btn waves-effect waves-light btn-info mr-2"
-                                        data-toggle="modal" data-target="#agregarDocumento"><i
-                                            class="fas fa-plus mr-2"></i>Agregar Documento</button>
+                                        data-toggle="modal" data-target="#agregarArchivos"><i
+                                            class="fas fa-plus mr-2"></i>Agregar Archivos</button>
                                     <button type="button" class="btn waves-effect waves-light btn-info"
                                         data-toggle="modal" data-target="#agregarEnlace"><i
                                             class="fas fa-plus mr-2"></i>Agregar Enlace</button>
@@ -1282,7 +1274,7 @@
                                     <div class="card">
                                         <div class="card-header bg-info">
                                             <h4 class="mb-0 text-white">
-                                                <i class="fas fa-folder-open"></i> Documentos <span class="small">(3)</span>
+                                                <i class="fas fa-folder-open"></i> Archivos <span class="small">({{totalDocumentos}})</span>
                                             </h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y">
@@ -1295,13 +1287,11 @@
                                                                 <i class="fas fa-file-alt mr-2"></i><span class="font-weight-normal">{{nombreDocumento}}</span>
                                                             </h4>
                                                         </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <a href="{{linkDocumento}}" class="btn waves-effect waves-light btn-rounded btn-xs btn-info">
+                                                        <div class="col-md-6 text-right">
+                                                            <a href="/ponente/DescargarArchivoCurso/{{idCurso}}/{{nombreDocumento}}" class="btn waves-effect waves-light btn-rounded btn-sm btn-info small">
                                                                 <i class="fas fa-download"></i> Descargar
                                                             </a>
-                                                        </div>
-                                                        <div class="col-md-0 text-right">
-                                                            <button class="btn waves-effect waves-light btn-rounded btn-sm btn-danger small" data-toggle="modal" data-target="#editarRecursoDocumento">
+                                                            <button class="btn waves-effect waves-light btn-rounded btn-sm btn-danger small" data-toggle="modal" data-target="#EliminarArchivo{{idDocumento}}">
                                                                 <i class="fas fa-times mr-2"></i> Eliminar
                                                             </button>
                                                         </div>
@@ -1316,22 +1306,26 @@
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-header bg-primary">
-                                            <h4 class="mb-0 text-white"><i class="fas fa-link"></i> Links
-                                                <span class="small">(3)</span>
+                                            <h4 class="mb-0 text-white">
+                                                <i class="fas fa-link"></i> Links <span class="small">({{totalLinks}})</span>
                                             </h4>
                                         </div>
                                         <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y">
                                             {{#each linksCurso}}
                                             <div class="d-flex flex-row comment-row mt-0">
-                                                <h3><i class=" fas fa-link"></i></h3>
-                                                <div class="col-md-6">
-                                                    <a href="{{linkLink}}" class="font-weight-normal">{{nombreLink}}</a>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                    <span class="small"><a href="#"
-                                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small mr-3"
-                                                            data-toggle="modal" data-target="#editarEnlace">
-                                                            <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
+                                                <div class="comment-text w-100">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <h4>
+                                                                <i class=" fas fa-link"></i> <a href="{{linkLink}}" class="font-weight-normal">{{nombreLink}}</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-md-4 text-right">
+                                                            <a href="#"class="btn waves-effect waves-light btn-rounded btn-sm btn-success small mr-3" data-toggle="modal" data-target="#editarEnlace">
+                                                                <i class="fas fa-pencil-alt mr-2"></i>Editar
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             {{/each}}
@@ -1356,31 +1350,32 @@
                                 </form>
                             </nav>
                             <!--cartasExamenes-->
+                            {{#each examenesCurso}}
                             <div class="card mt-3"
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="row">
-
-                                                <div class="">
-                                                    <h5 class="font-medium">Nombre Completo Curso Lorem ipsum</h5>
-
-                                                    <h4>Titulo del Examen</h4>
-
-                                                </div>
+                                            <div class="col-md-12 mt-1">
+                                                <h3><a href="{{linkExamen}}" style="color:#9b9292;">{{nombreExamen}}</a></h3>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <h4>Fecha de aplicación: <span class="small"><i class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaAplicacionExamen}}
+                                                    <i class="fas fa-clock ml-2 mr-2"></i>{{horaAplicacionExamen}}</span></h4>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-12">
-                                            <h5>Enlace del examen: <br>
-                                                <span
-                                                    class="small">file:///C:/Users/Documents/8vo/Escuenla%20Sindical/xtremeadmin/
-                                                    xtreme-admin/html/GodlikeFish/p2_consultarCursoE1_v2.html</span>
+                                        <div class="col-md-6 text-right">
+                                            <h5 class="font-light mt-2">Publicado: <i class="fas fa-calendar-alt mr-2"></i>
+                                                {{fechaPublicacionExamen}} <i class="fas fa-clock mr-2"></i> {{horaPublicacionExamen}}</h5>
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#editarExamen">
+                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{/each}}
                         </div>
                     </div>
                 </div>
