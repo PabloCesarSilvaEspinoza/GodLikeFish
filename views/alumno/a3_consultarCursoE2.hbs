@@ -248,13 +248,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <img src="{{fotoCurso}}" width="150" class="rounded-circle" alt="Foto Curso">
+                            <img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" width="150" class="rounded-circle" alt="Foto Curso">
                         </div>
                         <div class="col-md-6">
                             <h1>{{nombreCurso}}</h1>
                             <div class="d-flex no-block align-items-center">
                                 <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src="{{fotoPonente}}" alt="Foto Ponente" class="rounded-circle"
+                                <div class="mr-2"><img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" alt="Foto Ponente" class="rounded-circle"
                                         width="45"></div>
                                 <div class="">
                                     <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
@@ -624,19 +624,6 @@
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="ml-3 mr-2">
-                                                    <img src = "{{fotoPonente}}" alt="Foto Ponente" class="rounded-circle"
-                                                        width="45">
-                                                </div>
-                                                <div class="">
-                                                    <h5 class="mb-0 font-16">{{nombrePonente}} <span
-                                                            class="small">publicó para</span></h5>
-                                                    <h5 class="font-medium">{{nombreCurso}}</h5>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="col-md-6 text-right">
                                             <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
                                                 {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>

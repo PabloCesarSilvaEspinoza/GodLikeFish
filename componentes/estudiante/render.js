@@ -12,6 +12,8 @@ module.exports = {
         const historialCursos = await Controller.getHistorialCursosEstudiante(req.user.id);
         const totalHistorialCursos = historialCursos.length;
         const cursoActualEstudiante = await Controller.getCursoActual(req.user.id);
+
+        console.log(cursoActualEstudiante);
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
@@ -90,7 +92,7 @@ module.exports = {
         console.log(respuestaBD);
         res.redirect('/estudiante/dashboardEstudiante');
     },
-    
+
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -98,7 +100,6 @@ module.exports = {
         const estadoCursoEstudiante = respuestaEstadoCursoEstudiante[0][0].Respuesta;
         const datosCurso = await Controller.getCursoInscripcion(cursoID);
         const curso = datosCurso[0];
-
         switch (estadoCursoEstudiante) {
             case 'Diferentes areas':
             case 'Curso Inactivo':
@@ -136,8 +137,8 @@ module.exports = {
                     curso,
                     documentosCurso,
                     linksCurso,
-                    examenesCurso,
                     asignacionesEstudiante,
+                    examenesCurso,
                 });
                 break;
         
