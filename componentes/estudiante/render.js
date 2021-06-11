@@ -37,6 +37,7 @@ module.exports = {
         const linksCurso = await Controller.listLinks(40); 
         const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
         const examenesCurso = await Controller.listExamenes(35);
+        const tareas = await Controller.listTarea();
 
         res.render('alumno/a3_consultarCursoE2', {
             estudiante:true,
@@ -52,6 +53,7 @@ module.exports = {
             linksCurso,
             examenesCurso,
             asignacionesEstudiante,
+            tareas
 
         });
     },

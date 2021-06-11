@@ -165,6 +165,12 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
+    function listTarea() {
+        const VIEW = 'ver_tarea_estudiante';
+        return store.list(VIEW);
+    }
+
+
     return {
         listDatosCursoUsuario,
         listAvisosUsuario,
@@ -182,6 +188,7 @@ module.exports = function (injectedStore) {
         getCursoActual,
         insertReporte,
         insertCalificacionExperiencia,
-        getConsultarEstadoCursoEstudiante
+        getConsultarEstadoCursoEstudiante,
+        listTarea
     };
 }

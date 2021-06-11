@@ -71,8 +71,8 @@
         </div>
         <!--Titulo-->
 
-
-        <div id="tareaEntregada" class="modal">
+ {{#each tareas}}
+        <div id="tareaEntregada{{tareaID}}" class="modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <!--Salir-->
@@ -85,10 +85,8 @@
                     <!--Titulo-->
                     <div class="row">
                         <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                            <h1>{{tareaNombre}}</h1>
+                            <p>{{tareaDescripcion}}.</p>
                         </div>
                         <hr>
                     </div>
@@ -100,7 +98,7 @@
                                                 class="mdi mdi-link-variant"></i></span></div>
                                     <div>
                                         <span>Archivo</span>
-                                        <h4 class="font-medium mb-0"><a href="#">Nombre del archivo entregado.pdf</a>
+                                        <h4 class="font-medium mb-0"><a href="{{tareaLinkMultimedia}}">{{tareaNombreLinkMultimedia}}</a>
                                         </h4>
                                     </div>
                                 </div>
@@ -110,7 +108,9 @@
                 </div>
             </div>
         </div>
-        <div id="tareaPendiente" class="modal">
+         {{/each}}
+         {{#each tareas }}
+        <div id="tareaPendiente{{tareaID}}" class="modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <!--Salir-->
@@ -123,10 +123,8 @@
                     <!--Titulo-->
                     <div class="row">
                         <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                            <h1>{{tareaNombre}}</h1>
+                            <p>{{tareaDescripcion}}.</p>
                         </div>
                         <hr>
                     </div>
@@ -147,7 +145,9 @@
                 </div>
             </div>
         </div>
-        <div id="tareaAtrasada" class="modal">
+         {{/each}}
+         {{#each tareas }}
+        <div id="tareaAtrasada{{tareaID}}" class="modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <!--Salir-->
@@ -160,10 +160,8 @@
                     <!--Titulo-->
                     <div class="row">
                         <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                            <h1>{{tareaNombre}}</h1>
+                            <p>{{tareaDescripcion}}.</p>
                         </div>
                         <hr>
                     </div>
@@ -186,7 +184,9 @@
                 </div>
             </div>
         </div>
-        <div id="tareaNoEntregada" class="modal">
+         {{/each}}
+         {{#each tareas }}
+        <div id="tareaNoEntregada{{tareaID}}" class="modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <!--Salir-->
@@ -199,10 +199,8 @@
                     <!--Titulo-->
                     <div class="row">
                         <div class="col text-center">
-                            <h1>Tarea de ejemplo número 1</h1>
-                            <p>Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis
-                                lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat
-                                aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                            <h1>{{tareaNombre}}</h1>
+                            <p>{{tareaDescripcion}}.</p>
                         </div>
                         <hr>
                     </div>
@@ -211,6 +209,7 @@
                 </div>
             </div>
         </div>
+         {{/each}}
         <!-- Reportar un Problema -->
         <div id="myModal" class="modal fade" tabindex="" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
@@ -580,8 +579,9 @@
                                             <h4><i class="fas fa-bookmark mr-2"></i>Nombre Completo Asignación Lorem
                                                 ipsum</h4>
                                         </div>
+
                                         <div class="col-3 text-right">
-                                            <span class="mb-3 label  label-inverse mr-2">No Entregada</span>
+                                            <span class="mb-3 label  label-inverse mr-2">No Entregada</span> 
                                             <span class="small"><a href="#"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                                     data-toggle="modal" data-target="#tareaNoEntregada">
@@ -673,14 +673,43 @@
                                         <div class="col-3 text-right">
                                             {{#ifEquals estadoTarea "Entregada"}}
                                             <span class="mb-3 label  label-info mr-2">Entregada</span>
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaEntregada{{tareaID}}">
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+
                                             {{/ifEquals}}
-                                            {{#ifEquals estadoTarea "cerrada"}}
+                                            {{!-- {{#ifEquals estadoTarea "cerrada"}}
                                             <span class="mb-3 label  label-inverse mr-2">Cerrada</span> 
-                                            {{/ifEquals}}
                                             <span class="small"><a href="#"
                                                     class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
                                                     data-toggle="modal" data-target="#tareaEntregada">
                                                     <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                            {{/ifEquals}} --}}
+                                            {{#ifEquals estadoTarea "No Entregada"}}
+                                                    <span class="mb-3 label  label-inverse mr-2">No Entregada</span> 
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaNoEntregada{{tareaID}}">
+                                                   
+                                                    <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                            {{/ifEquals}}
+                                            {{#ifEquals estadoTarea "Pendiente"}}
+                                           <span class="mb-3 label  label-warning mr-2">Pendiente</span>
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaPendiente{{tareaID}}">
+                                                    <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
+                                            {{/ifEquals}}
+                                            {{#ifEquals estadoTarea "Atrasada"}}
+                                            <span class="mb-3 label  label-danger mr-2">Atrasada</span>
+                                            <span class="small"><a href="#"
+                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                    data-toggle="modal" data-target="#tareaAtrasada{{tareaID}}">
+                                                    <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
+                                            {{/ifEquals}}
+                                            
+
                                         </div>
                                         <div class="col-12">
                                             <h4 class="ml-2"><span class="small"> {{nombreCurso}}</span></h4>
