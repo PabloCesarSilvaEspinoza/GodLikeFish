@@ -43,12 +43,7 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE cursoID = ?`;
         return store.get(VIEW, CLAUSE, cursoID);
     }
-    function insertCalificacionExperiencia(idUsuario, idCurso) {
-        const PROCEDURE = `CALL editar_Calificacion_Experiencia_Curso(${idUsuario}, ${idCurso})`
-        return store.insert(PROCEDURE);
-    }
 
-    
     function getConsultarEstadoCursoEstudiante(usuarioID, cursoID) {
         const PROCEDURE = `CALL ver_Estado_Curso_Estudiante(${usuarioID}, ${cursoID})`;
         return store.catalog(PROCEDURE);
@@ -66,43 +61,6 @@ module.exports = function (injectedStore) {
     /*-----------------------------------------------------*/ 
     /*                        TAREAS                       */
     /*-----------------------------------------------------*/
-    function list() {
-        const VIEW = 'ver_Tarea';
-        //const CLAUSE = `WHERE \`Usuario\` = 'E'`;
-        return store.list(VIEW/*, CLAUSE*/);
-    }
-    function get(id) {
-        const VIEW = 'ver_Tarea';
-        const CLAUSE = `WHERE idTarea = ?`;
-        return store.get(VIEW, CLAUSE, id);
-    }
-    /*-----------------------------------------------------*/ 
-    /*                        Reportes                       */
-    /*-----------------------------------------------------*/
-    
-    function insert(body) {
-        const {
-            cursoId, nombre, fechaSubida ,fechaLImite, horaLimite, descripcion
-        } = body;
-    
-        const PROCEDURE = `CALL agregar_Tarea( 
-            ${cursoId}, '${nombre}', '${fechaSubida}','${fechaLImite}','${horaLimite}','${descripcion}'
-            )`
-    
-        return store.upsert(PROCEDURE);
-    }
-    
-    function update(body) {
-        const {
-            Id, cursoId, nombre, fechaSubida ,fechaLImite, horaLimite, descripcion
-        } = body;
-    
-        const PROCEDURE = `CALL editar_Tarea( 
-            ${Id},  ${cursoId}, '${nombre}', '${fechaSubida}','${fechaLImite}','${horaLimite}','${descripcion}'
-            )`
-    
-        return store.upsert(PROCEDURE);
-    }
     function insertReporte(body
         ) {
         const {
@@ -185,10 +143,9 @@ module.exports = function (injectedStore) {
         insertEstudianteCurso,
         listAsignacionesEstudiante,
         listExamenes,
-        getCursoActual,
         insertReporte,
-        insertCalificacionExperiencia,
+        listTarea,
+        getCursoActual,
         getConsultarEstadoCursoEstudiante,
-        listTarea
     };
 }
