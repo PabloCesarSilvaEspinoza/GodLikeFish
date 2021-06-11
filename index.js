@@ -25,8 +25,6 @@ let { verificarEstudiante } = require('./componentes/auth/checker');
 let { verificarAdministrador } = require('./componentes/auth/checker');
 
 //¿En que estas trabajando?    1)Postman 2)handlebars
-/* app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
