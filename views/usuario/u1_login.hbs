@@ -204,7 +204,7 @@
                                                 <select class="select2 form-control custom-select" id="puesto" name="puesto" style="width: 100%; height:36px;" required>
                                                     <option disabled selected>Selecione su puesto</option>
                                                     {{#each puestos}}
-                                                    <option value="{{nombrePuesto}}">{{nombrePuesto}}</option>
+                                                    <option value="{{idPuesto}}">{{nombrePuesto}}</option>
                                                     {{/each}}
                                                 </select>
                                             </div>
@@ -212,10 +212,9 @@
                                                 <h5 class="ml-1">Área<span class="text-danger">*</span></h5>
                                                 <select class="select2 form-control custom-select" id="area" name="area" style="width: 100%; height: 30px;">
                                                     <option disabled selected>Selecione su área</option>
-                                                    <option value="Medica">Medica</option>
-                                                    <option value="Administrativa">Administrativa</option>
-                                                    <option value="Desarrollo personal">Desarrollo personal</option>
-                                                    <option value="Escuela Sindical">Escuela Sindical</option>
+                                                    {{#each areas}}
+                                                    <option value="{{idArea}}">{{nombreArea}}</option>
+                                                    {{/each}}
                                                 </select>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-4 mb-2">

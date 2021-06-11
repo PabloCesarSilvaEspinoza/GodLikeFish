@@ -248,17 +248,17 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 text-center">
-                            <img src="{{fotoCurso}}" width="150" class="rounded-circle" alt="Foto Curso">
+                        <!--<img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" class="rounded" width="300" height="200" alt="Curso">-->
+                        <img src="../../assets/images/cursoImg2.JPG" class="rounded" width="300" height="200" alt="Curso">
                         </div>
                         <div class="col-md-6">
                             <h1>{{nombreCurso}}</h1>
                             <div class="d-flex no-block align-items-center">
-                                <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src="{{fotoPonente}}" alt="Foto Ponente" class="rounded-circle"
-                                        width="45"></div>
+                                <h5 class="mr-2">Ponente:</h5>
+                                <img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" alt="Ponente" class="rounded-circle mr-2" width="50" height="50">
                                 <div class="">
                                     <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
-                                    <span>{{puestoPonente}}</span>
+                                    <span>{{areaPonente}}</span>
                                     <span>
                                         <button
                                             class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
@@ -276,8 +276,8 @@
                             <div class="row">
                                 <h5 class="ml-2 mr-2"><i class="fas fa-briefcase mr-1"></i> Area: <span
                                         class="small ">{{areaCurso}}</span></h5>
-                                <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span class="small ">
-                                        {{tipoCurso}}</span></h5>
+                                <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span
+                                        class="small ">{{tipoCurso}}</span></h5>
                                 <h5 class="ml-2 mr-2"><i class="fas fa-video mr-1"></i> Modalidad: <span
                                         class="small ">{{modalidadCurso}}</span></h5>
                             </div>
@@ -289,7 +289,8 @@
                             <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
                                     class="small ">{{fechaFinalCurso}}</span></h5>
                             <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span
-                                    class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
+                                    class="small ">{{horaInicioCurso}}
+                                    - {{horaFinCurso}}</span></h5>
                             <div class="row mt-2">
                                 <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
                                     <i class="fas fa-external-link-alt mr-1"></i> Ver Temario</a>
@@ -299,7 +300,7 @@
                             </div>
                             <div class="row text-center">
                                 <a href="" type="button" class="btn waves-effect waves-light btn-danger mt-3"
-                                    data-toggle="modal" data-target="#myModal"><i
+                                    data-toggle="modal" data-target="#reportarProblema"><i
                                         class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema</a>
                             </div>
                         </div>
@@ -741,7 +742,7 @@
                                                             </h4>
                                                         </div>
                                                         <div class="col-md-4 text-right">
-                                                            <a href={{linkDocumento}}
+                                                            <a href="{{linkDocumento}}"
                                                                 class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Descargar
                                                                 <i class="fas fa-download"></i></a>
                                                         </div>
@@ -773,7 +774,7 @@
                                             <div class="d-flex flex-row comment-row mt-0">
                                                 <h3><i class=" fas fa-link"></i></h3>
                                                 <div class="comment-text w-100">
-                                                    <a href={{link}} class="card-link">{{nombreCurso}}</a>
+                                                    <a href="{{link}}" class="card-link">{{nombreCurso}}</a>
 
                                                 </div>
                                             </div>

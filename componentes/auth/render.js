@@ -5,7 +5,7 @@ module.exports = {
     postAgregarUsuario: async function (req, res, next) {
         const respuestaBD = await Controller.insertUsuario(req.body);
         const usuarioID = respuestaBD[0][0].ID;
-
+        console.log(respuestaBD);
         let fotoUsuario
         (req.files.fotoUsuario)
             ? fotoUsuario = `${usuarioID}/${req.files.fotoUsuario[0].originalname}`
@@ -35,6 +35,7 @@ module.exports = {
         const estados = await Controller.listEstados();
         const municipios = await Controller.listMunicipios();
         const puestos = await Controller.listPuestos();
+        const areas = await Controller.listAreas();
         res.render('usuario/u1_login', {
             general: true,
             pickadate: true,
@@ -43,6 +44,7 @@ module.exports = {
             municipios,
             estados,
             puestos,
+            areas,
         });
     },
 

@@ -119,6 +119,21 @@ module.exports = {
         res.download(archivoRuta)
     },
 
+    postAgregarArchivos: async function (req, res, next) {
+        for (const file of req.files) {
+            await Controller.insertArchivosMultimediaCurso(req.body.idCurso, file.originalname);
+        }
+        res.redirect('back')
+    },
+
+    getDescargarArchivoCurso: async function (req, res, next) {
+        const cursoID = req.params.idCurso;
+        const archivoNombre = req.params.nombreArchivo;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos');
+        const archivoRuta = `${raiz}/${cursoID}/${archivoNombre}`;
+        res.download(archivoRuta)
+    },
+
     getConsultarEstadoCursoPonente: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -149,6 +164,8 @@ module.exports = {
                 const examenesCurso = await Controller.listExamenes(cursoID);
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
+                global.cursoActualID = cursoID;
+                console.log(global.cursoActualID);
                 res.render('ponente/p2_consultarCursoE1_v2', {
                     dropzone:true,
                     ponente: true,

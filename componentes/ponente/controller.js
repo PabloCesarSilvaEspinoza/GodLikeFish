@@ -156,6 +156,11 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
+    function insertArchivosMultimediaCurso(idCurso, nombreArchivo){
+        const PROCEDURE = `CALL agregar_Archivos_Multimedia_Curso(${idCurso}, '${nombreArchivo}')`
+        return store.insert(PROCEDURE);
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -183,5 +188,6 @@ module.exports = function (injectedStore) {
         listExamenes,
         getArchivosTarea,
         getArchivosTareaCurso,
+        insertArchivosMultimediaCurso,
     };
 }
