@@ -110,9 +110,7 @@ module.exports = {
     },
 
     postEditarUsuario: async function (req, res, next){
-        await Controller.upsertDatosUsuario(req.body);
-        await Controller.upsertDomicilioUsuario(req.body);
-        console.log('Si entra aqui ')
+        await Controller.upsertDatosUsuario(req.params.id, req.body);        
 
         res.redirect('/administrador/administrarUsuarios')
     },
@@ -146,6 +144,7 @@ module.exports = {
         const estadoUsuario = datosUsuario[0].estado;
         const idUsuario = datosUsuario[0].idUsuario;
         const idDomicilio = datosUsuario[0].idDomicilio;
+        const activo = datosUsuario[0].activo;
 
         res.render('administrador/d5_editarUsuario',{
             administrador: true,
@@ -177,6 +176,7 @@ module.exports = {
             estadoUsuario,
             idUsuario,
             idDomicilio,
+            activo,
         });
     },
 

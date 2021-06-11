@@ -17,6 +17,7 @@ module.exports = function (injectedStore) {
         const PROCEDURE = `CALL resolver_Problema(${idProblema}, ${tipoProblema})`
         return store.upsert(PROCEDURE);
     }
+
     /*-----------------------------------------------------*/ 
     /*                       CURSOS                        */
     /*-----------------------------------------------------*/
@@ -161,32 +162,31 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
-    function upsertDatosUsuario(body) {
+    function upsertDatosUsuario(id, body) {
         const {
-            nombres, pApellido, sApellido, matricula, fechaNacimiento, 
-            paisNacimientoID, municipioNacimientoID, area, puesto, antiguedad, tarjetonUsuario, exampleInputFile 
+            municipioResidenciaID, colonia, calle, numeroExt, nombres, pApellido, sApellido, 
+            matricula, fechaNacimiento, paisNacimientoID, municipioNacimientoID, area, puesto, antiguedad
         } = body;
 
-        const PROCEDURE = `CALL editar_Datos_Usuario(
-            39,'${nombres}','${pApellido}', '${sApellido}','${matricula}','${fechaNacimiento}',
-            ${paisNacimientoID},${municipioNacimientoID},${area},${puesto},'${antiguedad}',
-            '${tarjetonUsuario}', '${exampleInputFile}'
+        let numeroInt;
+        (body.numeroInt == '')
+            ? numeroInt = null
+            : numeroInt = body.numeroInt;
+
+        let activo;
+        (body.activo == 'on')
+            ? activo = '1'
+            : activo = '0';
+
+        const PROCEDURE = `CALL editar_Usuario(
+            ${id}, ${municipioResidenciaID}, '${colonia}', '${calle}', ${numeroExt}, ${numeroInt}, '${nombres}', '${pApellido}', '${sApellido}',
+            '${matricula}', '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, ${area}, ${puesto},
+            '${antiguedad}', ${activo}
         )`
 
         return store.upsert(PROCEDURE);
     }
 
-    function upsertDomicilioUsuario(body) {
-        const {
-            municipioResidenciaID, colonia, calle, numeroExt, numeroInt, 
-        } = body;
-
-        const PROCEDURE = `CALL editar_Domicilio_Usuario(
-            39,${municipioResidenciaID},'${colonia}', '${calle}',${numeroExt},${numeroInt}
-        )`
-
-        return store.upsert(PROCEDURE);
-    }
     function listPonentes() {
         const VIEW = 'ver_Ponentes';
         return store.list(VIEW);
@@ -216,7 +216,6 @@ module.exports = function (injectedStore) {
         listEstados,
         listPuestos,
         upsertDatosUsuario,
-        upsertDomicilioUsuario,
         getUsuario,
         listPonentes,
         listAreas,

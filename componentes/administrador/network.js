@@ -13,7 +13,7 @@ router.get('/consultarCursosEII', render.getConsultarCursoE2);
 router.post('/agregarCurso', crearCarpetaCurso, dobleInput, render.postAgregarCurso);
 /*router.get('/consultarCursosEI/:id', render.putEditarCurso);*/
 router.get('/editarUsuarios/:id', render.getEditarUsuario);
-router.post('/editarUsuarios', render.postEditarUsuario);
+router.post('/editarUsuarios/:id', render.postEditarUsuario);
 
 
 router.post('/ResolverProblema/:tipoProblema', render.postResolverProblema);
