@@ -107,11 +107,12 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
-    function listAsignacionesEstudiante(id) {
+    /* function listAsignacionesEstudiante(id) {
         const VIEW = 'ver_Asignaciones_Curso_Estudiante';
         const CLAUSE = `WHERE idUsuario= 29 and idCurso = ? `;
         return store.get(VIEW, CLAUSE, id);
-    }
+    } */
+
     async function getMiPerfil(id) {
         const VIEW = 'ver_Usuarios';
         const CLAUSE = `WHERE id = ?`;
@@ -128,6 +129,17 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    function listAsignacionesEstudiante(id) {
+        const VIEW = 'ver_Asignaciones_Curso_Ponente';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function getArchivosTareaCurso(idCurso) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
 
     return {
         listDatosCursoUsuario,
@@ -147,5 +159,6 @@ module.exports = function (injectedStore) {
         listTarea,
         getCursoActual,
         getConsultarEstadoCursoEstudiante,
+        getArchivosTareaCurso,
     };
 }

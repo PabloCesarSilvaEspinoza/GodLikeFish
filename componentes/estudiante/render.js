@@ -95,6 +95,22 @@ module.exports = {
         res.redirect('/estudiante/dashboardEstudiante');
     },
 
+    getDescargarArchivoTarea: async function (req, res, next) {
+        const tareaID = req.params.idTarea;
+        const archivoNombre = req.params.nombreArchivo;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/tareas');
+        const archivoRuta = `${raiz}/${tareaID}/${archivoNombre}`;
+        res.download(archivoRuta)
+    },
+
+    getDescargarArchivoCurso: async function (req, res, next) {
+        const cursoID = req.params.idCurso;
+        const archivoNombre = req.params.nombreArchivo;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos');
+        const archivoRuta = `${raiz}/${cursoID}/${archivoNombre}`;
+        res.download(archivoRuta)
+    },
+
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -128,7 +144,11 @@ module.exports = {
                 const documentosCurso = await Controller.listDocumentos(cursoID);
                 const linksCurso = await Controller.listLinks(cursoID); 
                 const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(cursoID);
+                const archivosAsignaciones = await Controller.getArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
+                const totalDocumentos = documentosCurso.length;
+                const totalLinks = linksCurso.length;
+
                 res.render('alumno/a3_consultarCursoE2', {
                     estudiante:true,
                     chartist:true,
@@ -143,6 +163,9 @@ module.exports = {
                     linksCurso,
                     asignacionesEstudiante,
                     examenesCurso,
+                    totalDocumentos,
+                    totalLinks,
+                    archivosAsignaciones
                 });
                 break;
         
