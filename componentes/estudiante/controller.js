@@ -84,8 +84,8 @@ module.exports = function (injectedStore) {
     }
 
     function listAvisosUsuario(id) {
-        const VIEW = 'ver_Avisos_Usuario';
-        const CLAUSE = `WHERE cursoID = ?`;
+        const VIEW = 'ver_Avisos_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
@@ -141,6 +141,12 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
+    function listPublicacionesCurso(idCurso) {
+        const VIEW = 'ver_Historial_Publicaciones';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
     return {
         listDatosCursoUsuario,
         listAvisosUsuario,
@@ -160,5 +166,6 @@ module.exports = function (injectedStore) {
         getCursoActual,
         getConsultarEstadoCursoEstudiante,
         getArchivosTareaCurso,
+        listPublicacionesCurso,
     };
 }

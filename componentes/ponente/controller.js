@@ -161,6 +161,12 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    function listPublicacionesCurso(idCurso) {
+        const VIEW = 'ver_Historial_Publicaciones';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -189,5 +195,6 @@ module.exports = function (injectedStore) {
         getArchivosTarea,
         getArchivosTareaCurso,
         insertArchivosMultimediaCurso,
+        listPublicacionesCurso,
     };
 }

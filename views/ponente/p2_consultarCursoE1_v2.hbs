@@ -991,112 +991,109 @@
                                     <button class="btn btn-success my-2 my-sm-0" type="submit"><i
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                 </form>
-                            </nav>
-                            {{#each examenesCurso}}
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="col-md-12 mt-1">
-                                                <h3><a href="{{linkExamen}}" style="color:#9b9292;">{{nombreExamen}}</a></h3>
+                            </nav>{{#each publicacionesCurso}}
+                                {{#ifEquals tipoPublicacion "1"}}
+                                <div class="card mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="col-md-12 mt-1">
+                                                    <h3>{{tituloAviso}}</h3>
+                                                </div>
+                                                <div class="col-md-12 mt-3">
+                                                    <h5>{{textoAviso}}</h5>
+                                                </div>
                                             </div>
-                                            <div class="col-md-12 mt-3">
-                                                <h4>Fecha de aplicación: <span class="small"><i class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaAplicacionExamen}}
-                                                    <i class="fas fa-clock ml-2 mr-2"></i>{{horaAplicacionExamen}}</span></h4>
+                                            <div class="col-md-6 text-right">
+                                                <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
+                                                    {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
+                                                <span class="small"><a href="#"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                        data-toggle="modal" data-target="#editarAnuncio">
+                                                        <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2">Publicado: <i class="fas fa-calendar-alt mr-2"></i>
-                                                {{fechaPublicacionExamen}} <i class="fas fa-clock mr-2"></i> {{horaPublicacionExamen}}</h5>
-                                            <span class="small"><a href="#"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#editarExamen">
-                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{/each}}
-                            {{#each asignacionesPonente}}
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <h3><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h3>
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            {{#ifEquals estadoTarea "Abierta"}}
-                                            <span class="mb-3 label  label-info mr-2">Abierta</span>
-                                            {{/ifEquals}}
-                                            {{#ifEquals estadoTarea "Cerrada"}}
-                                            <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
-                                            <span class="small"><a href="/ponente/calificarTarea/"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-warning small">
-                                                    <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
-                                            {{/ifEquals}}
-                                            <span class="small"><a href="#"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#editarTarea">
-                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                        </div>
-                                        {{#if totalArchivos}}
-                                            <div class="col-12">
-                                                <h5 class="mt-3">{{descripcionTarea}}</h5>
-                                                <h6 class="font-weight-normal mb-3">
-                                                    <i class="fas fa-paperclip mr-2"></i>Esta asignación posee 
-                                                    <span class="font-weight-bold">({{totalArchivos}})</span> archivos adjuntos:
-                                                </h6>
-                                                {{#each ../archivosAsignacionesPonente}}
-                                                    {{#ifEquals idTarea ../this.idTarea}}
-                                                    <h6>
-                                                        <a href="/ponente/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/" >
-                                                            <i class="fas fa-download mr-2"></i>{{archivoNombre}}
-                                                        </a>
+                                {{/ifEquals}}
+                                {{#ifEquals tipoPublicacion "2"}}
+                                <div class="card mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <h3><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h3>
+                                            </div>
+                                            <div class="col-3 text-right">
+                                                {{#ifEquals estadoTarea "Abierta"}}
+                                                <span class="mb-3 label  label-info mr-2">Abierta</span>
+                                                {{/ifEquals}}
+                                                {{#ifEquals estadoTarea "Cerrada"}}
+                                                <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
+                                                <span class="small"><a href="/ponente/calificarTarea/"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-warning small">
+                                                        <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
+                                                {{/ifEquals}}
+                                                <span class="small"><a href="#"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                        data-toggle="modal" data-target="#editarTarea">
+                                                        <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
+                                            </div>
+                                            {{#if totalArchivos}}
+                                                <div class="col-12">
+                                                    <h5 class="mt-3">{{descripcionTarea}}</h5>
+                                                    <h6 class="font-weight-normal mb-3">
+                                                        <i class="fas fa-paperclip mr-2"></i>Esta asignación posee 
+                                                        <span class="font-weight-bold">({{totalArchivos}})</span> archivos adjuntos:
                                                     </h6>
-                                                    {{/ifEquals}}
-                                                {{/each}}
+                                                    {{#each ../archivosAsignacionesPonente}}
+                                                        {{#ifEquals idTarea ../this.idTarea}}
+                                                        <h6>
+                                                            <a href="/ponente/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/" >
+                                                                <i class="fas fa-download mr-2"></i>{{archivoNombre}}
+                                                            </a>
+                                                        </h6>
+                                                        {{/ifEquals}}
+                                                    {{/each}}
+                                                </div>
+                                            {{/if}}
+                                            <div class="col-8 mt-3">
+                                                <h5 class="font-light float-left">Fecha límite: 
+                                                    <i class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} 
+                                                    <i class="fas fa-clock"></i> {{horaLimiteTarea}}
+                                                </h5>
                                             </div>
-                                        {{/if}}
-                                        <div class="col-8 mt-3">
-                                            <h5 class="font-light float-left">Fecha límite: 
-                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} 
-                                                <i class="fas fa-clock"></i> {{horaLimiteTarea}}
-                                            </h5>
-                                        </div>
-                                        <div class="col-4 text-right mt-3">
-                                            <h4 class="font-light"> Entregas: <i class="fas fa-users"></i> {{entregas}}</h4>
+                                            <div class="col-4 text-right mt-3">
+                                                <h4 class="font-light"> Entregas: <i class="fas fa-users"></i> {{entregas}}</h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{/each}}
-                            {{#each avisosCurso}}
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="col-md-12 mt-1">
-                                                <h3>{{tituloAviso}}</h3>
+                                {{/ifEquals}}
+                                {{#ifEquals tipoPublicacion "3"}}
+                                <div class="card mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="col-md-12 mt-1">
+                                                    <h3><a href="{{linkExamen}}" style="color:#9b9292;">{{nombreExamen}}</a></h3>
+                                                </div>
+                                                <div class="col-md-12 mt-3">
+                                                    <h4>Fecha de aplicación: <span class="small"><i class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaAplicacionExamen}}
+                                                        <i class="fas fa-clock ml-2 mr-2"></i>{{horaAplicacionExamen}}</span></h4>
+                                                </div>
                                             </div>
-                                            <div class="col-md-12 mt-3">
-                                                <h5>{{textoAviso}}</h5>
+                                            <div class="col-md-6 text-right">
+                                                <h5 class="font-light mt-2">Publicado: <i class="fas fa-calendar-alt mr-2"></i>
+                                                    {{fechaPublicacionExamen}} <i class="fas fa-clock mr-2"></i> {{horaPublicacionExamen}}</h5>
+                                                <span class="small"><a href="#"
+                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
+                                                        data-toggle="modal" data-target="#editarExamen">
+                                                        <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
-                                            <span class="small"><a href="#"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#editarAnuncio">
-                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                {{/ifEquals}}
                             {{/each}}
                         </div>
                         <!--Panel de anuncios-->

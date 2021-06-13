@@ -162,6 +162,7 @@ module.exports = {
                 const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
                 const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
+                const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
                 global.cursoActualID = cursoID;
@@ -179,6 +180,7 @@ module.exports = {
                     totalLinks,
                     examenesCurso,
                     archivosAsignacionesPonente,
+                    publicacionesCurso
                 });
                 break;
 
