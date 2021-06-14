@@ -11,6 +11,7 @@ router.get('/consultarCursoEIII', render.getConsultarCursoE3);
 router.post('/Inscribirse', render.postInscribirse)
 //router.get('/soporte', render.getSoporte, render.postEnviarReporte);
 router.get('/DescargarTemario/:idCurso', render.getDescargarTemario);
+router.post('/insertCalificaciónExperiencia/:idCurso', render.postCalificarExperiencia);
 /* router.get('/', render.getVerTareas);
 router.get('/:id', render.getVerTarea);
 router.post('/', render.postAgregarTarea);

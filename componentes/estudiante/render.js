@@ -89,10 +89,10 @@ module.exports = {
     
     postCalificarExperiencia: async function (req, res, next){
         console.log(req.user.id);
-        console.log(req.body.idCurso);
-        const respuestaBD = await Controller.insertCalificacionExperiencia(req.user.id, req.body.idCurso);
+        console.log(req.params.idCurso);
+        const respuestaBD = await Controller.insertCalificarExperiencia(req.user.id, req.params.idCurso, req.body);
         console.log(respuestaBD);
-        res.redirect('/estudiante/dashboardEstudiante');
+        res.redirect('/alumno/a3_consultarCursoE3');
     },
 
     getConsultarEstadoCursoEstudiante: async function (req, res, next){

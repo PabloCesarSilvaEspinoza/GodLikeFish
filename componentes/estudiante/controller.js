@@ -48,7 +48,17 @@ module.exports = function (injectedStore) {
         const PROCEDURE = `CALL ver_Estado_Curso_Estudiante(${usuarioID}, ${cursoID})`;
         return store.catalog(PROCEDURE);
     }
+    function insertCalificarExperiencia(idUsuario, idCurso, body) {
+        const {
+            valoracionCurso, valoracionPonente, comentario 
+        } = body;
+
+        const PROCEDURE = `editar_Calificacion_Experiencia_Curso( 
+            ${idUsuario}, ${idCurso}, ${valoracionCurso}, ${valoracionPonente},'${comentario}'
+            )`
     
+        return store.insert(PROCEDURE);
+    }
     /*-----------------------------------------------------*/ 
     /*                      INSCRIPCIÓN                    */
     /*-----------------------------------------------------*/
@@ -147,5 +157,6 @@ module.exports = function (injectedStore) {
         listTarea,
         getCursoActual,
         getConsultarEstadoCursoEstudiante,
+        insertCalificarExperiencia
     };
 }
