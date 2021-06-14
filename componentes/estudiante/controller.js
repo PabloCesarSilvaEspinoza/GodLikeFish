@@ -129,10 +129,9 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
-    function listAsignacionesEstudiante(id) {
-        const VIEW = 'ver_Asignaciones_Curso_Ponente';
-        const CLAUSE = `WHERE idCurso = ?`;
-        return store.get(VIEW, CLAUSE, id);
+    function listAsignacionesEstudiante(idUsuario, idCurso) {
+        const PROCEDURE = `CALL ver_Estado_Asignaciones_Estudiante(${idUsuario}, ${idCurso})`;
+        return store.catalog(PROCEDURE);
     }
 
     function getArchivosTareaCurso(idCurso) {
@@ -141,10 +140,9 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
-    function listPublicacionesCurso(idCurso) {
-        const VIEW = 'ver_Historial_Publicaciones';
-        const CLAUSE = `WHERE idCurso = ?`;
-        return store.list(VIEW, CLAUSE, idCurso);
+    function catalogPublicacionesCursoEstudiante(idUsuario, idCurso) {
+        const PROCEDURE = `CALL ver_Historial_Publicaciones_Estudiante(${idUsuario}, ${idCurso})`;
+        return store.catalog(PROCEDURE);
     }
 
     return {
@@ -166,6 +164,6 @@ module.exports = function (injectedStore) {
         getCursoActual,
         getConsultarEstadoCursoEstudiante,
         getArchivosTareaCurso,
-        listPublicacionesCurso,
+        catalogPublicacionesCursoEstudiante,
     };
 }

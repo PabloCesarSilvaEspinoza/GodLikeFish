@@ -14,7 +14,7 @@ module.exports = function (injectedStore) {
         } = body;
 
         const PROCEDURE = `CALL agregar_Tarea( 
-            ${idCurso}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}', ${atemporalCurso}
+            ${idCurso}, '${nombreTarea}', '${fechaLimiteTarea} ${horaLimiteTarea}', '${descripcionTarea}', ${atemporalCurso}
             )`;
 
         return store.upsert(PROCEDURE);

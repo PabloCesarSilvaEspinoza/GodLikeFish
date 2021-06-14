@@ -12,8 +12,6 @@ module.exports = {
         const historialCursos = await Controller.getHistorialCursosEstudiante(req.user.id);
         const totalHistorialCursos = historialCursos.length;
         const cursoActualEstudiante = await Controller.getCursoActual(req.user.id);
-
-        console.log(cursoActualEstudiante);
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
@@ -79,11 +77,7 @@ module.exports = {
     },
 
     postInscribirse: async function (req, res, next){
-        console.log(req.user.id);
-        console.log(req.body.idCurso);
-        const respuestainsertEstudianteCurso = await Controller.insertEstudianteCurso(req.user.id, req.body.idCurso);
-        const estadoInscripcion = respuestainsertEstudianteCurso[0][0].Respuesta;
-        console.log(estadoInscripcion);
+        await Controller.insertEstudianteCurso(req.user.id, req.body.idCurso);
         res.redirect('/estudiante/dashboardEstudiante');
     },
     
@@ -143,13 +137,14 @@ module.exports = {
                 const avisosCurso = await Controller.listAvisosUsuario(cursoID);
                 const documentosCurso = await Controller.listDocumentos(cursoID);
                 const linksCurso = await Controller.listLinks(cursoID); 
-                const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(cursoID);
+                const respuestaAsignacionesEstudiante = await Controller.listAsignacionesEstudiante(usuarioID, cursoID);
+                const asignacionesEstudiante = respuestaAsignacionesEstudiante[0];
                 const archivosAsignaciones = await Controller.getArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
-                const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
+                const respuestaPublicacionesCursoEstudiante = await Controller.catalogPublicacionesCursoEstudiante(usuarioID, cursoID);
+                const publicacionesCursoEstudiante = respuestaPublicacionesCursoEstudiante[0];
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
-
                 res.render('alumno/a3_consultarCursoE2', {
                     estudiante:true,
                     chartist:true,
@@ -167,7 +162,7 @@ module.exports = {
                     totalDocumentos,
                     totalLinks,
                     archivosAsignaciones,
-                    publicacionesCurso
+                    publicacionesCursoEstudiante
                 });
                 break;
         

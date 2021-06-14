@@ -2,6 +2,45 @@
     <!--Escenario 2 - Alumno inscrito -->
     <div class="row">
         <!--Modales-->
+        <!--Modales para las tareas-->
+        <!--Pendiente-->
+        {{!-- {{#each asignacionesEstudiante}}
+            {{#ifEquals estadoTarea "Pendiente"}}
+            <div id="entregarAsignacionPendiente{{idTarea}}" class="modal">
+                <div class="modal-dialog modal-s">
+                    <div class="modal-content">
+                        <!--Salir-->
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
+                        </div>
+                        <!--Titulo-->
+                        <div class="row">
+                            <div class="col text-center">
+                                <h1>Entregar <span class="small">Tarea</span></h1>
+                                <h5>{{descripcionTarea}}</h5>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                                <h4 class="card-title">Archivos</h4>
+                                <form action="/ponente/AgregarArchivos" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="multimediaTarea"multiple />
+                                    <input type="hidden" name="idTarea" value="{{idTarea}}">
+                                    <div class="form-group mt-1 text-right">
+                                    <button type="submit" class="btn waves-effect waves-light btn-success mt-2">
+                                        <i class="fas fa-save mr-2"></i>Subir
+                                    </button>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            {{/ifEquals}}
+        {{/each}} --}}
         <!--Perfil Ponente visto por Alumno/Usuario-->
         <div id="verPerfilPonente" class="modal">
             <div class="modal-dialog modal-xl">
@@ -70,36 +109,37 @@
             </div>
         </div>
         <!--Titulo-->
-
- {{#each tareas}}
-        <div id="tareaEntregada{{tareaID}}" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>{{tareaNombre}}</h1>
-                            <p>{{tareaDescripcion}}.</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
+        {{#each asignacionesEstudiante}}
+            {{#ifEquals estadoTarea "Entregada"}}
+            <div id="tareaEntregada{{idTarea}}" class="modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!--Salir-->
                         <div class="row">
-                            <div class="col">
-                                <div class="d-flex align-items-center">
-                                    <div class="mr-2"><span class="text-primary display-5"><i
-                                                class="mdi mdi-link-variant"></i></span></div>
-                                    <div>
-                                        <span>Archivo</span>
-                                        <h4 class="font-medium mb-0"><a href="{{tareaLinkMultimedia}}">{{tareaNombreLinkMultimedia}}</a>
-                                        </h4>
+                            <div class="col text-right">
+                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
+                        </div>
+                        <!--Titulo-->
+                        <div class="row">
+                            <div class="col text-center">
+                                <h1>{{tareaNombre}}</h1>
+                                <p>{{tareaDescripcion}}.</p>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-2"><span class="text-primary display-5"><i
+                                                    class="mdi mdi-link-variant"></i></span></div>
+                                        <div>
+                                            <span>Archivo</span>
+                                            <h4 class="font-medium mb-0"><a href="{{tareaLinkMultimedia}}">{{tareaNombreLinkMultimedia}}</a>
+                                            </h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -107,108 +147,145 @@
                     </div>
                 </div>
             </div>
-        </div>
-         {{/each}}
-         {{#each tareas }}
-        <div id="tareaPendiente{{tareaID}}" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+            {{/ifEquals}}
+            {{#ifEquals estadoTarea "Tardia"}}
+            <div id="tareaTardia{{idTarea}}" class="modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!--Salir-->
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
                         </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>{{tareaNombre}}</h1>
-                            <p>{{tareaDescripcion}}.</p>
+                        <!--Titulo-->
+                        <div class="row">
+                            <div class="col text-center">
+                                <h1>{{tareaNombre}}</h1>
+                                <p>{{tareaDescripcion}}.</p>
+                            </div>
+                            <hr>
                         </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <h4 class="card-title">Archivos</h4>
-                            <form action="#" class="dropzone dz-clickable">
-                                <div class="dz-default dz-message">
-                                    <span>Arrastra tus archivos o haz clic aquí.</span>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-2"><span class="text-primary display-5"><i
+                                                    class="mdi mdi-link-variant"></i></span></div>
+                                        <div>
+                                            <span>Archivo</span>
+                                            <h4 class="font-medium mb-0"><a href="{{tareaLinkMultimedia}}">{{tareaNombreLinkMultimedia}}</a>
+                                            </h4>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
-                            <div class="form-group mt-1 text-right">
-                                <button type="button" class="btn waves-effect waves-light btn-success mt-2"><i
-                                        class="fas fa-save mr-2"></i>Entregar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-         {{/each}}
-         {{#each tareas }}
-        <div id="tareaAtrasada{{tareaID}}" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+            {{/ifEquals}}
+            {{#ifEquals estadoTarea "Pendiente"}}
+            <div id="tareaPendiente{{idTarea}}" class="modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!--Salir-->
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
                         </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>{{tareaNombre}}</h1>
-                            <p>{{tareaDescripcion}}.</p>
+                        <!--Titulo-->
+                        <div class="row">
+                            <div class="col text-center">
+                                <h1>{{nombreTarea}}</h1>
+                                <p>{{descripcionTarea}}</p>
+                            </div>
                         </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <h4 class="card-title">Archivos</h4>
-                            <form action="#" class="dropzone dz-clickable">
-                                <div class="dz-default dz-message">
-                                    <span>Arrastra tus archivos o haz clic aquí.</span>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <h4 class="card-title">Archivos</h4>
+                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <input type="file" name="multimediaEstudiante" multiple/>
+                                <input type="hidden" name="idTarea" value="{{idTarea}}">
+                                <div class="form-group mt-1 text-right">
+                                    <button type="button" class="btn waves-effect waves-light btn-success mt-2">
+                                        <i class="fas fa-save mr-2"></i>Entregar
+                                    </button>
                                 </div>
-                            </form>
-                            <p class="text-danger text-center">Esta tarea esta marcada como atrasada, por lo cual se
-                                podrá entregar, pero estara marcada que fue despues de la hora y fecha límite.</p>
-                            <div class="form-group text-right">
-                                <button type="button" class="btn waves-effect waves-light btn-success"><i
-                                        class="fas fa-save mr-2"></i>Entregar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{/each}}
-        {{#each tareas }}
-        <div id="tareaNoEntregada{{tareaID}}" class="modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <!--Salir-->
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+            {{/ifEquals}}
+            {{#ifEquals estadoTarea "Atrasada"}}
+            <div id="tareaAtrasada{{idTarea}}" class="modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!--Salir-->
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
                         </div>
-                    </div>
-                    <!--Titulo-->
-                    <div class="row">
-                        <div class="col text-center">
-                            <h1>{{tareaNombre}}</h1>
-                            <p>{{tareaDescripcion}}.</p>
+                        <!--Titulo-->
+                        <div class="row">
+                            <div class="col text-center">
+                                <h1>{{tareaNombre}}</h1>
+                                <p>{{tareaDescripcion}}.</p>
+                            </div>
+                            <hr>
                         </div>
-                        <hr>
-                    </div>
-                    <div class="modal-body">
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <h4 class="card-title">Archivos</h4>
+                                <form action="#" class="dropzone dz-clickable">
+                                    <div class="dz-default dz-message">
+                                        <span>Arrastra tus archivos o haz clic aquí.</span>
+                                    </div>
+                                </form>
+                                <p class="text-danger text-center">Esta tarea esta marcada como atrasada, por lo cual se
+                                    podrá entregar, pero estara marcada que fue despues de la hora y fecha límite.</p>
+                                <div class="form-group text-right">
+                                    <button type="button" class="btn waves-effect waves-light btn-success"><i
+                                            class="fas fa-save mr-2"></i>Entregar</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            {{/ifEquals}}
+            {{#ifEquals estadoTarea "No entregada"}}
+            <div id="tareaNoEntregada{{idTarea}}" class="modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!--Salir-->
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
+                        </div>
+                        <!--Titulo-->
+                        <div class="row">
+                            <div class="col text-center">
+                                <h1>{{nombreTarea}}</h1>
+                                <p>{{descripcionTarea}}.</p>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/ifEquals}}
         {{/each}}
         <!-- Reportar un Problema -->
         <div id="myModal" class="modal fade" tabindex="" role="dialog" aria-labelledby="myModalLabel"
@@ -342,7 +419,7 @@
                                             class="fas fa-search mr-2"></i> Buscar</button>
                                 </form>
                             </nav>
-                            {{#each publicacionesCurso}}
+                            {{#each publicacionesCursoEstudiante}}
                                 {{#ifEquals tipoPublicacion "1"}}
                                 <div class="card mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                     <div class="card-body">
@@ -367,23 +444,39 @@
                                 <div class="card mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-9">
+                                            <div class="col-8">
                                                 <h3><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h3>
+                                                <h5 class="mt-3">{{descripcionTarea}}</h5>
                                             </div>
-                                            <div class="col-3 text-right">
-                                                {{#ifEquals estadoTarea "Abierta"}}
-                                                <span class="mb-3 label  label-info mr-2">Abierta</span>
+                                            <div class="col-4 text-right">
+                                                {{#ifEquals estadoTarea "Entregada"}}
+                                                <span class="mb-3 label  label-info mr-2">Entregada</span>
+                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaEntregada{{idTarea}}">
+                                                                <i class="far fa-eye mr-2"></i>Consultar</a></span>
                                                 {{/ifEquals}}
-                                                {{#ifEquals estadoTarea "Cerrada"}}
-                                                <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
-                                                <span class="small"><a href="/ponente/calificarTarea/"
-                                                        class="btn waves-effect waves-light btn-rounded btn-sm btn-warning small">
-                                                        <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
+                                                {{#ifEquals estadoTarea "Tardia"}}
+                                                <span class="mb-3 label  bg-primary mr-2">Entrega Tardia</span>
+                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaEntregada{{idTarea}}">
+                                                                <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                                {{/ifEquals}}
+                                                {{#ifEquals estadoTarea "Pendiente"}}
+                                                <span class="mb-3 label  bg-warning mr-2">Pendiente</span>
+                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaPendiente{{idTarea}}">
+                                                                <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
+                                                {{/ifEquals}}
+                                                {{#ifEquals estadoTarea "Atrasada"}}
+                                                <span class="mb-3 label  bg-danger mr-2">Atrasada</span>
+                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaPendiente{{idTarea}}">
+                                                                <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
+                                                {{/ifEquals}}
+                                                {{#ifEquals estadoTarea "No entregada"}}
+                                                <span class="mb-3 label  bg-dark mr-2">No entregada</span>
+                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaNoEntregada{{idTarea}}">
+                                                                <i class="far fa-eye mr-2"></i>Consultar</a></span>
                                                 {{/ifEquals}}
                                             </div>
                                             {{#if totalArchivos}}
                                                 <div class="col-12">
-                                                    <h5 class="mt-3">{{descripcionTarea}}</h5>
                                                     <h6 class="font-weight-normal mb-3">
                                                         <i class="fas fa-paperclip mr-2"></i>Esta asignación posee 
                                                         <span class="font-weight-bold">({{totalArchivos}})</span> archivos adjuntos:
@@ -431,97 +524,6 @@
                                 </div>
                                 {{/ifEquals}}
                             {{/each}}
-
-                            <!--{{#each examenesCurso}}
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="col-md-12 mt-1">
-                                                <h3><a href="{{linkExamen}}" style="color:#9b9292;">{{nombreExamen}}</a></h3>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <h4>Fecha de aplicación: <span class="small"><i class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaAplicacionExamen}}
-                                                    <i class="fas fa-clock ml-2 mr-2"></i>{{horaAplicacionExamen}}</span></h4>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2">Publicado: <i class="fas fa-calendar-alt mr-2"></i>
-                                                {{fechaPublicacionExamen}} <i class="fas fa-clock mr-2"></i> {{horaPublicacionExamen}}</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{/each}}
-                            {{#each asignacionesEstudiante}}
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <h3><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h3>
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            {{#ifEquals estadoTarea "Abierta"}}
-                                            <span class="mb-3 label  label-info mr-2">Abierta</span>
-                                            {{/ifEquals}}
-                                            {{#ifEquals estadoTarea "Cerrada"}}
-                                            <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
-                                            <span class="small"><a href="/ponente/calificarTarea/"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-warning small">
-                                                    <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
-                                            {{/ifEquals}}
-                                        </div>
-                                        {{#if totalArchivos}}
-                                            <div class="col-12">
-                                                <h5 class="mt-3">{{descripcionTarea}}</h5>
-                                                <h6 class="font-weight-normal mb-3">
-                                                    <i class="fas fa-paperclip mr-2"></i>Esta asignación posee 
-                                                    <span class="font-weight-bold">({{totalArchivos}})</span> archivos adjuntos:
-                                                </h6>
-                                                {{#each ../archivosAsignaciones}}
-                                                    {{#ifEquals idTarea ../this.idTarea}}
-                                                    <h6>
-                                                        <a href="/estudiante/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/" >
-                                                            <i class="fas fa-download mr-2"></i>{{archivoNombre}}
-                                                        </a>
-                                                    </h6>
-                                                    {{/ifEquals}}
-                                                {{/each}}
-                                            </div>
-                                        {{/if}}
-                                        <div class="col-8 mt-3">
-                                            <h5 class="font-light float-left">Fecha límite: 
-                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}} 
-                                                <i class="fas fa-clock"></i> {{horaLimiteTarea}}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{/each}}
-                            {{#each avisosCurso}}
-                            <div class="card mt-3"
-                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="col-md-12 mt-1">
-                                                <h3>{{tituloAviso}}</h3>
-                                            </div>
-                                            <div class="col-md-12 mt-3">
-                                                <h5>{{textoAviso}}</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <h5 class="font-light mt-2"><i class="fas fa-calendar-alt ml-2"></i>
-                                                {{fechaAviso}} <i class="fas fa-clock"></i> {{horaAviso}}</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{/each}} -->
                         </div>
                         <!--Panel de anuncios-->
                         <div class="tab-pane  p-20" id="avisos" role="tabpanel">
@@ -576,23 +578,39 @@
                                 style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-9">
+                                        <div class="col-8">
                                             <h3><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h3>
+                                            <h5 class="mt-3">{{descripcionTarea}}</h5>
                                         </div>
-                                        <div class="col-3 text-right">
-                                            {{#ifEquals estadoTarea "Abierta"}}
-                                            <span class="mb-3 label  label-info mr-2">Abierta</span>
+                                        <div class="col-4 text-right">
+                                            {{#ifEquals estadoTarea "Entregada"}}
+                                            <span class="mb-3 label  label-info mr-2">Entregada</span>
+                                            <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaEntregada{{idTarea}}">
+                                                            <i class="far fa-eye mr-2"></i>Consultar</a></span>
                                             {{/ifEquals}}
-                                            {{#ifEquals estadoTarea "Cerrada"}}
-                                            <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
-                                            <span class="small"><a href="/ponente/calificarTarea/"
-                                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-warning small">
-                                                    <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
+                                            {{#ifEquals estadoTarea "Tardia"}}
+                                            <span class="mb-3 label  bg-primary mr-2">Entrega Tardia</span>
+                                            <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaTardia{{idTarea}}">
+                                                            <i class="far fa-eye mr-2"></i>Consultar</a></span>
+                                            {{/ifEquals}}
+                                            {{#ifEquals estadoTarea "Pendiente"}}
+                                            <span class="mb-3 label  bg-warning mr-2">Pendiente</span>
+                                            <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaPendiente{{idTarea}}">
+                                                            <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
+                                            {{/ifEquals}}
+                                            {{#ifEquals estadoTarea "Atrasada"}}
+                                            <span class="mb-3 label  bg-danger mr-2">Atrasada</span>
+                                            <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaAtrasada{{idTarea}}">
+                                                            <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
+                                            {{/ifEquals}}
+                                            {{#ifEquals estadoTarea "No entregada"}}
+                                            <span class="mb-3 label  bg-dark mr-2">No entregada</span>
+                                            <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaNoEntregada{{idTarea}}">
+                                                            <i class="far fa-eye mr-2"></i>Consultar</a></span>
                                             {{/ifEquals}}
                                         </div>
                                         {{#if totalArchivos}}
                                             <div class="col-12">
-                                                <h5 class="mt-3">{{descripcionTarea}}</h5>
                                                 <h6 class="font-weight-normal mb-3">
                                                     <i class="fas fa-paperclip mr-2"></i>Esta asignación posee 
                                                     <span class="font-weight-bold">({{totalArchivos}})</span> archivos adjuntos:
