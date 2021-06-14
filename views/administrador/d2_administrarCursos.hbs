@@ -200,8 +200,9 @@
             </div>
         </div>
     </div>
-    <!-- modal editar curso -->
-    <div id="editarCurso" class="modal">
+    <!-- modal ver curso -->
+    {{#each cursos}}
+   <div id="verDatosCurso" {{idCurso}} class="modal">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <!--Salir-->
@@ -214,8 +215,8 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 text-center">
-                        <h1>Editar <span class="small">Curso</span></h1>
-                        <p>Aqui puedes modificar los campos del curso que has seleccionado.</p>
+                        <h1>Datos <span class="small">del Curso</span></h1>
+                        <p>Aqui puedes visualizar la información del curso seleccionado.</p>
                     </div>
                     <div class="col-md-3 text-right">
                         <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
@@ -229,15 +230,12 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="form-valide" id="agregarCurso" method="POST" action="#">
+                                    <form id="verDatosCurso" method="POST" action="#">
                                         <div class="row">
                                             <div class="col-md-3 text-center justify-content-center no-block">
-                                                <img src="../../assets/images/users/1.jpg" width="150"
+                                                <img src="{{fotoCurso}}" width="150"
                                                     class="rounded-circle" alt="user">
                                                 <h5 class="mt-3">Imagen del curso</h5>
-                                                <fieldset class="form-group mt-3">
-                                                    <input type="file" class="form-control-file" id="exampleInputFile">
-                                                </fieldset>
                                             </div>
                                             <div class="col-md-12 col-lg-9">
                                                 <div class="row">
@@ -248,112 +246,63 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Nombre del Curso <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="text" id="nombreCurso" class="form-control"
-                                                                placeholder="Ejemplo del nombre de un curso" required>
-                                                            <small class="form-control-feedback ml-1"> Maximo 255
-                                                                caracteres </small>
+                                                            <h6 class="ml-1">Nombres del Curso</h6>
+                                                            <h4 class="mb-0 font-16 font-medium">{{nombreCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Área <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class=" form-control custom-select"
-                                                                style="width: 100%; height:36px;" required>
-                                                                <option>Select</option>
-                                                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                </optgroup>
-                                                            </select>
+                                                            <h5 class="ml-1">Área </h5>
+                                                            <h4 class="mb-0 font-16 font-medium">{{areaCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Tipo <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;" required>
-                                                                <option value="AK">Tipo 1</option>
-                                                                <option value="HI">Tipo 2</option>
-                                                                <option value="HI">Tipo 3</option>
-                                                                <option value="HI">Tipo 4</option>
-                                                                <option value="HI">Tipo 5</option>
-                                                            </select>
+                                                            <h5 class="ml-1">Tipo </h5>
+                                                            <h4 class="mb-0 font-16 font-medium">{{tipoCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3 col-lg-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Modalidad <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">En vivo</option>
-                                                                <option value="HI">Video</option>
-                                                            </select>
+                                                            <h5 class="ml-1">Modalidad </h5>
+                                                             <h4 class="mb-0 font-16 font-medium">{{modalidadCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 col-lg-2">
                                                         <div class="form-group">
                                                             <h5 class="ml-1">Capacidad </h5>
-                                                            <input type="number" id="capacidad" class="form-control"
-                                                                placeholder="0">
-                                                            <small class="form-control-feedback ml-1"> Utilice 0 para
-                                                                capacidad indefinida </small>
+                                                             <h4 class="mb-0 font-16 font-medium">{{capacidadCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Ponente <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">Nombre Completo Ponente</option>
-                                                                <option value="HI">Nombre Completo Segundo Ponente
-                                                                </option>
-                                                            </select>
+                                                            <h5 class="ml-1">Ponente </h5>
+                                                             <h4 class="mb-0 font-16 font-medium">{{nombrePonente}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Plataforma <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">Classroom</option>
-                                                                <option value="HI">TEAMS</option>
-                                                                <option value="HI">Zoom</option>
-                                                            </select>
+                                                            <h5 class="ml-1">Plataforma </h5>
+                                                             <h4 class="mb-0 font-16 font-medium">{{plataformaCurso}}</h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-7 col-lg-7">
                                                 <div class="form-group">
-                                                    <h5 class="ml-1">Descripción <span class="text-danger">*</span></h5>
-                                                    <textarea class="form-control" rows="3"
-                                                        placeholder="Describe de que trata el curso aqui..."></textarea>
+                                                    <h5 class="ml-1">Descripción </h5>
+                                                     <h4 class="mb-0 font-16 font-medium">{{descripcionCurso}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col-md-5 col-lg-3">
-                                                <div class="form-group">
-                                                    <h5 class="ml-1 md-3">Temario <span class="text-danger">*</span>
-                                                    </h5>
-                                                    <fieldset class="form-group mt-4">
-                                                        <input type="file" class="form-control-file"
-                                                            id="exampleInputFile">
-                                                    </fieldset>
+                                                <div class="ml-1">Temario</h5>
+                                                     <h4 class="mb-0 font-16 font-medium">{{temarioCurso}}</h4>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-lg-2 ">
                                                 <div class="form-group">
-                                                    <h5 class="ml-1">Clave <span class="text-danger">*</span></h5>
-                                                    <input type="text" id="clave" class="form-control"
-                                                        placeholder="000000000">
-                                                    <small class="form-control-feedback ml-1"> Unicamente numeros
-                                                    </small>
+                                                    <h5 class="ml-1">Clave </h5>
+                                                     <h4 class="mb-0 font-16 font-medium">{{claveCurso}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -367,30 +316,26 @@
                                                     </div>
                                                     <div class="col-md-6 col-lg-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-04-13"
-                                                                style="width: 100%; ">
+                                                            <h5 class="ml-1">Fecha de Inicio </h5>
+                                                             <h4 class="mb-0 font-16 font-medium">{{fechaInicioCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-lg-3">
                                                         <div class="form-group">
                                                             <h5 class="ml-1">Hora Inicio </h5>
-                                                            <input type="time" class="form-control" value="22:33:00">
+                                                            <h4 class="mb-0 font-16 font-medium">{{horaInicioCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-lg-3">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-06-13"
-                                                                style="width: 100%; ">
+                                                            <h5 class="ml-1">Fecha de Fin </h5>
+                                                            <h4 class="mb-0 font-16 font-medium">{{fechaFinalCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-lg-3">
                                                         <div class="form-group">
                                                             <h5 class="ml-1">Hora Fin </h5>
-                                                            <input type="time" class="form-control" value="22:33:00">
+                                                            <h4 class="mb-0 font-16 font-medium">{{horaFinCurso}}</h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -404,34 +349,28 @@
                                                     </div>
                                                     <div class="col-md-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-04-13"
-                                                                style="width: 100%; ">
+                                                            <h5 class="ml-1">Fecha de Inicio </h5>
+                                                            <h4 class="mb-0 font-16 font-medium">{{fechaInscripcionInicioCurso}}</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-06-13"
-                                                                style="width: 100%; ">
+                                                            <h5 class="ml-1">Fecha de Fin </h5>
+                                                            <h4 class="mb-0 font-16 font-medium">{{fechaInscripcionFinalCurso}}</h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group mt-4">
-                                            <div class="col text-right">
-                                                <hr>
-                                                <button type="button"
-                                                    class="btn waves-effect waves-light btn-success"><i
-                                                        class="fas fa-save mr-2"></i>Guardar</button>
-                                                <button type="button" class="btn waves-effect waves-light btn-info"
-                                                    data-dismiss="modal"><i
-                                                        class="fas fa-times mr-2"></i>Cancelar</button>
-                                            </div>
-                                        </div>
+                                        <div class="row mt-4">
+                            <div class="col-lg-4 text-center"></div>
+                            <div class="col-lg-4 text-center"></div>
+                            <div class="col-lg-4 text-center">
+                                <a type="button" class="btn waves-effect waves-light btn-info"
+                                    href="/administrador/editarUsuarios/{{idCurso}}"><i
+                                        class="fas fa-edit mr-2"></i>Editar Usuario</a>
+                            </div>
+                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -440,7 +379,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
+    {{/each}}
 
     <!--Titulo-->
     <div class="row">
@@ -567,7 +507,8 @@
                                     {{/if}}
                                     <td>{{nombrePonente}}</td>
                                     <td>
-                                        <a type="button" class="btn waves-effect waves-light btn-success btn-rounded" href="/curso/{{idCurso}}"><i class="fas fa-eye mr-2"></i> Consultar</a>
+                                        <a type="button" class="btn waves-effect waves-light btn-success btn-rounded"
+                                         href="/curso/editarCurso/{{idCurso}}" data-toggle="modal" data-target="#verDatosCurso"><i class="fas fa-eye mr-2"></i> Consultar</a>
                                     </td>
                                 </tr>
                                 {{/each}}

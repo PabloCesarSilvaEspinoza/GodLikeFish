@@ -1,0 +1,200 @@
+ <div class="container-fluid">  
+                <div class="row">
+                    <div class="col sm-12 text-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>Agregar <span class="small">Curso</span></h1>
+                                <p>Aqui puedes agregar un curso nuevo, llena todos los datos y registralo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form action="../editarCurso/{{idCurso}}" method="POST">
+                                                    <div class="row">
+                                                        <div class="col text-center justify-content-center no-block">
+                                                            <img src="../../assets/images/users/1.jpg" width="150" alt="user">
+                                                            <h5 class="mt-3">Imagen del curso</h5>
+                                                            <input type="file" name="fotoCurso" id="fotoCurso" class="form-control-file" required/>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-9">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Nombre del Curso <span class="text-danger">*</span></h5>
+                                                                        <input type="text" id="nombreCurso" name="nombreCurso" class="form-control"
+                                                                         value="{{nombreCurso}}" placeholder="Ejemplo del nombre de un curso" autocomplete="off" required>
+                                                                        <small class="form-control-feedback ml-1"> Maximo 255 caracteres </small> 
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Área<span class="text-danger">*</span></h5>
+                                                                        <select class="form-control custom-select" name="areaCurso" id="areaCurso" style="width: 100%; height:36px;" required>
+                                                                            {{#each areas}}
+                                                                            <option value="{{idArea}}">{{areaCurso}}</option>
+                                                                            {{/each}}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Tipo<span class="text-danger">*</span></h5>
+                                                                        <select class="form-control custom-select" name="tipoCurso" 
+                                                                        id="tipoCurso" style="width: 100%; height:36px;" required>
+                                                                            <option value="Normativo">Normativo</option>
+                                                                            <option value="Publico">Público</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Modalidad <span class="text-danger">*</span></h5>
+                                                                        <select class="form-control custom-select" name="modalidadCurso" id="modalidadCurso" style="width: 100%; height:36px;">
+                                                                            <option value="enVivo">En vivo</option>
+                                                                            <option value="Diferido">Diferido</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-lg-2">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Capacidad </h5>
+                                                                        <select class="form-control custom-select" name="capacidadCurso" id="capacidadCurso" style="width: 100%; height:36px;" required>
+                                                                            <option value="null">Ilimitado</option>
+                                                                            <option value="10">10</option>
+                                                                            <option value="25">25</option>
+                                                                            <option value="50">50</option>
+                                                                            <option value="75">75</option>
+                                                                            <option value="100">100</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Ponente <span class="text-danger">*</span></h5>
+                                                                        <select class="form-control custom-select" name="ponenteID" id="ponenteID" style="width: 100%; height:36px;">
+                                                                            {{#each ponentes}}
+                                                                            <option value="{{idPonente}}">{{nombrePonente}}</option>
+                                                                            {{/each}}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Plataforma <span class="text-danger">*</span></h5>
+                                                                        <select class="form-control custom-select" name="plataformaCurso" id="plataformaCurso" style="width: 100%; height:36px;">
+                                                                            <option value="" selected>N/A</option>
+                                                                            <option value="Google Classroom">Google Classroom</option>
+                                                                            <option value="Youtube">Youtube</option>
+                                                                            <option value="Microsoft Teams">Microsift Teams</option>
+                                                                            <option value="Zoom">Zoom</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-7 col-lg-7">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Descripción <span class="text-danger">*</span></h5>
+                                                                <textarea class="form-control" name="descripcionCurso" id="descripcionCurso" 
+                                                                rows="3" value="{{descripcionCurso}}" placeholder="Describe de que trata el curso aqui..." autocomplete="off"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1 md-3">Temario</h5>
+                                                                <input type="file" name="temarioCurso" id="temarioCurso" class="form-control-file" required/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-2 ">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Clave <span class="text-danger">*</span></h5>
+                                                                <input type="text" name="claveCurso" id="claveCurso" class="form-control" placeholder="000000000" autocomplete="off" required>
+                                                                <small class="form-control-feedback ml-1"> Unicamente numeros </small> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{#fechaActual}}
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12 mt-3">
+                                                                    <h4><i class="fas fa-calendar-alt mr-2"></i>Calendario del curso</h4>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="col-md-6 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Fecha de Inicio <span class="text-danger">*</span></h5>
+                                                                        <input type="date" class="form-control" name="fechaInicioCurso"  id="fechaInicioCurso" value="{{fechaActual}}" style="width: 100%; ">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Fecha de Fin <span class="text-danger">*</span></h5>
+                                                                        <input type="date" class="form-control" name="fechaFinCurso"  id="fechaFinCurso" value="{{fechaActual}}" style="width: 100%; ">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Hora Inicio </h5>
+                                                                        <input type="time" class="form-control" name="horarioInicioCurso"  id="horaInicioCurso" value="{{horaActual}}:00:00">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Hora Fin </h5>
+                                                                        <input type="time" class="form-control" name="horarioFinCurso"  id="horaFinCurso" value="{{horaSiguiente}}:00:00">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="row">
+                                                                <div class="col-md-12 mt-3">
+                                                                    <h4><i class="far fa-calendar-alt mr-2"></i>Calendario de inscripción</h4>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="col-md-12 col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Fecha de Inicio <span class="text-danger">*</span></h5>
+                                                                        <input type="date" class="form-control" name="fechaInscripcionInicioCurso" id="fechaInscripcionInicioCurso" value="{{fechaActual}}" style="width: 100%; ">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <h5 class="ml-1">Fecha de Fin <span class="text-danger">*</span></h5>
+                                                                        <input type="date" class="form-control" name="fechaInscripcionFinCurso" id="fechaInscripcionFinCurso" value="{{fechaActual}}" style="width: 100%; ">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{/fechaActual}}
+                                                    <div class="form-group mt-4">
+                                                        <div class="col text-right">
+                                                            <hr>
+                                                            <button type="submit"class="btn waves-effect waves-light btn-success"><i class="fas fa-save mr-2"></i>Guardar</button>
+                                                            <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
