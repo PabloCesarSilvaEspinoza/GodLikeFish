@@ -16,7 +16,6 @@ module.exports = function (injectedStore) {
         const PROCEDURE = `CALL agregar_Tarea( 
             ${idCurso}, '${nombreTarea}', '${fechaLimiteTarea} ${horaLimiteTarea}', '${descripcionTarea}', ${atemporalCurso}
             )`;
-
         return store.upsert(PROCEDURE);
     }
 
@@ -167,6 +166,11 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
+    function getTiempoActual() {
+        const VIEW = 'ver_Tiempo_Actual'
+        return store.get(VIEW)
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -196,5 +200,6 @@ module.exports = function (injectedStore) {
         getArchivosTareaCurso,
         insertArchivosMultimediaCurso,
         listPublicacionesCurso,
+        getTiempoActual
     };
 }

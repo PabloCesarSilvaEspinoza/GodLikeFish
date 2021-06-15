@@ -105,6 +105,25 @@ module.exports = {
         res.download(archivoRuta)
     },
 
+    postEntregarTarea: async function(req, res, next){
+        const respuestaTareaEstudiante = await Controller.insertTareaEstudiante(req.user.id, req.params.idTarea);
+        const entregaID = respuestaTareaEstudiante[0][0].ID;
+        for (const file of req.files) {
+            const nombreMultimediaEstudiante = file.originalname;
+            await Controller.insertMultimediaTareaEstudiante(entregaID, nombreMultimediaEstudiante);
+        }
+        res.redirect('back');
+    },
+
+    getDescargarArchivoEntregado: async function (req, res, next) {
+        const usuarioID = req.user.id;
+        const nombreArchivo = req.params.nombreArchivo;
+        const idTarea = req.params.idTarea;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/tareas_estudiantes');
+        const archivoRuta = `${raiz}/${usuarioID}/${idTarea}/${nombreArchivo}`;
+        res.download(archivoRuta)
+    },
+
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -139,7 +158,8 @@ module.exports = {
                 const linksCurso = await Controller.listLinks(cursoID); 
                 const respuestaAsignacionesEstudiante = await Controller.listAsignacionesEstudiante(usuarioID, cursoID);
                 const asignacionesEstudiante = respuestaAsignacionesEstudiante[0];
-                const archivosAsignaciones = await Controller.getArchivosTareaCurso(cursoID);
+                const archivosEntregasEstudiante = await Controller.listArchivosEntregaEstudiante(cursoID);
+                const archivosAsignaciones = await Controller.listArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
                 const respuestaPublicacionesCursoEstudiante = await Controller.catalogPublicacionesCursoEstudiante(usuarioID, cursoID);
                 const publicacionesCursoEstudiante = respuestaPublicacionesCursoEstudiante[0];
@@ -162,7 +182,9 @@ module.exports = {
                     totalDocumentos,
                     totalLinks,
                     archivosAsignaciones,
-                    publicacionesCursoEstudiante
+                    publicacionesCursoEstudiante,
+                    archivosEntregasEstudiante,
+                    usuarioID,
                 });
                 break;
         

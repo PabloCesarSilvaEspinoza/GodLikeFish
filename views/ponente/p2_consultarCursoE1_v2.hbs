@@ -213,22 +213,23 @@
                                             <h4><i class="fas fa-clock mr-2"></i>Tiempo de la tarea</h4>
                                             <hr>
                                         </div>
+                                        {{#fechaActual}}
                                         <div class="col">
                                             <div class="form-group">
                                                 <h5 class="ml-1">Fecha de límite<span class="text-danger">*</span></h5>
                                                 <input type="date" name="fechaLimiteTarea" id="fechaLimiteTarea"
-                                                    class="form-control" value="2021-04-13" required>
+                                                    class="form-control" value="{{fechaActual}}" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <h5 class="ml-1">Hora límite<span class="text-danger">*</span></h5>
                                                 <input type="time" name="horaLimiteTarea" id="horaLimiteTarea"
-                                                    class="form-control" value="22:33:00" required>
-                                                <input type="hidden" name="idCurso" id="idCurso"
-                                                    value="{{curso.idCurso}}">
+                                                    class="form-control" value="{{horaSiguiente}}" required>
+                                                <input type="hidden" name="idCurso" id="idCurso" value="{{../curso.idCurso}}">
                                             </div>
                                         </div>
+                                        {{/fechaActual}}
                                         <div class="col">
                                             <div class="form-group">
                                                 <h6 class="card-title">¿La tarea puede ser entragada despues de la fecha
@@ -333,14 +334,14 @@
                                             <div class="form-group">
                                                 <h5 class="ml-1">Fecha de límite<span class="text-danger">*</span></h5>
                                                 <input type="date" id="fechaLimiteTarea" class="form-control"
-                                                    value="2021-04-13" required>
+                                                    value="{{fechaActual}}" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <h5 class="ml-1">Hora límite<span class="text-danger">*</span></h5>
                                                 <input type="time" id="horaLimiteTarea" class="form-control"
-                                                    value="22:33:00" required>
+                                                    value="{{horaSiguiente}}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -857,14 +858,14 @@
                                                     <div class="form-group">
                                                         <h5 class="ml-1">Fecha de aplicación<span class="text-danger">*</span></h5>
                                                         <input type="date" name="fechaAplicacionExamen" id="fechaLimiteTarea"
-                                                            class="form-control" value="2021-06-10" required>
+                                                            class="form-control" value="{{fechaActual}}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <h5 class="ml-1">Hora de aplicación<span class="text-danger">*</span></h5>
                                                         <input type="time" name="horaAplicacionExamen" id="horaLimiteTarea"
-                                                            class="form-control" value="12:00" required>
+                                                            class="form-control" value="{{horaSiguiente}}" required>
                                                     </div>
                                                 </div>
                                             </div>

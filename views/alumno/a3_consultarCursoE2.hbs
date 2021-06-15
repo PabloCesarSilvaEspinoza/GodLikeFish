@@ -4,43 +4,6 @@
         <!--Modales-->
         <!--Modales para las tareas-->
         <!--Pendiente-->
-        {{!-- {{#each asignacionesEstudiante}}
-            {{#ifEquals estadoTarea "Pendiente"}}
-            <div id="entregarAsignacionPendiente{{idTarea}}" class="modal">
-                <div class="modal-dialog modal-s">
-                    <div class="modal-content">
-                        <!--Salir-->
-                        <div class="row">
-                            <div class="col text-right">
-                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                    aria-hidden="true">×</button>
-                            </div>
-                        </div>
-                        <!--Titulo-->
-                        <div class="row">
-                            <div class="col text-center">
-                                <h1>Entregar <span class="small">Tarea</span></h1>
-                                <h5>{{descripcionTarea}}</h5>
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="card-body">
-                                <h4 class="card-title">Archivos</h4>
-                                <form action="/ponente/AgregarArchivos" method="POST" enctype="multipart/form-data">
-                                    <input type="file" name="multimediaTarea"multiple />
-                                    <input type="hidden" name="idTarea" value="{{idTarea}}">
-                                    <div class="form-group mt-1 text-right">
-                                    <button type="submit" class="btn waves-effect waves-light btn-success mt-2">
-                                        <i class="fas fa-save mr-2"></i>Subir
-                                    </button>
-                                    </div>
-                                </form>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            {{/ifEquals}}
-        {{/each}} --}}
         <!--Perfil Ponente visto por Alumno/Usuario-->
         <div id="verPerfilPonente" class="modal">
             <div class="modal-dialog modal-xl">
@@ -112,7 +75,7 @@
         {{#each asignacionesEstudiante}}
             {{#ifEquals estadoTarea "Entregada"}}
             <div id="tareaEntregada{{idTarea}}" class="modal">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-s">
                     <div class="modal-content">
                         <!--Salir-->
                         <div class="row">
@@ -124,25 +87,26 @@
                         <!--Titulo-->
                         <div class="row">
                             <div class="col text-center">
-                                <h1>{{tareaNombre}}</h1>
-                                <p>{{tareaDescripcion}}.</p>
+                                <h1>{{nombreTarea}}</h1>
+                                <p>{{descripcionTarea}}.</p>
                             </div>
                             <hr>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="d-flex align-items-center">
-                                        <div class="mr-2"><span class="text-primary display-5"><i
-                                                    class="mdi mdi-link-variant"></i></span></div>
-                                        <div>
-                                            <span>Archivo</span>
-                                            <h4 class="font-medium mb-0"><a href="{{tareaLinkMultimedia}}">{{tareaNombreLinkMultimedia}}</a>
-                                            </h4>
+                            {{#each ../archivosEntregasEstudiante}}
+                                {{#ifEquals idTarea ../this.idTarea}}
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <div class="d-flex align-items-center">
+                                            <span class="small mr-2">
+                                                <a href="/estudiante/DescargarArchivoEntregado/{{idTarea}}/{{archivoNombre}}" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                    <i class="fas fa-download mr-2"></i> {{archivoNombre}}</a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                {{/ifEquals}}
+                            {{/each}}
                         </div>
                     </div>
                 </div>
@@ -150,7 +114,7 @@
             {{/ifEquals}}
             {{#ifEquals estadoTarea "Tardia"}}
             <div id="tareaTardia{{idTarea}}" class="modal">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-s">
                     <div class="modal-content">
                         <!--Salir-->
                         <div class="row">
@@ -162,25 +126,26 @@
                         <!--Titulo-->
                         <div class="row">
                             <div class="col text-center">
-                                <h1>{{tareaNombre}}</h1>
-                                <p>{{tareaDescripcion}}.</p>
+                                <h1>{{nombreTarea}}</h1>
+                                <p>{{descripcionTarea}}.</p>
                             </div>
                             <hr>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="d-flex align-items-center">
-                                        <div class="mr-2"><span class="text-primary display-5"><i
-                                                    class="mdi mdi-link-variant"></i></span></div>
-                                        <div>
-                                            <span>Archivo</span>
-                                            <h4 class="font-medium mb-0"><a href="{{tareaLinkMultimedia}}">{{tareaNombreLinkMultimedia}}</a>
-                                            </h4>
+                            {{#each ../archivosEntregasEstudiante}}
+                                {{#ifEquals idTarea ../this.idTarea}}
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <div class="d-flex align-items-center">
+                                            <span class="small mr-2">
+                                                <a href="/estudiante/DescargarArchivoEntregado/{{idTarea}}/{{archivoNombre}}" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                    <i class="fas fa-download mr-2"></i> {{archivoNombre}}</a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                {{/ifEquals}}
+                            {{/each}}
                         </div>
                     </div>
                 </div>
@@ -188,7 +153,7 @@
             {{/ifEquals}}
             {{#ifEquals estadoTarea "Pendiente"}}
             <div id="tareaPendiente{{idTarea}}" class="modal">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-s">
                     <div class="modal-content">
                         <!--Salir-->
                         <div class="row">
@@ -207,14 +172,13 @@
                         <div class="modal-body">
                             <div class="card-body">
                                 <h4 class="card-title">Archivos</h4>
-                                <form action="#" method="POST" enctype="multipart/form-data">
-                                <input type="file" name="multimediaEstudiante" multiple/>
-                                <input type="hidden" name="idTarea" value="{{idTarea}}">
-                                <div class="form-group mt-1 text-right">
-                                    <button type="button" class="btn waves-effect waves-light btn-success mt-2">
-                                        <i class="fas fa-save mr-2"></i>Entregar
-                                    </button>
-                                </div>
+                                <form action="/estudiante/EntregarTarea/{{idTarea}}" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="multimediaEstudiante" multiple/>
+                                    <div class="form-group mt-1 text-right">
+                                        <button type="submit" class="btn waves-effect waves-light btn-success mt-2">
+                                            <i class="fas fa-save mr-2"></i>Entregar
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -224,7 +188,7 @@
             {{/ifEquals}}
             {{#ifEquals estadoTarea "Atrasada"}}
             <div id="tareaAtrasada{{idTarea}}" class="modal">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-s">
                     <div class="modal-content">
                         <!--Salir-->
                         <div class="row">
@@ -236,25 +200,23 @@
                         <!--Titulo-->
                         <div class="row">
                             <div class="col text-center">
-                                <h1>{{tareaNombre}}</h1>
-                                <p>{{tareaDescripcion}}.</p>
+                                <h1>{{nombreTarea}}</h1>
+                                <p>{{descripcionTarea}}</p>
+                                <p class="text-danger text-center mt-2">Esta tarea esta marcada como atrasada, por lo cual se
+                                    podrá entregar, pero estara marcada que fue despues de la hora y fecha límite.</p>
                             </div>
-                            <hr>
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
                                 <h4 class="card-title">Archivos</h4>
-                                <form action="#" class="dropzone dz-clickable">
-                                    <div class="dz-default dz-message">
-                                        <span>Arrastra tus archivos o haz clic aquí.</span>
+                                <form action="/estudiante/EntregarTarea/{{idTarea}}" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="multimediaEstudiante" multiple/>
+                                    <div class="form-group mt-1 text-right">
+                                        <button type="submit" class="btn waves-effect waves-light btn-success mt-2">
+                                            <i class="fas fa-save mr-2"></i>Entregar
+                                        </button>
                                     </div>
                                 </form>
-                                <p class="text-danger text-center">Esta tarea esta marcada como atrasada, por lo cual se
-                                    podrá entregar, pero estara marcada que fue despues de la hora y fecha límite.</p>
-                                <div class="form-group text-right">
-                                    <button type="button" class="btn waves-effect waves-light btn-success"><i
-                                            class="fas fa-save mr-2"></i>Entregar</button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -456,7 +418,7 @@
                                                 {{/ifEquals}}
                                                 {{#ifEquals estadoTarea "Tardia"}}
                                                 <span class="mb-3 label  bg-primary mr-2">Entrega Tardia</span>
-                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaEntregada{{idTarea}}">
+                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaTardia{{idTarea}}">
                                                                 <i class="far fa-eye mr-2"></i>Consultar</a></span>
                                                 {{/ifEquals}}
                                                 {{#ifEquals estadoTarea "Pendiente"}}
@@ -466,7 +428,7 @@
                                                 {{/ifEquals}}
                                                 {{#ifEquals estadoTarea "Atrasada"}}
                                                 <span class="mb-3 label  bg-danger mr-2">Atrasada</span>
-                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaPendiente{{idTarea}}">
+                                                <span class="small"><a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#tareaAtrasada{{idTarea}}">
                                                                 <i class="fas fa-upload mr-2"></i> Subir Tarea</a></span>
                                                 {{/ifEquals}}
                                                 {{#ifEquals estadoTarea "No entregada"}}

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const render = require('./render');
+const uploadTareaEstudiante = require('../../middlewares/subirArchivosTareaEstudiante')
+const {crearCarpetaTareaEstudiante} = require('../../middlewares/crearDirectorios')
 
 router.get('/dashboardEstudiante', render.getDashboardAlumno);
 router.get('/misAsignaciones', render.getMisAsignaciones);
@@ -13,6 +15,9 @@ router.post('/Inscribirse', render.postInscribirse)
 router.get('/DescargarTemario/:idCurso', render.getDescargarTemario);
 router.get('/DescargarTareaCurso/:idTarea/:nombreArchivo', render.getDescargarArchivoTarea);
 router.get('/DescargarArchivoCurso/:idCurso/:nombreArchivo', render.getDescargarArchivoCurso);
+router.post('/EntregarTarea/:idTarea', crearCarpetaTareaEstudiante, uploadTareaEstudiante.array('multimediaEstudiante'), render.postEntregarTarea);
+router.get('/DescargarArchivoEntregado/:idTarea/:nombreArchivo', render.getDescargarArchivoEntregado);
+
 /* router.get('/', render.getVerTareas);
 router.get('/:id', render.getVerTarea);
 router.post('/', render.postAgregarTarea);

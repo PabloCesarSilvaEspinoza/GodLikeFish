@@ -165,6 +165,7 @@ module.exports = {
                 const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
+                const fechaActual = await Controller.getTiempoActual();
                 global.cursoActualID = cursoID;
                 console.log(global.cursoActualID);
                 res.render('ponente/p2_consultarCursoE1_v2', {
@@ -180,7 +181,8 @@ module.exports = {
                     totalLinks,
                     examenesCurso,
                     archivosAsignacionesPonente,
-                    publicacionesCurso
+                    publicacionesCurso,
+                    fechaActual
                 });
                 break;
 
