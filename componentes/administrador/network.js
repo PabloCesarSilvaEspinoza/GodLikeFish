@@ -15,7 +15,8 @@ router.post('/agregarCurso', crearCarpetaCurso, dobleInput, render.postAgregarCu
 router.get('/editarUsuarios/:id', render.getEditarUsuario);
 router.post('/editarUsuarios/:id', render.postEditarUsuario);
 
-
+router.get('/DescargarTarjetonUsuario/:idUsuario/:nombreTarjeton', render.getDescargarTarjetonUsuario);
 router.post('/ResolverProblema/:tipoProblema', render.postResolverProblema);
+router.post('/VerificarTarjetonUsuario', render.postVerificarTarjetonUsuario);
 
 module.exports = router;

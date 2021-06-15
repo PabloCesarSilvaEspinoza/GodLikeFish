@@ -94,8 +94,8 @@ module.exports = function (injectedStore) {
     }
 
     function listAvisosUsuario(id) {
-        const VIEW = 'ver_Avisos_Usuario';
-        const CLAUSE = `WHERE cursoID = ?`;
+        const VIEW = 'ver_Avisos_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
@@ -117,11 +117,12 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
-    function listAsignacionesEstudiante(id) {
+    /* function listAsignacionesEstudiante(id) {
         const VIEW = 'ver_Asignaciones_Curso_Estudiante';
         const CLAUSE = `WHERE idUsuario= 29 and idCurso = ? `;
         return store.get(VIEW, CLAUSE, id);
-    }
+    } */
+
     async function getMiPerfil(id) {
         const VIEW = 'ver_Usuarios';
         const CLAUSE = `WHERE id = ?`;
@@ -138,6 +139,37 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    function listAsignacionesEstudiante(idUsuario, idCurso) {
+        const PROCEDURE = `CALL ver_Estado_Asignaciones_Estudiante(${idUsuario}, ${idCurso})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function listArchivosTareaCurso(idCurso) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function catalogPublicacionesCursoEstudiante(idUsuario, idCurso) {
+        const PROCEDURE = `CALL ver_Historial_Publicaciones_Estudiante(${idUsuario}, ${idCurso})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function insertTareaEstudiante(idUsuario, idTarea) {
+        const PROCEDURE = `CALL entregar_Tarea(${idUsuario}, ${idTarea})`;
+        return store.insert(PROCEDURE);
+    }
+
+    function insertMultimediaTareaEstudiante(idEntrega, nombreMultimediaEstudiante) {
+        const PROCEDURE = `CALL agregar_Archivos_Multimedia_Tarea_Estudiante( ${idEntrega}, '${nombreMultimediaEstudiante}')`;
+        return store.upsert(PROCEDURE);
+    }
+
+    function listArchivosEntregaEstudiante(idCurso) {
+        const VIEW = 'ver_Archivos_Entrega_Estudiante';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
 
     return {
         listDatosCursoUsuario,
@@ -157,6 +189,11 @@ module.exports = function (injectedStore) {
         listTarea,
         getCursoActual,
         getConsultarEstadoCursoEstudiante,
-        insertCalificarExperiencia
+        insertCalificarExperiencia,
+        listArchivosTareaCurso,
+        catalogPublicacionesCursoEstudiante,
+        insertTareaEstudiante,
+        insertMultimediaTareaEstudiante,
+        listArchivosEntregaEstudiante,
     };
 }

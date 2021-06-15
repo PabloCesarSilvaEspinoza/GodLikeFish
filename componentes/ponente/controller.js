@@ -14,9 +14,8 @@ module.exports = function (injectedStore) {
         } = body;
 
         const PROCEDURE = `CALL agregar_Tarea( 
-            ${idCurso}, '${nombreTarea}', '${fechaLimiteTarea}', '${horaLimiteTarea}', '${descripcionTarea}', ${atemporalCurso}
+            ${idCurso}, '${nombreTarea}', '${fechaLimiteTarea} ${horaLimiteTarea}', '${descripcionTarea}', ${atemporalCurso}
             )`;
-
         return store.upsert(PROCEDURE);
     }
 
@@ -161,6 +160,17 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
+    function listPublicacionesCurso(idCurso) {
+        const VIEW = 'ver_Historial_Publicaciones';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function getTiempoActual() {
+        const VIEW = 'ver_Tiempo_Actual'
+        return store.get(VIEW)
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -189,5 +199,7 @@ module.exports = function (injectedStore) {
         getArchivosTarea,
         getArchivosTareaCurso,
         insertArchivosMultimediaCurso,
+        listPublicacionesCurso,
+        getTiempoActual
     };
 }

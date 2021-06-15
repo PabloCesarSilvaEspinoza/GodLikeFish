@@ -12,8 +12,6 @@ module.exports = {
         const historialCursos = await Controller.getHistorialCursosEstudiante(req.user.id);
         const totalHistorialCursos = historialCursos.length;
         const cursoActualEstudiante = await Controller.getCursoActual(req.user.id);
-
-        console.log(cursoActualEstudiante);
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
@@ -79,11 +77,7 @@ module.exports = {
     },
 
     postInscribirse: async function (req, res, next){
-        console.log(req.user.id);
-        console.log(req.body.idCurso);
-        const respuestainsertEstudianteCurso = await Controller.insertEstudianteCurso(req.user.id, req.body.idCurso);
-        const estadoInscripcion = respuestainsertEstudianteCurso[0][0].Respuesta;
-        console.log(estadoInscripcion);
+        await Controller.insertEstudianteCurso(req.user.id, req.body.idCurso);
         res.redirect('/estudiante/dashboardEstudiante');
     },
     
@@ -93,6 +87,41 @@ module.exports = {
         const respuestaBD = await Controller.insertCalificarExperiencia(req.user.id, req.params.idCurso, req.body);
         console.log(respuestaBD);
         res.redirect('/alumno/a3_consultarCursoE3');
+    },
+
+    getDescargarArchivoTarea: async function (req, res, next) {
+        const tareaID = req.params.idTarea;
+        const archivoNombre = req.params.nombreArchivo;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/tareas');
+        const archivoRuta = `${raiz}/${tareaID}/${archivoNombre}`;
+        res.download(archivoRuta)
+    },
+
+    getDescargarArchivoCurso: async function (req, res, next) {
+        const cursoID = req.params.idCurso;
+        const archivoNombre = req.params.nombreArchivo;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos');
+        const archivoRuta = `${raiz}/${cursoID}/${archivoNombre}`;
+        res.download(archivoRuta)
+    },
+
+    postEntregarTarea: async function(req, res, next){
+        const respuestaTareaEstudiante = await Controller.insertTareaEstudiante(req.user.id, req.params.idTarea);
+        const entregaID = respuestaTareaEstudiante[0][0].ID;
+        for (const file of req.files) {
+            const nombreMultimediaEstudiante = file.originalname;
+            await Controller.insertMultimediaTareaEstudiante(entregaID, nombreMultimediaEstudiante);
+        }
+        res.redirect('back');
+    },
+
+    getDescargarArchivoEntregado: async function (req, res, next) {
+        const usuarioID = req.user.id;
+        const nombreArchivo = req.params.nombreArchivo;
+        const idTarea = req.params.idTarea;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/tareas_estudiantes');
+        const archivoRuta = `${raiz}/${usuarioID}/${idTarea}/${nombreArchivo}`;
+        res.download(archivoRuta)
     },
 
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
@@ -127,8 +156,15 @@ module.exports = {
                 const avisosCurso = await Controller.listAvisosUsuario(cursoID);
                 const documentosCurso = await Controller.listDocumentos(cursoID);
                 const linksCurso = await Controller.listLinks(cursoID); 
-                const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(cursoID);
+                const respuestaAsignacionesEstudiante = await Controller.listAsignacionesEstudiante(usuarioID, cursoID);
+                const asignacionesEstudiante = respuestaAsignacionesEstudiante[0];
+                const archivosEntregasEstudiante = await Controller.listArchivosEntregaEstudiante(cursoID);
+                const archivosAsignaciones = await Controller.listArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
+                const respuestaPublicacionesCursoEstudiante = await Controller.catalogPublicacionesCursoEstudiante(usuarioID, cursoID);
+                const publicacionesCursoEstudiante = respuestaPublicacionesCursoEstudiante[0];
+                const totalDocumentos = documentosCurso.length;
+                const totalLinks = linksCurso.length;
                 res.render('alumno/a3_consultarCursoE2', {
                     estudiante:true,
                     chartist:true,
@@ -143,6 +179,12 @@ module.exports = {
                     linksCurso,
                     asignacionesEstudiante,
                     examenesCurso,
+                    totalDocumentos,
+                    totalLinks,
+                    archivosAsignaciones,
+                    publicacionesCursoEstudiante,
+                    archivosEntregasEstudiante,
+                    usuarioID,
                 });
                 break;
         

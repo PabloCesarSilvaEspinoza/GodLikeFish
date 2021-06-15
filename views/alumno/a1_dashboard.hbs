@@ -18,20 +18,24 @@
                 </div>
                 {{#cursoActualEstudiante}}
                 <div class="card ml-2 mr-2">
-                    <img src="{{fotoCurso}}" class="rounded" alt="imagen curso">
-                    <h5 class="mt-3 mb-2">{{nombreCurso}}</h5>
-                    <small class="text-center mb-1">{{horaInicioCurso}} - {{horaFinCurso}}</small>
-                    <div class="text-center">
-                        <h6 class="text-muted"><i class="fas fa-users mr-2 mb-2"></i>38/40</h6>
-                    </div>
-                    <div class="div no-block text-center">
-                        <span class="mb-3 label label-rounded bg-info">{{nombreArea}}</span>
-                        <span class="mb-3 label label-rounded label-warning">{{tipoCurso}}</span>
-                        <span class="mb-3 label label-rounded bg-danger">{{modalidadCurso}}</span>
-                    </div>
-                    <div class="card-body text-center">
-                        <a href="/estudiante/curso/{{idCurso}}" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
-                        <i class="fas fa-external-link-square-alt mr-2"></i>Ver detalles</a>
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" class="rounded-circle" height="200" alt="Curso">
+                            <h5 class="mt-3 mb-2">{{nombreCurso}}</h5>
+                            <small class="text-center mb-1">{{horaInicioCurso}} - {{horaFinCurso}}</small>
+                            <div class="text-center">
+                                <h6 class="text-muted"><i class="fas fa-users mr-2 mb-2"></i>{{totalEstudiantesCurso}}</h6>
+                            </div>
+                            <div class="div no-block text-center">
+                                <span class="mb-3 label label-rounded bg-info">{{nombreArea}}</span>
+                                <span class="mb-3 label label-rounded label-warning">{{tipoCurso}}</span>
+                                <span class="mb-3 label label-rounded bg-danger">{{modalidadCurso}}</span>
+                            </div>
+                            <div class="card-body text-center">
+                                <a href="/estudiante/curso/{{idCurso}}" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                <i class="fas fa-external-link-square-alt mr-2"></i>Ver detalles</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{/cursoActualEstudiante}}
@@ -56,7 +60,7 @@
                         {{#each cursosDisponibles}}
                         <div class="col-md-3">
                             <div class="card ">
-                                <!-- <img src="../../assets/cursos/{{fotoCurso}}" class="rounded" alt="Imagen del curso {{nombreCurso}}"> -->
+                                <!-- <img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" class="rounded-circle" height="200" alt="Curso"> -->
                                 <img src="../../assets/images/cursoImg2.JPG" class="rounded" alt="imagen curso 1">
                                 <h5 class="mt-3 mr-2 text-center">{{nombreCurso}}</h5>
                                 <small class="text-center">( {{horaInicioCUrso}} - {{horaFinCurso}} )</small>

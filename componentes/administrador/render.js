@@ -10,6 +10,7 @@ module.exports = {
     getDashboardAdministrador: async function (req, res, next) {
         const errores = await Controller.listErrores();
         const numeroErrores = errores.length;
+        const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
         res.render('administrador/d1_dashboard_v2', {
             administrador: true,
             graficasAdministrador : true,
@@ -20,6 +21,7 @@ module.exports = {
             }],
             errores,
             numeroErrores,
+            usuariosSinVerificar
         });
     },
     getAdministrarCursos: async function (req, res, next) {
@@ -182,6 +184,20 @@ module.exports = {
 
     postResolverProblema: async function(req, res, next){
         await Controller.upsertResolverProblema(req.body.idProblema, req.params.tipoProblema)
+        res.redirect('back');
+    },
+
+    getDescargarTarjetonUsuario: async function (req, res, next) {
+        const usuarioID = req.params.idUsuario;
+        const tarjetonNombre = req.params.nombreTarjeton;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/usuarios');
+        const archivoRuta = `${raiz}/${usuarioID}/${tarjetonNombre}`;
+        res.download(archivoRuta)
+    },
+
+    postVerificarTarjetonUsuario: async function (req, res, next) {
+        const { idUsuario } = req.body;
+        await Controller.updateVerificarTarjetonUsuario(idUsuario);
         res.redirect('back');
     },
 };

@@ -191,11 +191,21 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Ponentes';
         return store.list(VIEW);
     }
+
     function listAcreedoresDiplomas() {
         const VIEW = 'ver_acreedores_diplomas';
         return store.list(VIEW);
     }
 
+    function UsuariosSinVerificar() {
+        const VIEW = 'ver_Usuarios_Sin_Verificar';
+        return store.list(VIEW);
+    }
+
+    function updateVerificarTarjetonUsuario(usuarioID) {
+        const PROCEDURE = `CALL verificar_Tarjeton_Usuario(${usuarioID})`
+        return store.upsert(PROCEDURE);
+    }
 
     return {
         getUltimoCurso,
@@ -223,5 +233,7 @@ module.exports = function (injectedStore) {
         listErrores,
         upsertResolverProblema,
         updateCurso,
+        UsuariosSinVerificar,
+        updateVerificarTarjetonUsuario
     };
 }

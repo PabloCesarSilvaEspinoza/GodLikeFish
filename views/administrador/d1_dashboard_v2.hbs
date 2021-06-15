@@ -81,110 +81,20 @@
                 </div>
                 <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:610px;"
                     data-ps-id="96370757-1752-5407-955d-d2618da54798">
-                    <div class="d-flex flex-row comment-row mt-0" data-toggle="modal" data-target="#verificarUsuario">
-                        <div class="p-2"><img src="../../assets/images/users/8.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
+                    {{#each usuariosSinVerificar}}
+                        <div class="d-flex flex-row comment-row mt-0" data-toggle="modal" data-target="#verificarUsuario{{idUsuario}}">
+                            <div class="p-2"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoUsuario}}" alt="user" width="50"class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">{{nombreUsuario}}</h6>
+                                <span class="mb-3 label label-rounded label-success">{{areaUsuario}}</span>
+                                <span class="mb-3 label label-rounded label-warning">{{puestoUsuario}}</span>
+                                <span class="mb-3 label label-rounded label-info">{{antiguedadUsuario}}</span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-left mt-2">{{matriculaUsuario}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/7.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/6.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/5.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/4.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row comment-row mt-0">
-                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">James Anderson</h6>
-                            <span class="mb-3 label label-rounded label-success">Area</span>
-                            <span class="mb-3 label label-rounded label-warning">Puesto</span>
-                            <span class="mb-3 label label-rounded label-info">Antiguedad</span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-left mt-2">Matricula: 00157546511</span>
-                            </div>
-                        </div>
-                    </div>
+                    {{/each}}
                     <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                         <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                     </div>
@@ -322,7 +232,7 @@
                     {{#each errores}}
                         {{#if tipoProblema}}
                         <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-2"></div><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoUsuario}}" alt="Usuario" class="rounded-circle mr-2" width="50" height="50">
+                            <div class="p-2"><img src="../../assets\images\users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
                             <div class="comment-text w-100">
                                 <h6 class="font-medium">{{nombreUsuario}}n</h6>
                                 <span class="mb-3 d-block">{{asuntoProblema}}</span>
@@ -338,7 +248,8 @@
                         </div>
                         {{else}}
                         <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-2"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoUsuario}}" alt="user" width="50" height="50" class="rounded-circle"></div>
+                            <!--<div class="p-2"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoUsuario}}" alt="user" width="50" height="50" class="rounded-circle"></div>-->
+                            <div class="p-2"><img src="../../assets\images\users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
                             <div class="comment-text w-100">
                                 <h6 class="font-medium">{{nombreUsuario}}n</h6>
                                 <span class="mb-3 d-block">{{asuntoProblema}}</span>
@@ -415,7 +326,8 @@
         {{/if}}
     {{/each}}
     <!-- modal verificar Usuario -->
-    <div id="verificarUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="marcarResueltoLabel"
+    {{#each usuariosSinVerificar}}
+    <div id="verificarUsuario{{idUsuario}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="marcarResueltoLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -425,22 +337,24 @@
                 </div>
                 <div class="modal-body text-center">
                     <div>
-                        <h4 class="card-title mt-2" class="center">Maria Yaneth Sanches Vega</h4></label>
+                        <h4 class="card-title mt-2" class="center">{{nombreUsuario}}</h4></label>
 
-                    </div>
-                    <div class="card-body text-center">
-                        <a href="#" class="btn waves-effect waves-light btn-rounded btn-xs btn-info">
-                            <i class="fas fa-download"></i> Descargar Tarjetón</a>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info waves-effect" data-dismiss="modal"><i
+                    <a href="/administrador/DescargarTarjetonUsuario/{{idUsuario}}/{{tarjetonUsuario}}" class="btn btn-success waves-effect">
+                            <i class="fas fa-download"></i> Descargar Tarjetón</a>
+                    <form action="../administrador/VerificarTarjetonUsuario" method="POST">
+                        <input type="hidden" name="idUsuario" value="{{idUsuario}}">
+                        <button type="submit" class="btn btn-info waves-effect"><i
                             class="fas fa-check mr-2"></i>Verificar</button>
-                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><i
-                            class="fas fa-times mr-2"></i>Denegar</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><i
+                                class="fas fa-times mr-2"></i>Denegar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    {{/each}}
 </div>

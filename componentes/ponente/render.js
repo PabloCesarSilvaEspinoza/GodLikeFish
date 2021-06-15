@@ -162,8 +162,10 @@ module.exports = {
                 const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
                 const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
+                const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
+                const fechaActual = await Controller.getTiempoActual();
                 global.cursoActualID = cursoID;
                 console.log(global.cursoActualID);
                 res.render('ponente/p2_consultarCursoE1_v2', {
@@ -179,6 +181,8 @@ module.exports = {
                     totalLinks,
                     examenesCurso,
                     archivosAsignacionesPonente,
+                    publicacionesCurso,
+                    fechaActual
                 });
                 break;
 
