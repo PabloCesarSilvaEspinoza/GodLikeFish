@@ -68,6 +68,6 @@ module.exports = {
                 }
             });
         }
-        return next();
+        return next()
     },
 };

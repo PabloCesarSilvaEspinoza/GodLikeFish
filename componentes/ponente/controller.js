@@ -20,21 +20,16 @@ module.exports = function (injectedStore) {
     }
 
     function insertMultimediaTarea(body) {
-        const {
-            tareaID, nombreMultimedia, linkMultimedia
-        } = body;
-        
-        const PROCEDURE = `CALL agregar_Multimedia_Tarea( 
-            ${tareaID}, '${nombreMultimedia}', '${linkMultimedia}'
-            )`;
-        
+        const { tareaID, nombreMultimedia } = body;
+        const PROCEDURE = `CALL agregar_Multimedia_Tarea(${tareaID}, '${nombreMultimedia}')`;
         return store.upsert(PROCEDURE);
     }
 
     function insertExamen(body) {
         const { idCurso, nombreExamen, linkExamen, fechaAplicacionExamen, horaAplicacionExamen } = body; 
-        const PROCEDURE = `CALL agregar_Examen(${idCurso}, '${nombreExamen}','${linkExamen}', '${fechaAplicacionExamen} ${horaAplicacionExamen}')`
-        console.log(PROCEDURE);
+        const PROCEDURE = `CALL agregar_Examen(
+            ${idCurso}, '${nombreExamen}','${linkExamen}', '${fechaAplicacionExamen} ${horaAplicacionExamen}'
+            )`
         return store.insert(PROCEDURE);
     }
 
@@ -171,6 +166,40 @@ module.exports = function (injectedStore) {
         return store.get(VIEW)
     }
 
+    function getDatosGeneralesPonente(idPonente) {
+        const VIEW = 'ver_Datos_Generales_Ponente'
+        const CLAUSE = `WHERE idPonente = ?`;
+        return store.get(VIEW, CLAUSE, idPonente)
+    }
+
+    function getNombresCursosActualesPonente(idPonente) {
+        const VIEW = 'ver_Nombres_Cursos_Actuales_Ponente'
+        const CLAUSE = `WHERE idPonente = ?`;
+        return store.get(VIEW, CLAUSE, idPonente)
+    }
+
+    function getTiempoActual() {
+        const VIEW = 'ver_Tiempo_Actual'
+        return store.get(VIEW)
+    }
+
+    function getMiPerfil(idUsuario) {
+        const VIEW = 'ver_Usuarios';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+
+    function listAsignacionesPendientesPonente(idPonente) {
+        const VIEW = 'ver_Asignaciones_Pendientes_Ponente';
+        const CLAUSE = `WHERE idPonente = ? LIMIT 3`;
+        return store.get(VIEW, CLAUSE, idPonente);
+    }
+
+    function catalogPermisosTarea(idPonente, idTarea) {
+        const PROCEDURE = `CALL comprobar_Permisos_Tarea(${idPonente}, ${idTarea})`
+        return store.catalog(PROCEDURE);
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -200,6 +229,11 @@ module.exports = function (injectedStore) {
         getArchivosTareaCurso,
         insertArchivosMultimediaCurso,
         listPublicacionesCurso,
-        getTiempoActual
+        getTiempoActual,
+        getDatosGeneralesPonente,
+        getNombresCursosActualesPonente,
+        getMiPerfil,
+        listAsignacionesPendientesPonente,
+        catalogPermisosTarea,
     };
 }

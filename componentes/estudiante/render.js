@@ -5,13 +5,18 @@ const Controller = require('./index');
 module.exports = {
 
     getDashboardAlumno: async function (req, res, next) {
-        const miPerfil = await Controller.getMiPerfil(req.user.id);
-        const respuestaBD = await Controller.listCursosDisponibles(req.user.id);
+        const usuarioID = req.user.id;
+        const miPerfil = await Controller.getMiPerfil(usuarioID);
+        const respuestaBD = await Controller.listCursosDisponibles(usuarioID);
         const cursosDisponibles = respuestaBD[0];
         const totalCursos = cursosDisponibles.length;
-        const historialCursos = await Controller.getHistorialCursosEstudiante(req.user.id);
+        const historialCursos = await Controller.getHistorialCursosEstudiante(usuarioID);
         const totalHistorialCursos = historialCursos.length;
-        const cursoActualEstudiante = await Controller.getCursoActual(req.user.id);
+        const cursoActualEstudiante = await Controller.getCursoActual(usuarioID);
+        const respuestaPosiblesCursosEstudiante = await Controller.catalogPosiblesCursosEstudiante(usuarioID);
+        const posiblesCursosEstudiante = respuestaPosiblesCursosEstudiante[0];
+        const respuestaResumenEstudiante = await Controller.catalogResumenEstudiante(usuarioID);
+        const resumenEstudiante = respuestaResumenEstudiante[0];
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
@@ -19,44 +24,30 @@ module.exports = {
             totalCursos,
             historialCursos,
             totalHistorialCursos,
-            cursoActualEstudiante
+            cursoActualEstudiante,
+            posiblesCursosEstudiante,
+            resumenEstudiante,
         });
     },
     getMisAsignaciones: async function (req, res, next) {
+        const usuarioID = req.user.id;
+        /* const respuestaAsignacionesTotalesAsignadasEstudiante = await Controller.catalogAsignacionesTotalesAsignadasEstudiante(usuarioID);
+        const respuestaAsignacionesTotalesCompletadasEstudiante = await Controller.catalogAsignacionesTotalesCompletadasEstudiante(usuarioID);
+        const asignacionesTotalesAsignadasEstudiante = respuestaAsignacionesTotalesAsignadasEstudiante[0];
+        const asignacionesTotalesCompletadasEstudiante = respuestaAsignacionesTotalesCompletadasEstudiante[0]; */
+        const respuestaAsignacionesTotalesEstudiante = await Controller.catalogAsignacionesTotalesEstudiante(usuarioID)
+        const asignacionesTotalesEstudiante = respuestaAsignacionesTotalesEstudiante[0];
+        const respuestaArchivosAsignacionesTotales = await Controller.catalogArchivosAsignacionesTotales(usuarioID);
+        const archivosAsignacionesTotales = respuestaArchivosAsignacionesTotales[0];
+        const archivosEntregasTotalesEstudiante = await Controller.listArchivosEntregasTotalesEstudiante(usuarioID);
         res.render('alumno/a2_misAsignaciones', {
-            estudiante:true
+            estudiante:true,
+            asignacionesTotalesEstudiante,
+            archivosAsignacionesTotales,
+            archivosEntregasTotalesEstudiante,
         }); 
     },
 
-    getConsultarCursoE2: async function (req, res, next) {
-        const usuarioID = (req.user.id);
-        // const usuarioID = (4);
-        const datosCursoUsuario= await Controller.listDatosCursoUsuario(25); 
-        const AvisosUsuario = await Controller.listAvisosUsuario(45); 
-        const documentosCurso = await Controller.listDocumentos(40);
-        const linksCurso = await Controller.listLinks(40); 
-        const asignacionesEstudiante = await Controller.listAsignacionesEstudiante(43);
-        const examenesCurso = await Controller.listExamenes(35);
-        const tareas = await Controller.listTarea();
-
-        res.render('alumno/a3_consultarCursoE2', {
-            estudiante:true,
-            chartist:true,
-            c3:true,
-            dropzone:true,
-            dataTables: true,
-            alerta: true,
-            select2: true,
-            datosCursoUsuario,
-            AvisosUsuario,
-            documentosCurso,
-            linksCurso,
-            examenesCurso,
-            asignacionesEstudiante,
-            tareas
-
-        });
-    },
     getConsultarCursoE3: async function (req, res, next) {
         res.render('alumno/a3_consultarCursoE3', {
             estudiante:true
@@ -124,6 +115,16 @@ module.exports = {
         res.download(archivoRuta)
     },
 
+    getCatalogoCursos: async function (req, res, next) {
+        const respuestaCatalogoCursosEstudiante = await Controller.catalogCatalogoCursosEstudiante(req.user.id);
+        const catalogoCursosEstudiante = respuestaCatalogoCursosEstudiante[0];
+        res.render('alumno/a5_catalogoCursos', {
+            estudiante: true,
+            dataTables: true,
+            catalogoCursosEstudiante
+        })
+    },
+
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -167,9 +168,7 @@ module.exports = {
                 const totalLinks = linksCurso.length;
                 res.render('alumno/a3_consultarCursoE2', {
                     estudiante:true,
-                    chartist:true,
                     c3:true,
-                    dropzone:true,
                     dataTables: true,
                     alerta: true,
                     select2: true,

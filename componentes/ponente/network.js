@@ -3,12 +3,12 @@ const router = express.Router();
 const uploadTarea = require('../../middlewares/subirArchivosTarea')
 const uploadArchivos = require('../../middlewares/subirArchivosMultimediaCurso')
 const {crearCarpetaTarea} = require('../../middlewares/crearDirectorios')
+const {permisosTarea} = require('../../middlewares/compropobarPermisos')
 const render = require('./render');
 
 router.get('/dashboardPonente', render.getDashboardPonente);
-router.get('/consultarCursoPEII', render.getConsultarCursoPE2);
 router.get('/consultarlumnos', render.getConsultarAlumnos);
-router.get('/calificarTarea', render.getCalificarTarea);
+router.get('/calificarTarea/:idTarea', permisosTarea, render.getCalificarTarea);
 router.get('/soporte', render.getSoporte);
 router.post('/AgregarExamen', render.postAgregarExamen);
 router.get('/curso/:idCurso', render.getConsultarEstadoCursoPonente);

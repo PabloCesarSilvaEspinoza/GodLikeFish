@@ -1,152 +1,133 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="card border-primary">
-                <div class="card-header bg-primary">
-                    <h2 class="mb-0 text-white"><i class="fas fa-star mr-2"></i>Nombre de la Tarea #1 - 21/12/2020,
-                        17:00</h2>
-                </div>
-                <div class="card-body">
-                    <p class="card-text"><i class="far fa-comment-alt mr-2"></i>Lorem ipsum dolor sit amet consectetur
-                        adipiscing elit mattis a conubia tincidunt, aliquet vulputate orci augue sociosqu tempor cras
-                        molestie scelerisque ullamcorper. Platea sollicitudin aliquet aliquam quis mollis inceptos
-                        hendrerit dignissim, proin vitae arcu congue rhoncus orci et dictumst, iaculis consequat per
-                        sociis posuere natoque vivamus. Tempor cum nulla nam dictumst sagittis senectus felis duis,
-                        vulputate aliquam malesuada purus congue sociosqu magnis blandit, tincidunt dignissim nisl
-                        molestie interdum sapien dictum.</p>
-                </div>
-            </div>
-            <div class="card">
+    <!--modales-->
+    <div id="calificarAsignacion" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table id="zero_config" class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Matrícula</th>
-                                                    <th>Nombre</th>
-                                                    <th>Fecha y hora de entrega</th>
-                                                    <th>Archivos</th>
-                                                    <th>Estado</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>9817921312</td>
-                                                    <td>Aarón Isaí Pulido Reséndiz</td>
-                                                    <td>11/12/2021 , 17:45</td>
-                                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 1</a></td>
-                                                    <td><span class="label label-info">Entregada</span></td>
-                                                    <td><button type="button"
-                                                            class="btn waves-effect waves-light btn-success btn-rounded"
-                                                            data-toggle="modal" data-target="#myModal1"><i
-                                                                class="fas fa-check mr-2"></i>Calificar</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>232321312</td>
-                                                    <td>Pablo</td>
-                                                    <td>N/A</td>
-                                                    <td>N/A</td>
-                                                    <td><span class="label label-danger">No entregada</span></td>
-                                                    <td>N/A</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7862342</td>
-                                                    <td>Ricardo</td>
-                                                    <td>15/12/2021 , 17:45</td>
-                                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 2</a></td>
-                                                    <td><span class="label label-warning">Entrega tardía</span></td>
-                                                    <td><button type="button"
-                                                            class="btn waves-effect waves-light btn-success btn-rounded"
-                                                            data-toggle="modal" data-target="#myModal3"><i
-                                                                class="fas fa-check mr-2"></i>Calificar</button></td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Matrícula</th>
-                                                    <th>Nombre</th>
-                                                    <th>Fecha y hora de entrega</th>
-                                                    <th>Archivos</th>
-                                                    <th>Estado</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h4>Calificar <span class="small">Entrega</span></h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h6 class="mb-0 font-medium mt-2">¿Le parece que el alumno ha completado esta asignación correctamente?</h6>
+                                        <button type="submit" class="btn btn-info mt-3"><i
+                                            class="fas fa-check mr-2"></i>Si</button>
+                                        <button type="submit" class="btn btn-danger mt-3"><i
+                                                class="fas fa-times mr-2"></i>No</button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="myModal1" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!--Salir-->
-                <div class="row">
-                    <div class="col text-right">
-                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
+    <!--terminan modales-->
+    
+    <div class="row">
+        <!--primera columna-->
+        <div class="col-md-12">
+            <div class="card" style="border-radius: 10px">
+                <div class="card-header bg-primary" style="border-radius: 10px">
+                    <h4 class="mb-0 text-white"><i class="fas fa-star mr-2"></i>Nombre de la Tarea #1 - 21/12/2020, 17:00</h4>
                 </div>
-                <!--Titulo-->
-                <div class="row">
-                    <div class="col text-center">
-                        <h2 class="modal-title" id="myModalLabel">Calificar Tarea</h2>
+                <div class="card-body">
+                    <p class="card-text"><i class="far fa-comment-alt mr-2"></i>Lorem ipsum dolor sit amet consectetur adipiscing elit mattis a conubia tincidunt, aliquet vulputate orci augue sociosqu tempor cras molestie scelerisque ullamcorper. Platea sollicitudin aliquet aliquam quis mollis inceptos hendrerit dignissim, proin vitae arcu congue rhoncus orci et dictumst, iaculis consequat per sociis posuere natoque vivamus. Tempor cum nulla nam dictumst sagittis senectus felis duis, vulputate aliquam malesuada purus congue sociosqu magnis blandit, tincidunt dignissim nisl molestie interdum sapien dictum.</p>
+                    <div class="table-responsive">
+                        <table id="zero_config" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Matrícula</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha y hora de entrega</th>
+                                    <th>Archivos</th>
+                                    <th>Estado</th>
+                                    <th>Calificación</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1234</td>
+                                    <td>Nombre completo usuario con apellidos</td>
+                                    <td>11/12/2021 , 17:45</td>
+                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 1</a></td>
+                                    <td><span class="label label-info">Entregada</span></td>
+                                    <td><span class="label bg-primary">Sin revisar</span></td>
+                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>Nombre completo usuario con apellidos</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td><span class="label label-danger">No entregada</span></td>
+                                    <td><span class="label bg-dark"><i class="fas fa-times mr-2"></i>Mal</span></td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>123456</td>
+                                    <td>Nombre completo usuario con apellidos</td>
+                                    <td>15/12/2021 , 17:45</td>
+                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 2</a></td>
+                                    <td><span class="label label-warning">Entrega tardía</span></td>
+                                    <td><span class="label bg-primary">Sin revisar</span></td>
+                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>1234567</td>
+                                    <td>Nombre completo usuario con apellidos</td>
+                                    <td>11/12/2021 , 17:45</td>
+                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 1</a></td>
+                                    <td><span class="label label-info">Entregada</span></td>
+                                    <td><span class="label bg-cyan"><i class="fas fa-check mr-2"></i>Bien</span></td>
+                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>12345678</td>
+                                    <td>Nombre completo usuario con apellidos</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td><span class="label label-danger">No entregada</span></td>
+                                    <td><span class="label bg-dark"><i class="fas fa-times mr-2"></i>Mal</span></td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>123456789</td>
+                                    <td>Nombre completo usuario con apellidos</td>
+                                    <td>15/12/2021 , 17:45</td>
+                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 2</a></td>
+                                    <td><span class="label label-warning">Entrega tardía</span></td>
+                                    <td><span class="label bg-cyan"><i class="fas fa-check mr-2"></i>Bien</span></td>
+                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Matrícula</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha y hora de entrega</th>
+                                    <th>Archivos</th>
+                                    <th>Estado</th>
+                                    <th>Calificación</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
-                    <hr>
-                </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <h4 class="text-center">¿Le parece correcta la tarea entregada por el estudiante <u><b>Aarón
-                                    Isaí Pulido Reséndiz</b></u>?</h4>
-                    </div>
-                </div>
-                <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-success waves-success btn-rounded" data-dismiss="modal"
-                        style="width: 100%;"><i class="fas fa-check-circle mr-2"></i>Si</button>
-                    <button type="button" class="btn btn-warning waves-warning btn-rounded" data-dismiss="modal"
-                        style="width: 100%;"><i class="fas fa-times-circle mr-2"></i>No</button>
                 </div>
             </div>
         </div>
     </div>
-    <div id="myModal3" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!--Salir-->
-                <div class="row">
-                    <div class="col text-right">
-                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                </div>
-                <!--Titulo-->
-                <div class="row">
-                    <div class="col text-center">
-                        <h2 class="modal-title" id="myModalLabel">Calificar Tarea</h2>
-                    </div>
-                    <hr>
-                </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <h4 class="text-center">¿Le parece correcta la tarea entregada por el estudiante
-                            <u><b>Ricardo</b></u>?</h4>
-                    </div>
-                </div>
-                <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-success waves-success btn-rounded" data-dismiss="modal"
-                        style="width: 100%;"><i class="fas fa-check-circle mr-2"></i>Si</button>
-                    <button type="button" class="btn btn-warning waves-warning btn-rounded" data-dismiss="modal"
-                        style="width: 100%;"><i class="fas fa-times-circle mr-2"></i>No</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>

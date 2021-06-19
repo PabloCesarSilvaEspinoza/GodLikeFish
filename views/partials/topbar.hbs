@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#">
+                    <a class="nav-link dropdown-toggle" href="/estudiante/misAsignaciones">
                         <i class="fas fa-feather font-20 mr-2"></i>Asignaciones
                     </a>
                 </li>
@@ -51,12 +51,12 @@
                 {{#miPerfil}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted  pro-pic" href="" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"><img src="{{fotoURL}}" alt="user"
+                        aria-haspopup="true" aria-expanded="false"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoURL}}" alt="user"
                             class="rounded-circle" width="31"></a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown">
                         <span class="with-arrow"><span class="bg-dark"></span></span>
                         <div class="d-flex no-block align-items-center p-15 bg-dark text-white m-b-10">
-                            <div class=""><img src="{{fotoURL}}" alt="user" class="img-circle" width="60"></div>
+                            <div class=""><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoURL}}" alt="user" class="img-circle" width="60"></div>
                             <div class="m-l-10">
                                 <h4 class="m-b-0">{{nombres}} {{pApellido}} {{sApellido}}</h4>
                                 <p class="m-b-0">{{correo}}</p>
@@ -97,18 +97,19 @@
                         <i class="fas fa-info font-20 mr-2"></i>Ayuda
                     </a>
                 </li>
+                {{#miPerfil}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted pro-pic" href="" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user"
+                        aria-haspopup="true" aria-expanded="false"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoURL}}" alt="user"
                             class="rounded-circle" width="31"></a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown">
                         <span class="with-arrow"><span class="bg-dark"></span></span>
                         <div class="d-flex no-block align-items-center p-15 bg-dark text-white m-b-10">
-                            <div class=""><img src="../../assets/images/users/1.jpg" alt="user" class="img-circle"
+                            <div class=""><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoURL}}" alt="user" class="img-circle"
                                     width="60"></div>
                             <div class="m-l-10">
-                                <h4 class="m-b-0">Nombre Usuario</h4>
-                                <p class="m-b-0">correoUsuario@gmail.com</p>
+                                <h4 class="m-b-0">{{nombres}} {{pApellido}} {{sApellido}}</h4>
+                                <p class="m-b-0">{{correo}}</p>
                             </div>
                         </div>
                         <a class="dropdown-item" href="#"><i class="ti-user m-r-5 m-l-5"></i>
@@ -120,6 +121,7 @@
                             Sesión</a>
                     </div>
                 </li>
+                {{/miPerfil}}
             </ul>
         </div>
         {{/if}}

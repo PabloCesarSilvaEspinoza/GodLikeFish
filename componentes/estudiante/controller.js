@@ -125,7 +125,7 @@ module.exports = function (injectedStore) {
 
     async function getMiPerfil(id) {
         const VIEW = 'ver_Usuarios';
-        const CLAUSE = `WHERE id = ?`;
+        const CLAUSE = `WHERE idUsuario = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
     function listExamenes(idCurso) {
@@ -171,6 +171,47 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
+    function catalogPosiblesCursosEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Posibles_Cursos_Disponibles(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogResumenEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Resumen_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogCatalogoCursosEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Catalogo_Cursos_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    /* function catalogAsignacionesTotalesAsignadasEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Asignaciones_Totales_Asignadas_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogAsignacionesTotalesCompletadasEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Asignaciones_Totales_Completadas_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    } */
+
+    function catalogAsignacionesTotalesEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Asignaciones_Totales_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogArchivosAsignacionesTotales(idUsuario) {
+        const PROCEDURE = `CALL ver_Archivos_Tareas_Totales(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function listArchivosEntregasTotalesEstudiante(idEstudiante) {
+        const VIEW = 'ver_Archivos_Entrega_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.list(VIEW, CLAUSE, idEstudiante);
+    }
+
     return {
         listDatosCursoUsuario,
         listAvisosUsuario,
@@ -195,5 +236,13 @@ module.exports = function (injectedStore) {
         insertTareaEstudiante,
         insertMultimediaTareaEstudiante,
         listArchivosEntregaEstudiante,
+        catalogPosiblesCursosEstudiante,
+        catalogResumenEstudiante,
+        catalogCatalogoCursosEstudiante,
+        /* catalogAsignacionesTotalesAsignadasEstudiante,
+        catalogAsignacionesTotalesCompletadasEstudiante, */
+        catalogAsignacionesTotalesEstudiante,
+        catalogArchivosAsignacionesTotales,
+        listArchivosEntregasTotalesEstudiante,
     };
 }

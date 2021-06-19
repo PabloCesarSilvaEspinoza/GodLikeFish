@@ -11,38 +11,25 @@ module.exports = {
         const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         const totalCursosActuales = cursosActuales.length;
         const totalCursosHistorial = historialCursosPonente.length;
+        const datosGeneralesPonente = await Controller.getDatosGeneralesPonente(usuarioID);
+        const nombresCursosActualesPonente = await Controller.getNombresCursosActualesPonente(usuarioID);
+        const fechaActual = await Controller.getTiempoActual();
+        const miPerfil = await Controller.getMiPerfil(usuarioID);
+        const asignacionesPendientes = await Controller.listAsignacionesPendientesPonente(usuarioID);
         res.render('ponente/p1_dashboard', {
             ponente: true,
             cursosActuales,
             historialCursosPonente,
             totalCursosActuales,
             totalCursosHistorial,
+            datosGeneralesPonente,
+            nombresCursosActualesPonente,
+            fechaActual,
+            miPerfil,
+            asignacionesPendientes
         });
     },
-
-    getConsultarCurso: async function (req, res, next) {
-        const datosCurso = await Controller.getCurso(req.params.idCurso);
-        const avisosCurso = await Controller.listAvisosUsuario(req.params.idCurso);
-        const linksCurso = await Controller.listLinks(req.params.idCurso);
-        const documentosCurso = await Controller.listDocumentos(req.params.idCurso);
-        const curso = datosCurso[0];
-        const asignacionesPonente = await Controller.listAsignacionesPonente(req.params.idCurso);
-        res.render('ponente/p2_consultarCursoE1_v2', {
-            ponente: true,
-            curso,
-            datosCurso,
-            avisosCurso,
-            linksCurso,
-            documentosCurso,
-            asignacionesPonente,
-        });
-    },
-
-    getConsultarCursoPE2: async function (req, res, next) {
-        res.render('ponente/p2_consultarCursoE2_v2', {
-            ponente: true
-        });
-    },
+    
     getConsultarAlumnos: async function (req, res, next) {
         const estudiantes = await Controller.listEstudiantes();
         const modalEstudiante = await Controller.listEstudiantes();
@@ -74,8 +61,7 @@ module.exports = {
         const tareaID = respuestaBD[0][0].ID;
         for (const file of req.files) {
             const nombreMultimedia = file.originalname;
-            const linkMultimedia = `${nombreMultimedia}`;
-            datos = { tareaID, nombreMultimedia, linkMultimedia };
+            datos = { tareaID, nombreMultimedia };
             await Controller.insertMultimediaTarea(datos);
         }
         res.redirect('back')
@@ -141,7 +127,7 @@ module.exports = {
         const estadoCursoPonente = respuestaEstadoCursoPonente[0][0].Respuesta;
         const datosCurso = await Controller.getCurso(cursoID);
         const curso = datosCurso[0];
-
+        const miPerfil = await Controller.getMiPerfil(usuarioID);
         switch (estadoCursoPonente) {
             case 'No es su curso':
             case 'Curso Inactivo':
@@ -150,7 +136,8 @@ module.exports = {
 
             case 'Curso Pasado':
                 res.render('ponente/p2_consultarCursoE2_v2', {
-                    ponente:true
+                    ponente:true,
+                    miPerfil
                 });
                 break;
 
@@ -168,7 +155,7 @@ module.exports = {
                 const fechaActual = await Controller.getTiempoActual();
                 global.cursoActualID = cursoID;
                 console.log(global.cursoActualID);
-                res.render('ponente/p2_consultarCursoE1_v2', {
+                res.render('ponente/p2_consultarCursoE1', {
                     dropzone:true,
                     ponente: true,
                     curso,
@@ -182,7 +169,8 @@ module.exports = {
                     examenesCurso,
                     archivosAsignacionesPonente,
                     publicacionesCurso,
-                    fechaActual
+                    fechaActual,
+                    miPerfil
                 });
                 break;
 

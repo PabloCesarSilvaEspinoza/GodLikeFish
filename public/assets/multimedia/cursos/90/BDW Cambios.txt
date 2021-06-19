@@ -1,5 +1,0 @@
-Cambiar t_e_aceptable a NOT NULL.
-Agregar el procedimiento entregar_Tarea.
-Dejar solo los m_nombre de las tablas de multimedia.
-Agregar el procedimiento agregar_Archivos_Multimedia_Curso.
-Agregar la vista ver_Archivos_Entrega_Estudiante.
