@@ -31,10 +31,6 @@ module.exports = {
     },
     getMisAsignaciones: async function (req, res, next) {
         const usuarioID = req.user.id;
-        /* const respuestaAsignacionesTotalesAsignadasEstudiante = await Controller.catalogAsignacionesTotalesAsignadasEstudiante(usuarioID);
-        const respuestaAsignacionesTotalesCompletadasEstudiante = await Controller.catalogAsignacionesTotalesCompletadasEstudiante(usuarioID);
-        const asignacionesTotalesAsignadasEstudiante = respuestaAsignacionesTotalesAsignadasEstudiante[0];
-        const asignacionesTotalesCompletadasEstudiante = respuestaAsignacionesTotalesCompletadasEstudiante[0]; */
         const respuestaAsignacionesTotalesEstudiante = await Controller.catalogAsignacionesTotalesEstudiante(usuarioID)
         const asignacionesTotalesEstudiante = respuestaAsignacionesTotalesEstudiante[0];
         const respuestaArchivosAsignacionesTotales = await Controller.catalogArchivosAsignacionesTotales(usuarioID);

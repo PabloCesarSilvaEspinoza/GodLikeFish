@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <!--modales-->
-    <div id="calificarAsignacion" class="modal">
+    {{#each estadoEntregasTarea}}
+    <div id="calificarEntrega{{idEstudiante}}" class="modal">
         <div class="modal-dialog">
             <div class="modal-content" style="border-radius: 10px">
                 <div class="card-body">
@@ -16,17 +17,66 @@
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
-                            <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-md-12 text-center">
-                                        <h6 class="mb-0 font-medium mt-2">¿Le parece que el alumno ha completado esta asignación correctamente?</h6>
-                                        <button type="submit" class="btn btn-info mt-3"><i
-                                            class="fas fa-check mr-2"></i>Si</button>
-                                        <button type="submit" class="btn btn-danger mt-3"><i
-                                                class="fas fa-times mr-2"></i>No</button>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h6 class="mb-0 font-medium mt-2">¿Le parece que <b>{{nombreEstudiante}}</b> ha completado esta asignación correctamente?</h6>
+                                    <div class="row">
+                                        <div class="col-6 text-right">
+                                            <form class="p-0" action="/ponente/CalificarEntrega" method="POST">
+                                                <input type="hidden" name="idEstudiante" value="{{idEstudiante}}">
+                                                <input type="hidden" name="idTarea" value="{{idTarea}}">
+                                                <input type="hidden" name="aceptable" value="1">
+                                                <button type="submit" class="btn btn-info mt-3"><i
+                                                class="fas fa-check mr-2"></i>Si</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-6 text-left">
+                                            <form class="p-0" action="/ponente/CalificarEntrega" method="POST">
+                                                <input type="hidden" name="idEstudiante" value="{{idEstudiante}}">
+                                                <input type="hidden" name="idTarea" value="{{idTarea}}">
+                                                <input type="hidden" name="aceptable" value="0">
+                                                <button type="submit" class="btn btn-danger mt-3"><i
+                                                    class="fas fa-times mr-2"></i>No</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <div id="calificarAsignacion" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h4>Terminar de Calificar <span class="small">Asignación</span></h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h6 class="mb-0 font-medium mt-2">¿Ya ha terminado de calificar a todos los estudiantes del curso?</h6>
+                                    <form action="/ponente/TerminarCalificarTarea/" method="POST">
+                                        <input type="hidden" name="idTarea" value="{{#datosTarea}}{{idTarea}}{{/datosTarea}}">
+                                        <button type="submit" class="btn btn-info mt-3"><i
+                                            class="fas fa-check mr-2"></i>Si</button>
+                                        <button type="button" class="btn btn-danger mt-3" data-dismiss="modal"><i
+                                            class="fas fa-times mr-2"></i>No</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,91 +90,100 @@
         <div class="col-md-12">
             <div class="card" style="border-radius: 10px">
                 <div class="card-header bg-primary" style="border-radius: 10px">
-                    <h4 class="mb-0 text-white"><i class="fas fa-star mr-2"></i>Nombre de la Tarea #1 - 21/12/2020, 17:00</h4>
+                    {{#datosTarea}}
+                    <h3 class="mb-0 text-white"><i class="fas fa-star mr-2"></i>{{nombreTarea}} - {{fechaLimiteTarea}}, {{horaLimiteTarea}} ({{nombreCurso}})</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-text"><i class="far fa-comment-alt mr-2"></i>Lorem ipsum dolor sit amet consectetur adipiscing elit mattis a conubia tincidunt, aliquet vulputate orci augue sociosqu tempor cras molestie scelerisque ullamcorper. Platea sollicitudin aliquet aliquam quis mollis inceptos hendrerit dignissim, proin vitae arcu congue rhoncus orci et dictumst, iaculis consequat per sociis posuere natoque vivamus. Tempor cum nulla nam dictumst sagittis senectus felis duis, vulputate aliquam malesuada purus congue sociosqu magnis blandit, tincidunt dignissim nisl molestie interdum sapien dictum.</p>
+                    <p class="card-text mb-2"><i class="far fa-comment-alt mr-2"></i>{{descripcionTarea}}</p>
+                    {{/datosTarea}}
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>Matrícula</th>
                                     <th>Nombre</th>
-                                    <th>Fecha y hora de entrega</th>
-                                    <th>Archivos</th>
+                                    <th>Archivos Entregados</th>
                                     <th>Estado</th>
                                     <th>Calificación</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each estadoEntregasTarea}}
                                 <tr>
-                                    <td>1234</td>
-                                    <td>Nombre completo usuario con apellidos</td>
-                                    <td>11/12/2021 , 17:45</td>
-                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 1</a></td>
-                                    <td><span class="label label-info">Entregada</span></td>
-                                    <td><span class="label bg-primary">Sin revisar</span></td>
-                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
+                                    <td>{{matriculaEstudiante}}</td>
+                                    <td>{{nombreEstudiante}}</td>
+                                    {{#if totalArchivos}}
+                                    <!-- <td><span class="label label-rounded label-success">{{totalArchivos}}</span></td> -->
+                                        <td>
+                                        {{#each ../archivosEntregasTarea}}
+                                            {{#ifEquals idEstudiante ../this.idEstudiante}}
+                                            <h6>
+                                                <span class="small"><a href="#" 
+                                                class="btn d-inline-block text-truncate btn-rounded btn-sm btn-success small" style="max-width: 150px;">
+                                                <i class="fas fa-download mr-2"></i>{{nombreArchivo}}</a></span>
+                                            </h6>
+                                            {{/ifEquals}}
+                                        {{/each}}
+                                        </td>
+                                    {{else}}
+                                    <td><h6>N/A</h6></td>
+                                    {{/if}}
+                                    <td>
+                                        {{#ifEquals estadoTarea "Entregada"}}
+                                        <span class="label label-info">Entregada</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoTarea "Tardia"}}
+                                        <span class="label bg-warning">Entrega Tardía</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoTarea "Pendiente"}}
+                                        <span class="label bg-warning">Pendiente</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoTarea "Atrasada"}}
+                                        <span class="label bg-danger">Atrasada</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoTarea "No entregada"}}
+                                        <span class="label bg-dark">No entregada</span>
+                                        {{/ifEquals}}
+                                    </td>
+                                    <td>
+                                        {{#ifEquals estadoRevision "Bien"}}
+                                        <span class="label bg-cyan"><i class="fas fa-check mr-2"></i>Bien</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoRevision "Mal"}}
+                                        <span class="label bg-danger"><i class="fas fa-times mr-2"></i>Mal</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoRevision "SinRevisar"}}
+                                        <span class="label bg-primary">Sin revisar</span>
+                                        {{/ifEquals}}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-rounded
+                                            {{#unless calificarTarea}}disabled{{/unless}}" data-toggle="modal"
+                                            {{#if calificarTarea}}data-target="#calificarEntrega{{idEstudiante}}"{{/if}}>
+                                            <i class="fas fa-check mr-2"></i>Calificar
+                                        </button>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>Nombre completo usuario con apellidos</td>
-                                    <td>N/A</td>
-                                    <td>N/A</td>
-                                    <td><span class="label label-danger">No entregada</span></td>
-                                    <td><span class="label bg-dark"><i class="fas fa-times mr-2"></i>Mal</span></td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>123456</td>
-                                    <td>Nombre completo usuario con apellidos</td>
-                                    <td>15/12/2021 , 17:45</td>
-                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 2</a></td>
-                                    <td><span class="label label-warning">Entrega tardía</span></td>
-                                    <td><span class="label bg-primary">Sin revisar</span></td>
-                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1234567</td>
-                                    <td>Nombre completo usuario con apellidos</td>
-                                    <td>11/12/2021 , 17:45</td>
-                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 1</a></td>
-                                    <td><span class="label label-info">Entregada</span></td>
-                                    <td><span class="label bg-cyan"><i class="fas fa-check mr-2"></i>Bien</span></td>
-                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>Nombre completo usuario con apellidos</td>
-                                    <td>N/A</td>
-                                    <td>N/A</td>
-                                    <td><span class="label label-danger">No entregada</span></td>
-                                    <td><span class="label bg-dark"><i class="fas fa-times mr-2"></i>Mal</span></td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td>123456789</td>
-                                    <td>Nombre completo usuario con apellidos</td>
-                                    <td>15/12/2021 , 17:45</td>
-                                    <td><a href="#"><i class="fas fa-link mr-2"></i>Archivo 2</a></td>
-                                    <td><span class="label label-warning">Entrega tardía</span></td>
-                                    <td><span class="label bg-cyan"><i class="fas fa-check mr-2"></i>Bien</span></td>
-                                    <td><button type="button" class="btn  btn-success btn-rounded" data-toggle="modal" data-target="#calificarAsignacion"><i class="fas fa-check mr-2"></i>Calificar</button></td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Matrícula</th>
                                     <th>Nombre</th>
-                                    <th>Fecha y hora de entrega</th>
-                                    <th>Archivos</th>
+                                    <th>Archivos Entregados</th>
                                     <th>Estado</th>
                                     <th>Calificación</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
                         </table>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#calificarAsignacion" style="width: 300px;">
+                                <i class="fas fa-check-circle mr-2"></i>Terminar de Calificar Asignación</button>
+                        </div>
                     </div>
                 </div>
             </div>

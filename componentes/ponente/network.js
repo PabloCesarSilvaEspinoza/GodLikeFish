@@ -8,7 +8,9 @@ const render = require('./render');
 
 router.get('/dashboardPonente', render.getDashboardPonente);
 router.get('/consultarlumnos', render.getConsultarAlumnos);
-router.get('/calificarTarea/:idTarea', permisosTarea, render.getCalificarTarea);
+router.post('/CalificarEntrega/', permisosTarea, render.postCalificarEntrega);
+router.post('/TerminarCalificarTarea/', permisosTarea, render.postTerminarCalificarTarea);
+router.get('/CalificarTarea/:idTarea', permisosTarea, render.getCalificarTarea);
 router.get('/soporte', render.getSoporte);
 router.post('/AgregarExamen', render.postAgregarExamen);
 router.get('/curso/:idCurso', render.getConsultarEstadoCursoPonente);

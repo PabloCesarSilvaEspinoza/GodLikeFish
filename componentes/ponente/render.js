@@ -35,15 +35,23 @@ module.exports = {
         const modalEstudiante = await Controller.listEstudiantes();
         res.render('ponente/p3_consultarAlumnos', {
             ponente: true,
-            datatables: true,
+            dataTables: true,
             dataTablesExport: true,
             modalEstudiante,
             estudiantes,
         });
     },
     getCalificarTarea: async function (req, res, next) {
+        const tareaID = req.params.idTarea;
+        const estadoEntregasTarea = await Controller.listEstadoEntregasTarea(tareaID);
+        const archivosEntregasTarea = await Controller.listArchivosEntregasTarea(tareaID);
+        const datosTarea = await Controller.getDatosTarea(tareaID);
         res.render('ponente/p4_calificarTarea', {
-            ponente: true
+            ponente: true,
+            dataTables: true,
+            estadoEntregasTarea,
+            archivosEntregasTarea,
+            datosTarea,
         });
     },
     getSoporte: async function (req, res, next) {
@@ -118,6 +126,14 @@ module.exports = {
         const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos');
         const archivoRuta = `${raiz}/${cursoID}/${archivoNombre}`;
         res.download(archivoRuta)
+    },
+
+    postCalificarEntrega: async function (req, res, next) {
+        res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
+    },
+
+    postTerminarCalificarTarea: async function (req, res, next) {
+        res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
     },
 
     getConsultarEstadoCursoPonente: async function (req, res, next){

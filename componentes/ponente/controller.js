@@ -192,12 +192,30 @@ module.exports = function (injectedStore) {
     function listAsignacionesPendientesPonente(idPonente) {
         const VIEW = 'ver_Asignaciones_Pendientes_Ponente';
         const CLAUSE = `WHERE idPonente = ? LIMIT 3`;
-        return store.get(VIEW, CLAUSE, idPonente);
+        return store.list(VIEW, CLAUSE, idPonente);
     }
 
     function catalogPermisosTarea(idPonente, idTarea) {
         const PROCEDURE = `CALL comprobar_Permisos_Tarea(${idPonente}, ${idTarea})`
         return store.catalog(PROCEDURE);
+    }
+
+    function listEstadoEntregasTarea(idTarea) {
+        const VIEW = 'ver_Estado_Entregas_Tarea_Ponente';
+        const CLAUSE = `WHERE idTarea = ?`;
+        return store.list(VIEW, CLAUSE, idTarea);
+    }
+
+    function listArchivosEntregasTarea(idTarea) {
+        const VIEW = 'ver_Archivos_Entregas_Tarea_Ponente';
+        const CLAUSE = `WHERE idTarea = ?`;
+        return store.list(VIEW, CLAUSE, idTarea);
+    }
+
+    function getDatosTarea(idTarea) {
+        const VIEW = 'ver_Tareas_Ponente';
+        const CLAUSE = `WHERE idTarea = ?`;
+        return store.get(VIEW, CLAUSE, idTarea);
     }
 
     return {
@@ -235,5 +253,8 @@ module.exports = function (injectedStore) {
         getMiPerfil,
         listAsignacionesPendientesPonente,
         catalogPermisosTarea,
+        listEstadoEntregasTarea,
+        listArchivosEntregasTarea,
+        getDatosTarea,
     };
 }
