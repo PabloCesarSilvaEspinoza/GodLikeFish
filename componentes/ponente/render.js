@@ -164,15 +164,13 @@ module.exports = {
                 const documentosCurso = await Controller.listDocumentosCurso(cursoID);
                 const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
                 const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
-                const examenesCurso = await Controller.listExamenes(cursoID);
+                const examenesCurso = await Controller.listExamenesCurso(cursoID);
                 const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
                 const fechaActual = await Controller.getTiempoActual();
                 global.cursoActualID = cursoID;
-                console.log(global.cursoActualID);
                 res.render('ponente/p2_consultarCursoE1', {
-                    dropzone:true,
                     ponente: true,
                     curso,
                     datosCurso,

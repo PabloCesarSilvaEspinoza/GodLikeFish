@@ -11,7 +11,7 @@ module.exports = {
         const errores = await Controller.listErrores();
         const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
-        res.render('administrador/d1_dashboard_v2', {
+        res.render('administrador/d1_dashboard', {
             administrador: true,
             graficasAdministrador : true,
             valores:[{
@@ -86,17 +86,35 @@ module.exports = {
         });
     },
 
-    getConsultarCursoE1: async function (req, res, next) {
-        res.render('administrador/d4_consultarCursoE1', {
-            administrador: true
+    getConsultarCurso: async function (req, res, next) {
+        const cursoID = req.params.idCurso;
+        const datosCurso = await Controller.getCurso(cursoID);
+        const curso = datosCurso[0];
+        const avisosCurso = await Controller.listAvisosCurso(cursoID);
+        const linksCurso = await Controller.listLinksCurso(cursoID);
+        const documentosCurso = await Controller.listDocumentosCurso(cursoID);
+        const asignacionesCurso = await Controller.listAsignacionesCurso(cursoID);
+        const archivosAsignacionesCurso = await Controller.getArchivosTareaCurso(cursoID);
+        const examenesCurso = await Controller.listExamenesCurso(cursoID);
+        const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
+        const totalDocumentos = documentosCurso.length;
+        const totalLinks = linksCurso.length;
+        res.render('administrador/d4_consultarCurso', {
+            administrador: true,
+            curso,
+            datosCurso,
+            avisosCurso,
+            linksCurso,
+            documentosCurso,
+            asignacionesCurso,
+            archivosAsignacionesCurso,
+            examenesCurso,
+            publicacionesCurso,
+            totalDocumentos,
+            totalLinks,
         });
     },
 
-    getConsultarCursoE2: async function (req, res, next) {
-        res.render('administrador/d4_consultarCursoE2', {
-            administrador: true
-        });
-    },
     postAgregarCurso: async function (req, res, next){
         const respuestaBD = await Controller.insertCurso(req.body);
         const cursoID = respuestaBD[0][0].ID;

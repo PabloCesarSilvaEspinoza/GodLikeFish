@@ -132,7 +132,7 @@ module.exports = function (injectedStore) {
         return store.insert(PROCEDURE);
     }
 
-    function listExamenes(idCurso) {
+    function listExamenesCurso(idCurso) {
         const VIEW = 'ver_Examenes';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.list(VIEW, CLAUSE, idCurso);
@@ -242,7 +242,7 @@ module.exports = function (injectedStore) {
         getConsultarEstadoCursoPonente,
         insertAviso,
         insertEnlace,
-        listExamenes,
+        listExamenesCurso,
         getArchivosTarea,
         getArchivosTareaCurso,
         insertArchivosMultimediaCurso,

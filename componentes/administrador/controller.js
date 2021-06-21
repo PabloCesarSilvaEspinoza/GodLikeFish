@@ -41,13 +41,13 @@ module.exports = function (injectedStore) {
         const {
             nombreCurso, claveCurso, descripcionCurso, fechaInicioCurso, fechaFinCurso, horarioInicioCurso,
             horarioFinCurso, fechaInscripcionInicioCurso, fechaInscripcionFinCurso, plataformaCurso, areaCurso,
-            tipoCurso, modalidadCurso, capacidadCurso, ponenteID  
+            tipoCurso, modalidadCurso, capacidadCurso, enlacePlataforma, ponenteID  
         } = body;
 
         const PROCEDURE = `CALL agregar_Curso(
             '${nombreCurso}','${claveCurso}','${descripcionCurso}', '${fechaInicioCurso}','${fechaFinCurso}','${horarioInicioCurso}',
             '${horarioFinCurso}','${fechaInscripcionInicioCurso}','${fechaInscripcionFinCurso}','${plataformaCurso}', ${areaCurso},
-            '${tipoCurso}','${modalidadCurso}', ${capacidadCurso}, ${ponenteID}
+            '${tipoCurso}','${modalidadCurso}', ${capacidadCurso}, '${enlacePlataforma}', ${ponenteID}
         )`
         
         return store.upsert(PROCEDURE);
@@ -207,6 +207,54 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
+    function getCurso(idCurso) {
+        const VIEW = 'ver_Datos_Cursos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listAvisosCurso(idCurso) {
+        const VIEW = 'ver_Avisos_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listLinksCurso(idCurso) {
+        const VIEW = 'ver_Recursos_Curso_Links';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listDocumentosCurso(idCurso) {
+        const VIEW = 'ver_Recursos_Curso_Documentos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listAsignacionesCurso(idCurso) {
+        const VIEW = 'ver_Asignaciones_Curso_Ponente';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function getArchivosTareaCurso(idCurso) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listExamenesCurso(idCurso) {
+        const VIEW = 'ver_Examenes';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listPublicacionesCurso(idCurso) {
+        const VIEW = 'ver_Historial_Publicaciones';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
     return {
         getUltimoCurso,
         getUltimoUsuario,
@@ -234,6 +282,14 @@ module.exports = function (injectedStore) {
         upsertResolverProblema,
         updateCurso,
         UsuariosSinVerificar,
-        updateVerificarTarjetonUsuario
+        updateVerificarTarjetonUsuario,
+        listAvisosCurso,
+        listLinksCurso,
+        listDocumentosCurso,
+        getArchivosTareaCurso,
+        listAsignacionesCurso,
+        listExamenesCurso,
+        listPublicacionesCurso,
+        getCurso,
     };
 }
