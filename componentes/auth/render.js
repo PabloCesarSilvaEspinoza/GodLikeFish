@@ -244,4 +244,21 @@ module.exports = {
             res.redirect('/establecerNuevoCorreoElectronico')
         }
     },
+
+    getMiPerfil: async function(req, res, next){
+        (req.isAuthenticated()
+            ? res.render('usuario/u4_miPerfil',{
+                /* mandar datos usuario */
+            })
+            : res.redirect('/login')
+        );
+    },
+
+    getSoporte: async function(req, res, next){
+        (req.isAuthenticated()
+            ? res.render('usuario/u8_soporte')
+            : res.redirect('/login')
+        );
+    },
+
 };

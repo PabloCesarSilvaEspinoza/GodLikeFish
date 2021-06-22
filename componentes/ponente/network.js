@@ -23,6 +23,7 @@ router.post('/reportarProblemaCurso', render.postReportarProblemaCurso);
 router.post('/reportarProblemaUsuario', render.postReportarProblemaUsuario);
 router.get('/DescargarTareaCurso/:idTarea/:nombreArchivo', render.getDescargarArchivoTarea);
 router.get('/DescargarArchivoCurso/:idCurso/:nombreArchivo', render.getDescargarArchivoCurso);
+router.get('/consultarCursos', render.getConsultarCursos);
 /* router.get('/AgregarTareaPrueba', render.getAgregarTarea);
 router.post('/AgregarTarea', upload.array('multimediaTarea'), render.postAgregarTarea);
 router.get('/DescargarTarea', render.getDescargarArchivos); */

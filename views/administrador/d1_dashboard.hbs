@@ -265,9 +265,10 @@
                                     <div class="p-2"><img src="../../assets/images/users/2.jpg" alt="user" width="50" class="rounded-circle"></div>
                                     <div class="comment-text w-100">
                                         <h6 class="font-medium">{{nombreUsuario}}</h6>
-                                        <span class="mb-3 d-block">{{asuntoProblema}}</span>
+                                        <span class="d-block" style="text-align: justify;">{{asuntoProblema}}</span>
+                                        <span class="text-muted mb-3">{{fechaProblema}}, {{horaProblema}}</span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">{{fechaProblema}}, {{horaProblema}}</span>
+                                            
                                             <span class="label label-rounded label-primary">Curso</span> 
                                             <span class="label label-rounded label-danger">Pendiente</span> 
                                             <span class="action-icons">
@@ -285,7 +286,7 @@
                                         <span class="mb-3 d-block">{{asuntoProblema}}</span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-right">{{fechaProblema}}, {{horaProblema}}</span>
-                                            <span class="label label-rounded label-secondary">Usuario</span> 
+                                            <span class="label label-rounded label-warning">Usuario</span> 
                                             <span class="label label-rounded label-danger">Pendiente</span> 
                                             <span class="action-icons">
                                                 <a href="#" data-toggle="modal" data-target="#problema{{idProblema}}"><i class="ti-check"></i></a>

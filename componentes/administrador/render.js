@@ -2,15 +2,18 @@ const Controller = require('./index');
 const fs = require('fs');
 const administrador = require('./index');
 const { Console } = require('console');
+const superAdministrador = false;
 
 path = require('path')
 
 module.exports = {
 
     getDashboardAdministrador: async function (req, res, next) {
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         const errores = await Controller.listErrores();
         const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
+        /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
             administrador: true,
             graficasAdministrador : true,
@@ -21,7 +24,8 @@ module.exports = {
             }],
             errores,
             numeroErrores,
-            usuariosSinVerificar
+            usuariosSinVerificar,
+            miPerfil
         });
     },
     getAdministrarCursos: async function (req, res, next) {
@@ -34,6 +38,7 @@ module.exports = {
         const ponentes = await Controller.listPonentes();
         const areas = await Controller.listAreas();
         const fechaActual = await Controller.getTiempoActual();
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
 
         res.render('administrador/d2_administrarCursos', {
             administrador: true,
@@ -54,6 +59,7 @@ module.exports = {
             inactivos,
             tarjetas,
             registrados,
+            miPerfil
 
         });
     },
@@ -65,6 +71,7 @@ module.exports = {
         const registrados= await Controller.listRegistrados();
         const activos= await Controller.listActivos();
         const inactivos= await Controller.listInactivos();
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
@@ -82,6 +89,7 @@ module.exports = {
             activos,
             inactivos,
             registrados,
+            miPerfil
 
         });
     },
@@ -99,6 +107,7 @@ module.exports = {
         const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
         const totalDocumentos = documentosCurso.length;
         const totalLinks = linksCurso.length;
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d4_consultarCurso', {
             administrador: true,
             curso,
@@ -112,6 +121,7 @@ module.exports = {
             publicacionesCurso,
             totalDocumentos,
             totalLinks,
+            miPerfil
         });
     },
 
@@ -165,6 +175,7 @@ module.exports = {
         const idUsuario = datosUsuario[0].idUsuario;
         const idDomicilio = datosUsuario[0].idDomicilio;
         const activo = datosUsuario[0].activo;
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
 
         res.render('administrador/d5_editarUsuario',{
             administrador: true,
@@ -197,6 +208,7 @@ module.exports = {
             idUsuario,
             idDomicilio,
             activo,
+            miPerfil
         });
     },
 

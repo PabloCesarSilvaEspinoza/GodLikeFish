@@ -6,7 +6,7 @@ module.exports = {
 
     getDashboardAlumno: async function (req, res, next) {
         const usuarioID = req.user.id;
-        const miPerfil = await Controller.getMiPerfil(usuarioID);
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         const respuestaBD = await Controller.listCursosDisponibles(usuarioID);
         const cursosDisponibles = respuestaBD[0];
         const totalCursos = cursosDisponibles.length;
@@ -36,11 +36,13 @@ module.exports = {
         const respuestaArchivosAsignacionesTotales = await Controller.catalogArchivosAsignacionesTotales(usuarioID);
         const archivosAsignacionesTotales = respuestaArchivosAsignacionesTotales[0];
         const archivosEntregasTotalesEstudiante = await Controller.listArchivosEntregasTotalesEstudiante(usuarioID);
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('alumno/a2_misAsignaciones', {
             estudiante:true,
             asignacionesTotalesEstudiante,
             archivosAsignacionesTotales,
             archivosEntregasTotalesEstudiante,
+            miPerfil
         }); 
     },
 
@@ -114,10 +116,12 @@ module.exports = {
     getCatalogoCursos: async function (req, res, next) {
         const respuestaCatalogoCursosEstudiante = await Controller.catalogCatalogoCursosEstudiante(req.user.id);
         const catalogoCursosEstudiante = respuestaCatalogoCursosEstudiante[0];
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('alumno/a5_catalogoCursos', {
             estudiante: true,
             dataTables: true,
-            catalogoCursosEstudiante
+            catalogoCursosEstudiante,
+            miPerfil
         })
     },
 
@@ -128,6 +132,7 @@ module.exports = {
         const estadoCursoEstudiante = respuestaEstadoCursoEstudiante[0][0].Respuesta;
         const datosCurso = await Controller.getCursoInscripcion(cursoID);
         const curso = datosCurso[0];
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         switch (estadoCursoEstudiante) {
             case 'Diferentes areas':
             case 'Curso Inactivo':
@@ -139,12 +144,14 @@ module.exports = {
                 res.render('alumno/a3_consultarCursoE1', {
                     estudiante:true,
                     curso,
+                    miPerfil
                 });
                 break;
 
             case 'Curso Pasado':
                 res.render('alumno/a3_consultarCursoE3', {
-                    estudiante:true
+                    estudiante:true,
+                    miPerfil
                 });
                 break;
 
@@ -180,6 +187,7 @@ module.exports = {
                     publicacionesCursoEstudiante,
                     archivosEntregasEstudiante,
                     usuarioID,
+                    miPerfil
                 });
                 break;
         

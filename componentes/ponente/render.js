@@ -33,12 +33,14 @@ module.exports = {
     getConsultarAlumnos: async function (req, res, next) {
         const estudiantes = await Controller.listEstudiantes();
         const modalEstudiante = await Controller.listEstudiantes();
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('ponente/p3_consultarAlumnos', {
             ponente: true,
             dataTables: true,
             dataTablesExport: true,
             modalEstudiante,
             estudiantes,
+            miPerfil
         });
     },
     getCalificarTarea: async function (req, res, next) {
@@ -46,12 +48,14 @@ module.exports = {
         const estadoEntregasTarea = await Controller.listEstadoEntregasTarea(tareaID);
         const archivosEntregasTarea = await Controller.listArchivosEntregasTarea(tareaID);
         const datosTarea = await Controller.getDatosTarea(tareaID);
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('ponente/p4_calificarTarea', {
             ponente: true,
             dataTables: true,
             estadoEntregasTarea,
             archivosEntregasTarea,
             datosTarea,
+            miPerfil
         });
     },
     getSoporte: async function (req, res, next) {
@@ -194,6 +198,15 @@ module.exports = {
                 break;
         }
     },
+
+    getConsultarCursos: async function(req, res, next){
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
+        res.render('ponente/p5_misCursos',{
+            ponente: true,
+            miPerfil
+            /* datos del usuario */
+        })
+    }
 
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
