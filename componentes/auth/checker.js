@@ -11,7 +11,7 @@ module.exports = {
 
     verificarAdministrador(req, res, next) {
         console.log("valido permisos de: " + req.user.rol);
-        if (req.user.rol == "Administrador") {
+        if (req.user.rol == "Administrador" || req.user.rol == "Super-Administrador") {
             return next();
         } else {
             console.log('No tienes permisos de administrador');

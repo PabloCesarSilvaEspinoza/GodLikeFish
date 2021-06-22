@@ -1,0 +1,643 @@
+<div class="container-fluid">
+    <!--modales-->
+    <div id="editarUsuario" class="modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h3>Editar <span class="small">Usuario</span></h3>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="#" method="post" >
+                                <div class="row">
+                                    <!--datos generales-->
+                                    <div class="col-md-3 text-center">
+                                        <img src="../../assets/images//users/1.jpg" width="150" class="rounded-circle" alt="imagenUsuario">
+                                        <h6 class="mb-0 font-medium">Imagen de perfil </h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4><i class="fas fa-user-alt mr-2"></i>Datos Generales</h4><hr>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="mb-0 font-medium ml-2">Nombre <span class="text-danger">*</span></h6>
+                                                <input type="text" id="#" class="form-control" placeholder="Nombre(s)" required>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium ml-2">Apellido Paterno <span class="text-danger">*</span></h6>
+                                                <input type="text" id="#" class="form-control" placeholder="Apellido" required>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium ml-2">Apellido Materno <span class="text-danger">*</span></h6>
+                                                <input type="text" id="#" class="form-control" placeholder="Apellido" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">País de nacimiento <span class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                                    <option value="#">#</option>
+                                                    <option value="#">#</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Municipio de nacimiento <span class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                                    <option value="#">#</option>
+                                                    <option value="#">#</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Nacimiento <span class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" value="2021-06-13" style="width: 100%; ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- datos domicilio -->
+                                    <div class="col-md-12">
+                                        <h4><i class="fas fa-home mr-2 mt-3"></i>Datos domiciliarios</h4><hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="mb-0 font-medium ml-2">Estado de Residencia <span class="text-danger">*</span></h6>
+                                        <select class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                            <option value="#">#</option>
+                                            <option value="#">#</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="mb-0 font-medium ml-2">Municipio de Residencia <span class="text-danger">*</span></h6>
+                                        <select class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                            <option value="#">#</option>
+                                            <option value="#">#</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="mb-0 font-mediumml-2">Colonia de Residencia <span class="text-danger">*</span></h6>
+                                        <input type="text" id="#" class="form-control" placeholder="Colonia" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="mb-0 font-medium mt-2 ml-2">Calle <span class="text-danger">*</span></h6>
+                                        <input type="text" id="#" class="form-control" placeholder="Calle" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="mb-0 font-medium mt-2 ml-2">Número Exterior <span class="text-danger">*</span></h6>
+                                        <input type="number" id="#" class="form-control" value="0" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="mb-0 font-medium mt-2 ml-2">Número Interior </h6>
+                                        <input type="number" id="#" class="form-control" value="0" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h4><i class="fas fa-user-tie mr-2 mt-3"></i>Datos laborales</h4><hr>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="mb-0 font-medium ml-2">Matrícula <span class="text-danger">*</span></h6>
+                                        <input type="text" id="#" class="form-control" placeholder="00000000" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="mb-0 font-medium ml-2">Antiguedad <span class="text-danger">*</span></h6>
+                                        <input type="text" id="#" class="form-control" placeholder="Medida en años" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="mb-0 font-medium ml-2">Puesto <span class="text-danger">*</span></h6>
+                                        <select class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                            <option value="#">#</option>
+                                            <option value="#">#</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 text-right mt-3">
+                                        <button type="submit" class="btn waves-effect waves-light btn-info"><i class="fas fa-save mr-2"></i>Guardar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="enviarEmail" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h3>Enviar <span class="small">Email</span></h3>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h6 class="mb-0 font-medium ml-2">Asunto <span class="text-danger">*</span></h6>
+                                        <input type="text" id="#" class="form-control" placeholder="Asunto del correo" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h6 class="mb-0 font-medium mt-3 ml-2">Contenido <span class="text-danger">*</span></h6>
+                                        <textarea class="form-control" rows="5" placeholder="Escriba aquí el mensaj que desea enviarle..."></textarea>
+                                    </div>
+                                    <div class="col-md-12 text-right mt-3">
+                                        <button type="submit" class="btn waves-effect waves-light btn-info"><i class="far fa-paper-plane mr-2"></i>Enviar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="hacerAdministrador" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10  text-center">
+                            <h3>Convertir en <span class="small">Administrador</span></h3>
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-md-12 text-center mt-3">
+                                        <h3 class="font-light mb-4">¿Estas seguro de querer convertir a este usuario en administrador?</h3>
+                                        <button type="submit" class="btn waves-effect waves-light btn-danger"><i class="fas fa-check mr-2"></i>Si, continuar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>No, cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="desactivarUsuario" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row ">
+                        <!--titulo-->
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10  text-center">
+                            <h3>Desactivar <span class="small">Usuario</span></h3>
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <button type="button" class="close text-white" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-md-12 text-center mt-3">
+                                        <h3 class="font-light mb-4">Este usuario perderá el acceso al sistema, ¿Deseas continuar?</h3>
+                                        <button type="submit" class="btn waves-effect waves-light btn-danger"><i class="fas fa-check mr-2"></i>Si, continuar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>No, cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- terminan modales-->
+    <div class="row">
+        <!--contenido principal-->
+        <div class="col-md-9">
+            <!--datos principales-->
+            <div class="card" style="border-radius: 10px;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <img src="../../assets/images/users/1.jpg" class="rounded-circle" width="180px" height="180px"/>
+                            <h6 class="mt-2 font-medium">Foto de Perfil</h6>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h2 class="card-title mb-0">Nombre Completo Usuario Lorem Ipsum Extra Large
+                                        <span class="small"> (Estado)</span></h2>
+                                    <h4 class="font-light mt-0">NombreColonia, NombreCalle Ext. #136 Int. #3. NombreMunicipio NombreEstado, NombrePaís.</h4>
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <button type="button" class="btn btn-rounded btn-success" data-toggle="modal" data-target="#editarUsuario">
+                                        <i class="fas fa-pencil-alt mr-2"></i>Editar</button>
+                                </div>
+                                <div class="col-md-12">
+                                    <h4 class="mb-0"><i class="far fa-user mr-2"></i>Rol: <span class="font-weight-normal">Ponente</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-square mr-2"></i>Area: <span class="font-weight-normal">Area Usuario</span></h4>
+                                    <h4 class="mb-0"><i class="fas fa-wrench mr-2"></i>Puesto: <span class="font-weight-normal">Puesto Usuario</span></h4>
+                                    <h4 class="mb-0"><i class="fas fa-at mr-2"></i>Contacto: <span class="font-weight-normal">correo@dominio.com</span></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right align-items-end mt-auto">
+                                    <h4 class="mb-0"><i class="fas fa-key mr-2"></i>Matrícula: <span class="font-weight-normal">00000000</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-clock mr-2"></i>Antiguedad: <span class="font-weight-normal">2 Años</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-address-card mr-2"></i>Tarjetón: <span class="font-weight-normal">Verificado</span>
+                                        <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small ml-1">
+                                            <i class="fas fa-download mr-2"></i>Descargar</a></span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--datos estadisticos-->
+                <div class="col-md-4">
+                    <!--cursos-->
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body">
+                            <!--titulo-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3><i class="fas fa-book mr-2"></i>Cursos <span class="small">(9)</span></h3>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <span class="mb-3 label label-info mr-2">En Curso</span>
+                                </div>
+                            </div><hr>
+                            <!--datos cursos-->
+                            <h4 class="ml-4 mt-2"><i class="fas fa-circle mr-2"></i>Activos <span class="font-light">(3)</span></h4>
+                            <h4 class="ml-4 mt-2"><i class="far fa-circle mr-2"></i>Inactivos <span class="font-light">(6)</span></h4>
+                        </div>
+                    </div>
+                    <!--errores-->
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body">
+                            <!--titulo-->
+                            <h3><i class="fas fa-exclamation mr-2"></i>Errores <span class="small">(3)</span></h3><hr>
+                            <!--datos cursos-->
+                            <h4 class="ml-4 mt-2"><i class="fas fa-exclamation-triangle mr-2"></i>Pendientes <span class="font-light">(1)</span></h4>
+                            <h4 class="ml-4 mt-2"><i class="fas fa-bug mr-2"></i>Reportados <span class="font-light">(2)</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body">
+                            <ul class="nav nav-pills">
+                                <li class=" nav-item"> <a href="#activos" class="nav-link active" data-toggle="tab" aria-expanded="false">Activos</a></li>
+                                <li class="nav-item"> <a href="#inactivos" class="nav-link" data-toggle="tab" aria-expanded="false">Inactivos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content br-n pn ml-2 mr-2">
+                        <div id="activos" class="tab-pane active">
+                            <div class="row">
+                                <!--cursos activos-->
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="inactivos" class="tab-pane">
+                            <div class="row">
+                                <!--cursos inactivos-->
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-hover" style="border-radius: 6px">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="row mb-0">
+                                                    <div class="col-md-9">
+                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                    </div>
+                                                    <div class="col-md-3 text-right align-items-right">
+                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h4 class="mt-4 text-right">
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                </h4>
+                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="ml-2 mr-2 mt-4 text-center">
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--columna derecha-->
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body text-center">
+                            <img src="../../assets/images/logoTransparencia10.svg" width="150px" alt="logoDelSistema">
+                            <h3 class="">¿Necesitas contactar al usuario?</h3>
+                            <p class="font-20">Puedes enviarle un e-mail a nombre del sistema SNTSS Kaanbal.</p>
+                            <button type="button" class="btn btn-rounded btn-dark" data-toggle="modal" data-target="#enviarEmail">
+                                <i class="far fa-envelope mr-2"></i>Enviar E-mail</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body text-center">
+                            <h3>¿Deseas Modificar el Rol del Usuario?</h3>
+                            <p class="font-18" style="text-align: justify;">El rol base de todos los usuarios es "Estudiante", puedes modificarlo para convertirlos en Ponentes o Administradores, asi mismo puedes regresarlos al rol base.</p>
+                            <button type="button" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#hacerAdministrador">
+                                <i class="fas fa-user-astronaut mr-2"></i>Hacer Adminstrador</button> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body text-center">
+                            <img src="../../assets/images/ojosTristes.svg" width="150px" alt="ojosTristes">
+                            <h3>¿Deseas Desactivar este Usuario?</h3>
+                            <p class="font-18" style="text-align: justify;">Esto no eliminará al usuario pero le negará el acceso al sistema, todos los datos relacionados a este usuario se conservarán.</p>
+                            <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#desactivarUsuario">
+                                <i class="fas fa-user-times mr-2"></i>Desactivar Usuario</button>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

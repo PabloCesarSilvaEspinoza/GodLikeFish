@@ -2,15 +2,19 @@ const Controller = require('./index');
 const fs = require('fs');
 const administrador = require('./index');
 const { Console } = require('console');
+const superAdministrador = false;
 
 path = require('path')
 
 module.exports = {
 
     getDashboardAdministrador: async function (req, res, next) {
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         const errores = await Controller.listErrores();
         const numeroErrores = errores.length;
-        res.render('administrador/d1_dashboard_v2', {
+        const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
+        /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
+        res.render('administrador/d1_dashboard', {
             administrador: true,
             graficasAdministrador : true,
             valores:[{
@@ -20,6 +24,8 @@ module.exports = {
             }],
             errores,
             numeroErrores,
+            usuariosSinVerificar,
+            miPerfil
         });
     },
     getAdministrarCursos: async function (req, res, next) {
@@ -32,6 +38,7 @@ module.exports = {
         const ponentes = await Controller.listPonentes();
         const areas = await Controller.listAreas();
         const fechaActual = await Controller.getTiempoActual();
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
 
         res.render('administrador/d2_administrarCursos', {
             administrador: true,
@@ -52,6 +59,7 @@ module.exports = {
             inactivos,
             tarjetas,
             registrados,
+            miPerfil
 
         });
     },
@@ -63,6 +71,7 @@ module.exports = {
         const registrados= await Controller.listRegistrados();
         const activos= await Controller.listActivos();
         const inactivos= await Controller.listInactivos();
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
@@ -80,21 +89,42 @@ module.exports = {
             activos,
             inactivos,
             registrados,
+            miPerfil
 
         });
     },
 
-    getConsultarCursoE1: async function (req, res, next) {
-        res.render('administrador/d4_consultarCursoE1', {
-            administrador: true
+    getConsultarCurso: async function (req, res, next) {
+        const cursoID = req.params.idCurso;
+        const datosCurso = await Controller.getCurso(cursoID);
+        const curso = datosCurso[0];
+        const avisosCurso = await Controller.listAvisosCurso(cursoID);
+        const linksCurso = await Controller.listLinksCurso(cursoID);
+        const documentosCurso = await Controller.listDocumentosCurso(cursoID);
+        const asignacionesCurso = await Controller.listAsignacionesCurso(cursoID);
+        const archivosAsignacionesCurso = await Controller.getArchivosTareaCurso(cursoID);
+        const examenesCurso = await Controller.listExamenesCurso(cursoID);
+        const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
+        const totalDocumentos = documentosCurso.length;
+        const totalLinks = linksCurso.length;
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
+        res.render('administrador/d4_consultarCurso', {
+            administrador: true,
+            curso,
+            datosCurso,
+            avisosCurso,
+            linksCurso,
+            documentosCurso,
+            asignacionesCurso,
+            archivosAsignacionesCurso,
+            examenesCurso,
+            publicacionesCurso,
+            totalDocumentos,
+            totalLinks,
+            miPerfil
         });
     },
 
-    getConsultarCursoE2: async function (req, res, next) {
-        res.render('administrador/d4_consultarCursoE2', {
-            administrador: true
-        });
-    },
     postAgregarCurso: async function (req, res, next){
         const respuestaBD = await Controller.insertCurso(req.body);
         const cursoID = respuestaBD[0][0].ID;
@@ -145,6 +175,7 @@ module.exports = {
         const idUsuario = datosUsuario[0].idUsuario;
         const idDomicilio = datosUsuario[0].idDomicilio;
         const activo = datosUsuario[0].activo;
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
 
         res.render('administrador/d5_editarUsuario',{
             administrador: true,
@@ -177,11 +208,26 @@ module.exports = {
             idUsuario,
             idDomicilio,
             activo,
+            miPerfil
         });
     },
 
     postResolverProblema: async function(req, res, next){
         await Controller.upsertResolverProblema(req.body.idProblema, req.params.tipoProblema)
+        res.redirect('back');
+    },
+
+    getDescargarTarjetonUsuario: async function (req, res, next) {
+        const usuarioID = req.params.idUsuario;
+        const tarjetonNombre = req.params.nombreTarjeton;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/usuarios');
+        const archivoRuta = `${raiz}/${usuarioID}/${tarjetonNombre}`;
+        res.download(archivoRuta)
+    },
+
+    postVerificarTarjetonUsuario: async function (req, res, next) {
+        const { idUsuario } = req.body;
+        await Controller.updateVerificarTarjetonUsuario(idUsuario);
         res.redirect('back');
     },
 };

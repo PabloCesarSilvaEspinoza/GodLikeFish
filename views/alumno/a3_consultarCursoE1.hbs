@@ -1,227 +1,212 @@
 <div class="container-fluid">
-    <!--Escenario 1 - Alumno no inscrito -->
-    <div class="row">
-        <!--Modales-->
-        <!--Perfil Ponente visto por Alumno/Usuario-->
-        <div id="verPerfilPonente" class="modal">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <!--Contenido-->
-                    <div class="modal-body">
-                        <div class="text-center" class="modal-header">
-                            <div class="row">
-                                <div class="col text-right">
-                                    <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                        aria-hidden="true">×</button>
-                                </div>
-                            </div>
-                            <!--Titulo-->
-                            <div class="row">
-                                <div class="modal-title col text-center">
-                                    <h3>Perfil Ponente<span class="small"></span></h3>
-                                </div>
-                                <hr>
-                            </div>
+    <!--modales-->
+    <div id="reportarProblema" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h4>Reportar problema</h4>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-3">
-                                <center> <img src="../../assets/images/users/1.jpg" class="rounded-circle"
-                                        width="150" />
-                                    <h6 class="text-muted">Foto Perfil</h6>
-                                </center>
-                            </div>
-                            <div class="col-9">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
-                                        <hr>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Nombres</h6>
-                                        <h4>Jose Luis Dominguez</h4>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Puesto</h6>
-                                        <h4>Doc. Ciencias Humanas</h4>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Categoría</h6>
-                                        <h4>Humanidades</h4>
-                                    </div>
-                                </div>
-                                <div class="row mt-4 mb-4">
-                                    <div class="col-lg-4 text-center">
-                                        <h6 class="text-muted">Matrícula</h6>
-                                        <h4>E2545441</h4>
-                                    </div>
-                                    <div class="col-lg-8 text-center">
-                                        <h6 class="text-muted">Correo</h6>
-                                        <h4>correonoexiste@gmail.com</h4>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-
-                                </div>
-                            </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Inscribirse a un curso-->
-        <div id="inscribirseAhora" class="modal">
-            <div class="modal-dialog ">
-                <div class="modal-content">
-                    <!--Contenido-->
-                    <div class="modal-body text-center">
-                        <h3>¿Deseas inscribirte a este curso?</h3>
-                        <hr>
-                        <p>No puedes tomar dos cursos al mismo tiempo, deberas terminar este curso para poder tomar
-                            cuaquier otro.</p>
-                    </div>
-                    <div class="div text-center mb-4">
-                        <form action="../Inscribirse" method="POST">
+                        <!--contenido-->
+                        <form action="../../ponente/reportarProblemaCurso" method="post">
+                            <input id="idCurso" value='req.params.idCurso' hidden>
+                            <div class="col-md-12 mt-2">
+                                <h6 class="mb-0 font-medium mt-2"><i class="fas fa-highlighter mr-2"></i>Asunto del problema </h6>
+                                <input class="form-control form-control-lg font-14" type="text" required=" "
+                                    placeholder="Escribe el asunto del problema" alt="Asunto del problema"
+                                    id="asuntoProblema" name="asuntoProblema">
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <h6 class="mb-0 font-medium mt-2"><i class="fas fa-signature mr-2"></i>Descripcion</h6>
+                                <textarea class="col-sm-12 col-md-12 col-lg-12 font-14" id="descripcionProblema"
+                                    placeholder="Describe la situacion del problema" name="descripcionProblema"
+                                    cols="60" rows="3"></textarea>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-info waves-effect text-left mt-1"><i class="fas fa-paper-plane mr-2"></i>Enviar reporte</button>
+                                <button type="button" class="btn btn-secondary mt-1" data-dismiss="modal"> <i class="fas fa-times mr-2"></i>Cancelar</button>
+                            </div>
                             <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
-                            <button type="submit" class="btn waves-effect waves-light btn-success">
-                                <iclass="fas fa-check mr-2"></i>Si, inscribirme ahora
-                            </button>
                         </form>
-                        <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal" aria-hidden="true"><i
-                                class="fas fa-times mr-2" ></i>No, debo pensarlo bien</button>
                     </div>
+                    
                 </div>
             </div>
         </div>
-        <!-- Reportar un Problema -->
-        <div id="myModal" class="modal fade" tabindex="" role="dialog" aria-labelledby="myModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content ">
-                    <div class="modal-header ">
-                        <h3 class="modal-title text-center " id="myModalLabel">Reportar problema</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                            <h4>Asunto del problema </h4>
-                            <input class="form-control form-control-lg font-14" type="text" required=" "
-                                placeholder="Escribe el asunto del problema" alt="Asunto del problema"
-                                id="asuntoProblema" name="asuntoProblema">
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                            <h4>Descripcion</h4>
-                            <textarea class="col-sm-12 col-md-12 col-lg-12 mb-3 font-14" id="usuarioPasswordNueva"
-                                placeholder="Describe la situacion del problema" name="usuarioPasswordNueva" cols="60"
-                                rows="5"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" id="GuardarPasswordNueva" class="btn btn-info waves-effect text-left"
-                                data-dismiss="modal">Enviar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Contenido-->
-        {{#curso}}
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-body">
+    </div>
+    <div id="verPerfilPonente" class="modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="border-radius: 10px">
+                <!--Contenido-->
+                <div class="modal-body">
                     <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h4>Perfil de Ponente</h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        {{#perfilPonente}}
                         <div class="col-md-3 text-center">
-                            <img src="../../assets/images/users/1.jpg" width="150" class="rounded-circle" alt="user">
+                            <!-- FALTAAGREGAR <img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" class="rounded-circle" width="150px" height="150px" />-->
+                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px" />
+                            <h6 class="mt-2 font-medium">Foto de Perfil</h6>
                         </div>
-                        <div class="col-md-7">
-                            <h1>{{nombreCurso}}</h1>
-                            <div class="d-flex no-block align-items-center">
-                                <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user"
-                                        class="rounded-circle" width="45"></div>
-                                <div class="">
-                                    <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
-                                    <span>{{puestoPonente}}</span>
-                                    <span>
- <!--      aqui c llama el modal   -->                            
-                                        <button
-                                            class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                            data-toggle="modal" data-target="#verPerfilPonente"><i
-                                                class="far fa-user mr-1"></i> Ver Perfil</button>
-                                    </span>
-                                    </h5>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4> <hr>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
+                                    <h5 class="font-16">{{matriculaPonente}}</h5>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <h6 class="mb-0 font-medium mt-2">Nombre</h6>
+                                    <h5 class="font-16">{{nomnrePonente}}</h5>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <h6 class="mb-0 font-medium mt-2">Area</h6>
+                                    <h5 class="font-16">{{areaPonente}}</h5>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <h6 class="mb-0 font-medium mt-2">Puesto</h6>
+                                    <h5 class="font-16">{{puestoPonente}}</h5>
+                                </div>
+                                <div class="col-md-5 text-center">
+                                    <h6 class="mb-0 font-medium mt-2">Correo</h6>
+                                    <h5 class="font-16">{{correoPonente}}</h5>
                                 </div>
                             </div>
-                            <h5 class="mt-3">Clave: <span class="small">{{claveCurso}}</span>
-                                <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                        class="far fa-copy mr-1"></i> Copiar</a>
-                            </h5>
                         </div>
-                        <div class="col-md-2 text-right">
-                            <span class="small">
-                                <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="modal" data-target="#myModal">
-                                    <i class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema
-                                </button>
-                            </span>
-                        </div>
-                        <div class="col sm-12">
-                            <hr>
-                            <div class="d-flex justify-content-center">
-                                <h5 class="ml-2 mr-2"><i class="fas fa-briefcase mr-1"></i> Area: <span
-                                        class="small ">{{areaCurso}}</span></h5>
-                                <h5 class="ml-2 mr-2"><i class="far fa-circle mr-1"></i> Tipo: <span
-                                        class="small ">{{tipoCurso}}</span></h5>
-                                <h5 class="ml-2 mr-2"><i class="fas fa-video mr-1"></i> Modalidad: <span
-                                        class="small ">{{modalidadCurso}}</span></h5>
-                            </div>
-                        </div>
+                        {{/perfilPonente}}
                     </div>
                 </div>
             </div>
-            <div class="card">
+        </div>
+    </div>
+    <div id="inscribirseAhora" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <h3>Detalles del Curso</h3>
-                            <hr>
-                            <h5>Descripción</h5>
-                            <p>{{descripcionCurso}}</p>
-                            <h5 class="mt-4">Temario</h5>
-                            <p>Aqui puedes descargar el temario del curso: <a href="../DescargarTemario/{{idCurso}}"
-                                    class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"><i
-                                        class="far fa-arrow-alt-circle-down mr-2"></i>Temario</a></p>
-                            <div class="row mt-4">
-                                <div class="col-md-6">
-                                    <h5>Plataforma</h5>
-                                    <div class="d-flex align-items-center">
-                                        {{#ifEquals plataformaCurso "Microsoft Teams"}}
-                                        <img src="../../assets/images/teams.png" width="100" class="ml-4 mr-4" alt="user">
-                                        {{/ifEquals}}
-                                        {{#ifEquals plataformaCurso "Youtube"}}
-                                        <img src="../../assets/images/Youtube.png" width="100" class="ml-4 mr-4" alt="user">
-                                        {{/ifEquals}}
-                                        {{#ifEquals plataformaCurso "Google Meet"}}
-                                        <img src="../../assets/images/Google_Meet.png" width="100" class="ml-4 mr-4" alt="user">
-                                        {{/ifEquals}}
-                                        {{#ifEquals plataformaCurso "Zoom"}}
-                                        <img src="../../assets/images/zoom.png" width="100" class="ml-4 mr-4" alt="user">
-                                        {{/ifEquals}}
-                                        <h4>{{plataformaCurso}}</h4>
+                        <!--titulo-->
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10 text-center">
+                            <h3>Inscribirse <span class="small">a este curso</span></h3>
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="../Inscribirse" method="POST">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h6 class="mb-0 font-medium mt-2">¿Estas seguro de querer entrar a este curso?</h6>
+                                        <p>No podrás tomar ningún otro curso hasta terminar este, no puedes abandonar el curso hasta que termine.</p>
+                                        <input type="hidden" name="idCurso"value="{{curso.idCurso}}">
+                                        <button type="submit" class="btn btn-info mt-1"><i
+                                            class="fas fa-check mr-2"></i>Si, quiero entrar</button>
+                                        <button type="submit" class="btn btn-danger mt-1"><i
+                                                class="fas fa-times mr-2"></i>No, debo pensarlo mejor</button>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex justify-content-center">
-                                        {{#ifEquals estadoInscripcionesCurso "Abiertas"}}
-                                            <button type="button"
-                                            class="btn waves-effect waves-light btn-block btn-rounded btn-primary mt-5 font-24"
-                                            data-toggle="modal" data-target="#inscribirseAhora"><i
-                                                class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora </button>
-                                        {{/ifEquals}}
-                                        {{#ifEquals estadoInscripcionesCurso "Cerradas"}}
-                                            <a href="" type="button"
-                                            class="btn waves-effect waves-light btn-block btn-rounded btn-primary mt-5 font-24 disabled">
-                                            <i class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora </a>
-                                        {{/ifEquals}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--terminan modales-->
+    <div class="row">
+        <!--primera columna-->
+        {{#curso}}
+        <div class="col-md-9">
+            <div class="card" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <!-- FALTAAGREGAR <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" alt="Imgagen del curso">-->
+                            <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen del curso">
+                        </div>
+                        <div class="col-md-9">
+                            <h2>{{nombreCurso}}</h2>
+                            <div class="row">
+                                <div class="col-md-7 d-flex no-block align-items-center">
+                                    <h5 class="mr-4">Ponente:</h5>
+                                    <!--FALTA AGREGAR <div class="mr-2"><img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" alt="user" class="rounded-circle" width="45"></div>-->
+                                    <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45"></div>
+                                    <div>
+                                        <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5><span>{{puestoPonente}}</span>
+                                        <span>
+                                            <button class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#verPerfilPonente">
+                                                <i class="far fa-user mr-1"></i> Ver Perfil</button>
+                                        </span>
                                     </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <h5> <i class="fas fa-key"></i> Clave: <span class="small">{{claveCurso}}</span>
+                                        <a href="#" class="btn  btn-rounded btn-sm btn-success small">
+                                            <i class="far fa-copy mr-1"></i>Copiar</a>
+                                    </h5>
+                                </div> 
+                            </div>
+                            <h6 class="ml-2 mr-2 mt-3 text-center">
+                                <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">{{areaCurso}}</span>
+                                <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">{{tipoCurso}}</span>
+                                <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">{{modalidadCurso}}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border-radius: 10px">
+                <div class="card-body">
+                    <h4 class="card-title"><i class="fas fa-stream mr-2" aria-hidden="true"></i>Detalles del Curso</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5><i class="fas fa-signature ml-2 mr-2"></i>Descripción</h5>
+                            <p style="text-align:justify;">{{descripcionCurso}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-list-alt ml-2 mr-2"></i>Temario</h5>
+                            <p>Consulta el temario del curso y conoce la ruta de aprendizaje que tu sindicato ha preparado para ti:
+                                <span><a href="../DescargarTemario/{{idCurso}}" class="btn btn-rounded btn-sm btn-success small ml-2">
+                                <i class="fas fa-external-link-alt mr-1"></i> Ver Temario</a></span>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-tv ml-2 mr-1"></i>Plataforma</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    {{#ifEquals plataformaCurso "Microsoft Teams"}}
+                                    <img src="../../assets/images/teams.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                    {{/ifEquals}}
+                                    {{#ifEquals plataformaCurso "Youtube"}}
+                                    <img src="../../assets/images/Youtube.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                    {{/ifEquals}}
+                                    {{#ifEquals plataformaCurso "Google Meet"}}
+                                    <img src="../../assets/images/Google_Meet.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                    {{/ifEquals}}
+                                    {{#ifEquals plataformaCurso "Zoom"}}
+                                    <img src="../../assets/images/zoom.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                    {{/ifEquals}}
+                                    <h4>{{plataformaCurso}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -229,26 +214,45 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2>Inscripciones <span class="small text-muted">({{estadoInscripcionesCurso}})</span></h2>
-                    <h5 class="ml-2 mr-2"><i class="fas fa-users"></i> Alumnos inscritos: <span
-                            class="small ">{{totalEstudiantesCurso}}</span></h5>
-                    <h5 class="ml-2 mr-2"><i class="fas fa-calendar mr-1"></i> Fecha Inicio: <span
-                            class="small ">{{fechaInscripcionInicioCurso}}</span></h5>
-                    <h5 class="ml-2 mr-2"><i class="fas fa-calendar mr-1"></i> Fecha Fin: <span
-                            class="small ">{{fechaInscripcionFinalCurso}}</span></h5>
-                    <hr class="mt-4 md-4">
-                    <h2>Horario de Clase</h2>
-                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span
-                            class="small ">{{fechaInicioCurso}}</span></h5>
-                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
-                            class="small ">{{fechaFinalCurso}}</span></h5>
-                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
+        <!--segunda columna-->
+        <div class="col-md-3">
+            <div class="card" style="border-radius: 10px">
+                <div class="card-body p-3">
+                    <h3 class="text-center">Inscripciones <span class="small">({{estadoInscripcionesCurso}})</span></h3>
+                    <h5 class="ml-2 mr-2"><i class="fas fa-users mr-1"></i> Alumnos Inscritos: <span class="small ">{{totalEstudiantesCurso}}</span></h5>
+                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i>Inicio: <span class="small ">{{fechaInscripcionInicioCurso}}</span></h5>
+                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i>Fin: <span class="small ">{{fechaInscripcionFinalCurso}}</span></h5>
+                    {{#ifEquals estadoInscripcionesCurso "Abiertas"}}
+                        <button type="button" class="btn btn-block btn-rounded btn-primary" 
+                            data-toggle="modal" data-target="#inscribirseAhora">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora</button>
+                    {{/ifEquals}}
+                    {{#ifEquals estadoInscripcionesCurso "Cerradas"}}
+                        <!--FALTAAGREGAR Modal pidiendo perdón por que el curso ya no esta disponible-->
+                        <a href="#" type="button" class="btn btn-block btn-rounded btn-primary disabled" 
+                            data-toggle="modal">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora</a>
+                    {{/ifEquals}}
+                </div>
+            </div>
+            <div class="card" style="border-radius: 10px">
+                <div class="card-body p-3">
+                    <h3 class="text-center">Horario </h3>
+                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small">{{fechaInicioCurso}}</span></h5>
+                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small">{{fechaFinalCurso}}</span></h5>                          
+                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
+                </div>
+            </div>
+            {{/curso}}
+            <div class="card text-center" style="border-radius: 6px">
+                <div class="card-body p-3">
+                    <h3>¿Existe algún problema?</h3>
+                    <p class="font-14">!Háznoslo saber! </p>
+                    <a href="" type="button" class="btn btn-danger " data-toggle="modal" data-target="#reportarProblema">
+                        <!--FALTAAGREGAR FUNCIONALIDAD-->
+                        <i class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema</a>
                 </div>
             </div>
         </div>
-        {{/curso}}
     </div>
 </div>

@@ -25,6 +25,7 @@ router.post('/agregarUsuario', crearCarpetaUsuario, dobleInput, render.postAgreg
 router.get('/validarCorreo', render.getValidarCorreo);
 router.post('/verificarCorreo', render.postVerificarCorreo);
 router.get('/validarPermisos', render.getValidarPermisos);
+router.get('/validarTarjeton', render.getValidarTarjeton);
 
 router.get('/verificarCodigo', render.getVerificarCodigo);
 router.post('/validarCodigo', render.postValidarCodigo);
@@ -37,6 +38,11 @@ router.get('/confirmarCambioCorreo', render.getConfirmarCambioCorreo);
 router.post('/confirmarCambioCorreo', render.postConfirmarCambioCorreo);
 router.get('/establecerNuevoCorreo', render.getEstablecerNuevoCorreo);
 router.post('/establecerNuevoCorreo', render.postEstablecerNuevoCorreo);
+
+/* rutas comunes entre usuarios */
+router.get('/miPerfil', render.getMiPerfil);
+router.get('/soporte', render.getSoporte);
+
 
 passport.use(new passportLocal(function (username, password, done) {
     Controller.validarUsuario(username, password)

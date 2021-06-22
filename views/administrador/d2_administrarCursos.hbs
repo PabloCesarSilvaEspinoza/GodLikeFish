@@ -1,550 +1,190 @@
 <div class="container-fluid">
-    <!--Modales-->
-    <!-- modal agregar curso -->
+    <!--modales-->
     <div id="agregarCurso" class="modal">
         <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!--Salir-->
-                <div class="row">
-                    <div class="col text-right">
-                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                </div>
-                <!--Titulo-->
-                <div class="row">
-                    <div class="col text-center">
-                        <h1>Agregar <span class="small">Curso</span></h1>
-                        <p>Aqui puedes agregar un curso nuevo, llena todos los datos y guardalo.</p>
-                    </div>
-                    <hr>
-                </div>
-                <div class="modal-body">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
                     <div class="row">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form action="agregarCurso" method="POST" enctype="multipart/form-data">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h3>Agregar <span class="small">Curso</span></h3>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="agregarCurso" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+                                        <img src="../../assets/images/logoBienvenida.svg" width="150" class="rounded-circle" alt="imagenCurso">
+                                        <h6 class="mb-0 font-medium">Imagen del curso </h6>
+                                        <input type="file" name="fotoCurso" id="fotoCurso" class="form-control-file" required/>
+                                    </div>
+                                    <div class="col-md-9">
                                         <div class="row">
-                                            <div class="col text-center justify-content-center no-block">
-                                                <img src="../../assets/images/users/1.jpg" width="150" alt="user">
-                                                <h5 class="mt-3">Imagen del curso</h5>
-                                                <input type="file" name="fotoCurso" id="fotoCurso" class="form-control-file" required/>
+                                            <div class="col-md-12">
+                                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4><hr>
                                             </div>
-                                            <div class="col-md-12 col-lg-9">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
-                                                        <hr>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Nombre del Curso <span class="text-danger">*</span></h5>
-                                                            <input type="text" id="nombreCurso" name="nombreCurso" class="form-control" value="Curso de Prueba" placeholder="Ejemplo del nombre de un curso" autocomplete="off" required>
-                                                            <small class="form-control-feedback ml-1"> Maximo 255 caracteres </small> 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Área<span class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select" name="areaCurso" id="areaCurso" style="width: 100%; height:36px;" required>
-                                                                {{#each areas}}
-                                                                <option value="{{idArea}}">{{nombreArea}}</option>
-                                                                {{/each}}
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Tipo<span class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select" name="tipoCurso" id="tipoCurso" style="width: 100%; height:36px;" required>
-                                                                <option value="Normativo">Normativo</option>
-                                                                <option value="Publico">Público</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Modalidad <span class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select" name="modalidadCurso" id="modalidadCurso" style="width: 100%; height:36px;">
-                                                                <option value="enVivo">En vivo</option>
-                                                                <option value="Diferido">Diferido</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2 col-lg-2">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Capacidad </h5>
-                                                            <select class="form-control custom-select" name="capacidadCurso" id="capacidadCurso" style="width: 100%; height:36px;" required>
-                                                                <option value="null">Ilimitado</option>
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="75">75</option>
-                                                                <option value="100">100</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Ponente <span class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select" name="ponenteID" id="ponenteID" style="width: 100%; height:36px;">
-                                                                {{#each ponentes}}
-                                                                <option value="{{idPonente}}">{{nombrePonente}}</option>
-                                                                {{/each}}
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Plataforma <span class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select" name="plataformaCurso" id="plataformaCurso" style="width: 100%; height:36px;">
-                                                                <option value="" selected>N/A</option>
-                                                                <option value="Google Classroom">Google Classroom</option>
-                                                                <option value="Youtube">Youtube</option>
-                                                                <option value="Microsoft Teams">Microsift Teams</option>
-                                                                <option value="Zoom">Zoom</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-6">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Nombre del Curso <span class="text-danger">*</span></h6>
+                                                <input type="text" name="nombreCurso" class="form-control" placeholder="Ejemplo del nombre de un curso" autocomplete="off" required>
+                                                <small class="form-control-feedback ml-1"> Maximo 255 caracteres </small> 
                                             </div>
-                                            <div class="col-md-7 col-lg-7">
-                                                <div class="form-group">
-                                                    <h5 class="ml-1">Descripción <span class="text-danger">*</span></h5>
-                                                    <textarea class="form-control" name="descripcionCurso" id="descripcionCurso" rows="3" value="Descripción para el Curso de Prueba" placeholder="Describe de que trata el curso aqui..." autocomplete="off"></textarea>
-                                                </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Area <span class="text-danger">*</span></h6>
+                                                <select class=" form-control custom-select" name="areaCurso" style="width: 100%; height:36px;" required>
+                                                    {{#each areas}}
+                                                    <option value="{{idArea}}">{{nombreArea}}</option>
+                                                    {{/each}}
+                                                </select>
                                             </div>
-                                            <div class="col-md-5 col-lg-3">
-                                                <div class="form-group">
-                                                    <h5 class="ml-1 md-3">Temario</h5>
-                                                    <input type="file" name="temarioCurso" id="temarioCurso" class="form-control-file" required/>
-                                                </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Tipo <span class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select" name="tipoCurso" style="width: 100%; height:36px;" required>
+                                                    <option value="Normativo">Normativo</option>
+                                                    <option value="Publico">Público</option>        
+                                                </select>
                                             </div>
-                                            <div class="col-md-6 col-lg-2 ">
-                                                <div class="form-group">
-                                                    <h5 class="ml-1">Clave <span class="text-danger">*</span></h5>
-                                                    <input type="text" name="claveCurso" id="claveCurso" class="form-control" placeholder="000000000" autocomplete="off" required>
-                                                    <small class="form-control-feedback ml-1"> Unicamente numeros </small> 
-                                                </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Modalidad <span class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select" name="modalidadCurso" style="width: 100%; height:36px;" required>
+                                                    <option value="enVivo">En vivo</option>
+                                                    <option value="Diferido">Diferido</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Capacidad</h6>
+                                                <select class="form-control custom-select" name="capacidadCurso" style="width: 100%; height:36px;" required>
+                                                    <option value="0">Ilimitado</option>
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="75">75</option>
+                                                    <option value="100">100</option>       
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Ponente <span class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select" name="ponenteID" style="width: 100%; height:36px;">
+                                                    {{#each ponentes}}
+                                                    <option value="{{idPonente}}">{{nombrePonente}}</option>
+                                                    {{/each}}
+                                                </select>
                                             </div>
                                         </div>
-                                        {{#fechaActual}}
+                                    </div>
+                                    <div class="col-md-12"><!--wacha este tunning-->
                                         <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="row">
-                                                    <div class="col-md-12 mt-3">
-                                                        <h4><i class="fas fa-calendar-alt mr-2"></i>Calendario del curso</h4>
-                                                        <hr>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" name="fechaInicioCurso"  id="fechaInicioCurso" value="{{fechaActual}}" style="width: 100%; ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" name="fechaFinCurso"  id="fechaFinCurso" value="{{fechaActual}}" style="width: 100%; ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Hora Inicio </h5>
-                                                            <input type="time" class="form-control" name="horarioInicioCurso"  id="horaInicioCurso" value="{{horaActual}}:00:00">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Hora Fin </h5>
-                                                            <input type="time" class="form-control" name="horarioFinCurso"  id="horaFinCurso" value="{{horaSiguiente}}:00:00">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-6">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Descripción <span class="text-danger">*</span></h6>
+                                                <textarea class="form-control" rows="6" name="descripcionCurso" placeholder="Describe de que trata el curso aqui..." autocomplete="off"></textarea>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="row">
-                                                    <div class="col-md-12 mt-3">
-                                                        <h4><i class="far fa-calendar-alt mr-2"></i>Calendario de inscripción</h4>
-                                                        <hr>
+                                                    <div class="col-md-6">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Plataforma <span class="text-danger">*</span></h6>
+                                                        <select class="form-control custom-select" name="plataformaCurso" style="width: 100%; height:36px;">
+                                                            <option value="" selected>N/A</option>
+                                                            <option value="Google Classroom">Google Classroom</option>
+                                                            <option value="Youtube">Youtube</option>
+                                                            <option value="Microsoft Teams">Microsift Teams</option>
+                                                            <option value="Zoom">Zoom</option>
+                                                        </select>
                                                     </div>
-                                                    <div class="col-md-12 col-lg-6">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" name="fechaInscripcionInicioCurso" id="fechaInscripcionInicioCurso" value="{{fechaActual}}" style="width: 100%; ">
-                                                        </div>
+                                                    <div class="col-md-6">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Temario <span class="text-danger">*</span></h6>
+                                                        <input type="file" name="temarioCurso" class="form-control-file" required/>
                                                     </div>
-                                                    <div class="col-md-12 col-lg-6">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" name="fechaInscripcionFinCurso" id="fechaInscripcionFinCurso" value="{{fechaActual}}" style="width: 100%; ">
-                                                        </div>
+                                                    <div class="col-md-4    ">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Clave <span class="text-danger">*</span></h6>
+                                                        <input type="text" name="claveCurso" class="form-control" placeholder="000000000" autocomplete="off" required>
+                                                        <small class="form-control-feedback ml-1">Numérico</small>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Enlace <span class="text-danger">*</span></h6>
+                                                        <input type="text" name="enlacePlataforma" class="form-control" placeholder="Enlace a la plataforma http://...." autocomplete="off">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{/fechaActual}}
-                                        <div class="form-group mt-4">
-                                            <div class="col text-right">
-                                                <hr>
-                                                <button type="submit"class="btn waves-effect waves-light btn-success"><i class="fas fa-save mr-2"></i>Guardar</button>
-                                                <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+                                    {{#fechaActual}}
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4><i class="fas fa-calendar-alt mr-2 mt-3"></i>Calendario del Curso</h4><hr>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" name="fechaInicioCurso"  value="{{fechaActual}}"style="width: 100%;">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Hora Inicio</h6>
+                                                <input type="time" class="form-control" name="horarioInicioCurso" value="{{horaActual}}">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" name="fechaFinCurso" value="{{fechaActual}}"style="width: 100%;">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Hora Fin</h6>
+                                                <input type="time" class="form-control" name="horarioFinCurso" value="{{horaSiguiente}}">
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4><i class="far fa-calendar-alt mr-2 mt-3"></i>Calendario de inscripción</h4><hr>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" name="fechaInscripcionInicioCurso" value="{{fechaActual}}" style="width: 100%;">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" name="fechaInscripcionFinCurso" value="{{fechaActual}}" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/fechaActual}}
+                                    <div class="col-md-12 text-right mt-3">
+                                        <button type="submit" class="btn waves-effect waves-light btn-info"><i class="fas fa-save mr-2"></i>Guardar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- modal editar curso -->
-    <div id="editarCurso" class="modal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!--Salir-->
-                <div class="row">
-                    <div class="col text-right">
-                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                </div>
-                <!--Titulo-->
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 text-center">
-                        <h1>Editar <span class="small">Curso</span></h1>
-                        <p>Aqui puedes modificar los campos del curso que has seleccionado.</p>
-                    </div>
-                    <div class="col-md-3 text-right">
-                        <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
-                            data-dismiss="modal"><i class="fas fa-trash-alt mr-2"
-                                aria-hidden="true"></i>Eliminar</button>
-                    </div>
-                    <hr>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form class="form-valide" id="agregarCurso" method="POST" action="#">
-                                        <div class="row">
-                                            <div class="col-md-3 text-center justify-content-center no-block">
-                                                <img src="../../assets/images/users/1.jpg" width="150"
-                                                    class="rounded-circle" alt="user">
-                                                <h5 class="mt-3">Imagen del curso</h5>
-                                                <fieldset class="form-group mt-3">
-                                                    <input type="file" class="form-control-file" id="exampleInputFile">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-12 col-lg-9">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales
-                                                        </h4>
-                                                        <hr>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Nombre del Curso <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="text" id="nombreCurso" class="form-control"
-                                                                placeholder="Ejemplo del nombre de un curso" required>
-                                                            <small class="form-control-feedback ml-1"> Maximo 255
-                                                                caracteres </small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Área <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class=" form-control custom-select"
-                                                                style="width: 100%; height:36px;" required>
-                                                                <option>Select</option>
-                                                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                </optgroup>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Tipo <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;" required>
-                                                                <option value="AK">Tipo 1</option>
-                                                                <option value="HI">Tipo 2</option>
-                                                                <option value="HI">Tipo 3</option>
-                                                                <option value="HI">Tipo 4</option>
-                                                                <option value="HI">Tipo 5</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Modalidad <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">En vivo</option>
-                                                                <option value="HI">Video</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2 col-lg-2">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Capacidad </h5>
-                                                            <input type="number" id="capacidad" class="form-control"
-                                                                placeholder="0">
-                                                            <small class="form-control-feedback ml-1"> Utilice 0 para
-                                                                capacidad indefinida </small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Ponente <span class="text-danger">*</span>
-                                                            </h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">Nombre Completo Ponente</option>
-                                                                <option value="HI">Nombre Completo Segundo Ponente
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Plataforma <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <select class="form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                                <option value="HI">Classroom</option>
-                                                                <option value="HI">TEAMS</option>
-                                                                <option value="HI">Zoom</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7 col-lg-7">
-                                                <div class="form-group">
-                                                    <h5 class="ml-1">Descripción <span class="text-danger">*</span></h5>
-                                                    <textarea class="form-control" rows="3"
-                                                        placeholder="Describe de que trata el curso aqui..."></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5 col-lg-3">
-                                                <div class="form-group">
-                                                    <h5 class="ml-1 md-3">Temario <span class="text-danger">*</span>
-                                                    </h5>
-                                                    <fieldset class="form-group mt-4">
-                                                        <input type="file" class="form-control-file"
-                                                            id="exampleInputFile">
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-2 ">
-                                                <div class="form-group">
-                                                    <h5 class="ml-1">Clave <span class="text-danger">*</span></h5>
-                                                    <input type="text" id="clave" class="form-control"
-                                                        placeholder="000000000">
-                                                    <small class="form-control-feedback ml-1"> Unicamente numeros
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="row">
-                                                    <div class="col-md-12 mt-3">
-                                                        <h4><i class="fas fa-calendar-alt mr-2"></i>Calendario del curso
-                                                        </h4>
-                                                        <hr>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-04-13"
-                                                                style="width: 100%; ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Hora Inicio </h5>
-                                                            <input type="time" class="form-control" value="22:33:00">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-06-13"
-                                                                style="width: 100%; ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Hora Fin </h5>
-                                                            <input type="time" class="form-control" value="22:33:00">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="row">
-                                                    <div class="col-md-12 mt-3">
-                                                        <h4><i class="far fa-calendar-alt mr-2"></i>Calendario de
-                                                            inscripción</h4>
-                                                        <hr>
-                                                    </div>
-                                                    <div class="col-md-12 col-lg-6">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Inicio <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-04-13"
-                                                                style="width: 100%; ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-lg-6">
-                                                        <div class="form-group">
-                                                            <h5 class="ml-1">Fecha de Fin <span
-                                                                    class="text-danger">*</span></h5>
-                                                            <input type="date" class="form-control" value="2021-06-13"
-                                                                style="width: 100%; ">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mt-4">
-                                            <div class="col text-right">
-                                                <hr>
-                                                <button type="button"
-                                                    class="btn waves-effect waves-light btn-success"><i
-                                                        class="fas fa-save mr-2"></i>Guardar</button>
-                                                <button type="button" class="btn waves-effect waves-light btn-info"
-                                                    data-dismiss="modal"><i
-                                                        class="fas fa-times mr-2"></i>Cancelar</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Titulo-->
-    <div class="row">
-        <div class="col sm-12">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h1>Administrar <span class="small"> Cursos</span></h1>
-                    <p>Aqui encontraras todos los cursos que has dado de alta en el sistema y podras agregar nuevos
-                        cursos.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Tabla de cursos-->
+    <!--terminan modales-->
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card" style="border-radius: 10px">
                 <div class="card-body">
-                    <!--Etiquetas-->
-                    <div class="row">
-
-                        {{#each registrados}}
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card bg-info">
-                                <div class="d-flex flex-row">
-                                    <div class="p-10">
-                                        <h3 class="text-white box mb-0"><i class="fas fa-users"></i></h3>
-                                    </div>
-                                    <div class="text-white align-self-center p-10">
-                                        <h3 class="mb-0">{{registrados}}</h3>
-                                        <span class="text-white">Cursos Registrados</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                        
-                        {{#each activos}}
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card bg-success">
-                                <div class="d-flex flex-row">
-                                    <div class="p-10">
-                                        <h3 class="text-white box mb-0"><i class="fas fa-graduation-cap"></i></h3>
-                                    </div>
-                                    <div class="text-white align-self-center p-10">
-                                        <h3 class="mb-0">{{activos}}</h3>
-                                        <span class="text-white">Cursos Activos</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                        {{#each inactivos}}
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card bg-danger">
-                                <div class="d-flex flex-row">
-                                    <div class="p-10">
-                                        <h3 class="text-white box mb-0"><i class="fab fa-leanpub"></i></h3>
-                                    </div>
-                                    <div class="text-white align-self-center p-10">
-                                        <h3 class="mb-0">{{inactivos}}</h3>
-                                        <span class="text-white">Cursos Inactivos</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                        <!--
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card bg-cyan">
-                                            <div class="d-flex flex-row">
-                                                <div class="p-10">
-                                                    <h3 class="text-white box mb-0"><i class="fas fa-plus mr-2"></i>Agregar Curso</h3></div>
-                                                <div class="text-white align-self-center p-10">
-                                                    <h3 class="mb-0"></h3>
-                                                    <span class="text-white"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>-->
-                    </div>
-                    <!--Titulo de la tabla y modal para agregar cursos-->
                     <div class="d-flex no-block align-items-center mb-4">
                         <h3 class="card-title"><i class="fas fa-archive mr-2"></i>Todos los cursos</h3>
                         <div class="ml-auto">
-                            <div class="btn-group">
-                                <button type="button" class="btn waves-effect waves-light btn-primary"
-                                    data-toggle="modal" data-target="#agregarCurso"><i
-                                        class="fas fa-plus mr-2"></i>Agregar Curso</button>
-                            </div>
+                            <button type="button" class="btn waves-effect waves-light btn-primary" data-toggle="modal" data-target="#agregarCurso"><i class="fas fa-plus mr-2"></i>Agregar Curso</button>
                         </div>
                     </div>
-                    <!--Tabla-->
                     <div class="table-responsive">
                         <table id="file_export" class="table table-bordered nowrap display">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Clave</th>
                                     <th>Area</th>
                                     <th>Tipo</th>
                                     <th>Modalidad</th>
-                                    <th>Capacidad</th>
+                                    <th>Estudiantes</th>
                                     <th>Estado</th>
                                     <th>Ponente</th>
                                     <th>Acciones</th>
@@ -559,7 +199,7 @@
                                     <td>{{areaCurso}}</td>
                                     <td>{{tipoCurso}}</td>
                                     <td>{{modalidadCurso}}</td>
-                                    <td>{{capacidadCurso}}</td>
+                                    <td>{{numeroInscripcionesCurso}}</td>
                                     {{#if activoCurso}}
                                         <td><span class="label label-info">Activo</span></td>
                                     {{else}}
@@ -567,66 +207,14 @@
                                     {{/if}}
                                     <td>{{nombrePonente}}</td>
                                     <td>
-                                        <a type="button" class="btn waves-effect waves-light btn-success btn-rounded" href="/curso/{{idCurso}}"><i class="fas fa-eye mr-2"></i> Consultar</a>
+                                        <a class="btn waves-effect waves-light btn-success btn-rounded"
+                                            href="curso/{{idCurso}}" type="button" >
+                                            <i class="fas fa-eye mr-2"></i> Consultar</a>
                                     </td>
                                 </tr>
                                 {{/each}}
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
- <!--Estadisticas de cursos-->
- 
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-  <!--Tabla resumen cursos-->
-                        <div class="col-md-8 col-lg-8">
-                            <h3><i class="fas fa-sitemap mr-2"></i>Historial de cursos <span
-                                    class="small">Resumen</span></h3>
-                                   
-                            <hr>
-                            <div class="table-responsive ">
-                                <table id="file_export" class="table table-bordered nowrap display">
-                                    <thead>
-                                        <tr>
-                                            <th>Area del Curso</th>
-                                            <th># Total de Cursos</th>
-                                            <th>Cursos Activos</th>
-                                            <th>Ultimo Curso</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{#each hitorialCursos}}
-                                        <tr>
-                                            <td>{{areaCurso}}</td>
-                                            <td>{{totalCursos}}</td>
-                                            <td>{{activosCurso}}</td>
-                                            <td>{{ultimaFechaCurso}}</td>
-                                        </tr>
-                                         {{/each}}
-                                    </tbody>
-
-                                </table>
-                            </div>
-                         </div>
-                        <!--Grafica cursos activos-->
-                        <div class="col-md-4 col-lg-4">
-                            <h3><i class="fas fa-chart-pie mr-2"></i>Cursos Activos <span class="small">Resumen</span>
-                            </h3>
-                            <hr>
-                            <!--Grafica-->
-                            <h4 class="card-title ml-2 mt-4">Porcentaje de los tipos de curso activos</h4>
-                            <div class="text-center" class="card-title mt-4">
-                               <canvas width="100" height="100" id="GraficaMuestra1" ></canvas>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>

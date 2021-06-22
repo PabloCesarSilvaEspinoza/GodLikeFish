@@ -11,52 +11,51 @@ module.exports = {
         const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         const totalCursosActuales = cursosActuales.length;
         const totalCursosHistorial = historialCursosPonente.length;
+        const datosGeneralesPonente = await Controller.getDatosGeneralesPonente(usuarioID);
+        const nombresCursosActualesPonente = await Controller.getNombresCursosActualesPonente(usuarioID);
+        const fechaActual = await Controller.getTiempoActual();
+        const miPerfil = await Controller.getMiPerfil(usuarioID);
+        const asignacionesPendientes = await Controller.listAsignacionesPendientesPonente(usuarioID);
         res.render('ponente/p1_dashboard', {
             ponente: true,
             cursosActuales,
             historialCursosPonente,
             totalCursosActuales,
             totalCursosHistorial,
+            datosGeneralesPonente,
+            nombresCursosActualesPonente,
+            fechaActual,
+            miPerfil,
+            asignacionesPendientes
         });
     },
-
-    getConsultarCurso: async function (req, res, next) {
-        const datosCurso = await Controller.getCurso(req.params.idCurso);
-        const avisosCurso = await Controller.listAvisosUsuario(req.params.idCurso);
-        const linksCurso = await Controller.listLinks(req.params.idCurso);
-        const documentosCurso = await Controller.listDocumentos(req.params.idCurso);
-        const curso = datosCurso[0];
-        const asignacionesPonente = await Controller.listAsignacionesPonente(req.params.idCurso);
-        res.render('ponente/p2_consultarCursoE1_v2', {
-            ponente: true,
-            curso,
-            datosCurso,
-            avisosCurso,
-            linksCurso,
-            documentosCurso,
-            asignacionesPonente,
-        });
-    },
-
-    getConsultarCursoPE2: async function (req, res, next) {
-        res.render('ponente/p2_consultarCursoE2_v2', {
-            ponente: true
-        });
-    },
+    
     getConsultarAlumnos: async function (req, res, next) {
         const estudiantes = await Controller.listEstudiantes();
         const modalEstudiante = await Controller.listEstudiantes();
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('ponente/p3_consultarAlumnos', {
             ponente: true,
-            datatables: true,
+            dataTables: true,
             dataTablesExport: true,
             modalEstudiante,
             estudiantes,
+            miPerfil
         });
     },
     getCalificarTarea: async function (req, res, next) {
+        const tareaID = req.params.idTarea;
+        const estadoEntregasTarea = await Controller.listEstadoEntregasTarea(tareaID);
+        const archivosEntregasTarea = await Controller.listArchivosEntregasTarea(tareaID);
+        const datosTarea = await Controller.getDatosTarea(tareaID);
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('ponente/p4_calificarTarea', {
-            ponente: true
+            ponente: true,
+            dataTables: true,
+            estadoEntregasTarea,
+            archivosEntregasTarea,
+            datosTarea,
+            miPerfil
         });
     },
     getSoporte: async function (req, res, next) {
@@ -74,8 +73,7 @@ module.exports = {
         const tareaID = respuestaBD[0][0].ID;
         for (const file of req.files) {
             const nombreMultimedia = file.originalname;
-            const linkMultimedia = `${nombreMultimedia}`;
-            datos = { tareaID, nombreMultimedia, linkMultimedia };
+            datos = { tareaID, nombreMultimedia };
             await Controller.insertMultimediaTarea(datos);
         }
         res.redirect('back')
@@ -134,6 +132,14 @@ module.exports = {
         res.download(archivoRuta)
     },
 
+    postCalificarEntrega: async function (req, res, next) {
+        res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
+    },
+
+    postTerminarCalificarTarea: async function (req, res, next) {
+        res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
+    },
+
     getConsultarEstadoCursoPonente: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -141,7 +147,7 @@ module.exports = {
         const estadoCursoPonente = respuestaEstadoCursoPonente[0][0].Respuesta;
         const datosCurso = await Controller.getCurso(cursoID);
         const curso = datosCurso[0];
-
+        const miPerfil = await Controller.getMiPerfil(usuarioID);
         switch (estadoCursoPonente) {
             case 'No es su curso':
             case 'Curso Inactivo':
@@ -150,7 +156,8 @@ module.exports = {
 
             case 'Curso Pasado':
                 res.render('ponente/p2_consultarCursoE2_v2', {
-                    ponente:true
+                    ponente:true,
+                    miPerfil
                 });
                 break;
 
@@ -161,13 +168,13 @@ module.exports = {
                 const documentosCurso = await Controller.listDocumentosCurso(cursoID);
                 const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
                 const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
-                const examenesCurso = await Controller.listExamenes(cursoID);
+                const examenesCurso = await Controller.listExamenesCurso(cursoID);
+                const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
                 const totalDocumentos = documentosCurso.length;
                 const totalLinks = linksCurso.length;
+                const fechaActual = await Controller.getTiempoActual();
                 global.cursoActualID = cursoID;
-                console.log(global.cursoActualID);
-                res.render('ponente/p2_consultarCursoE1_v2', {
-                    dropzone:true,
+                res.render('ponente/p2_consultarCursoE1', {
                     ponente: true,
                     curso,
                     datosCurso,
@@ -179,6 +186,9 @@ module.exports = {
                     totalLinks,
                     examenesCurso,
                     archivosAsignacionesPonente,
+                    publicacionesCurso,
+                    fechaActual,
+                    miPerfil
                 });
                 break;
 
@@ -188,6 +198,15 @@ module.exports = {
                 break;
         }
     },
+
+    getConsultarCursos: async function(req, res, next){
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
+        res.render('ponente/p5_misCursos',{
+            ponente: true,
+            miPerfil
+            /* datos del usuario */
+        })
+    }
 
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')
