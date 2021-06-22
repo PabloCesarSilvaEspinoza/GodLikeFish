@@ -48,7 +48,17 @@ module.exports = function (injectedStore) {
         const PROCEDURE = `CALL ver_Estado_Curso_Estudiante(${usuarioID}, ${cursoID})`;
         return store.catalog(PROCEDURE);
     }
+    function insertCalificarExperiencia(idUsuario, idCurso, body) {
+        const {
+            valoracionCurso, valoracionPonente, comentario 
+        } = body;
+
+        const PROCEDURE = `editar_Calificacion_Experiencia_Curso( 
+            ${idUsuario}, ${idCurso}, ${valoracionCurso}, ${valoracionPonente},'${comentario}'
+            )`
     
+        return store.insert(PROCEDURE);
+    }
     /*-----------------------------------------------------*/ 
     /*                      INSCRIPCIÓN                    */
     /*-----------------------------------------------------*/
@@ -84,8 +94,8 @@ module.exports = function (injectedStore) {
     }
 
     function listAvisosUsuario(id) {
-        const VIEW = 'ver_Avisos_Usuario';
-        const CLAUSE = `WHERE cursoID = ?`;
+        const VIEW = 'ver_Avisos_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
 
@@ -107,14 +117,15 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
-    function listAsignacionesEstudiante(id) {
+    /* function listAsignacionesEstudiante(id) {
         const VIEW = 'ver_Asignaciones_Curso_Estudiante';
         const CLAUSE = `WHERE idUsuario= 29 and idCurso = ? `;
         return store.get(VIEW, CLAUSE, id);
-    }
+    } */
+
     async function getMiPerfil(id) {
         const VIEW = 'ver_Usuarios';
-        const CLAUSE = `WHERE id = ?`;
+        const CLAUSE = `WHERE idUsuario = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
     function listExamenes(idCurso) {
@@ -128,6 +139,78 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    function listAsignacionesEstudiante(idUsuario, idCurso) {
+        const PROCEDURE = `CALL ver_Estado_Asignaciones_Estudiante(${idUsuario}, ${idCurso})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function listArchivosTareaCurso(idCurso) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function catalogPublicacionesCursoEstudiante(idUsuario, idCurso) {
+        const PROCEDURE = `CALL ver_Historial_Publicaciones_Estudiante(${idUsuario}, ${idCurso})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function insertTareaEstudiante(idUsuario, idTarea) {
+        const PROCEDURE = `CALL entregar_Tarea(${idUsuario}, ${idTarea})`;
+        return store.insert(PROCEDURE);
+    }
+
+    function insertMultimediaTareaEstudiante(idEntrega, nombreMultimediaEstudiante) {
+        const PROCEDURE = `CALL agregar_Archivos_Multimedia_Tarea_Estudiante( ${idEntrega}, '${nombreMultimediaEstudiante}')`;
+        return store.upsert(PROCEDURE);
+    }
+
+    function listArchivosEntregaEstudiante(idCurso) {
+        const VIEW = 'ver_Archivos_Entrega_Estudiante';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function catalogPosiblesCursosEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Posibles_Cursos_Disponibles(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogResumenEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Resumen_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogCatalogoCursosEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Catalogo_Cursos_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    /* function catalogAsignacionesTotalesAsignadasEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Asignaciones_Totales_Asignadas_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogAsignacionesTotalesCompletadasEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Asignaciones_Totales_Completadas_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    } */
+
+    function catalogAsignacionesTotalesEstudiante(idUsuario) {
+        const PROCEDURE = `CALL ver_Asignaciones_Totales_Estudiante(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function catalogArchivosAsignacionesTotales(idUsuario) {
+        const PROCEDURE = `CALL ver_Archivos_Tareas_Totales(${idUsuario})`;
+        return store.catalog(PROCEDURE);
+    }
+
+    function listArchivosEntregasTotalesEstudiante(idEstudiante) {
+        const VIEW = 'ver_Archivos_Entrega_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.list(VIEW, CLAUSE, idEstudiante);
+    }
 
     return {
         listDatosCursoUsuario,
@@ -147,5 +230,19 @@ module.exports = function (injectedStore) {
         listTarea,
         getCursoActual,
         getConsultarEstadoCursoEstudiante,
+        insertCalificarExperiencia,
+        listArchivosTareaCurso,
+        catalogPublicacionesCursoEstudiante,
+        insertTareaEstudiante,
+        insertMultimediaTareaEstudiante,
+        listArchivosEntregaEstudiante,
+        catalogPosiblesCursosEstudiante,
+        catalogResumenEstudiante,
+        catalogCatalogoCursosEstudiante,
+        /* catalogAsignacionesTotalesAsignadasEstudiante,
+        catalogAsignacionesTotalesCompletadasEstudiante, */
+        catalogAsignacionesTotalesEstudiante,
+        catalogArchivosAsignacionesTotales,
+        listArchivosEntregasTotalesEstudiante,
     };
 }

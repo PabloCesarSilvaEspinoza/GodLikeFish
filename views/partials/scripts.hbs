@@ -4,8 +4,12 @@
 <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- apps -->
 <script src="../../dist/js/app.min.js"></script>
-<script src="../../dist/js/app.init.js"></script>
-<script src="../../dist/js/app-style-switcher.js"></script>
+{{#if administrador}}
+<script src="../../dist/js/app.init.horizontal-fullwidth.js"></script>
+{{else}}
+<script src="../../dist/js/app.init.horizontal.js"></script>
+{{/if}}
+<script src="../../dist/js/app-style-switcher.horizontal.js"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
 <script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
 <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
@@ -24,48 +28,46 @@
 <script src="../../assets/extra-libs/c3/c3.min.js"></script>
 <!--chartjs -->
 <script src="../../assets/libs/chart.js/dist/Chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.js"
-    integrity="sha512-opXrgVcTHsEVdBUZqTPlW9S8+99hNbaHmXtAdXXc61OUU6gOII5ku/PzZFqexHXc3hnK8IrJKHo+T7O4GRIJcw=="
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
 <!--estrellas -->
-    <script src="../../dist/js/custom.min.js"></script>
-    <script src="../../assets/libs/raty-js/lib/jquery.raty.js"></script>
-    <script src="../../assets/extra-libs/raty/rating-init.js"></script>
+<script src="../../dist/js/custom.min.js"></script>
+<script src="../../assets/libs/raty-js/lib/jquery.raty.js"></script>
+<script src="../../assets/extra-libs/raty/rating-init.js"></script>
 
 
 {{#if graficasAdministrador}}
 <script>
-        var ctx = document.getElementById('GraficaMuestra');
-        {{#valores}}
-        var GraficaMuestra = new Chart(ctx, {
-            responsive: true,
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Registrados',
-                    'Activos',
-                    'Inactivos'
-                ],
-                datasets: [{
-                    data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
-        backgroundColor: [
-            'rgba(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgba(255, 99, 132)'
-        ],
-            hoverOffset: 1
+    var ctx = document.getElementById('GraficaMuestra');
+    { {#valores } }
+    var GraficaMuestra = new Chart(ctx, {
+        responsive: true,
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Registrados',
+                'Activos',
+                'Inactivos'
+            ],
+            datasets: [{
+                data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
+    backgroundColor: [
+        'rgba(75, 192, 192)',
+        'rgb(255, 205, 86)',
+        'rgba(255, 99, 132)'
+    ],
+        hoverOffset: 1
     }]
         },
     options: {
-        }
+    }
     });
-    {{/valores}}
+    {
+        {
+            /valores}}
 </script>
 <script>
-     var ctx = document.getElementById('GraficaMuestra1');
-        {{#valores}}
+        var ctx = document.getElementById('GraficaMuestra1');
+        { {#valores } }
         var GraficaMuestra1 = new Chart(ctx, {
             type: 'doughnut',
             data: {
@@ -85,13 +87,15 @@
     }]
         },
     options: {
-        }
+    }
     });
-    {{/valores}}
+    {
+        {
+            /valores}}
 </script>
 <script>
-     var ctx = document.getElementById('GraficaMuestra2');
-        {{#valores}}
+        var ctx = document.getElementById('GraficaMuestra2');
+        { {#valores } }
         var GraficaMuestra2 = new Chart(ctx, {
             type: 'doughnut',
             data: {
@@ -111,21 +115,23 @@
     }]
         },
     options: {
-        }
+    }
     });
-    {{/valores}}
+    {
+        {
+            /valores}}
 </script>
 {{/if}}
 {{#if dataTablesExport}}
-    <script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-    <script src="../../dist/js/pages/datatable/datatable-advanced.init.js"></script>
+<script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+<script src="../../dist/js/pages/datatable/datatable-advanced.init.js"></script>
 {{/if}}
 {{#if pickadate}}
 <script src="../../assets/libs/pickadate/lib/compressed/legacy.js"></script>
@@ -147,14 +153,14 @@
 
 {{#if chartist}}
 <script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+<script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
 {{/if}}
 
 {{#if c3}}
 <script src="../../assets/extra-libs/c3/d3.min.js"></script>
-    <script src="../../assets/extra-libs/c3/c3.min.js"></script>
-    <script src="../../assets/libs/chart.js/dist/Chart.min.js"></script>
-    <script src="../../dist/js/pages/dashboards/dashboard7.js"></script>
+<script src="../../assets/extra-libs/c3/c3.min.js"></script>
+<script src="../../assets/libs/chart.js/dist/Chart.min.js"></script>
+<script src="../../dist/js/pages/dashboards/dashboard7.js"></script>
 {{/if}}
 
 {{#if dropzone}}
@@ -187,3 +193,8 @@
         });
 </script>
 {{/if}}
+
+{{#if dataTables}}
+<script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
+<script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
+{{/if}} 

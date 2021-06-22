@@ -8,14 +8,13 @@ const dobleInput = upload.fields([{name: 'fotoCurso'}, {name: 'temarioCurso'}])
 router.get('/dashboardAdministrador', render.getDashboardAdministrador);
 router.get('/administrarCursos', render.getAdministrarCursos);
 router.get('/administrarUsuarios', render.getAdministrarUsuarios);
-router.get('/consultarCursosEI', render.getConsultarCursoE1);
-router.get('/consultarCursosEII', render.getConsultarCursoE2);
+router.get('/curso/:idCurso', render.getConsultarCurso);
 router.post('/agregarCurso', crearCarpetaCurso, dobleInput, render.postAgregarCurso);
-/*router.get('/consultarCursosEI/:id', render.putEditarCurso);*/
 router.get('/editarUsuarios/:id', render.getEditarUsuario);
 router.post('/editarUsuarios/:id', render.postEditarUsuario);
 
-
+router.get('/DescargarTarjetonUsuario/:idUsuario/:nombreTarjeton', render.getDescargarTarjetonUsuario);
 router.post('/ResolverProblema/:tipoProblema', render.postResolverProblema);
+router.post('/VerificarTarjetonUsuario', render.postVerificarTarjetonUsuario);
 
 module.exports = router;

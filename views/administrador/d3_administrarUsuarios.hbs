@@ -1,650 +1,302 @@
 <div class="container-fluid">
-    <!--modales-->
-    <div id="agregarUsuario" class="modal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!--Salir-->
-                <div class="row">
-                    <div class="col text-right">
-                        <button type="button" class="close mt-3 mr-3" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                </div>
-                <!--Titulo-->
-                <div class="row">
-                    <div class="col text-center">
-                        <h1>Agregar <span class="small">Usuario</span></h1>
-                        <p>Aqui puedes agregar un usuario nuevo, llena todos los datos y guardalo.</p>
-                    </div>
-                    <hr>
-                </div>
-                <div class="modal-content">
-                    <div class="card">
-                        <div class="card-body text-left">
-                            <form class="form-horizontal mt-2" action="index.html">
-                                <h3 class="font-medium mb-2">Datos Generales</h3>
-                                <hr>
-                                <div class="form-group row ">
-                                    <div class="col-sm-12 col-md-3 col-lg-4 mb-2">
-                                        <label> Nombre(s)</label>
-                                        <input class="form-control form-control-lg" type="text" required=" "
-                                            placeholder="Ingrese el nombre(s) del usuario" alt="Nombre del Ponente"
-                                            minlength="1" maxlength="40"
-                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
-                                            name="usuarioNombres" id="usuarioNombres">
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
-                                        <label> Primer Apellido</label>
-                                        <input class="form-control form-control-lg" type="text" required=" "
-                                            placeholder="Ingrese el primer apellido" alt="Primer apellido del usuario"
-                                            minlength="1" maxlength="40"
-                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
-                                            name="usuarioPApellido" id="usuarioPApellido">
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
-                                        <label>Segundo Apellido</label>
-                                        <input class="form-control form-control-lg" type="text" required=" "
-                                            placeholder="Ingrese el segundo apellido" alt="Segundo apellido del usuario"
-                                            minlength="1" maxlength="40"
-                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
-                                            name="usuarioSApellido" id="usuarioSApellido">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
-                                        <label>Pais de nacimiento</label>
-                                        <span
-                                            class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
-                                            dir="ltr" style="width: 100%;" id="paisNombre" name="paisNombre">
-                                            <span class="selection">
-                                                <span class="select2-selection select2-selection--single"
-                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                    tabindex="0" aria-labelledby="select2-ncb3-container">
-                                                    <span class="select2-selection__rendered"
-                                                        id="select2-ncb3-container" role="textbox" aria-readonly="true"
-                                                        title="Alaska">Alaska</span>
-                                                    <span class="select2-selection__arrow" role="presentation">
-                                                        <option disabled selected>Elige el país de nacimiento
-                                                        </option>
-                                                        <b role="presentation"></b>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
-                                        <label>Municipio de nacimiento</label>
-                                        <input class="form-control form-control-lg" type="text" required=" "
-                                            placeholder="Ingrese el municipio de nacimiento"
-                                            alt="Municipio de nacimiento" minlength="1" maxlength="40"
-                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
-                                            id="municipioNombre" name="municipioNombre">
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-4 mb-2">
-                                        <label>Fecha de nacimiento</label>
-                                        <input type="date" alt="Fecha de nacimiento del usuario" class="form-control"
-                                            id="usuarioFechaNacimiento" name="usuarioFechaNacimiento">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 col-md-12 col-lg-4 mb-2">
-                                        <label>Correo</label>
-                                        <input class="form-control form-control-lg" type="email" required=" "
-                                            placeholder="Ingrese su correo" alt="Correo del usuario" id="usuarioCorreo"
-                                            name="usuarioCorreo">
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
-                                        <label>Contraseña</label>
-                                        <input class="form-control form-control-lg" type="password" required=" "
-                                            placeholder="Elige un contraseña" alt="Elige una contraseña"
-                                            id="usuarioPassword" name="usuarioPassword">
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
-                                        <label>Confirmar contraseña</label>
-                                        <input class="form-control form-control-lg" type="password" required=" "
-                                            placeholder="Confirma tu contraseña" alt="Confirma tu contraseña"
-                                            id="usuarioPassword" name="usuarioPassword">
-                                    </div>
-                                </div>
-                                <h3 class="font-medium mb-2">Domicilio</h3>
-                                <hr>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
-                                        <label>Estado de residencia</label>
-                                        <span
-                                            class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
-                                            dir="ltr" style="width: 100%;" id="estadoNombre" name="estadoNombre">
-                                            <span class="selection">
-                                                <span class="select2-selection select2-selection--single"
-                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                    tabindex="0" aria-labelledby="select2-ncb3-container">
-                                                    <span class="select2-selection__rendered"
-                                                        id="select2-ncb3-container" role="textbox" aria-readonly="true"
-                                                        title="Alaska">Alaska</span>
-                                                    <span class="select2-selection__arrow" role="presentation">
-                                                        <option disabled selected>Elige el estado</option>
-                                                        <b role="presentation"></b>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
-                                        <label>Municipio de residencia</label>
-                                        <span class="select2 select2-container select2-container--default" dir="ltr"
-                                            style="width: 100%;" id="municipioNombre" name="municipioNombre">
-                                            <span class="selection">
-                                                <span class="select2-selection select2-selection--single"
-                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                    tabindex="0" aria-labelledby="select2-nsg6-container">
-                                                    <span class="select2-selection__rendered"
-                                                        id="select2-nsg6-container" role="textbox" aria-readonly="true"
-                                                        title="Alaska">Alaska</span>
-                                                    <span class="select2-selection__arrow" role="presentation">
-                                                        <option disabled selected>Elige el municipio</option>
-                                                        <b role="presentation"></b>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
-                                        <label>Colonia de residencia</label>
-                                        <input class="form-control form-control-lg" type="text" required=" "
-                                            minlength="1" maxlength="40"
-                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
-                                            placeholder="Ingresa la colonia de tu domicilio" id="domicilioColonia"
-                                            name="domicilioColonia">
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
-                                        <label>Calle</label>
-                                        <input class="form-control form-control-lg" type="text" required=" "
-                                            placeholder="Ingresa la calle de tu domicilio" minlength="1" maxlength="40"
-                                            pattern="[A-Za-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]"
-                                            id="domicilioCalle" name="domicilioCalle">
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
-                                        <label>Numero Interior</label>
-                                        <input class="form-control form-control-lg" type="number" required=" "
-                                            placeholder="Ingresa el numero interior de tu domicilio"
-                                            id="domicilioNumeroInt" name="domicilioNumeroInt">
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
-                                        <label>Numero Exterior</label>
-                                        <input class="form-control form-control-lg" type="number" required=" "
-                                            placeholder="Ingresa el numero exterior de tu domicilio"
-                                            id="domicilioNumeroExt" name="domicilioNumeroExt">
-                                    </div>
-                                </div>
-                                <h3 class="font-medium mb-2">Datos Laborales</h3>
-                                <hr>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 col-md-6 col-lg-5 mb-2">
-                                        <label>Matricula</label>
-                                        <input class="form-control form-control-lg" type="text" required=" "
-                                            placeholder="Ingresa tu matricula" id="usuarioMatricula"
-                                            name="usuarioMatricula">
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-3 mb-2">
-                                        <label>Antigüedad</label>
-                                        <input class="form-control form-control-lg" type="number" required=" "
-                                            placeholder="Ingresa tu antigüedad en años" id="usuarioAntiguedad"
-                                            name="usuarioAntiguedad">
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
-                                        <label>Puesto</label>
-                                        <span
-                                            class="select2 select2-container select2-container--default select2-container--below select2-container--focus"
-                                            dir="ltr" data-select2-id="2" style="width: 100%;" id="usuarioPuesto"
-                                            name="usuarioPuesto">
-                                            <span class="selection">
-                                                <span class="select2-selection select2-selection--single"
-                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                    tabindex="0" aria-labelledby="select2-ncb3-container">
-                                                    <span class="select2-selection__rendered"
-                                                        id="select2-ncb3-container" role="textbox" aria-readonly="true"
-                                                        title="Alaska">Alaska</span>
-                                                    <span class="select2-selection__arrow" role="presentation">
-                                                        <option disabled selected>Elige el puesto que te
-                                                            corresponde</option>
-                                                        <b role="presentation"></b>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
-                                        <label>Area</label>
-                                        <span class="select2 select2-container select2-container--default" dir="ltr"
-                                            data-select2-id="5" style="width: 100%;" id="usuarioArea"
-                                            name="usuarioArea">
-                                            <span class="selection">
-                                                <span class="select2-selection select2-selection--single"
-                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
-                                                    tabindex="0" aria-labelledby="select2-nsg6-container">
-                                                    <span class="select2-selection__rendered"
-                                                        id="select2-nsg6-container" role="textbox" aria-readonly="true"
-                                                        title="Alaska">Alaska</span>
-                                                    <span class="select2-selection__arrow" role="presentation">
-                                                        <option disabled selected>Elige el area que te
-                                                            corresponde</option>
-                                                        <b role="presentation"></b>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                            <span class="dropdown-wrapper" aria-hidden="true"></span>
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mb-2 text-center ">
-                                        <label>Subir foto de perfil</label>
-                                        <br>
-                                        <button type="file"
-                                            class="btn waves-effect waves-light btn-rounded btn-dark">SUBIR</button>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 mb-2 mt-3 text-center">
-                                        <button class="btn btn-lg btn-info " type="submit ">Registrarse</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Titulo-->
     <div class="row">
-        <div class="col sm-12">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h1>Administrar <span class="small"> Usuarios</span></h1>
-                    <p>Aqui encontraras todos los usuarios que se encuentran registrados en el sistema
-                        independientemente de su rol.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="card">
+        <!--primera columna-->
+        <div class="col-md-12">
+            <div class="card" style="border-radius: 10px">
                 <div class="card-body">
-                    <h2><span class="small"><i class="fas fa-chart-pie mr-2"></i>Usuarios Resumen</span></h2>
-                    <hr>
-                    <div class="row mt-5">
-                        {{#each registrados}}
-                        <div class="col b-r text-center">
-                            <h2 class="font-light">{{registrados}}</h2>
-                            <h6>Registrados</h6>
-                        </div>
-                        {{/each}}
-                        {{#each activos}}
-                        <div class="col b-r text-center">
-                            <h2 class="font-light">{{activos}}</h2>
-                            <h6>Activos</h6>
-                        </div>
-                        {{/each}}
-                        {{#each inactivos}}
-                        <div class="col text-center">
-                            <h2 class="font-light">{{inactivos}}</h2>
-                            <h6>Inactivos</h6>
+                    <div class="row">
+                        <div class="col-md-6"><h3 class="card-title"><i class="fas fa-users mr-2"></i>Usuarios Registrados <span class="small"> en el Sistema</span></h3></div>
+                        <div class="col-md-6 text-right align-items-end mt-auto">
+                            <h4 class="font-light">(400) Registrados (358) Activos (42) Inactivos</h4>
                         </div>
                     </div>
-                    {{/each}}
-                    <div class="col text-center mt-4">
-
-                    </div>
-                    <!--Grafica-->
-                    <h4 class="card-title mt-4">Areas de espacialidad de los ponentes o algo</h4>
-                    <div class="text-center">
-                        <canvas width="100" height="100" id="GraficaMuestra2"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-chart-bar mr-2"></i>Usuarios (División Areas)<span
-                            class="small"></span></h3>
-                    <hr>
-                </div>
-                <div class="row">
-                    <!-- column -->
-                    <div class="col-12">
-                        <div class="col-12">
-                            <div class="card bg-info text-white  card-hover">
-                                <div class="card-body">
-                                    <h4 class="card-title">Estadísticas</h4>
-                                    <div class="d-flex align-items-center mt-4">
-                                        <div class="" id="ravenue"></div>
-                                        <div class="ml-auto">
-                                            <h3 class="font-medium white-text mb-0">51 Usuarios</h3><span
-                                                class="white-text op-5">Jan 10 - Jan 20</span>
-                                        </div>
-                                    </div>
-                                </div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs mt-3" role="tablist">
+                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" style="color: rgb(62, 85, 105);" href="#tabla" role="tab">
+                            <i class="fas fa-table mr-2"></i>Vista tabla</a> 
+                        </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" style="color: rgb(62, 85, 105);" href="#tarjeta" role="tab">
+                            <i class="fas fa-id-card-alt mr-2"></i>Vista Tarjeta</a> 
+                        </li> 
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tabcontent-border">
+                        <div class="tab-pane active" id="tabla" role="tabpanel">
+                            <div class="table-responsive p-20">
+                                <table id="file_export" class="table table-striped table-bordered display">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Edad</th>
+                                            <th>Antigüedad</th>
+                                            <th>Area</th>
+                                            <th>Puesto</th>
+                                            <th>Rol</th>
+                                            <th>Reconocimientos</th>
+                                            <th>Cursando</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Nombres Del Usuario</td>
+                                            <td>Apellidos del usuario Lorem</td>
+                                            <td>31</td>
+                                            <td>30 años</td>
+                                            <td>Médica</td>
+                                            <td>Supervisor</td>
+                                            <td>Estudiante</td>
+                                            <td>2</td>
+                                            <td><span class="label label-info"><i class="far fa-smile mr-2"></i>Si</span></td>
+                                            <td>
+                                                <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                    <i class="far fa-user mr-1"></i> Ver Perfil</a></h5>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nombres Del Usuario</td>
+                                            <td>Apellidos del usuario Lorem</td>
+                                            <td>31</td>
+                                            <td>30 años</td>
+                                            <td>Médica</td>
+                                            <td>Supervisor</td>
+                                            <td>Estudiante</td>
+                                            <td>8</td>
+                                            <td><span class="label label-danger"><i class="far fa-frown mr-2"></i>No</span></td>
+                                            <td>
+                                                <a href="#" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
+                                                    <i class="far fa-user mr-1"></i> Ver Perfil</a></h5>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Edad</th>
+                                            <th>Antigüedad</th>
+                                            <th>Area</th>
+                                            <th>Puesto</th>
+                                            <th>Rol</th>
+                                            <th>Reconocimientos</th>
+                                            <th>Cursando</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
-                    </div>
-                    <!-- column -->
-                    <div class="col-12">
-                        <div class="col-12">
-                            <div class="card bg-cyan text-white  card-hover">
-                                <div class="card-body">
-                                    <h4 class="card-title">División Categorias</h4>
-                                    <h3 class="white-text mb-0"><i class="ti-arrow-up"></i> %</h3>
-                                </div>
-                                <div class="mt-3" id="views"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <br><br>
-                    <!-- column -->
-                    <div class="col-12">
-                        <div class="col-12 " style="align-content: center;">
-                            <ul class="list-inline mt-3">
-                                <span class="label label-rounded label-success"><i class="fas fa-eye"></i>Categoria
-                                    1</span>
-                                <span class="label label-rounded label-warning"><i class="fas fa-eye"></i>
-                                    Categoria 2</span>
-                                </span> <span class="label label-rounded label-info"><i class="fas fa-eye"></i>
-                                    Categoria 3</span>
-                            </ul>
-                        </div>
-                    </div>
-                    <br><br> <br><br> <br>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3 class="card-title"><i class="fas fa-users mr-2"></i>Usuarios en el Sistema<span
-                            class="small"></span></h3>
-                </div>
-                <div class="col-md-6 text-right">
-                    <button type="button" class="btn waves-effect waves-light btn-info mb-3" data-toggle="modal"
-                        data-target="#agregarUsuario"><i class="fas fa-plus mr-2"></i>Agregar Usuario</button>
-                </div>
-            </div>
-            <hr>
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" style="color: cadetblue;"
-                        href="#home" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span>
-                        <span class="hidden-xs-down">Vista tabla</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" style="color: cadetblue;" href="#profile"
-                        role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span>
-                        <span class="hidden-xs-down">Vista Tarjeta</span></a> </li>
-
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content tabcontent-border">
-                <div class="tab-pane active" id="home" role="tabpanel">
-                    <div class="p-20">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        </h5>
-                                        <h4 class="card-title"></h4>
-                                        <div class="table-responsive">
-                                            <table id="file_export" class="table table-striped table-bordered display">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Cargo</th>
-                                                        <th>Area/Categoriía</th>
-                                                        <th>Edad</th>
-                                                        <th>Antigüedad</th>
-                                                        <th>Acciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {{#each datosUsuarioEnSistema}}
-                                                    <tr>
-
-                                                        <td>{{nombreUsuario}}</td>
-                                                        <td>{{puesto}}</td>
-                                                        <td>{{area}}</td>
-                                                        <td>{{edad}}</td>
-                                                        <td>{{antiguedad}}</td>
-                                                        <td>
-                                                            <!-- aqui va el modal -->
-                                                            <button
-                                                                class="btn waves-effect waves-light btn-rounded btn-sm btn-success small"
-                                                                data-toggle="modal"
-                                                                data-target="#ModalVerPerfilAlumno{{idUsuario}}"><i
-                                                                    class="far fa-user mr-1"></i> Ver Perfil</button>
-                                                        </td>
-                                                    </tr>
-                                                    {{/each}}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane  p-20" id="profile" role="tabpanel">
-                    <div class="container-fluid">
-                        <div class="page-breadcrumb">
+                        <div class="tab-pane  p-20" id="tarjeta" role="tabpanel">
                             <div class="row">
-                                <div class="col-10 align-self-center">
-                                    <h4 class="page-title">Usuarios en el Sistema</h4>
-                                    <br>
-
-                                    <div class="input-group mb-3">
-                                        <input id="BuscarPonente" name="BuscarPonente" type="text" class="form-control"
-                                            placeholder="Buscar" aria-label="" aria-describedby="basic-addon1">
-                                        <div class="input-group-append">
-                                            <button id="buscarPonente" name="buscarPonente" class="btn btn-success"
-                                                type="button"><i class="ti-search"></i></button>
-                                        </div>
+                                <div class="input-group mb-3">
+                                    <input id="BuscarPonente" name="BuscarPonente" type="text"
+                                        class="form-control" placeholder="Buscar" aria-label=""
+                                        aria-describedby="basic-addon1">
+                                    <div class="input-group-append">
+                                        <button id="buscarPonente" name="buscarPonente"
+                                            class="btn btn-success" type="button">
+                                            <i class="ti-search"></i></button> 
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="TarjetaPonente" name="TarjetaPonente" class="container-fluid">
-                            <div class="row el-element-overlay">
-                                {{#each tarjetas}}
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="card">
-                                        <div class="el-card-item" class="modal-footer" data-toggle="modal"
-                                            data-target="#responsive-modal">
-                                            <div class="el-card-avatar el-overlay-1">
-                                                <img src={{fotoUsuario}} alt="foto usuario" />
-                                                <div class="el-overlay">
-                                                    <ul class="list-style-none el-info">
-                                                        <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                            href="../../assets/images/users/d4.jpg"></a>
-                                                    </ul>
+                            <div class="row">
+                                <div class="row el-element-overlay">
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
                                                 </div>
                                             </div>
-                                            <div class="el-card-content">
-                                                <h4 class="mb-0">{{nombreUsuario}} </h4> <span
-                                                    class="text-muted">{{puestoUsuario}}</span>
-                                                <br>
-                                                <td><a href="javascript:void(0)" class="text-inverse pr-2"
-                                                        data-toggle="tooltip" title="Ver"></a> <a
-                                                        href="javascript:void(0)" class="text-inverse" title="Borrar"
-                                                        data-toggle="tooltip"></a></td>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                        <div class="card">
+                                            <div class="el-card-item" class="modal-footer"
+                                                data-toggle="modal" data-target="#responsive-modal">
+                                                <div class="el-card-avatar el-overlay-1"> 
+                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
+                                                    <div class="el-overlay">
+                                                        <ul class="list-style-none el-info">
+                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                href="../../assets/images/users/1-old.jpg"></a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h4 class="mb-0">Nombres Usuario</h4>
+                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                    <br>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {{/each}}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane p-20" id="messages" role="tabpanel">3</div>
             </div>
         </div>
     </div>
-    <!--LISTADO-->
-
-    <!-- sample modal content -->
-    <!--NOTAS: name="usuarioAdminitradorTipoL" --L-- SIGNIFICA CAMPO TAL LLENO (ETIQUETA) O YA ESCRITO SIN POSIBILIDAD A EDITAR-->
-    <!--NOTAS:name="usuarioAdminitradorTipoV" --V-- SIGNIFICA CAMPO DE LLENADO (INPUT) -->
-
-    <!-- sample modal content -->
-
-
-    <!-- ===================== CAMBIAR EL MODAL ====================================== -->
-    {{#each verPerfil }}
-
-
-    <div id="ModalVerPerfilAlumno{{idUsuario}}" name="ModalVerPerfilAlumno" class="modal">
-        {{!-- <div class="modal fade verAlum" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-            aria-hidden="true" style="display: none;"> --}}
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-
-                    <div class="text-center" class="modal-header">
-                        <div class="row">
-                            <div class="col text-right">
-                                <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
-                                    aria-hidden="true">×</button>
-                            </div>
-                        </div>
-                        <!--Titulo-->
-                        <div class="row mt-4">
-                            <div class="col text-center">
-                                <h1>Mi <span class="small">Perfil</span></h1>
-                                <p>Aqui puedes ver tu informacion personal.</p>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12 mt-2 ">
-                                <div class="col-md-12">
-                                    <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
-                                    <hr>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group text-center ">
-                                            <img src="{{fotoUsuario}}" class="rounded-circle" width="120" />
-                                            <br>
-                                            <h6 class="text-muted">Foto de Perfil</h6>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 text-center">
-                                        <div class="row mt-3">
-                                            <div class="col-lg-6 text-center">
-                                                <h6 class="text-muted">Nombres</h6>
-                                                <h4>{{nombreUsuario}}</h4>
-                                            </div>
-                                            <div class="col-lg-6 text-center">
-                                                <h6 class="text-muted">Categoría</h6>
-                                                <h4>{{areaUsuario}}</h4>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-lg-6 text-center">
-                                                <h6 class="text-muted">Matrícula</h6>
-                                                <h4>{{matriculaUsuario}}</h4>
-                                            </div>
-                                            <div class="col-lg-6 text-center">
-                                                <h6 class="text-muted">Tipo</h6>
-                                                <h4>{{tipoUsuario}}</h4>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-lg-6 text-center">
-                                                <h6 class="text-muted">Correo</h6>
-                                                <h4>{{correoUsuario}}</h4>
-                                            </div>
-                                            <hr>
-                                            <div class="col-lg-6 text-center">
-                                                <h6 class="text-muted">País de Nacimiento</h6>
-                                                <h4>{{paisNacimiento}}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 mt-4 ">
-                        <div class="col-md-12">
-                            <h4><i class="fas fa-book text-left mr-2"></i>Datos referenciales</h4>
-                            <hr>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-4 text-center">
-                                <h6 class="text-muted">Municipio de Nacimiento</h6>
-                                <h4>{{municipioNacimiento}}</h4>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <h6 class="text-muted">Fecha de Nacimiento</h6>
-                                <h4>{{fechaNacimiento}}</h4>
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <h6 class="text-muted">Municipio(Residencia)</h6>
-                                <h4>{{municipioResidencia}}</h4>
-                            </div>
-
-                        </div>
-
-                        <div class="row mt-4">
-                            <div class="col-lg-4 text-center">
-                                <h6 class="text-muted">Colonia</h6>
-                                <h4>{{colonia}}</h4>
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <h6 class="text-muted">Calle</h6>
-                                <h4>{{calle}}</h4>
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <h6 class="text-muted">Número Exterior</h6>
-                                <h4>{{numeroExterior}}</h4>
-                            </div>
-
-                        </div>
-
-                        <div class="row mt-4">
-                            <div class="col-lg-4 text-center"></div>
-                            <div class="col-lg-4 text-center"></div>
-                            <div class="col-lg-4 text-center">
-                                <a type="button" class="btn waves-effect waves-light btn-info"
-                                    href="/administrador/editarUsuarios/{{idUsuario}}"><i
-                                        class="fas fa-edit mr-2"></i>Editar Usuario</a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-            </div>
-            <!--Fin modalbody-->
-        </div>
-    </div>
-    {{/each}}
-</div>
-
-<!-- ============================================================== -->
-<!-- End Container fluid  -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- footer -->
-<!-- ============================================================== -->
-<footer class="footer text-center">
-    Pie de página</a>.
-</footer>
-<!-- ============================================================== -->
-<!-- End footer -->
-<!-- ============================================================== -->
 </div>

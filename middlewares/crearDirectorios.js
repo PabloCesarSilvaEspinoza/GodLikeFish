@@ -47,5 +47,27 @@ module.exports = {
             });
         }
         return next();
-    }, 
+    },
+    crearCarpetaTareaEstudiante : async function(req, res, next)  {
+        global.estudianteID = req.user.id
+        global.tareaEstudianteID = req.params.idTarea
+        const raiz = path.join(__dirname, '../');
+        const direccionEstudiante = `${raiz}public/assets/multimedia/tareas_estudiantes/${req.user.id}`;
+        if(!fs.existsSync(direccionEstudiante)){
+            fs.mkdir(direccionEstudiante, error => {
+                if(error){
+                    console.log(`Carpeta ${req.user.id} en tareas_estudiantes ${error.message}`);
+                }
+            });
+        }
+        const direccionTareaEstudiante = `${raiz}public/assets/multimedia/tareas_estudiantes/${req.user.id}/${req.params.idTarea}`;
+        if(!fs.existsSync(direccionTareaEstudiante)){
+            fs.mkdir(direccionTareaEstudiante, error => {
+                if(error){
+                    console.log(`Carpeta de la tarea ${req.params.idTarea} en tareas_estudiantes/${req.user.id} ${error.message}`);
+                }
+            });
+        }
+        return next()
+    },
 };

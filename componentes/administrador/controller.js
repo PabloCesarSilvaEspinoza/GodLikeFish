@@ -41,13 +41,13 @@ module.exports = function (injectedStore) {
         const {
             nombreCurso, claveCurso, descripcionCurso, fechaInicioCurso, fechaFinCurso, horarioInicioCurso,
             horarioFinCurso, fechaInscripcionInicioCurso, fechaInscripcionFinCurso, plataformaCurso, areaCurso,
-            tipoCurso, modalidadCurso, capacidadCurso, ponenteID  
+            tipoCurso, modalidadCurso, capacidadCurso, enlacePlataforma, ponenteID  
         } = body;
 
         const PROCEDURE = `CALL agregar_Curso(
             '${nombreCurso}','${claveCurso}','${descripcionCurso}', '${fechaInicioCurso}','${fechaFinCurso}','${horarioInicioCurso}',
             '${horarioFinCurso}','${fechaInscripcionInicioCurso}','${fechaInscripcionFinCurso}','${plataformaCurso}', ${areaCurso},
-            '${tipoCurso}','${modalidadCurso}', ${capacidadCurso}, ${ponenteID}
+            '${tipoCurso}','${modalidadCurso}', ${capacidadCurso}, '${enlacePlataforma}', ${ponenteID}
         )`
         
         return store.upsert(PROCEDURE);
@@ -191,11 +191,75 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Ponentes';
         return store.list(VIEW);
     }
+
     function listAcreedoresDiplomas() {
         const VIEW = 'ver_acreedores_diplomas';
         return store.list(VIEW);
     }
 
+    function UsuariosSinVerificar() {
+        const VIEW = 'ver_Usuarios_Sin_Verificar';
+        return store.list(VIEW);
+    }
+
+    function updateVerificarTarjetonUsuario(usuarioID) {
+        const PROCEDURE = `CALL verificar_Tarjeton_Usuario(${usuarioID})`
+        return store.upsert(PROCEDURE);
+    }
+
+    function getCurso(idCurso) {
+        const VIEW = 'ver_Datos_Cursos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listAvisosCurso(idCurso) {
+        const VIEW = 'ver_Avisos_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listLinksCurso(idCurso) {
+        const VIEW = 'ver_Recursos_Curso_Links';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listDocumentosCurso(idCurso) {
+        const VIEW = 'ver_Recursos_Curso_Documentos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listAsignacionesCurso(idCurso) {
+        const VIEW = 'ver_Asignaciones_Curso_Ponente';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function getArchivosTareaCurso(idCurso) {
+        const VIEW = 'ver_Archivos_Tarea';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listExamenesCurso(idCurso) {
+        const VIEW = 'ver_Examenes';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listPublicacionesCurso(idCurso) {
+        const VIEW = 'ver_Historial_Publicaciones';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function getMiPerfil(idUsuario) {
+        const VIEW = 'ver_Usuarios';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
 
     return {
         getUltimoCurso,
@@ -223,5 +287,16 @@ module.exports = function (injectedStore) {
         listErrores,
         upsertResolverProblema,
         updateCurso,
+        UsuariosSinVerificar,
+        updateVerificarTarjetonUsuario,
+        listAvisosCurso,
+        listLinksCurso,
+        listDocumentosCurso,
+        getArchivosTareaCurso,
+        listAsignacionesCurso,
+        listExamenesCurso,
+        listPublicacionesCurso,
+        getCurso,
+        getMiPerfil
     };
 }

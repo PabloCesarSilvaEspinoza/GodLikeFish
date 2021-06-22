@@ -8,10 +8,10 @@ module.exports = {
         console.log(respuestaBD);
         let fotoUsuario
         (req.files.fotoUsuario)
-            ? fotoUsuario = `${usuarioID}/${req.files.fotoUsuario[0].originalname}`
+            ? fotoUsuario = `${req.files.fotoUsuario[0].originalname}`
             : fotoUsuario = '';
 
-        const tarjetonUsuario = `${usuarioID}/${req.files.tarjetonUsuario[0].originalname}`;
+        const tarjetonUsuario = `${req.files.tarjetonUsuario[0].originalname}`;
         console.log(usuarioID + fotoUsuario + tarjetonUsuario);
         await Controller.insertMultimediaUsuario(usuarioID, fotoUsuario, tarjetonUsuario);
         //enviamos el correo de bienvenida
@@ -243,5 +243,22 @@ module.exports = {
         }else{
             res.redirect('/establecerNuevoCorreoElectronico')
         }
-    }
+    },
+
+    getMiPerfil: async function(req, res, next){
+        (req.isAuthenticated()
+            ? res.render('usuario/u4_miPerfil',{
+                /* mandar datos usuario */
+            })
+            : res.redirect('/login')
+        );
+    },
+
+    getSoporte: async function(req, res, next){
+        (req.isAuthenticated()
+            ? res.render('usuario/u8_soporte')
+            : res.redirect('/login')
+        );
+    },
+
 };
