@@ -32,10 +32,9 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
-    function listCursos(idCurso) {
+    function listCursos() {
         const VIEW = 'ver_Datos_Cursos';
-        const CLAUSE = `WHERE idCurso = ?`;
-        return store.list(VIEW, CLAUSE, idCurso);
+        return store.list(VIEW);
     }
 
     function insertCurso(body) {
@@ -54,28 +53,23 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
-    /*function updateCurso(id, body) {
+    function updateCurso(body) {
         const {
-            nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
+            Id,nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
             horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
             area, tipo, temario , modalidad, capacidad,
-            linkCurso, linkPlataforma,foto, ponenteId
+            linkCurso, linkPlataforma,foto, activo, ponenteId
         } = body;
 
-        let activo;
-        (body.activo == 'on')
-            ? activo = '1'
-            : activo = '0';
-
         const PROCEDURE = `CALL editar_Curso( 
-            ${id}, '${nombre}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFinal}',
+            ${Id}, '${nombre}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFinal}',
             '${horaInicio}', '${horaFin}', '${fechaInscripcionInicio}', '${fechaInscripcionFinal}', '${plataforma}',
             '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
             '${linkCurso}',  '${linkPlataforma}', '${foto}', ${activo}, ${ponenteId}
             )`
 
         return store.upsert(PROCEDURE);
-    }*/
+    }
 
     function insertMultimediaCurso(cursoID, temarioCurso, fotoCurso) {
         const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
@@ -228,6 +222,6 @@ module.exports = function (injectedStore) {
         getTiempoActual,
         listErrores,
         upsertResolverProblema,
-        /*updateCurso,*/
+        updateCurso,
     };
 }

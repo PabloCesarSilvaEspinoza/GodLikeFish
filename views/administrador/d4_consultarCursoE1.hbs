@@ -162,6 +162,260 @@
                 </div>
             </div>
         </div>
+        <!-- modal editar Curso -->
+        <div id="editarCurso" class="modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <!--Salir-->
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close mt-3 mr-3" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                    </div>
+                    <!--Titulo-->
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h1>Editar <span class="small">Curso</span></h1>
+                            <p>Aqui puedes editar la información del curso seleccionado.>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="btn waves-effect waves-light btn-danger mr-4"
+                                data-dismiss="modal"><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="form-valide" id="agregarCurso" method="POST" action="#">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center justify-content-center no-block">
+                                                    <img src="../../assets/images/users/1.jpg" width="150"
+                                                        class="rounded-circle" alt="user">
+                                                    <h5 class="mt-3">Imagen del curso</h5>
+                                                    <fieldset class="form-group mt-3">
+                                                        <input type="file" class="form-control-file"
+                                                            id="exampleInputFile">
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-12 col-lg-9">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h4><i class="fas fa-clipboard-list mr-2"></i>Datos
+                                                                Generales</h4>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Nombre del Curso <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="text" id="nombreCurso" class="form-control"
+                                                                    placeholder="Ejemplo del nombre de un curso"
+                                                                    required>
+                                                                <small class="form-control-feedback ml-1"> Maximo 255
+                                                                    caracteres </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Área <span class="text-danger">*</span>
+                                                                </h5>
+                                                                <select class=" form-control custom-select"
+                                                                    style="width: 100%; height:36px;" required>
+                                                                    <option>Select</option>
+                                                                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                                        <option value="AK">Alaska</option>
+                                                                        <option value="HI">Hawaii</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Tipo <span class="text-danger">*</span>
+                                                                </h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;" required>
+                                                                    <option value="AK">Tipo 1</option>
+                                                                    <option value="HI">Tipo 2</option>
+                                                                    <option value="HI">Tipo 3</option>
+                                                                    <option value="HI">Tipo 4</option>
+                                                                    <option value="HI">Tipo 5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Modalidad <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;">
+                                                                    <option value="HI">En vivo</option>
+                                                                    <option value="HI">Video</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-lg-2">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Capacidad </h5>
+                                                                <input type="number" id="capacidad" class="form-control"
+                                                                    placeholder="0">
+                                                                <small class="form-control-feedback ml-1"> Utilice 0
+                                                                    para capacidad indefinida </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Ponente <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;">
+                                                                    <option value="HI">Nombre Completo Ponente</option>
+                                                                    <option value="HI">Nombre Completo Segundo Ponente
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Plataforma <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <select class="form-control custom-select"
+                                                                    style="width: 100%; height:36px;">
+                                                                    <option value="HI">Classroom</option>
+                                                                    <option value="HI">TEAMS</option>
+                                                                    <option value="HI">Zoom</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-lg-5">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Descripción <span class="text-danger">*</span>
+                                                        </h5>
+                                                        <textarea class="form-control" rows="3"
+                                                            placeholder="Describe de que trata el curso aqui..."></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-lg-2">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Enlace <span class="text-danger">*</span></h5>
+                                                        <input type="url" class="form-control" id="exampleInputFile">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-lg-3">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1 md-3">Temario <span class="text-danger">*</span>
+                                                        </h5>
+                                                        <fieldset class="form-group mt-4">
+                                                            <input type="file" class="form-control-file"
+                                                                id="exampleInputFile">
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-2 ">
+                                                    <div class="form-group">
+                                                        <h5 class="ml-1">Clave <span class="text-danger">*</span></h5>
+                                                        <input type="text" id="clave" class="form-control"
+                                                            placeholder="000000000">
+                                                        <small class="form-control-feedback ml-1"> Unicamente numeros
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <h4><i class="fas fa-calendar-alt mr-2"></i>Calendario del
+                                                                curso</h4>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Inicio <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-04-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Hora Inicio </h5>
+                                                                <input type="time" class="form-control"
+                                                                    value="22:33:00">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Fin <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-06-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-lg-3">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Hora Fin </h5>
+                                                                <input type="time" class="form-control"
+                                                                    value="22:33:00">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <h4><i class="far fa-calendar-alt mr-2"></i>Calendario de
+                                                                inscripción</h4>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-6">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Inicio <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-04-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-6">
+                                                            <div class="form-group">
+                                                                <h5 class="ml-1">Fecha de Fin <span
+                                                                        class="text-danger">*</span></h5>
+                                                                <input type="date" class="form-control"
+                                                                    value="2021-06-13" style="width: 100%; ">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
+                                            <div class="form-group mt-4">
+                                                <div class="col text-right">
+                                                    <hr>
+                                                    <button type="button"
+                                                        class="btn waves-effect waves-light btn-success"><i
+                                                            class="fas fa-save mr-2"></i>Guardar</button>
+                                                    <button type="button" class="btn waves-effect waves-light btn-info"
+                                                        data-dismiss="modal"><i
+                                                            class="fas fa-times mr-2"></i>Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--Contenido-->
         <div class="col-lg-12">
             <div class="card">
@@ -174,7 +428,7 @@
                             <h1>Nombre Completo del Curso Lorem Ipsum</h1>
                             <div class="d-flex no-block align-items-center">
                                 <h5 class="mr-4">Ponente:</h5>
-                                <div class="mr-2"><img src="{{fotoCurso}}" alt="user"
+                                <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user"
                                         class="rounded-circle" width="45"></div>
                                 <div class="">
                                     <h5 class="mb-0 font-16 font-medium">Nombre Completo Ponente</h5><span>Ing. Fisico

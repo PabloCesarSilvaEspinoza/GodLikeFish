@@ -22,9 +22,8 @@ module.exports = {
             numeroErrores,
         });
     },
-
     getAdministrarCursos: async function (req, res, next) {
-        const cursos = await Controller.listCursos(1);
+        const cursos = await Controller.listCursos();
         const hitorialCursos = await Controller.listHitorialCursos();
         const registrados= await Controller.listRegistrados();
         const activos= await Controller.listActivos();
@@ -105,21 +104,16 @@ module.exports = {
         res.redirect('/administrador/administrarCursos')
     },
 
-    /*putEditarCurso: async function (req, res, next) {
+    putEditarCurso: async function (req, res, next) {
         await Controller.updateCurso(req.body);
         res.redirect('administrador/consultarCursosEI/:id');
-    },
-    getEditarCurso: async function (req, res, next) {
-        res.render('administrador/d6_editarCurso', {
-            administrador: true
-        });
     },
 
     postEditarUsuario: async function (req, res, next){
         await Controller.upsertDatosUsuario(req.params.id, req.body);        
 
         res.redirect('/administrador/administrarUsuarios')
-    },*/
+    },
 
     getEditarUsuario: async function(req, res, next){
         const paises = await Controller.listPaises();
