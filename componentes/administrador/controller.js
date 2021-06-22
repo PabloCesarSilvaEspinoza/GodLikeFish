@@ -255,6 +255,12 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idCurso);
     }
 
+    function getMiPerfil(idUsuario) {
+        const VIEW = 'ver_Usuarios';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+
     return {
         getUltimoCurso,
         getUltimoUsuario,
@@ -291,5 +297,6 @@ module.exports = function (injectedStore) {
         listExamenesCurso,
         listPublicacionesCurso,
         getCurso,
+        getMiPerfil
     };
 }

@@ -4,7 +4,11 @@
 <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- apps -->
 <script src="../../dist/js/app.min.js"></script>
+{{#if administrador}}
+<script src="../../dist/js/app.init.horizontal-fullwidth.js"></script>
+{{else}}
 <script src="../../dist/js/app.init.horizontal.js"></script>
+{{/if}}
 <script src="../../dist/js/app-style-switcher.horizontal.js"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
 <script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
