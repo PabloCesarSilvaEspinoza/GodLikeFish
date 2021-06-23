@@ -24,6 +24,17 @@ router.post('/reportarProblemaUsuario', render.postReportarProblemaUsuario);
 router.get('/DescargarTareaCurso/:idTarea/:nombreArchivo', render.getDescargarArchivoTarea);
 router.get('/DescargarArchivoCurso/:idCurso/:nombreArchivo', render.getDescargarArchivoCurso);
 router.get('/consultarCursos', render.getConsultarCursos);
+
+router.post('/borrarExamen/:idExamen', render.postDeleteExamen);
+router.post('/editarExamen/:id', render.putEditarExamen);
+
+router.post('/borrarAviso/:idAviso', render.postDeleteAviso);
+router.post('/editarAviso/:id', render.putEditarAviso);
+
+router.post('/borrarLink/:idLink', render.postDeleteLink);
+router.post('/editarLink/:id', render.putEditarLinks);
+
+router.post('/borrarDocumento/:idDocumento', render.postDeleteDocumento);
 /* router.get('/AgregarTareaPrueba', render.getAgregarTarea);
 router.post('/AgregarTarea', upload.array('multimediaTarea'), render.postAgregarTarea);
 router.get('/DescargarTarea', render.getDescargarArchivos); */

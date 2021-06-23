@@ -140,6 +140,52 @@ module.exports = {
         res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
     },
 
+    putEditarExamen: async function (req, res, next) {
+        await Controller.upsertDatosExamen(req.params.id, req.body);      
+       res.redirect('back');
+
+   },
+   postDeleteExamen: async function (req, res, next) {
+     await Controller.deleteExamen(req.params.idExamen);     
+  
+    res.redirect('back');
+
+   },
+
+   putEditarAviso: async function (req, res, next) {
+    await Controller.upsertDatosAviso(req.params.id, req.body);      
+    res.redirect('back');
+
+
+   },
+
+   postDeleteAviso: async function (req, res, next) {
+    await Controller.deleteAvisos(req.params.idAviso);     
+    res.redirect('back');
+
+   },
+
+   postDeleteDocumento: async function (req, res, next) {
+    await Controller.deleteDocumentos(req.params.idDocumento);     
+    res.redirect('back');
+
+   },
+
+   putEditarLinks: async function (req, res, next) {
+    await Controller.upsertDatosLinks(req.params.id, req.body);      
+    res.redirect('back');
+
+
+   },
+
+   postDeleteLink: async function (req, res, next) {
+    await Controller.deleteLinks(req.params.idLink);     
+    res.redirect('back');
+
+   },
+
+
+
     getConsultarEstadoCursoPonente: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -174,6 +220,8 @@ module.exports = {
                 const totalLinks = linksCurso.length;
                 const fechaActual = await Controller.getTiempoActual();
                 global.cursoActualID = cursoID;
+                const examenesCursoE = await await Controller.listExamen(cursoID);
+
                 res.render('ponente/p2_consultarCursoE1', {
                     ponente: true,
                     curso,
@@ -188,7 +236,8 @@ module.exports = {
                     archivosAsignacionesPonente,
                     publicacionesCurso,
                     fechaActual,
-                    miPerfil
+                    miPerfil,
+                    examenesCursoE
                 });
                 break;
 

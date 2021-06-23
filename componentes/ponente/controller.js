@@ -218,6 +218,102 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, idTarea);
     }
 
+    function listExamenesEditar(idCurso) { 
+        const VIEW = 'ver_examenes_editar';
+        const CLAUSE = `WHERE idExamen = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+function upsertDatosExamen(idExamen, body) {
+        const {
+            idCurso ,  nombreExamen, linkExamen,  horaAplicacionExamen, fechaAplicacionExamen
+
+        } = body;
+
+       
+        const PROCEDURE = `CALL editar_examen(
+            ${idExamen},  '${nombreExamen}',  '${linkExamen}',  '${fechaAplicacionExamen} ${horaAplicacionExamen}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function deleteExamen(idExamen) {
+       console.log(idExamen);
+        const PROCEDURE = `CALL eliminar_examen(
+            ${idExamen}
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+  function listExamen(idCurso) { 
+        const VIEW = 'ver_examenes_editar';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function upsertDatosAviso(idAviso, body) {
+        const {
+            asuntoAviso, descripcionAviso
+
+        } = body;
+
+       
+        const PROCEDURE = `CALL editar_Aviso(
+            ${idAviso},  '${asuntoAviso}',  '${descripcionAviso}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function deleteAvisos(idAviso) {
+         const PROCEDURE = `CALL eliminar_Aviso(
+             ${idAviso}
+ 
+         )`
+ 
+         return store.upsert(PROCEDURE);
+     }
+
+
+    function deleteDocumentos(idDocumento) {
+         const PROCEDURE = `CALL eliminar_Documento(
+             ${idDocumento}
+ 
+         )`
+ 
+         return store.upsert(PROCEDURE);
+     }
+
+     function deleteLinks(idLink) {
+        const PROCEDURE = `CALL eliminar_Link(
+            ${idLink}
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function upsertDatosLinks(idLink, body) {
+        const {
+            nombreLink, link
+
+        } = body;
+
+       
+        const PROCEDURE = `CALL editar_Link(
+            ${idLink},  '${nombreLink}',  '${link}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+
     return {
         insertTarea,
         listEstudiantes,
@@ -256,5 +352,16 @@ module.exports = function (injectedStore) {
         listEstadoEntregasTarea,
         listArchivosEntregasTarea,
         getDatosTarea,
+        upsertDatosExamen,
+        listExamenesEditar,
+        deleteExamen,
+        listExamen,
+        upsertDatosAviso,
+        deleteAvisos,
+        deleteDocumentos,
+        deleteLinks,
+        upsertDatosLinks
+
+
     };
 }

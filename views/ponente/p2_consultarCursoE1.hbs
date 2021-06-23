@@ -139,7 +139,8 @@
                 </div>
             </div>
         </div>
-        <div id="editarAviso" class="modal">
+{{#each avisosCurso}}
+        <div id="editarAviso{{idAviso}}" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 10px">
                     <div class="card-body">
@@ -150,23 +151,26 @@
                                 <h4>Editar <span class="small">Aviso</span></h4>
                             </div>
                             <div class="col-md-3 text-right">
-                                <button type="#" class="btn btn-danger" ><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                                <form method="POST" action="../borrarAviso/{{idAviso}}">
+                                <button type="submit" class="btn btn-danger" ><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                                </form>
                             </div>
                             <!--contenido-->
-                            <form action="#" method="post" >
+                            <form action="../editarAviso/{{idAviso}}" method="post" >
                                 <div class="row mr-1 ml-1">
                                     <div class="col-md-12">
                                         <h6 class="mb-0 font-medium mt-2"><i class="fas fa-highlighter mr-2"></i>Asunto del aviso <span class="text-danger">*</span></h6>
-                                        <input type="text" name="asuntoAviso" class="form-control" placeholder="Escribe el asunto del aviso" autocomplete="off" required>
+                                        <input type="text" name="asuntoAviso" class="form-control" value="{{tituloAviso}}"  autocomplete="off" required>
                                         <small class="form-control-feedback ml-1"> Maximo 255 caracteres.</small>
                                     </div>
                                     <div class="col-md-12">
                                         <h6 class="mb-0 font-medium mt-2"><i class="fas fa-signature mr-2"></i>Descripcion <span class="text-danger">*</span></h6>
                                         <textarea class="form-control" rows="3" name="descripcionAviso"
-                                            placeholder="¿Que quieres comunicar a tus estudiantes?" autocomplete="off" required></textarea>
+                                              autocomplete="off" required>{{textoAviso}}
+                                             </textarea>
                                     </div>
                                     <div class="col-md-12 text-right">
-                                        <input type="hidden" name="idCurso" value="{{curso.idCurso}}">
+                                        
                                         <button type="submit" class="btn btn-info mt-2">
                                             <i class="fas fa-save mr-2"></i>Guardar</button>
                                         <button type="button" class="btn btn-secondary mt-2"
@@ -180,6 +184,8 @@
                 </div>
             </div>
         </div>
+ {{/each}}
+
         <div id="agregarTarea" class="modal">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content" style="border-radius: 10px">
@@ -373,7 +379,8 @@
                 </div>
             </div>
         </div>
-        <div id="eliminarArchivo" class="modal">
+ {{#each documentosCurso}}
+        <div id="eliminarArchivo{{idDocumento}}" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 10px">
                     <div class="card-body">
@@ -389,7 +396,7 @@
                             </div>
                             <!--contenido-->
                             <div class="col-md-12">
-                                <form action="#" method="post">
+                                <form action="../borrarDocumento/{{idDocumento}}" method="post">
                                     <div class="row">
                                         <div class="col-md-12 text-center">
                                             <h6 class="mb-0 font-medium mt-2">¿Quieres eliminar este docmento: {{nombreDocumento}}?</h6>
@@ -406,6 +413,43 @@
                 </div>
             </div>
         </div>
+{{/each}}
+        {{#each linksCurso}}
+       <div id="eliminarArchivoL{{idLink}}" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content" style="border-radius: 10px">
+                    <div class="card-body">
+                        <div class="row">
+                            <!--titulo-->
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 text-center">
+                                <h4>Eliminar <span class="small">Link</span></h4>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
+                            </div>
+                            <!--contenido-->
+                            <div class="col-md-12">
+                                <form action="../borrarLink/{{idLink}}" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <h6 class="mb-0 font-medium mt-2">¿Quieres eliminar este Link  {{nombreLink}} ?</h6>
+                                            <button type="submit" class="btn btn-danger mt-3"><i
+                                                class="fas fa-check mr-2"></i>Si, eliminar</button>
+                                            <button type="button" class="btn btn-info mt-3" data-dismiss="modal"><i
+                                                    class="fas fa-times mr-2"></i>No, conservar Link</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{{/each}}
+
         <div id="agregarEnlace" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 10px">
@@ -447,7 +491,9 @@
                 </div>
             </div>
         </div>
-        <div id="editarEnlace" class="modal">
+
+ {{#each linksCurso}}
+        <div id="editarEnlace{{idLink}}" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 10px">
                     <div class="card-body">
@@ -458,19 +504,19 @@
                                 <h4>Editar <span class="small">Enlace</span></h4>
                             </div>
                             <div class="col-md-3 text-right">
-                                <a class="btn btn-danger" data-dismiss="modal" data-toggle="modal" href="#eliminarArchivo"><i class="fas fa-trash-alt mr-2"></i>Eliminar</a>
+                                <a class="btn btn-danger" data-dismiss="modal" data-toggle="modal" href="#eliminarArchivoL{{idLink}}"><i class="fas fa-trash-alt mr-2"></i>Eliminar</a>
                             </div>
                             <!--contenido-->
                             <div class="col-md-12">
-                                <form action="#" method="post" enctype="multipart/form-data">
+                                <form action="../editarLink/{{idLink}}" method="post">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 class="mb-0 font-medium mt-2">Nombre del enlace <span class="text-danger">*</span></h6>
-                                            <input type="text" name="nombreLink" class="form-control" placeholder="¿Que nombre desea asignale al enlace?" autocomplete="off" required>
+                                            <input type="text" name="nombreLink" class="form-control" value="{{nombreLink}}" autocomplete="off" required>
                                             <small class="form-control-feedback ml-1"> Maximo 150 caracteres.</small>
                                             <h6 class="mb-0 font-medium mt-2">Enlace <span class="text-danger">*</span></h6>
-                                            <input type="url" name="link" class="form-control"placeholder="Por favor, agregue aquí el enlace." autocomplete="off" required></input>
-                                            <input type="hidden" name="idCurso" value="{{curso.idCurso}}">
+                                            <input type="url" name="link" class="form-control" value="{{linkLink}}" autocomplete="off" required></input>
+                                            
                                         </div>
                                         <div class="col-md-12  text-right">
                                             <button type="submit" class="btn btn-info mt-2">
@@ -487,6 +533,7 @@
                 </div>
             </div>
         </div>
+{{/each}}
         <div id="agregarExamen" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 10px">
@@ -536,7 +583,8 @@
                 </div>
             </div>
         </div>
-        <div id="editarExamen" class="modal">
+        {{#each examenesCursoE}}
+        <div id="editarExamen{{idExamen}}" class="modal"> 
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 10px">
                     <div class="card-body">
@@ -547,31 +595,33 @@
                                 <h4>Editar <span class="small">Examen</span></h4>
                             </div>
                             <div class="col-md-3 text-right">
-                                <button type="#" class="btn btn-danger" ><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                                <form method="POST" action="../borrarExamen/{{idExamen}}">
+                                <button type="submit" class="btn btn-danger" ><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                                </form>
                             </div>
                             <!--contenido-->
                             <div class="col-md-12">
-                                <form action="/ponente/AgregarExamen" method="post">
+                                <form action="../editarExamen/{{idExamen}}" method="post">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6 class="mb-0 font-medium mt-2">Titulo del examen <span class="text-danger">*</span></h6>
-                                            <input type="text" name="nombreExamen" class="form-control" placeholder="Escribe el título del examen" autocomplete="off" required>
+                                            <input type="text" name="nombreExamen" value="{{nombreExamen}}" class="form-control" autocomplete="off" required>
                                             <small class="form-control-feedback ml-1">
                                                 Maximo 255 caracteres
                                             </small>
                                             <h6 class="mb-0 font-medium mt-2">Enlace al examen<span class="text-danger">*</span></h6>
-                                            <input type="url" name="linkExamen" class="form-control"placeholder="Por favor, agregue aquí el enlace del examen" autocomplete="off" required></input>
+                                            <input type="url" name="linkExamen" value="{{linkExamen}}"  class="form-control"placeholder="Por favor, agregue aquí el enlace del examen" autocomplete="off" required></input>
                                             <h6 class="mb-0 font-medium mt-2">Fecha de aplicación<span class="text-danger">*</span></h6>
-                                            <input type="date" name="fechaAplicacionExamen" id="fechaLimiteTarea"
+                                            <input type="date" name="fechaAplicacionExamen" id="FechaLimiteTarea" value="{{FechaAplicacionExamen}}"
                                                 class="form-control" value="2021-06-10" required>
                                             <h6 class="mb-0 font-medium mt-2">Hora de aplicación<span class="text-danger">*</span></h6>
-                                            <input type="time" name="horaAplicacionExamen" id="horaLimiteTarea"
+                                            <input type="time" name="horaAplicacionExamen" id="horaLimiteTarea" value="{{HoraAplicacionExamen}}"
                                                 class="form-control" value="12:00" required>
-                                            <input type="hidden" name="idCurso" value="{{curso.idCurso}}">
+                                            
                                         </div>
                                         <div class="col-md-12  text-right">
                                             <button type="submit" class="btn btn-info mt-2">
-                                                <i class="fas fa-bullhorn mr-2"></i>Publicar</button>
+                                                <i class="fas fa-bullhorn mr-2"></i>Guardar</button>
                                             <button type="button" class="btn btn-secondary mt-2"
                                                 data-dismiss="modal">
                                                 <i class="fas fa-times mr-2"></i>Cancelar</button>
@@ -584,6 +634,7 @@
                 </div>
             </div>
         </div>
+        {{/each}}
         <!--Terminan los modales-->
 
         <div class="col-md-9"> <!--Centro-->
@@ -808,7 +859,7 @@
                                                 <h5 class="font-medium">{{nombreCurso}}</h5>
                                             </div>
                                             <div class="col-md-3 text-right">
-                                                <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarAviso">
+                                                <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarAviso{{idAviso}}">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                             </div>
                                         </div>
@@ -920,7 +971,7 @@
                                                                 <div class="col-md-6 text-right">
                                                                     <a href="/ponente/DescargarArchivoCurso/{{idCurso}}/{{nombreDocumento}}" class="btn btn-rounded btn-xs btn-info mr-2">
                                                                         <i class="fas fa-download mr-2"></i>Descargar</a>
-                                                                        <button class="btn btn-rounded btn-xs btn-danger small" data-toggle="modal" data-target="#eliminarArchivo">
+                                                                        <button class="btn btn-rounded btn-xs btn-danger small" data-toggle="modal" data-target="#eliminarArchivo{{idDocumento}}">
                                                                             <i class="fas fa-times mr-2"></i> Eliminar
                                                                         </button>
                                                                 </div>
@@ -951,7 +1002,7 @@
                                                                 <div class="col-md-6 text-right">
                                                                     <a href="{{linkLink}}" class="btn btn-rounded btn-xs btn-info mr-2">
                                                                         <i class="fas fa-external-link-alt mr-2"></i>Ir al enlace</a>
-                                                                    <a href="#" class="btn btn-rounded btn-xs btn-success mr-2" data-toggle="modal" data-target="#editarEnlace">
+                                                                    <a href="#" class="btn btn-rounded btn-xs btn-success mr-2" data-toggle="modal" data-target="#editarEnlace{{idLink}}">
                                                                         <i class="fas fa-pencil-alt mr-2"></i>Editar</a>
                                                                 </div>
                                                             </div>
@@ -991,7 +1042,7 @@
                                         <div class="col-md-3 text-right">
                                             <span class="small">
                                                 <a href="#" class="btn  btn-rounded btn-sm btn-success small"
-                                                    data-toggle="modal" data-target="#editarExamen">
+                                                    data-toggle="modal" data-target="#editarExamen{{idExamen}}">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar
                                                 </a>
                                             </span>
@@ -1017,6 +1068,7 @@
                                 </div>
                             </div>
                             {{/each}}
+
                         </div>
                     </div>
                 </div>
