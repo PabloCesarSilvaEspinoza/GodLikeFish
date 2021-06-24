@@ -200,10 +200,13 @@ module.exports = {
     },
 
     getConsultarCursos: async function(req, res, next){
+        const usuarioID = (req.user.id);
         const miPerfil = await Controller.getMiPerfil(req.user.id);
+        const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         res.render('ponente/p5_misCursos',{
             ponente: true,
-            miPerfil
+            miPerfil,
+            historialCursosPonente
             /* datos del usuario */
         })
     }
