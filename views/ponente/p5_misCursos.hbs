@@ -24,10 +24,9 @@
                                 <tr>
                                     <td>{{nombreCurso}}</td>
                                     <td>{{NumeroDeEstudiantes}}/{{capacidad}}</td>
-                                    <td><span class="label label-info">
-                                         {{Estado}}</span></td>
                                     <td>
                                         {{#if Estado}}
+                                        <span class="label label-info">Activo</span>
                                         {{else}}
                                         <span class="label label-danger">Inactivo</span>
                                         {{/if}}
