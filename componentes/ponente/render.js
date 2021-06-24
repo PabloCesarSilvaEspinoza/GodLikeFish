@@ -141,6 +141,7 @@ module.exports = {
     },
 
     getConsultarEstadoCursoPonente: async function (req, res, next){
+        console.log('entre')
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
         const respuestaEstadoCursoPonente = await Controller.getConsultarEstadoCursoPonente(usuarioID, cursoID);
@@ -155,7 +156,7 @@ module.exports = {
                 break;
 
             case 'Curso Pasado':
-                res.render('ponente/p2_consultarCursoE2_v2', {
+                res.render('ponente/p2_consultarCursoE2', {
                     ponente:true,
                     miPerfil
                 });
