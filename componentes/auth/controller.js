@@ -238,6 +238,30 @@ module.exports = function (injectedStore) {
         return store.list(VIEW)
     }
 
+    async function correoPersonal(idUsuario, subject, texto){
+        const credencialUsuario = await getUsuario(idUsuario);
+        const to = credencialUsuario[0].correoUsuario;
+        
+        console.log("Enviando correo personal a ", to);
+        let mailOptions = {
+            to,
+            subject,
+            template: 'correo/correoPersonalizado',
+            context: {
+                texto
+            }
+        };
+        transport.sendMail(mailOptions, (err, info) => {
+            (err ? console.log('Error', err) : console.log(chalk.yellow.bgBlack.bold('Correo Enviado a :' + mailOptions.to)));
+        });
+    }
+
+    function getMiPerfil(idUsuario) {
+        const VIEW = 'ver_Usuarios';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+
     return {
         encontrarUsuario,
         listPaises,
@@ -262,5 +286,7 @@ module.exports = function (injectedStore) {
         enviarContraseniaTemporal,
         actualizarCorreo,
         listAreas,
+        correoPersonal,
+        getMiPerfil
     }
 }

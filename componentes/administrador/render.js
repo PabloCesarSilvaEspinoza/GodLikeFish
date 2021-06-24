@@ -13,6 +13,7 @@ module.exports = {
         const errores = await Controller.listErrores();
         const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
+        const mensaje = await Controller.getMensajeBienvenida();
         /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
             administrador: true,
@@ -25,7 +26,8 @@ module.exports = {
             errores,
             numeroErrores,
             usuariosSinVerificar,
-            miPerfil
+            miPerfil,
+            mensaje
         });
     },
     getAdministrarCursos: async function (req, res, next) {
@@ -230,4 +232,9 @@ module.exports = {
         await Controller.updateVerificarTarjetonUsuario(idUsuario);
         res.redirect('back');
     },
+
+    postCorreoPersonalizado: async function(req, res, next){
+        Controller.enviarCorreo(idUsuario,asunto,mensaje);
+        res.redirect('/validarPermisos'); /* regresa a dashboard, modificar */
+    }
 };

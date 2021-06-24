@@ -16,6 +16,7 @@ module.exports = {
         const fechaActual = await Controller.getTiempoActual();
         const miPerfil = await Controller.getMiPerfil(usuarioID);
         const asignacionesPendientes = await Controller.listAsignacionesPendientesPonente(usuarioID);
+        const mensaje = await Controller.getMensajeBienvenida();
         res.render('ponente/p1_dashboard', {
             ponente: true,
             cursosActuales,
@@ -26,7 +27,8 @@ module.exports = {
             nombresCursosActualesPonente,
             fechaActual,
             miPerfil,
-            asignacionesPendientes
+            asignacionesPendientes,
+            mensaje
         });
     },
     
@@ -96,7 +98,7 @@ module.exports = {
             req.body.asuntoProblema,
             req.body.descripcionProblema
         );
-        //de donde se manda llamar?, para dirigirlo allí
+        res.redirect('/soporte');
     },
 
     postAgregarAviso: async function (req, res, next) {

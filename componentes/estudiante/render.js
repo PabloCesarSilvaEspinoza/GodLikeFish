@@ -17,6 +17,7 @@ module.exports = {
         const posiblesCursosEstudiante = respuestaPosiblesCursosEstudiante[0];
         const respuestaResumenEstudiante = await Controller.catalogResumenEstudiante(usuarioID);
         const resumenEstudiante = respuestaResumenEstudiante[0];
+        const mensaje = await Controller.getMensajeBienvenida();
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
@@ -27,6 +28,7 @@ module.exports = {
             cursoActualEstudiante,
             posiblesCursosEstudiante,
             resumenEstudiante,
+            mensaje
         });
     },
     getMisAsignaciones: async function (req, res, next) {
@@ -197,6 +199,15 @@ module.exports = {
         }
     },
     
+    postReportarProblemaUsuario: async function (req, res, next) {
+        await Controller.reportarProblemaUsuario(
+            req.user.id,
+            //el resto de datos los leemos del modal
+            req.body.asuntoProblema,
+            req.body.descripcionProblema
+        );
+        //de donde se manda llamar?, para dirigirlo allí
+    },
 
     /* getVerTareas:async function(req, res, next){
         const cursos= await Controller.list();

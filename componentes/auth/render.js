@@ -91,7 +91,6 @@ module.exports = {
             ? res.redirect('/validarPermisos')
             : res.redirect('/')
         )
-        console.log("__No tienes el tarjeton verificado___");
     },
 
     postVerificarCorreo: async function (req, res, next) {
@@ -246,19 +245,32 @@ module.exports = {
     },
 
     getMiPerfil: async function(req, res, next){
-        (req.isAuthenticated()
-            ? res.render('usuario/u4_miPerfil',{
-                /* mandar datos usuario */
-            })
-            : res.redirect('/login')
-        );
+        //const miPerfil = req.perfilUsuario;
+        if(req.isAuthenticated()){
+            const miPerfil = await Controller.getMiPerfil(req.user.id);
+            res.render('usuario/u4_miPerfil',{
+                estudiante: (req.user.rol =="Estudiante"),
+                ponente: (req.user.rol =="Ponente"),
+                administrador: (req.user.rol =="Administrador"),
+                miPerfil
+            });
+        }else{
+            res.redirect('/');
+        }
     },
 
     getSoporte: async function(req, res, next){
-        (req.isAuthenticated()
-            ? res.render('usuario/u8_soporte')
-            : res.redirect('/login')
-        );
+        if(req.isAuthenticated()){
+            const miPerfil = await Controller.getMiPerfil(req.user.id);
+            res.render('usuario/u8_soporte',{
+                estudiante: (req.user.rol =="Estudiante"),
+                ponente: (req.user.rol =="Ponente"),
+                administrador: (req.user.rol =="Administrador"),
+                miPerfil
+            });
+        }else{
+            res.redirect('/');
+        }
     },
 
 };

@@ -1,3 +1,4 @@
+const mensajes = ["Estas de vuelta","Hola","¿Que tal?","Estas aquí","Volviste","Regresaste"];
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
@@ -212,6 +213,16 @@ module.exports = function (injectedStore) {
         return store.list(VIEW, CLAUSE, idEstudiante);
     }
 
+    function getMensajeBienvenida(){
+        const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
+        return mensajes[numeroAleatoreo];
+    }
+
+    function reportarProblemaUsuario(idUsuario, asunto, descripcion){
+        const PROCEDURE = `CALL agregar_Problemas_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
+        return store.insert(PROCEDURE);
+    }
+
     return {
         listDatosCursoUsuario,
         listAvisosUsuario,
@@ -244,5 +255,7 @@ module.exports = function (injectedStore) {
         catalogAsignacionesTotalesEstudiante,
         catalogArchivosAsignacionesTotales,
         listArchivosEntregasTotalesEstudiante,
+        getMensajeBienvenida,
+        reportarProblemaUsuario
     };
 }

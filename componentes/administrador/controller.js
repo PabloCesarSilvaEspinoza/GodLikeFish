@@ -1,3 +1,6 @@
+const { response } = require('express');
+const ControllerAuth = require('../auth/index');
+const mensajes = ["Estas de vuelta","Hola","¿Que tal?","Estas aquí","Volviste","Regresaste"];
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
@@ -261,6 +264,15 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, idUsuario);
     }
 
+    function enviarCorreo(idUsuario, asunto, contenido) {
+        ControllerAuth.correoPersonal(idUsuario, asunto, contenido);
+    }
+
+    function getMensajeBienvenida(){
+        const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
+        return mensajes[numeroAleatoreo];
+    }
+
     return {
         getUltimoCurso,
         getUltimoUsuario,
@@ -297,6 +309,8 @@ module.exports = function (injectedStore) {
         listExamenesCurso,
         listPublicacionesCurso,
         getCurso,
-        getMiPerfil
+        getMiPerfil,
+        enviarCorreo,
+        getMensajeBienvenida,
     };
 }
