@@ -251,7 +251,7 @@ module.exports = {
             res.render('usuario/u4_miPerfil',{
                 estudiante: (req.user.rol =="Estudiante"),
                 ponente: (req.user.rol =="Ponente"),
-                administrador: (req.user.rol =="Administrador"),
+                administrador: (req.user.rol =="Administrador" || req.user.rol =="Super-Administrador"),
                 miPerfil
             });
         }else{
@@ -265,7 +265,7 @@ module.exports = {
             res.render('usuario/u8_soporte',{
                 estudiante: (req.user.rol =="Estudiante"),
                 ponente: (req.user.rol =="Ponente"),
-                administrador: (req.user.rol =="Administrador"),
+                administrador: (req.user.rol =="Administrador" || req.user.rol =="Super-Administrador"),
                 miPerfil
             });
         }else{

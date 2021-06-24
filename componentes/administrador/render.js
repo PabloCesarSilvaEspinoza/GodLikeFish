@@ -11,9 +11,10 @@ module.exports = {
     getDashboardAdministrador: async function (req, res, next) {
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         const errores = await Controller.listErrores();
-        const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
         const mensaje = await Controller.getMensajeBienvenida();
+        const numeroErrores = errores.length;
+        const numeroUsuariosSinVerificar = usuariosSinVerificar.length;
         /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
             administrador: true,
@@ -27,7 +28,8 @@ module.exports = {
             numeroErrores,
             usuariosSinVerificar,
             miPerfil,
-            mensaje
+            mensaje,
+            numeroUsuariosSinVerificar,
         });
     },
     getAdministrarCursos: async function (req, res, next) {

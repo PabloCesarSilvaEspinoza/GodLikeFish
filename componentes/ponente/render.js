@@ -157,7 +157,7 @@ module.exports = {
                 break;
 
             case 'Curso Pasado':
-                res.render('ponente/p2_consultarCursoE2_v2', {
+                res.render('ponente/p2_consultarCursoE2', {
                     ponente:true,
                     miPerfil
                 });
@@ -202,11 +202,14 @@ module.exports = {
     },
 
     getConsultarCursos: async function(req, res, next){
+        const usuarioID = (req.user.id);
         const miPerfil = await Controller.getMiPerfil(req.user.id);
+        const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         res.render('ponente/p5_misCursos',{
             ponente: true,
-            miPerfil
-            /* datos del usuario */
+            dataTables: true,
+            miPerfil,
+            historialCursosPonente,
         })
     }
 
