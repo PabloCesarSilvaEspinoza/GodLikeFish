@@ -107,18 +107,22 @@ module.exports = {
 
 
     getValidarPermisos: async function (req, res) {
-        switch (req.user.rol) {
-            case "Estudiante":
-                res.redirect('/estudiante/dashboardEstudiante');
-                break;
-            case "Ponente":
-                console.log("Es " +req.user.id);
-                res.redirect('/ponente/dashboardPonente');
-                break;
-            case "Administrador":
-            case "Super-Administrador":
-                res.redirect('/administrador/dashboardAdministrador');
-                break;
+        if(req.isAuthenticated()){
+            switch (req.user.rol) {
+                case "Estudiante":
+                    res.redirect('/estudiante/dashboardEstudiante');
+                    break;
+                case "Ponente":
+                    console.log("Es " +req.user.id);
+                    res.redirect('/ponente/dashboardPonente');
+                    break;
+                case "Administrador":
+                case "Super-Administrador":
+                    res.redirect('/administrador/dashboardAdministrador');
+                    break;
+            }
+        }else{
+            res.redirect('/');
         }
     },
 
