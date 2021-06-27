@@ -7,7 +7,7 @@ const {permisosTarea} = require('../../middlewares/compropobarPermisos')
 const render = require('./render');
 
 router.get('/dashboardPonente', render.getDashboardPonente);
-router.get('/consultarlumnos', render.getConsultarAlumnos);
+router.get('/consultarAlumnos', render.getConsultarAlumnos);
 router.post('/CalificarEntrega/', permisosTarea, render.postCalificarEntrega);
 router.post('/TerminarCalificarTarea/', permisosTarea, render.postTerminarCalificarTarea);
 router.get('/CalificarTarea/:idTarea', permisosTarea, render.getCalificarTarea);

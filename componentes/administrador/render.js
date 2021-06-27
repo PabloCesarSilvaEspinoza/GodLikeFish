@@ -20,7 +20,6 @@ module.exports = {
         const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
         const mensaje = await Controller.getMensajeBienvenida();
-        const numeroErrores = errores.length;
         const numeroUsuariosSinVerificar = usuariosSinVerificar.length;
         /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
@@ -263,22 +262,28 @@ module.exports = {
         Controller.enviarCorreo(idUsuario,asunto,mensaje);
         res.redirect('/validarPermisos'); /* regresa a dashboard, modificar */
     },
-    
+
     getPerfilUsuario: async function (req, res, next) {
         const usuarioID = req.params.idUsuario;
         const rolUsuario = await Controller.getRolUsuario(usuarioID);
         const rol = rolUsuario[0].rolUsuario;
         switch (rol) {
             case 'Estudiante':
-                res.render('administrador/d5_administrarUsuario_E1')
+                res.render('administrador/d5_administrarUsuario_E1', {
+                    administrador: true,
+                })
                 break;
             case 'Ponente':
-                res.render('administrador/d5_administrarUsuario_E2')
+                res.render('administrador/d5_administrarUsuario_E2', {
+                    administrador: true,
+                })
                 break;
             case 'Administrador':
             case 'Super-Administrador':
                 (req.user.rol == 'Super-Administrador')
-                ? res.render('administrador/d5_administrarUsuario_E3')
+                ? res.render('administrador/d5_administrarUsuario_E3', {
+                    administrador: true,
+                })
                 : res.redirect('/administrador/dashboardAdministrador');
                 break;
             default:
