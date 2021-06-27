@@ -262,6 +262,7 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, idUsuario);
     }
 
+
     return {
         encontrarUsuario,
         listPaises,
@@ -287,6 +288,6 @@ module.exports = function (injectedStore) {
         actualizarCorreo,
         listAreas,
         correoPersonal,
-        getMiPerfil
+        getMiPerfil,
     }
 }
