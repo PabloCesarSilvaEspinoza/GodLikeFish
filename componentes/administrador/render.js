@@ -11,18 +11,25 @@ module.exports = {
     getDashboardAdministrador: async function (req, res, next) {
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         const errores = await Controller.listErrores();
-        const numeroErrores = errores.length;
+        const valores = await Controller.listCursosActivosTotal();
+        const valoresina = await Controller.listCursosInactivosTotal();
+        const valoresUact = await Controller.listUsuariosActivosTotal();
+        const valoresUinact = await Controller.listUsuariosInactivosTotal();
+        const valoresUcurso = await Controller.listUsuariosEncursoTotal();
+        const valoresUrecono = await Controller.listUsuariosReconocimientoTotal();
+       const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
         /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
             administrador: true,
             graficasAdministrador : true,
-            valores:[{
-            valor1: 18,
-            valor2: 36,
-            valor3: 10
-            }],
             errores,
+            valores,
+            valoresina,
+            valoresUact,
+            valoresUinact,
+            valoresUcurso,
+            valoresUrecono,
             numeroErrores,
             usuariosSinVerificar,
             miPerfil
@@ -105,11 +112,16 @@ module.exports = {
         const archivosAsignacionesCurso = await Controller.getArchivosTareaCurso(cursoID);
         const examenesCurso = await Controller.listExamenesCurso(cursoID);
         const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
+        const totalProblemasCurso = await Controller.listTotalProblemasCurso(cursoID);
+        const totalExamenesCurso = await Controller.listTotalExamenesCurso(cursoID);
+        const totalAvisosCurso = await Controller.listTotalAvisosCurso(cursoID);
+        const totalRecursosCurso = await Controller.listTotalRecursosCurso(cursoID);
         const totalDocumentos = documentosCurso.length;
         const totalLinks = linksCurso.length;
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d4_consultarCurso', {
             administrador: true,
+            graficasAdministrador : true,
             curso,
             datosCurso,
             avisosCurso,
@@ -121,6 +133,10 @@ module.exports = {
             publicacionesCurso,
             totalDocumentos,
             totalLinks,
+            totalProblemasCurso,
+            totalExamenesCurso,
+            totalAvisosCurso,
+            totalRecursosCurso,
             miPerfil
         });
     },

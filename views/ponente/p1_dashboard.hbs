@@ -24,12 +24,18 @@
                     <p class="box mb-0 p-0"><i class="fas fa-users mr-2"></i>Alumnos Actuales: (0)</p>
                     {{/if}}
                     {{#if [3].valor}}
-                    <p class="box mb-0 p-0 mb-3"><i class="fas fa-graduation-cap mr-2"></i>Alumnos Alcanzados: ({{[3].valor}})</p>
+                    <p class="box mb-0 p-0 mb-3"><i class="fas fa-graduation-cap mr-2"></i>Alumnos Alcanzados:
+                        ({{[3].valor}})</p>
                     {{else}}
                     <p class="box mb-0 p-0 mb-3"><i class="fas fa-graduation-cap mr-2"></i>Alumnos Alcanzados: (0)</p>
                     {{/if}}
                     {{/with}}
                 </div>
+                <center>
+                    <div class="col-12">
+                        <canvas width="100" height="100" id="GraficaMuestra4"></canvas>
+                    </div>
+                </center>
             </div>
             <div class="card" style="border-radius: 6px">
                 <div class="mt-3 ml-3 p-1">
@@ -39,7 +45,7 @@
                     <ul id="sidebarnav">
                         {{#each nombresCursosActualesPonente}}
                         <li class="sidebar-item">
-                            <a class="sidebar-link d-inline-block text-truncate" 
+                            <a class="sidebar-link d-inline-block text-truncate"
                                 style="max-width: 230px; color: rgb(62, 85, 105);" href="/ponente/curso/{{idCurso}}">
                                 <i class="fas fa-chalkboard-teacher mr-2" style="color: rgb(62, 85, 105);"></i>
                                 <span class="hide-menu">{{nombreCurso}}</span>
@@ -47,30 +53,31 @@
                         </li>
                         {{/each}}
                     </ul>
-                </nav> 
+                </nav>
                 <hr>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <a href="/ponente/consultarCursos" class="btn waves-effect waves-light btn-success mb-4"> 
+                        <a href="/ponente/consultarCursos" class="btn waves-effect waves-light btn-success mb-4">
                             <i class="fas fa-th mr-2"></i>Todos mis cursos</a>
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!--centro o contenido-->
         <div class="col-md-6">
 
             <div class="card" style="border-radius: 6px">
                 <ul class="nav nav-tabs mt-2 ml-2 mr-2" role="tablist">
-                    <li class="nav-item"> <a class="nav-link active" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#aviso"
-                            role="tab"><span class="hidden-sm-up"><i class="ti-comment-alt"></i></span>
+                    <li class="nav-item"> <a class="nav-link active" style="color: rgb(62, 85, 105);" data-toggle="tab"
+                            href="#aviso" role="tab"><span class="hidden-sm-up"><i class="ti-comment-alt"></i></span>
                             <span class="hidden-xs-down">Aviso</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#asignacion"
-                            role="tab"><span class="hidden-sm-up"><i class="ti-pencil-alt"></i></span> <span
-                                class="hidden-xs-down">Asignación</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#examen"
-                            role="tab"><span class="hidden-sm-up"><i class="ti-write"></i></span> <span
+                    <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab"
+                            href="#asignacion" role="tab"><span class="hidden-sm-up"><i
+                                    class="ti-pencil-alt"></i></span> <span class="hidden-xs-down">Asignación</span></a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab"
+                            href="#examen" role="tab"><span class="hidden-sm-up"><i class="ti-write"></i></span> <span
                                 class="hidden-xs-down">Examen</span></a> </li>
                 </ul>
                 <div class="tab-content tabcontent-border">
@@ -78,8 +85,7 @@
                         <form class="form-valide" method="POST" action="/ponente/AgregarAviso">
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <select
-                                        class="select2 form-control custom-select select2-hidden-accessible"
+                                    <select class="select2 form-control custom-select select2-hidden-accessible"
                                         style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
                                         aria-hidden="true" name="idCurso" required>
                                         {{#each nombresCursosActualesPonente}}
@@ -103,8 +109,7 @@
                         <form action="/ponente/AgregarTarea" method="POST" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <select
-                                        class="select2 form-control custom-select select2-hidden-accessible"
+                                    <select class="select2 form-control custom-select select2-hidden-accessible"
                                         style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
                                         aria-hidden="true" name="idCurso" required>
                                         {{#each nombresCursosActualesPonente}}
@@ -126,7 +131,7 @@
                                 {{#fechaActual}}
                                 <div class="col-md-6">
                                     <h6 class="ml-1 p-0 mt-3 font-weight-normal">Fecha de límite<span
-                                        class="text-danger">*</span></h6>
+                                            class="text-danger">*</span></h6>
                                     <input type="date" name="fechaLimiteTarea" class="form-control"
                                         value="{{fechaActual}}" required>
                                 </div>
@@ -154,12 +159,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="ml-1 p-0 mt-3 font-weight-normal">Archivos<span
-                                        class="text-danger">*</span></h6>
-                                    <input type="file" name="multimediaTarea" multiple/>
+                                            class="text-danger">*</span></h6>
+                                    <input type="file" name="multimediaTarea" multiple />
                                 </div>
                                 <div class="col-md-12 text-right mt-2">
                                     <button class="btn btn-info waves-effect" type="submit"><i
-                                        class="fas fa-bullhorn mr-2"></i>Publicar</button>
+                                            class="fas fa-bullhorn mr-2"></i>Publicar</button>
                                 </div>
                             </div>
                         </form>
@@ -168,8 +173,7 @@
                         <form method="POST" action="/ponente/AgregarExamen">
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <select
-                                        class="select2 form-control custom-select select2-hidden-accessible"
+                                    <select class="select2 form-control custom-select select2-hidden-accessible"
                                         style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1"
                                         aria-hidden="true" name="idCurso" required>
                                         {{#each nombresCursosActualesPonente}}
@@ -193,15 +197,15 @@
                                     <h6 class="ml-1 p-0 mt-3 font-weight-normal">
                                         Fecha de aplicación<span class="text-danger">*</span>
                                     </h6>
-                                    <input type="date" name="fechaAplicacionExamen"
-                                        class="form-control" value="{{fechaActual}}" required>
+                                    <input type="date" name="fechaAplicacionExamen" class="form-control"
+                                        value="{{fechaActual}}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="ml-1 p-0 mt-3 font-weight-normal">
                                         Hora de aplicación<span class="text-danger">*</span>
                                     </h6>
-                                    <input type="time" name="horaAplicacionExamen"
-                                        class="form-control" value="{{horaSiguiente}}" required>
+                                    <input type="time" name="horaAplicacionExamen" class="form-control"
+                                        value="{{horaSiguiente}}" required>
                                 </div>
                                 {{/fechaActual}}
                                 <div class="col-md-12 text-right mt-3">
@@ -219,7 +223,8 @@
                     <div class="row">
                         <div class="col-md-4 text-center">
                             <!--FALTAAGREGAR <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" alt="Imgagen siguiente curso">-->
-                            <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
+                            <img class="card-img img-responsive" style="border-radius: 8px;"
+                                src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
                         </div>
                         <div class="col-md-8">
                             <h5 class="mb-0 font-16">{{nombreCurso}}</h5>
@@ -233,10 +238,10 @@
                                     <i class="fas fa-external-link-alt mr-1"></i>Ir a la plataforma </a>
                                 {{/if}}
                                 <a href="/ponente/curso/{{idCurso}}" class="btn  btn-rounded btn-sm btn-success small">
-                                    <i class="fas fa-external-link-alt mr-1"></i>Ir al Curso </a>   
+                                    <i class="fas fa-external-link-alt mr-1"></i>Ir al Curso </a>
                             </span>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="card-footer text-center">
@@ -272,9 +277,10 @@
                         <div class="col-md-4 text-right">
                             <span class="mb-3 label  bg-dark mr-2">Cerrada</span>
                             <span class="small">
-                                <a href="/ponente/CalificarTarea/{{idTarea}}" class="btn  btn-rounded btn-sm btn-warning small">
-                                <i class="fas fa-check-double mr-2" aria-hidden="true"></i>Calificar
-                            </a></span>
+                                <a href="/ponente/CalificarTarea/{{idTarea}}"
+                                    class="btn  btn-rounded btn-sm btn-warning small">
+                                    <i class="fas fa-check-double mr-2" aria-hidden="true"></i>Calificar
+                                </a></span>
                         </div>
                         <div class="col-12">
                             <h4 class="ml-2"><span class="small">{{nombreCurso}}</span></h4>
@@ -297,9 +303,10 @@
             <!--Tercera columna-->
             <div class="card text-center" style="border-radius: 6px">
                 <div class="card-body">
-                <img class="card-img-top img-responsive" height="100px" src="../../assets/images/logoBienvenida.svg" alt="Card image cap">
-                <h3>!Volviste <span class="small">{{#miPerfil}}{{nombres}}{{/miPerfil}}</span>!</h3>
-                <p>En esta ventana encontrarás todo lo relacionado a tu cuenta como ponente.</p>
+                    <img class="card-img-top img-responsive" height="100px" src="../../assets/images/logoBienvenida.svg"
+                        alt="Card image cap">
+                    <h3>!Volviste <span class="small">{{#miPerfil}}{{nombres}}{{/miPerfil}}</span>!</h3>
+                    <p>En esta ventana encontrarás todo lo relacionado a tu cuenta como ponente.</p>
                 </div>
             </div>
 
@@ -307,7 +314,8 @@
                 <div class="card-body">
                     <h3>¿Tienes un problema?</h3>
                     <p>Háznoslo saber a través de: </p>
-                    <a href="/soporte" class="btn  btn-block btn-danger"><i class="fas fa-exclamation-triangle mr-2"></i>Soporte</a>
+                    <a href="/soporte" class="btn  btn-block btn-danger"><i
+                            class="fas fa-exclamation-triangle mr-2"></i>Soporte</a>
                 </div>
             </div>
         </div>
