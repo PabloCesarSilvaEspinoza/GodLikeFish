@@ -314,6 +314,46 @@ module.exports = function (injectedStore) {
         const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
         return mensajes[numeroAleatoreo];
     }
+    
+    function getCalificacionesCurso(idCurso) {
+        const VIEW = 'ver_Calificaciones_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listCalificacionesEstudiantes(idCurso) {
+        const VIEW = 'ver_Calificaciones_Estudiantes';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listEstudiantesInscritos(idCurso) {
+        const VIEW = 'ver_Estudiantes_Inscritos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listUsuariosAdministrador() {
+        const VIEW = 'ver_Usuarios_Administrador';
+        return store.list(VIEW);
+    }
+
+    function listUsuariosSuperAdministrador() {
+        const VIEW = 'ver_Usuarios_SuperAdministrador';
+        return store.list(VIEW);
+    }
+
+    function getRolUsuario(idUsuario) {
+        const VIEW = 'ver_Roles_Usuarios';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+
+    function getPerfilUsuario(idUsuario) {
+        const VIEW = 'ver_Calificaciones_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
 
     return {
         getUltimoCurso,
@@ -363,6 +403,12 @@ module.exports = function (injectedStore) {
         listTotalProblemasCurso,
         listTotalExamenesCurso,
         listTotalAvisosCurso,
-        listTotalRecursosCurso
+        listTotalRecursosCurso,
+        getCalificacionesCurso,
+        listCalificacionesEstudiantes,
+        listEstudiantesInscritos,
+        listUsuariosAdministrador,
+        listUsuariosSuperAdministrador,
+        getRolUsuario,
     };
 }

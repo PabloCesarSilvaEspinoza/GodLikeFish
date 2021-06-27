@@ -7,29 +7,28 @@
                     <h3 class="card-title p-0"><i class="fas fa-scroll mr-2"></i>Datos Generales</h3>
                 </div>
                 <div class="card-body ml-4 p-1">
-                    {{#with datosGeneralesPonente}}
-                    {{#if [0].valor}}
-                    <p class="box mb-0 p-0"><i class="fas fa-book mr-2"></i>Cursos Impartidos: ({{[0].valor}})</p>
+                    {{#datosGeneralesPonente}}
+                    {{#if cursosImpartidos}}
+                    <p class="box mb-0 p-0"><i class="fas fa-book mr-2"></i>Cursos Impartidos: ({{cursosImpartidos}})</p>
                     {{else}}
                     <p class="box mb-0 p-0"><i class="fas fa-book mr-2"></i>Cursos Impartidos: (0)</p>
                     {{/if}}
-                    {{#if [1].valor}}
-                    <p class="box mb-0 p-0"><i class="fab fa-leanpub mr-2"></i>Cursos Actuales: ({{[1].valor}})</p>
+                    {{#if cursosActuales}}
+                    <p class="box mb-0 p-0"><i class="fab fa-leanpub mr-2"></i>Cursos Actuales: ({{cursosActuales}})</p>
                     {{else}}
                     <p class="box mb-0 p-0"><i class="fab fa-leanpub mr-2"></i>Cursos Actuales: (0)</p>
                     {{/if}}
-                    {{#if [2].valor}}
-                    <p class="box mb-0 p-0"><i class="fas fa-users mr-2"></i>Alumnos Actuales: ({{[2].valor}})</p>
+                    {{#if alumnosActuales}}
+                    <p class="box mb-0 p-0"><i class="fas fa-users mr-2"></i>Alumnos Actuales: ({{alumnosActuales}})</p>
                     {{else}}
                     <p class="box mb-0 p-0"><i class="fas fa-users mr-2"></i>Alumnos Actuales: (0)</p>
                     {{/if}}
-                    {{#if [3].valor}}
-                    <p class="box mb-0 p-0 mb-3"><i class="fas fa-graduation-cap mr-2"></i>Alumnos Alcanzados:
-                        ({{[3].valor}})</p>
+                    {{#if alumnosAlcanzados}}
+                    <p class="box mb-0 p-0 mb-3"><i class="fas fa-graduation-cap mr-2"></i>Alumnos Alcanzados: ({{alumnosAlcanzados}})</p>
                     {{else}}
                     <p class="box mb-0 p-0 mb-3"><i class="fas fa-graduation-cap mr-2"></i>Alumnos Alcanzados: (0)</p>
                     {{/if}}
-                    {{/with}}
+                    {{/datosGeneralesPonente}}
                 </div>
                 <center>
                     <div class="col-12">

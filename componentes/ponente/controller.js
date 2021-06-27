@@ -168,10 +168,9 @@ module.exports = function (injectedStore) {
         return store.get(VIEW)
     }
 
-    function getDatosGeneralesPonente(idPonente) {
-        const VIEW = 'ver_Datos_Generales_Ponente'
-        const CLAUSE = `WHERE idPonente = ?`;
-        return store.get(VIEW, CLAUSE, idPonente)
+    function catalogDatosGeneralesPonente(idPonente) {
+        const PROCEDURE = `CALL ver_Datos_Generales_Ponente(${idPonente})`
+        return store.catalog(PROCEDURE);
     }
 
     function getNombresCursosActualesPonente(idPonente) {
@@ -255,7 +254,7 @@ module.exports = function (injectedStore) {
         insertArchivosMultimediaCurso,
         listPublicacionesCurso,
         getTiempoActual,
-        getDatosGeneralesPonente,
+        catalogDatosGeneralesPonente,
         getNombresCursosActualesPonente,
         getMiPerfil,
         listAsignacionesPendientesPonente,

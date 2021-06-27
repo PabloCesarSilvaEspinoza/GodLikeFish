@@ -166,12 +166,6 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
-    function listArchivosEntregaEstudiante(idCurso) {
-        const VIEW = 'ver_Archivos_Entrega_Estudiante';
-        const CLAUSE = `WHERE idCurso = ?`;
-        return store.list(VIEW, CLAUSE, idCurso);
-    }
-
     function catalogPosiblesCursosEstudiante(idUsuario) {
         const PROCEDURE = `CALL ver_Posibles_Cursos_Disponibles(${idUsuario})`;
         return store.catalog(PROCEDURE);
@@ -222,6 +216,11 @@ module.exports = function (injectedStore) {
         const PROCEDURE = `CALL agregar_Problemas_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
         return store.insert(PROCEDURE);
     }
+    
+    function listClavesCursos() {
+        const VIEW = 'ver_Claves_Cursos';
+        return store.list(VIEW);
+    }
 
     return {
         listDatosCursoUsuario,
@@ -246,7 +245,6 @@ module.exports = function (injectedStore) {
         catalogPublicacionesCursoEstudiante,
         insertTareaEstudiante,
         insertMultimediaTareaEstudiante,
-        listArchivosEntregaEstudiante,
         catalogPosiblesCursosEstudiante,
         catalogResumenEstudiante,
         catalogCatalogoCursosEstudiante,
@@ -256,6 +254,7 @@ module.exports = function (injectedStore) {
         catalogArchivosAsignacionesTotales,
         listArchivosEntregasTotalesEstudiante,
         getMensajeBienvenida,
-        reportarProblemaUsuario
+        reportarProblemaUsuario,
+        listClavesCursos,
     };
 }

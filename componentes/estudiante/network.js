@@ -17,6 +17,8 @@ router.get('/DescargarArchivoCurso/:idCurso/:nombreArchivo', render.getDescargar
 router.post('/EntregarTarea/:idTarea', crearCarpetaTareaEstudiante, uploadTareaEstudiante.array('multimediaEstudiante'), render.postEntregarTarea);
 router.get('/DescargarArchivoEntregado/:idTarea/:nombreArchivo', render.getDescargarArchivoEntregado);
 router.post('/reportarProblemaUsuario', render.postReportarProblemaUsuario);
+router.post('/VerificarClaveCurso/', render.postVerificarClaveCurso)
+
 router.get('/CatalogoCursos/', render.getCatalogoCursos);
 
 /* router.get('/', render.getVerTareas);

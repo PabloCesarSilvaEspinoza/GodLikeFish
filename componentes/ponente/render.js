@@ -11,7 +11,8 @@ module.exports = {
         const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         const totalCursosActuales = cursosActuales.length;
         const totalCursosHistorial = historialCursosPonente.length;
-       // const datosGeneralesPonente = await Controller.getDatosGeneralesPonente(usuarioID);
+        const respuestaDatosGeneralesPonente = await Controller.catalogDatosGeneralesPonente(usuarioID);
+        const datosGeneralesPonente = respuestaDatosGeneralesPonente[0];
         const nombresCursosActualesPonente = await Controller.getNombresCursosActualesPonente(usuarioID);
         const fechaActual = await Controller.getTiempoActual();
         const miPerfil = await Controller.getMiPerfil(usuarioID);
@@ -24,7 +25,7 @@ module.exports = {
             historialCursosPonente,
             totalCursosActuales,
             totalCursosHistorial,
-         //   datosGeneralesPonente,
+            datosGeneralesPonente,
             nombresCursosActualesPonente,
             fechaActual,
             miPerfil,

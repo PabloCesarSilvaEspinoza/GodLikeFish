@@ -386,127 +386,44 @@
         <div class="col-md-3">
             <div class="card" style="border-radius: 10px">
                 <div class="card-body">
-                    <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso</h2>
+                    {{#if calificacionesCurso}}
+                        {{#calificacionesCurso}}
+                        <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso ({{totalComentarios}})</h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="text-center mb-3" id="read-only-stars-c{{promedioCalificacionesCurso}}"><h5>Curso</h5></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="text-center mb-2" id="read-only-stars-p{{promedioCalificacionesPonente}}"><h5>Ponente</h5></div>
+                            </div>
+                        </div>
+                        {{/calificacionesCurso}}
+                    {{else}}
+                    <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso (0)</h2>
                     <hr>
-                    <div class="text-center" id="read-only-stars" title="regular">
-                        <img alt="1" src="../../assets/images/rating/star-on.png" title="regular">&nbsp;
-                        <img alt="2" src="../../assets/images/rating/star-on.png" title="regular">&nbsp;
-                        <img alt="3" src="../../assets/images/rating/star-on.png" title="regular">&nbsp;
-                        <img alt="4" src="../../assets/images/rating/star-off.png" title="regular">&nbsp;
-                        <img alt="5" src="../../assets/images/rating/star-off.png" title="regular">
-                        <input name="score" type="hidden" value="3" readonly="">
-                    </div>
-                    <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
-                        style="height:730px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+                    <div class="text-center mb-3" id="read-only-stars-c0"><h5>Curso</h5></div>
+                    <div class="text-center mb-2" id="read-only-stars-p0"><h5>Ponente</h5></div>
+                    {{/if}}
+                    <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:730px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
                         <!-- calificaciones de los alumnos -->
+                        {{#each calificacionesEstudiantes}}
                         <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
+                            <!-- FALTAAGREGAR <div class="p-0"><img src="../../assets/multimedia/usuarios/{{idEstudiante}}/{{fotoEstudiante}}" alt="user" width="50" class="rounded-circle"></div>-->
+                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
                             <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
+                                <h5 class=" mb-0">{{nombreEstudiante}}</h5>
+                                <p class="mt-0" style="text-align: justify;">{{comentarioCurso}}</p>
+                                <div class="row">
+                                    <div class="col text-right">
+                                        <h6 class="font-light mt-0 mb-0">Curso: <span class="small">{{valoracionCurso}}<i class="fas fa-star ml-1"></i></span></h6>
+                                    </div>
+                                    <div class="col text-left">
+                                        <h6 class="font-light mt-0 mb-0">Ponente: <span class="small">{{valoracionPonente}}<i class="fas fa-star ml-1"></i></span></h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
-                                    class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span
-                                        class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario
-                                    lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.
-                                </p>
-                            </div>
-                        </div>
+                        {{/each}}
                         <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                             <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                         </div>
@@ -514,7 +431,6 @@
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -522,16 +438,15 @@
         <div class="col-md-9">
             <div class="card" style="border-radius: 10px;">
                 <ul class="nav nav-pills p-3">
-                    <li class="nav-item"><a href="#datosGenerales" class="nav-link active" data-toggle="tab"
-                            aria-expanded="false">Datos Generales</a></li>
-                    <li class="nav-item"> <a href="#estudiantes" class="nav-link" data-toggle="tab"
-                            aria-expanded="false">Estudiantes</a></li>
-                    <li class="nav-item"> <a href="#vistaExterna" class="nav-link" data-toggle="tab"
-                            aria-expanded="false">Vista Externa</a></li>
-                    <li class="nav-item"> <a href="#vistaInterna" class="nav-link" data-toggle="tab"
-                            aria-expanded="false">Vista Interna</a></li>
-                    <h3 class="text-right ml-auto font-light">Este curso se encuentra <span class="font-medium">
-                            Cerrado</span></h3>
+                    <li class="nav-item"><a href="#datosGenerales" class="nav-link active" data-toggle="tab" aria-expanded="false">Datos Generales</a></li>
+                    <li class="nav-item"> <a href="#estudiantes" class="nav-link" data-toggle="tab" aria-expanded="false">Estudiantes</a></li>
+                    <li class="nav-item"> <a href="#vistaExterna" class="nav-link" data-toggle="tab" aria-expanded="false">Vista Externa</a></li>
+                    <li class="nav-item"> <a href="#vistaInterna" class="nav-link" data-toggle="tab" aria-expanded="false">Vista Interna</a></li>
+                    {{#if curso.estadoActualCurso}}
+                    <h3 class="text-right ml-auto font-light">Este curso se encuentra <span class="font-medium"> Abierto</span></h3>
+                    {{else}}
+                    <h3 class="text-right ml-auto font-light">Este curso se encuentra <span class="font-medium"> Cerrado</span></h3>
+                    {{/if}}
                 </ul>
             </div>
             <div class="tab-content br-n pn">
@@ -540,26 +455,22 @@
                     <div class="row">
                         <!-- tarjeta principal -->
                         <div class="col-md-12">
+                            {{#curso}}
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
                                     <div class="row">
                                         <!--Comienzan los datos-->
                                         <div class="col-md-3 text-center">
-                                            <img src="../../assets/images/cursoImg1.JPG" class="mt-2" width="250"
-                                                alt="imagenCurso" style="border-radius: 10px;">
+                                            <!-- FALTAAGREGAR <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" alt="Imgagen del curso">-->
+                                            <img src="../../assets/images/cursoImg1.JPG" class="mt-2" width="250" alt="imagenCurso" style="border-radius: 10px;">
                                             <h6 class="mb-0 mt-2 font-medium">Imagen del curso </h6>
                                         </div>
                                         <div class="col-md-9 text-left">
                                             <div class="row">
                                                 <div class="col-md-9 text-left">
-                                                    <h3 class="card-title mb-0">Nombre Completo del Curso Lorem Ipsum
-                                                        Largo
-                                                        <span class="small">( <i class="fas fa-users mr-2"></i>40
-                                                            )</span>
-                                                    </h3><!-- cantidad de usuarios -->
-                                                    <h4 class="font-medium mb-3"><i
-                                                            class="fas fa-user-tie ml-4 mr-2"></i>Nombre Completo
-                                                        Ponente Lorem Ipsum</h4>
+                                                    <h3 class="card-title mb-0">{{nombreCurso}}
+                                                        <span class="small">( <i class="fas fa-users mr-2"></i>{{totalEstudiantesCurso}} )</span></h3><!-- cantidad de usuarios -->
+                                                    <h4 class="font-medium mb-3"><i class="fas fa-user-tie ml-4 mr-2"></i>{{nombrePonente}}</h4>
                                                 </div>
                                                 <div class="col-md-3 text-right">
                                                     <button type="button" class="btn  btn-rounded btn-success"
@@ -572,47 +483,34 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h4 class="font-medium mb-0 mt-0">Nombre del Area Curso <span
-                                                            class="font-light">(Tipo Curso)</span></h4>
-                                                    <h3 class="mb-0 font-16 ml-2"><i class="fas fa-link"></i> <span
-                                                            class="small">https://youtu.be/ZaeVtlcpTmY?t=154</span></h3>
-                                                    <h4 class="mt-0 font-light">Modalidad</h4>
+                                                    <h4 class="font-medium mb-0 mt-0">{{areaCurso}} <span class="font-light">({{tipoCurso}})</span></h4>
+                                                    {{#if linkPlataformaCurso}}
+                                                    <h3 class="mb-0 font-16 ml-2"><i class="fas fa-link"></i> <span class="small">{{linkPlataformaCurso}}</span></h3>
+                                                    {{/if}}
+                                                    <h4 class="mt-0 font-light">{{modalidadCurso}}</h4>
                                                 </div>
                                                 <div class="col-md-4 text-right">
-                                                    <h4 class="font-medium mb-0 mt-0">Clave: <span
-                                                            class="font-light">00000000</span></h4>
-                                                    <h4 class="mt-0 font-light">Microsfot Teams</h4>
-                                                    <a href="#" class="btn btn-rounded btn-sm btn-success">
+                                                    <h4 class="font-medium mb-0 mt-0">Clave: <span class="font-light">{{claveCurso}}</span></h4>
+                                                    <h4 class="mt-0 font-light">{{plataformaCurso}}</h4>
+                                                    <a href="../DescargarTemario/{{idCurso}}" class="btn btn-rounded btn-sm btn-success">
                                                         <i class="fas fa-download mr-2"></i>Descargar Temario</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-8">
-                                            <h4 class="mb-0 font-medium mt-2"><i
-                                                    class="fas fa-signature mr-2"></i>Descripción</h4>
-                                            <p style="text-align:justify;">Lorem Ipsum es simplemente el texto de
-                                                relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el
-                                                texto de relleno estándar de las industrias desde el año 1500, cuando un
-                                                impresor (N. del T. persona que se dedica a la imprenta) desconocido usó
-                                                una galería de textos y los mezcló de tal manera que logró hacer un
-                                                libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien
-                                                ingresó como texto de relleno en documentos electrónicos, quedando
-                                                esencialmente igual al original.</p>
+                                            <h4 class="mb-0 font-medium mt-2"><i class="fas fa-signature mr-2"></i>Descripción</h4>
+                                            <p style="text-align:justify;">{{descripcionCurso}}</p>
                                         </div>
                                         <div class="col-md-4">
-                                            <h4 class="font-medium"><i class="fas fa-calendar-alt mr-2"></i>Calendario
-                                                del Curso</h4>
-                                            <h4 class="text-center">2021-04-13 <span class="small">(22:33:00)</span> -
-                                                2021-04-13 <span class="small">(22:33:00)</span></h4>
-                                            <h4 class="font-medium"><i
-                                                    class="far fa-calendar-alt mr-2 mt-2"></i>Calendario de Inscripción
-                                            </h4>
-                                            <h4 class="text-center">2021-04-13 <span class="small">(22:33:00)</span> -
-                                                2021-04-13 <span class="small">(22:33:00)</span></h4>
+                                            <h4 class="font-medium"><i class="fas fa-calendar-alt mr-2"></i>Calendario del Curso</h4>
+                                            <h4 class="text-center">{{fechaInicioCurso}} <span class="small">({{horaInicioCurso}})</span> - {{fechaFinalCurso}} <span class="small">({{horaFinCurso}})</span></h4>
+                                            <h4 class="font-medium"><i class="far fa-calendar-alt mr-2 mt-2"></i>Calendario de Inscripción</h4>
+                                            <h4 class="text-center">{{fechaInscripcionInicioCurso}} - {{fechaInscripcionFinalCurso}}</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{/curso}}
                         </div>
                         <!-- datos estadisticos -->
                         <div class="col-md-12">
@@ -698,70 +596,54 @@
                                                             <th>Matricula</th>
                                                             <th>Nombres</th>
                                                             <th>Apellidos</th>
+                                                            <th>Antigüedad</th>
                                                             <th>Puesto</th>
                                                             <th>Area</th>
-                                                            <th>Asignaciones</th>
+                                                            <th>Estado</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody> 
+                                                        {{#each estudiantesInscritos}}
                                                         <tr>
-                                                            <td>65895456</td>
-                                                            <td>Francisco Alejandro</td>
-                                                            <td>Torres Garduño</td>
-                                                            <td>Laboratorista</td>
-                                                            <td>Medica</td>
-                                                            <td>8/8</td>
+                                                            <td>{{matriculaEstudiante}}</td>
+                                                            <td>{{nombresEstudiante}}</td>
+                                                            <td>{{apellidosEstudiante}}</td>
+                                                            <td>{{antiguedadEstudiante}}</td>
+                                                            <td>{{puestoEstudiante}}</td>
+                                                            <td>{{areaEstudiante}}</td>
                                                             <td>
-                                                                <button href="#"
-                                                                    class="btn  btn-rounded btn-sm btn-success small"
-                                                                    data-toggle="modal"
-                                                                    data-target="#verPerfilEstudiante">
-                                                                    <i class="far fa-user mr-1"></i>
-                                                                    Ver Perfil</button>
+                                                                {{#if estadoEstudianteCurso}}
+                                                                    {{#ifEquals estadoEstudianteCurso "Cursando"}}
+                                                                    <span class="mb-3 label bg-primary mr-2">Cursando</span>
+                                                                    {{/ifEquals}}
+                                                                    {{#ifEquals estadoEstudianteCurso "Aprobado"}}
+                                                                    <span class="mb-3 label bg-success mr-2">Aprobado</span>
+                                                                    {{/ifEquals}}
+                                                                    {{#ifEquals estadoEstudianteCurso "Reprobado"}}
+                                                                    <span class="mb-3 label bg-danger mr-2">Reprobado</span>
+                                                                    {{/ifEquals}}
+                                                                {{else}}
+                                                                    N/A
+                                                                {{/if}}
+                                                            </td>
+                                                            <td>
+                                                                <a href="../usuario/{{idEstudiante}}" class="btn  btn-rounded btn-sm btn-success small">
+                                                                    <i class="far fa-user mr-1"></i> Ver Perfil
+                                                                </a> 
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>58964589</td>
-                                                            <td>Javier</td>
-                                                            <td>Magaña Ruiz</td>
-                                                            <td>Medico Familiar</td>
-                                                            <td>Medica</td>
-                                                            <td>7/8</td>
-                                                            <td>
-                                                                <button href="#"
-                                                                    class="btn  btn-rounded btn-sm btn-success small"
-                                                                    data-toggle="modal"
-                                                                    data-target="#verPerfilEstudiante">
-                                                                    <i class="far fa-user mr-1"></i>
-                                                                    Ver Perfil</button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>15489564</td>
-                                                            <td>Scarlleth</td>
-                                                            <td>Daenny Montana</td>
-                                                            <td>Educadora</td>
-                                                            <td>Escuela Sindical</td>
-                                                            <td>8/8</td>
-                                                            <td>
-                                                                <button href="#"
-                                                                    class="btn  btn-rounded btn-sm btn-success small"
-                                                                    data-toggle="modal"
-                                                                    data-target="#verPerfilEstudiante">
-                                                                    <i class="far fa-user mr-1"></i>
-                                                                    Ver Perfil</button>
-                                                            </td>
-                                                        </tr>
+                                                        {{/each}}
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <th>Matricula</th>
-                                                            <th>Nombre</th>
+                                                            <th>Nombres</th>
                                                             <th>Apellidos</th>
+                                                            <th>Antigüedad</th>
                                                             <th>Puesto</th>
                                                             <th>Area</th>
-                                                            <th>Asignaciones</th>
+                                                            <th>Estado</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </tfoot>
@@ -783,191 +665,27 @@
                                             </div>
                                             <div class="row">
                                                 <div class="row el-element-overlay">
-                                                    <div class="col-md-3">
-                                                        <!--Usar este para el each, los otros no tienen formato chido-->
+                                                    {{#each estudiantesInscritos}}
+                                                    <div class="col-md-3 col-lg-2"><!--Usar este para el each, los otros no tienen formato chido-->
                                                         <div class="card">
                                                             <div class="el-card-item" class="modal-footer"
                                                                 data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1">
-                                                                    <img src="../../assets/images/users/1-old.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/1-old.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
+                                                                <div class="el-card-avatar el-overlay-1"> 
+                                                                    <!-- FALTAAGREGAR <img src="../../assets/multimedia/usuarios/{{idEstudiante}}/{{fotoEstudiante}}" alt="user"/> -->
+                                                                    <img src="../../assets/images/users/1-old.jpg" alt="estudiante"/>
                                                                 </div>
                                                                 <div class="el-card-content">
-                                                                    <h4 class="mb-0">Nombres Usuario</h4>
-                                                                    <span d="UsuarioArea" name="UsuarioArea"
-                                                                        class="text-muted">Puesto Usuario</span>
+                                                                    <h4 class="mb-0">{{nombresEstudiante}} {{apellidosEstudiante}}</h4>
+                                                                    <span class="text-muted">{{puestoEstudiante}}</span>
                                                                     <br>
+                                                                    <a href="../usuario/{{idEstudiante}}" class="btn btn-rounded btn-sm btn-success small">
+                                                                        <i class="far fa-eye"></i>
+                                                                    </a> 
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/2.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/2.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">George Acton</h4> <span
-                                                                        class="text-muted">Wordpress Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/3.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/3.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Harry Addington</h4> <span
-                                                                        class="text-muted">Mobile App Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/4.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/4.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Emily Adley</h4> <span
-                                                                        class="text-muted">Wordpress Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/8.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/8.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Sophia Ainsley</h4> <span
-                                                                        class="text-muted">Mobile App Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/7.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/7.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Lily Ainsworth</h4> <span
-                                                                        class="text-muted">Graphics Designer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/6.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/6.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Olivia Alby</h4> <span
-                                                                        class="text-muted">Mobile App Developer</span>
-                                                                    <br>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/d4.jpg"
-                                                                        alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/d4.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Amelia Allerton</h4> <span
-                                                                        class="text-muted">Wordpress Developer</span>
-                                                                    <br>
-                                                                    <td><a href="javascript:void(0)"
-                                                                            class="text-inverse pr-2"
-                                                                            data-toggle="tooltip" title="Ver"></a> <a
-                                                                            href="javascript:void(0)"
-                                                                            class="text-inverse" title="Borrar"
-                                                                            data-toggle="tooltip"></a></td>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    {{/each}}
                                                 </div>
                                             </div>
                                         </div>

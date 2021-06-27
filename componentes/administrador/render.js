@@ -80,20 +80,20 @@ module.exports = {
         const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
         const tarjetas= await Controller.listUsuariosEnSistemaTarjeta();
         const verPerfil= await Controller.listPerfilUsuario();
-        const registrados= await Controller.listRegistrados();
-        const activos= await Controller.listActivos();
-        const inactivos= await Controller.listInactivos();
+        const respuestaRegistrados= await Controller.listRegistrados();
+        const respuestaActivos= await Controller.listActivos();
+        const respuestaInactivos= await Controller.listInactivos();
+        const registrados = respuestaRegistrados[0];
+        const activos = respuestaActivos[0];
+        const inactivos = respuestaInactivos[0];
+        const usuarios = (req.user.rol == 'Administrador')
+                        ? await Controller.listUsuariosAdministrador()
+                        : await Controller.listUsuariosSuperAdministrador();
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
             dataTablesExport:true,
-            graficasAdministrador : true,
-            valores:[{
-            valor1: 18,
-            valor2: 36,
-            valor3: 10
-            }],
             caladon:true,
             datosUsuarioEnSistema,
             tarjetas,
@@ -101,8 +101,8 @@ module.exports = {
             activos,
             inactivos,
             registrados,
+            usuarios,
             miPerfil
-
         });
     },
 
@@ -123,6 +123,10 @@ module.exports = {
         const totalRecursosCurso = await Controller.listTotalRecursosCurso(cursoID);
         const totalDocumentos = documentosCurso.length;
         const totalLinks = linksCurso.length;
+        const respuestaCalificacionesCurso = await Controller.getCalificacionesCurso(cursoID);
+        const calificacionesCurso = respuestaCalificacionesCurso[0];
+        const calificacionesEstudiantes = await Controller.listCalificacionesEstudiantes(cursoID);
+        const estudiantesInscritos = await Controller.listEstudiantesInscritos(cursoID);
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d4_consultarCurso', {
             administrador: true,
@@ -142,7 +146,10 @@ module.exports = {
             totalExamenesCurso,
             totalAvisosCurso,
             totalRecursosCurso,
-            miPerfil
+            miPerfil,
+            calificacionesCurso,
+            calificacionesEstudiantes,
+            estudiantesInscritos,
         });
     },
 
@@ -255,5 +262,28 @@ module.exports = {
     postCorreoPersonalizado: async function(req, res, next){
         Controller.enviarCorreo(idUsuario,asunto,mensaje);
         res.redirect('/validarPermisos'); /* regresa a dashboard, modificar */
-    }
+    },
+    
+    getPerfilUsuario: async function (req, res, next) {
+        const usuarioID = req.params.idUsuario;
+        const rolUsuario = await Controller.getRolUsuario(usuarioID);
+        const rol = rolUsuario[0].rolUsuario;
+        switch (rol) {
+            case 'Estudiante':
+                res.render('administrador/d5_administrarUsuario_E1')
+                break;
+            case 'Ponente':
+                res.render('administrador/d5_administrarUsuario_E2')
+                break;
+            case 'Administrador':
+            case 'Super-Administrador':
+                (req.user.rol == 'Super-Administrador')
+                ? res.render('administrador/d5_administrarUsuario_E3')
+                : res.redirect('/administrador/dashboardAdministrador');
+                break;
+            default:
+                res.redirect('/administrador/dashboardAdministrador');
+                break;
+        }
+    },
 };
