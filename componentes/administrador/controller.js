@@ -108,7 +108,30 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Usuarios_Resumen_R';
         return store.list(VIEW);
     }
-
+    function listCursosActivosTotal() {
+        const VIEW = 'ver_totalCursoActivos';
+        return store.list(VIEW);
+    }
+    function listCursosInactivosTotal() {
+        const VIEW = 'ver_totalCursoInactivos';
+        return store.list(VIEW);
+    }
+    function listUsuariosActivosTotal() {
+        const VIEW = 'ver_totalUsuariosActivos';
+        return store.list(VIEW);
+    }
+    function listUsuariosInactivosTotal() {
+        const VIEW = 'ver_totalUsuariosInactivos';
+        return store.list(VIEW);
+    }
+    function listUsuariosEncursoTotal() {
+        const VIEW = 'ver_totalUsuariosEncurso';
+        return store.list(VIEW);
+    }
+    function listUsuariosReconocimientoTotal() {
+        const VIEW = 'ver_totalUsuariosReconocimiento';
+        return store.list(VIEW);
+    }
     function getUsuarioEditar(id) {
         const VIEW = 'ver_Datos_Usuario_Editar';
         const CLAUSE = `WHERE idUsuario = ?`;
@@ -257,7 +280,26 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idCurso = ?`;
         return store.list(VIEW, CLAUSE, idCurso);
     }
-
+    function listTotalProblemasCurso(idCurso) {
+        const VIEW = 'ver_totalProblemasCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+    function listTotalExamenesCurso(idCurso) {
+        const VIEW = 'ver_totalExamenesCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+    function listTotalAvisosCurso(idCurso) {
+        const VIEW = 'ver_totalAvisosCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+    function listTotalRecursosCurso(idCurso) {
+        const VIEW = 'ver_totalRecursosCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }    
     function getMiPerfil(idUsuario) {
         const VIEW = 'ver_Usuarios';
         const CLAUSE = `WHERE idUsuario = ?`;
@@ -312,5 +354,15 @@ module.exports = function (injectedStore) {
         getMiPerfil,
         enviarCorreo,
         getMensajeBienvenida,
+        listCursosActivosTotal,
+        listCursosInactivosTotal,
+        listUsuariosActivosTotal,
+        listUsuariosInactivosTotal,
+        listUsuariosEncursoTotal,
+        listUsuariosReconocimientoTotal,
+        listTotalProblemasCurso,
+        listTotalExamenesCurso,
+        listTotalAvisosCurso,
+        listTotalRecursosCurso
     };
 }

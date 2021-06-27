@@ -11,7 +11,7 @@ module.exports = {
         const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         const totalCursosActuales = cursosActuales.length;
         const totalCursosHistorial = historialCursosPonente.length;
-        const datosGeneralesPonente = await Controller.getDatosGeneralesPonente(usuarioID);
+       // const datosGeneralesPonente = await Controller.getDatosGeneralesPonente(usuarioID);
         const nombresCursosActualesPonente = await Controller.getNombresCursosActualesPonente(usuarioID);
         const fechaActual = await Controller.getTiempoActual();
         const miPerfil = await Controller.getMiPerfil(usuarioID);
@@ -19,11 +19,12 @@ module.exports = {
         const mensaje = await Controller.getMensajeBienvenida();
         res.render('ponente/p1_dashboard', {
             ponente: true,
+            graficasPonente: true,
             cursosActuales,
             historialCursosPonente,
             totalCursosActuales,
             totalCursosHistorial,
-            datosGeneralesPonente,
+         //   datosGeneralesPonente,
             nombresCursosActualesPonente,
             fechaActual,
             miPerfil,
@@ -143,6 +144,7 @@ module.exports = {
     },
 
     getConsultarEstadoCursoPonente: async function (req, res, next){
+        console.log('entre')
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
         const respuestaEstadoCursoPonente = await Controller.getConsultarEstadoCursoPonente(usuarioID, cursoID);
@@ -210,8 +212,11 @@ module.exports = {
             dataTables: true,
             miPerfil,
             historialCursosPonente,
+            miPerfil,
+            /* datos del usuario */
         })
     }
+
 
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')

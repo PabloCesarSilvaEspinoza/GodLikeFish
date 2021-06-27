@@ -12,8 +12,7 @@
                             <h3>Verificar a<span class="small">{{nombreUsuario}}</span></h3>
                         </div>
                         <div class="col-md-1 text-right">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
@@ -107,7 +106,8 @@
                 </div>
             </div>
         </div>
-        {{/if}}
+    </div>
+    {{/if}}
     {{/each}}
     <!-- terminan modales -->
     <div class="row">
@@ -121,15 +121,19 @@
                         {{#each usuariosSinVerificar}}
                         <div class="d-flex flex-row comment-row mt-0">
                             <!--<div class="p-2"><img src="../../assets/multimedia/usuarios/{{idUsuario}}/{{fotoUsuario}}" alt="user" width="50"class="rounded-circle"></div> FALTAAGREGAR-->
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
+                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50"
+                                    class="rounded-circle"></div>
                             <div class="comment-text w-100">
                                 <h5 class=" mb-0">{{nombreUsuario}}</h5>
                                 <h6 class="font-medium mt-0 mb-0">{{puestoUsuario}}</h6><!-- puesto -->
-                                <h6 class="mt-0 ml-3"><i class="text-warning fas fa-hockey-puck mr-2"></i>Matrícula: <span class="font-light">{{matriculaUsuario}}</span></h6>
+                                <h6 class="mt-0 ml-3"><i class="text-warning fas fa-hockey-puck mr-2"></i>Matrícula:
+                                    <span class="font-light">{{matriculaUsuario}}</span>
+                                </h6>
                                 <span class="label label-rounded label-primary">{{areaUsuario}}</span>
                                 <span class="label label-rounded label-warning">{{antiguedadUsuario}}</span>
-                                <a href="/administrador/DescargarTarjetonUsuario/{{idUsuario}}/{{tarjetonUsuario}}"><span class="label label-rounded label-success">
-                                    <i class="fas fa-download mr-2"></i>Tarjetón</span></a>
+                                <a href="/administrador/DescargarTarjetonUsuario/{{idUsuario}}/{{tarjetonUsuario}}"><span
+                                        class="label label-rounded label-success">
+                                        <i class="fas fa-download mr-2"></i>Tarjetón</span></a>
                                 <div class="comment-footer">
                                     <span class="action-icons">
                                         <button class="btn btn-block btn-success btn-rounded btn-sm mt-1" data-toggle="modal" data-target="#verificarUsuario{{idUsuario}}">
@@ -154,84 +158,93 @@
         <div class="col-md-6">
             <div class="card" style="border-radius: 10px">
                 <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-chart-pie mr-2"></i>Estadisticas de tus Cursos <span class="small">(110)</span></h3><hr>
+                    <h3 class="card-title"><i class="fas fa-chart-pie mr-2"></i>Estadisticas de tus Cursos <span
+                            class="small">(110)</span></h3>
+                    <hr>
                     <div class="table-responsive" style="border-radius: 10px">
                         <table class="table table-hover table-warning">
                             <thead class="bg-warning text-white">
                                 <tr>
                                     <th scope="col"><i class="fas fa-book mr-2"></i>Cursos por Area</th>
-                                    <th scope="col">Medica</th>
-                                    <th scope="col">Administrativa</th>
-                                    <th scope="col">Desarrollo Personal</th>
-                                    <th scope="col">Escuela Sindical</th>
+                                    {{#each valores}}
+                                    <th scope="col">{{NombreArea}}</th>
+                                    {{/each}}
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row"><i class="fas fa-circle mr-2"></i>Activos</th>
-                                    <td>50</td>
-                                    <td>20</td>
-                                    <td>30</td>
-                                    <td>10</td>
+                                    {{#each valores}}
+                                    <td scope="col">{{totalCursos}}</td>
+                                    {{/each}}
                                 </tr>
                                 <tr>
                                     <th scope="row"><i class="far fa-circle mr-2"></i>Inactivos</th>
-                                    <td>10</td>
-                                    <td>30</td>
-                                    <td>10</td>
-                                    <td>10</td>
+                                    {{#each valoresina}}
+                                    <td>{{totalCursos}}</td>
+                                    {{/each}}
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <canvas width="80" height="100" id="GraficaMuestra"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <canvas width="80" height="100" id="GraficaMuestra1"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="card" style="border-radius: 10px">
                 <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-chart-bar mr-2"></i>Estadisticas de tus Usuarios <span class="small">(201)</span></h3><hr>
+                    <h3 class="card-title"><i class="fas fa-chart-bar mr-2"></i>Estadisticas de tus Usuarios <span
+                            class="small">(201)</span></h3>
+                    <hr>
                     <div class="table-responsive" style="border-radius: 10px">
                         <table class="table table-hover table-success">
                             <thead class="bg-success text-white">
                                 <tr>
                                     <th scope="col"><i class="fas fa-user mr-2"></i>Usuarios por Area</th>
-                                    <th scope="col">Medica</th>
-                                    <th scope="col">Administrativa</th>
-                                    <th scope="col">Desarrollo Personal</th>
-                                    <th scope="col">Escuela Sindical</th>
+                                    {{#each valores}}
+                                    <th scope="col">{{NombreArea}}</th>
+                                    {{/each}}
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row"><i class="fas fa-circle mr-2"></i>Activos</th>
-                                    <td>30</td>
-                                    <td>20</td>
-                                    <td>20</td>
-                                    <td>20</td>
+                                    {{#each valoresUact}}
+                                    <th scope="col">{{totalUsuariosActivos}}</th>
+                                    {{/each}}
                                 </tr>
                                 <tr>
                                     <th scope="row"><i class="fas fa-university mr-2"></i>En Curso</th>
-                                    <td>20</td>
-                                    <td>15</td>
-                                    <td>0</td>
-                                    <td>20</td>
+                                    {{#each valoresUcurso}}
+                                    <th scope="col">{{totalUsuarios}}</th>
+                                    {{/each}}
                                 </tr>
                                 <tr>
                                     <th scope="row"><i class="fas fa-graduation-cap mr-2"></i>Con Reconocimientos</th>
-                                    <td>10</td>
-                                    <td>5</td>
-                                    <td>0</td>
-                                    <td>15</td>
+                                    {{#each valoresUrecono}}
+                                    <th scope="col">{{totalUsuarios}}</th>
+                                    {{/each}}
                                 </tr>
                                 <tr>
                                     <th scope="row"><i class="far fa-circle mr-2"></i>Inactivos</th>
-                                    <td>10</td>
-                                    <td>30</td>
-                                    <td>10</td>
-                                    <td>10</td>
+                                    {{#each valoresUinact}}
+                                    <th scope="col">{{totalUsuariosInactivos}}</th>
+                                    {{/each}}
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <center>
+                    <div class="col-md-8">
+                            <canvas width="80" height="100" id="GraficaMuestra2"></canvas>
+                    </div>
+                    </center>
                 </div>
             </div>
         </div>
@@ -257,15 +270,15 @@
                             {{#each errores}}
                                 {{#if tipoProblema}}
                                 <div class="d-flex flex-row comment-row mt-0">
-                                    <div class="p-2"><img src="../../assets/images/users/2.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="p-2"><img src="../../assets/images/users/2.jpg" alt="user" width="50"
+                                            class="rounded-circle"></div>
                                     <div class="comment-text w-100">
                                         <h6 class="font-medium">{{nombreUsuario}}</h6>
                                         <span class="d-block" style="text-align: justify;">{{asuntoProblema}}</span>
                                         <span class="text-muted mb-3">{{fechaProblema}}, {{horaProblema}}</span>
                                         <div class="comment-footer">
-                                            
-                                            <span class="label label-rounded label-primary">Curso</span> 
-                                            <span class="label label-rounded label-danger">Pendiente</span> 
+                                            <span class="label label-rounded label-primary">Curso</span>
+                                            <span class="label label-rounded label-danger">Pendiente</span>
                                             <span class="action-icons">
                                                 <a href="#" data-toggle="modal" data-target="#problema{{idProblema}}"><i class="ti-check"></i></a>  
                                                 <a href="curso/{{idCurso}}"><i class="fas fa-arrow-right"></i></a>
@@ -275,22 +288,25 @@
                                 </div>
                                 {{else}}
                                 <div class="d-flex flex-row comment-row mt-0">
-                                    <div class="p-2"><img src="../../assets/images/users/2.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="p-2"><img src="../../assets/images/users/2.jpg" alt="user" width="50"
+                                            class="rounded-circle"></div>
                                     <div class="comment-text w-100">
                                         <h6 class="font-medium">{{nombreUsuario}}</h6>
                                         <span class="mb-3 d-block">{{asuntoProblema}}</span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right">{{fechaProblema}}, {{horaProblema}}</span>
-                                            <span class="label label-rounded label-warning">Usuario</span> 
-                                            <span class="label label-rounded label-danger">Pendiente</span> 
+                                            <span class="text-muted float-right">{{fechaProblema}},
+                                                {{horaProblema}}</span>
+                                            <span class="label label-rounded label-warning">Usuario</span>
+                                            <span class="label label-rounded label-danger">Pendiente</span>
                                             <span class="action-icons">
-                                                <a href="#" data-toggle="modal" data-target="#problema{{idProblema}}"><i class="ti-check"></i></a>
+                                                <a href="#" data-toggle="modal" data-target="#problema{{idProblema}}"><i
+                                                        class="ti-check"></i></a>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                                 {{/if}}
-                            {{/each}}
+                                {{/each}}
                                 <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                                     <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                                 </div>
