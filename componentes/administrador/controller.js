@@ -1,3 +1,6 @@
+const { response } = require('express');
+const ControllerAuth = require('../auth/index');
+const mensajes = ["Estas de vuelta","Hola","¿Que tal?","Estas aquí","Volviste","Regresaste"];
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
@@ -105,7 +108,30 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Usuarios_Resumen_R';
         return store.list(VIEW);
     }
-
+    function listCursosActivosTotal() {
+        const VIEW = 'ver_totalCursoActivos';
+        return store.list(VIEW);
+    }
+    function listCursosInactivosTotal() {
+        const VIEW = 'ver_totalCursoInactivos';
+        return store.list(VIEW);
+    }
+    function listUsuariosActivosTotal() {
+        const VIEW = 'ver_totalUsuariosActivos';
+        return store.list(VIEW);
+    }
+    function listUsuariosInactivosTotal() {
+        const VIEW = 'ver_totalUsuariosInactivos';
+        return store.list(VIEW);
+    }
+    function listUsuariosEncursoTotal() {
+        const VIEW = 'ver_totalUsuariosEncurso';
+        return store.list(VIEW);
+    }
+    function listUsuariosReconocimientoTotal() {
+        const VIEW = 'ver_totalUsuariosReconocimiento';
+        return store.list(VIEW);
+    }
     function getUsuarioEditar(id) {
         const VIEW = 'ver_Datos_Usuario_Editar';
         const CLAUSE = `WHERE idUsuario = ?`;
@@ -254,10 +280,78 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idCurso = ?`;
         return store.list(VIEW, CLAUSE, idCurso);
     }
-
+    function listTotalProblemasCurso(idCurso) {
+        const VIEW = 'ver_totalProblemasCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+    function listTotalExamenesCurso(idCurso) {
+        const VIEW = 'ver_totalExamenesCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+    function listTotalAvisosCurso(idCurso) {
+        const VIEW = 'ver_totalAvisosCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+    function listTotalRecursosCurso(idCurso) {
+        const VIEW = 'ver_totalRecursosCurso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }    
     function getMiPerfil(idUsuario) {
         const VIEW = 'ver_Usuarios';
         const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+
+    function enviarCorreo(idUsuario, asunto, contenido) {
+        ControllerAuth.correoPersonal(idUsuario, asunto, contenido);
+    }
+
+    function getMensajeBienvenida(){
+        const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
+        return mensajes[numeroAleatoreo];
+    }
+    
+    function getCalificacionesCurso(idCurso) {
+        const VIEW = 'ver_Calificaciones_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function listCalificacionesEstudiantes(idCurso) {
+        const VIEW = 'ver_Calificaciones_Estudiantes';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listEstudiantesInscritos(idCurso) {
+        const VIEW = 'ver_Estudiantes_Inscritos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function listUsuariosAdministrador() {
+        const VIEW = 'ver_Usuarios_Administrador';
+        return store.list(VIEW);
+    }
+
+    function listUsuariosSuperAdministrador() {
+        const VIEW = 'ver_Usuarios_SuperAdministrador';
+        return store.list(VIEW);
+    }
+
+    function getRolUsuario(idUsuario) {
+        const VIEW = 'ver_Roles_Usuarios';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+
+    function getPerfilUsuario(idUsuario) {
+        const VIEW = 'ver_Calificaciones_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, idUsuario);
     }
 
@@ -297,6 +391,24 @@ module.exports = function (injectedStore) {
         listExamenesCurso,
         listPublicacionesCurso,
         getCurso,
-        getMiPerfil
+        getMiPerfil,
+        enviarCorreo,
+        getMensajeBienvenida,
+        listCursosActivosTotal,
+        listCursosInactivosTotal,
+        listUsuariosActivosTotal,
+        listUsuariosInactivosTotal,
+        listUsuariosEncursoTotal,
+        listUsuariosReconocimientoTotal,
+        listTotalProblemasCurso,
+        listTotalExamenesCurso,
+        listTotalAvisosCurso,
+        listTotalRecursosCurso,
+        getCalificacionesCurso,
+        listCalificacionesEstudiantes,
+        listEstudiantesInscritos,
+        listUsuariosAdministrador,
+        listUsuariosSuperAdministrador,
+        getRolUsuario,
     };
 }

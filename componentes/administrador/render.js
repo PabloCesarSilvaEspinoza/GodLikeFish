@@ -11,21 +11,33 @@ module.exports = {
     getDashboardAdministrador: async function (req, res, next) {
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         const errores = await Controller.listErrores();
+        const valores = await Controller.listCursosActivosTotal();
+        const valoresina = await Controller.listCursosInactivosTotal();
+        const valoresUact = await Controller.listUsuariosActivosTotal();
+        const valoresUinact = await Controller.listUsuariosInactivosTotal();
+        const valoresUcurso = await Controller.listUsuariosEncursoTotal();
+        const valoresUrecono = await Controller.listUsuariosReconocimientoTotal();
         const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
+        const mensaje = await Controller.getMensajeBienvenida();
+        const numeroErrores = errores.length;
+        const numeroUsuariosSinVerificar = usuariosSinVerificar.length;
         /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
             administrador: true,
             graficasAdministrador : true,
-            valores:[{
-            valor1: 18,
-            valor2: 36,
-            valor3: 10
-            }],
             errores,
+            valores,
+            valoresina,
+            valoresUact,
+            valoresUinact,
+            valoresUcurso,
+            valoresUrecono,
             numeroErrores,
             usuariosSinVerificar,
-            miPerfil
+            miPerfil,
+            mensaje,
+            numeroUsuariosSinVerificar,
         });
     },
     getAdministrarCursos: async function (req, res, next) {
@@ -68,20 +80,20 @@ module.exports = {
         const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
         const tarjetas= await Controller.listUsuariosEnSistemaTarjeta();
         const verPerfil= await Controller.listPerfilUsuario();
-        const registrados= await Controller.listRegistrados();
-        const activos= await Controller.listActivos();
-        const inactivos= await Controller.listInactivos();
+        const respuestaRegistrados= await Controller.listRegistrados();
+        const respuestaActivos= await Controller.listActivos();
+        const respuestaInactivos= await Controller.listInactivos();
+        const registrados = respuestaRegistrados[0];
+        const activos = respuestaActivos[0];
+        const inactivos = respuestaInactivos[0];
+        const usuarios = (req.user.rol == 'Administrador')
+                        ? await Controller.listUsuariosAdministrador()
+                        : await Controller.listUsuariosSuperAdministrador();
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d3_administrarUsuarios', {
             administrador: true,
             datatables:true,
             dataTablesExport:true,
-            graficasAdministrador : true,
-            valores:[{
-            valor1: 18,
-            valor2: 36,
-            valor3: 10
-            }],
             caladon:true,
             datosUsuarioEnSistema,
             tarjetas,
@@ -89,8 +101,8 @@ module.exports = {
             activos,
             inactivos,
             registrados,
+            usuarios,
             miPerfil
-
         });
     },
 
@@ -105,11 +117,20 @@ module.exports = {
         const archivosAsignacionesCurso = await Controller.getArchivosTareaCurso(cursoID);
         const examenesCurso = await Controller.listExamenesCurso(cursoID);
         const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
+        const totalProblemasCurso = await Controller.listTotalProblemasCurso(cursoID);
+        const totalExamenesCurso = await Controller.listTotalExamenesCurso(cursoID);
+        const totalAvisosCurso = await Controller.listTotalAvisosCurso(cursoID);
+        const totalRecursosCurso = await Controller.listTotalRecursosCurso(cursoID);
         const totalDocumentos = documentosCurso.length;
         const totalLinks = linksCurso.length;
+        const respuestaCalificacionesCurso = await Controller.getCalificacionesCurso(cursoID);
+        const calificacionesCurso = respuestaCalificacionesCurso[0];
+        const calificacionesEstudiantes = await Controller.listCalificacionesEstudiantes(cursoID);
+        const estudiantesInscritos = await Controller.listEstudiantesInscritos(cursoID);
         const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('administrador/d4_consultarCurso', {
             administrador: true,
+            graficasAdministrador : true,
             curso,
             datosCurso,
             avisosCurso,
@@ -121,7 +142,14 @@ module.exports = {
             publicacionesCurso,
             totalDocumentos,
             totalLinks,
-            miPerfil
+            totalProblemasCurso,
+            totalExamenesCurso,
+            totalAvisosCurso,
+            totalRecursosCurso,
+            miPerfil,
+            calificacionesCurso,
+            calificacionesEstudiantes,
+            estudiantesInscritos,
         });
     },
 
@@ -229,5 +257,33 @@ module.exports = {
         const { idUsuario } = req.body;
         await Controller.updateVerificarTarjetonUsuario(idUsuario);
         res.redirect('back');
+    },
+
+    postCorreoPersonalizado: async function(req, res, next){
+        Controller.enviarCorreo(idUsuario,asunto,mensaje);
+        res.redirect('/validarPermisos'); /* regresa a dashboard, modificar */
+    },
+    
+    getPerfilUsuario: async function (req, res, next) {
+        const usuarioID = req.params.idUsuario;
+        const rolUsuario = await Controller.getRolUsuario(usuarioID);
+        const rol = rolUsuario[0].rolUsuario;
+        switch (rol) {
+            case 'Estudiante':
+                res.render('administrador/d5_administrarUsuario_E1')
+                break;
+            case 'Ponente':
+                res.render('administrador/d5_administrarUsuario_E2')
+                break;
+            case 'Administrador':
+            case 'Super-Administrador':
+                (req.user.rol == 'Super-Administrador')
+                ? res.render('administrador/d5_administrarUsuario_E3')
+                : res.redirect('/administrador/dashboardAdministrador');
+                break;
+            default:
+                res.redirect('/administrador/dashboardAdministrador');
+                break;
+        }
     },
 };

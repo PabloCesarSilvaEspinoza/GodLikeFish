@@ -17,6 +17,7 @@ module.exports = {
         const posiblesCursosEstudiante = respuestaPosiblesCursosEstudiante[0];
         const respuestaResumenEstudiante = await Controller.catalogResumenEstudiante(usuarioID);
         const resumenEstudiante = respuestaResumenEstudiante[0];
+        const mensaje = await Controller.getMensajeBienvenida();
         res.render('alumno/a1_dashboard', {
             estudiante:true,
             miPerfil,
@@ -27,6 +28,7 @@ module.exports = {
             cursoActualEstudiante,
             posiblesCursosEstudiante,
             resumenEstudiante,
+            mensaje
         });
     },
     getMisAsignaciones: async function (req, res, next) {
@@ -116,13 +118,26 @@ module.exports = {
     getCatalogoCursos: async function (req, res, next) {
         const respuestaCatalogoCursosEstudiante = await Controller.catalogCatalogoCursosEstudiante(req.user.id);
         const catalogoCursosEstudiante = respuestaCatalogoCursosEstudiante[0];
-        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('alumno/a5_catalogoCursos', {
             estudiante: true,
             dataTables: true,
             catalogoCursosEstudiante,
-            miPerfil
         })
+    },
+
+    postVerificarClaveCurso: async function (req, res, next) {
+        const { claveCursoEnviada } = req.body;
+        let claveEncontrada = false;
+        const clavesCursos = await Controller.listClavesCursos();
+        for(curso of clavesCursos){
+            if (claveCursoEnviada == curso.claveCurso){
+                claveEncontrada = true;
+                res.redirect(`/estudiante/curso/${curso.idCurso}`)
+            }
+        }
+        if (!claveEncontrada){
+            res.redirect(`/estudiante/dashboardEstudiante`)
+        }
     },
 
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
@@ -162,7 +177,7 @@ module.exports = {
                 const linksCurso = await Controller.listLinks(cursoID); 
                 const respuestaAsignacionesEstudiante = await Controller.listAsignacionesEstudiante(usuarioID, cursoID);
                 const asignacionesEstudiante = respuestaAsignacionesEstudiante[0];
-                const archivosEntregasEstudiante = await Controller.listArchivosEntregaEstudiante(cursoID);
+                const archivosEntregasEstudiante = await Controller.listArchivosEntregasTotalesEstudiante(usuarioID);
                 const archivosAsignaciones = await Controller.listArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenes(cursoID);
                 const respuestaPublicacionesCursoEstudiante = await Controller.catalogPublicacionesCursoEstudiante(usuarioID, cursoID);
@@ -197,6 +212,15 @@ module.exports = {
         }
     },
     
+    postReportarProblemaUsuario: async function (req, res, next) {
+        await Controller.reportarProblemaUsuario(
+            req.user.id,
+            //el resto de datos los leemos del modal
+            req.body.asuntoProblema,
+            req.body.descripcionProblema
+        );
+        //de donde se manda llamar?, para dirigirlo allí
+    },
 
     /* getVerTareas:async function(req, res, next){
         const cursos= await Controller.list();
