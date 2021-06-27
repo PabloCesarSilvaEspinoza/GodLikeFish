@@ -11,11 +11,13 @@ module.exports = {
         const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         const totalCursosActuales = cursosActuales.length;
         const totalCursosHistorial = historialCursosPonente.length;
-        const datosGeneralesPonente = await Controller.getDatosGeneralesPonente(usuarioID);
+        const respuestaDatosGeneralesPonente = await Controller.catalogDatosGeneralesPonente(usuarioID);
+        const datosGeneralesPonente = respuestaDatosGeneralesPonente[0];
         const nombresCursosActualesPonente = await Controller.getNombresCursosActualesPonente(usuarioID);
         const fechaActual = await Controller.getTiempoActual();
         const miPerfil = await Controller.getMiPerfil(usuarioID);
         const asignacionesPendientes = await Controller.listAsignacionesPendientesPonente(usuarioID);
+        console.log(datosGeneralesPonente);
         res.render('ponente/p1_dashboard', {
             ponente: true,
             cursosActuales,

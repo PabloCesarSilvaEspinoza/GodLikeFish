@@ -24,7 +24,79 @@ $(function() {
     // Read Only
     $('#read-only-stars').raty({
         readOnly: true,
+        score: 2
+    });
+
+    // Read Only Curso (0)
+    $('#read-only-stars-c0').raty({
+        readOnly: true,
+        score: 0
+    });
+
+    // Read Only Curso (1)
+    $('#read-only-stars-c1').raty({
+        readOnly: true,
+        score: 1
+    });
+
+    // Read Only Curso (2)
+    $('#read-only-stars-c2').raty({
+        readOnly: true,
+        score: 2
+    });
+
+    // Read Only Curso (3)
+    $('#read-only-stars-c3').raty({
+        readOnly: true,
         score: 3
+    });
+
+    // Read Only Curso (4)
+    $('#read-only-stars-c4').raty({
+        readOnly: true,
+        score: 4
+    });
+
+    // Read Only Curso (5)
+    $('#read-only-stars-c5').raty({
+        readOnly: true,
+        score: 5
+    });
+
+    // Read Only Ponente (0)
+    $('#read-only-stars-p0').raty({
+        readOnly: true,
+        score: 0
+    });
+
+    // Read Only Ponente (1)
+    $('#read-only-stars-p1').raty({
+        readOnly: true,
+        score: 1
+    });
+
+    // Read Only Ponente (2)
+    $('#read-only-stars-p2').raty({
+        readOnly: true,
+        score: 2
+    });
+
+    // Read Only Ponente (3)
+    $('#read-only-stars-p3').raty({
+        readOnly: true,
+        score: 3
+    });
+
+    // Read Only Ponente (4)
+    $('#read-only-stars-p4').raty({
+        readOnly: true,
+        score: 4
+    });
+
+    // Read Only Ponente (5)
+    $('#read-only-stars-p5').raty({
+        readOnly: true,
+        score: 5
     });
 
     // No Rated Message

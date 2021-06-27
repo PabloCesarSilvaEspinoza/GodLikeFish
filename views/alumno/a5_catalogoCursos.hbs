@@ -19,6 +19,7 @@
                                             <th>Fecha Curso</th>
                                             <th>Horario Curso</th>
                                             <th>Inscripciones</th>
+                                            <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -31,9 +32,24 @@
                                             <td>{{horarioInicioCurso}} - {{horarioFinCurso}}</td>
                                             <td>
                                             {{#if estadoInscripciones}}
-                                                <span class="mb-3 label  bg-info mr-2">Abiertas</span>
+                                                <span class="mb-3 label bg-info mr-2">Abiertas</span>
                                             {{else}}
-                                                <span class="mb-3 label  bg-dark mr-2">Cerradas</span>
+                                                <span class="mb-3 label bg-dark mr-2">Cerradas</span>
+                                            {{/if}}
+                                            </td>
+                                            <td>
+                                            {{#if estadoEstudianteCurso}}
+                                                {{#ifEquals estadoEstudianteCurso "Cursando"}}
+                                                <span class="mb-3 label bg-primary mr-2">Cursando</span>
+                                                {{/ifEquals}}
+                                                {{#ifEquals estadoEstudianteCurso "Aprobado"}}
+                                                <span class="mb-3 label bg-success mr-2">Aprobado</span>
+                                                {{/ifEquals}}
+                                                {{#ifEquals estadoEstudianteCurso "Reprobado"}}
+                                                <span class="mb-3 label bg-danger mr-2">Reprobado</span>
+                                                {{/ifEquals}}
+                                            {{else}}
+                                                N/A
                                             {{/if}}
                                             </td>
                                             <td>
@@ -49,6 +65,7 @@
                                         <th>Fecha Curso</th>
                                         <th>Horario Curso</th>
                                         <th>Inscritos</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tfoot>
                                 </table>

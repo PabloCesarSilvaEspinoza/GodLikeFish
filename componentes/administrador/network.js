@@ -12,6 +12,7 @@ router.get('/curso/:idCurso', render.getConsultarCurso);
 router.post('/agregarCurso', crearCarpetaCurso, dobleInput, render.postAgregarCurso);
 router.get('/editarUsuarios/:id', render.getEditarUsuario);
 router.post('/editarUsuarios/:id', render.postEditarUsuario);
+router.get('/usuario/:idUsuario', render.getPerfilUsuario)
 
 router.get('/DescargarTarjetonUsuario/:idUsuario/:nombreTarjeton', render.getDescargarTarjetonUsuario);
 router.post('/ResolverProblema/:tipoProblema', render.postResolverProblema);
