@@ -11,15 +11,15 @@
                             <h3>Editar <span class="small">Curso</span></h3>
                         </div>
                         <div class="col-md-3 text-right">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
                             <form class="form-valide" id="agregarCurso" method="POST" action="#">
                                 <div class="row">
                                     <div class="col-md-3 text-center">
-                                        <img src="../../assets/images/logoBienvenida.svg" width="150" class="rounded-circle" alt="imagenCurso">
+                                        <img src="../../assets/images/logoBienvenida.svg" width="150"
+                                            class="rounded-circle" alt="imagenCurso">
                                         <h6 class="mb-0 font-medium">Imagen del curso </h6>
                                         <fieldset class="form-group mt-3">
                                             <input type="file" class="form-control-file" id="exampleInputFile">
@@ -28,24 +28,32 @@
                                     <div class="col-md-9">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4><hr>
+                                                <h4><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h4>
+                                                <hr>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Nombre del Curso <span class="text-danger">*</span></h6>
-                                                <input type="text" id="nombreCurso" class="form-control" placeholder="Ejemplo del nombre de un curso" required>
-                                                <small class="form-control-feedback ml-1"> Maximo 255 caracteres </small> 
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Nombre del Curso <span
+                                                        class="text-danger">*</span></h6>
+                                                <input type="text" id="nombreCurso" class="form-control"
+                                                    placeholder="Ejemplo del nombre de un curso" required>
+                                                <small class="form-control-feedback ml-1"> Maximo 255 caracteres
+                                                </small>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Area <span class="text-danger">*</span></h6>
-                                                <select class=" form-control custom-select" style="width: 100%; height:36px;" required>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Area <span
+                                                        class="text-danger">*</span></h6>
+                                                <select class=" form-control custom-select"
+                                                    style="width: 100%; height:36px;" required>
                                                     <option>Area</option>
                                                     <option value="#">#</option>
                                                     <option value="#">#</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Tipo <span class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Tipo <span
+                                                        class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select"
+                                                    style="width: 100%; height:36px;" required>
                                                     <option value="AK">Tipo 1</option>
                                                     <option value="HI">Tipo 2</option>
                                                     <option value="HI">Tipo 3</option>
@@ -54,8 +62,10 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Modalidad <span class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Modalidad <span
+                                                        class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select"
+                                                    style="width: 100%; height:36px;" required>
                                                     <option value="#">En vivo</option>
                                                     <option value="#">Video</option>
                                                 </select>
@@ -63,47 +73,61 @@
                                             <div class="col-md-3">
                                                 <h6 class="mb-0 font-medium mt-2 ml-2">Capacidad</h6>
                                                 <input type="number" id="capacidad" class="form-control" value="0">
-                                                <small class="form-control-feedback ml-1"> Utilice 0 para capacidad indefinida </small>
+                                                <small class="form-control-feedback ml-1"> Utilice 0 para capacidad
+                                                    indefinida </small>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Ponente <span class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select" style="width: 100%; height:36px;">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Ponente <span
+                                                        class="text-danger">*</span></h6>
+                                                <select class="form-control custom-select"
+                                                    style="width: 100%; height:36px;">
                                                     <option value="#">Nombre Completo Ponente</option>
                                                     <option value="#">Nombre Completo Segundo Ponente</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12"><!--wacha este tunning-->
+                                    <div class="col-md-12">
+                                        <!--wacha este tunning-->
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Descripción <span class="text-danger">*</span></h6>
-                                                <textarea class="form-control" rows="6" placeholder="Describe de que trata el curso aqui..."></textarea>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Descripción <span
+                                                        class="text-danger">*</span></h6>
+                                                <textarea class="form-control" rows="6"
+                                                    placeholder="Describe de que trata el curso aqui..."></textarea>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Plataforma <span class="text-danger">*</span></h6>
-                                                        <select class="form-control custom-select" style="width: 100%; height:36px;">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Plataforma <span
+                                                                class="text-danger">*</span></h6>
+                                                        <select class="form-control custom-select"
+                                                            style="width: 100%; height:36px;">
                                                             <option value="#">Classroom</option>
                                                             <option value="#">TEAMS</option>
                                                             <option value="#">Zoom</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Temario <span class="text-danger">*</span></h6>
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Temario <span
+                                                                class="text-danger">*</span></h6>
                                                         <fieldset class="form-group mt-1">
-                                                            <input type="file" class="form-control-file" id="exampleInputFile">
+                                                            <input type="file" class="form-control-file"
+                                                                id="exampleInputFile">
                                                         </fieldset>
                                                     </div>
                                                     <div class="col-md-4    ">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Clave <span class="text-danger">*</span></h6>
-                                                        <input type="text" id="clave" class="form-control" placeholder="000000000">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Clave <span
+                                                                class="text-danger">*</span></h6>
+                                                        <input type="text" id="clave" class="form-control"
+                                                            placeholder="000000000">
                                                         <small class="form-control-feedback ml-1">Numérico</small>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Enlace <span class="text-danger">*</span></h6>
-                                                        <input type="text" id="enlace" class="form-control" placeholder="enlace a la plataforma http://....">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Enlace <span
+                                                                class="text-danger">*</span></h6>
+                                                        <input type="text" id="enlace" class="form-control"
+                                                            placeholder="enlace a la plataforma http://....">
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,19 +136,25 @@
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h4><i class="fas fa-calendar-alt mr-2 mt-3"></i>Calendario del Curso</h4><hr>
+                                                <h4><i class="fas fa-calendar-alt mr-2 mt-3"></i>Calendario del Curso
+                                                </h4>
+                                                <hr>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-04-13" style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span
+                                                        class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" value="2021-04-13"
+                                                    style="width: 100%; ">
                                             </div>
                                             <div class="col-md-3">
                                                 <h6 class="mb-0 font-medium mt-2 ml-2">Hora Inicio</h6>
                                                 <input type="time" class="form-control" value="22:33:00">
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-06-13" style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span
+                                                        class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" value="2021-06-13"
+                                                    style="width: 100%; ">
                                             </div>
                                             <div class="col-md-3">
                                                 <h6 class="mb-0 font-medium mt-2 ml-2">Hora Fin</h6>
@@ -135,21 +165,29 @@
                                     <div class="col-md-4">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h4><i class="far fa-calendar-alt mr-2 mt-3"></i>Calendario de inscripción</h4><hr>
+                                                <h4><i class="far fa-calendar-alt mr-2 mt-3"></i>Calendario de
+                                                    inscripción</h4>
+                                                <hr>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-04-13" style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span
+                                                        class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" value="2021-04-13"
+                                                    style="width: 100%; ">
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-04-13" style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span
+                                                        class="text-danger">*</span></h6>
+                                                <input type="date" class="form-control" value="2021-04-13"
+                                                    style="width: 100%; ">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-right mt-3">
-                                        <button type="button" class="btn  btn-info"><i class="fas fa-save mr-2"></i>Guardar</button>
-                                        <button type="button" class="btn  btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
+                                        <button type="button" class="btn  btn-info"><i
+                                                class="fas fa-save mr-2"></i>Guardar</button>
+                                        <button type="button" class="btn  btn-secondary" data-dismiss="modal"><i
+                                                class="fas fa-times mr-2"></i>Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -171,18 +209,19 @@
                             <h4>Perfil de Estudiante</h4>
                         </div>
                         <div class="col-md-3 text-right">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <!--contenido-->
                         <div class="col-md-3 text-center">
-                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px" />
+                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px"
+                                height="150px" />
                             <h6 class="mt-2 font-medium">Foto de Perfil</h6>
                         </div>
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4> <hr>
+                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4>
+                                    <hr>
                                 </div>
                                 <div class="col-md-3 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
@@ -223,18 +262,19 @@
                             <h4>Perfil de Ponente</h4>
                         </div>
                         <div class="col-md-3 text-right">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <!--contenido-->
                         <div class="col-md-3 text-center">
-                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px" />
+                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px"
+                                height="150px" />
                             <h6 class="mt-2 font-medium">Foto de Perfil</h6>
                         </div>
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4> <hr>
+                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4>
+                                    <hr>
                                 </div>
                                 <div class="col-md-3 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
@@ -274,14 +314,14 @@
                             <h4>Reportar problema</h4>
                         </div>
                         <div class="col-md-3 text-right">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <!--contenido-->
                         <form action="../../ponente/reportarProblemaCurso" method="post">
                             <input id="idCurso" value='req.params.idCurso' hidden>
                             <div class="col-md-12 mt-2">
-                                <h6 class="mb-0 font-medium mt-2"><i class="fas fa-highlighter mr-2"></i>Asunto del problema </h6>
+                                <h6 class="mb-0 font-medium mt-2"><i class="fas fa-highlighter mr-2"></i>Asunto del
+                                    problema </h6>
                                 <input class="form-control form-control-lg font-14" type="text" required=" "
                                     placeholder="Escribe el asunto del problema" alt="Asunto del problema"
                                     id="asuntoProblema" name="asuntoProblema">
@@ -293,13 +333,15 @@
                                     cols="60" rows="3"></textarea>
                             </div>
                             <div class="col-md-12 text-right">
-                                <button type="submit" class="btn btn-info waves-effect text-left mt-1"><i class="fas fa-paper-plane mr-2"></i>Enviar reporte</button>
-                                <button type="button" class="btn btn-secondary mt-1" data-dismiss="modal"> <i class="fas fa-times mr-2"></i>Cancelar</button>
+                                <button type="submit" class="btn btn-info waves-effect text-left mt-1"><i
+                                        class="fas fa-paper-plane mr-2"></i>Enviar reporte</button>
+                                <button type="button" class="btn btn-secondary mt-1" data-dismiss="modal"> <i
+                                        class="fas fa-times mr-2"></i>Cancelar</button>
                             </div>
                             <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
                         </form>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -323,9 +365,12 @@
                             <form action="#" method="post">
                                 <div class="row">
                                     <div class="col-md-12 text-center mt-3">
-                                        <h3 class="font-light mb-4">Este curso dejará de estar visible para cualquier usuario.</h3>
-                                        <button type="submit" class="btn waves-effect waves-light btn-danger"><i class="fas fa-check mr-2"></i>Si, continuar</button>
-                                        <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>No, cancelar</button>
+                                        <h3 class="font-light mb-4">Este curso dejará de estar visible para cualquier
+                                            usuario.</h3>
+                                        <button type="submit" class="btn waves-effect waves-light btn-danger"><i
+                                                class="fas fa-check mr-2"></i>Si, continuar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info"
+                                            data-dismiss="modal"><i class="fas fa-times mr-2"></i>No, cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -341,104 +386,67 @@
         <div class="col-md-3">
             <div class="card" style="border-radius: 10px">
                 <div class="card-body">
-                    <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso</h2>
+                    {{#if calificacionesCurso}}
+                        {{#calificacionesCurso}}
+                        <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso ({{totalComentarios}})</h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="text-center mb-3" id="read-only-stars-c{{promedioCalificacionesCurso}}"><h5>Curso</h5></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="text-center mb-2" id="read-only-stars-p{{promedioCalificacionesPonente}}"><h5>Ponente</h5></div>
+                            </div>
+                        </div>
+                        {{/calificacionesCurso}}
+                    {{else}}
+                    <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso (0)</h2>
                     <hr>
-                    <div class="text-center" id="read-only-stars" title="regular">
-                        <img alt="1" src="../../assets/images/rating/star-on.png" title="regular">&nbsp;
-                        <img alt="2" src="../../assets/images/rating/star-on.png" title="regular">&nbsp;
-                        <img alt="3" src="../../assets/images/rating/star-on.png" title="regular">&nbsp;
-                        <img alt="4" src="../../assets/images/rating/star-off.png" title="regular">&nbsp;
-                        <img alt="5" src="../../assets/images/rating/star-off.png" title="regular">
-                        <input name="score" type="hidden" value="3" readonly="">
-                    </div>
+                    <div class="text-center mb-3" id="read-only-stars-c0"><h5>Curso</h5></div>
+                    <div class="text-center mb-2" id="read-only-stars-p0"><h5>Ponente</h5></div>
+                    {{/if}}
                     <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:730px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
                         <!-- calificaciones de los alumnos -->
+                        {{#each calificacionesEstudiantes}}
                         <div class="d-flex flex-row comment-row mt-0">
+                            <!-- FALTAAGREGAR <div class="p-0"><img src="../../assets/multimedia/usuarios/{{idEstudiante}}/{{fotoEstudiante}}" alt="user" width="50" class="rounded-circle"></div>-->
                             <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
                             <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
+                                <h5 class=" mb-0">{{nombreEstudiante}}</h5>
+                                <p class="mt-0" style="text-align: justify;">{{comentarioCurso}}</p>
+                                <div class="row">
+                                    <div class="col text-right">
+                                        <h6 class="font-light mt-0 mb-0">Curso: <span class="small">{{valoracionCurso}}<i class="fas fa-star ml-1"></i></span></h6>
+                                    </div>
+                                    <div class="col text-left">
+                                        <h6 class="font-light mt-0 mb-0">Ponente: <span class="small">{{valoracionPonente}}<i class="fas fa-star ml-1"></i></span></h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
+                        {{/each}}
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                         </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
+                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
                         </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">Nombre Completo Usuario Lorem Ipsum</h5>
-                                <h4 class="font-light mt-0 mb-0"><i class="fas fa-star mr-2"></i>Estrellas: <span class="small">(3)</span></h4>
-                                <p class="mt-0" style="text-align: justify;">Comentario completo personal del usuario lorem ipsum ejemplo de texto demasiado largo pero que para el usuario tenia sentido.</p>
-                            </div>
-                        </div>
-                    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
-                
+                    </div>
                 </div>
             </div>
         </div>
         <!--todas las pestañas-->
         <div class="col-md-9">
-            <div class="card" style="border-radius: 10px;"> 
+            <div class="card" style="border-radius: 10px;">
                 <ul class="nav nav-pills p-3">
                     <li class="nav-item"><a href="#datosGenerales" class="nav-link active" data-toggle="tab" aria-expanded="false">Datos Generales</a></li>
                     <li class="nav-item"> <a href="#estudiantes" class="nav-link" data-toggle="tab" aria-expanded="false">Estudiantes</a></li>
                     <li class="nav-item"> <a href="#vistaExterna" class="nav-link" data-toggle="tab" aria-expanded="false">Vista Externa</a></li>
                     <li class="nav-item"> <a href="#vistaInterna" class="nav-link" data-toggle="tab" aria-expanded="false">Vista Interna</a></li>
+                    {{#if curso.estadoActualCurso}}
+                    <h3 class="text-right ml-auto font-light">Este curso se encuentra <span class="font-medium"> Abierto</span></h3>
+                    {{else}}
                     <h3 class="text-right ml-auto font-light">Este curso se encuentra <span class="font-medium"> Cerrado</span></h3>
+                    {{/if}}
                 </ul>
             </div>
             <div class="tab-content br-n pn">
@@ -447,109 +455,110 @@
                     <div class="row">
                         <!-- tarjeta principal -->
                         <div class="col-md-12">
+                            {{#curso}}
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
                                     <div class="row">
                                         <!--Comienzan los datos-->
                                         <div class="col-md-3 text-center">
+                                            <!-- FALTAAGREGAR <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" alt="Imgagen del curso">-->
                                             <img src="../../assets/images/cursoImg1.JPG" class="mt-2" width="250" alt="imagenCurso" style="border-radius: 10px;">
                                             <h6 class="mb-0 mt-2 font-medium">Imagen del curso </h6>
                                         </div>
                                         <div class="col-md-9 text-left">
                                             <div class="row">
                                                 <div class="col-md-9 text-left">
-                                                    <h3 class="card-title mb-0">Nombre Completo del Curso Lorem Ipsum Largo 
-                                                        <span class="small">( <i class="fas fa-users mr-2"></i>40 )</span></h3><!-- cantidad de usuarios -->
-                                                    <h4 class="font-medium mb-3"><i class="fas fa-user-tie ml-4 mr-2"></i>Nombre Completo Ponente Lorem Ipsum</h4>
+                                                    <h3 class="card-title mb-0">{{nombreCurso}}
+                                                        <span class="small">( <i class="fas fa-users mr-2"></i>{{totalEstudiantesCurso}} )</span></h3><!-- cantidad de usuarios -->
+                                                    <h4 class="font-medium mb-3"><i class="fas fa-user-tie ml-4 mr-2"></i>{{nombrePonente}}</h4>
                                                 </div>
                                                 <div class="col-md-3 text-right">
                                                     <button type="button" class="btn  btn-rounded btn-success"
-                                                        data-toggle="modal" data-target="#editarCurso"><i class="fas fa-pencil-alt mr-2"></i>Editar</button>
+                                                        data-toggle="modal" data-target="#editarCurso"><i
+                                                            class="fas fa-pencil-alt mr-2"></i>Editar</button>
                                                     <button type="button" class="btn btn-rounded btn-info"
-                                                        data-toggle="modal" data-target="#desactivarCurso"><i class="fas fa-power-off mr-2"></i>Desactivar</button>
+                                                        data-toggle="modal" data-target="#desactivarCurso"><i
+                                                            class="fas fa-power-off mr-2"></i>Desactivar</button>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h4 class="font-medium mb-0 mt-0">Nombre del Area Curso <span class="font-light">(Tipo Curso)</span></h4>
-                                                    <h3 class="mb-0 font-16 ml-2"><i class="fas fa-link"></i> <span class="small">https://youtu.be/ZaeVtlcpTmY?t=154</span></h3>
-                                                    <h4 class="mt-0 font-light">Modalidad</h4>
+                                                    <h4 class="font-medium mb-0 mt-0">{{areaCurso}} <span class="font-light">({{tipoCurso}})</span></h4>
+                                                    {{#if linkPlataformaCurso}}
+                                                    <h3 class="mb-0 font-16 ml-2"><i class="fas fa-link"></i> <span class="small">{{linkPlataformaCurso}}</span></h3>
+                                                    {{/if}}
+                                                    <h4 class="mt-0 font-light">{{modalidadCurso}}</h4>
                                                 </div>
                                                 <div class="col-md-4 text-right">
-                                                    <h4 class="font-medium mb-0 mt-0">Clave: <span class="font-light">00000000</span></h4>
-                                                    <h4 class="mt-0 font-light">Microsfot Teams</h4>
-                                                    <a href="#" class="btn btn-rounded btn-sm btn-success">
+                                                    <h4 class="font-medium mb-0 mt-0">Clave: <span class="font-light">{{claveCurso}}</span></h4>
+                                                    <h4 class="mt-0 font-light">{{plataformaCurso}}</h4>
+                                                    <a href="../DescargarTemario/{{idCurso}}" class="btn btn-rounded btn-sm btn-success">
                                                         <i class="fas fa-download mr-2"></i>Descargar Temario</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-8">
                                             <h4 class="mb-0 font-medium mt-2"><i class="fas fa-signature mr-2"></i>Descripción</h4>
-                                            <p style="text-align:justify;">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original.</p>
+                                            <p style="text-align:justify;">{{descripcionCurso}}</p>
                                         </div>
                                         <div class="col-md-4">
                                             <h4 class="font-medium"><i class="fas fa-calendar-alt mr-2"></i>Calendario del Curso</h4>
-                                            <h4 class="text-center">2021-04-13 <span class="small">(22:33:00)</span> - 2021-04-13 <span class="small">(22:33:00)</span></h4>
+                                            <h4 class="text-center">{{fechaInicioCurso}} <span class="small">({{horaInicioCurso}})</span> - {{fechaFinalCurso}} <span class="small">({{horaFinCurso}})</span></h4>
                                             <h4 class="font-medium"><i class="far fa-calendar-alt mr-2 mt-2"></i>Calendario de Inscripción</h4>
-                                            <h4 class="text-center">2021-04-13 <span class="small">(22:33:00)</span> - 2021-04-13 <span class="small">(22:33:00)</span></h4>
+                                            <h4 class="text-center">{{fechaInscripcionInicioCurso}} - {{fechaInscripcionFinalCurso}}</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{/curso}}
                         </div>
                         <!-- datos estadisticos -->
                         <div class="col-md-12">
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-3 text-center">
-                                            <img src="../../assets/images/logoTransparencia10.svg" width="250px" alt="logoDelSistema">
-                                            <h3 class="card-title mt-0">Resumen de Datos</h3>
+                                        <div class="col-4 text-center">
+                                                    <div class="card" style="border-radius: 10px">
+                                                        <div class="card-body">
+                                                            <h3 class="mb-4"><i
+                                                                    class="fas fa-chart-bar mr-2"></i>Estadisticas
+                                                                <span class="font-light"></span>
+                                                            </h3>
+                                                            <center>
+                                                                <div class="col-12">
+                                                                    <canvas width="100" height="100"
+                                                                        id="GraficaMuestra3"></canvas>
+                                                                </div>
+                                                            </center>
+                                                        </div>
+                                                    </div>
                                         </div>
-                                        <div class="col-md-9">
+                                        <div class="col-md-8">
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6 text-center">
+                                                    <img src="../../assets/images/logoTransparencia10.svg"
+                                                        min-width="150px" width="250px" alt="logoDelSistema">
+                                                    <h3 class="card-title mt-0">Resumen de Datos</h3>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div class="card" style="border-radius: 10px">
-                                                        <div class="card-body">
-                                                            <h3 class=""><i class="far fa-comment-alt mr-2"></i>Avisos 
-                                                                <span class="font-light">(34)</span></h3>
-                                                            <h3 class="mt-4 mb-4"><i class="fas fa-folder mr-2"></i>Recursos
-                                                                <span class="font-light">(30)</span></h3>
-                                                            <h4 class="ml-4 mt-2"><i class="fas fa-link mr-2"></i>Enlaces <span class="font-light">(15)</span></h4>
-                                                            <h4 class="ml-4 mt-2"><i class="fas fa-file mr-2"></i>Documentos <span class="font-light">(15)</span></h4>
-                                                        </div>
+                                                    <div class="card-body">
+                                                        <h3 class="mb-4"><i
+                                                            class="fas fa-feather mr-2"></i>Asignaciones
+                                                        <span class="font-light"></span>
+                                                        </h3>
+                                                        <center>
+                                                            <div class="col-12">
+                                                                <canvas width="100" height="100"
+                                                                    id="GraficaMuestra5"></canvas>
+                                                            </div>
+                                                        </center>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="card" style="border-radius: 10px">
-                                                        <div class="card-body">
-                                                            <h3 class="mb-4"><i class="fas fa-feather mr-2"></i>Asignaciones
-                                                                <span class="font-light">(15)</span></h3>
-                                                            <h4 class="ml-4 mt-2"><i class="far fa-circle mr-2"></i>Abiertas <span class="font-light">(5)</span></h4>
-                                                            <h4 class="ml-4 mt-2"><i class="fas fa-circle mr-2"></i>Cerradas <span class="font-light">(10)</span></h4>
-                                                            <h4 class="ml-4 mt-2"><i class="far fa-paper-plane mr-2"></i>Indice de entregas <span class="font-light">(70%)</span></h4>
-                                                            <h4 class="ml-4 mt-2"><i class="fas fa-highlighter mr-2"></i>Indice de revisión <span class="font-light">(100%)</span></h4>
-                                                            <h4 class="ml-4 mt-2"><i class="fas fa-spell-check mr-2"></i>Indice de buenas entregas <span class="font-light">(90%)</span></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="card" style="border-radius: 10px">
-                                                        <div class="card-body">
-                                                            <h3 class="mb-4"><i class="fas fa-chalkboard mr-2"></i>Examenes
-                                                                <span class="font-light">(5)</span></h3>
-                                                                <h4 class="ml-4 mt-2"><i class="far fa-circle mr-2"></i>Pendientes <span class="font-light">(0)</span></h4>
-                                                                <h4 class="ml-4 mt-2"><i class="fas fa-circle mr-2"></i>Terminados <span class="font-light">(5)</span></h4>
-                                                            <h3 class="mt-4 mb-4"><i class="fas fa-exclamation-triangle mr-2"></i>Errores
-                                                                <span class="font-light">(2)</span></h3>
-                                                                <h4 class="ml-4 mt-2"><i class="fas fa-eraser mr-2"></i>Pendientes <span class="font-light">(0)</span></h4>
-                                                                <h4 class="ml-4 mt-2"><i class="fas fa-check mr-2"></i>Resueltos <span class="font-light">(2)</span></h4>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -562,16 +571,19 @@
                         <div class="col-md-12">
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
-                                    <h3 class="card-title"><i class="fas fa-users mr-2"></i>Alumnos inscritos en <span class="small"> Nombre Completo del Curso</span></h3>
+                                    <h3 class="card-title"><i class="fas fa-users mr-2"></i>Alumnos inscritos en <span
+                                            class="small"> Nombre Completo del Curso</span></h3>
                                     <hr>
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" style="color: rgb(62, 85, 105);" href="#tabla" role="tab">
-                                            <i class="fas fa-table mr-2"></i>Vista tabla</a> 
+                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab"
+                                                style="color: rgb(62, 85, 105);" href="#tabla" role="tab">
+                                                <i class="fas fa-table mr-2"></i>Vista tabla</a>
                                         </li>
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" style="color: rgb(62, 85, 105);" href="#tarjetas" role="tab">
-                                            <i class="fas fa-id-card-alt mr-2"></i>Vista Tarjeta</a> 
-                                        </li> 
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab"
+                                                style="color: rgb(62, 85, 105);" href="#tarjetas" role="tab">
+                                                <i class="fas fa-id-card-alt mr-2"></i>Vista Tarjeta</a>
+                                        </li>
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content tabcontent-border">
@@ -584,64 +596,54 @@
                                                             <th>Matricula</th>
                                                             <th>Nombres</th>
                                                             <th>Apellidos</th>
+                                                            <th>Antigüedad</th>
                                                             <th>Puesto</th>
                                                             <th>Area</th>
-                                                            <th>Asignaciones</th>
+                                                            <th>Estado</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody> 
+                                                        {{#each estudiantesInscritos}}
                                                         <tr>
-                                                            <td>65895456</td>
-                                                            <td>Francisco Alejandro</td>
-                                                            <td>Torres Garduño</td>
-                                                            <td>Laboratorista</td>
-                                                            <td>Medica</td>
-                                                            <td>8/8</td>
+                                                            <td>{{matriculaEstudiante}}</td>
+                                                            <td>{{nombresEstudiante}}</td>
+                                                            <td>{{apellidosEstudiante}}</td>
+                                                            <td>{{antiguedadEstudiante}}</td>
+                                                            <td>{{puestoEstudiante}}</td>
+                                                            <td>{{areaEstudiante}}</td>
                                                             <td>
-                                                                <button href="#" class="btn  btn-rounded btn-sm btn-success small" 
-                                                                data-toggle="modal" data-target="#verPerfilEstudiante">
-                                                                    <i class="far fa-user mr-1"></i> 
-                                                                    Ver Perfil</button> 
+                                                                {{#if estadoEstudianteCurso}}
+                                                                    {{#ifEquals estadoEstudianteCurso "Cursando"}}
+                                                                    <span class="mb-3 label bg-primary mr-2">Cursando</span>
+                                                                    {{/ifEquals}}
+                                                                    {{#ifEquals estadoEstudianteCurso "Aprobado"}}
+                                                                    <span class="mb-3 label bg-success mr-2">Aprobado</span>
+                                                                    {{/ifEquals}}
+                                                                    {{#ifEquals estadoEstudianteCurso "Reprobado"}}
+                                                                    <span class="mb-3 label bg-danger mr-2">Reprobado</span>
+                                                                    {{/ifEquals}}
+                                                                {{else}}
+                                                                    N/A
+                                                                {{/if}}
+                                                            </td>
+                                                            <td>
+                                                                <a href="../usuario/{{idEstudiante}}" class="btn  btn-rounded btn-sm btn-success small">
+                                                                    <i class="far fa-user mr-1"></i> Ver Perfil
+                                                                </a> 
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>58964589</td>
-                                                            <td>Javier</td>
-                                                            <td>Magaña Ruiz</td>
-                                                            <td>Medico Familiar</td>
-                                                            <td>Medica</td>
-                                                            <td>7/8</td>
-                                                            <td>
-                                                                <button href="#" class="btn  btn-rounded btn-sm btn-success small" 
-                                                                data-toggle="modal" data-target="#verPerfilEstudiante">
-                                                                    <i class="far fa-user mr-1"></i> 
-                                                                    Ver Perfil</button> 
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>15489564</td>
-                                                            <td>Scarlleth</td>
-                                                            <td>Daenny Montana</td>
-                                                            <td>Educadora</td>
-                                                            <td>Escuela Sindical</td>
-                                                            <td>8/8</td>
-                                                            <td>
-                                                                <button href="#" class="btn  btn-rounded btn-sm btn-success small" 
-                                                                data-toggle="modal" data-target="#verPerfilEstudiante">
-                                                                    <i class="far fa-user mr-1"></i> 
-                                                                    Ver Perfil</button> 
-                                                            </td>
-                                                        </tr>
+                                                        {{/each}}
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <th>Matricula</th>
-                                                            <th>Nombre</th>
+                                                            <th>Nombres</th>
                                                             <th>Apellidos</th>
+                                                            <th>Antigüedad</th>
                                                             <th>Puesto</th>
                                                             <th>Area</th>
-                                                            <th>Asignaciones</th>
+                                                            <th>Estado</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </tfoot>
@@ -657,186 +659,33 @@
                                                     <div class="input-group-append">
                                                         <button id="buscarPonente" name="buscarPonente"
                                                             class="btn btn-success" type="button">
-                                                            <i class="ti-search"></i></button> 
+                                                            <i class="ti-search"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="row el-element-overlay">
-                                                    <div class="col-md-3"><!--Usar este para el each, los otros no tienen formato chido-->
+                                                    {{#each estudiantesInscritos}}
+                                                    <div class="col-md-3 col-lg-2"><!--Usar este para el each, los otros no tienen formato chido-->
                                                         <div class="card">
                                                             <div class="el-card-item" class="modal-footer"
                                                                 data-toggle="modal" data-target="#responsive-modal">
                                                                 <div class="el-card-avatar el-overlay-1"> 
-                                                                    <img src="../../assets/images/users/1-old.jpg" alt="user"/>
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/1-old.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
+                                                                    <!-- FALTAAGREGAR <img src="../../assets/multimedia/usuarios/{{idEstudiante}}/{{fotoEstudiante}}" alt="user"/> -->
+                                                                    <img src="../../assets/images/users/1-old.jpg" alt="estudiante"/>
                                                                 </div>
                                                                 <div class="el-card-content">
-                                                                    <h4 class="mb-0">Nombres Usuario</h4>
-                                                                    <span d="UsuarioArea" name="UsuarioArea" class="text-muted">Puesto Usuario</span>
+                                                                    <h4 class="mb-0">{{nombresEstudiante}} {{apellidosEstudiante}}</h4>
+                                                                    <span class="text-muted">{{puestoEstudiante}}</span>
                                                                     <br>
+                                                                    <a href="../usuario/{{idEstudiante}}" class="btn btn-rounded btn-sm btn-success small">
+                                                                        <i class="far fa-eye"></i>
+                                                                    </a> 
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/2.jpg" alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/2.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">George Acton</h4> <span
-                                                                        class="text-muted">Wordpress Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/3.jpg" alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/3.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Harry Addington</h4> <span
-                                                                        class="text-muted">Mobile App Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/4.jpg" alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/4.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Emily Adley</h4> <span
-                                                                        class="text-muted">Wordpress Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/8.jpg" alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/8.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Sophia Ainsley</h4> <span
-                                                                        class="text-muted">Mobile App Developer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/7.jpg" alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/7.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Lily Ainsworth</h4> <span
-                                                                        class="text-muted">Graphics Designer</span>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/6.jpg" alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/6.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Olivia Alby</h4> <span
-                                                                        class="text-muted">Mobile App Developer</span>
-                                                                    <br>
-    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="card">
-                                                            <div class="el-card-item" class="modal-footer"
-                                                                data-toggle="modal" data-target="#responsive-modal">
-                                                                <div class="el-card-avatar el-overlay-1"> <img
-                                                                        src="../../assets/images/users/d4.jpg" alt="user" />
-                                                                    <div class="el-overlay">
-                                                                        <ul class="list-style-none el-info">
-                                                                            <a class="btn default btn-outline image-popup-vertical-fit el-link"
-                                                                                href="../../assets/images/users/d4.jpg"></a>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="el-card-content">
-                                                                    <h4 class="mb-0">Amelia Allerton</h4> <span
-                                                                        class="text-muted">Wordpress Developer</span>
-                                                                    <br>
-                                                                    <td><a href="javascript:void(0)"
-                                                                            class="text-inverse pr-2" data-toggle="tooltip"
-                                                                            title="Ver"></a> <a href="javascript:void(0)"
-                                                                            class="text-inverse" title="Borrar"
-                                                                            data-toggle="tooltip"></a></td>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    {{/each}}
                                                 </div>
                                             </div>
                                         </div>
@@ -857,7 +706,8 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <!-- FALTAAGREGAR <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" alt="Imgagen del curso">-->
-                                            <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen del curso">
+                                            <img class="card-img img-responsive" style="border-radius: 8px;"
+                                                src="../../assets/images/cursoImg1.JPG" alt="Imgagen del curso">
                                         </div>
                                         <div class="col-md-9">
                                             <h2>{{nombreCurso}}</h2>
@@ -865,26 +715,33 @@
                                                 <div class="col-md-7 d-flex no-block align-items-center">
                                                     <h5 class="mr-4">Ponente:</h5>
                                                     <!--FALTA AGREGAR <div class="mr-2"><img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" alt="user" class="rounded-circle" width="45"></div>-->
-                                                    <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45"></div>
+                                                    <div class="mr-2"><img src="../../assets/images/users/d1.jpg"
+                                                            alt="user" class="rounded-circle" width="45"></div>
                                                     <div>
-                                                        <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5><span>{{puestoPonente}}</span>
+                                                        <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
+                                                        <span>{{puestoPonente}}</span>
                                                         <span>
-                                                            <button class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#verPerfilPonente">
+                                                            <button class="btn  btn-rounded btn-sm btn-success small"
+                                                                data-toggle="modal" data-target="#verPerfilPonente">
                                                                 <i class="far fa-user mr-1"></i> Ver Perfil</button>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <h5> <i class="fas fa-key"></i> Clave: <span class="small">{{claveCurso}}</span>
+                                                    <h5> <i class="fas fa-key"></i> Clave: <span
+                                                            class="small">{{claveCurso}}</span>
                                                         <a href="#" class="btn  btn-rounded btn-sm btn-success small">
                                                             <i class="far fa-copy mr-1"></i>Copiar</a>
                                                     </h5>
-                                                </div> 
+                                                </div>
                                             </div>
                                             <h6 class="ml-2 mr-2 mt-3 text-center">
-                                                <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">{{areaCurso}}</span>
-                                                <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">{{tipoCurso}}</span>
-                                                <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">{{modalidadCurso}}</span>
+                                                <i class="fas fa-briefcase mr-1"> </i> Area: <span
+                                                    class="small mr-2">{{areaCurso}}</span>
+                                                <i class="far fa-circle mr-1"></i> Tipo: <span
+                                                    class="small mr-2">{{tipoCurso}}</span>
+                                                <i class="fas fa-video mr-1"></i> Modalidad: <span
+                                                    class="small mr-2">{{modalidadCurso}}</span>
                                             </h6>
                                         </div>
                                     </div>
@@ -892,7 +749,8 @@
                             </div>
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
-                                    <h4 class="card-title"><i class="fas fa-stream mr-2" aria-hidden="true"></i>Detalles del Curso</h4>
+                                    <h4 class="card-title"><i class="fas fa-stream mr-2" aria-hidden="true"></i>Detalles
+                                        del Curso</h4>
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -901,9 +759,12 @@
                                         </div>
                                         <div class="col-md-6">
                                             <h5><i class="fas fa-list-alt ml-2 mr-2"></i>Temario</h5>
-                                            <p>Consulta el temario del curso y conoce la ruta de aprendizaje que tu sindicato ha preparado para ti:
-                                                <span><a href="../DescargarTemario/{{idCurso}}" class="btn btn-rounded btn-sm btn-success small ml-2">
-                                                <i class="fas fa-external-link-alt mr-1"></i> Ver Temario</a></span>
+                                            <p>Consulta el temario del curso y conoce la ruta de aprendizaje que tu
+                                                sindicato ha preparado para ti:
+                                                <span><a href="../DescargarTemario/{{idCurso}}"
+                                                        class="btn btn-rounded btn-sm btn-success small ml-2">
+                                                        <i class="fas fa-external-link-alt mr-1"></i> Ver
+                                                        Temario</a></span>
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -911,16 +772,20 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="d-flex align-items-center">
                                                     {{#ifEquals plataformaCurso "Microsoft Teams"}}
-                                                    <img src="../../assets/images/teams.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                                    <img src="../../assets/images/teams.png" width="100"
+                                                        class="ml-4 mr-4" alt="plataforma">
                                                     {{/ifEquals}}
                                                     {{#ifEquals plataformaCurso "Youtube"}}
-                                                    <img src="../../assets/images/Youtube.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                                    <img src="../../assets/images/Youtube.png" width="100"
+                                                        class="ml-4 mr-4" alt="plataforma">
                                                     {{/ifEquals}}
                                                     {{#ifEquals plataformaCurso "Google Meet"}}
-                                                    <img src="../../assets/images/Google_Meet.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                                    <img src="../../assets/images/Google_Meet.png" width="100"
+                                                        class="ml-4 mr-4" alt="plataforma">
                                                     {{/ifEquals}}
                                                     {{#ifEquals plataformaCurso "Zoom"}}
-                                                    <img src="../../assets/images/zoom.png" width="100" class="ml-4 mr-4" alt="plataforma">
+                                                    <img src="../../assets/images/zoom.png" width="100"
+                                                        class="ml-4 mr-4" alt="plataforma">
                                                     {{/ifEquals}}
                                                     <h4>{{plataformaCurso}}</h4>
                                                 </div>
@@ -934,19 +799,23 @@
                         <div class="col-md-3">
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body p-3">
-                                    <h3 class="text-center">Inscripciones <span class="small">({{estadoInscripcionesCurso}})</span></h3>
-                                    <h5 class="ml-2 mr-2"><i class="fas fa-users mr-1"></i> Alumnos Inscritos: <span class="small ">{{totalEstudiantesCurso}}</span></h5>
-                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i>Inicio: <span class="small ">{{fechaInscripcionInicioCurso}}</span></h5>
-                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i>Fin: <span class="small ">{{fechaInscripcionFinalCurso}}</span></h5>
+                                    <h3 class="text-center">Inscripciones <span
+                                            class="small">({{estadoInscripcionesCurso}})</span></h3>
+                                    <h5 class="ml-2 mr-2"><i class="fas fa-users mr-1"></i> Alumnos Inscritos: <span
+                                            class="small ">{{totalEstudiantesCurso}}</span></h5>
+                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i>Inicio: <span
+                                            class="small ">{{fechaInscripcionInicioCurso}}</span></h5>
+                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i>Fin: <span
+                                            class="small ">{{fechaInscripcionFinalCurso}}</span></h5>
                                     {{#ifEquals estadoInscripcionesCurso "Abiertas"}}
-                                        <button type="button" class="btn btn-block btn-rounded btn-primary" 
-                                            data-toggle="modal" data-target="#inscribirseAhora">
+                                    <button type="button" class="btn btn-block btn-rounded btn-primary"
+                                        data-toggle="modal" data-target="#inscribirseAhora">
                                         <i class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora</button>
                                     {{/ifEquals}}
                                     {{#ifEquals estadoInscripcionesCurso "Cerradas"}}
-                                        <!--FALTAAGREGAR Modal pidiendo perdón por que el curso ya no esta disponible-->
-                                        <a href="#" type="button" class="btn btn-block btn-rounded btn-primary disabled" 
-                                            data-toggle="modal">
+                                    <!--FALTAAGREGAR Modal pidiendo perdón por que el curso ya no esta disponible-->
+                                    <a href="#" type="button" class="btn btn-block btn-rounded btn-primary disabled"
+                                        data-toggle="modal">
                                         <i class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora</a>
                                     {{/ifEquals}}
                                 </div>
@@ -954,9 +823,12 @@
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body p-3">
                                     <h3 class="text-center">Horario </h3>
-                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small">{{fechaInicioCurso}}</span></h5>
-                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small">{{fechaFinalCurso}}</span></h5>                          
-                                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
+                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span
+                                            class="small">{{fechaInicioCurso}}</span></h5>
+                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
+                                            class="small">{{fechaFinalCurso}}</span></h5>
+                                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span
+                                            class="small">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
                                 </div>
                             </div>
                             {{/curso}}
@@ -964,9 +836,11 @@
                                 <div class="card-body p-3">
                                     <h3>¿Existe algún problema?</h3>
                                     <p class="font-14">!Háznoslo saber! </p>
-                                    <a href="" type="button" class="btn btn-danger disabled" data-toggle="modal" data-target="#reportarProblema">
+                                    <a href="" type="button" class="btn btn-danger disabled" data-toggle="modal"
+                                        data-target="#reportarProblema">
                                         <!--FALTAAGREGAR FUNCIONALIDAD-->
-                                        <i class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema</a>
+                                        <i class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -975,14 +849,16 @@
                 <!-- vista Interna-->
                 <div id="vistaInterna" class="tab-pane">
                     <div class="row">
-                        <div class="col-md-9"> <!--Centro-->
+                        <div class="col-md-9">
+                            <!--Centro-->
                             {{#curso}}
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <!-- FALTAAGREGAR <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" alt="Imgagen del curso">-->
-                                            <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen del curso">
+                                            <img class="card-img img-responsive" style="border-radius: 8px;"
+                                                src="../../assets/images/cursoImg1.JPG" alt="Imgagen del curso">
                                         </div>
                                         <div class="col-md-9">
                                             <h2>{{nombreCurso}}</h2>
@@ -990,37 +866,47 @@
                                                 <div class="col-md-7 d-flex no-block align-items-center">
                                                     <div class="mr-2">
                                                         <!--FALTAAGREGAR <img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" alt="ponente" class="rounded-circle" width="45">-->
-                                                        <img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45">
+                                                        <img src="../../assets/images/users/d1.jpg" alt="user"
+                                                            class="rounded-circle" width="45">
                                                     </div>
                                                     <div>
-                                                        <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5><span>{{areaPonente}}</span>
+                                                        <h5 class="mb-0 font-16 font-medium">{{nombrePonente}}</h5>
+                                                        <span>{{areaPonente}}</span>
                                                         <span>
-                                                            <button class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#verPerfilPonente">
+                                                            <button class="btn  btn-rounded btn-sm btn-success small"
+                                                                data-toggle="modal" data-target="#verPerfilPonente">
                                                                 <i class="far fa-user mr-1"></i> Ver Perfil</button>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <h5> <i class="fas fa-key"></i> Clave: <span class="small">{{claveCurso}}</span>
+                                                    <h5> <i class="fas fa-key"></i> Clave: <span
+                                                            class="small">{{claveCurso}}</span>
                                                         <a href="#" class="btn  btn-rounded btn-sm btn-success small">
                                                             <i class="far fa-copy mr-1"></i>Copiar</a>
                                                     </h5>
-                                                </div> 
+                                                </div>
                                             </div>
                                             <h5 class="mt-2 text-center">
-                                                <i class="fas fa-users mr-2"></i>Alumnos inscritos: <span class="small mr-1">{{totalEstudiantesCurso}}</span>
+                                                <i class="fas fa-users mr-2"></i>Alumnos inscritos: <span
+                                                    class="small mr-1">{{totalEstudiantesCurso}}</span>
                                                 <!-- FALTAAGREGAR Descargar Temario del curso-->
-                                                <i class="fas fa-list-alt ml-4 mr-2"></i>Temario:<a href="/estudiante/DescargarTemario/{{idCurso}}" class="btn  btn-rounded btn-sm btn-success small ml-1">
+                                                <i class="fas fa-list-alt ml-4 mr-2"></i>Temario:<a
+                                                    href="/estudiante/DescargarTemario/{{idCurso}}"
+                                                    class="btn  btn-rounded btn-sm btn-success small ml-1">
                                                     <i class="fas fa-download mr-2"></i>Descargar</a>
                                             </h5>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center">
                                         <h6 class="ml-2 mr-2 mt-2">
-                                            <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">{{areaCurso}}</span>
-                                            <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">{{tipoCurso}}</span>
-                                            <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">{{modalidadCurso}}</span>
+                                            <i class="fas fa-briefcase mr-1"> </i> Area: <span
+                                                class="small mr-2">{{areaCurso}}</span>
+                                            <i class="far fa-circle mr-1"></i> Tipo: <span
+                                                class="small mr-2">{{tipoCurso}}</span>
+                                            <i class="fas fa-video mr-1"></i> Modalidad: <span
+                                                class="small mr-2">{{modalidadCurso}}</span>
                                         </h6>
                                     </div>
                                 </div>
@@ -1029,21 +915,28 @@
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
                                     <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item"> <a class="nav-link active" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#home" role="tab">
-                                            <span class="hidden-sm-up"><i class="fas fa-align-justify"></i></span> 
-                                            <span class="hidden-xs-down">Historial</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#avisos" role="tab">
-                                            <span class="hidden-sm-up"><i class="fas fa-envelope-open-text"></i></span> 
-                                            <span class="hidden-xs-down">Avisos</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#asignaciones" role="tab">
-                                            <span class="hidden-sm-up"><i class="fas fa-book-reader"></i></span> 
-                                            <span class="hidden-xs-down">Asignaciones</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#recursos" role="tab">
-                                            <span class="hidden-sm-up"><i class="fas fa-folder-open"></i></span> 
-                                            <span class="hidden-xs-down">Recursos</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);" data-toggle="tab" href="#examenes" role="tab">
-                                            <span class="hidden-sm-up"><i class="fas fa-chalkboard"></i></span> 
-                                            <span class="hidden-xs-down">Examenes</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link active"
+                                                style="color: rgb(62, 85, 105);" data-toggle="tab" href="#home"
+                                                role="tab">
+                                                <span class="hidden-sm-up"><i class="fas fa-align-justify"></i></span>
+                                                <span class="hidden-xs-down">Historial</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);"
+                                                data-toggle="tab" href="#avisos" role="tab">
+                                                <span class="hidden-sm-up"><i
+                                                        class="fas fa-envelope-open-text"></i></span>
+                                                <span class="hidden-xs-down">Avisos</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);"
+                                                data-toggle="tab" href="#asignaciones" role="tab">
+                                                <span class="hidden-sm-up"><i class="fas fa-book-reader"></i></span>
+                                                <span class="hidden-xs-down">Asignaciones</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);"
+                                                data-toggle="tab" href="#recursos" role="tab">
+                                                <span class="hidden-sm-up"><i class="fas fa-folder-open"></i></span>
+                                                <span class="hidden-xs-down">Recursos</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" style="color: rgb(62, 85, 105);"
+                                                data-toggle="tab" href="#examenes" role="tab">
+                                                <span class="hidden-sm-up"><i class="fas fa-chalkboard"></i></span>
+                                                <span class="hidden-xs-down">Examenes</span></a> </li>
                                     </ul>
                                     <div class="tab-content tabcontent-border">
                                         <!--Panel de todos-->
@@ -1052,125 +945,165 @@
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <a class="navbar-brand">Historial de avisos y asignaciones</a>
                                                 <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fas fa-search mr-2"></i> Buscar</button>
+                                                    <input class="form-control mr-sm-2" type="search"
+                                                        placeholder="Buscar" aria-label="Search">
+                                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
+                                                            class="fas fa-search mr-2"></i> Buscar</button>
                                                 </form>
                                             </nav>
                                             {{#each publicacionesCurso}}
-                                                {{#ifEquals tipoPublicacion "1"}}
-                                                <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-12 d-flex no-block align-items-center">
-                                                                <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45">
-                                                                </div>
-                                                                <div>
-                                                                    <h5 class="mb-0 font-16">{{nombrePonente}}<span class="small ml-2">publicó para:</span></h5>
-                                                                    <h5 class="font-medium">{{nombreCurso}}</h5>
-                                                                </div>
-                                                                <div class="col-md-3 text-right">
-                                                                    <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small disabled" data-toggle="modal" data-target="#editarAviso">
-                                                                        <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                                </div>
+                                            {{#ifEquals tipoPublicacion "1"}}
+                                            <div class="card card-hover mt-3"
+                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12 d-flex no-block align-items-center">
+                                                            <div class="mr-2"><img
+                                                                    src="../../assets/images/users/d1.jpg" alt="user"
+                                                                    class="rounded-circle" width="45">
                                                             </div>
-                                                            <div class="col-md-12">
-                                                                <h4 class="ml-3 mt-3">{{textoAviso}}</h4>
-                                                                <h5 class="font-light text-right mt-2">
-                                                                    <i class="fas fa-calendar-alt ml-2"></i> {{fechaAviso}} 
-                                                                    <i class="fas fa-clock"></i> {{horaAviso}}
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {{/ifEquals}}
-                                                {{#ifEquals tipoPublicacion "2"}}
-                                                <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-7">
-                                                                <h4><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h4>
-                                                            </div>
-                                                            <div class="col-md-5 text-right">
-                                                                {{#ifEquals estadoTarea "Abierta"}}
-                                                                <span class="mb-3 label  label-info mr-2">Abierta</span>
-                                                                <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success disabled" data-toggle="modal" data-target="#editarTarea">
-                                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                                <span class="small"><a href="/ponente/CalificarTarea/{{idTarea}}" class="btn  btn-rounded btn-sm btn-warning small">
-                                                                    <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
-                                                                {{/ifEquals}}
-                                                                {{#ifEquals estadoTarea "Cerrada"}}
-                                                                <span class="label bg-dark mr-2">Cerrada</span>
-                                                                <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small disabled" data-toggle="modal" data-target="#editarTarea">
-                                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                                <span class="small"><a href="/ponente/CalificarTarea/{{idTarea}}" class="btn  btn-rounded btn-sm btn-warning small disabled">
-                                                                    <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
-                                                                {{/ifEquals}}
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <p class="ml-2 mt-2">{{descripcionTarea}}</p>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                {{#if totalArchivos}}
-                                                                <h6 class="font-weight-normal">
-                                                                    <i class="fas fa-paperclip mr-2"></i>Archivos adjuntos  
-                                                                    <span class="font-weight-bold mt-2">({{totalArchivos}})</span>:
-                                                                </h6>
-                                                                {{#each ../archivosAsignacionesCurso}}
-                                                                    {{#ifEquals idTarea ../this.idTarea}}
-                                                                    <span class="small"><a href="/estudiante/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/" 
-                                                                        class="btn d-inline-block text-truncate btn-rounded btn-sm btn-success small mt-1" style="max-width: 150px;">
-                                                                        <i class="fas fa-download mr-2"></i>{{archivoNombre}} </a></span>
-                                                                    {{/ifEquals}}
-                                                                {{/each}}
-                                                                {{/if}}
-                                                            </div>
-                                                            <div class="col-md-6 text-right align-items-end mt-auto">
-                                                                <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> {{entregas}}</h5>
-                                                                <h5 class="font-light">Fecha Límite: 
-                                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}}
-                                                                <i class="fas fa-clock"></i> {{horaLimiteTarea}}</h5>
-                                                            </div>
-                                                        </div>  
-                                                    </div>
-                                                </div>
-                                                {{/ifEquals}}
-                                                {{#ifEquals tipoPublicacion "3"}}
-                                                <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-9">
-                                                                <h4><i class="fas fa-feather-alt mr-2"></i>{{nombreExamen}}</h4>
+                                                            <div>
+                                                                <h5 class="mb-0 font-16">{{nombrePonente}}<span
+                                                                        class="small ml-2">publicó para:</span></h5>
+                                                                <h5 class="font-medium">{{nombreCurso}}</h5>
                                                             </div>
                                                             <div class="col-md-3 text-right">
-                                                                <span class="small">
-                                                                    <a href="#" class="btn  btn-rounded btn-sm btn-success small disabled"
-                                                                        data-toggle="modal" data-target="#editarExamen">
-                                                                        <i class="fas fa-pencil-alt mr-2"></i>Editar
-                                                                    </a>
-                                                                </span>
+                                                                <span class="small"><a href="#"
+                                                                        class="btn  btn-rounded btn-sm btn-success small disabled"
+                                                                        data-toggle="modal" data-target="#editarAviso">
+                                                                        <i
+                                                                            class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                             </div>
-                                                            <div class="col-md-12">
-                                                                <h6 class="font-medium ml-4">Fecha de aplicación: 
-                                                                    <span class="font-light "><i class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaPublicacionExamen}}
-                                                                    <i class="fas fa-clock ml-2 mr-2"></i>{{horaPublicacionExamen}}.</span>
-                                                                </h6>
-                                                                <h4 class="font-medium ml-4"><span class="small">Enlace hacia el examen:</span> 
-                                                                    <span><a href="{{linkExamen}}" class="btn btn-rounded btn-xs btn-success mr-2">
-                                                                    <i class="fas fa-external-link-alt mr-2"></i>Ir al examen</a></span>
-                                                                </h4>
-                                                                
-                                                            </div>
-                                                            <div class="col-md-12 text-right">
-                                                                <h5 class="font-light mt-2">
-                                                                    <i class="fas fa-calendar-alt ml-2" aria-hidden="true"></i> {{fechaAplicacionExamen}}
-                                                                    <i class="fas fa-clock" aria-hidden="true"></i> {{horaAplicacionExamen}}
-                                                                </h5>
-                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <h4 class="ml-3 mt-3">{{textoAviso}}</h4>
+                                                            <h5 class="font-light text-right mt-2">
+                                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaAviso}}
+                                                                <i class="fas fa-clock"></i> {{horaAviso}}
+                                                            </h5>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{/ifEquals}}
+                                            </div>
+                                            {{/ifEquals}}
+                                            {{#ifEquals tipoPublicacion "2"}}
+                                            <div class="card card-hover mt-3"
+                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            <h4><i class="fas fa-bookmark mr-2"></i>{{nombreTarea}}</h4>
+                                                        </div>
+                                                        <div class="col-md-5 text-right">
+                                                            {{#ifEquals estadoTarea "Abierta"}}
+                                                            <span class="mb-3 label  label-info mr-2">Abierta</span>
+                                                            <span class="small"><a href="#"
+                                                                    class="btn btn-rounded btn-sm btn-success disabled"
+                                                                    data-toggle="modal" data-target="#editarTarea">
+                                                                    <i
+                                                                        class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
+                                                            <span class="small"><a
+                                                                    href="/ponente/CalificarTarea/{{idTarea}}"
+                                                                    class="btn  btn-rounded btn-sm btn-warning small">
+                                                                    <i
+                                                                        class="fas fa-check-double mr-2"></i>Calificar</a></span>
+                                                            {{/ifEquals}}
+                                                            {{#ifEquals estadoTarea "Cerrada"}}
+                                                            <span class="label bg-dark mr-2">Cerrada</span>
+                                                            <span class="small"><a href="#"
+                                                                    class="btn  btn-rounded btn-sm btn-success small disabled"
+                                                                    data-toggle="modal" data-target="#editarTarea">
+                                                                    <i
+                                                                        class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
+                                                            <span class="small"><a
+                                                                    href="/ponente/CalificarTarea/{{idTarea}}"
+                                                                    class="btn  btn-rounded btn-sm btn-warning small disabled">
+                                                                    <i
+                                                                        class="fas fa-check-double mr-2"></i>Calificar</a></span>
+                                                            {{/ifEquals}}
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <p class="ml-2 mt-2">{{descripcionTarea}}</p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            {{#if totalArchivos}}
+                                                            <h6 class="font-weight-normal">
+                                                                <i class="fas fa-paperclip mr-2"></i>Archivos adjuntos
+                                                                <span
+                                                                    class="font-weight-bold mt-2">({{totalArchivos}})</span>:
+                                                            </h6>
+                                                            {{#each ../archivosAsignacionesCurso}}
+                                                            {{#ifEquals idTarea ../this.idTarea}}
+                                                            <span class="small"><a
+                                                                    href="/estudiante/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/"
+                                                                    class="btn d-inline-block text-truncate btn-rounded btn-sm btn-success small mt-1"
+                                                                    style="max-width: 150px;">
+                                                                    <i
+                                                                        class="fas fa-download mr-2"></i>{{archivoNombre}}
+                                                                </a></span>
+                                                            {{/ifEquals}}
+                                                            {{/each}}
+                                                            {{/if}}
+                                                        </div>
+                                                        <div class="col-md-6 text-right align-items-end mt-auto">
+                                                            <h5 class="font-light"> Entregas: <i
+                                                                    class="fas fa-users"></i> {{entregas}}</h5>
+                                                            <h5 class="font-light">Fecha Límite:
+                                                                <i class="fas fa-calendar-alt ml-2"></i>
+                                                                {{fechaLimiteTarea}}
+                                                                <i class="fas fa-clock"></i> {{horaLimiteTarea}}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/ifEquals}}
+                                            {{#ifEquals tipoPublicacion "3"}}
+                                            <div class="card card-hover mt-3"
+                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <h4><i class="fas fa-feather-alt mr-2"></i>{{nombreExamen}}
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-md-3 text-right">
+                                                            <span class="small">
+                                                                <a href="#"
+                                                                    class="btn  btn-rounded btn-sm btn-success small disabled"
+                                                                    data-toggle="modal" data-target="#editarExamen">
+                                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <h6 class="font-medium ml-4">Fecha de aplicación:
+                                                                <span class="font-light "><i
+                                                                        class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaPublicacionExamen}}
+                                                                    <i
+                                                                        class="fas fa-clock ml-2 mr-2"></i>{{horaPublicacionExamen}}.</span>
+                                                            </h6>
+                                                            <h4 class="font-medium ml-4"><span class="small">Enlace
+                                                                    hacia el examen:</span>
+                                                                <span><a href="{{linkExamen}}"
+                                                                        class="btn btn-rounded btn-xs btn-success mr-2">
+                                                                        <i class="fas fa-external-link-alt mr-2"></i>Ir
+                                                                        al examen</a></span>
+                                                            </h4>
+
+                                                        </div>
+                                                        <div class="col-md-12 text-right">
+                                                            <h5 class="font-light mt-2">
+                                                                <i class="fas fa-calendar-alt ml-2"
+                                                                    aria-hidden="true"></i> {{fechaAplicacionExamen}}
+                                                                <i class="fas fa-clock" aria-hidden="true"></i>
+                                                                {{horaAplicacionExamen}}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/ifEquals}}
                                             {{/each}}
                                         </div>
                                         <!--Panel de avisos-->
@@ -1179,32 +1112,43 @@
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <a class="navbar-brand">Historial de avisos</a>
                                                 <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fas fa-search mr-2"></i>Buscar</button>
-                                                    <button type="button" class="btn btn-info disabled" data-toggle="modal" data-target="#agregarAviso"><i class="fas fa-plus mr-2"></i>Agregar Aviso</button>
+                                                    <input class="form-control mr-sm-2" type="search"
+                                                        placeholder="Buscar" aria-label="Search">
+                                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
+                                                            class="fas fa-search mr-2"></i>Buscar</button>
+                                                    <button type="button" class="btn btn-info disabled"
+                                                        data-toggle="modal" data-target="#agregarAviso"><i
+                                                            class="fas fa-plus mr-2"></i>Agregar Aviso</button>
                                                 </form>
                                             </nav>
                                             <!--Avisos-->
                                             {{#each avisosCurso}}
-                                            <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                            <div class="card card-hover mt-3"
+                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12 d-flex no-block align-items-center">
-                                                            <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45">
+                                                            <div class="mr-2"><img
+                                                                    src="../../assets/images/users/d1.jpg" alt="user"
+                                                                    class="rounded-circle" width="45">
                                                             </div>
                                                             <div>
-                                                                <h5 class="mb-0 font-16">{{nombrePonente}}<span class="small ml-2">publicó para:</span></h5>
+                                                                <h5 class="mb-0 font-16">{{nombrePonente}}<span
+                                                                        class="small ml-2">publicó para:</span></h5>
                                                                 <h5 class="font-medium">{{nombreCurso}}</h5>
                                                             </div>
                                                             <div class="col-md-3 text-right">
-                                                                <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small disabled" data-toggle="modal" data-target="#editarAviso">
-                                                                    <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
+                                                                <span class="small"><a href="#"
+                                                                        class="btn  btn-rounded btn-sm btn-success small disabled"
+                                                                        data-toggle="modal" data-target="#editarAviso">
+                                                                        <i
+                                                                            class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <h4 class="ml-3 mt-3">{{textoAviso}}</h4>
                                                             <h5 class="font-light text-right mt-2">
-                                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaAviso}} 
+                                                                <i class="fas fa-calendar-alt ml-2"></i> {{fechaAviso}}
                                                                 <i class="fas fa-clock"></i> {{horaAviso}}
                                                             </h5>
                                                         </div>
@@ -1219,14 +1163,19 @@
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <a class="navbar-brand">Historial de asignaciones</a>
                                                 <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fas fa-search mr-2"></i> Buscar</button>
-                                                    <button type="button" class="btn btn-info disabled" data-toggle="modal" data-target="#agregarTarea"><i class="fas fa-plus mr-2"></i>Agregar Asignación</button>
+                                                    <input class="form-control mr-sm-2" type="search"
+                                                        placeholder="Buscar" aria-label="Search">
+                                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
+                                                            class="fas fa-search mr-2"></i> Buscar</button>
+                                                    <button type="button" class="btn btn-info disabled"
+                                                        data-toggle="modal" data-target="#agregarTarea"><i
+                                                            class="fas fa-plus mr-2"></i>Agregar Asignación</button>
                                                 </form>
                                             </nav>
                                             <!--Asignaciones-->
                                             {{#each asignacionesCurso}}
-                                            <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                            <div class="card card-hover mt-3"
+                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-7">
@@ -1235,15 +1184,23 @@
                                                         <div class="col-md-5 text-right">
                                                             {{#ifEquals estadoTarea "Abierta"}}
                                                             <span class="mb-3 label  label-info mr-2">Abierta</span>
-                                                            <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success" data-toggle="modal" data-target="#editarTarea">
-                                                                <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
+                                                            <span class="small"><a href="#"
+                                                                    class="btn btn-rounded btn-sm btn-success"
+                                                                    data-toggle="modal" data-target="#editarTarea">
+                                                                    <i
+                                                                        class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                             {{/ifEquals}}
                                                             {{#ifEquals estadoTarea "Cerrada"}}
                                                             <span class="label bg-dark mr-2">Cerrada</span>
-                                                            <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small disabled" data-toggle="modal" data-target="#editarTarea">
-                                                                <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                            <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-warning small disabled">
-                                                                <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
+                                                            <span class="small"><a href="#"
+                                                                    class="btn  btn-rounded btn-sm btn-success small disabled"
+                                                                    data-toggle="modal" data-target="#editarTarea">
+                                                                    <i
+                                                                        class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
+                                                            <span class="small"><a href="#"
+                                                                    class="btn  btn-rounded btn-sm btn-warning small disabled">
+                                                                    <i
+                                                                        class="fas fa-check-double mr-2"></i>Calificar</a></span>
                                                             {{/ifEquals}}
                                                         </div>
                                                         <div class="col-md-12">
@@ -1252,25 +1209,33 @@
                                                         <div class="col-md-6">
                                                             {{#if totalArchivos}}
                                                             <h6 class="font-weight-normal">
-                                                                <i class="fas fa-paperclip mr-2"></i>Archivos adjuntos  
-                                                                <span class="font-weight-bold mt-2">({{totalArchivos}})</span>:
+                                                                <i class="fas fa-paperclip mr-2"></i>Archivos adjuntos
+                                                                <span
+                                                                    class="font-weight-bold mt-2">({{totalArchivos}})</span>:
                                                             </h6>
                                                             {{#each ../archivosAsignacionesCurso}}
-                                                                {{#ifEquals idTarea ../this.idTarea}}
-                                                                <span class="small"><a href="/estudiante/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/" 
-                                                                    class="btn d-inline-block text-truncate btn-rounded btn-sm btn-success small mt-1" style="max-width: 150px;">
-                                                                    <i class="fas fa-download mr-2"></i>{{archivoNombre}} </a></span>
-                                                                {{/ifEquals}}
+                                                            {{#ifEquals idTarea ../this.idTarea}}
+                                                            <span class="small"><a
+                                                                    href="/estudiante/DescargarTareaCurso/{{idTarea}}/{{archivoNombre}}/"
+                                                                    class="btn d-inline-block text-truncate btn-rounded btn-sm btn-success small mt-1"
+                                                                    style="max-width: 150px;">
+                                                                    <i
+                                                                        class="fas fa-download mr-2"></i>{{archivoNombre}}
+                                                                </a></span>
+                                                            {{/ifEquals}}
                                                             {{/each}}
                                                             {{/if}}
                                                         </div>
                                                         <div class="col-md-6 text-right align-items-end mt-auto">
-                                                            <h5 class="font-light"> Entregas: <i class="fas fa-users"></i> {{entregas}}</h5>
-                                                            <h5 class="font-light">Fecha Límite: 
-                                                            <i class="fas fa-calendar-alt ml-2"></i> {{fechaLimiteTarea}}
-                                                            <i class="fas fa-clock"></i> {{horaLimiteTarea}}</h5>
+                                                            <h5 class="font-light"> Entregas: <i
+                                                                    class="fas fa-users"></i> {{entregas}}</h5>
+                                                            <h5 class="font-light">Fecha Límite:
+                                                                <i class="fas fa-calendar-alt ml-2"></i>
+                                                                {{fechaLimiteTarea}}
+                                                                <i class="fas fa-clock"></i> {{horaLimiteTarea}}
+                                                            </h5>
                                                         </div>
-                                                    </div>  
+                                                    </div>
                                                 </div>
                                             </div>
                                             {{/each}}
@@ -1282,11 +1247,19 @@
                                                 <a class="navbar-brand">Recursos del curso</a>
                                                 <form class="form-inline">
                                                     <ul class="nav nav-pills mr-2">
-                                                        <li class="nav-item"> <a href="#documentos" class="nav-link active" data-toggle="tab" aria-expanded="false">Documentos</a> </li>
-                                                        <li class="nav-item"> <a href="#enlaces" class="nav-link" data-toggle="tab" aria-expanded="false">Enlaces</a> </li>
+                                                        <li class="nav-item"> <a href="#documentos"
+                                                                class="nav-link active" data-toggle="tab"
+                                                                aria-expanded="false">Documentos</a> </li>
+                                                        <li class="nav-item"> <a href="#enlaces" class="nav-link"
+                                                                data-toggle="tab" aria-expanded="false">Enlaces</a>
+                                                        </li>
                                                     </ul>
-                                                    <button type="button" class="btn btn-info mr-2 disabled" data-toggle="modal" data-target="#agregarArchivos"><i class="fas fa-plus mr-2"></i>Agregar Documento</button>
-                                                    <button type="button" class="btn btn-info disabled" data-toggle="modal" data-target="#agregarEnlace"><i class="fas fa-plus mr-2"></i>Agregar Enlace</button>
+                                                    <button type="button" class="btn btn-info mr-2 disabled"
+                                                        data-toggle="modal" data-target="#agregarArchivos"><i
+                                                            class="fas fa-plus mr-2"></i>Agregar Documento</button>
+                                                    <button type="button" class="btn btn-info disabled"
+                                                        data-toggle="modal" data-target="#agregarEnlace"><i
+                                                            class="fas fa-plus mr-2"></i>Agregar Enlace</button>
                                                 </form>
                                             </nav>
                                             <!--contenido-->
@@ -1296,28 +1269,54 @@
                                                         <div class="col-md-12">
                                                             <div class="card">
                                                                 <div class="card-header bg-info">
-                                                                    <h4 class="mb-0 text-white"><i class="fas fa-book"></i> Docuementos <span class="small">({{totalDocumentos}})</span></h4>
+                                                                    <h4 class="mb-0 text-white"><i
+                                                                            class="fas fa-book"></i> Docuementos <span
+                                                                            class="small">({{totalDocumentos}})</span>
+                                                                    </h4>
                                                                 </div>
-                                                                <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:350px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+                                                                <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
+                                                                    style="height:350px;"
+                                                                    data-ps-id="96370757-1752-5407-955d-d2618da54798">
                                                                     {{#each documentosCurso}}
                                                                     <div class="d-flex flex-row comment-row mt-0">
                                                                         <div class="comment-text w-100">
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <h6><i class="fas fa-file-alt mr-2"></i> <span class="font-weight-normal">{{nombreDocumento}}</span></h6>
+                                                                                    <h6><i
+                                                                                            class="fas fa-file-alt mr-2"></i>
+                                                                                        <span
+                                                                                            class="font-weight-normal">{{nombreDocumento}}</span>
+                                                                                    </h6>
                                                                                 </div>
                                                                                 <div class="col-md-6 text-right">
-                                                                                    <a href="/ponente/DescargarArchivoCurso/{{idCurso}}/{{nombreDocumento}}" class="btn btn-rounded btn-xs btn-info mr-2">
-                                                                                        <i class="fas fa-download mr-2"></i>Descargar</a>
-                                                                                        <button class="btn btn-rounded btn-xs btn-danger small disabled" data-toggle="modal" data-target="#eliminarArchivo">
-                                                                                            <i class="fas fa-times mr-2"></i> Eliminar
-                                                                                        </button>
+                                                                                    <a href="/ponente/DescargarArchivoCurso/{{idCurso}}/{{nombreDocumento}}"
+                                                                                        class="btn btn-rounded btn-xs btn-info mr-2">
+                                                                                        <i
+                                                                                            class="fas fa-download mr-2"></i>Descargar</a>
+                                                                                    <button
+                                                                                        class="btn btn-rounded btn-xs btn-danger small disabled"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#eliminarArchivo">
+                                                                                        <i
+                                                                                            class="fas fa-times mr-2"></i>
+                                                                                        Eliminar
+                                                                                    </button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     {{/each}}
-                                                                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                                                                    <div class="ps-scrollbar-x-rail"
+                                                                        style="left: 0px; bottom: 0px;">
+                                                                        <div class="ps-scrollbar-x" tabindex="0"
+                                                                            style="left: 0px; width: 0px;"></div>
+                                                                    </div>
+                                                                    <div class="ps-scrollbar-y-rail"
+                                                                        style="top: 0px; right: 3px; height: 0px;">
+                                                                        <div class="ps-scrollbar-y" tabindex="0"
+                                                                            style="top: 0px; height: 0px;"></div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1327,27 +1326,51 @@
                                                         <div class="col-lg-12">
                                                             <div class="card">
                                                                 <div class="card-header bg-primary">
-                                                                    <h4 class="mb-0 text-white"><i class="fas fa-link"></i> Links <span class="small">(4)</span></h4>
+                                                                    <h4 class="mb-0 text-white"><i
+                                                                            class="fas fa-link"></i> Links <span
+                                                                            class="small">(4)</span></h4>
                                                                 </div>
-                                                                <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:350px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
+                                                                <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y"
+                                                                    style="height:350px;"
+                                                                    data-ps-id="96370757-1752-5407-955d-d2618da54798">
                                                                     {{#each linksCurso}}
                                                                     <div class="d-flex flex-row comment-row mt-0">
                                                                         <div class="comment-text w-100">
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <h6><i class=" fas fa-link mr-2"></i><span class="font-weight-normal">{{nombreLink}}</span></h6>
+                                                                                    <h6><i
+                                                                                            class=" fas fa-link mr-2"></i><span
+                                                                                            class="font-weight-normal">{{nombreLink}}</span>
+                                                                                    </h6>
                                                                                 </div>
                                                                                 <div class="col-md-6 text-right">
-                                                                                    <a href="{{linkLink}}" class="btn btn-rounded btn-xs btn-info mr-2">
-                                                                                        <i class="fas fa-external-link-alt mr-2"></i>Ir al enlace</a>
-                                                                                    <a href="#" class="btn btn-rounded btn-xs btn-success mr-2 disabled" data-toggle="modal" data-target="#editarEnlace">
-                                                                                        <i class="fas fa-pencil-alt mr-2"></i>Editar</a>
+                                                                                    <a href="{{linkLink}}"
+                                                                                        class="btn btn-rounded btn-xs btn-info mr-2">
+                                                                                        <i
+                                                                                            class="fas fa-external-link-alt mr-2"></i>Ir
+                                                                                        al enlace</a>
+                                                                                    <a href="#"
+                                                                                        class="btn btn-rounded btn-xs btn-success mr-2 disabled"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#editarEnlace">
+                                                                                        <i
+                                                                                            class="fas fa-pencil-alt mr-2"></i>Editar</a>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     {{/each}}
-                                                                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                                                                    <div class="ps-scrollbar-x-rail"
+                                                                        style="left: 0px; bottom: 0px;">
+                                                                        <div class="ps-scrollbar-x" tabindex="0"
+                                                                            style="left: 0px; width: 0px;"></div>
+                                                                    </div>
+                                                                    <div class="ps-scrollbar-y-rail"
+                                                                        style="top: 0px; right: 3px; height: 0px;">
+                                                                        <div class="ps-scrollbar-y" tabindex="0"
+                                                                            style="top: 0px; height: 0px;"></div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1360,8 +1383,8 @@
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <a class="navbar-brand">Examenes</a>
                                                 <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
-                                                        aria-label="Search">
+                                                    <input class="form-control mr-sm-2" type="search"
+                                                        placeholder="Buscar" aria-label="Search">
                                                     <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
                                                             class="fas fa-search mr-2"></i> Buscar</button>
                                                     <button type="button" class="btn btn-info disabled"
@@ -1371,35 +1394,45 @@
                                             </nav>
                                             <!--cartasExamenes-->
                                             {{#each examenesCurso}}
-                                            <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                            <div class="card card-hover mt-3"
+                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-9">
-                                                            <h4><i class="fas fa-feather-alt mr-2"></i>{{nombreExamen}}</h4>
+                                                            <h4><i class="fas fa-feather-alt mr-2"></i>{{nombreExamen}}
+                                                            </h4>
                                                         </div>
                                                         <div class="col-md-3 text-right">
                                                             <span class="small">
-                                                                <a href="#" class="btn  btn-rounded btn-sm btn-success small disabled"
+                                                                <a href="#"
+                                                                    class="btn  btn-rounded btn-sm btn-success small disabled"
                                                                     data-toggle="modal" data-target="#editarExamen">
                                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar
                                                                 </a>
                                                             </span>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <h6 class="font-medium ml-4">Fecha de aplicación: 
-                                                                <span class="font-light "><i class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaPublicacionExamen}}
-                                                                <i class="fas fa-clock ml-2 mr-2"></i>{{horaPublicacionExamen}}.</span>
+                                                            <h6 class="font-medium ml-4">Fecha de aplicación:
+                                                                <span class="font-light "><i
+                                                                        class="fas fa-calendar-alt ml-2 mr-2"></i>{{fechaPublicacionExamen}}
+                                                                    <i
+                                                                        class="fas fa-clock ml-2 mr-2"></i>{{horaPublicacionExamen}}.</span>
                                                             </h6>
-                                                            <h4 class="font-medium ml-4"><span class="small">Enlace hacia el examen:</span> 
-                                                                <span><a href="{{linkExamen}}" class="btn btn-rounded btn-xs btn-success mr-2">
-                                                                <i class="fas fa-external-link-alt mr-2"></i>Ir al examen</a></span>
+                                                            <h4 class="font-medium ml-4"><span class="small">Enlace
+                                                                    hacia el examen:</span>
+                                                                <span><a href="{{linkExamen}}"
+                                                                        class="btn btn-rounded btn-xs btn-success mr-2">
+                                                                        <i class="fas fa-external-link-alt mr-2"></i>Ir
+                                                                        al examen</a></span>
                                                             </h4>
-                                                            
+
                                                         </div>
                                                         <div class="col-md-12 text-right">
                                                             <h5 class="font-light mt-2">
-                                                                <i class="fas fa-calendar-alt ml-2" aria-hidden="true"></i> {{fechaAplicacionExamen}}
-                                                                <i class="fas fa-clock" aria-hidden="true"></i> {{horaAplicacionExamen}}
+                                                                <i class="fas fa-calendar-alt ml-2"
+                                                                    aria-hidden="true"></i> {{fechaAplicacionExamen}}
+                                                                <i class="fas fa-clock" aria-hidden="true"></i>
+                                                                {{horaAplicacionExamen}}
                                                             </h5>
                                                         </div>
                                                     </div>
@@ -1411,14 +1444,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3"><!--Segunda columna-->
+                        <div class="col-md-3">
+                            <!--Segunda columna-->
                             {{#curso}}
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
                                     <h3 class="text-center">Horario </h3>
-                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small ">{{fechaInicioCurso}}</span></h5>
-                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">{{fechaFinalCurso}}</span></h5>                          
-                                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5> 
+                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Inicio: <span
+                                            class="small ">{{fechaInicioCurso}}</span></h5>
+                                    <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span
+                                            class="small ">{{fechaFinalCurso}}</span></h5>
+                                    <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span
+                                            class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
                                     <div class="col mt-2 text-center">
                                         <a href="#" class="btn  btn-rounded btn-sm btn-success small ml-2">
                                             <i class="fas fa-external-link-alt mr-1"></i> Ir a Clase</a>
@@ -1433,7 +1470,8 @@
                                     <h3>¿Existe algún problema?</h3>
                                     <p class="font-14">!Háznoslo saber! </p>
                                     <a href="" type="button" class="btn btn-danger disabled" data-toggle="modal"
-                                            data-target="#reportarProblema"><i class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema</a>
+                                        data-target="#reportarProblema"><i
+                                            class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema</a>
                                 </div>
                             </div>
                         </div>

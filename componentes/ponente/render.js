@@ -11,13 +11,16 @@ module.exports = {
         const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         const totalCursosActuales = cursosActuales.length;
         const totalCursosHistorial = historialCursosPonente.length;
-        const datosGeneralesPonente = await Controller.getDatosGeneralesPonente(usuarioID);
+        const respuestaDatosGeneralesPonente = await Controller.catalogDatosGeneralesPonente(usuarioID);
+        const datosGeneralesPonente = respuestaDatosGeneralesPonente[0];
         const nombresCursosActualesPonente = await Controller.getNombresCursosActualesPonente(usuarioID);
         const fechaActual = await Controller.getTiempoActual();
         const miPerfil = await Controller.getMiPerfil(usuarioID);
         const asignacionesPendientes = await Controller.listAsignacionesPendientesPonente(usuarioID);
+        const mensaje = await Controller.getMensajeBienvenida();
         res.render('ponente/p1_dashboard', {
             ponente: true,
+            graficasPonente: true,
             cursosActuales,
             historialCursosPonente,
             totalCursosActuales,
@@ -26,7 +29,8 @@ module.exports = {
             nombresCursosActualesPonente,
             fechaActual,
             miPerfil,
-            asignacionesPendientes
+            asignacionesPendientes,
+            mensaje
         });
     },
     
@@ -96,7 +100,7 @@ module.exports = {
             req.body.asuntoProblema,
             req.body.descripcionProblema
         );
-        //de donde se manda llamar?, para dirigirlo allí
+        res.redirect('/soporte');
     },
 
     postAgregarAviso: async function (req, res, next) {
@@ -187,6 +191,7 @@ module.exports = {
 
 
     getConsultarEstadoCursoPonente: async function (req, res, next){
+        console.log('entre')
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
         const respuestaEstadoCursoPonente = await Controller.getConsultarEstadoCursoPonente(usuarioID, cursoID);
@@ -201,7 +206,7 @@ module.exports = {
                 break;
 
             case 'Curso Pasado':
-                res.render('ponente/p2_consultarCursoE2_v2', {
+                res.render('ponente/p2_consultarCursoE2', {
                     ponente:true,
                     miPerfil
                 });
@@ -249,13 +254,19 @@ module.exports = {
     },
 
     getConsultarCursos: async function(req, res, next){
+        const usuarioID = (req.user.id);
         const miPerfil = await Controller.getMiPerfil(req.user.id);
+        const historialCursosPonente = await Controller.getHistorialCursosPonente(usuarioID);
         res.render('ponente/p5_misCursos',{
             ponente: true,
-            miPerfil
+            dataTables: true,
+            miPerfil,
+            historialCursosPonente,
+            miPerfil,
             /* datos del usuario */
         })
     }
+
 
     /* getAgregarTarea: async function(req, res, next){
         res.render('speaker/AgregarTarea')

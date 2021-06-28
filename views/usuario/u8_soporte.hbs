@@ -1,4 +1,51 @@
 <div class="container-fluid">
+    {{!-- modales --}}
+    <div id="reportarProblema" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h4>Reportar problema</h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        {{#if estudiante}}
+                        <form action="/estudiante/reportarProblemaUsuario" method="post">
+                        {{else}}
+                        <form action="/ponente/reportarProblemaUsuario" method="post">
+                        {{/if}}
+                            <input id="idCurso" value='req.params.idCurso' hidden>
+                            <div class="col-md-12 mt-2">
+                                <h6 class="mb-0 font-medium mt-2"><i class="fas fa-highlighter mr-2"></i>Asunto del problema </h6>
+                                <input class="form-control form-control-lg font-14" type="text" required=" "
+                                    placeholder="Escribe el asunto del problema" alt="Asunto del problema"
+                                    id="asuntoProblema" name="asuntoProblema">
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <h6 class="mb-0 font-medium mt-2"><i class="fas fa-signature mr-2"></i>Descripcion</h6>
+                                <textarea class="col-sm-12 col-md-12 col-lg-12 font-14" id="descripcionProblema"
+                                    placeholder="Describe la situacion del problema" name="descripcionProblema"
+                                    cols="60" rows="3"></textarea>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-info waves-effect text-left mt-1"><i class="fas fa-paper-plane mr-2"></i>Enviar reporte</button>
+                                <button type="button" class="btn btn-secondary mt-1" data-dismiss="modal"> <i class="fas fa-times mr-2"></i>Cancelar</button>
+                            </div>
+                            <input type="hidden" name="idCurso" value="{{curso.idCurso}}">
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- terminan modales --}}
     <div class="row">
         <!--primera columna-->
         <div class="col-md-4">

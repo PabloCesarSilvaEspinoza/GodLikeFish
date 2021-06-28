@@ -7,41 +7,40 @@
                     <h3 class="card-title p-0"><i class="fas fa-newspaper mr-2"></i>Tu resúmen</h3>
                 </div>
                 <div class="card-body ml-4 p-1">
-                    {{#with resumenEstudiante}}
-                    {{#if [0].valor}}
-                    <p class="box mb-0 p-0"><i class="fas fa-book mr-2"></i> Total de Cursos: ({{[0].valor}})</p>
+                    {{#resumenEstudiante}}
+                    {{#if cursosTotales}}
+                    <p class="box mb-0 p-0"><i class="fas fa-book mr-2"></i> Total de Cursos: ({{cursosTotales}})</p>
                     {{else}}
                     <p class="box mb-0 p-0"><i class="fas fa-book mr-2"></i> Total de Cursos: (0)</p>
                     {{/if}}
-                    {{#if [1].valor}}
-                    <p class="box mb-0 p-0"><i class="fas fa-user-graduate mr-2"></i> Cursos Terminados: ({{[1].valor}})</p>
+                    {{#if cursosTerminados}}
+                    <p class="box mb-0 p-0"><i class="fas fa-user-graduate mr-2"></i> Cursos Terminados: ({{cursosTerminados}})</p>
                     {{else}}
                     <p class="box mb-0 p-0"><i class="fas fa-user-graduate mr-2"></i> Cursos Terminados: (0)</p>
                     {{/if}}
-                    {{#if [2].valor}}
-                    <p class="box mb-0 p-0"><i class="fas fa-book-open mr-2"></i>Cursos Disponibles: ({{[2].valor}})</p>
+                    {{#if cursosDisponibles}}
+                    <p class="box mb-0 p-0"><i class="fas fa-book-open mr-2"></i>Cursos Disponibles: ({{cursosDisponibles}})</p>
                     {{else}}
                     <p class="box mb-0 p-0"><i class="fas fa-book-open mr-2"></i>Cursos Disponibles: (0)</p>
                     {{/if}}
-                    {{#if [3].valor}}
-                    <p class="box mb-0 p-0 mb-3"><i class="fas fa-exclamation mr-3"></i>  Reportes Pendientes: ({{[3].valor}})</p>
+                    {{#if problemasPendientes}}
+                    <p class="box mb-0 p-0 mb-3"><i class="fas fa-exclamation mr-3"></i>  Reportes Pendientes: ({{problemasPendientes}})</p>
                     {{else}}
                     <p class="box mb-0 p-0 mb-3"><i class="fas fa-exclamation mr-3"></i>  Reportes Pendientes: (0)</p>
                     {{/if}}
-                    {{/with}}
+                    {{/resumenEstudiante}}
                 </div>
             </div>
             <div class="card" style="border-radius: 10px">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <!-- FALTAAGREGAR FUNCIONALIDAD-->
                             <h4>¿Tienes una Clave?</h4>
-                            <form class="form-valide" method="POST" action="#">
+                            <form class="form-valide" method="POST" action="VerificarClaveCurso">
                                 <div class="form-group mt-4">
                                     <div class="col text-center">
-                                        <input type="text" name="claveCurso" class="form-control" placeholder="Ingresa tu Cláve aqui">
-                                        <button type="button" class="btn btn-warning mt-3">
+                                        <input type="text" name="claveCursoEnviada" class="form-control" placeholder="Ingresa tu Cláve aqui" autocomplete="off">
+                                        <button type="submit" class="btn btn-warning mt-3">
                                             <i class="fas fa-check mr-2" ></i>Validar Clave</button>
                                     </div>
                                 </div>
@@ -154,7 +153,7 @@
             <div class="card text-center" style="border-radius: 6px">
                 <div class="card-body p-2">
                     <img class="card-img-top img-responsive" height="100px" src="../../assets/images/logoBienvenida.svg" alt="Card image cap">
-                    <h3>!Haz vuelto, {{#miPerfil}}{{nombres}}{{/miPerfil}}!</h3>
+                    <h3>!{{mensaje}}, {{#miPerfil}}<span class="small">{{nombres}}</span>{{/miPerfil}}!</h3>
                     <p>Que gusto verte de nuevo, aprovecha todos los cursos que tu sindicato ha preparado para ti.</p>
                 </div>
             </div>

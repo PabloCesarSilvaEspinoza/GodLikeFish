@@ -26,6 +26,7 @@
 <!--c3 charts -->
 <script src="../../assets/extra-libs/c3/d3.min.js"></script>
 <script src="../../assets/extra-libs/c3/c3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!--chartjs -->
 <script src="../../assets/libs/chart.js/dist/Chart.min.js"></script>
 <script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
@@ -34,92 +35,295 @@
 <script src="../../assets/libs/raty-js/lib/jquery.raty.js"></script>
 <script src="../../assets/extra-libs/raty/rating-init.js"></script>
 
-
 {{#if graficasAdministrador}}
 <script>
     var ctx = document.getElementById('GraficaMuestra');
-    { {#valores } }
     var GraficaMuestra = new Chart(ctx, {
         responsive: true,
         type: 'doughnut',
         data: {
             labels: [
-                'Registrados',
-                'Activos',
-                'Inactivos'
+            {{#each valores}}
+
+               '{{NombreArea}}',
+
+            {{/each}}
             ],
-            datasets: [{
-                data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
-    backgroundColor: [
-        'rgba(75, 192, 192)',
-        'rgb(255, 205, 86)',
-        'rgba(255, 99, 132)'
+
+    datasets: [{
+        label: 'Usuarios Activos',
+        data: [
+            {{#each valores}}
+
+                {{ totalCursos }},
+            {{/each}}
     ],
-        hoverOffset: 1
-    }]
-        },
-    options: {
-    }
-    });
-    {
-        {
-            /valores}}
-</script>
-<script>
-        var ctx = document.getElementById('GraficaMuestra1');
-        { {#valores } }
-        var GraficaMuestra1 = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Registrados',
-                    'Activos',
-                    'Inactivos'
-                ],
-                datasets: [{
-                    data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
         backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
+            'rgba(75, 192, 192)',
+            'rgb(255, 205, 86)',
+            'rgba(255, 99, 132)',
             'rgba(153, 102, 255, 1)'
         ],
             hoverOffset: 1
     }]
-        },
+    },
     options: {
     }
     });
-    {
-        {
-            /valores}}
 </script>
 <script>
-        var ctx = document.getElementById('GraficaMuestra2');
-        { {#valores } }
-        var GraficaMuestra2 = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Registrados',
-                    'Activos',
-                    'Inactivos'
+    var ctx = document.getElementById('GraficaMuestra1');
+    var GraficaMuestra1 = new Chart(ctx, {
+        responsive: true,
+        type: 'polarArea',
+
+        data: {
+            labels: [
+                {{#each valoresina}}
+
+               '{{NombreArea}}',
+
+                 {{/each}}
+            ],
+
+            datasets: [{
+                label: 'Cursos Inactivos',
+                data: [
+                    {{#each valoresina}}
+
+                        {{ totalCursos }},
+
+                    {{/each}}
+            ],
+                backgroundColor: [
+                    'rgba(75, 192, 192)',
+                    'rgb(255, 205, 86)',
+                    'rgba(255, 99, 132)',
+                    'rgba(153, 102, 255, 1)'
                 ],
-                datasets: [{
-                    data: [{{ valor1 }}, {{ valor2 }}, {{ valor3 }}],
-        backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgba(153, 102, 255)'
-        ],
-            hoverOffset: 1
-    }]
-        },
+                borderColor: 'rgb(255, 99, 132)',
+                        hoverOffset: 1
+            }]
+    },
     options: {
     }
     });
-    {
-        {
-            /valores}}
+</script>
+{{/if}}
+{{#if graficasAdministrador}}
+<script>
+    var ctx = document.getElementById('GraficaMuestra2');
+    var GraficaMuestra2 = new Chart(ctx, {
+        responsive: true,
+        type: 'radar',
+
+        data: {
+            labels: [
+                {{#each valores}}
+
+               '{{NombreArea}}',
+
+                 {{/each}}
+            ],
+
+            datasets: [{
+                label: 'Usuarios Inactivos',
+                data: [
+                    {{#each valoresUinact}}
+
+                        {{ totalUsuariosInactivos }},
+
+                    {{/each}}
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+               }, {
+                label: 'Usuarios Activos',
+                data: [
+                    {{#each valoresUact}}
+
+                        {{ totalUsuariosActivos }},
+
+                    {{/each}}
+                 ],
+                fill: true,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }, {
+                label: 'Usuarios en Curso',
+                data: [
+                    {{#each valoresUcurso}}
+
+                        {{ totalUsuarios }},
+
+                    {{/each}}
+                 ],
+                fill: true,
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgb(153, 102, 255)',
+                pointBackgroundColor: 'rgb(153, 102, 255)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(153, 102, 255)'
+            }, {
+                label: 'Usuarios con Reconocimiento',
+                data: [
+                    {{#each valoresUrecono}}
+
+                        {{ totalUsuarios }},
+
+                    {{/each}}
+                 ],
+                fill: true,
+                backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                borderColor: 'rgb(255, 205, 86)',
+                pointBackgroundColor: 'rgb(255, 205, 86)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 205, 86)'
+            }]
+    },
+    options: {
+    }
+    });
+</script>
+{{/if}}
+{{#if graficasAdministrador}}
+<script>
+    var ctx = document.getElementById('GraficaMuestra3');
+    var GraficaMuestra3 = new Chart(ctx, {
+        responsive: true,
+        type: 'doughnut',
+
+        data: {
+            labels: [
+                'Problemas',
+                'Examenes',
+                'Avisos',
+                'Recursos'
+            ],
+
+            datasets: [{
+                label: 'Datos Cursos',
+                data: [
+                    {{#each totalProblemasCurso}}
+
+                        {{ totalProblemas }},
+
+                    {{/each}}
+                    {{#each totalExamenesCurso}}
+
+                        {{ totalExamenes }},
+
+                    {{/each}}
+                    {{#each totalAvisosCurso}}
+
+                        {{ totalAvisos }},
+
+                    {{/each}}
+                    {{#each totalRecursosCurso}}
+
+                        {{ totalRecursos }},
+
+                    {{/each}}
+            ],
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.9)',
+                    'rgb(255, 205, 86)',
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)'
+                ],
+                pointBackgroundColor: 'rgb(75, 192, 192)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(75, 192, 192)'
+            }]
+    },
+    options: {
+    }
+    });
+</script>
+{{/if}}
+{{#if graficasAdministrador}}
+<script>
+    var ctx = document.getElementById('GraficaMuestra5');
+    var GraficaMuestra5 = new Chart(ctx, {
+        responsive: true,
+        type: 'pie',
+
+        data: {
+            labels: [
+                'Abiertas',
+                'Cerradas',
+                'Indice de entregas',
+                'Indice de revisión',
+                'Indice de buenas entregas'
+            ],
+
+            datasets: [{
+                data: [
+                    20,15,12,26,31
+                ],
+                backgroundColor: [
+                    'rgba(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgb(75, 192, 192)'
+                ],
+                
+                pointBackgroundColor: 'rgb(75, 192, 192)',
+                pointBorderColor: '255, 159, 64',
+                pointHoverBackgroundColor: '255, 159, 64',
+                pointHoverBorderColor: 'rgb(75, 192, 192)'
+            }]
+    },
+    options: {
+    }
+    });
+</script>
+{{/if}}
+{{#if graficasPonente}}
+<script>
+    var ctx = document.getElementById('GraficaMuestra4');
+    var GraficaMuestra4 = new Chart(ctx, {
+        responsive: true,
+        type: 'pie',
+
+        data: {
+            labels: [
+                'Cursos Impartidos',
+                'Cursos Actuales',
+                'Alumnos Actuales',
+                'Alumnos Alcanzados'
+            ],
+
+            datasets: [{
+                label: 'Datos Ponente',
+                data: [
+                10, 6, 20, 12
+            ],
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgb(255, 205, 86)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 159, 64, 0.9)'
+                ],
+                borderColor: 'rgb(255, 159, 64, 0.2)',
+                        hoverOffset: 1
+            }]
+    },
+    options: {
+    }
+    });
 </script>
 {{/if}}
 {{#if dataTablesExport}}
@@ -171,26 +375,26 @@
 {{#if switch}}
 <script src="../../assets/libs/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
 <script>
-        $(".bt-switch input[type='checkbox'], .bt-switch input[type='radio']").bootstrapSwitch();
-        var radioswitch = function () {
-            var bt = function () {
-                $(".radio-switch").on("switch-change", function () {
-                    $(".radio-switch").bootstrapSwitch("toggleRadioState")
-                }), $(".radio-switch").on("switch-change", function () {
-                    $(".radio-switch").bootstrapSwitch("toggleRadioStateAllowUncheck")
-                }), $(".radio-switch").on("switch-change", function () {
-                    $(".radio-switch").bootstrapSwitch("toggleRadioStateAllowUncheck", !1)
-                })
-            };
-            return {
-                init: function () {
-                    bt()
-                }
+    $(".bt-switch input[type='checkbox'], .bt-switch input[type='radio']").bootstrapSwitch();
+    var radioswitch = function () {
+        var bt = function () {
+            $(".radio-switch").on("switch-change", function () {
+                $(".radio-switch").bootstrapSwitch("toggleRadioState")
+            }), $(".radio-switch").on("switch-change", function () {
+                $(".radio-switch").bootstrapSwitch("toggleRadioStateAllowUncheck")
+            }), $(".radio-switch").on("switch-change", function () {
+                $(".radio-switch").bootstrapSwitch("toggleRadioStateAllowUncheck", !1)
+            })
+        };
+        return {
+            init: function () {
+                bt()
             }
-        }();
-        $(document).ready(function () {
-            radioswitch.init()
-        });
+        }
+    }();
+    $(document).ready(function () {
+        radioswitch.init()
+    });
 </script>
 {{/if}}
 
@@ -198,3 +402,168 @@
 <script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
 <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
 {{/if}} 
+
+{{#if general}}
+<script src="../../assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="../../assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+<script>
+            //Basic Example
+            $("#example-basic").steps({
+                headerTag: "h3",
+                bodyTag: "section",
+                transitionEffect: "slideLeft",
+                autoFocus: true
+            });
+
+            // Basic Example with form
+            var form = $("#example-form");
+            form.validate({
+                errorPlacement: function errorPlacement(error, element) { element.before(error); },
+                rules: {
+                    confirm: {
+                        equalTo: "#password"
+                    }
+                }
+            });
+            form.children("div").steps({
+                headerTag: "h3",
+                bodyTag: "section",
+                transitionEffect: "slideLeft",
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    form.validate().settings.ignore = ":disabled,:hidden";
+                    return form.valid();
+                },
+                onFinishing: function (event, currentIndex) {
+                    form.validate().settings.ignore = ":disabled";
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex) {
+                    alert("Submitted!");
+                }
+            });
+
+            // Advance Example
+
+            var form = $("#example-advanced-form").show();
+
+            form.steps({
+                headerTag: "h3",
+                bodyTag: "fieldset",
+                transitionEffect: "slideLeft",
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    // Allways allow previous action even if the current form is not valid!
+                    if (currentIndex > newIndex) {
+                        return true;
+                    }
+                    // Forbid next action on "Warning" step if the user is to young
+                    if (newIndex === 3 && Number($("#age-2").val()) < 18) {
+                        return false;
+                    }
+                    // Needed in some cases if the user went back (clean up)
+                    if (currentIndex < newIndex) {
+                        // To remove error styles
+                        form.find(".body:eq(" + newIndex + ") label.error").remove();
+                        form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+                    }
+                    form.validate().settings.ignore = ":disabled,:hidden";
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex) {
+                    // Used to skip the "Warning" step if the user is old enough.
+                    if (currentIndex === 2 && Number($("#age-2").val()) >= 18) {
+                        form.steps("siguiente");
+                    }
+                    // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+                    if (currentIndex === 2 && priorIndex === 3) {
+                        form.steps("anterior");
+                    }
+                },
+                onFinishing: function (event, currentIndex) {
+                    form.validate().settings.ignore = ":disabled";
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex) {
+                    alert("Submitted!");
+                }
+            }).validate({
+                errorPlacement: function errorPlacement(error, element) { element.before(error); },
+                rules: {
+                    confirm: {
+                        equalTo: "#password-2"
+                    }
+                }
+            });
+
+            // Dynamic Manipulation
+            $("#example-manipulation").steps({
+                headerTag: "h3",
+                bodyTag: "section",
+                enableAllSteps: true,
+                enablePagination: false
+            });
+
+            //Vertical Steps
+
+            $("#example-vertical").steps({
+                headerTag: "h3",
+                bodyTag: "section",
+                transitionEffect: "slideLeft",
+                stepsOrientation: "vertical"
+            });
+
+            //Custom design form example
+            $(".tab-wizard").steps({
+                headerTag: "h6",
+                bodyTag: "section",
+                transitionEffect: "fade",
+                titleTemplate: '<span class="step">#index#</span> #title#',
+                labels: {
+                    finish: "Submit"
+                },
+                onFinished: function (event, currentIndex) {
+                    swal("Form Submitted!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+
+                }
+            });
+
+
+            var form = $(".validation-wizard").show();
+
+            $(".validation-wizard").steps({
+                headerTag: "h6",
+                bodyTag: "section",
+                transitionEffect: "fade",
+                titleTemplate: '<span class="step">#index#</span> #title#',
+                labels: {
+                    finish: "Enviar"
+                },
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden", form.valid())
+                },
+                onFinishing: function (event, currentIndex) {
+                    return form.validate().settings.ignore = ":disabled", form.submit()
+                },
+                onFinished: function (event, currentIndex) {
+                    swal("Form Submitted!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+                }
+            }), $(".validation-wizard").validate({
+                ignore: "input[type=hidden]",
+                errorClass: "text-danger",
+                successClass: "text-info",
+                highlight: function (element, errorClass) {
+                    $(element).removeClass(errorClass)
+                },
+                unhighlight: function (element, errorClass) {
+                    $(element).removeClass(errorClass)
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element)
+                },
+                rules: {
+                    email: {
+                        email: !0
+                    }
+                }
+            })
+</script>
+{{/if}}

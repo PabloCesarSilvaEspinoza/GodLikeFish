@@ -1,3 +1,4 @@
+const mensajes = ["Estas de vuelta","Hola","¿Que tal?,","Estas aquí","Volviste","Regresaste"];
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
@@ -112,6 +113,7 @@ module.exports = function (injectedStore) {
     
     function reportarProblemaUsuario(idUsuario, asunto, descripcion){
         const PROCEDURE = `CALL agregar_Problemas_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
+        console.log("Problema reportado");
         return store.insert(PROCEDURE);
     }
 
@@ -166,10 +168,9 @@ module.exports = function (injectedStore) {
         return store.get(VIEW)
     }
 
-    function getDatosGeneralesPonente(idPonente) {
-        const VIEW = 'ver_Datos_Generales_Ponente'
-        const CLAUSE = `WHERE idPonente = ?`;
-        return store.get(VIEW, CLAUSE, idPonente)
+    function catalogDatosGeneralesPonente(idPonente) {
+        const PROCEDURE = `CALL ver_Datos_Generales_Ponente(${idPonente})`
+        return store.catalog(PROCEDURE);
     }
 
     function getNombresCursosActualesPonente(idPonente) {
@@ -314,6 +315,11 @@ function upsertDatosExamen(idExamen, body) {
     }
 
 
+    function getMensajeBienvenida(){
+        const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
+        return mensajes[numeroAleatoreo];
+    }
+
     return {
         insertTarea,
         listEstudiantes,
@@ -344,7 +350,7 @@ function upsertDatosExamen(idExamen, body) {
         insertArchivosMultimediaCurso,
         listPublicacionesCurso,
         getTiempoActual,
-        getDatosGeneralesPonente,
+        catalogDatosGeneralesPonente,
         getNombresCursosActualesPonente,
         getMiPerfil,
         listAsignacionesPendientesPonente,
@@ -360,8 +366,7 @@ function upsertDatosExamen(idExamen, body) {
         deleteAvisos,
         deleteDocumentos,
         deleteLinks,
-        upsertDatosLinks
-
-
+        upsertDatosLinks,
+        getMensajeBienvenida,
     };
 }
