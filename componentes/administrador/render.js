@@ -74,6 +74,14 @@ module.exports = {
 
         });
     },
+
+    postDesactivarCursoUsuario: async function (req, res, next) {
+        console.log(req.params.idUsuario);
+        console.log(req.params.idCursoActual);
+        await Controller.desactivarCursoUsuario(req.params.idUsuario, req.params.idCursoActual);     
+        res.redirect('back');
+    
+       },
     
     getAdministrarUsuarios: async function (req, res, next) {
         const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
@@ -101,7 +109,7 @@ module.exports = {
             inactivos,
             registrados,
             usuarios,
-            miPerfil
+            miPerfil 
         });
     },
 

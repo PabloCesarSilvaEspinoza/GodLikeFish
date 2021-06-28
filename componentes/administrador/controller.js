@@ -4,7 +4,7 @@ const mensajes = ["Estas de vuelta","Hola","¿Que tal?","Estas aquí","Volviste"
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
-        store = require('../../store/mysql');
+        store = require('../../store/mysql'); 
     }
     /*-----------------------------------------------------*/ 
     /*                      DASHBOARD                      */
@@ -223,6 +223,18 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
+    function desactivarCursoUsuario(idUsuario,idCursoActual) {
+        console.log(idUsuario);
+        console.log(idCursoActual);
+
+        const PROCEDURE = `CALL eliminar_Estudiante_Curso(
+            ${idUsuario}, ${idCursoActual}
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
     function UsuariosSinVerificar() {
         const VIEW = 'ver_Usuarios_Sin_Verificar';
         return store.list(VIEW);
@@ -410,5 +422,6 @@ module.exports = function (injectedStore) {
         listUsuariosAdministrador,
         listUsuariosSuperAdministrador,
         getRolUsuario,
+        desactivarCursoUsuario,
     };
 }

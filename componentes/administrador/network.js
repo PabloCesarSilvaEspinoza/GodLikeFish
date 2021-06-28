@@ -19,4 +19,6 @@ router.post('/ResolverProblema/:tipoProblema', render.postResolverProblema);
 router.post('/VerificarTarjetonUsuario', render.postVerificarTarjetonUsuario);
 router.post('/enviarCorreo', render.postCorreoPersonalizado);
 
+router.post('/desactivarCursoUsuario/:idUsuario/:idCursoActual', render.postDesactivarCursoUsuario);
+ 
 module.exports = router;
