@@ -17,7 +17,6 @@ module.exports = {
         const valoresUinact = await Controller.listUsuariosInactivosTotal();
         const valoresUcurso = await Controller.listUsuariosEncursoTotal();
         const valoresUrecono = await Controller.listUsuariosReconocimientoTotal();
-        const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
         const mensaje = await Controller.getMensajeBienvenida();
         const numeroErrores = errores.length;
@@ -267,10 +266,18 @@ module.exports = {
     getPerfilUsuario: async function (req, res, next) {
         const usuarioID = req.params.idUsuario;
         const rolUsuario = await Controller.getRolUsuario(usuarioID);
+        const totalCursoAprobado = await Controller.totalCursoAprobadoEstudiante(usuarioID);
+        const totalCursoReprobado = await Controller.totalCursoReprobadoEstudiante(usuarioID);
+        const totalCurso = await Controller.totalCursoEstudiante(usuarioID);
         const rol = rolUsuario[0].rolUsuario;
         switch (rol) {
             case 'Estudiante':
-                res.render('administrador/d5_administrarUsuario_E1')
+                res.render('administrador/d5_administrarUsuario_E1',{
+                    graficasAdministrador : true,
+                    totalCursoAprobado,
+                    totalCursoReprobado,
+                    totalCurso
+                })
                 break;
             case 'Ponente':
                 res.render('administrador/d5_administrarUsuario_E2')

@@ -238,6 +238,21 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, idCurso);
     }
+    function totalCursoAprobadoEstudiante(idUsuario) {
+        const VIEW = 'ver_Cursos_Estudiantes_Total_Aprobados';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+    function totalCursoReprobadoEstudiante(idUsuario) {
+        const VIEW = 'ver_Cursos_Estudiantes_Total_Reprobados';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+    function totalCursoEstudiante(idUsuario) {
+        const VIEW = 'ver_Cursos_Estudiantes_Total';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
 
     function listAvisosCurso(idCurso) {
         const VIEW = 'ver_Avisos_Curso';
@@ -410,5 +425,8 @@ module.exports = function (injectedStore) {
         listUsuariosAdministrador,
         listUsuariosSuperAdministrador,
         getRolUsuario,
+        totalCursoAprobadoEstudiante,
+        totalCursoReprobadoEstudiante,
+        totalCursoEstudiante
     };
 }
