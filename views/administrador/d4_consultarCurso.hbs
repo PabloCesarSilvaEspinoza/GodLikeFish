@@ -1,5 +1,75 @@
 <div class="container-fluid">
     <!--modales-->
+    <div id="editarFoto" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h4>Editar <span class="small">Foto</span></h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="../editarFoto/{{curso.idCurso}}" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input class="mt-2" type="file" name="archivo" multiple />
+                                        <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
+                                    </div>
+                                    <div class="col-md-12  text-right">
+                                        <button type="submit" class="btn btn-info mt-2">
+                                            <i class="fas fa-save mr-2"></i>Guardar</button>
+                                        <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">
+                                            <i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="editarTemario" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row">
+                        <!--titulo-->
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <h4>Editar <span class="small">Temario</span></h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="../editarTemario/{{curso.idCurso}}" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input class="mt-2" type="file" name="archivo" multiple />
+                                        <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
+                                    </div>
+                                    <div class="col-md-12  text-right">
+                                        <button type="submit" class="btn btn-info mt-2">
+                                            <i class="fas fa-save mr-2"></i>Guardar</button>
+                                        <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">
+                                            <i class="fas fa-times mr-2"></i>Cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="editarCurso" class="modal">
         <div class="modal-dialog modal-xl">
             <div class="modal-content" style="border-radius: 10px">
@@ -15,16 +85,9 @@
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
-                            <form class="form-valide" id="agregarCurso" method="POST" action="#">
+                            {{#datosCursoEd}}
+                            <form class="form-valide" method="POST" action="../editarCurso/{{cursoId}}">
                                 <div class="row">
-                                    <div class="col-md-3 text-center">
-                                        <img src="../../assets/images/logoBienvenida.svg" width="150"
-                                            class="rounded-circle" alt="imagenCurso">
-                                        <h6 class="mb-0 font-medium">Imagen del curso </h6>
-                                        <fieldset class="form-group mt-3">
-                                            <input type="file" class="form-control-file" id="exampleInputFile">
-                                        </fieldset>
-                                    </div>
                                     <div class="col-md-9">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -32,57 +95,47 @@
                                                 <hr>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Nombre del Curso <span
-                                                        class="text-danger">*</span></h6>
-                                                <input type="text" id="nombreCurso" class="form-control"
-                                                    placeholder="Ejemplo del nombre de un curso" required>
-                                                <small class="form-control-feedback ml-1"> Maximo 255 caracteres
-                                                </small>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Nombre del Curso</h6>
+                                                <input type="text" name="nombreCurso" class="form-control" value="{{nombre}}" required>
+                                                <small class="form-control-feedback ml-1"> Maximo 255 caracteres </small> 
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Area <span
-                                                        class="text-danger">*</span></h6>
-                                                <select class=" form-control custom-select"
-                                                    style="width: 100%; height:36px;" required>
-                                                    <option>Area</option>
-                                                    <option value="#">#</option>
-                                                    <option value="#">#</option>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Area</h6>
+                                                <select class="form-control custom-select" id="area" name="area" style="width: 100%; height:36px;">
+                                                    <option value="{{areaId}}" selected>{{areaNombre}}</option>
+                                                    {{#each ../areas}}
+                                                    <option value="{{idArea}}">{{nombreArea}}</option>
+                                                    {{/each}}
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Tipo <span
-                                                        class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select"
-                                                    style="width: 100%; height:36px;" required>
-                                                    <option value="AK">Tipo 1</option>
-                                                    <option value="HI">Tipo 2</option>
-                                                    <option value="HI">Tipo 3</option>
-                                                    <option value="HI">Tipo 4</option>
-                                                    <option value="HI">Tipo 5</option>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Tipo</h6>
+                                                <select name="tipo" class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                                    <option value="{{tipoCurso}}" selected>{{tipoCurso}}</option>
+                                                    <option value="Normativo">Normativo</option>
+                                                    <option value="Publico">Publico</option>                            
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Modalidad <span
-                                                        class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select"
-                                                    style="width: 100%; height:36px;" required>
-                                                    <option value="#">En vivo</option>
-                                                    <option value="#">Video</option>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Modalidad</h6>
+                                                <select name="modalidad" class="form-control custom-select" style="width: 100%; height:36px;" required>
+                                                    <option value="{{valorModalidad}}" selected >{{nombreModalidad}}</option>
+                                                    <option value="enVivo">En vivo</option>
+                                                    <option value="Diferido">Diferido</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
                                                 <h6 class="mb-0 font-medium mt-2 ml-2">Capacidad</h6>
-                                                <input type="number" id="capacidad" class="form-control" value="0">
-                                                <small class="form-control-feedback ml-1"> Utilice 0 para capacidad
-                                                    indefinida </small>
+                                                <input type="number" name="capacidad" class="form-control" value="{{capacidad}}">
+                                                <small class="form-control-feedback ml-1"> Utilice 0 para capacidad indefinida </small>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Ponente <span
-                                                        class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select"
-                                                    style="width: 100%; height:36px;">
-                                                    <option value="#">Nombre Completo Ponente</option>
-                                                    <option value="#">Nombre Completo Segundo Ponente</option>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Ponente</h6>
+                                                <select name="ponente" class="form-control custom-select" style="width: 100%; height:36px;">
+                                                    <option value="{{ponenteId}}" selected >{{nombrePonente}}</option>
+                                                    {{#each ../ponentes}}
+                                                    <option value="{{idPonente}}">{{nombrePonente}}</option>
+                                                    {{/each}}
                                                 </select>
                                             </div>
                                         </div>
@@ -91,43 +144,29 @@
                                         <!--wacha este tunning-->
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Descripción <span
-                                                        class="text-danger">*</span></h6>
-                                                <textarea class="form-control" rows="6"
-                                                    placeholder="Describe de que trata el curso aqui..."></textarea>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Descripción</h6>
+                                                <textarea name="descripcion" class="form-control" rows="6">{{descripcion}}</textarea>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Plataforma <span
-                                                                class="text-danger">*</span></h6>
-                                                        <select class="form-control custom-select"
-                                                            style="width: 100%; height:36px;">
-                                                            <option value="#">Classroom</option>
-                                                            <option value="#">TEAMS</option>
-                                                            <option value="#">Zoom</option>
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Plataforma </h6>
+                                                        <select name="plataforma" class="form-control custom-select" style="width: 100%; height:36px;">
+                                                            <option value="{{plataforma}}" selected>{{plataforma}}</option>
+                                                            <option value="Google Meet">Google Meet</option>
+                                                            <option value="Microsoft Teams">Microsoft Teams</option>
+                                                            <option value="Youtube">Youtube</option>
+                                                            <option value="Zoom">Zoom</option>
                                                         </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Temario <span
-                                                                class="text-danger">*</span></h6>
-                                                        <fieldset class="form-group mt-1">
-                                                            <input type="file" class="form-control-file"
-                                                                id="exampleInputFile">
-                                                        </fieldset>
-                                                    </div>
+                                                    </div>                                                    
                                                     <div class="col-md-4    ">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Clave <span
-                                                                class="text-danger">*</span></h6>
-                                                        <input type="text" id="clave" class="form-control"
-                                                            placeholder="000000000">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Clave </h6>
+                                                        <input type="text" name="clave" class="form-control" value="{{clave}}" placeholder="000000000">
                                                         <small class="form-control-feedback ml-1">Numérico</small>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Enlace <span
-                                                                class="text-danger">*</span></h6>
-                                                        <input type="text" id="enlace" class="form-control"
-                                                            placeholder="enlace a la plataforma http://....">
+                                                        <h6 class="mb-0 font-medium mt-2 ml-2">Enlace </h6>
+                                                        <input type="text" name="enlace" class="form-control" value="{{enlace}}" placeholder="enlace a la plataforma http://....">
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,24 +180,20 @@
                                                 <hr>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span
-                                                        class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-04-13"
-                                                    style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span class="text-danger">*</span></h6>
+                                                <input type="date" name="fechaInicio" class="form-control" value="{{fechaInicio}}" style="width: 100%; ">
                                             </div>
                                             <div class="col-md-3">
                                                 <h6 class="mb-0 font-medium mt-2 ml-2">Hora Inicio</h6>
-                                                <input type="time" class="form-control" value="22:33:00">
+                                                <input type="time" name="horaInicio" class="form-control" value="{{horaInicio}}">
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span
-                                                        class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-06-13"
-                                                    style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span class="text-danger">*</span></h6>
+                                                <input name="fechaFin" type="date" class="form-control" value="{{fechaFin}}" style="width: 100%; ">
                                             </div>
                                             <div class="col-md-3">
                                                 <h6 class="mb-0 font-medium mt-2 ml-2">Hora Fin</h6>
-                                                <input type="time" class="form-control" value="22:33:00">
+                                                <input name="horaFin" type="time" class="form-control" value="{{horaFin}}">
                                             </div>
                                         </div>
                                     </div>
@@ -170,27 +205,22 @@
                                                 <hr>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span
-                                                        class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-04-13"
-                                                    style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Inicio <span class="text-danger">*</span></h6>
+                                                <input name="inscripcionInicio" type="date" class="form-control" value="{{inscripcionInicio}}" style="width: 100%; ">
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span
-                                                        class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-04-13"
-                                                    style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Fin <span class="text-danger">*</span></h6>
+                                                <input name="inscripcionFin" type="date" class="form-control" value="{{inscripcionFin}}" style="width: 100%; ">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-right mt-3">
-                                        <button type="button" class="btn  btn-info"><i
-                                                class="fas fa-save mr-2"></i>Guardar</button>
-                                        <button type="button" class="btn  btn-secondary" data-dismiss="modal"><i
-                                                class="fas fa-times mr-2"></i>Cancelar</button>
+                                        <button type="submit" class="btn  btn-info"><i class="fas fa-save mr-2"></i>Guardar</button>
+                                        <button type="button" class="btn  btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Cancelar</button>
                                     </div>
                                 </div>
                             </form>
+                            {{/datosCursoEd}}
                         </div>
                     </div>
                 </div>
@@ -362,10 +392,44 @@
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
-                            <form action="#" method="post">
+                            <form action="../estadoCurso/{{curso.idCurso}}/0" method="post">
                                 <div class="row">
                                     <div class="col-md-12 text-center mt-3">
                                         <h3 class="font-light mb-4">Este curso dejará de estar visible para cualquier
+                                            usuario.</h3>
+                                        <button type="submit" class="btn waves-effect waves-light btn-danger"><i
+                                                class="fas fa-check mr-2"></i>Si, continuar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info"
+                                            data-dismiss="modal"><i class="fas fa-times mr-2"></i>No, cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="activarCurso" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row ">
+                        <!--titulo-->
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10  text-center">
+                            <h3>Activar <span class="small">Curso</span></h3>
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <button type="button" class="close text-white" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="../estadoCurso/{{curso.idCurso}}/1" method="post">
+                                <div class="row">
+                                    <div class="col-md-12 text-center mt-3">
+                                        <h3 class="font-light mb-4">Este curso comenzara a estar visible para cualquier
                                             usuario.</h3>
                                         <button type="submit" class="btn waves-effect waves-light btn-danger"><i
                                                 class="fas fa-check mr-2"></i>Si, continuar</button>
@@ -474,11 +538,21 @@
                                                 </div>
                                                 <div class="col-md-3 text-right">
                                                     <button type="button" class="btn  btn-rounded btn-success"
-                                                        data-toggle="modal" data-target="#editarCurso"><i
-                                                            class="fas fa-pencil-alt mr-2"></i>Editar</button>
-                                                    <button type="button" class="btn btn-rounded btn-info"
+                                                        data-toggle="modal" data-target="#editarCurso"><i class="fas fa-pencil-alt mr-2"></i>Editar Datos</button>
+                                                    <button type="button" class="btn  btn-rounded btn-success"
+                                                        data-toggle="modal" data-target="#editarFoto"><i class="fas fa-pencil-alt mr-2"></i>Editar Foto</button>
+                                                    <button type="button" class="btn  btn-rounded btn-success"
+                                                        data-toggle="modal" data-target="#editarTemario"><i class="fas fa-pencil-alt mr-2"></i>Editar Temario</button>
+                                                    {{#ifEquals ../activo '1'}}
+                                                    <button type="button" class="btn btn-rounded btn-danger"
                                                         data-toggle="modal" data-target="#desactivarCurso"><i
                                                             class="fas fa-power-off mr-2"></i>Desactivar</button>
+                                                    {{/ifEquals}}
+                                                    {{#ifEquals ../activo '0'}}
+                                                    <button type="button" class="btn btn-rounded btn-info"
+                                                        data-toggle="modal" data-target="#activarCurso"><i
+                                                            class="fas fa-power-off mr-2"></i>Activar</button>
+                                                    {{/ifEquals}}
                                                 </div>
                                             </div>
                                             <div class="row">

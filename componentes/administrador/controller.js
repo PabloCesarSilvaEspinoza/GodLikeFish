@@ -56,20 +56,45 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
-    function updateCurso(body) {
+    function getCursoEditar(id) {
+        const VIEW = 'ver_Datos_Curso_Editar';
+        const CLAUSE = `WHERE cursoId = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function updateCurso(id, body) {
         const {
-            Id,nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
-            horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
-            area, tipo, temario , modalidad, capacidad,
-            linkCurso, linkPlataforma,foto, activo, ponenteId
+            nombreCurso, clave, descripcion, fechaInicio, fechaFin, horaInicio, 
+            horaFin, inscripcionInicio, inscripcionFin, plataforma,
+            area, tipo, modalidad, capacidad,
+            enlace, ponente
         } = body;
 
         const PROCEDURE = `CALL editar_Curso( 
-            ${Id}, '${nombre}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFinal}',
-            '${horaInicio}', '${horaFin}', '${fechaInscripcionInicio}', '${fechaInscripcionFinal}', '${plataforma}',
-            '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
-            '${linkCurso}',  '${linkPlataforma}', '${foto}', ${activo}, ${ponenteId}
+            ${id}, '${nombreCurso}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFin}',
+            '${horaInicio}', '${horaFin}', '${inscripcionInicio}', '${inscripcionFin}', '${plataforma}',
+            '${area}','${tipo}', '${modalidad}', ${capacidad},
+            '${enlace}', ${ponente}
             )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function updateFotoCurso(id, foto){
+        const PROCEDURE = `CALL editar_Foto(${id}, '${foto}')`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function updateTemarioCurso(id, temario){
+        console.log(id+' '+temario)
+        const PROCEDURE = `CALL editar_Temario(${id}, '${temario}')`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function updateEstadoCurso(id, estado){
+        const PROCEDURE = `CALL cambiar_Estado_Curso(${id}, ${estado})`
 
         return store.upsert(PROCEDURE);
     }
@@ -410,5 +435,9 @@ module.exports = function (injectedStore) {
         listUsuariosAdministrador,
         listUsuariosSuperAdministrador,
         getRolUsuario,
+        getCursoEditar,
+        updateFotoCurso,
+        updateTemarioCurso,
+        updateEstadoCurso,
     };
 }
