@@ -264,7 +264,9 @@
                 </div>
             </div>
         </div>
-        <div id="editarTarea" class="modal">
+
+ {{#each asignacionesPonenteEditar}}
+        <div id="editarTarea{{idTarea}}" class="modal">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content" style="border-radius: 10px">
                     <div class="card-body">
@@ -275,26 +277,28 @@
                                 <h3>Editar <span class="small">Asignación</span></h3>
                             </div>
                             <div class="col-md-3 text-right">
-                                <button type="#" class="btn btn-danger" ><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                                <form method="POST" action="../borrarAsignacion/{{idTarea}}">
+                                <button type="sumbit" class="btn btn-danger" ><i class="fas fa-trash-alt mr-2"></i>Eliminar</button>
+                                  </form>
                             </div>
                             <!--contenido-->
-                            <form action="#" method="post" enctype="multipart/form-data">
+                            <form action="../editarAsignaicon/{{idTarea}}" method="post" >
                                 <div class="row ml-1 mr-1">
                                     <div class="col-md-8">
                                         <h5 class="font-medium"><i class="fas fa-clipboard-list mr-2"></i>Datos Generales</h5>
                                         <hr>
-                                        <h6 class="mb-0 font-medium mt-2">Nombre de la asignación 
+                                        <h6 class="mb-0 font-medium mt-2">Nombre
                                             <span class="text-danger">*</span></h6>
                                         <input type="text" name="nombreTarea" id="nombreTarea"
-                                            class="form-control" placeholder="Ejemplo del nombre de una tarea"
+                                            class="form-control" value="{{nombreTarea}}"
                                             autocomplete="off" required>
                                         <small class="form-control-feedback ml-1"> Máximo 70 caracteres </small>
                                         <h6 class="mb-0 font-medium mt-2">Descripción de la asignación 
                                             <span class="text-danger">*</span></h6>
                                         <textarea class="form-control" name="descripcionTarea"
                                             id="descripcionTarea" rows="5"
-                                            placeholder="Ejemplo de descripción de una tarea" autocomplete="off"
-                                            required></textarea>
+                                           autocomplete="off"
+                                            required>{{descripcionTarea}}</textarea>
                                         <small class="form-control-feedback ml-1"> Máximo 300 caracteres </small>
                                     </div>
                                     <div class="col-md-4">
@@ -303,26 +307,44 @@
                                         <h6 class="mb-0 font-medium mt-2">Fécha límite
                                             <span class="text-danger">*</span></h6>
                                         <input type="date" name="fechaLimiteTarea" id="fechaLimiteTarea"
-                                            class="form-control" value="2021-04-13" required>
+                                            class="form-control" value="{{fechaLimiteTarea}}" required>
                                         <h6 class="mb-0 font-medium mt-2">Hora límite
                                             <span class="text-danger">*</span></h6>
                                         <input type="time" name="horaLimiteTarea" id="horaLimiteTarea"
-                                            class="form-control" value="22:33:00" required>
+                                            class="form-control" value="{{horaLimiteTarea}}" required>
                                         <input type="hidden" name="idCurso" id="idCurso"
                                             value="{{curso.idCurso}}">
                                         <h6 class="mb-0 font-medium mt-2">¿La tarea puede ser entragada despues de la fecha
                                             y hora límite?</h6>
+
+{{#ifEquals atemporalTarea "0"}}
+                                          
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio1" name="atemporalCurso"
+                                             <input type="hidden" value="{{../idTarea}}">
+                                            <input type="radio" id="customRadio{{idTarea}}1" name="atemporalCurso"
                                                 class="custom-control-input" value="1" checked>
                                             <label class="custom-control-label" for="customRadio1">Si.</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio2" name="atemporalCurso"
+                                            <input type="radio" id="customRadio{{idTarea}}2" name="atemporalCurso"
                                                 class="custom-control-input" value="0">
                                             <label class="custom-control-label" for="customRadio2">No.</label>
                                         </div>
                                     </div>
+  {{/ifEquals}}
+  {{#ifEquals atemporalTarea "1"}}
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio{{idTarea}}1" name="atemporalCurso"
+                                                class="custom-control-input" value="1" >
+                                            <label class="custom-control-label" for="customRadio1">Si.</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio{{idTarea}}2" name="atemporalCurso"
+                                                class="custom-control-input" value="0" checked>
+                                            <label class="custom-control-label" for="customRadio2">No.</label>
+                                        </div>
+                                    </div>
+  {{/ifEquals}}
                                     <div class="col-md-6">
                                         <h5 class="font-medium"><i class="fas fa-archive mr-2"></i>Archivos</h5>
                                         <input type="file" name="multimediaTarea" id="multimediaTarea"
@@ -342,6 +364,8 @@
                 </div>
             </div>
         </div>
+  {{/each}}
+
         <div id="agregarArchivos" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 10px">
@@ -707,6 +731,8 @@
                             <span class="hidden-sm-up"><i class="fas fa-chalkboard"></i></span> 
                             <span class="hidden-xs-down">Examenes</span></a> </li>
                     </ul>
+
+
                     <div class="tab-content tabcontent-border">
                         <!--Panel de todos-->
                         <div class="tab-pane active p-20" id="home" role="tabpanel">
@@ -731,7 +757,7 @@
                                                     <h5 class="font-medium">{{nombreCurso}}</h5>
                                                 </div>
                                                 <div class="col-md-3 text-right">
-                                                    <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarAviso">
+                                                    <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarAviso{{idAviso}}">
                                                         <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                 </div>
                                             </div>
@@ -756,14 +782,14 @@
                                             <div class="col-md-5 text-right">
                                                 {{#ifEquals estadoTarea "Abierta"}}
                                                 <span class="mb-3 label  label-info mr-2">Abierta</span>
-                                                <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success" data-toggle="modal" data-target="#editarTarea">
+                                                <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success" data-toggle="modal" data-target="#editarTarea{{idTarea}}">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                 <span class="small"><a href="/ponente/CalificarTarea/{{idTarea}}" class="btn  btn-rounded btn-sm btn-warning small">
                                                     <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
                                                 {{/ifEquals}}
                                                 {{#ifEquals estadoTarea "Cerrada"}}
                                                 <span class="label bg-dark mr-2">Cerrada</span>
-                                                <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarTarea">
+                                                <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarTarea{{idTarea}}">
                                                     <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                 <span class="small"><a href="/ponente/CalificarTarea/{{idTarea}}" class="btn  btn-rounded btn-sm btn-warning small">
                                                     <i class="fas fa-check-double mr-2"></i>Calificar</a></span>
@@ -807,7 +833,7 @@
                                             <div class="col-md-3 text-right">
                                                 <span class="small">
                                                     <a href="#" class="btn  btn-rounded btn-sm btn-success small"
-                                                        data-toggle="modal" data-target="#editarExamen">
+                                                        data-toggle="modal" data-target="#editarExamen{{idExamen}}">
                                                         <i class="fas fa-pencil-alt mr-2"></i>Editar
                                                     </a>
                                                 </span>
@@ -887,6 +913,8 @@
                                 </form>
                             </nav>
                             <!--Asignaciones-->
+
+
                             {{#each asignacionesPonente}}
                             <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                 <div class="card-body">
@@ -897,12 +925,12 @@
                                         <div class="col-md-5 text-right">
                                             {{#ifEquals estadoTarea "Abierta"}}
                                             <span class="mb-3 label  label-info mr-2">Abierta</span>
-                                            <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success" data-toggle="modal" data-target="#editarTarea">
+                                            <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success" data-toggle="modal" data-target="#editarTarea{{idTarea}}">
                                                 <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                             {{/ifEquals}}
                                             {{#ifEquals estadoTarea "Cerrada"}}
                                             <span class="label bg-dark mr-2">Cerrada</span>
-                                            <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarTarea">
+                                            <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarTarea{{idTarea}}">
                                                 <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                             <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-warning small">
                                                 <i class="fas fa-check-double mr-2"></i>Calificar</a></span>

@@ -188,6 +188,20 @@ module.exports = {
 
    },
 
+   putEditarAsignacion: async function (req, res, next) {
+       console.log(req.params.id);
+    await Controller.upsertDatosTarea(req.params.id, req.body);      
+    res.redirect('back');
+
+
+   },
+
+   postDeleteAsignacion: async function (req, res, next) {
+    await Controller.deleteTarea(req.params.idTarea);     
+    res.redirect('back');
+
+   },
+
 
 
     getConsultarEstadoCursoPonente: async function (req, res, next){
@@ -218,6 +232,7 @@ module.exports = {
                 const linksCurso = await Controller.listLinksCurso(cursoID);
                 const documentosCurso = await Controller.listDocumentosCurso(cursoID);
                 const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
+                const asignacionesPonenteEditar= await Controller.listAsignacionesPonenteEditar(cursoID);
                 const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenesCurso(cursoID);
                 const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
@@ -242,7 +257,8 @@ module.exports = {
                     publicacionesCurso,
                     fechaActual,
                     miPerfil,
-                    examenesCursoE
+                    examenesCursoE,
+                    asignacionesPonenteEditar
                 });
                 break;
 
