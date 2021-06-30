@@ -7,8 +7,8 @@ module.exports = {
     getDashboardAlumno: async function (req, res, next) {
         const usuarioID = req.user.id;
         const miPerfil = await Controller.getMiPerfil(req.user.id);
-        const respuestaBD = await Controller.listCursosDisponibles(usuarioID);
-        const cursosDisponibles = respuestaBD[0];
+        const respuestaCursosDisponibles = await Controller.listCursosDisponibles(usuarioID);
+        const cursosDisponibles = respuestaCursosDisponibles[0];
         const totalCursos = cursosDisponibles.length;
         const historialCursos = await Controller.getHistorialCursosEstudiante(usuarioID);
         const totalHistorialCursos = historialCursos.length;

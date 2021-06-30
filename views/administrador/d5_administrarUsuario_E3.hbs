@@ -303,6 +303,7 @@
         <!--contenido principal-->
         <div class="col-md-12">
             <!--datos principales-->
+            {{#administrador}}
             <div class="card" style="border-radius: 10px;">
                 <div class="card-body">
                     <div class="row">
@@ -313,26 +314,32 @@
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h2 class="card-title mb-0">Nombre Completo Usuario Lorem Ipsum Extra Large
-                                        <span class="small"> (Estado)</span></h2>
-                                    <h4 class="font-light mt-0">NombreColonia, NombreCalle Ext. #136 Int. #3. NombreMunicipio NombreEstado, NombrePaís.</h4>
+                                    <h2 class="card-title mb-0">{{nombres}} {{pApellido}} {{sApellido}}
+                                        {{#if estatus}}
+                                        <span class="small"> (Activo)</span></h2>
+                                        {{else}}
+                                        <span class="small"> (Inactivo)</span></h2>
+                                        {{/if}}
+                                    <h4 class="font-light mt-0">{{colonia}}, {{calle}} Ext. #{{numeroExt}} {{#if numeroInt}}Int. #{{numeroInt}}{{/if}}
+                                        {{municipioResidencia}}, {{estadoResidencia}}</h4>
                                 </div>
                                 <div class="col-md-2 text-right">
                                     <button type="button" class="btn btn-rounded btn-success" data-toggle="modal" data-target="#editarUsuario">
                                         <i class="fas fa-pencil-alt mr-2"></i>Editar</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <h4 class="mb-0"><i class="far fa-user mr-2"></i>Rol: <span class="font-weight-normal">Administrador</span></h4>
-                                    <h4 class="mb-0"><i class="far fa-square mr-2"></i>Area: <span class="font-weight-normal">Area Usuario</span></h4>
-                                    <h4 class="mb-0"><i class="fas fa-wrench mr-2"></i>Puesto: <span class="font-weight-normal">Puesto Usuario</span></h4>
-                                    <h4 class="mb-0"><i class="fas fa-at mr-2"></i>Contacto: <span class="font-weight-normal">correo@dominio.com</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-user mr-2"></i>Rol: <span class="font-weight-normal">{{tipo}}</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-square mr-2"></i>Area: <span class="font-weight-normal">{{area}}</span></h4>
+                                    <h4 class="mb-0"><i class="fas fa-wrench mr-2"></i>Puesto: <span class="font-weight-normal">{{puesto}}</span></h4>
+                                    <h4 class="mb-0"><i class="fas fa-at mr-2"></i>Contacto: <span class="font-weight-normal">{{correo}}</span></h4>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-right align-items-end mt-auto">
-                                    <h4 class="mb-0"><i class="fas fa-key mr-2"></i>Matrícula: <span class="font-weight-normal">00000000</span></h4>
-                                    <h4 class="mb-0"><i class="far fa-clock mr-2"></i>Antiguedad: <span class="font-weight-normal">2 Años</span></h4>
-                                    <h4 class="mb-0"><i class="far fa-address-card mr-2"></i>Tarjetón: <span class="font-weight-normal">Verificado</span>
+                                    <h4 class="mb-0"><i class="fas fa-key mr-2"></i>Matrícula: <span class="font-weight-normal">{{matricula}}</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-clock mr-2"></i>Antiguedad: <span class="font-weight-normal">{{antiguedad}}</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-address-card mr-2"></i>Tarjetón: <span class="font-weight-normal">
+                                        {{#if tarjetonVerificado}}Verificado{{else}}No Verificado{{/if}}</span>
                                         <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small ml-1">
                                             <i class="fas fa-download mr-2"></i>Descargar</a></span>
                                     </h4>
@@ -342,6 +349,7 @@
                     </div>
                 </div>
             </div>
+            {{/administrador}}
         </div>
         <div class="col-md-4">
             <div class="card" style="border-radius: 10px;">

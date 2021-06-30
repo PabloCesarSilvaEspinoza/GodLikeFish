@@ -253,6 +253,13 @@ module.exports = {
 
         switch (rol) {
             case 'Estudiante':
+                const datosEstudiante = await Controller.getEstudiante(usuarioID);
+                const estudiante = datosEstudiante[0];
+                const cursoActualEstudiante = await Controller.getCursoActualEstudiante(usuarioID);
+                const cursosAprobadosEstudiante = await Controller.listCursosAprobadosEstudiante(usuarioID);
+                const cursosReprobadosEstudiante = await Controller.listCursosReprobadosEstudiante(usuarioID);
+                const respuestaCursosDisponiblesEstudiante = await Controller.catalogCursosDisponiblesEstudiante(usuarioID);
+                const cursosDisponiblesEstudiante = respuestaCursosDisponiblesEstudiante[0];
                 res.render('administrador/d5_administrarUsuario_E1', {
                     administrador: true,
                     graficasAdministrador : true,
@@ -263,21 +270,35 @@ module.exports = {
                     puestos,
                     municipios,
                     datos,
-                    areas
+                    areas,
+                    estudiante,
+                    cursoActualEstudiante,
+                    cursosAprobadosEstudiante,
+                    cursosReprobadosEstudiante,
+                    cursosDisponiblesEstudiante,
                 })
                 break;
             case 'Ponente':
+                const datosPonente = await Controller.getPonente(usuarioID);
+                const ponente = datosPonente[0];
+                const cursosActualesPonente = await Controller.listCursosActualesPonente(usuarioID);
+                const cursosPasadosPonente = await Controller.listCursosPasadosPonente(usuarioID);
                 res.render('administrador/d5_administrarUsuario_E2', {
                     administrador: true,
                     paises,
                     puestos,
                     municipios,
                     datos,
-                    areas
+                    areas,
+                    ponente,
+                    cursosActualesPonente,
+                    cursosPasadosPonente,
                 })
                 break;
             case 'Administrador':
             case 'Super-Administrador':
+                const datosAdministrador = await Controller.getAdministrador(usuarioID);
+                const administrador = datosAdministrador[0];
                 (req.user.rol == 'Super-Administrador')
                 ? res.render('administrador/d5_administrarUsuario_E3', {
                     administrador: true,
@@ -285,7 +306,8 @@ module.exports = {
                     puestos,
                     municipios,
                     datos,
-                    areas
+                    areas,
+                    administrador
                 })
                 : res.redirect('/administrador/dashboardAdministrador');
                 break;

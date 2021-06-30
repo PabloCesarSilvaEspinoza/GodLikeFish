@@ -272,6 +272,7 @@
         <!--contenido principal-->
         <div class="col-md-9">
             <!--datos principales-->
+            {{#ponente}}
             <div class="card" style="border-radius: 10px;">
                 <div class="card-body">
                     <div class="row">
@@ -282,26 +283,32 @@
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h2 class="card-title mb-0">Nombre Completo Usuario Lorem Ipsum Extra Large
-                                        <span class="small"> (Estado)</span></h2>
-                                    <h4 class="font-light mt-0">NombreColonia, NombreCalle Ext. #136 Int. #3. NombreMunicipio NombreEstado, NombrePaís.</h4>
+                                    <h2 class="card-title mb-0">{{nombres}} {{pApellido}} {{sApellido}}
+                                        {{#if estatus}}
+                                        <span class="small"> (Activo)</span></h2>
+                                        {{else}}
+                                        <span class="small"> (Inactivo)</span></h2>
+                                        {{/if}}
+                                    <h4 class="font-light mt-0">{{colonia}}, {{calle}} Ext. #{{numeroExt}} {{#if numeroInt}}Int. #{{numeroInt}}{{/if}}
+                                        {{municipioResidencia}}, {{estadoResidencia}}</h4>
                                 </div>
                                 <div class="col-md-2 text-right">
                                     <button type="button" class="btn btn-rounded btn-success" data-toggle="modal" data-target="#editarUsuario">
                                         <i class="fas fa-pencil-alt mr-2"></i>Editar</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <h4 class="mb-0"><i class="far fa-user mr-2"></i>Rol: <span class="font-weight-normal">Ponente</span></h4>
-                                    <h4 class="mb-0"><i class="far fa-square mr-2"></i>Area: <span class="font-weight-normal">Area Usuario</span></h4>
-                                    <h4 class="mb-0"><i class="fas fa-wrench mr-2"></i>Puesto: <span class="font-weight-normal">Puesto Usuario</span></h4>
-                                    <h4 class="mb-0"><i class="fas fa-at mr-2"></i>Contacto: <span class="font-weight-normal">correo@dominio.com</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-user mr-2"></i>Rol: <span class="font-weight-normal">{{tipo}}</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-square mr-2"></i>Area: <span class="font-weight-normal">{{area}}</span></h4>
+                                    <h4 class="mb-0"><i class="fas fa-wrench mr-2"></i>Puesto: <span class="font-weight-normal">{{puesto}}</span></h4>
+                                    <h4 class="mb-0"><i class="fas fa-at mr-2"></i>Contacto: <span class="font-weight-normal">{{correo}}</span></h4>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-right align-items-end mt-auto">
-                                    <h4 class="mb-0"><i class="fas fa-key mr-2"></i>Matrícula: <span class="font-weight-normal">00000000</span></h4>
-                                    <h4 class="mb-0"><i class="far fa-clock mr-2"></i>Antiguedad: <span class="font-weight-normal">2 Años</span></h4>
-                                    <h4 class="mb-0"><i class="far fa-address-card mr-2"></i>Tarjetón: <span class="font-weight-normal">Verificado</span>
+                                    <h4 class="mb-0"><i class="fas fa-key mr-2"></i>Matrícula: <span class="font-weight-normal">{{matricula}}</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-clock mr-2"></i>Antiguedad: <span class="font-weight-normal">{{antiguedad}}</span></h4>
+                                    <h4 class="mb-0"><i class="far fa-address-card mr-2"></i>Tarjetón: <span class="font-weight-normal">
+                                        {{#if tarjetonVerificado}}Verificado{{else}}No Verificado{{/if}}</span>
                                         <span class="small"><a href="#" class="btn  btn-rounded btn-sm btn-success small ml-1">
                                             <i class="fas fa-download mr-2"></i>Descargar</a></span>
                                     </h4>
@@ -311,6 +318,7 @@
                     </div>
                 </div>
             </div>
+            {{/ponente}}
             <div class="row">
                 <!--datos estadisticos-->
                 <div class="col-md-4">
@@ -346,8 +354,8 @@
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-body">
                             <ul class="nav nav-pills">
-                                <li class=" nav-item"> <a href="#activos" class="nav-link active" data-toggle="tab" aria-expanded="false">Activos</a></li>
-                                <li class="nav-item"> <a href="#inactivos" class="nav-link" data-toggle="tab" aria-expanded="false">Inactivos</a></li>
+                                <li class=" nav-item"> <a href="#activos" class="nav-link active" data-toggle="tab" aria-expanded="false">Actuales</a></li>
+                                <li class="nav-item"> <a href="#inactivos" class="nav-link" data-toggle="tab" aria-expanded="false">Pasados</a></li>
                             </ul>
                         </div>
                     </div>
@@ -355,6 +363,7 @@
                         <div id="activos" class="tab-pane active">
                             <div class="row">
                                 <!--cursos activos-->
+                                {{#each cursosActualesPonente}}
                                 <div class="card card-hover" style="border-radius: 6px">
                                     <div class="card-body">
                                         <div class="row">
@@ -364,95 +373,38 @@
                                             <div class="col-md-8">
                                                 <div class="row mb-0">
                                                     <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                        <h5 class="mb-0 font-16">{{nombreCurso}}</h5>
                                                     </div>
                                                     <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                        <span class="small"><a href="../curso/{{idCurso}}" class="btn btn-rounded btn-sm btn-success small">
                                                             <i class="fas fa-cog mr-1"></i>Administrar</a></span>
                                                     </div>
                                                 </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>{{nombrePonente}}</h5>
                                                 <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">{{fechaInicio}}</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">{{fechaFin}}</span>
                                                 </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="font-light text-right">
+                                                    <i class="fas fa-clock"></i> {{horaInicio}} - {{horaFin}}
+                                                    <i class="fas fa-users ml-2 mr-2"></i>{{totalRealEstudiantesCurso}}
+                                                </h6>
                                                 <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">{{area}}</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">{{tipo}}</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">{{modalidad}}</span>
                                                 </h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card card-hover" style="border-radius: 6px">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row mb-0">
-                                                    <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
-                                                    </div>
-                                                    <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
-                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
-                                                    </div>
-                                                </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
-                                                <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
-                                                </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
-                                                <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card card-hover" style="border-radius: 6px">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row mb-0">
-                                                    <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
-                                                    </div>
-                                                    <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
-                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
-                                                    </div>
-                                                </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
-                                                <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
-                                                </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
-                                                <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{/each}}
                             </div>
                         </div>
                         <div id="inactivos" class="tab-pane">
                             <div class="row">
                                 <!--cursos inactivos-->
+                                {{#each cursosPasadosPonente}}
                                 <div class="card card-hover" style="border-radius: 6px">
                                     <div class="card-body">
                                         <div class="row">
@@ -462,183 +414,32 @@
                                             <div class="col-md-8">
                                                 <div class="row mb-0">
                                                     <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
+                                                        <h5 class="mb-0 font-16">{{nombreCurso}}</h5>
                                                     </div>
                                                     <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
+                                                        <span class="small"><a href="../curso/{{idCurso}}" class="btn btn-rounded btn-sm btn-success small">
                                                             <i class="fas fa-cog mr-1"></i>Administrar</a></span>
                                                     </div>
                                                 </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
+                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>{{nombrePonente}}</h5>
                                                 <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">{{fechaInicio}}</span>
+                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">{{fechaFin}}</span>
                                                 </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
+                                                <h6 class="font-light text-right">
+                                                    <i class="fas fa-clock"></i> {{horaInicio}} - {{horaFin}}
+                                                    <i class="fas fa-users ml-2 mr-2"></i>{{totalRealEstudiantesCurso}}
+                                                </h6>
                                                 <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
+                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">{{area}}</span>
+                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">{{tipo}}</span>
+                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">{{modalidad}}</span>
                                                 </h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card card-hover" style="border-radius: 6px">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row mb-0">
-                                                    <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
-                                                    </div>
-                                                    <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
-                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
-                                                    </div>
-                                                </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
-                                                <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
-                                                </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
-                                                <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card card-hover" style="border-radius: 6px">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row mb-0">
-                                                    <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
-                                                    </div>
-                                                    <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
-                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
-                                                    </div>
-                                                </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
-                                                <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
-                                                </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
-                                                <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card card-hover" style="border-radius: 6px">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row mb-0">
-                                                    <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
-                                                    </div>
-                                                    <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
-                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
-                                                    </div>
-                                                </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
-                                                <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
-                                                </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
-                                                <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card card-hover" style="border-radius: 6px">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row mb-0">
-                                                    <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
-                                                    </div>
-                                                    <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
-                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
-                                                    </div>
-                                                </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
-                                                <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
-                                                </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
-                                                <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card card-hover" style="border-radius: 6px">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4 text-center">
-                                                <img class="card-img img-responsive" style="border-radius: 10px;" src="../../assets/images/cursoImg1.JPG" alt="Imgagen siguiente curso">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row mb-0">
-                                                    <div class="col-md-9">
-                                                        <h5 class="mb-0 font-16">Nombre Completo Curso Loren Ipsum</h5>
-                                                    </div>
-                                                    <div class="col-md-3 text-right align-items-right">
-                                                        <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small">
-                                                            <i class="fas fa-cog mr-1"></i>Administrar</a></span>
-                                                    </div>
-                                                </div>
-                                                <h5 class="mt-0"><i class="far fa-user mr-1"></i>Nombre Completo Ponente Curso Lorem Ipsum</h5>
-                                                <h4 class="mt-4 text-right">
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Inicio: <span class="small mr-2">28/06/2021</span>
-                                                    <i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">28/06/2021</span>
-                                                </h4>
-                                                <h6 class="font-light text-right"><i class="fas fa-clock"></i> 10:00 am. - 12:00am. <i class="fas fa-users ml-2 mr-2"></i>0/60</h6>
-                                                <h6 class="ml-2 mr-2 mt-4 text-center">
-                                                    <i class="fas fa-briefcase mr-1"> </i> Area: <span class="small mr-2">Nombre del Area</span>
-                                                    <i class="far fa-circle mr-1"></i> Tipo: <span class="small mr-2">Tipo de Curso</span>
-                                                    <i class="fas fa-video mr-1"></i> Modalidad: <span class="small mr-2">Modalidad</span>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{/each}}
                             </div>
                         </div>
                     </div>

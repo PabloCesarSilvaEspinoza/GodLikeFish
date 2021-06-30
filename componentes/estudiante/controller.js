@@ -34,11 +34,13 @@ module.exports = function (injectedStore) {
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, cursoID);
     }
+    
     function getCursoActual(estudianteID) {
         const VIEW = 'ver_Curso_Actual_Estudiante';
         const CLAUSE = `WHERE idEstudiante = ?`;
         return store.get(VIEW, CLAUSE, estudianteID);
     }
+
     function getTemario(cursoID) {
         const VIEW = 'ver_Temario_Curso';
         const CLAUSE = `WHERE cursoID = ?`;
