@@ -367,6 +367,59 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, idUsuario);
     }
 
+    function getEstudiante(idEstudiante) {
+        const VIEW = 'ver_Estudiantes';
+        const CLAUSE = 'WHERE idEstudiante = ? LIMIT 1'
+        return store.get(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function getCursoActualEstudiante(idEstudiante) {
+        const VIEW = 'ver_Curso_Actual_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function listCursosAprobadosEstudiante(idEstudiante) {
+        const VIEW = 'ver_Cursos_Aprobados_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.list(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function listCursosReprobadosEstudiante(idEstudiante) {
+        const VIEW = 'ver_Cursos_Reprobados_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.list(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function catalogCursosDisponiblesEstudiante(idEstudiante) {
+        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idEstudiante})`
+        return store.catalog(PROCEDURE)
+    }
+
+    function getPonente(idPonente) {
+        const VIEW = 'ver_Ponentes_Administrador';
+        const CLAUSE = 'WHERE idPonente = ? LIMIT 1'
+        return store.get(VIEW, CLAUSE, idPonente);
+    }
+
+    function listCursosActualesPonente(idPonente) {
+        const VIEW = 'ver_Cursos_Actuales_Ponente';
+        const CLAUSE = `WHERE idPonente = ?`;
+        return store.list(VIEW, CLAUSE, idPonente);
+    }
+
+    function listCursosPasadosPonente(idPonente) {
+        const VIEW = 'ver_Cursos_Pasados_Ponente';
+        const CLAUSE = `WHERE idPonente = ?`;
+        return store.list(VIEW, CLAUSE, idPonente);
+    }
+
+    function getAdministrador(idAdministrador) {
+        const VIEW = 'ver_Administradores';
+        const CLAUSE = 'WHERE idAdministrador = ? LIMIT 1'
+        return store.get(VIEW, CLAUSE, idAdministrador);
+    }
+
     return {
         getUltimoCurso,
         getUltimoUsuario,
@@ -423,5 +476,14 @@ module.exports = function (injectedStore) {
         listUsuariosSuperAdministrador,
         getRolUsuario,
         desactivarCursoUsuario,
+        getEstudiante,
+        getCursoActualEstudiante,
+        listCursosAprobadosEstudiante,
+        listCursosReprobadosEstudiante,
+        catalogCursosDisponiblesEstudiante,
+        getPonente,
+        listCursosActualesPonente,
+        listCursosPasadosPonente,
+        getAdministrador,
     };
 }

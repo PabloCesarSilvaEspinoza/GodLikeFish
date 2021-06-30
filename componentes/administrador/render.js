@@ -80,8 +80,7 @@ module.exports = {
         console.log(req.params.idCursoActual);
         await Controller.desactivarCursoUsuario(req.params.idUsuario, req.params.idCursoActual);     
         res.redirect('back');
-    
-       },
+    },
     
     getAdministrarUsuarios: async function (req, res, next) {
         const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
@@ -277,20 +276,42 @@ module.exports = {
         const rol = rolUsuario[0].rolUsuario;
         switch (rol) {
             case 'Estudiante':
+                const datosEstudiante = await Controller.getEstudiante(usuarioID);
+                const estudiante = datosEstudiante[0];
+                const cursoActualEstudiante = await Controller.getCursoActualEstudiante(usuarioID);
+                const cursosAprobadosEstudiante = await Controller.listCursosAprobadosEstudiante(usuarioID);
+                const cursosReprobadosEstudiante = await Controller.listCursosReprobadosEstudiante(usuarioID);
+                const respuestaCursosDisponiblesEstudiante = await Controller.catalogCursosDisponiblesEstudiante(usuarioID);
+                const cursosDisponiblesEstudiante = respuestaCursosDisponiblesEstudiante[0];
                 res.render('administrador/d5_administrarUsuario_E1', {
                     administrador: true,
+                    estudiante,
+                    cursoActualEstudiante,
+                    cursosAprobadosEstudiante,
+                    cursosReprobadosEstudiante,
+                    cursosDisponiblesEstudiante,
                 })
                 break;
             case 'Ponente':
+                const datosPonente = await Controller.getPonente(usuarioID);
+                const ponente = datosPonente[0];
+                const cursosActualesPonente = await Controller.listCursosActualesPonente(usuarioID);
+                const cursosPasadosPonente = await Controller.listCursosPasadosPonente(usuarioID);
                 res.render('administrador/d5_administrarUsuario_E2', {
                     administrador: true,
+                    ponente,
+                    cursosActualesPonente,
+                    cursosPasadosPonente,
                 })
                 break;
             case 'Administrador':
             case 'Super-Administrador':
+                const datosAdministrador = await Controller.getAdministrador(usuarioID);
+                const administrador = datosAdministrador[0];
                 (req.user.rol == 'Super-Administrador')
                 ? res.render('administrador/d5_administrarUsuario_E3', {
                     administrador: true,
+                    administrador
                 })
                 : res.redirect('/administrador/dashboardAdministrador');
                 break;

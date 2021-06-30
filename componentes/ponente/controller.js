@@ -79,10 +79,7 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
     }
-    function listEstudiantes() {
-        const VIEW = 'ver_Estudiantes';
-        return store.list(VIEW);
-    }
+
     async function getHistorialCursosPonente(id) {
         const VIEW = 'ver_Historial_Cursos_Ponente';
         const CLAUSE = `WHERE idPonente = ?`;
@@ -322,7 +319,6 @@ function upsertDatosExamen(idExamen, body) {
 
     return {
         insertTarea,
-        listEstudiantes,
         insertExamen,
         listAlumnos,
         listCursos,
