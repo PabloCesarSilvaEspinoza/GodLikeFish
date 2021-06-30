@@ -99,6 +99,13 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
+    function updateEstadoUsuario(id, estado){
+        console.log(id+'asdadshbdjasbdhasbdj'+estado)
+        const PROCEDURE = `CALL cambiar_Estado_Usuario(${id}, ${estado})`
+
+        return store.upsert(PROCEDURE);
+    }
+
     function insertMultimediaCurso(cursoID, temarioCurso, fotoCurso) {
         const PROCEDURE = `CALL agregar_Multimedia_Curso( ${cursoID},  '${temarioCurso}', '${fotoCurso}' )`
 
@@ -224,15 +231,10 @@ module.exports = function (injectedStore) {
             ? numeroInt = null
             : numeroInt = body.numeroInt;
 
-        let activo;
-        (body.activo == 'on')
-            ? activo = '1'
-            : activo = '0';
-
         const PROCEDURE = `CALL editar_Usuario(
             ${id}, ${municipioResidenciaID}, '${colonia}', '${calle}', ${numeroExt}, ${numeroInt}, '${nombres}', '${pApellido}', '${sApellido}',
             '${matricula}', '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, ${area}, ${puesto},
-            '${antiguedad}', ${activo}
+            '${antiguedad}'
         )`
 
         return store.upsert(PROCEDURE);
@@ -439,5 +441,6 @@ module.exports = function (injectedStore) {
         updateFotoCurso,
         updateTemarioCurso,
         updateEstadoCurso,
+        updateEstadoUsuario,
     };
 }

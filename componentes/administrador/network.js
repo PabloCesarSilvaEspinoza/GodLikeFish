@@ -15,11 +15,11 @@ router.get('/administrarUsuarios', render.getAdministrarUsuarios);
 router.get('/curso/:idCurso', render.getConsultarCurso);
 router.post('/agregarCurso', crearCarpetaCurso, dobleInput, render.postAgregarCurso);
 router.post('/editarCurso/:idCurso', render.postEditarCurso);
-router.get('/editarUsuarios/:id', render.getEditarUsuario);
 router.post('/editarUsuarios/:id', render.postEditarUsuario);
 router.post('/editarFoto/:idCurso', eliminarFoto, single, render.postEditarFotoCurso);
 router.post('/editarTemario/:idCurso', eliminarDocumento, single, render.postEditarTemarioCurso);
 router.post('/estadoCurso/:idCurso/:estado', render.postEditarEstadoCurso);
+router.post('/estadoUsuario/:idUsuario/:estado', render.postEditarEstadoUsuario);
 router.get('/usuario/:idUsuario', render.getPerfilUsuario)
 
 router.get('/DescargarTarjetonUsuario/:idUsuario/:nombreTarjeton', render.getDescargarTarjetonUsuario);

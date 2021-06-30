@@ -178,9 +178,15 @@ module.exports = {
     },
 
     postEditarEstadoCurso: async function (req, res, next) {
-        await Controller.updateEstadoCurso(req.params.idCurso, req.params.estado);
+        await Controller.updateEstadoCurso(req.params.idUsuario, req.params.estado);
         res.redirect('back');
     },
+
+    postEditarEstadoUsuario: async function (req, res, next) {
+        await Controller.updateEstadoUsuario(req.params.idUsuario, req.params.estado);
+        res.redirect('back');
+    },
+
     postEditarFotoCurso: async function (req, res, next) {
         const foto = `${req.file.originalname}`;
         await Controller.updateFotoCurso(req.params.idCurso, foto)
@@ -195,74 +201,7 @@ module.exports = {
     postEditarUsuario: async function (req, res, next){
         await Controller.upsertDatosUsuario(req.params.id, req.body);        
 
-        res.redirect('/administrador/administrarUsuarios')
-    },
-
-    getEditarUsuario: async function(req, res, next){
-        const paises = await Controller.listPaises();
-        const puestos = await Controller.listPuestos();
-        const municipios =await Controller.listMunicipios();
-        const datosUsuario = await Controller.getUsuarioEditar(req.params.id);
-        const nombre = datosUsuario[0].nombre;
-        const apellidoPaterno = datosUsuario[0].apellidoPaterno;
-        const apellidoMaterno = datosUsuario[0].apellidoMaterno;
-        const idPais = datosUsuario[0].idPais;
-        const paisNacimiento = datosUsuario[0].paisNacimiento;
-        const idMunicipio = datosUsuario[0].idMunicipio;
-        const municipioNacimiento = datosUsuario[0].municipioNacimiento;
-        const fechaNacimiento = datosUsuario[0].fechaNacimiento;
-        const idMunicipioResidencia = datosUsuario[0].idMunicipioResidencia;
-        const municipioResidencia = datosUsuario[0].municipioResidencia;
-        const colonia = datosUsuario[0].colonia;
-        const calle = datosUsuario[0].calle;
-        const numeroExterior = datosUsuario[0].numeroExterior;
-        const numeroInterior = datosUsuario[0].numeroInterior;
-        const matriculaUsuario = datosUsuario[0].matriculaUsuario;
-        const fechaInicioLabores = datosUsuario[0].fechaInicioLabores;
-        const idPuesto = datosUsuario[0].idPuesto;
-        const puesto = datosUsuario[0].puesto;
-        const idArea = datosUsuario[0].idArea;
-        const area = datosUsuario[0].area;
-        const tarjeton = datosUsuario[0].tarjeton;
-        const estadoUsuario = datosUsuario[0].estado;
-        const idUsuario = datosUsuario[0].idUsuario;
-        const idDomicilio = datosUsuario[0].idDomicilio;
-        const activo = datosUsuario[0].activo;
-        const miPerfil = await Controller.getMiPerfil(req.user.id);
-
-        res.render('administrador/d5_editarUsuario',{
-            administrador: true,
-            switch: true,
-            nombre,
-            apellidoPaterno,
-            apellidoMaterno,
-            idPais,
-            paisNacimiento,
-            paises,
-            idMunicipio,
-            municipioNacimiento,
-            municipios,
-            fechaNacimiento,
-            idMunicipioResidencia,
-            municipioResidencia,
-            colonia,
-            calle,
-            numeroExterior,
-            numeroInterior,
-            matriculaUsuario,
-            fechaInicioLabores,
-            idPuesto,
-            puesto,
-            puestos,
-            idArea,
-            area,
-            tarjeton,
-            estadoUsuario,
-            idUsuario,
-            idDomicilio,
-            activo,
-            miPerfil
-        });
+        res.redirect('#')
     },
 
     postResolverProblema: async function(req, res, next){
@@ -293,15 +232,34 @@ module.exports = {
         const usuarioID = req.params.idUsuario;
         const rolUsuario = await Controller.getRolUsuario(usuarioID);
         const rol = rolUsuario[0].rolUsuario;
+        const paises = await Controller.listPaises();
+        const puestos = await Controller.listPuestos();
+        const municipios =await Controller.listMunicipios();
+        const datosUsuario = await Controller.getUsuarioEditar(req.params.idUsuario);
+        const datos = datosUsuario[0];
+        const areas = await Controller.listAreas();
+
+        console.log(datos.activo)
+
         switch (rol) {
             case 'Estudiante':
                 res.render('administrador/d5_administrarUsuario_E1', {
                     administrador: true,
+                    paises,
+                    puestos,
+                    municipios,
+                    datos,
+                    areas
                 })
                 break;
             case 'Ponente':
                 res.render('administrador/d5_administrarUsuario_E2', {
                     administrador: true,
+                    paises,
+                    puestos,
+                    municipios,
+                    datos,
+                    areas
                 })
                 break;
             case 'Administrador':
@@ -309,6 +267,11 @@ module.exports = {
                 (req.user.rol == 'Super-Administrador')
                 ? res.render('administrador/d5_administrarUsuario_E3', {
                     administrador: true,
+                    paises,
+                    puestos,
+                    municipios,
+                    datos,
+                    areas
                 })
                 : res.redirect('/administrador/dashboardAdministrador');
                 break;
