@@ -144,6 +144,69 @@ module.exports = {
         res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
     },
 
+    putEditarExamen: async function (req, res, next) {
+        await Controller.upsertDatosExamen(req.params.id, req.body);      
+       res.redirect('back');
+
+   },
+   postDeleteExamen: async function (req, res, next) {
+     await Controller.deleteExamen(req.params.idExamen);     
+  
+    res.redirect('back');
+
+   },
+
+   putEditarAviso: async function (req, res, next) {
+    await Controller.upsertDatosAviso(req.params.id, req.body);      
+    res.redirect('back');
+
+
+   },
+
+   postDeleteAviso: async function (req, res, next) {
+    await Controller.deleteAvisos(req.params.idAviso);     
+    res.redirect('back');
+
+   },
+
+   postDeleteDocumento: async function (req, res, next) {
+    await Controller.deleteDocumentos(req.params.idDocumento);     
+    res.redirect('back');
+
+   },
+
+   putEditarLinks: async function (req, res, next) {
+    await Controller.upsertDatosLinks(req.params.id, req.body);      
+    res.redirect('back');
+
+
+   },
+
+   postDeleteLink: async function (req, res, next) {
+    await Controller.deleteLinks(req.params.idLink);     
+    res.redirect('back');
+
+   },
+
+   putEditarAsignacion: async function (req, res, next) {
+       console.log(req.params.id);
+    await Controller.upsertDatosTarea(req.params.id, req.body);   
+    // const temario = `${req.file.originalname}`;
+    //  await Controller.insertArchivosMultimediaCurso(req.body.idCurso, temario);
+    
+    res.redirect('back');
+
+
+   },
+
+   postDeleteAsignacion: async function (req, res, next) {
+    await Controller.deleteTarea(req.params.idTarea);     
+    res.redirect('back');
+
+   },
+
+
+
     getConsultarEstadoCursoPonente: async function (req, res, next){
         console.log('entre')
         const usuarioID = req.user.id;
@@ -172,6 +235,7 @@ module.exports = {
                 const linksCurso = await Controller.listLinksCurso(cursoID);
                 const documentosCurso = await Controller.listDocumentosCurso(cursoID);
                 const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
+                const asignacionesPonenteEditar= await Controller.listAsignacionesPonenteEditar(cursoID);
                 const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
                 const examenesCurso = await Controller.listExamenesCurso(cursoID);
                 const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
@@ -179,6 +243,8 @@ module.exports = {
                 const totalLinks = linksCurso.length;
                 const fechaActual = await Controller.getTiempoActual();
                 global.cursoActualID = cursoID;
+                const examenesCursoE = await await Controller.listExamen(cursoID);
+
                 res.render('ponente/p2_consultarCursoE1', {
                     ponente: true,
                     curso,
@@ -193,7 +259,9 @@ module.exports = {
                     archivosAsignacionesPonente,
                     publicacionesCurso,
                     fechaActual,
-                    miPerfil
+                    miPerfil,
+                    examenesCursoE,
+                    asignacionesPonenteEditar
                 });
                 break;
 

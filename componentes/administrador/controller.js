@@ -4,7 +4,7 @@ const mensajes = ["Estas de vuelta","Hola","¿Que tal?","Estas aquí","Volviste"
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
-        store = require('../../store/mysql');
+        store = require('../../store/mysql'); 
     }
     /*-----------------------------------------------------*/ 
     /*                      DASHBOARD                      */
@@ -56,20 +56,52 @@ module.exports = function (injectedStore) {
         return store.upsert(PROCEDURE);
     }
 
-    function updateCurso(body) {
+    function getCursoEditar(id) {
+        const VIEW = 'ver_Datos_Curso_Editar';
+        const CLAUSE = `WHERE cursoId = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function updateCurso(id, body) {
         const {
-            Id,nombre, clave, descripcion, fechaInicio, fechaFinal, horaInicio, 
-            horaFin, fechaInscripcionInicio, fechaInscripcionFinal, plataforma,
-            area, tipo, temario , modalidad, capacidad,
-            linkCurso, linkPlataforma,foto, activo, ponenteId
+            nombreCurso, clave, descripcion, fechaInicio, fechaFin, horaInicio, 
+            horaFin, inscripcionInicio, inscripcionFin, plataforma,
+            area, tipo, modalidad, capacidad,
+            enlace, ponente
         } = body;
 
         const PROCEDURE = `CALL editar_Curso( 
-            ${Id}, '${nombre}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFinal}',
-            '${horaInicio}', '${horaFin}', '${fechaInscripcionInicio}', '${fechaInscripcionFinal}', '${plataforma}',
-            '${area}','${tipo}', '${temario}', '${modalidad}', ${capacidad},
-            '${linkCurso}',  '${linkPlataforma}', '${foto}', ${activo}, ${ponenteId}
+            ${id}, '${nombreCurso}', '${clave}', '${descripcion}', '${fechaInicio}', '${fechaFin}',
+            '${horaInicio}', '${horaFin}', '${inscripcionInicio}', '${inscripcionFin}', '${plataforma}',
+            '${area}','${tipo}', '${modalidad}', ${capacidad},
+            '${enlace}', ${ponente}
             )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function updateFotoCurso(id, foto){
+        const PROCEDURE = `CALL editar_Foto(${id}, '${foto}')`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function updateTemarioCurso(id, temario){
+        console.log(id+' '+temario)
+        const PROCEDURE = `CALL editar_Temario(${id}, '${temario}')`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function updateEstadoCurso(id, estado){
+        const PROCEDURE = `CALL cambiar_Estado_Curso(${id}, ${estado})`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function updateEstadoUsuario(id, estado){
+        console.log(id+'asdadshbdjasbdhasbdj'+estado)
+        const PROCEDURE = `CALL cambiar_Estado_Usuario(${id}, ${estado})`
 
         return store.upsert(PROCEDURE);
     }
@@ -199,15 +231,10 @@ module.exports = function (injectedStore) {
             ? numeroInt = null
             : numeroInt = body.numeroInt;
 
-        let activo;
-        (body.activo == 'on')
-            ? activo = '1'
-            : activo = '0';
-
         const PROCEDURE = `CALL editar_Usuario(
             ${id}, ${municipioResidenciaID}, '${colonia}', '${calle}', ${numeroExt}, ${numeroInt}, '${nombres}', '${pApellido}', '${sApellido}',
             '${matricula}', '${fechaNacimiento}', ${paisNacimientoID}, ${municipioNacimientoID}, ${area}, ${puesto},
-            '${antiguedad}', ${activo}
+            '${antiguedad}'
         )`
 
         return store.upsert(PROCEDURE);
@@ -221,6 +248,18 @@ module.exports = function (injectedStore) {
     function listAcreedoresDiplomas() {
         const VIEW = 'ver_acreedores_diplomas';
         return store.list(VIEW);
+    }
+
+    function desactivarCursoUsuario(idUsuario,idCursoActual) {
+        console.log(idUsuario);
+        console.log(idCursoActual);
+
+        const PROCEDURE = `CALL eliminar_Estudiante_Curso(
+            ${idUsuario}, ${idCursoActual}
+
+        )`
+
+        return store.upsert(PROCEDURE);
     }
 
     function UsuariosSinVerificar() {
@@ -237,6 +276,21 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Datos_Cursos';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, idCurso);
+    }
+    function totalCursoAprobadoEstudiante(idUsuario) {
+        const VIEW = 'ver_Cursos_Estudiantes_Total_Aprobados';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+    function totalCursoReprobadoEstudiante(idUsuario) {
+        const VIEW = 'ver_Cursos_Estudiantes_Total_Reprobados';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
+    }
+    function totalCursoEstudiante(idUsuario) {
+        const VIEW = 'ver_Cursos_Estudiantes_Total';
+        const CLAUSE = `WHERE idUsuario = ?`;
+        return store.get(VIEW, CLAUSE, idUsuario);
     }
 
     function listAvisosCurso(idCurso) {
@@ -355,6 +409,59 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, idUsuario);
     }
 
+    function getEstudiante(idEstudiante) {
+        const VIEW = 'ver_Estudiantes';
+        const CLAUSE = 'WHERE idEstudiante = ? LIMIT 1'
+        return store.get(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function getCursoActualEstudiante(idEstudiante) {
+        const VIEW = 'ver_Curso_Actual_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.get(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function listCursosAprobadosEstudiante(idEstudiante) {
+        const VIEW = 'ver_Cursos_Aprobados_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.list(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function listCursosReprobadosEstudiante(idEstudiante) {
+        const VIEW = 'ver_Cursos_Reprobados_Estudiante';
+        const CLAUSE = `WHERE idEstudiante = ?`;
+        return store.list(VIEW, CLAUSE, idEstudiante);
+    }
+
+    function catalogCursosDisponiblesEstudiante(idEstudiante) {
+        const PROCEDURE = `CALL ver_Cursos_Disponibles_Estudiante(${idEstudiante})`
+        return store.catalog(PROCEDURE)
+    }
+
+    function getPonente(idPonente) {
+        const VIEW = 'ver_Ponentes_Administrador';
+        const CLAUSE = 'WHERE idPonente = ? LIMIT 1'
+        return store.get(VIEW, CLAUSE, idPonente);
+    }
+
+    function listCursosActualesPonente(idPonente) {
+        const VIEW = 'ver_Cursos_Actuales_Ponente';
+        const CLAUSE = `WHERE idPonente = ?`;
+        return store.list(VIEW, CLAUSE, idPonente);
+    }
+
+    function listCursosPasadosPonente(idPonente) {
+        const VIEW = 'ver_Cursos_Pasados_Ponente';
+        const CLAUSE = `WHERE idPonente = ?`;
+        return store.list(VIEW, CLAUSE, idPonente);
+    }
+
+    function getAdministrador(idAdministrador) {
+        const VIEW = 'ver_Administradores';
+        const CLAUSE = 'WHERE idAdministrador = ? LIMIT 1'
+        return store.get(VIEW, CLAUSE, idAdministrador);
+    }
+
     return {
         getUltimoCurso,
         getUltimoUsuario,
@@ -410,5 +517,23 @@ module.exports = function (injectedStore) {
         listUsuariosAdministrador,
         listUsuariosSuperAdministrador,
         getRolUsuario,
+        desactivarCursoUsuario,
+        totalCursoAprobadoEstudiante,
+        totalCursoReprobadoEstudiante,
+        totalCursoEstudiante,
+        getCursoEditar,
+        updateFotoCurso,
+        updateTemarioCurso,
+        updateEstadoCurso,
+        updateEstadoUsuario,
+        getEstudiante,
+        getCursoActualEstudiante,
+        listCursosAprobadosEstudiante,
+        listCursosReprobadosEstudiante,
+        catalogCursosDisponiblesEstudiante,
+        getPonente,
+        listCursosActualesPonente,
+        listCursosPasadosPonente,
+        getAdministrador,
     };
 }

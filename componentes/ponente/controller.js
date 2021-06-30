@@ -37,7 +37,6 @@ module.exports = function (injectedStore) {
     function listCursosActuales(idPonente) {
         const VIEW = 'ver_Cursos_Actuales_Ponente';
         const CLAUSE = `WHERE idPonente = ?`;
-        
         return store.get(VIEW, CLAUSE, idPonente);
     }
 
@@ -79,10 +78,7 @@ module.exports = function (injectedStore) {
         const VIEW = 'ver_Datos_Cursos';
         return store.list(VIEW);
     }
-    function listEstudiantes() {
-        const VIEW = 'ver_Estudiantes';
-        return store.list(VIEW);
-    }
+
     async function getHistorialCursosPonente(id) {
         const VIEW = 'ver_Historial_Cursos_Ponente';
         const CLAUSE = `WHERE idPonente = ?`;
@@ -102,6 +98,12 @@ module.exports = function (injectedStore) {
 
     function listAsignacionesPonente(id) {
         const VIEW = 'ver_Asignaciones_Curso_Ponente';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
+    function listAsignacionesPonenteEditar(id) {
+        const VIEW = 'ver_asignaciones_curso_ponente_editar';
         const CLAUSE = `WHERE idCurso = ?`;
         return store.get(VIEW, CLAUSE, id);
     }
@@ -219,6 +221,128 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, idTarea);
     }
 
+    function listExamenesEditar(idCurso) { 
+        const VIEW = 'ver_examenes_editar';
+        const CLAUSE = `WHERE idExamen = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+function upsertDatosExamen(idExamen, body) {
+        const {
+            idCurso ,  nombreExamen, linkExamen,  horaAplicacionExamen, fechaAplicacionExamen
+
+        } = body;
+
+       
+        const PROCEDURE = `CALL editar_examen(
+            ${idExamen},  '${nombreExamen}',  '${linkExamen}',  '${fechaAplicacionExamen} ${horaAplicacionExamen}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function deleteExamen(idExamen) {
+       console.log(idExamen);
+        const PROCEDURE = `CALL eliminar_examen(
+            ${idExamen}
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+  function listExamen(idCurso) { 
+        const VIEW = 'ver_examenes_editar';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function upsertDatosAviso(idAviso, body) {
+        const {
+            asuntoAviso, descripcionAviso
+
+        } = body;
+
+       
+        const PROCEDURE = `CALL editar_Aviso(
+            ${idAviso},  '${asuntoAviso}',  '${descripcionAviso}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function deleteAvisos(idAviso) {
+         const PROCEDURE = `CALL eliminar_Aviso(
+             ${idAviso}
+ 
+         )`
+ 
+         return store.upsert(PROCEDURE);
+     }
+
+
+    function deleteDocumentos(idDocumento) {
+         const PROCEDURE = `CALL eliminar_Documento(
+             ${idDocumento}
+ 
+         )`
+ 
+         return store.upsert(PROCEDURE);
+     }
+
+     function deleteLinks(idLink) {
+        const PROCEDURE = `CALL eliminar_Link(
+            ${idLink}
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function upsertDatosLinks(idLink, body) {
+        const {
+            nombreLink, link
+
+        } = body;
+
+       
+        const PROCEDURE = `CALL editar_Link(
+            ${idLink},  '${nombreLink}',  '${link}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function deleteTarea(idTarea) {
+        console.log(idTarea);
+        const PROCEDURE = `CALL eliminar_Asignacion_Ponente(
+            ${idTarea}, 77
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function upsertDatosTarea(idTarea, body) {
+        const {
+            nombreTarea, descripcionTarea, atemporalCurso , fechaLimiteTarea, horaLimiteTarea
+
+        } = body;
+
+       console.log(idTarea, nombreTarea, descripcionTarea, atemporalCurso , fechaLimiteTarea, horaLimiteTarea);
+
+        const PROCEDURE = `CALL editar_Tarea(
+            ${idTarea},  '${nombreTarea}',  '${descripcionTarea}', ${atemporalCurso},  '${fechaLimiteTarea} ${horaLimiteTarea}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+
     function getMensajeBienvenida(){
         const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
         return mensajes[numeroAleatoreo];
@@ -226,7 +350,6 @@ module.exports = function (injectedStore) {
 
     return {
         insertTarea,
-        listEstudiantes,
         insertExamen,
         listAlumnos,
         listCursos,
@@ -243,6 +366,7 @@ module.exports = function (injectedStore) {
         getUltimaTarea,
         getProximoCurso,
         listAsignacionesPonente,
+        listAsignacionesPonenteEditar,
         reportarProblemaCurso,
         reportarProblemaUsuario,
         getConsultarEstadoCursoPonente,
@@ -262,6 +386,18 @@ module.exports = function (injectedStore) {
         listEstadoEntregasTarea,
         listArchivosEntregasTarea,
         getDatosTarea,
+        upsertDatosExamen,
+        listExamenesEditar,
+        deleteExamen,
+        listExamen,
+        upsertDatosAviso,
+        deleteAvisos,
+        deleteDocumentos,
+        deleteLinks,
+        upsertDatosLinks,
         getMensajeBienvenida,
+        upsertDatosTarea,
+        deleteTarea
+
     };
 }

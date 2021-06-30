@@ -292,33 +292,80 @@
 </script>
 {{/if}}
 {{#if graficasPonente}}
+{{#datosGeneralesPonente}}
 <script>
     var ctx = document.getElementById('GraficaMuestra4');
     var GraficaMuestra4 = new Chart(ctx, {
         responsive: true,
-        type: 'pie',
+        type: 'bar',
+        data : {
+                labels:['Actuales','Alcanzados'],
+                datasets: [{
+                label: 'Cursos',
+                data: [16, 11],
+                backgroundColor: [
+                'rgba(255, 99, 132)',
+                'rgba(255, 159, 64)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                ]
+                },{
+                label: 'Alumnos',
+                data: [16, 17],
+                backgroundColor: [
+                'rgba(255, 205, 86)',
+                'rgba(75, 192, 192)'
+                ],
+                borderColor: [
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)'
+                ]
+            }]
+            },
+            options: {
+            }
+        });
+</script>
+{{/datosGeneralesPonente}}
+{{/if}}
+{{#if graficasAdministrador}}
+<script>
+    var ctx = document.getElementById('GraficaMuestra6');
+    var GraficaMuestra6 = new Chart(ctx, {
+        responsive: true,
+        type: 'doughnut',
 
         data: {
             labels: [
-                'Cursos Impartidos',
-                'Cursos Actuales',
-                'Alumnos Actuales',
-                'Alumnos Alcanzados'
+                'Disponibles',
+                'Aprobados',
+                'Reprobados'
             ],
 
             datasets: [{
-                label: 'Datos Ponente',
+                label: 'Datos Cursos',
                 data: [
-                10, 6, 20, 12
+                    {{#each totalCurso}}
+                        {{totalCursos}},
+                    {{/each}}
+                    {{#each totalCursoAprobado}}
+                        {{totalCursos}},
+                    {{/each}}
+                    {{#each totalCursoReprobado}}
+                        {{totalCursos}},
+                    {{/each}}
             ],
                 backgroundColor: [
-                    'rgba(255, 99, 132)',
+                    'rgba(255, 159, 64, 0.9)',
                     'rgb(255, 205, 86)',
-                    'rgba(54, 162, 235)',
-                    'rgba(255, 159, 64, 0.9)'
+                    'rgba(75, 192, 192)'
                 ],
-                borderColor: 'rgb(255, 159, 64, 0.2)',
-                        hoverOffset: 1
+                pointBackgroundColor: 'rgb(75, 192, 192)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(75, 192, 192)'
             }]
     },
     options: {

@@ -17,11 +17,10 @@ module.exports = {
         const valoresUinact = await Controller.listUsuariosInactivosTotal();
         const valoresUcurso = await Controller.listUsuariosEncursoTotal();
         const valoresUrecono = await Controller.listUsuariosReconocimientoTotal();
-        const numeroErrores = errores.length;
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
         const mensaje = await Controller.getMensajeBienvenida();
-        const numeroErrores = errores.length;
         const numeroUsuariosSinVerificar = usuariosSinVerificar.length;
+        const numeroErrores = errores.length;
         /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
             administrador: true,
@@ -75,6 +74,13 @@ module.exports = {
 
         });
     },
+
+    postDesactivarCursoUsuario: async function (req, res, next) {
+        console.log(req.params.idUsuario);
+        console.log(req.params.idCursoActual);
+        await Controller.desactivarCursoUsuario(req.params.idUsuario, req.params.idCursoActual);     
+        res.redirect('back');
+    },
     
     getAdministrarUsuarios: async function (req, res, next) {
         const datosUsuarioEnSistema= await Controller.listUsuariosEnSistema(); 
@@ -102,7 +108,7 @@ module.exports = {
             inactivos,
             registrados,
             usuarios,
-            miPerfil
+            miPerfil 
         });
     },
 
@@ -110,6 +116,7 @@ module.exports = {
         const cursoID = req.params.idCurso;
         const datosCurso = await Controller.getCurso(cursoID);
         const curso = datosCurso[0];
+        const activo = datosCurso[0].activoCurso;
         const avisosCurso = await Controller.listAvisosCurso(cursoID);
         const linksCurso = await Controller.listLinksCurso(cursoID);
         const documentosCurso = await Controller.listDocumentosCurso(cursoID);
@@ -128,6 +135,11 @@ module.exports = {
         const calificacionesEstudiantes = await Controller.listCalificacionesEstudiantes(cursoID);
         const estudiantesInscritos = await Controller.listEstudiantesInscritos(cursoID);
         const miPerfil = await Controller.getMiPerfil(req.user.id);
+        const datosEditarCurso = await Controller.getCursoEditar(cursoID)
+        const datosCursoEd = datosEditarCurso[0];
+        const ponentes = await Controller.listPonentes();
+        const areas = await Controller.listAreas();
+        
         res.render('administrador/d4_consultarCurso', {
             administrador: true,
             graficasAdministrador : true,
@@ -150,6 +162,11 @@ module.exports = {
             calificacionesCurso,
             calificacionesEstudiantes,
             estudiantesInscritos,
+            miPerfil,
+            datosCursoEd,
+            ponentes,
+            areas,
+            activo
         });
     },
 
@@ -162,82 +179,36 @@ module.exports = {
         res.redirect('/administrador/administrarCursos')
     },
 
-    putEditarCurso: async function (req, res, next) {
-        await Controller.updateCurso(req.body);
-        res.redirect('administrador/consultarCursosEI/:id');
+    postEditarCurso: async function (req, res, next) {
+        await Controller.updateCurso(req.params.idCurso, req.body);
+        res.redirect('back');
     },
 
+    postEditarEstadoCurso: async function (req, res, next) {
+        await Controller.updateEstadoCurso(req.params.idUsuario, req.params.estado);
+        res.redirect('back');
+    },
+
+    postEditarEstadoUsuario: async function (req, res, next) {
+        await Controller.updateEstadoUsuario(req.params.idUsuario, req.params.estado);
+        res.redirect('back');
+    },
+
+    postEditarFotoCurso: async function (req, res, next) {
+        const foto = `${req.file.originalname}`;
+        await Controller.updateFotoCurso(req.params.idCurso, foto)
+        res.redirect('back');
+    },
+
+    postEditarTemarioCurso: async function (req, res, next) {
+        const temario = `${req.file.originalname}`;
+        await Controller.updateTemarioCurso(req.params.idCurso, temario)
+        res.redirect('back');
+    },
     postEditarUsuario: async function (req, res, next){
         await Controller.upsertDatosUsuario(req.params.id, req.body);        
 
-        res.redirect('/administrador/administrarUsuarios')
-    },
-
-    getEditarUsuario: async function(req, res, next){
-        const paises = await Controller.listPaises();
-        const puestos = await Controller.listPuestos();
-        const municipios =await Controller.listMunicipios();
-        const datosUsuario = await Controller.getUsuarioEditar(req.params.id);
-        const nombre = datosUsuario[0].nombre;
-        const apellidoPaterno = datosUsuario[0].apellidoPaterno;
-        const apellidoMaterno = datosUsuario[0].apellidoMaterno;
-        const idPais = datosUsuario[0].idPais;
-        const paisNacimiento = datosUsuario[0].paisNacimiento;
-        const idMunicipio = datosUsuario[0].idMunicipio;
-        const municipioNacimiento = datosUsuario[0].municipioNacimiento;
-        const fechaNacimiento = datosUsuario[0].fechaNacimiento;
-        const idMunicipioResidencia = datosUsuario[0].idMunicipioResidencia;
-        const municipioResidencia = datosUsuario[0].municipioResidencia;
-        const colonia = datosUsuario[0].colonia;
-        const calle = datosUsuario[0].calle;
-        const numeroExterior = datosUsuario[0].numeroExterior;
-        const numeroInterior = datosUsuario[0].numeroInterior;
-        const matriculaUsuario = datosUsuario[0].matriculaUsuario;
-        const fechaInicioLabores = datosUsuario[0].fechaInicioLabores;
-        const idPuesto = datosUsuario[0].idPuesto;
-        const puesto = datosUsuario[0].puesto;
-        const idArea = datosUsuario[0].idArea;
-        const area = datosUsuario[0].area;
-        const tarjeton = datosUsuario[0].tarjeton;
-        const estadoUsuario = datosUsuario[0].estado;
-        const idUsuario = datosUsuario[0].idUsuario;
-        const idDomicilio = datosUsuario[0].idDomicilio;
-        const activo = datosUsuario[0].activo;
-        const miPerfil = await Controller.getMiPerfil(req.user.id);
-
-        res.render('administrador/d5_editarUsuario',{
-            administrador: true,
-            switch: true,
-            nombre,
-            apellidoPaterno,
-            apellidoMaterno,
-            idPais,
-            paisNacimiento,
-            paises,
-            idMunicipio,
-            municipioNacimiento,
-            municipios,
-            fechaNacimiento,
-            idMunicipioResidencia,
-            municipioResidencia,
-            colonia,
-            calle,
-            numeroExterior,
-            numeroInterior,
-            matriculaUsuario,
-            fechaInicioLabores,
-            idPuesto,
-            puesto,
-            puestos,
-            idArea,
-            area,
-            tarjeton,
-            estadoUsuario,
-            idUsuario,
-            idDomicilio,
-            activo,
-            miPerfil
-        });
+        res.redirect('#')
     },
 
     postResolverProblema: async function(req, res, next){
@@ -263,22 +234,81 @@ module.exports = {
         Controller.enviarCorreo(idUsuario,asunto,mensaje);
         res.redirect('/validarPermisos'); /* regresa a dashboard, modificar */
     },
-    
+
     getPerfilUsuario: async function (req, res, next) {
         const usuarioID = req.params.idUsuario;
         const rolUsuario = await Controller.getRolUsuario(usuarioID);
+        const totalCursoAprobado = await Controller.totalCursoAprobadoEstudiante(usuarioID);
+        const totalCursoReprobado = await Controller.totalCursoReprobadoEstudiante(usuarioID);
+        const totalCurso = await Controller.totalCursoEstudiante(usuarioID);
         const rol = rolUsuario[0].rolUsuario;
+        const paises = await Controller.listPaises();
+        const puestos = await Controller.listPuestos();
+        const municipios =await Controller.listMunicipios();
+        const datosUsuario = await Controller.getUsuarioEditar(req.params.idUsuario);
+        const datos = datosUsuario[0];
+        const areas = await Controller.listAreas();
+
+        console.log(datos.activo)
+
         switch (rol) {
             case 'Estudiante':
-                res.render('administrador/d5_administrarUsuario_E1')
+                const datosEstudiante = await Controller.getEstudiante(usuarioID);
+                const estudiante = datosEstudiante[0];
+                const cursoActualEstudiante = await Controller.getCursoActualEstudiante(usuarioID);
+                const cursosAprobadosEstudiante = await Controller.listCursosAprobadosEstudiante(usuarioID);
+                const cursosReprobadosEstudiante = await Controller.listCursosReprobadosEstudiante(usuarioID);
+                const respuestaCursosDisponiblesEstudiante = await Controller.catalogCursosDisponiblesEstudiante(usuarioID);
+                const cursosDisponiblesEstudiante = respuestaCursosDisponiblesEstudiante[0];
+                res.render('administrador/d5_administrarUsuario_E1', {
+                    administrador: true,
+                    graficasAdministrador : true,
+                    totalCursoAprobado,
+                    totalCursoReprobado,
+                    totalCurso,
+                    paises,
+                    puestos,
+                    municipios,
+                    datos,
+                    areas,
+                    estudiante,
+                    cursoActualEstudiante,
+                    cursosAprobadosEstudiante,
+                    cursosReprobadosEstudiante,
+                    cursosDisponiblesEstudiante,
+                })
                 break;
             case 'Ponente':
-                res.render('administrador/d5_administrarUsuario_E2')
+                const datosPonente = await Controller.getPonente(usuarioID);
+                const ponente = datosPonente[0];
+                const cursosActualesPonente = await Controller.listCursosActualesPonente(usuarioID);
+                const cursosPasadosPonente = await Controller.listCursosPasadosPonente(usuarioID);
+                res.render('administrador/d5_administrarUsuario_E2', {
+                    administrador: true,
+                    paises,
+                    puestos,
+                    municipios,
+                    datos,
+                    areas,
+                    ponente,
+                    cursosActualesPonente,
+                    cursosPasadosPonente,
+                })
                 break;
             case 'Administrador':
             case 'Super-Administrador':
+                const datosAdministrador = await Controller.getAdministrador(usuarioID);
+                const administrador = datosAdministrador[0];
                 (req.user.rol == 'Super-Administrador')
-                ? res.render('administrador/d5_administrarUsuario_E3')
+                ? res.render('administrador/d5_administrarUsuario_E3', {
+                    administrador: true,
+                    paises,
+                    puestos,
+                    municipios,
+                    datos,
+                    areas,
+                    administrador
+                })
                 : res.redirect('/administrador/dashboardAdministrador');
                 break;
             default:
