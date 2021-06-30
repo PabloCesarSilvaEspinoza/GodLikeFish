@@ -105,6 +105,12 @@ module.exports = function (injectedStore) {
         return store.get(VIEW, CLAUSE, id);
     }
 
+    function listAsignacionesPonenteEditar(id) {
+        const VIEW = 'ver_asignaciones_curso_ponente_editar';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, id);
+    }
+
     function reportarProblemaCurso(idUsuario, idCurso, asunto, descripcion){
         const PROCEDURE = `CALL agregar_Problemas_Curso(${idUsuario}, ${idCurso}, '${asunto}', '${descripcion}')`;
         return store.insert(PROCEDURE);
@@ -313,6 +319,32 @@ function upsertDatosExamen(idExamen, body) {
         return store.upsert(PROCEDURE);
     }
 
+    function deleteTarea(idTarea) {
+        console.log(idTarea);
+        const PROCEDURE = `CALL eliminar_Asignacion_Ponente(
+            ${idTarea}, 77
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
+    function upsertDatosTarea(idTarea, body) {
+        const {
+            nombreTarea, descripcionTarea, atemporalCurso , fechaLimiteTarea, horaLimiteTarea
+
+        } = body;
+
+       console.log(idTarea, nombreTarea, descripcionTarea, atemporalCurso , fechaLimiteTarea, horaLimiteTarea);
+
+        const PROCEDURE = `CALL editar_Tarea(
+            ${idTarea},  '${nombreTarea}',  '${descripcionTarea}', ${atemporalCurso},  '${fechaLimiteTarea} ${horaLimiteTarea}'
+
+        )`
+
+        return store.upsert(PROCEDURE);
+    }
+
 
     function getMensajeBienvenida(){
         const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
@@ -338,6 +370,7 @@ function upsertDatosExamen(idExamen, body) {
         getUltimaTarea,
         getProximoCurso,
         listAsignacionesPonente,
+        listAsignacionesPonenteEditar,
         reportarProblemaCurso,
         reportarProblemaUsuario,
         getConsultarEstadoCursoPonente,
@@ -367,5 +400,8 @@ function upsertDatosExamen(idExamen, body) {
         deleteLinks,
         upsertDatosLinks,
         getMensajeBienvenida,
+        upsertDatosTarea,
+        deleteTarea
+
     };
 }
