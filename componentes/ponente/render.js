@@ -190,7 +190,10 @@ module.exports = {
 
    putEditarAsignacion: async function (req, res, next) {
        console.log(req.params.id);
-    await Controller.upsertDatosTarea(req.params.id, req.body);      
+    await Controller.upsertDatosTarea(req.params.id, req.body);   
+    // const temario = `${req.file.originalname}`;
+    //  await Controller.insertArchivosMultimediaCurso(req.body.idCurso, temario);
+    
     res.redirect('back');
 
 

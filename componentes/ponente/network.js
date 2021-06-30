@@ -35,7 +35,7 @@ router.post('/borrarLink/:idLink', render.postDeleteLink);
 router.post('/editarLink/:id', render.putEditarLinks);
 
 router.post('/borrarAsignacion/:idTarea', render.postDeleteAsignacion);
-router.post('/editarAsignaicon/:id', render.putEditarAsignacion);
+router.post('/editarAsignaicon/:id',  uploadArchivos.array('multimediaTarea'), render.putEditarAsignacion);
 
 router.post('/borrarDocumento/:idDocumento', render.postDeleteDocumento);
 /* router.get('/AgregarTareaPrueba', render.getAgregarTarea);

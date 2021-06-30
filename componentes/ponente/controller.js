@@ -323,7 +323,7 @@ function upsertDatosExamen(idExamen, body) {
     function deleteTarea(idTarea) {
         console.log(idTarea);
         const PROCEDURE = `CALL eliminar_Asignacion_Ponente(
-            ${idTarea}
+            ${idTarea}, 77
 
         )`
 
