@@ -37,7 +37,6 @@ module.exports = function (injectedStore) {
     function listCursosActuales(idPonente) {
         const VIEW = 'ver_Cursos_Actuales_Ponente';
         const CLAUSE = `WHERE idPonente = ?`;
-        
         return store.get(VIEW, CLAUSE, idPonente);
     }
 
