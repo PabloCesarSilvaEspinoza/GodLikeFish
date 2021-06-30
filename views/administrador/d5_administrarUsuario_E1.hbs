@@ -16,7 +16,8 @@
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
-                            <form action="#" method="post" >
+                            {{#datos}}
+                            <form action="../editarUsuarios/{{idUsuario}}" method="post" >
                                 <div class="row">
                                     <!--datos generales-->
                                     <div class="col-md-3 text-center">
@@ -29,87 +30,97 @@
                                                 <h4><i class="fas fa-user-alt mr-2"></i>Datos Generales</h4><hr>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-0 font-medium ml-2">Nombre <span class="text-danger">*</span></h6>
-                                                <input type="text" id="#" class="form-control" placeholder="Nombre(s)" required>
+                                                <h6 class="mb-0 font-medium ml-2">Nombre</h6>
+                                                <input type="text" name="nombres" value="{{nombre}}" class="form-control" placeholder="Nombre(s)" required>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium ml-2">Apellido Paterno <span class="text-danger">*</span></h6>
-                                                <input type="text" id="#" class="form-control" placeholder="Apellido" required>
+                                                <h6 class="mb-0 font-medium ml-2">Apellido Paterno</h6>
+                                                <input type="text" name="pApellido" value="{{apellidoPaterno}}" class="form-control" placeholder="Apellido" required>
                                             </div>
                                             <div class="col-md-3">
-                                                <h6 class="mb-0 font-medium ml-2">Apellido Materno <span class="text-danger">*</span></h6>
-                                                <input type="text" id="#" class="form-control" placeholder="Apellido" required>
+                                                <h6 class="mb-0 font-medium ml-2">Apellido Materno</h6>
+                                                <input type="text" name="sApellido" value="{{apellidoMaterno}}" class="form-control" placeholder="Apellido" required>
                                             </div>
                                             <div class="col-md-4">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">País de nacimiento <span class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select" style="width: 100%; height:36px;" required>
-                                                    <option value="#">#</option>
-                                                    <option value="#">#</option>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">País de nacimiento </h6>
+                                                <select name="paisNacimientoID" class="form-control custom-select" style="width: 100%; height:36px;">
+                                                    <option value="{{idPais}}">{{paisNacimiento}}</option>
+                                                    {{#each ../paises}}
+                                                    <option value="{{idPais}}">{{nombrePais}}</option>
+                                                    {{/each}}
                                                 </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Municipio de nacimiento <span class="text-danger">*</span></h6>
-                                                <select class="form-control custom-select" style="width: 100%; height:36px;" required>
-                                                    <option value="#">#</option>
-                                                    <option value="#">#</option>
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Municipio de nacimiento</h6>
+                                                <select name="municipioNacimientoID" class="form-control custom-select" style="width: 100%; height:36px;">
+                                                    <option value="{{idMunicipio}}">{{municipioNacimiento}}</option>
+                                                    {{#each ../paises}}
+                                                    <option value="{{idMunicipio}}">{{nombreMunicipio}}</option>
+                                                    {{/each}}
                                                 </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Nacimiento <span class="text-danger">*</span></h6>
-                                                <input type="date" class="form-control" value="2021-06-13" style="width: 100%; ">
+                                                <h6 class="mb-0 font-medium mt-2 ml-2">Fecha Nacimiento</h6>
+                                                <input name="fechaNacimiento" type="date" class="form-control" value="{{fechaNacimiento}}" style="width: 100%; ">
                                             </div>
                                         </div>
                                     </div>
                                     <!-- datos domicilio -->
                                     <div class="col-md-12">
                                         <h4><i class="fas fa-home mr-2 mt-3"></i>Datos domiciliarios</h4><hr>
-                                    </div>
+                                    </div>                                    
                                     <div class="col-md-4">
-                                        <h6 class="mb-0 font-medium ml-2">Estado de Residencia <span class="text-danger">*</span></h6>
-                                        <select class="form-control custom-select" style="width: 100%; height:36px;" required>
-                                            <option value="#">#</option>
-                                            <option value="#">#</option>
+                                        <h6 class="mb-0 font-medium ml-2">Municipio de Residencia </h6>
+                                        <select name="municipioResidenciaID" class="form-control custom-select" style="width: 100%; height:36px;" >
+                                            <option value="{{idMunicipioResidencia}}">{{municipioResidencia}}</option>
+                                            {{#each ../municipios}}
+                                            <option value="{{idMunicipio}}">{{nombreMunicipio}}</option>
+                                            {{/each}}
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <h6 class="mb-0 font-medium ml-2">Municipio de Residencia <span class="text-danger">*</span></h6>
-                                        <select class="form-control custom-select" style="width: 100%; height:36px;" required>
-                                            <option value="#">#</option>
-                                            <option value="#">#</option>
-                                        </select>
+                                        <h6 class="mb-0 font-medium ml-2">Colonia de Residencia </h6>
+                                        <input value="{{colonia}}" name="colonia" type="text" id="#" class="form-control" placeholder="Colonia" required>
                                     </div>
                                     <div class="col-md-4">
-                                        <h6 class="mb-0 font-mediumml-2">Colonia de Residencia <span class="text-danger">*</span></h6>
-                                        <input type="text" id="#" class="form-control" placeholder="Colonia" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6 class="mb-0 font-medium mt-2 ml-2">Calle <span class="text-danger">*</span></h6>
-                                        <input type="text" id="#" class="form-control" placeholder="Calle" required>
+                                        <h6 class="mb-0 font-medium ml-2">Calle </h6>
+                                        <input value="{{calle}}" name="calle" type="text" id="#" class="form-control" placeholder="Calle" required>
                                     </div>
                                     <div class="col-md-3">
-                                        <h6 class="mb-0 font-medium mt-2 ml-2">Número Exterior <span class="text-danger">*</span></h6>
-                                        <input type="number" id="#" class="form-control" value="0" required>
+                                        <h6 class="mb-0 font-medium mt-2 ml-2">Número Exterior </h6>
+                                        <input value="{{numeroExterior}}" name="numeroExt" type="number" class="form-control" value="0" required>
                                     </div>
                                     <div class="col-md-3">
                                         <h6 class="mb-0 font-medium mt-2 ml-2">Número Interior </h6>
-                                        <input type="number" id="#" class="form-control" value="0" required>
+                                        <input value="{{numeroInterior}}" name="numeroInt" type="number" class="form-control">
                                     </div>
                                     <div class="col-md-12">
                                         <h4><i class="fas fa-user-tie mr-2 mt-3"></i>Datos laborales</h4><hr>
                                     </div>
-                                    <div class="col-md-4">
-                                        <h6 class="mb-0 font-medium ml-2">Matrícula <span class="text-danger">*</span></h6>
-                                        <input type="text" id="#" class="form-control" placeholder="00000000" required>
+                                    <div class="col-md-3">
+                                        <h6 class="mb-0 font-medium ml-2">Matrícula </h6>
+                                        <input value="{{matriculaUsuario}}" name="matricula" type="text" id="#" class="form-control" placeholder="00000000" required>
                                     </div>
-                                    <div class="col-md-4">
-                                        <h6 class="mb-0 font-medium ml-2">Antiguedad <span class="text-danger">*</span></h6>
-                                        <input type="text" id="#" class="form-control" placeholder="Medida en años" required>
+                                    <div class="col-md-3">
+                                        <h6 class="mb-0 font-medium ml-2">Antiguedad </h6>
+                                        <input value="{{fechaInicioLabores}}" name="antiguedad" type="date" id="#" class="form-control" placeholder="Medida en años" required>
                                     </div>
-                                    <div class="col-md-4">
-                                        <h6 class="mb-0 font-medium ml-2">Puesto <span class="text-danger">*</span></h6>
-                                        <select class="form-control custom-select" style="width: 100%; height:36px;" required>
-                                            <option value="#">#</option>
-                                            <option value="#">#</option>
+                                    <div class="col-md-3">
+                                        <h6 class="mb-0 font-medium ml-2">Puesto </h6>
+                                        <select name="puesto" class="form-control custom-select" style="width: 100%; height:36px;" >
+                                            <option selected value="{{idPuesto}}">{{puesto}}</option>
+                                            {{#each ../puestos}}
+                                            <option value="{{nombrePuesto}}">{{nombrePuesto}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="mb-0 font-medium ml-2">Area </h6>
+                                        <select name="area" class="form-control custom-select" style="width: 100%; height:36px;" >
+                                            <option selected value="{{idArea}}">{{area}}</option>
+                                            {{#each ../areas}}
+                                            <option value="{{idArea}}">{{nombreArea}}</option>
+                                            {{/each}}
                                         </select>
                                     </div>
                                     <div class="col-md-12 text-right mt-3">
@@ -118,6 +129,7 @@
                                     </div>
                                 </div>
                             </form>
+                            {{/datos}}
                         </div>
                     </div>
                 </div>
@@ -240,10 +252,41 @@
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
-                            <form action="#" method="post">
+                            <form action="../estadoUsuario/{{datos.idUsuario}}/0" method="post">
                                 <div class="row">
                                     <div class="col-md-12 text-center mt-3">
                                         <h3 class="font-light mb-4">Este usuario perderá el acceso al sistema, ¿Deseas continuar?</h3>
+                                        <button type="submit" class="btn waves-effect waves-light btn-danger"><i class="fas fa-check mr-2"></i>Si, continuar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>No, cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="activarUsuario" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white" style="border-radius: 10px">
+                <div class="card-body">
+                    <div class="row ">
+                        <!--titulo-->
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10  text-center">
+                            <h3>Activar <span class="small">Usuario</span></h3>
+                        </div>
+                        <div class="col-md-1 text-right">
+                            <button type="button" class="close text-white" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <!--contenido-->
+                        <div class="col-md-12">
+                            <form action="../estadoUsuario/{{datos.idUsuario}}/1" method="post">
+                                <div class="row">
+                                    <div class="col-md-12 text-center mt-3">
+                                        <h3 class="font-light mb-4">Este usuario obtendra acceso al sistema, ¿Deseas continuar?</h3>
                                         <button type="submit" class="btn waves-effect waves-light btn-danger"><i class="fas fa-check mr-2"></i>Si, continuar</button>
                                         <button type="button" class="btn waves-effect waves-light btn-info" data-dismiss="modal"><i class="fas fa-times mr-2"></i>No, cancelar</button>
                                     </div>
