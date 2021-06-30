@@ -669,17 +669,32 @@
                         </div>
                     </div>
                 </div>
+                {{#ifEquals datos.activo "1"}}
                 <div class="col-md-12">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-body text-center">
                             <img src="../../assets/images/ojosTristes.svg" width="150px" alt="ojosTristes">
                             <h3>¿Deseas Desactivar este Usuario?</h3>
                             <p class="font-18" style="text-align: justify;">Esto no eliminará al usuario pero le negará el acceso al sistema, todos los datos relacionados a este usuario se conservarán.</p>
-                            <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#desactivarUsuario">
+                            <button type="button" class="btn btn-rounded btn-danger mb-2" data-toggle="modal" data-target="#desactivarUsuario">
                                 <i class="fas fa-user-times mr-2"></i>Desactivar Usuario</button>    
                         </div>
                     </div>
                 </div>
+                {{/ifEquals}}
+                {{#ifEquals datos.activo "0"}}
+                <div class="col-md-12">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body text-center">
+                            <img src="../../assets/images/ojosTristes.svg" width="150px" alt="ojosTristes">
+                            <h3>¿Deseas Activar este Usuario?</h3>
+                            <p class="font-18" style="text-align: justify;">Esto permitira al usuario el acceso al sistema</p>
+                            <button type="button" class="btn btn-rounded btn-info mb-2" data-toggle="modal" data-target="#activarUsuario">
+                                <i class="fas fa-user-times mr-2"></i>Activar Usuario</button>    
+                        </div>
+                    </div>
+                </div>
+                {{/ifEquals}}
             </div>
         </div>
     </div>

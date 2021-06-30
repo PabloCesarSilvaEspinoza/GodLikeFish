@@ -20,6 +20,7 @@ module.exports = {
         const usuariosSinVerificar = await Controller.UsuariosSinVerificar();
         const mensaje = await Controller.getMensajeBienvenida();
         const numeroUsuariosSinVerificar = usuariosSinVerificar.length;
+        const numeroErrores = errores.length;
         /* (req.user.rol == "Super-Administrador" ? superAdministrador = true : superAdministrador = false) */
         res.render('administrador/d1_dashboard', {
             administrador: true,

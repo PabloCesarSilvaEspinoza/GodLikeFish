@@ -292,6 +292,7 @@
 </script>
 {{/if}}
 {{#if graficasPonente}}
+{{#datosGeneralesPonente}}
 <script>
     var ctx = document.getElementById('GraficaMuestra4');
     var GraficaMuestra4 = new Chart(ctx, {
@@ -301,12 +302,7 @@
                 labels:['Actuales','Alcanzados'],
                 datasets: [{
                 label: 'Cursos',
-                data: [
-                {{#datosGeneralesPonente}}
-                        {{cursosActuales}},
-                        {{cursosImpartidos}}
-                {{/datosGeneralesPonente}}
-                ],
+                data: [16, 11],
                 backgroundColor: [
                 'rgba(255, 99, 132)',
                 'rgba(255, 159, 64)'
@@ -317,12 +313,7 @@
                 ]
                 },{
                 label: 'Alumnos',
-                data: [
-                 {{#datosGeneralesPonente}}
-                        {{alumnosActuales}},
-                        {{alumnosAlcanzados}}
-                {{/datosGeneralesPonente}}
-                ],
+                data: [16, 17],
                 backgroundColor: [
                 'rgba(255, 205, 86)',
                 'rgba(75, 192, 192)'
@@ -337,6 +328,7 @@
             }
         });
 </script>
+{{/datosGeneralesPonente}}
 {{/if}}
 {{#if graficasAdministrador}}
 <script>
