@@ -42,6 +42,7 @@ router.post('/borrarDocumento/:idDocumento', render.postDeleteDocumento);
 
 router.post('/CalificarEstudiante/', permisosCurso, render.postCalificarEstudiante);
 router.get('/DescargarTemario/:idCurso', render.getDescargarTemario);
+router.get('/DescargarArchivoEntrega/:idEstudiante/:idTarea/:nombreArchivo', render.getDescargarArchivoEntrega);
 /* router.get('/AgregarTareaPrueba', render.getAgregarTarea);
 router.post('/AgregarTarea', upload.array('multimediaTarea'), render.postAgregarTarea);
 router.get('/DescargarTarea', render.getDescargarArchivos); */

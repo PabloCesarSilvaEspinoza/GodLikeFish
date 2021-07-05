@@ -218,6 +218,15 @@ module.exports = {
         res.download(archivo)
     },
 
+    getDescargarArchivoEntrega: async function (req, res, next) {
+        const estudianteID = req.params.idEstudiante;
+        const nombreArchivo = req.params.nombreArchivo;
+        const idTarea = req.params.idTarea;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/tareas_estudiantes');
+        const archivoRuta = `${raiz}/${estudianteID}/${idTarea}/${nombreArchivo}`;
+        res.download(archivoRuta)
+    },
+
     getConsultarEstadoCursoPonente: async function (req, res, next){
         console.log('entre')
         const usuarioID = req.user.id;
