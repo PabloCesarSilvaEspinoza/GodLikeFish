@@ -35,16 +35,19 @@ module.exports = {
     },
     
     getConsultarAlumnos: async function (req, res, next) {
-        const estudiantes = await Controller.listEstudiantes();
-        const modalEstudiante = await Controller.listEstudiantes();
+        const cursoID = req.params.idCurso;
+        const estudiantesInscritos = await Controller.listEstudiantesInscritos(cursoID);
         const miPerfil = await Controller.getMiPerfil(req.user.id);
+        const respuestaEstadoCurso = await Controller.getEstadoCurso(cursoID)
+        const estadoCurso = respuestaEstadoCurso[0];
+        console.log(estadoCurso.cursoAbierto);
         res.render('ponente/p3_consultarAlumnos', {
             ponente: true,
             dataTables: true,
             dataTablesExport: true,
-            modalEstudiante,
-            estudiantes,
-            miPerfil
+            estudiantesInscritos,
+            miPerfil,
+            estadoCurso
         });
     },
     getCalificarTarea: async function (req, res, next) {
@@ -114,6 +117,7 @@ module.exports = {
     },
 
     getDescargarArchivoTarea: async function (req, res, next) {
+        console.log('hola');
         const tareaID = req.params.idTarea;
         const archivoNombre = req.params.nombreArchivo;
         const raiz = path.join(__dirname, '../../public/assets/multimedia/tareas');
@@ -137,75 +141,82 @@ module.exports = {
     },
 
     postCalificarEntrega: async function (req, res, next) {
+        const { idEstudiante, idTarea, aceptable } = req.body;
+        await Controller.upsertCalificarTarea(idEstudiante, idTarea, aceptable);
         res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
     },
 
     postTerminarCalificarTarea: async function (req, res, next) {
+        const tareaID = req.body.idTarea;
+        const tareas = await Controller.listEstadoEntregasTarea(tareaID);
+        for(tarea of tareas){
+            if(tarea.estadoRevision == 'SinRevisar'){
+                await Controller.upsertCalificarTarea(tarea.idEstudiante, tareaID, 0);
+            }
+        }
         res.redirect(`/ponente/CalificarTarea/${req.body.idTarea}`)
     },
 
     putEditarExamen: async function (req, res, next) {
         await Controller.upsertDatosExamen(req.params.id, req.body);      
-       res.redirect('back');
+        res.redirect('back');
 
-   },
-   postDeleteExamen: async function (req, res, next) {
-     await Controller.deleteExamen(req.params.idExamen);     
-  
+    },
+    postDeleteExamen: async function (req, res, next) {
+        await Controller.deleteExamen(req.params.idExamen);     
     res.redirect('back');
+    },
 
-   },
+    putEditarAviso: async function (req, res, next) {
+        await Controller.upsertDatosAviso(req.params.id, req.body);      
+        res.redirect('back');
+    },
 
-   putEditarAviso: async function (req, res, next) {
-    await Controller.upsertDatosAviso(req.params.id, req.body);      
-    res.redirect('back');
+    postDeleteAviso: async function (req, res, next) {
+        await Controller.deleteAvisos(req.params.idAviso);     
+        res.redirect('back');
+    },
 
+    postDeleteDocumento: async function (req, res, next) {
+        await Controller.deleteDocumentos(req.params.idDocumento);     
+        res.redirect('back');
+    },
 
-   },
+    putEditarLinks: async function (req, res, next) {
+        await Controller.upsertDatosLinks(req.params.id, req.body);      
+        res.redirect('back');
+    },
 
-   postDeleteAviso: async function (req, res, next) {
-    await Controller.deleteAvisos(req.params.idAviso);     
-    res.redirect('back');
+    postDeleteLink: async function (req, res, next) {
+        await Controller.deleteLinks(req.params.idLink);     
+        res.redirect('back');
+    },
 
-   },
+    putEditarAsignacion: async function (req, res, next) {
+        console.log(req.params.id);
+        await Controller.upsertDatosTarea(req.params.id, req.body);   
+        // const temario = `${req.file.originalname}`;
+        //  await Controller.insertArchivosMultimediaCurso(req.body.idCurso, temario);
+        res.redirect('back');
+    },
 
-   postDeleteDocumento: async function (req, res, next) {
-    await Controller.deleteDocumentos(req.params.idDocumento);     
-    res.redirect('back');
+    postDeleteAsignacion: async function (req, res, next) {
+        await Controller.deleteTarea(req.params.idTarea);     
+        res.redirect('back');
+    },
 
-   },
+    postCalificarEstudiante: async function(req, res, next){
+        await Controller.upsertCalificarEstudiante(req.body);
+        res.redirect('back');
+    },
 
-   putEditarLinks: async function (req, res, next) {
-    await Controller.upsertDatosLinks(req.params.id, req.body);      
-    res.redirect('back');
-
-
-   },
-
-   postDeleteLink: async function (req, res, next) {
-    await Controller.deleteLinks(req.params.idLink);     
-    res.redirect('back');
-
-   },
-
-   putEditarAsignacion: async function (req, res, next) {
-       console.log(req.params.id);
-    await Controller.upsertDatosTarea(req.params.id, req.body);   
-    // const temario = `${req.file.originalname}`;
-    //  await Controller.insertArchivosMultimediaCurso(req.body.idCurso, temario);
-    
-    res.redirect('back');
-
-
-   },
-
-   postDeleteAsignacion: async function (req, res, next) {
-    await Controller.deleteTarea(req.params.idTarea);     
-    res.redirect('back');
-
-   },
-
-
+    getDescargarTemario: async function (req, res, next) {
+        const curso = await Controller.getTemario(req.params.idCurso);
+        const temario = curso[0].cursoTemario;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos');
+        const archivo = `${raiz}/${req.params.idCurso}/${temario}`;
+        res.download(archivo)
+    },
 
     getConsultarEstadoCursoPonente: async function (req, res, next){
         console.log('entre')
@@ -216,6 +227,24 @@ module.exports = {
         const datosCurso = await Controller.getCurso(cursoID);
         const curso = datosCurso[0];
         const miPerfil = await Controller.getMiPerfil(usuarioID);
+        console.log(estadoCursoPonente);
+        const verPerfilPonente = await Controller.getPerfilPonente(cursoID);
+        const perfilPonente = verPerfilPonente[0];
+        if(estadoCursoPonente == 'Curso Pasado' || estadoCursoPonente == 'Curso Actual' || estadoCursoPonente == 'Curso Futuro'){
+            var avisosCurso = await Controller.listAvisosCurso(cursoID);
+            var linksCurso = await Controller.listLinksCurso(cursoID);
+            var documentosCurso = await Controller.listDocumentosCurso(cursoID);
+            var asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
+            var asignacionesPonenteEditar= await Controller.listAsignacionesPonenteEditar(cursoID);
+            var archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
+            var examenesCurso = await Controller.listExamenesCurso(cursoID);
+            var publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
+            var totalDocumentos = documentosCurso.length;
+            var totalLinks = linksCurso.length;
+            var fechaActual = await Controller.getTiempoActual();
+            global.cursoActualID = cursoID;
+            var examenesCursoE = await await Controller.listExamen(cursoID);
+        }
         switch (estadoCursoPonente) {
             case 'No es su curso':
             case 'Curso Inactivo':
@@ -224,27 +253,28 @@ module.exports = {
 
             case 'Curso Pasado':
                 res.render('ponente/p2_consultarCursoE2', {
-                    ponente:true,
-                    miPerfil
+                    ponente: true,
+                    curso,
+                    datosCurso,
+                    avisosCurso,
+                    linksCurso,
+                    documentosCurso,
+                    asignacionesPonente,
+                    totalDocumentos,
+                    totalLinks,
+                    examenesCurso,
+                    archivosAsignacionesPonente,
+                    publicacionesCurso,
+                    fechaActual,
+                    miPerfil,
+                    examenesCursoE,
+                    asignacionesPonenteEditar,
+                    perfilPonente
                 });
                 break;
 
             case 'Curso Actual':
             case 'Curso Futuro':
-                const avisosCurso = await Controller.listAvisosCurso(cursoID);
-                const linksCurso = await Controller.listLinksCurso(cursoID);
-                const documentosCurso = await Controller.listDocumentosCurso(cursoID);
-                const asignacionesPonente = await Controller.listAsignacionesPonente(cursoID);
-                const asignacionesPonenteEditar= await Controller.listAsignacionesPonenteEditar(cursoID);
-                const archivosAsignacionesPonente = await Controller.getArchivosTareaCurso(cursoID);
-                const examenesCurso = await Controller.listExamenesCurso(cursoID);
-                const publicacionesCurso = await Controller.listPublicacionesCurso(cursoID);
-                const totalDocumentos = documentosCurso.length;
-                const totalLinks = linksCurso.length;
-                const fechaActual = await Controller.getTiempoActual();
-                global.cursoActualID = cursoID;
-                const examenesCursoE = await await Controller.listExamen(cursoID);
-
                 res.render('ponente/p2_consultarCursoE1', {
                     ponente: true,
                     curso,
@@ -261,7 +291,8 @@ module.exports = {
                     fechaActual,
                     miPerfil,
                     examenesCursoE,
-                    asignacionesPonenteEditar
+                    asignacionesPonenteEditar,
+                    perfilPonente
                 });
                 break;
 

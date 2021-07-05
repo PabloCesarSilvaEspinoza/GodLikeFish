@@ -20,13 +20,12 @@ router.post('/editarFoto/:idCurso', eliminarFoto, single, render.postEditarFotoC
 router.post('/editarTemario/:idCurso', eliminarDocumento, single, render.postEditarTemarioCurso);
 router.post('/estadoCurso/:idCurso/:estado', render.postEditarEstadoCurso);
 router.post('/estadoUsuario/:idUsuario/:estado', render.postEditarEstadoUsuario);
-router.get('/usuario/:idUsuario', render.getPerfilUsuario)
-
+router.get('/usuario/:idUsuario', render.getPerfilUsuario);
 router.get('/DescargarTarjetonUsuario/:idUsuario/:nombreTarjeton', render.getDescargarTarjetonUsuario);
 router.post('/ResolverProblema/:tipoProblema', render.postResolverProblema);
 router.post('/VerificarTarjetonUsuario', render.postVerificarTarjetonUsuario);
 router.post('/enviarCorreo', render.postCorreoPersonalizado);
-
 router.post('/desactivarCursoUsuario/:idUsuario/:idCursoActual', render.postDesactivarCursoUsuario);
- 
+router.get('/DescargarTemario/:idCurso/', render.getDescargarTemario);
+router.post('/CambiarRol/', render.postCambiarRol);
 module.exports = router;

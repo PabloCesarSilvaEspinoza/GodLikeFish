@@ -79,10 +79,10 @@ module.exports = function (injectedStore) {
         return store.list(VIEW);
     }
 
-    async function getHistorialCursosPonente(id) {
-        const VIEW = 'ver_Historial_Cursos_Ponente';
+    async function getHistorialCursosPonente(idPonente) {
+        const VIEW = 'ver_Datos_Cursos';
         const CLAUSE = `WHERE idPonente = ?`;
-        return store.get(VIEW, CLAUSE, id);
+        return store.get(VIEW, CLAUSE, idPonente);
     }
 
     function getCurso(id) {
@@ -109,12 +109,12 @@ module.exports = function (injectedStore) {
     }
 
     function reportarProblemaCurso(idUsuario, idCurso, asunto, descripcion){
-        const PROCEDURE = `CALL agregar_Problemas_Curso(${idUsuario}, ${idCurso}, '${asunto}', '${descripcion}')`;
+        const PROCEDURE = `CALL reportar_Problema_Curso(${idUsuario}, ${idCurso}, '${asunto}', '${descripcion}')`;
         return store.insert(PROCEDURE);
     }
     
     function reportarProblemaUsuario(idUsuario, asunto, descripcion){
-        const PROCEDURE = `CALL agregar_Problemas_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
+        const PROCEDURE = `CALL reportar_Problema_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
         console.log("Problema reportado");
         return store.insert(PROCEDURE);
     }
@@ -348,6 +348,47 @@ function upsertDatosExamen(idExamen, body) {
         return mensajes[numeroAleatoreo];
     }
 
+    function upsertCalificarTarea(idEstudiante, idTarea, aceptable){
+        PROCEDURE = `CALL calificar_Tarea(${idEstudiante}, ${idTarea}, ${aceptable})`;
+        console.log(PROCEDURE);
+        return store.upsert(PROCEDURE)
+    }
+
+    function listEstudiantesInscritos(idCurso) {
+        const VIEW = 'ver_Estudiantes_Inscritos';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.list(VIEW, CLAUSE, idCurso);
+    }
+
+    function catalogPermisosCurso(idPonente, idCurso) {
+        const PROCEDURE = `CALL comprobar_Permisos_Curso(${idPonente}, ${idCurso})`
+        return store.catalog(PROCEDURE);
+    }
+
+    function upsertCalificarEstudiante(body){
+        const { idEstudiante, idCurso, aprobado } = body;
+        const PROCEDURE = `CALL calificar_Estudiante(${idEstudiante}, ${idCurso}, ${aprobado})`;
+        return store.upsert(PROCEDURE);
+    }
+
+    function getPerfilPonente(cursoID) {
+        const VIEW = 'ver_Perfil_Ponente';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, cursoID);
+    }
+
+    function getTemario(idCurso) {
+        const VIEW = 'ver_Temario_Curso';
+        const CLAUSE = `WHERE cursoID = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
+    function getEstadoCurso(idCurso) {
+        const VIEW = 'comprobar_Estado_Curso';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, idCurso);
+    }
+
     return {
         insertTarea,
         insertExamen,
@@ -397,7 +438,13 @@ function upsertDatosExamen(idExamen, body) {
         upsertDatosLinks,
         getMensajeBienvenida,
         upsertDatosTarea,
-        deleteTarea
-
+        deleteTarea,
+        upsertCalificarTarea,
+        listEstudiantesInscritos,
+        catalogPermisosCurso,
+        upsertCalificarEstudiante,
+        getPerfilPonente,
+        getTemario,
+        getEstadoCurso
     };
 }

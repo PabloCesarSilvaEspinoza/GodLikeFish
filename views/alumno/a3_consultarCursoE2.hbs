@@ -1,5 +1,6 @@
 <div class="container-fluid">
     <!--Modales-->
+    {{#perfilPonente}}
     <div id="verPerfilPonente" class="modal">
         <div class="modal-dialog modal-xl">
             <div class="modal-content" style="border-radius: 10px">
@@ -12,20 +13,19 @@
                             <h4>Perfil de Ponente</h4>
                         </div>
                         <div class="col-md-3 text-right">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <!--contenido-->
-                        {{#perfilPonente}}
                         <div class="col-md-3 text-center">
-                            <!-- FALTAAGREGAR <img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" class="rounded-circle" width="150px" height="150px" />-->
-                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px" />
+                            <!--<img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" class="rounded-circle" width="150px" height="150px"/>-->
+                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px"/>
                             <h6 class="mt-2 font-medium">Foto de Perfil</h6>
                         </div>
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4> <hr>
+                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4>
+                                    <hr>
                                 </div>
                                 <div class="col-md-3 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Nombre</h6>
-                                    <h5 class="font-16">{{nomnrePonente}}</h5>
+                                    <h5 class="font-16">{{nombrePonente}}</h5>
                                 </div>
                                 <div class="col-md-3 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Area</h6>
@@ -49,12 +49,12 @@
                                 </div>
                             </div>
                         </div>
-                        {{/perfilPonente}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{/perfilPonente}}
     <div id="reportarProblema" class="modal">
         <div class="modal-dialog">
             <div class="modal-content" style="border-radius: 10px">
@@ -139,7 +139,7 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-10 text-center">
                                 <h4>{{nombreTarea}}</h4>
-                                <p class="text-danger">Mensaje de advertencia cruel pero justo</p>
+                                <p class="text-danger">Esta tarea está marcada como entrega tardía.</p>
                             </div>
                             <div class="col-md-1 text-right">
                                 <button type="button" class="close" data-dismiss="modal"
@@ -210,7 +210,7 @@
                             <!--titulo-->
                             <div class="col-md-1"></div>
                             <div class="col-md-10 text-center">
-                                <h4>Entregar <span class="small">Nombre de la Tarea Lorem Ipsum Largo</span></h4>
+                                <h4>{{nombreTarea}}</h4>
                             </div>
                             <div class="col-md-1 text-right">
                                 <button type="button" class="close" data-dismiss="modal"
@@ -218,7 +218,7 @@
                             </div>
                             <!--contenido-->
                             <div class="col-md-12">
-                                <p class="text-center">Descripción: Lorem ipsum dolor sit amet consectetur adipiscing elit interdum mattis lacus, ut placerat at suspendisse eleifend ridiculus egestas curae rutrum consequat aptent, diam a lectus gravida ligula leo pharetra libero tellus.</p>
+                                <p class="text-center">{{descripcionTarea}}</p>
                                 <form action="/estudiante/EntregarTarea/{{idTarea}}" method="POST" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -251,7 +251,7 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-10 text-center">
                                 <h4>{{nombreTarea}}</span></h4>
-                                <p class="text-danger">Mensaje de advertencia cruel pero justo</p>
+                                <p class="text-danger">Esta tarea no fue entregada a tiempo.</p>
                             </div>
                             <div class="col-md-1 text-right">
                                 <button type="button" class="close" data-dismiss="modal"
@@ -297,8 +297,6 @@
                                 </div>
                                 <div class="col-md-5">
                                     <h5> <i class="fas fa-key"></i> Clave: <span class="small">{{claveCurso}}</span>
-                                        <a href="#" class="btn  btn-rounded btn-sm btn-success small">
-                                            <i class="far fa-copy mr-1"></i>Copiar</a>
                                     </h5>
                                 </div> 
                             </div>
@@ -346,10 +344,6 @@
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
                                 <a class="navbar-brand">Historial de avisos y asignaciones</a>
-                                <form class="form-inline">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fas fa-search mr-2"></i>Buscar</button>
-                                </form>
                             </nav>
                             <!--contenido del historial-->
                             {{#each publicacionesCursoEstudiante}}
@@ -472,10 +466,6 @@
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
                                 <a class="navbar-brand">Historial de avisos</a>
-                                <form class="form-inline">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fas fa-search mr-2"></i>Buscar</button>
-                                </form>
                             </nav>
                             <!--Avisos-->
                             {{#each avisosCurso}}
@@ -507,10 +497,6 @@
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
                                 <a class="navbar-brand">Historial de asignaciones</a>
-                                <form class="form-inline">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fas fa-search mr-2"></i>Buscar</button>
-                                </form>
                             </nav>
                             <!--Asignaciones-->
                             {{#each asignacionesEstudiante}}
@@ -580,12 +566,6 @@
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
                                 <a class="navbar-brand">Recursos del curso</a>
-                                <form class="form-inline">
-                                    <ul class="nav nav-pills mr-2">
-                                        <li class="nav-item"> <a href="#documentos" class="nav-link active" data-toggle="tab" aria-expanded="false">Documentos</a> </li>
-                                        <li class="nav-item"> <a href="#enlaces" class="nav-link" data-toggle="tab" aria-expanded="false">Enlaces</a> </li>
-                                    </ul>
-                                </form>
                             </nav>
                             <!--contenido-->
                             <div class="tab-content br-n pn mt-3">
@@ -652,12 +632,6 @@
                             <!-- Busqueda-->
                             <nav class="navbar navbar-light bg-light justify-content-between">
                                 <a class="navbar-brand">Examenes</a>
-                                <form class="form-inline">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar"
-                                        aria-label="Search">
-                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
-                                            class="fas fa-search mr-2"></i>Buscar</button>
-                                </form>
                             </nav>
                             <!--Examenes-->
                             {{#each examenesCurso}}
@@ -702,7 +676,7 @@
                     <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i> Fecha Fin: <span class="small ">{{fechaFinalCurso}}</span></h5>                          
                     <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5> 
                     <div class="col mt-2 text-center">
-                        <a href="#" class="btn  btn-rounded btn-sm btn-success small ml-2">
+                        <a href="{{linkPlataformaCurso}}" class="btn  btn-rounded btn-sm btn-success small ml-2">
                             <i class="fas fa-external-link-alt mr-1"></i> Ir a Clase</a>
                     </div>
                 </div>
@@ -712,7 +686,7 @@
                 <div class="card-body">
                     <h3>¿Existe algún problema?</h3>
                     <p class="font-14">!Háznoslo saber! </p>
-                    <a href="" type="button" class="btn  btn-danger" data-toggle="modal"
+                    <a href="#" type="button" class="btn  btn-danger" data-toggle="modal"
                             data-target="#reportarProblema"><i class="fas fa-exclamation-triangle mr-2"></i>Reportar un Problema</a>
                 </div>
             </div>

@@ -139,6 +139,8 @@ module.exports = {
         const datosCursoEd = datosEditarCurso[0];
         const ponentes = await Controller.listPonentes();
         const areas = await Controller.listAreas();
+        const verPerfilPonente = await Controller.getPerfilPonente(cursoID);
+        const perfilPonente = verPerfilPonente[0];
         
         res.render('administrador/d4_consultarCurso', {
             administrador: true,
@@ -166,7 +168,8 @@ module.exports = {
             datosCursoEd,
             ponentes,
             areas,
-            activo
+            activo,
+            perfilPonente
         });
     },
 
@@ -185,7 +188,7 @@ module.exports = {
     },
 
     postEditarEstadoCurso: async function (req, res, next) {
-        await Controller.updateEstadoCurso(req.params.idUsuario, req.params.estado);
+        await Controller.updateEstadoCurso(req.params.idCurso, req.params.estado);
         res.redirect('back');
     },
 
@@ -195,8 +198,8 @@ module.exports = {
     },
 
     postEditarFotoCurso: async function (req, res, next) {
-        const foto = `${req.file.originalname}`;
-        await Controller.updateFotoCurso(req.params.idCurso, foto)
+        const fotoCurso = `${req.file.originalname}`;
+        await Controller.updateFotoCurso(req.params.idCurso, fotoCurso)
         res.redirect('back');
     },
 
@@ -208,7 +211,7 @@ module.exports = {
     postEditarUsuario: async function (req, res, next){
         await Controller.upsertDatosUsuario(req.params.id, req.body);        
 
-        res.redirect('#')
+        res.redirect('back')
     },
 
     postResolverProblema: async function(req, res, next){
@@ -231,16 +234,35 @@ module.exports = {
     },
 
     postCorreoPersonalizado: async function(req, res, next){
+        const { idUsuario, asunto, mensaje } = req.body;
         Controller.enviarCorreo(idUsuario,asunto,mensaje);
-        res.redirect('/validarPermisos'); /* regresa a dashboard, modificar */
+        res.redirect('back'); /* regresa a dashboard, modificar */
+    },
+
+    getDescargarTemario: async function (req, res, next) {
+        const curso = await Controller.getTemario(req.params.idCurso);
+        const temario = curso[0].cursoTemario;
+        const raiz = path.join(__dirname, '../../public/assets/multimedia/cursos');
+        const archivo = `${raiz}/${req.params.idCurso}/${temario}`;
+        res.download(archivo)
+    },
+    
+    postCambiarRol: async function (req, res, next){
+        if(req.body.rolUsuario == 'Administrador'){
+            (req.user.rol == 'Super-Administrador')
+            ? await Controller.upsertCambiarRol(req.body.idUsuario, req.body.rolUsuario)
+            : console.log('No eres un Super_Administrador');
+            res.redirect('back');
+        } else{
+            await Controller.upsertCambiarRol(req.body.idUsuario, req.body.rolUsuario);
+            res.redirect('back');
+        }
     },
 
     getPerfilUsuario: async function (req, res, next) {
         const usuarioID = req.params.idUsuario;
         const rolUsuario = await Controller.getRolUsuario(usuarioID);
-        const totalCursoAprobado = await Controller.totalCursoAprobadoEstudiante(usuarioID);
-        const totalCursoReprobado = await Controller.totalCursoReprobadoEstudiante(usuarioID);
-        const totalCurso = await Controller.totalCursoEstudiante(usuarioID);
+        
         const rol = rolUsuario[0].rolUsuario;
         const paises = await Controller.listPaises();
         const puestos = await Controller.listPuestos();
@@ -248,18 +270,19 @@ module.exports = {
         const datosUsuario = await Controller.getUsuarioEditar(req.params.idUsuario);
         const datos = datosUsuario[0];
         const areas = await Controller.listAreas();
-
-        console.log(datos.activo)
-
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         switch (rol) {
             case 'Estudiante':
-                const datosEstudiante = await Controller.getEstudiante(usuarioID);
-                const estudiante = datosEstudiante[0];
+                const respuestaDatosEstudiante = await Controller.getEstudiante(usuarioID);
+                const datosEstudiante = respuestaDatosEstudiante[0];
                 const cursoActualEstudiante = await Controller.getCursoActualEstudiante(usuarioID);
                 const cursosAprobadosEstudiante = await Controller.listCursosAprobadosEstudiante(usuarioID);
                 const cursosReprobadosEstudiante = await Controller.listCursosReprobadosEstudiante(usuarioID);
                 const respuestaCursosDisponiblesEstudiante = await Controller.catalogCursosDisponiblesEstudiante(usuarioID);
                 const cursosDisponiblesEstudiante = respuestaCursosDisponiblesEstudiante[0];
+                const totalCursoAprobado = cursosAprobadosEstudiante.length;
+                const totalCursoReprobado = cursosReprobadosEstudiante.length;
+                const totalCurso = cursosDisponiblesEstudiante.length;
                 res.render('administrador/d5_administrarUsuario_E1', {
                     administrador: true,
                     graficasAdministrador : true,
@@ -271,16 +294,17 @@ module.exports = {
                     municipios,
                     datos,
                     areas,
-                    estudiante,
+                    datosEstudiante,
                     cursoActualEstudiante,
                     cursosAprobadosEstudiante,
                     cursosReprobadosEstudiante,
                     cursosDisponiblesEstudiante,
+                    miPerfil
                 })
                 break;
             case 'Ponente':
-                const datosPonente = await Controller.getPonente(usuarioID);
-                const ponente = datosPonente[0];
+                const respuestaDatosPonente = await Controller.getPonente(usuarioID);
+                const datosPonente = respuestaDatosPonente[0];
                 const cursosActualesPonente = await Controller.listCursosActualesPonente(usuarioID);
                 const cursosPasadosPonente = await Controller.listCursosPasadosPonente(usuarioID);
                 res.render('administrador/d5_administrarUsuario_E2', {
@@ -290,15 +314,16 @@ module.exports = {
                     municipios,
                     datos,
                     areas,
-                    ponente,
+                    datosPonente,
                     cursosActualesPonente,
                     cursosPasadosPonente,
+                    miPerfil
                 })
                 break;
             case 'Administrador':
             case 'Super-Administrador':
-                const datosAdministrador = await Controller.getAdministrador(usuarioID);
-                const administrador = datosAdministrador[0];
+                const respuestaDatosAdministrador = await Controller.getAdministrador(usuarioID);
+                const datosAdministrador = respuestaDatosAdministrador[0];
                 (req.user.rol == 'Super-Administrador')
                 ? res.render('administrador/d5_administrarUsuario_E3', {
                     administrador: true,
@@ -307,7 +332,8 @@ module.exports = {
                     municipios,
                     datos,
                     areas,
-                    administrador
+                    datosAdministrador,
+                    miPerfil
                 })
                 : res.redirect('/administrador/dashboardAdministrador');
                 break;

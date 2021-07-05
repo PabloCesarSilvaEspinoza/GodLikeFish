@@ -35,6 +35,40 @@
 <script src="../../assets/libs/raty-js/lib/jquery.raty.js"></script>
 <script src="../../assets/extra-libs/raty/rating-init.js"></script>
 
+{{#if graficasEstudiante}}
+{{#resumenEstudiante}}
+<script>
+    var ctx = document.getElementById('GraficaMuestra8');
+    var GraficaMuestra8 = new Chart(ctx, {
+        responsive: true,
+        type: 'bar',
+        data : {
+                labels:['Total','Terminados','Disponibles', ''],
+                datasets: [{
+                label: 'Cursos',
+                data: [{{cursosTotales}}, {{cursosTerminados}}, {{cursosDisponibles}}, 0],
+                backgroundColor: [
+                'rgba(255, 99, 132)',
+                'rgba(255, 159, 64)',
+                'rgba(255, 205, 86)',
+                'rgb(75, 192, 192)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgba(255, 205, 86)',
+                'rgb(75, 192, 192)'
+                ]
+        
+            }]
+            },
+            options: {
+            }
+        });
+</script>
+{{/resumenEstudiante}}
+{{/if}}
+
 {{#if graficasAdministrador}}
 <script>
     var ctx = document.getElementById('GraficaMuestra');
@@ -45,7 +79,7 @@
             labels: [
             {{#each valores}}
 
-               '{{NombreArea}}',
+            '{{NombreArea}}',
 
             {{/each}}
             ],
@@ -81,9 +115,9 @@
             labels: [
                 {{#each valoresina}}
 
-               '{{NombreArea}}',
+            '{{NombreArea}}',
 
-                 {{/each}}
+                {{/each}}
             ],
 
             datasets: [{
@@ -121,9 +155,9 @@
             labels: [
                 {{#each valores}}
 
-               '{{NombreArea}}',
+            '{{NombreArea}}',
 
-                 {{/each}}
+                {{/each}}
             ],
 
             datasets: [{
@@ -141,7 +175,7 @@
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgb(255, 99, 132)'
-               }, {
+                }, {
                 label: 'Usuarios Activos',
                 data: [
                     {{#each valoresUact}}
@@ -149,7 +183,7 @@
                         {{ totalUsuariosActivos }},
 
                     {{/each}}
-                 ],
+                ],
                 fill: true,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgb(54, 162, 235)',
@@ -165,7 +199,7 @@
                         {{ totalUsuarios }},
 
                     {{/each}}
-                 ],
+                ],
                 fill: true,
                 backgroundColor: 'rgba(153, 102, 255, 0.2)',
                 borderColor: 'rgb(153, 102, 255)',
@@ -181,7 +215,7 @@
                         {{ totalUsuarios }},
 
                     {{/each}}
-                 ],
+                ],
                 fill: true,
                 backgroundColor: 'rgba(255, 205, 86, 0.2)',
                 borderColor: 'rgb(255, 205, 86)',
@@ -214,26 +248,34 @@
             datasets: [{
                 label: 'Datos Cursos',
                 data: [
-                    {{#each totalProblemasCurso}}
-
-                        {{ totalProblemas }},
-
-                    {{/each}}
-                    {{#each totalExamenesCurso}}
-
-                        {{ totalExamenes }},
-
-                    {{/each}}
-                    {{#each totalAvisosCurso}}
-
-                        {{ totalAvisos }},
-
-                    {{/each}}
-                    {{#each totalRecursosCurso}}
-
-                        {{ totalRecursos }},
-
-                    {{/each}}
+                        {{#if totalProblemasCurso}}
+                            {{#totalProblemasCurso}}
+                                {{ totalProblemas }},
+                            {{/totalProblemasCurso}}
+                        {{else}}
+                            0,
+                        {{/if}}
+                        {{#if totalExamenesCurso}}
+                            {{#totalExamenesCurso}}
+                                {{ totalExamenes }},
+                            {{/totalExamenesCurso}}
+                        {{else}}
+                            0,
+                        {{/if}}
+                        {{#if totalAvisosCurso}}
+                            {{#totalAvisosCurso}}
+                                {{ totalAvisos }},
+                            {{/totalAvisosCurso}}
+                        {{else}}
+                            0,
+                        {{/if}}
+                        {{#if totalRecursosCurso}}
+                            {{#totalRecursosCurso}}
+                                {{ totalRecursos }},
+                            {{/totalRecursosCurso}}
+                        {{else}}
+                            0,
+                        {{/if}}
             ],
                 backgroundColor: [
                     'rgba(255, 159, 64, 0.9)',
@@ -292,35 +334,30 @@
 </script>
 {{/if}}
 {{#if graficasPonente}}
-{{#datosGeneralesPonente}}
 <script>
     var ctx = document.getElementById('GraficaMuestra4');
     var GraficaMuestra4 = new Chart(ctx, {
         responsive: true,
         type: 'bar',
         data : {
-                labels:['Actuales','Alcanzados'],
+                labels:['Alumnos','Cursos'],
                 datasets: [{
-                label: 'Cursos',
-                data: [16, 11],
+                label: 'Actuales',
+                data: [
+                {{#each datosGeneralesPonente}}
+                        {{alumnosActuales}},
+                {{/each}}
+                {{#each datosGeneralesPonente}}
+                        {{cursosActuales}},
+                {{/each}}
+                ],
                 backgroundColor: [
-                'rgba(255, 99, 132)',
-                'rgba(255, 159, 64)'
+                'rgba(255, 99, 132, 0.9)',
+                'rgba(255, 159, 64, 0.9)'
                 ],
                 borderColor: [
                 'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                ]
-                },{
-                label: 'Alumnos',
-                data: [16, 17],
-                backgroundColor: [
-                'rgba(255, 205, 86)',
-                'rgba(75, 192, 192)'
-                ],
-                borderColor: [
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)'
+                'rgb(255, 159, 64)'
                 ]
             }]
             },
@@ -328,7 +365,45 @@
             }
         });
 </script>
-{{/datosGeneralesPonente}}
+{{/if}}
+{{#if graficasPonente}}
+<script>
+    var ctx = document.getElementById('GraficaMuestra7');
+    var GraficaMuestra7 = new Chart(ctx, {
+        responsive: true,
+        type: 'doughnut',
+        data : {
+            label: 'Alcanzados/Impartidos',
+                labels:['Alumnos Alcanzados','Cursos Impartidos'],
+                datasets: [{
+                data: [
+                {{#each datosGeneralesPonente}}
+                        {{alumnosAlcanzados}},
+                {{/each}}
+                {{#each datosGeneralesPonente}}
+                        {{cursosImpartidos}},
+                {{/each}}
+                ],
+                backgroundColor: [
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(54, 162, 235, 0.9)'
+                ],
+                borderColor: [
+                'rgba(153, 102, 255)',
+                'rgba(54, 162, 235)'
+                ],
+                borderWidth: 1
+            }]
+            },
+            options: {
+                scales: {
+                y: {
+                    beginAtZero: true
+                }
+                }
+            }
+        });
+</script>
 {{/if}}
 {{#if graficasAdministrador}}
 <script>
@@ -347,20 +422,14 @@
             datasets: [{
                 label: 'Datos Cursos',
                 data: [
-                    {{#each totalCurso}}
-                        {{totalCursos}},
-                    {{/each}}
-                    {{#each totalCursoAprobado}}
-                        {{totalCursos}},
-                    {{/each}}
-                    {{#each totalCursoReprobado}}
-                        {{totalCursos}},
-                    {{/each}}
-            ],
+                        {{totalCurso}},
+                        {{totalCursoAprobado}},
+                        {{totalCursoReprobado}},
+                ],
                 backgroundColor: [
-                    'rgba(255, 159, 64, 0.9)',
-                    'rgb(255, 205, 86)',
-                    'rgba(75, 192, 192)'
+                    'rgba(116, 96, 238)',
+                    'rgba(75, 192, 192)',
+                    'rgba(255, 159, 64, 0.9)'
                 ],
                 pointBackgroundColor: 'rgb(75, 192, 192)',
                 pointBorderColor: '#fff',

@@ -15,7 +15,7 @@
                         </div>
                         <!--contenido-->
                         <div class="col-md-12">
-                            <form action="../editarFoto/{{curso.idCurso}}" method="post" enctype="multipart/form-data">
+                            <form action="../editarFoto/{{curso.idCurso}}" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <input class="mt-2" type="file" name="archivo" multiple />
@@ -53,7 +53,7 @@
                             <form action="../editarTemario/{{curso.idCurso}}" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="mt-2" type="file" name="archivo" multiple />
+                                        <input class="mt-2" type="file" name="archivo"/>
                                         <input type="hidden" name="idCurso" id="idCurso" value="{{curso.idCurso}}">
                                     </div>
                                     <div class="col-md-12  text-right">
@@ -227,59 +227,7 @@
             </div>
         </div>
     </div>
-    <div id="verPerfilEstudiante" class="modal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content" style="border-radius: 10px">
-                <!--Contenido-->
-                <div class="modal-body">
-                    <div class="row">
-                        <!--titulo-->
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6 text-center">
-                            <h4>Perfil de Estudiante</h4>
-                        </div>
-                        <div class="col-md-3 text-right">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        </div>
-                        <!--contenido-->
-                        <div class="col-md-3 text-center">
-                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px"
-                                height="150px" />
-                            <h6 class="mt-2 font-medium">Foto de Perfil</h6>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4>
-                                    <hr>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
-                                    <h5 class="font-16">E2545441</h5>
-                                </div>
-                                <div class="col-md-6 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Nombre</h6>
-                                    <h5 class="font-16">Jose Luis Torres Dominguez</h5>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Area</h6>
-                                    <h5 class="font-16">Administrativa</h5>
-                                </div>
-                                <div class="col-md-6 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Puesto</h6>
-                                    <h5 class="font-16">Doc. Ciencias Humanas</h5>
-                                </div>
-                                <div class="col-md-5 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Correo</h6>
-                                    <h5 class="font-16">correonoexiste@gmail.com</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{#perfilPonente}}
     <div id="verPerfilPonente" class="modal">
         <div class="modal-dialog modal-xl">
             <div class="modal-content" style="border-radius: 10px">
@@ -296,8 +244,8 @@
                         </div>
                         <!--contenido-->
                         <div class="col-md-3 text-center">
-                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px"
-                                height="150px" />
+                            <!--<img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" class="rounded-circle" width="150px" height="150px"/>-->
+                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px"/>
                             <h6 class="mt-2 font-medium">Foto de Perfil</h6>
                         </div>
                         <div class="col-md-9">
@@ -308,23 +256,23 @@
                                 </div>
                                 <div class="col-md-3 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
-                                    <h5 class="font-16">E2545441</h5>
+                                    <h5 class="font-16">{{matriculaPonente}}</h5>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Nombre</h6>
-                                    <h5 class="font-16">Jose Luis Torres Dominguez</h5>
+                                    <h5 class="font-16">{{nombrePonente}}</h5>
                                 </div>
                                 <div class="col-md-3 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Area</h6>
-                                    <h5 class="font-16">Escuela Sindical</h5>
+                                    <h5 class="font-16">{{areaPonente}}</h5>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Puesto</h6>
-                                    <h5 class="font-16">Doc. Ciencias Humanas</h5>
+                                    <h5 class="font-16">{{puestoPonente}}</h5>
                                 </div>
                                 <div class="col-md-5 text-center">
                                     <h6 class="mb-0 font-medium mt-2">Correo</h6>
-                                    <h5 class="font-16">correonoexiste@gmail.com</h5>
+                                    <h5 class="font-16">{{correoPonente}}</h5>
                                 </div>
                             </div>
                         </div>
@@ -333,6 +281,7 @@
             </div>
         </div>
     </div>
+    {{/perfilPonente}}
     <div id="reportarProblema" class="modal">
         <div class="modal-dialog">
             <div class="modal-content" style="border-radius: 10px">
@@ -446,59 +395,35 @@
     </div>
     <!--terminan modales-->
     <div class="row">
-        <!--valoraciones-->
+        <!-- datos estadisticos -->
         <div class="col-md-3">
             <div class="card" style="border-radius: 10px">
                 <div class="card-body">
-                    {{#if calificacionesCurso}}
-                        {{#calificacionesCurso}}
-                        <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso ({{totalComentarios}})</h2>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="text-center mb-3" id="read-only-stars-c{{promedioCalificacionesCurso}}"><h5>Curso</h5></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="text-center mb-2" id="read-only-stars-p{{promedioCalificacionesPonente}}"><h5>Ponente</h5></div>
-                            </div>
+                    <div class="row">
+                        <div class="col-1 text-center">
                         </div>
-                        {{/calificacionesCurso}}
-                    {{else}}
-                    <h2 class="text-center"><i class="far fa-star mr-2"></i>Valoraciones del curso (0)</h2>
-                    <hr>
-                    <div class="text-center mb-3" id="read-only-stars-c0"><h5>Curso</h5></div>
-                    <div class="text-center mb-2" id="read-only-stars-p0"><h5>Ponente</h5></div>
-                    {{/if}}
-                    <div class="comment-widgets scrollable ps-container ps-theme-default ps-active-y" style="height:730px;" data-ps-id="96370757-1752-5407-955d-d2618da54798">
-                        <!-- calificaciones de los alumnos -->
-                        {{#each calificacionesEstudiantes}}
-                        <div class="d-flex flex-row comment-row mt-0">
-                            <!-- FALTAAGREGAR <div class="p-0"><img src="../../assets/multimedia/usuarios/{{idEstudiante}}/{{fotoEstudiante}}" alt="user" width="50" class="rounded-circle"></div>-->
-                            <div class="p-0"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h5 class=" mb-0">{{nombreEstudiante}}</h5>
-                                <p class="mt-0" style="text-align: justify;">{{comentarioCurso}}</p>
-                                <div class="row">
-                                    <div class="col text-right">
-                                        <h6 class="font-light mt-0 mb-0">Curso: <span class="small">{{valoracionCurso}}<i class="fas fa-star ml-1"></i></span></h6>
-                                    </div>
-                                    <div class="col text-left">
-                                        <h6 class="font-light mt-0 mb-0">Ponente: <span class="small">{{valoracionPonente}}<i class="fas fa-star ml-1"></i></span></h6>
-                                    </div>
+                        <div class="col-10 text-center">
+                            <div class="card" style="border-radius: 10px">
+                                <div class="card-body">
+                                    <h3 class="mb-4"><i
+                                            class="fas fa-chart-bar mr-2"></i>Estadisticas
+                                        <span class="font-light"></span>
+                                    </h3>
+                                    <center>
+                                        <div class="col-12">
+                                            <canvas width="100" height="100"
+                                                id="GraficaMuestra3"></canvas>
+                                        </div>
+                                    </center>
                                 </div>
                             </div>
                         </div>
-                        {{/each}}
-                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                        </div>
-                        <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 0px;">
-                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                        <div class="col-1 text-center">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--todas las pestañas-->
         <div class="col-md-9">
             <div class="card" style="border-radius: 10px;">
                 <ul class="nav nav-pills p-3">
@@ -526,23 +451,27 @@
                                         <!--Comienzan los datos-->
                                         <div class="col-md-3 text-center">
                                             <!-- FALTAAGREGAR <img class="card-img img-responsive" style="border-radius: 8px;" src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" alt="Imgagen del curso">-->
-                                            <img src="../../assets/images/cursoImg1.JPG" class="mt-2" width="250" alt="imagenCurso" style="border-radius: 10px;">
+                                            <img src="../../assets/multimedia/cursos/{{idCurso}}/{{fotoCurso}}" class="mt-2" width="150" alt="imagenCurso" style="border-radius: 10px;">
                                             <h6 class="mb-0 mt-2 font-medium">Imagen del curso </h6>
                                         </div>
                                         <div class="col-md-9 text-left">
                                             <div class="row">
-                                                <div class="col-md-9 text-left">
+                                                <div class="col-md-7 text-left">
                                                     <h3 class="card-title mb-0">{{nombreCurso}}
                                                         <span class="small">( <i class="fas fa-users mr-2"></i>{{totalEstudiantesCurso}} )</span></h3><!-- cantidad de usuarios -->
                                                     <h4 class="font-medium mb-3"><i class="fas fa-user-tie ml-4 mr-2"></i>{{nombrePonente}}</h4>
                                                 </div>
-                                                <div class="col-md-3 text-right">
-                                                    <button type="button" class="btn  btn-rounded btn-success"
-                                                        data-toggle="modal" data-target="#editarCurso"><i class="fas fa-pencil-alt mr-2"></i>Editar Datos</button>
-                                                    <button type="button" class="btn  btn-rounded btn-success"
-                                                        data-toggle="modal" data-target="#editarFoto"><i class="fas fa-pencil-alt mr-2"></i>Editar Foto</button>
-                                                    <button type="button" class="btn  btn-rounded btn-success"
-                                                        data-toggle="modal" data-target="#editarTemario"><i class="fas fa-pencil-alt mr-2"></i>Editar Temario</button>
+                                                <div class="col-md-5 text-right">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-success btn-rounded dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-pencil-alt mr-2"></i>Editar
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#editarCurso">Editar Datos</a>
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#editarFoto">Editar Foto</a>
+                                                            <a class="dropdown-item" data-toggle="modal" data-target="#editarTemario">Editar Temario</a>
+                                                        </div>
+                                                    </div>
                                                     {{#ifEquals ../activo '1'}}
                                                     <button type="button" class="btn btn-rounded btn-danger"
                                                         data-toggle="modal" data-target="#desactivarCurso"><i
@@ -566,7 +495,7 @@
                                                 <div class="col-md-4 text-right">
                                                     <h4 class="font-medium mb-0 mt-0">Clave: <span class="font-light">{{claveCurso}}</span></h4>
                                                     <h4 class="mt-0 font-light">{{plataformaCurso}}</h4>
-                                                    <a href="../DescargarTemario/{{idCurso}}" class="btn btn-rounded btn-sm btn-success">
+                                                    <a href="/administrador/DescargarTemario/{{idCurso}}" class="btn btn-rounded btn-sm btn-success">
                                                         <i class="fas fa-download mr-2"></i>Descargar Temario</a>
                                                 </div>
                                             </div>
@@ -586,56 +515,6 @@
                             </div>
                             {{/curso}}
                         </div>
-                        <!-- datos estadisticos -->
-                        <div class="col-md-12">
-                            <div class="card" style="border-radius: 10px">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4 text-center">
-                                                    <div class="card" style="border-radius: 10px">
-                                                        <div class="card-body">
-                                                            <h3 class="mb-4"><i
-                                                                    class="fas fa-chart-bar mr-2"></i>Estadisticas
-                                                                <span class="font-light"></span>
-                                                            </h3>
-                                                            <center>
-                                                                <div class="col-12">
-                                                                    <canvas width="100" height="100"
-                                                                        id="GraficaMuestra3"></canvas>
-                                                                </div>
-                                                            </center>
-                                                        </div>
-                                                    </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="row">
-                                                <div class="col-md-6 text-center">
-                                                    <img src="../../assets/images/logoTransparencia10.svg"
-                                                        min-width="150px" width="250px" alt="logoDelSistema">
-                                                    <h3 class="card-title mt-0">Resumen de Datos</h3>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="card" style="border-radius: 10px">
-                                                    <div class="card-body">
-                                                        <h3 class="mb-4"><i
-                                                            class="fas fa-feather mr-2"></i>Asignaciones
-                                                        <span class="font-light"></span>
-                                                        </h3>
-                                                        <center>
-                                                            <div class="col-12">
-                                                                <canvas width="100" height="100"
-                                                                    id="GraficaMuestra5"></canvas>
-                                                            </div>
-                                                        </center>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- estudiantes-->
@@ -646,7 +525,7 @@
                             <div class="card" style="border-radius: 10px">
                                 <div class="card-body">
                                     <h3 class="card-title"><i class="fas fa-users mr-2"></i>Alumnos inscritos en <span
-                                            class="small"> Nombre Completo del Curso</span></h3>
+                                            class="small"> {{curso.nombreCurso}}</span></h3>
                                     <hr>
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs" role="tablist">
@@ -740,7 +619,7 @@
                                             <div class="row">
                                                 <div class="row el-element-overlay">
                                                     {{#each estudiantesInscritos}}
-                                                    <div class="col-md-3 col-lg-2"><!--Usar este para el each, los otros no tienen formato chido-->
+                                                    <div class="col-md-3 col-lg-3"><!--Usar este para el each, los otros no tienen formato chido-->
                                                         <div class="card">
                                                             <div class="el-card-item" class="modal-footer"
                                                                 data-toggle="modal" data-target="#responsive-modal">
@@ -804,8 +683,6 @@
                                                 <div class="col-md-5">
                                                     <h5> <i class="fas fa-key"></i> Clave: <span
                                                             class="small">{{claveCurso}}</span>
-                                                        <a href="#" class="btn  btn-rounded btn-sm btn-success small">
-                                                            <i class="far fa-copy mr-1"></i>Copiar</a>
                                                     </h5>
                                                 </div>
                                             </div>
@@ -835,10 +712,9 @@
                                             <h5><i class="fas fa-list-alt ml-2 mr-2"></i>Temario</h5>
                                             <p>Consulta el temario del curso y conoce la ruta de aprendizaje que tu
                                                 sindicato ha preparado para ti:
-                                                <span><a href="../DescargarTemario/{{idCurso}}"
+                                                <span><a href="/administrador/DescargarTemario/{{idCurso}}"
                                                         class="btn btn-rounded btn-sm btn-success small ml-2">
-                                                        <i class="fas fa-external-link-alt mr-1"></i> Ver
-                                                        Temario</a></span>
+                                                        <i class="fas fa-download mr-2"></i>Descargar Temario</a>
                                             </p>
                                         </div>
                                         <div class="col-md-6">
@@ -882,7 +758,7 @@
                                     <h5 class="ml-2 mr-2"><i class="far fa-calendar mr-1"></i>Fin: <span
                                             class="small ">{{fechaInscripcionFinalCurso}}</span></h5>
                                     {{#ifEquals estadoInscripcionesCurso "Abiertas"}}
-                                    <button type="button" class="btn btn-block btn-rounded btn-primary"
+                                    <button type="button" class="btn btn-block btn-rounded btn-primary disabled"
                                         data-toggle="modal" data-target="#inscribirseAhora">
                                         <i class="fas fa-sign-in-alt mr-2"></i> Inscribirse Ahora</button>
                                     {{/ifEquals}}
@@ -956,8 +832,6 @@
                                                 <div class="col-md-5">
                                                     <h5> <i class="fas fa-key"></i> Clave: <span
                                                             class="small">{{claveCurso}}</span>
-                                                        <a href="#" class="btn  btn-rounded btn-sm btn-success small">
-                                                            <i class="far fa-copy mr-1"></i>Copiar</a>
                                                     </h5>
                                                 </div>
                                             </div>
@@ -966,9 +840,9 @@
                                                     class="small mr-1">{{totalEstudiantesCurso}}</span>
                                                 <!-- FALTAAGREGAR Descargar Temario del curso-->
                                                 <i class="fas fa-list-alt ml-4 mr-2"></i>Temario:<a
-                                                    href="/estudiante/DescargarTemario/{{idCurso}}"
+                                                    href="/administrador/DescargarTemario/{{idCurso}}"
                                                     class="btn  btn-rounded btn-sm btn-success small ml-1">
-                                                    <i class="fas fa-download mr-2"></i>Descargar</a>
+                                                    <i class="fas fa-download mr-2"></i>Descargar Temario</a>
                                             </h5>
 
                                         </div>
@@ -1015,39 +889,22 @@
                                     <div class="tab-content tabcontent-border">
                                         <!--Panel de todos-->
                                         <div class="tab-pane active p-20" id="home" role="tabpanel">
-                                            <!-- Busqueda-->
-                                            <nav class="navbar navbar-light bg-light justify-content-between">
-                                                <a class="navbar-brand">Historial de avisos y asignaciones</a>
-                                                <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search"
-                                                        placeholder="Buscar" aria-label="Search">
-                                                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i
-                                                            class="fas fa-search mr-2"></i> Buscar</button>
-                                                </form>
-                                            </nav>
                                             {{#each publicacionesCurso}}
                                             {{#ifEquals tipoPublicacion "1"}}
-                                            <div class="card card-hover mt-3"
-                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                            <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-md-12 d-flex no-block align-items-center">
-                                                            <div class="mr-2"><img
-                                                                    src="../../assets/images/users/d1.jpg" alt="user"
-                                                                    class="rounded-circle" width="45">
+                                                        <div class="col-md-9 d-flex no-block align-items-center">
+                                                            <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45">
                                                             </div>
                                                             <div>
-                                                                <h5 class="mb-0 font-16">{{nombrePonente}}<span
-                                                                        class="small ml-2">publicó para:</span></h5>
+                                                                <h5 class="mb-0 font-16">{{nombrePonente}}<span class="small ml-2">publicó para:</span></h5>
                                                                 <h5 class="font-medium">{{nombreCurso}}</h5>
                                                             </div>
-                                                            <div class="col-md-3 text-right">
-                                                                <span class="small"><a href="#"
-                                                                        class="btn  btn-rounded btn-sm btn-success small disabled"
-                                                                        data-toggle="modal" data-target="#editarAviso">
-                                                                        <i
-                                                                            class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                            </div>
+                                                        </div>  
+                                                        <div class="col-md-3 text-right">
+                                                            <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarAviso{{idAviso}}">
+                                                                <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <h4 class="ml-3 mt-3">{{textoAviso}}</h4>
@@ -1186,10 +1043,6 @@
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <a class="navbar-brand">Historial de avisos</a>
                                                 <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search"
-                                                        placeholder="Buscar" aria-label="Search">
-                                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
-                                                            class="fas fa-search mr-2"></i>Buscar</button>
                                                     <button type="button" class="btn btn-info disabled"
                                                         data-toggle="modal" data-target="#agregarAviso"><i
                                                             class="fas fa-plus mr-2"></i>Agregar Aviso</button>
@@ -1197,27 +1050,20 @@
                                             </nav>
                                             <!--Avisos-->
                                             {{#each avisosCurso}}
-                                            <div class="card card-hover mt-3"
-                                                style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
+                                            <div class="card card-hover mt-3" style="border-radius: 10px; box-shadow: 1px 1px 5px rgba(197, 187, 197, 0.808) ">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-md-12 d-flex no-block align-items-center">
-                                                            <div class="mr-2"><img
-                                                                    src="../../assets/images/users/d1.jpg" alt="user"
-                                                                    class="rounded-circle" width="45">
+                                                        <div class="col-md-9 d-flex no-block align-items-center">
+                                                            <div class="mr-2"><img src="../../assets/images/users/d1.jpg" alt="user" class="rounded-circle" width="45">
                                                             </div>
                                                             <div>
-                                                                <h5 class="mb-0 font-16">{{nombrePonente}}<span
-                                                                        class="small ml-2">publicó para:</span></h5>
+                                                                <h5 class="mb-0 font-16">{{nombrePonente}}<span class="small ml-2">publicó para:</span></h5>
                                                                 <h5 class="font-medium">{{nombreCurso}}</h5>
                                                             </div>
-                                                            <div class="col-md-3 text-right">
-                                                                <span class="small"><a href="#"
-                                                                        class="btn  btn-rounded btn-sm btn-success small disabled"
-                                                                        data-toggle="modal" data-target="#editarAviso">
-                                                                        <i
-                                                                            class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
-                                                            </div>
+                                                        </div>  
+                                                        <div class="col-md-3 text-right">
+                                                            <span class="small"><a href="#" class="btn btn-rounded btn-sm btn-success small" data-toggle="modal" data-target="#editarAviso{{idAviso}}">
+                                                                <i class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <h4 class="ml-3 mt-3">{{textoAviso}}</h4>
@@ -1237,10 +1083,6 @@
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <a class="navbar-brand">Historial de asignaciones</a>
                                                 <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search"
-                                                        placeholder="Buscar" aria-label="Search">
-                                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
-                                                            class="fas fa-search mr-2"></i> Buscar</button>
                                                     <button type="button" class="btn btn-info disabled"
                                                         data-toggle="modal" data-target="#agregarTarea"><i
                                                             class="fas fa-plus mr-2"></i>Agregar Asignación</button>
@@ -1259,7 +1101,7 @@
                                                             {{#ifEquals estadoTarea "Abierta"}}
                                                             <span class="mb-3 label  label-info mr-2">Abierta</span>
                                                             <span class="small"><a href="#"
-                                                                    class="btn btn-rounded btn-sm btn-success"
+                                                                    class="btn btn-rounded btn-sm btn-success disabled"
                                                                     data-toggle="modal" data-target="#editarTarea">
                                                                     <i
                                                                         class="fas fa-pencil-alt mr-2"></i>Editar</a></span>
@@ -1457,13 +1299,9 @@
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <a class="navbar-brand">Examenes</a>
                                                 <form class="form-inline">
-                                                    <input class="form-control mr-sm-2" type="search"
-                                                        placeholder="Buscar" aria-label="Search">
-                                                    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i
-                                                            class="fas fa-search mr-2"></i> Buscar</button>
                                                     <button type="button" class="btn btn-info disabled"
-                                                        data-toggle="modal" data-target="#agregarExamen"><i
-                                                            class="fas fa-plus mr-2"></i>Agregar Examen</button>
+                                                        data-toggle="modal" data-target="#agregarExamen">
+                                                        <i class="fas fa-plus mr-2"></i>Agregar Examen</button>
                                                 </form>
                                             </nav>
                                             <!--cartasExamenes-->
@@ -1531,10 +1369,8 @@
                                     <h5 class="ml-2 mr-2"><i class="far fa-clock mr-1"></i> Horario: <span
                                             class="small ">{{horaInicioCurso}} - {{horaFinCurso}}</span></h5>
                                     <div class="col mt-2 text-center">
-                                        <a href="#" class="btn  btn-rounded btn-sm btn-success small ml-2">
+                                        <a href="{{linkPlataformaCurso}}" class="btn  btn-rounded btn-sm btn-success small ml-2">
                                             <i class="fas fa-external-link-alt mr-1"></i> Ir a Clase</a>
-                                        <a href="#" class="btn  btn-rounded btn-sm btn-success small ml-2">
-                                            <i class="fas fa-users mr-1"></i>Ver Alumnos</a>
                                     </div>
                                 </div>
                             </div>

@@ -20,7 +20,7 @@ router.post('/reportarProblemaUsuario', render.postReportarProblemaUsuario);
 router.post('/VerificarClaveCurso/', render.postVerificarClaveCurso)
 
 router.get('/CatalogoCursos/', render.getCatalogoCursos);
-
+router.post('/reportarProblemaCurso', render.postReportarProblemaCurso);
 /* router.get('/', render.getVerTareas);
 router.get('/:id', render.getVerTarea);
 router.post('/', render.postAgregarTarea);

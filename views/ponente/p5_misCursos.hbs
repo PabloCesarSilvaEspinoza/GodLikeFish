@@ -12,10 +12,10 @@
                                 <tr>
                                     <th>Nombre del Curso</th>
                                     <th>Alumnos</th>
+                                    <th>Área</th>
+                                    <th>Tipo</th>
+                                    <th>Modalidad</th>
                                     <th>Estado</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
-                                    <th>% Aprobación</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -23,17 +23,21 @@
                                 {{#each historialCursosPonente}}
                                 <tr>
                                     <td>{{nombreCurso}}</td>
-                                    <td>{{NumeroDeEstudiantes}}/{{capacidad}}</td>
+                                    <td>{{numeroInscripcionesCurso}}</td>
+                                    <td> {{areaCurso}}</td>
+                                    <td> {{tipoCurso}}</td>
+                                    <td>{{modalidadCurso}}</td>
                                     <td>
-                                        {{#if Estado}}
-                                        <span class="label label-info">Activo</span>
-                                        {{else}}
-                                        <span class="label label-danger">Inactivo</span>
-                                        {{/if}}
+                                        {{#ifEquals estadoCurso "Cursando"}}
+                                        <span class="label label-info">Cursando</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoCurso "Cursado"}}
+                                        <span class="label label-danger">Cursado</span>
+                                        {{/ifEquals}}
+                                        {{#ifEquals estadoCurso "Por Cursar"}}
+                                        <span class="label label-primary">Por Cursar</span>
+                                        {{/ifEquals}}
                                     </td>
-                                    <td> {{HoraInicio}}</td>
-                                    <td> {{HorarioFin}}</td>
-                                    <td>N/A</td>
                                     <td>
                                         <a href="/ponente/curso/{{idCurso}}" class="btn waves-effect waves-light btn-rounded btn-sm btn-success small">
                                             <i class="fas fa-external-link-alt mr-2"></i>Ir al Curso</a> 
@@ -45,10 +49,10 @@
                                 <tr>
                                     <th>Nombre del Curso</th>
                                     <th>Alumnos</th>
+                                    <th>Área</th>
+                                    <th>Tipo</th>
+                                    <th>Modalidad</th>
                                     <th>Estado</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
-                                    <th>% Aprobación</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>

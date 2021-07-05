@@ -20,6 +20,7 @@ module.exports = {
         const mensaje = await Controller.getMensajeBienvenida();
         res.render('alumno/a1_dashboard', {
             estudiante:true,
+            graficasEstudiante: true,
             miPerfil,
             cursosDisponibles,
             totalCursos,
@@ -118,10 +119,12 @@ module.exports = {
     getCatalogoCursos: async function (req, res, next) {
         const respuestaCatalogoCursosEstudiante = await Controller.catalogCatalogoCursosEstudiante(req.user.id);
         const catalogoCursosEstudiante = respuestaCatalogoCursosEstudiante[0];
+        const miPerfil = await Controller.getMiPerfil(req.user.id);
         res.render('alumno/a5_catalogoCursos', {
             estudiante: true,
             dataTables: true,
             catalogoCursosEstudiante,
+            miPerfil
         })
     },
 
@@ -140,6 +143,17 @@ module.exports = {
         }
     },
 
+    postReportarProblemaCurso: async function (req, res, next) {
+        await Controller.reportarProblemaCurso(
+            req.user.id,
+            req.body.idCurso,
+            req.body.asuntoProblema,
+            req.body.descripcionProblema
+        );
+        res.redirect('back')
+    },
+
+
     getConsultarEstadoCursoEstudiante: async function (req, res, next){
         const usuarioID = req.user.id;
         const cursoID = req.params.idCurso;
@@ -148,6 +162,23 @@ module.exports = {
         const datosCurso = await Controller.getCursoInscripcion(cursoID);
         const curso = datosCurso[0];
         const miPerfil = await Controller.getMiPerfil(req.user.id);
+        const verPerfilPonente = await Controller.getPerfilPonente(cursoID);
+        const perfilPonente = verPerfilPonente[0];
+
+        if(estadoCursoEstudiante == 'Curso Futuro' || estadoCursoEstudiante == 'Curso Actual' || estadoCursoEstudiante == 'Curso Pasado'){
+            var avisosCurso = await Controller.listAvisosUsuario(cursoID);
+            var documentosCurso = await Controller.listDocumentos(cursoID);
+            var linksCurso = await Controller.listLinks(cursoID); 
+            var respuestaAsignacionesEstudiante = await Controller.listAsignacionesEstudiante(usuarioID, cursoID);
+            var asignacionesEstudiante = respuestaAsignacionesEstudiante[0];
+            var archivosEntregasEstudiante = await Controller.listArchivosEntregasTotalesEstudiante(usuarioID);
+            var archivosAsignaciones = await Controller.listArchivosTareaCurso(cursoID);
+            var examenesCurso = await Controller.listExamenes(cursoID);
+            var respuestaPublicacionesCursoEstudiante = await Controller.catalogPublicacionesCursoEstudiante(usuarioID, cursoID);
+            var publicacionesCursoEstudiante = respuestaPublicacionesCursoEstudiante[0];
+            var totalDocumentos = documentosCurso.length;
+            var totalLinks = linksCurso.length;
+        }
         switch (estadoCursoEstudiante) {
             case 'Diferentes areas':
             case 'Curso Inactivo':
@@ -159,37 +190,15 @@ module.exports = {
                 res.render('alumno/a3_consultarCursoE1', {
                     estudiante:true,
                     curso,
-                    miPerfil
+                    miPerfil,
+                    perfilPonente
                 });
                 break;
 
             case 'Curso Pasado':
                 res.render('alumno/a3_consultarCursoE3', {
                     estudiante:true,
-                    miPerfil
-                });
-                break;
-
-            case 'Curso Actual':
-            case 'Curso Futuro':
-                const avisosCurso = await Controller.listAvisosUsuario(cursoID);
-                const documentosCurso = await Controller.listDocumentos(cursoID);
-                const linksCurso = await Controller.listLinks(cursoID); 
-                const respuestaAsignacionesEstudiante = await Controller.listAsignacionesEstudiante(usuarioID, cursoID);
-                const asignacionesEstudiante = respuestaAsignacionesEstudiante[0];
-                const archivosEntregasEstudiante = await Controller.listArchivosEntregasTotalesEstudiante(usuarioID);
-                const archivosAsignaciones = await Controller.listArchivosTareaCurso(cursoID);
-                const examenesCurso = await Controller.listExamenes(cursoID);
-                const respuestaPublicacionesCursoEstudiante = await Controller.catalogPublicacionesCursoEstudiante(usuarioID, cursoID);
-                const publicacionesCursoEstudiante = respuestaPublicacionesCursoEstudiante[0];
-                const totalDocumentos = documentosCurso.length;
-                const totalLinks = linksCurso.length;
-                res.render('alumno/a3_consultarCursoE2', {
-                    estudiante:true,
-                    c3:true,
-                    dataTables: true,
                     alerta: true,
-                    select2: true,
                     curso,
                     avisosCurso,
                     documentosCurso,
@@ -202,7 +211,30 @@ module.exports = {
                     publicacionesCursoEstudiante,
                     archivosEntregasEstudiante,
                     usuarioID,
-                    miPerfil
+                    miPerfil,
+                    perfilPonente
+                });
+                break;
+
+            case 'Curso Actual':
+            case 'Curso Futuro':
+                res.render('alumno/a3_consultarCursoE2', {
+                    estudiante:true,
+                    alerta: true,
+                    curso,
+                    avisosCurso,
+                    documentosCurso,
+                    linksCurso,
+                    asignacionesEstudiante,
+                    examenesCurso,
+                    totalDocumentos,
+                    totalLinks,
+                    archivosAsignaciones,
+                    publicacionesCursoEstudiante,
+                    archivosEntregasEstudiante,
+                    usuarioID,
+                    miPerfil,
+                    perfilPonente
                 });
                 break;
         
@@ -213,13 +245,13 @@ module.exports = {
     },
     
     postReportarProblemaUsuario: async function (req, res, next) {
-        await Controller.reportarProblemaUsuario(
+        console.log(req.body);
+        await Controller.insertReportarProblema(
             req.user.id,
-            //el resto de datos los leemos del modal
             req.body.asuntoProblema,
             req.body.descripcionProblema
         );
-        //de donde se manda llamar?, para dirigirlo allí
+        res.redirect('/soporte/')
     },
 
     /* getVerTareas:async function(req, res, next){

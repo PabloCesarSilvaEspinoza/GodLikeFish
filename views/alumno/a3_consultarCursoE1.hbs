@@ -15,13 +15,12 @@
                                 aria-hidden="true">×</button>
                         </div>
                         <!--contenido-->
-                        <form action="../../ponente/reportarProblemaCurso" method="post">
-                            <input id="idCurso" value='req.params.idCurso' hidden>
+                        <form action="../../estudiante/reportarProblemaCurso" method="POST">
                             <div class="col-md-12 mt-2">
                                 <h6 class="mb-0 font-medium mt-2"><i class="fas fa-highlighter mr-2"></i>Asunto del problema </h6>
                                 <input class="form-control form-control-lg font-14" type="text" required=" "
                                     placeholder="Escribe el asunto del problema" alt="Asunto del problema"
-                                    id="asuntoProblema" name="asuntoProblema">
+                                    id="asuntoProblema" name="asuntoProblema" autocomplete="off">
                             </div>
                             <div class="col-md-12 mt-2">
                                 <h6 class="mb-0 font-medium mt-2"><i class="fas fa-signature mr-2"></i>Descripcion</h6>
@@ -41,61 +40,61 @@
             </div>
         </div>
     </div>
-    <div id="verPerfilPonente" class="modal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content" style="border-radius: 10px">
-                <!--Contenido-->
-                <div class="modal-body">
-                    <div class="row">
-                        <!--titulo-->
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6 text-center">
-                            <h4>Perfil de Ponente</h4>
-                        </div>
-                        <div class="col-md-3 text-right">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        </div>
-                        <!--contenido-->
-                        {{#perfilPonente}}
-                        <div class="col-md-3 text-center">
-                            <!-- FALTAAGREGAR <img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" class="rounded-circle" width="150px" height="150px" />-->
-                            <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px" />
-                            <h6 class="mt-2 font-medium">Foto de Perfil</h6>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4> <hr>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
-                                    <h5 class="font-16">{{matriculaPonente}}</h5>
-                                </div>
-                                <div class="col-md-6 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Nombre</h6>
-                                    <h5 class="font-16">{{nomnrePonente}}</h5>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Area</h6>
-                                    <h5 class="font-16">{{areaPonente}}</h5>
-                                </div>
-                                <div class="col-md-6 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Puesto</h6>
-                                    <h5 class="font-16">{{puestoPonente}}</h5>
-                                </div>
-                                <div class="col-md-5 text-center">
-                                    <h6 class="mb-0 font-medium mt-2">Correo</h6>
-                                    <h5 class="font-16">{{correoPonente}}</h5>
+    {{#perfilPonente}}
+        <div id="verPerfilPonente" class="modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content" style="border-radius: 10px">
+                    <!--Contenido-->
+                    <div class="modal-body">
+                        <div class="row">
+                            <!--titulo-->
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 text-center">
+                                <h4>Perfil de Ponente</h4>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <!--contenido-->
+                            <div class="col-md-3 text-center">
+                                <!--<img src="../../assets/multimedia/usuarios/{{idPonente}}/{{fotoPonente}}" class="rounded-circle" width="150px" height="150px"/>-->
+                                <img src="../../assets/images/users/d1.jpg" class="rounded-circle" width="150px" height="150px"/>
+                                <h6 class="mt-2 font-medium">Foto de Perfil</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4><i class="fas fa-clipboard-list mt-3 mr-2"></i>Datos Generales</h4>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <h6 class="mb-0 font-medium mt-2">Matrícula</h6>
+                                        <h5 class="font-16">{{matriculaPonente}}</h5>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <h6 class="mb-0 font-medium mt-2">Nombre</h6>
+                                        <h5 class="font-16">{{nombrePonente}}</h5>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <h6 class="mb-0 font-medium mt-2">Area</h6>
+                                        <h5 class="font-16">{{areaPonente}}</h5>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <h6 class="mb-0 font-medium mt-2">Puesto</h6>
+                                        <h5 class="font-16">{{puestoPonente}}</h5>
+                                    </div>
+                                    <div class="col-md-5 text-center">
+                                        <h6 class="mb-0 font-medium mt-2">Correo</h6>
+                                        <h5 class="font-16">{{correoPonente}}</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        {{/perfilPonente}}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {{/perfilPonente}}
     <div id="inscribirseAhora" class="modal">
         <div class="modal-dialog">
             <div class="modal-content" style="border-radius: 10px">
@@ -187,7 +186,7 @@
                             <h5><i class="fas fa-list-alt ml-2 mr-2"></i>Temario</h5>
                             <p>Consulta el temario del curso y conoce la ruta de aprendizaje que tu sindicato ha preparado para ti:
                                 <span><a href="../DescargarTemario/{{idCurso}}" class="btn btn-rounded btn-sm btn-success small ml-2">
-                                <i class="fas fa-external-link-alt mr-1"></i> Ver Temario</a></span>
+                                <i class="fas fa-download mr-1"></i> Descargar Temario</a></span>
                             </p>
                         </div>
                         <div class="col-md-6">

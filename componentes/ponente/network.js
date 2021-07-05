@@ -4,10 +4,11 @@ const uploadTarea = require('../../middlewares/subirArchivosTarea')
 const uploadArchivos = require('../../middlewares/subirArchivosMultimediaCurso')
 const {crearCarpetaTarea} = require('../../middlewares/crearDirectorios')
 const {permisosTarea} = require('../../middlewares/compropobarPermisos')
+const {permisosCurso} = require('../../middlewares/compropobarPermisos')
 const render = require('./render');
 
 router.get('/dashboardPonente', render.getDashboardPonente);
-router.get('/consultarAlumnos', render.getConsultarAlumnos);
+router.get('/consultarAlumnos/:idCurso', permisosCurso, render.getConsultarAlumnos);
 router.post('/CalificarEntrega/', permisosTarea, render.postCalificarEntrega);
 router.post('/TerminarCalificarTarea/', permisosTarea, render.postTerminarCalificarTarea);
 router.get('/CalificarTarea/:idTarea', permisosTarea, render.getCalificarTarea);
@@ -38,6 +39,9 @@ router.post('/borrarAsignacion/:idTarea', render.postDeleteAsignacion);
 router.post('/editarAsignaicon/:id',  uploadArchivos.array('multimediaTarea'), render.putEditarAsignacion);
 
 router.post('/borrarDocumento/:idDocumento', render.postDeleteDocumento);
+
+router.post('/CalificarEstudiante/', permisosCurso, render.postCalificarEstudiante);
+router.get('/DescargarTemario/:idCurso', render.getDescargarTemario);
 /* router.get('/AgregarTareaPrueba', render.getAgregarTarea);
 router.post('/AgregarTarea', upload.array('multimediaTarea'), render.postAgregarTarea);
 router.get('/DescargarTarea', render.getDescargarArchivos); */

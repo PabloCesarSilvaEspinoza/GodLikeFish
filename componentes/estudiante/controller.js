@@ -213,15 +213,27 @@ module.exports = function (injectedStore) {
         const numeroAleatoreo = parseInt(Math.random() * (0 - mensajes.length)* -1);
         return mensajes[numeroAleatoreo];
     }
-
-    function reportarProblemaUsuario(idUsuario, asunto, descripcion){
-        const PROCEDURE = `CALL agregar_Problemas_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
-        return store.insert(PROCEDURE);
-    }
     
     function listClavesCursos() {
         const VIEW = 'ver_Claves_Cursos';
         return store.list(VIEW);
+    }
+
+    function insertReportarProblema (idUsuario, asunto, descripcion){
+        const PROCEDURE = `CALL reportar_Problema_Usuario(${idUsuario}, '${asunto}', '${descripcion}')`;
+        console.log(PROCEDURE);
+        return store.insert(PROCEDURE);
+    }
+
+    function reportarProblemaCurso(idUsuario, idCurso, asunto, descripcion){
+        const PROCEDURE = `CALL reportar_Problema_Curso(${idUsuario}, ${idCurso}, '${asunto}', '${descripcion}')`;
+        return store.insert(PROCEDURE);
+    }
+
+    function getPerfilPonente(cursoID) {
+        const VIEW = 'ver_Perfil_Ponente';
+        const CLAUSE = `WHERE idCurso = ?`;
+        return store.get(VIEW, CLAUSE, cursoID);
     }
 
     return {
@@ -256,7 +268,9 @@ module.exports = function (injectedStore) {
         catalogArchivosAsignacionesTotales,
         listArchivosEntregasTotalesEstudiante,
         getMensajeBienvenida,
-        reportarProblemaUsuario,
+        insertReportarProblema,
         listClavesCursos,
+        reportarProblemaCurso,
+        getPerfilPonente
     };
 }

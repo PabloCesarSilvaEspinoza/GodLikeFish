@@ -55,7 +55,7 @@ module.exports = {
         const direccionEstudiante = `${raiz}public/assets/multimedia/tareas_estudiantes/${req.user.id}`;
         if(!fs.existsSync(direccionEstudiante)){
             fs.mkdir(direccionEstudiante, error => {
-                if(error){
+                if (error) {
                     console.log(`Carpeta ${req.user.id} en tareas_estudiantes ${error.message}`);
                 }
             });
