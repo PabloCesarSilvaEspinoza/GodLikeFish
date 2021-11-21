@@ -69,6 +69,9 @@ app.use('/ponente', verificar, verificarPonente, ponente);
 //ultimo middleware, no poner nada debajo de esta linea
 app.use(errors);
 
-app.listen(config.api.port, () => {
-    console.log('Api escuchando en el puerto ', config.api.port);
+const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, HOST, () => {
+    console.log('API listening on port', PORT);
 });
